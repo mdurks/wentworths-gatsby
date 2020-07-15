@@ -24,7 +24,7 @@ const IndexPage = () => (
           className="snipcart-add-item"
           data-item-id="ckcgn5txc0gca0198idxivaeh"
           data-item-price="2.00"
-          data-item-url="https://wentworths-gatsby.netlify.app/"
+          data-item-url="/"
           data-item-description="Made from solid gold, the design combines precious and semi-precious stones in a beautiful and flattering oval structure.\n\nWear this ring with the coordinating stud earrings for a dazzling evening look.\n\nMorganite weight 0.64ct, diamond weight 0.05ct"
           data-item-image="https://media.graphcms.com/ikX2xVpqSpGH6EMMQXP5"
           data-item-name="9ct Rose Gold Morganite and Diamond Oval Cocktail Ring"
