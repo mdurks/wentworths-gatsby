@@ -1,6 +1,7 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import SEO from "../components/seo"
+import Snipcart from "../components/snipcart"
 
 const IndexPage = () => (
   <StaticQuery
@@ -17,9 +18,8 @@ const IndexPage = () => (
     render={data => (
       <>
         <SEO title="Home" />
-        <button className="snipcart-checkout">
-          Cart (<span className="snipcart-items-count"></span>)
-        </button>
+        <Snipcart />
+
         <button
           className="snipcart-add-item"
           data-item-id="ckcgn5txc0gca0198idxivaeh"
