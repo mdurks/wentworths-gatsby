@@ -1,5 +1,6 @@
 import React from "react"
 import { StaticQuery } from "gatsby"
+import SEO from "../components/seo"
 
 const IndexPage = () => (
   <StaticQuery
@@ -8,19 +9,23 @@ const IndexPage = () => (
         gcms {
           products {
             name
+            id
           }
         }
       }
     `}
     render={data => (
-      <div>
-        <ul>
-          {data.gcms.products.map(mountain => {
-            const { name } = mountain
-            return <li>{name}</li>
-          })}
-        </ul>
-      </div>
+      <>
+        <SEO title="Home" />
+        <div>
+          <ul>
+            {data.gcms.products.map(mountain => {
+              const { name, id } = mountain
+              return <li key={id}>{name}</li>
+            })}
+          </ul>
+        </div>
+      </>
     )}
   />
 )
