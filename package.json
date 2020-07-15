@@ -20,6 +20,7 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
+    "gatsby-plugin-snipcartv3": "^2.3.2",
     "prettier": "2.0.5"
   },
   "keywords": [
