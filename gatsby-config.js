@@ -39,6 +39,12 @@ module.exports = {
           "https://api-eu-central-1.graphcms.com/v2/ckcgmjdl73ds501xrercafl4c/master",
       },
     },
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        displayName: true,
+      },
+    },
     // {
     //   resolve: "gatsby-plugin-snipcartv3",
     //   options: {

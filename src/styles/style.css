@@ -1,0 +1,177 @@
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+* {
+  margin-top: 0;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Raleway:wght@400;700&display=swap");
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 10px;
+  background-color: #fffad6;
+  font-size: 16px;
+  line-height: normal;
+  font-family: "Raleway", sans-serif;
+}
+@media only screen and (min-width: 767px) {
+  body {
+    padding: 20px;
+    font-size: 18px;
+  }
+}
+
+#gatsby-focus-wrapper {
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+@media (min-width: 768px) {
+  #gatsby-focus-wrapper {
+    display: flex;
+    margin-bottom: 20px;
+    height: 100%;
+    height: auto;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+button {
+  cursor: pointer;
+}
+
+#gatsby-focus-wrapper > * {
+  flex: 1 0 auto;
+}
+
+#gatsby-focus-wrapper > :first-child,
+#gatsby-focus-wrapper > :last-child {
+  flex: 0 0 auto;
+}
+
+#snipcart {
+  position: relative;
+  z-index: 50;
+}
+.snipcart-checkout {
+  position: absolute;
+  top: 11px;
+  right: 70px;
+  width: 45px;
+  height: 40px;
+}
+@media (min-width: 768px) {
+  .snipcart-checkout {
+    top: 11px;
+    right: 10px;
+  }
+}
+.snipcart-cart-header__close-button .snipcart__icon {
+  width: 40px;
+  height: 40px;
+}
+
+.main {
+  min-height: 500px;
+}
+
+.pageNoScrollY {
+  overflow: hidden;
+}
+@media (min-width: 768px) {
+  .pageNoScrollY {
+    padding-right: 17px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Playfair Display", serif;
+  font-weight: normal;
+  text-transform: capitalize;
+}
+
+h1 {
+  font-size: 35px;
+}
+h2 {
+  font-size: 25px;
+}
+h3 {
+  font-size: 20px;
+}
+h4 {
+  font-size: 20px;
+}
+h5 {
+  font-size: 18px;
+}
+@media only screen and (min-width: 767px) {
+  h1 {
+    font-size: 40px;
+  }
+  h2 {
+    font-size: 30px;
+  }
+  h3 {
+    font-size: 25px;
+  }
+  h4 {
+    font-size: 20px;
+  }
+  h5 {
+    font-size: 18px;
+  }
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+p {
+  line-height: 28px;
+}
+@media only screen and (min-width: 767px) {
+  p {
+    line-height: 32px;
+  }
+}
+
+img {
+  width: 100%;
+}
+
+/* CMS Rules */
+/* --------------------------------------------- */
+
+.cms__img-width-auto img {
+  width: auto;
+}
+
+.cms__img-width-full img {
+  width: 100%;
+}
+
+.cms__center {
+  text-align: center;
+}
+
+/* End: CMS Rules */
+/* --------------------------------------------- */

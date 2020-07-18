@@ -1,8 +1,8 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
-// import SEO from "../components/seo"
-// import Snipcart from "../components/snipcart"
-import MainNav from "../components/mainNav"
+
+import Layout from "../components/layout"
+import { Styled_SiteContainer } from "../styles/commonStyles"
 
 const pageQuery = graphql`
   {
@@ -23,17 +23,16 @@ const AboutPage = () => {
   } = useStaticQuery(pageQuery)
 
   return (
-    <>
-      <MainNav />
-      <main>
+    <Layout>
+      <Styled_SiteContainer>
         <h1>{abouts[0].heroHeading}</h1>
         <div
           dangerouslySetInnerHTML={{
             __html: abouts[0].firstIntroMessage.html,
           }}
         ></div>
-      </main>
-    </>
+      </Styled_SiteContainer>
+    </Layout>
   )
 }
 
