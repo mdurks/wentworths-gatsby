@@ -13,7 +13,6 @@ const Styled_BurgerBtn = styled.button`
   background-color: #000;
   border-radius: 4px;
   border: none;
-  text-indent: -9999px;
   font-size: 16px;
   cursor: pointer;
   outline: none;
@@ -38,6 +37,11 @@ const Styled_BurgerBtn = styled.button`
   div {
     .pageNoScrollY & {
       background: none;
+    }
+
+    p {
+      position: absolute;
+      text-indent: -9999px;
     }
   }
 
@@ -268,7 +272,9 @@ class MainNav extends React.Component {
     return (
       <>
         <Styled_BurgerBtn id="mobileBurgerBtn">
-          <div>Mobile menu</div>
+          <div>
+            <p>Mobile menu</p>
+          </div>
         </Styled_BurgerBtn>
         <Styled_Nav id="mainNav">
           <Styled_SiteContainer mainNav>
