@@ -289,7 +289,7 @@ class MainNav extends React.Component {
                     <li>
                       <Link to="/engagement/rings/">Rings</Link>
                     </li>
-                    <li>
+                    {/* <li>
                       <Link to="/engagement/coloured/">Coloured</Link>
                     </li>
                     <li>
@@ -307,7 +307,7 @@ class MainNav extends React.Component {
                       <Link to="/engagement/bespoke design/">
                         Bespoke design
                       </Link>
-                    </li>
+                    </li> */}
                   </ul>
                 </Styled_SubMenuContainer>
               </Styled_ToplevelItem>
@@ -328,7 +328,7 @@ class MainNav extends React.Component {
                     <li>
                       <Link to="/weddings/necklaces/">Necklaces</Link>
                     </li>
-                    <li>
+                    {/* <li>
                       <Link to="/weddings/tiaras/">Tiaras</Link>
                     </li>
                     <li>
@@ -341,7 +341,7 @@ class MainNav extends React.Component {
                     </li>
                     <li>
                       <Link to="/weddings/eternity-rings/">Eternity rings</Link>
-                    </li>
+                    </li> */}
                   </ul>
                 </Styled_SubMenuContainer>
               </Styled_ToplevelItem>
