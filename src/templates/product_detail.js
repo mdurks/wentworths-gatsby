@@ -1,8 +1,9 @@
 import React from "react"
 import { graphql } from "gatsby"
-// import SEO from "../components/seo"
+
+import Layout from "../components/layout"
 // import Snipcart from "../components/snipcart"
-import MainNav from "../components/mainNav"
+import { Styled_SiteContainer } from "../styles/commonStyles"
 
 const DetailsPage = ({
   data: {
@@ -10,13 +11,14 @@ const DetailsPage = ({
   },
 }) => {
   return (
-    <>
-      <MainNav />
-      <h1>Detail</h1>
-      <p>{product.name}</p>
-      <p>{product.description}</p>
-      <p>{product.price}</p>
-    </>
+    <Layout>
+      <Styled_SiteContainer>
+        <h1>Detail</h1>
+        <p>{product.name}</p>
+        <p>{product.description}</p>
+        <p>{product.price}</p>
+      </Styled_SiteContainer>
+    </Layout>
   )
 }
 

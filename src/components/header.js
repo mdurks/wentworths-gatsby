@@ -59,7 +59,7 @@ const Header = () => (
   <header>
     <Styled_SiteContainer>
       <Link to="/contact/">Contact</Link> | <Link to="/contact/">Services</Link>{" "}
-      | <Link to="/contact/">Blog</Link>
+      | <Link to="/contact/">Blog</Link> | <Link to="/products/">Products</Link>
       <button className="snipcart-checkout">
         Cart (<span className="snipcart-items-count"></span>)
       </button>
