@@ -1,46 +1,44 @@
 import React from "react"
-import { StaticQuery, graphql } from "gatsby"
-import SEO from "../components/seo"
-import Snipcart from "../components/snipcart"
+import { graphql, useStaticQuery } from "gatsby"
+// import SEO from "../components/seo"
+// import Snipcart from "../components/snipcart"
+import MainNav from "../components/mainNav"
 
-const IndexPage = () => (
-  <StaticQuery
-    query={graphql`
-      query {
-        gcms {
-          products {
-            name
-            id
-          }
+const pageQuery = graphql`
+  {
+    gcms {
+      welcomes {
+        heroHeading
+        firstIntroMessage {
+          html
+        }
+        heroImage {
+          url
         }
       }
-    `}
-    render={data => (
-      <>
-        <SEO title="Home" />
-        <Snipcart />
+    }
+  }
+`
 
-        <button
-          className="snipcart-add-item"
-          data-item-id="ckcgn5txc0gca0198idxivaeh"
-          data-item-price="2.00"
-          data-item-url="/"
-          data-item-description="Made from solid gold, the design combines precious and semi-precious stones in a beautiful and flattering oval structure.\n\nWear this ring with the coordinating stud earrings for a dazzling evening look.\n\nMorganite weight 0.64ct, diamond weight 0.05ct"
-          data-item-image="https://media.graphcms.com/ikX2xVpqSpGH6EMMQXP5"
-          data-item-name="9ct Rose Gold Morganite and Diamond Oval Cocktail Ring"
-        >
-          Add to cart
-        </button>
-        <ul>
-          {data.gcms.products.map(mountain => {
-            const { name, id } = mountain
-            return <li key={id}>{name}</li>
-          })}
-        </ul>
-      </>
-    )}
-  />
-)
+const IndexPage = () => {
+  const {
+    gcms: { welcomes },
+  } = useStaticQuery(pageQuery)
+
+  return (
+    <>
+      <MainNav />
+      <main>
+        <h1>{welcomes[0].heroHeading}</h1>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: welcomes[0].firstIntroMessage.html,
+          }}
+        ></div>
+      </main>
+    </>
+  )
+}
 
 export default IndexPage
 

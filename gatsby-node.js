@@ -4,4 +4,29 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-// You can delete this file if you're not using it
+exports.createPages = async ({ graphql, actions: { createPage } }) => {
+  const {
+    data: {
+      gcms: { products },
+    },
+  } = await graphql(`
+    {
+      gcms {
+        products(stage: PUBLISHED) {
+          id
+          slug
+        }
+      }
+    }
+  `)
+
+  products.forEach(({ id, slug }) =>
+    createPage({
+      path: `/products/${slug}`,
+      component: require.resolve(`./src/templates/product_detail.js`),
+      context: {
+        id,
+      },
+    })
+  )
+}

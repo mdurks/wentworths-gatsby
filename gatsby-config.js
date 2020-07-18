@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Wentworth Jewels`,
+    description: `Wentworth Jewels online website.`,
+    author: `mdurks@gmail.com`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -18,11 +18,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Wentworth Jewels`,
+        short_name: `Wentworth Jewels`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#000`,
+        theme_color: `#000`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
@@ -30,12 +30,11 @@ module.exports = {
     {
       resolve: "gatsby-source-graphql",
       options: {
-        // The top level query type, can be anything you want!
+        // The top level query type:
         typeName: "GCMS",
-        // The field you'll query against, can also be anything you want.
+        // The field you'll query against:
         fieldName: "gcms",
-        // Your API endpoint, available from the dashboard and settings window.
-        // You can use this endpoint that features US mountains for now.
+        // The API endpoint:
         url:
           "https://api-eu-central-1.graphcms.com/v2/ckcgmjdl73ds501xrercafl4c/master",
       },
