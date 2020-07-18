@@ -268,7 +268,7 @@ class MainNav extends React.Component {
     return (
       <>
         <Styled_BurgerBtn id="mobileBurgerBtn">
-          <div></div>
+          <div>Mobile menu</div>
         </Styled_BurgerBtn>
         <Styled_Nav id="mainNav">
           <Styled_SiteContainer mainNav>
@@ -364,19 +364,19 @@ class MainNav extends React.Component {
               </Styled_ToplevelItem>
 
               <Styled_ToplevelItem>
-                <StyledLink activeClassName="is-active" to="/contact/">
+                <StyledLink activeClassName="is-active" to="/collections/">
                   Collections
                 </StyledLink>
               </Styled_ToplevelItem>
 
               <Styled_ToplevelItem>
-                <StyledLink activeClassName="is-active" to="/contact/">
+                <StyledLink activeClassName="is-active" to="/gifts/">
                   Gifts
                 </StyledLink>
               </Styled_ToplevelItem>
 
               <Styled_ToplevelItem>
-                <StyledLink activeClassName="is-active" to="/contact/">
+                <StyledLink activeClassName="is-active" to="/time-piece/">
                   Time piece
                 </StyledLink>
               </Styled_ToplevelItem>
