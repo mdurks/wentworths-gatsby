@@ -3,7 +3,8 @@ import { Link } from "gatsby"
 
 const MainNav = () => (
   <nav>
-    <Link to="/">Home</Link> | <Link to="/products/">Products</Link>
+    <Link to="/">Home</Link> | <Link to="/products/">Products</Link> |{" "}
+    <Link to="/about/">About</Link>
   </nav>
 )
 
