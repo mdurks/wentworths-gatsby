@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "gatsby-plugin-snipcartv3": "^2.3.2",
+    "graphcms-image": "^1.1.0-beta4",
     "prettier": "2.0.5"
   },
   "keywords": [
