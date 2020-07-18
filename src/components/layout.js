@@ -9,9 +9,9 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
-import SEO from "../components/seo"
+import SEO from "./seo"
 import Header from "./header"
-import MainNav from "../components/mainNav"
+import MainNav from "./MainNav"
 import Footer from "./Footer"
 import "../styles/style.css"
 
