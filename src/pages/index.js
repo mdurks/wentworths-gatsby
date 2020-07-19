@@ -27,29 +27,16 @@ const IndexPage = () => {
   } = useStaticQuery(pageQuery)
 
   return (
-    <>
-      <Layout>
-        <Styled_SiteContainer>
-          <h1>{welcomes[0].heroHeading}</h1>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: welcomes[0].firstIntroMessage.html,
-            }}
-          ></div>
-        </Styled_SiteContainer>
-      </Layout>
-      <link
-        rel="stylesheet"
-        href="https://cdn.snipcart.com/themes/v3.0.17/default/snipcart.css"
-      />
-      <div
-        hidden
-        id="snipcart"
-        data-api-key="YmJkMDViNmYtYjg2MC00YTc0LTkwNDMtNGUzZGYwYTkyN2JjNjM3MzAzMTM2MDgxMjQzNzc0"
-        data-currency="gbp"
-      ></div>
-      <script src="https://cdn.snipcart.com/themes/v3.0.17/default/snipcart.js"></script>
-    </>
+    <Layout>
+      <Styled_SiteContainer>
+        <h1>{welcomes[0].heroHeading}</h1>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: welcomes[0].firstIntroMessage.html,
+          }}
+        ></div>
+      </Styled_SiteContainer>
+    </Layout>
   )
 }
 
