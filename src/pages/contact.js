@@ -38,17 +38,20 @@ const ContactPage = () => {
           <input type="hidden" name="form-name" value="Contact" />
           <p>
             <label htmlFor="name">
-              Your Name: <input id="name" type="text" name="name" />
+              Your Name: <br />
+              <input id="name" type="text" name="name" />
             </label>
           </p>
           <p>
             <label htmlFor="email">
-              Your Email: <input id="email" type="email" name="email" />
+              Your Email: <br />
+              <input id="email" type="email" name="email" />
             </label>
           </p>
           <p>
             <label htmlFor="message">
-              Message: <textarea id="message" name="message"></textarea>
+              Message: <br />
+              <textarea id="message" name="message"></textarea>
             </label>
           </p>
           <p>

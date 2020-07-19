@@ -1,4 +1,55 @@
 import React from "react"
+import styled from "styled-components"
+
+import ShoppingBagIcon from "../images/shopping-bag-icon.png"
+import ShoppingBagIcon_hover from "../images/shopping-bag-icon-hover.png"
+import LoadingSpinner from "../images/loading-spinner-sml.gif"
+
+const Styled_CartButton = styled.button`
+  position: absolute;
+  top: 11px;
+  right: 70px;
+  width: 45px;
+  height: 40px;
+  padding: 11px 0 0;
+  text-align: center;
+  font-weight: bold;
+  background-image: url(${ShoppingBagIcon});
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  background-color: transparent;
+  border: none;
+
+  img {
+    margin: 4px 0 0;
+    width: 16px;
+    height: 16px;
+  }
+
+  @media (min-width: 768px) {
+    top: 11px;
+    right: 10px;
+
+    &:hover {
+      background-image: url(${ShoppingBagIcon_hover});
+      color: #fff;
+    }
+  }
+`
+
+const Styled_CartDesc = styled.div`
+  display: none;
+  position: absolute;
+  top: 57px;
+  right: -8px;
+  width: 80px;
+  text-align: center;
+
+  ${Styled_CartButton}:hover & {
+    display: block !important;
+  }
+`
 
 class Snipcart extends React.Component {
   componentDidMount() {
@@ -24,9 +75,12 @@ class Snipcart extends React.Component {
           data-api-key="YmJkMDViNmYtYjg2MC00YTc0LTkwNDMtNGUzZGYwYTkyN2JjNjM3MzAzMTM2MDgxMjQzNzc0"
           data-currency="gbp"
         ></div>
-        <button className="snipcart-checkout">
-          Cart (<span className="snipcart-items-count"></span>)
-        </button>
+        <Styled_CartButton className="snipcart-checkout">
+          <span className="snipcart-items-count">
+            <img src={LoadingSpinner} alt="Loading cart" />
+          </span>
+        </Styled_CartButton>
+        <Styled_CartDesc>View Cart</Styled_CartDesc>
       </>
     )
   }
