@@ -124,8 +124,8 @@ const DetailsPage = ({
             Print
           </Styled_btn> */}
         </p>
-        <Form_Enquire product={product.name} />
-        <Form_Viewing product={product.name} />
+        <Form_Enquire product={product.name} pageURL={pageContext.pageURL} />
+        <Form_Viewing product={product.name} pageURL={pageContext.pageURL} />
       </Styled_SiteContainer>
     </Layout>
   )

@@ -74,11 +74,8 @@ const Form_Enquire = props => {
         <form name="Enquire" method="post">
           <input type="hidden" name="form-name" value="Enquire" />
           <input type="hidden" name="Product" value={props.product} />
-          <input
-            type="hidden"
-            name="product page"
-            value={window.location.href}
-          />
+          <input type="hidden" name="product page" value={props.pageURL} />
+
           <label id="Label_Name" htmlFor="form_enquire_Name">
             Name:
             <Styled_Input type="text" id="form_enquire_Name" name="name" />

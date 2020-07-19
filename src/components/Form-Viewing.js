@@ -73,11 +73,7 @@ const Form_Viewing = props => {
         <form name="Viewing" method="post">
           <input type="hidden" name="form-name" value="Viewing" />
           <input type="hidden" name="Product" value={props.product} />
-          <input
-            type="hidden"
-            name="product page"
-            value={window.location.href}
-          />
+          <input type="hidden" name="product page" value={props.pageURL} />
           <label>
             Name:
             <Styled_Input type="text" name="name" />
