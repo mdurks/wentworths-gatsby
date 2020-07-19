@@ -13,9 +13,7 @@ const ProductPage = ({
   },
   pageContext,
 }) => {
-  console.log("products: ", products)
-  console.log("pageContext: ", pageContext)
-
+  console.log(pageContext)
   return (
     <Layout>
       <Styled_SiteContainer productFlexList>

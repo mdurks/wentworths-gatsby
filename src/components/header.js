@@ -3,6 +3,9 @@ import { Link } from "gatsby"
 
 import styled from "styled-components"
 import { Styled_SiteContainer } from "../styles/commonStyles"
+
+import Snipcart from "./snipcart"
+
 import LogoSmall from "../images/wentworth_symbol_small.png"
 import LogoBig from "../images/wentworth_symbol_large.png"
 
@@ -59,10 +62,11 @@ const Header = () => (
   <header>
     <Styled_SiteContainer>
       <Link to="/contact/">Contact</Link> | <Link to="/contact/">Services</Link>{" "}
-      | <Link to="/contact/">Blog</Link> | <Link to="/products/">Products</Link>
-      <button className="snipcart-checkout">
+      | <Link to="/contact/">Blog</Link>
+      {/* <button className="snipcart-checkout">
         Cart (<span className="snipcart-items-count"></span>)
-      </button>
+      </button> */}
+      <Snipcart />
     </Styled_SiteContainer>
     <Styled_SiteContainer textCenter>
       <StyledLink to="/">
