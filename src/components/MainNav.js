@@ -243,6 +243,12 @@ const Styled_SubMenuContainer = styled.div`
   }
 `
 
+const Styled_MobileItems = styled.div`
+  @media (min-width: 768px) {
+    display: none;
+  }
+`
+
 class MainNav extends React.Component {
   componentDidMount() {
     let mobileBurgerBtn = document.getElementById("mobileBurgerBtn")
@@ -392,6 +398,11 @@ class MainNav extends React.Component {
                   Heritage
                 </StyledLink>
               </Styled_ToplevelItem>
+              <Styled_MobileItems>
+                <StyledLink activeClassName="is-active" to="/contact/">
+                  Contact
+                </StyledLink>
+              </Styled_MobileItems>
             </Styled_MainNav>
           </Styled_SiteContainer>
         </Styled_Nav>

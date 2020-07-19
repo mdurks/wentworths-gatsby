@@ -8,10 +8,10 @@ import LoadingSpinner from "../images/loading-spinner-sml.gif"
 const Styled_CartButton = styled.button`
   position: absolute;
   top: 11px;
-  right: 70px;
+  left: -7px;
   width: 45px;
   height: 40px;
-  padding: 11px 0 0;
+  padding: 12px 0 0;
   text-align: center;
   font-weight: bold;
   background-image: url(${ShoppingBagIcon});
@@ -20,6 +20,7 @@ const Styled_CartButton = styled.button`
   background-size: contain;
   background-color: transparent;
   border: none;
+  z-index: 5;
 
   img {
     margin: 4px 0 0;
@@ -30,6 +31,7 @@ const Styled_CartButton = styled.button`
   @media (min-width: 768px) {
     top: 11px;
     right: 10px;
+    left: auto;
 
     &:hover {
       background-image: url(${ShoppingBagIcon_hover});

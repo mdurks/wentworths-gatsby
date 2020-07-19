@@ -9,6 +9,15 @@ import Snipcart from "./snipcart"
 import LogoSmall from "../images/wentworth_symbol_small.png"
 import LogoBig from "../images/wentworth_symbol_large.png"
 
+const Styled_HeaderLinks = styled.div`
+  display: none;
+
+  @media (min-width: 768px) {
+    display: inline-block;
+    text-align: center;
+  }
+`
+
 const StyledLink = styled(Link)`
   display: inline-block;
   text-align: center;
@@ -61,12 +70,14 @@ const Styled_WentworthTitle = styled.span`
 const Header = () => (
   <header>
     <Styled_SiteContainer>
-      <Link to="/contact/">Contact</Link>
-      {/*  | <Link to="/contact/">Services</Link>{" "}
+      <Styled_HeaderLinks>
+        <Link to="/contact/">Contact</Link>
+        {/*  | <Link to="/contact/">Services</Link>{" "}
       | <Link to="/contact/">Blog</Link> */}
-      {/* <button className="snipcart-checkout">
+        {/* <button className="snipcart-checkout">
         Cart (<span className="snipcart-items-count"></span>)
       </button> */}
+      </Styled_HeaderLinks>
       <Snipcart />
     </Styled_SiteContainer>
     <Styled_SiteContainer textCenter>

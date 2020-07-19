@@ -61,6 +61,14 @@ const IndexPage = () => {
 
   return (
     <Layout>
+      <Styled_SiteContainer>
+        {/* <h1>{welcomes[0].heroHeading}</h1> */}
+        <div
+          dangerouslySetInnerHTML={{
+            __html: welcomes[0].firstIntroMessage.html,
+          }}
+        ></div>
+      </Styled_SiteContainer>
       <Styled_HeroImg>
         <div>
           <GraphImg
@@ -70,14 +78,35 @@ const IndexPage = () => {
           />
         </div>
       </Styled_HeroImg>
-
       <Styled_SiteContainer>
-        <h1>{welcomes[0].heroHeading}</h1>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: welcomes[0].firstIntroMessage.html,
-          }}
-        ></div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero enim
+          molestias quasi asperiores fugit, veritatis ipsam natus, laborum
+          quaerat neque molestiae. Quasi a eaque quibusdam? Excepturi odit
+          numquam nostrum perferendis. Explicabo recusandae voluptatem corrupti
+          ipsam provident ullam optio, mollitia error assumenda voluptate nihil
+          minus quo ut animi ex labore esse laudantium. Deleniti quos ipsa,
+          numquam repellat sapiente molestiae modi impedit distinctio quam.
+          Dolor vero exercitationem beatae nesciunt numquam ea perferendis
+          corporis id inventore praesentium cumque fugiat deserunt earum quos
+          maiores sit maxime aliquam ipsa, eligendi consequatur labore aperiam
+          at vitae laborum? Possimus fugit ullam minima quisquam adipisci,
+          facilis deserunt eius.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero enim
+          molestias quasi asperiores fugit, veritatis ipsam natus, laborum
+          quaerat neque molestiae. Quasi a eaque quibusdam? Excepturi odit
+          numquam nostrum perferendis. Explicabo recusandae voluptatem corrupti
+          ipsam provident ullam optio, mollitia error assumenda voluptate nihil
+          minus quo ut animi ex labore esse laudantium. Deleniti quos ipsa,
+          numquam repellat sapiente molestiae modi impedit distinctio quam.
+          Dolor vero exercitationem beatae nesciunt numquam ea perferendis
+          corporis id inventore praesentium cumque fugiat deserunt earum quos
+          maiores sit maxime aliquam ipsa, eligendi consequatur labore aperiam
+          at vitae laborum? Possimus fugit ullam minima quisquam adipisci,
+          facilis deserunt eius.
+        </p>
       </Styled_SiteContainer>
     </Layout>
   )
