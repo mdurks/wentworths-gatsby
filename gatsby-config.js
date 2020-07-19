@@ -26,6 +26,9 @@ module.exports = {
         theme_color: `#000`,
         display: `minimal-ui`,
         icon: `src/images/wentworth_symbol_large.png`, // This path is relative to the root of the site.
+        icon_options: {
+          purpose: `maskable`,
+        },
       },
     },
     {

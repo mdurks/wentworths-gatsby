@@ -35,8 +35,12 @@
 import React from "react"
 export const onRenderBody = ({ setHeadComponents }, pluginOptions) => {
   setHeadComponents([
-    // <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />,
+    <link rel="preconnect" href="https://fonts.gstatic.com/" />,
     <link rel="preconnect" href="https://app.snipcart.com" />,
     <link rel="preconnect" href="https://cdn.snipcart.com" />,
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Raleway:wght@400;700&display=swap"
+      rel="stylesheet"
+    ></link>,
   ])
 }

@@ -243,7 +243,7 @@ const Styled_SubMenuContainer = styled.div`
   }
 `
 
-const Styled_MobileItems = styled.div`
+const Styled_MobileItems = styled.li`
   @media (min-width: 768px) {
     display: none;
   }
