@@ -120,9 +120,9 @@ const DetailsPage = ({
           >
             Book a viewing
           </Styled_btn>
-          <Styled_btn printBtn onClick={window.print}>
+          {/* <Styled_btn printBtn onClick={window.print}>
             Print
-          </Styled_btn>
+          </Styled_btn> */}
         </p>
         <Form_Enquire product={product.name} />
         <Form_Viewing product={product.name} />
