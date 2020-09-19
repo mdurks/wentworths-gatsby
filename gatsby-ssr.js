@@ -35,15 +35,7 @@ export const onRenderBody = (
     <link
       rel="stylesheet"
       href="https://cdn.snipcart.com/themes/v3.0.17/default/snipcart.css"
-      media="print"
-      onload="this.media='all'"
     />,
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://cdn.snipcart.com/themes/v3.0.17/default/snipcart.css"
-      />
-    </noscript>,
     <script
       async
       src="https://cdn.snipcart.com/themes/v3.0.17/default/snipcart.js"
