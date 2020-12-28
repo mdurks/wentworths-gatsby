@@ -5,12 +5,12 @@ import { Styled_SiteContainer } from "../styles/commonStyles"
 
 const JewelleryPage = () => {
   return (
-    <Layout>
+    <>
       <Styled_SiteContainer>
         <h1>Jewellery</h1>
         <p>Content for the Jewellery page coming soon</p>
       </Styled_SiteContainer>
-    </Layout>
+    </>
   )
 }
 

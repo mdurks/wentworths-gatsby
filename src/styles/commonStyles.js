@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from "styled-components"
 
 export const Styled_SiteContainer = styled.section`
   position: relative;
@@ -8,26 +8,26 @@ export const Styled_SiteContainer = styled.section`
   margin: auto;
   padding: 15px;
 
-  ${(props) =>
+  ${props =>
     props.mainNav &&
     css`
       padding: 0 0 30px;
     `};
 
-  ${(props) =>
+  ${props =>
     props.textCenter &&
     css`
       text-align: center;
     `};
 
-  ${(props) =>
+  ${props =>
     props.mainFooter &&
     css`
       margin-bottom: 10px;
       padding-bottom: 100px;
     `};
 
-  ${(props) =>
+  ${props =>
     props.productFlexList &&
     css`
       display: flex;
@@ -59,6 +59,6 @@ export const Styled_SiteContainer = styled.section`
         }
       }
     `};
-`;
+`
 
-export default Styled_SiteContainer;
+export default Styled_SiteContainer

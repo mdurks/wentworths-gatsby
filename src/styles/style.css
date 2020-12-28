@@ -162,3 +162,33 @@ img {
 
 /* End: CMS Rules */
 /* --------------------------------------------- */
+
+.tl-wrapper--unmount {
+  overflow-y: hidden !important;
+  background-color: white;
+
+  /*
+    Just make sure animation time is same that transition duration in <AniLink />
+    as well add some delay (e.g. 0.2s as in example) to avoid weird blinking at the end
+  */
+  animation: 2s ease-out 0.2s normal fadeout;
+}
+@keyframes fadeout {
+  0% {
+  }
+  49% {
+  }
+  90% {
+  }
+  100% {
+  }
+}
+
+.tl-wrapper--mount {
+  background-color: white;
+  overflow-y: hidden !important;
+}
+
+.tl-edges {
+  overflow-y: hidden !important;
+}

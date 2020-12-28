@@ -1,5 +1,7 @@
 import React from "react"
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
+import Link from "gatsby-plugin-transition-link"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 import styled from "styled-components"
 import { Styled_SiteContainer } from "../styles/commonStyles"
 
@@ -146,7 +148,7 @@ const Styled_ToplevelItem = styled.li`
   }
 `
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(AniLink)`
   display: block;
   padding: 20px;
   font-size: 15px;
@@ -286,14 +288,27 @@ class MainNav extends React.Component {
           <Styled_SiteContainer mainNav>
             <Styled_MainNav>
               <Styled_ToplevelItem className="hasSubMenu">
-                <StyledLink activeClassName="is-active" to="/engagement/">
+                <StyledLink
+                  activeClassName="is-active"
+                  fade
+                  top="exit"
+                  duration={1}
+                  to="/engagement/"
+                >
                   Engagement
                 </StyledLink>
                 <Styled_SubMenuContainer>
                   <p>Engagement:</p>
                   <ul>
                     <li>
-                      <Link to="/engagement/rings/">Rings</Link>
+                      <AniLink
+                        fade
+                        top="exit"
+                        duration={1}
+                        to="/engagement/rings/"
+                      >
+                        Rings
+                      </AniLink>
                     </li>
                     {/* <li>
                       <Link to="/engagement/coloured/">Coloured</Link>
@@ -319,20 +334,47 @@ class MainNav extends React.Component {
               </Styled_ToplevelItem>
 
               <Styled_ToplevelItem className="hasSubMenu">
-                <StyledLink activeClassName="is-active" to="/weddings/">
+                <StyledLink
+                  activeClassName="is-active"
+                  fade
+                  top="exit"
+                  duration={1}
+                  to="/weddings/"
+                >
                   Weddings
                 </StyledLink>
                 <Styled_SubMenuContainer>
                   <p>Weddings:</p>
                   <ul>
                     <li>
-                      <Link to="/weddings/rings/">Rings</Link>
+                      <AniLink
+                        fade
+                        top="exit"
+                        duration={1}
+                        to="/weddings/rings/"
+                      >
+                        Rings
+                      </AniLink>
                     </li>
                     <li>
-                      <Link to="/weddings/earrings/">Earrings</Link>
+                      <AniLink
+                        fade
+                        top="exit"
+                        duration={1}
+                        to="/weddings/earrings/"
+                      >
+                        Earrings
+                      </AniLink>
                     </li>
                     <li>
-                      <Link to="/weddings/necklaces/">Necklaces</Link>
+                      <AniLink
+                        fade
+                        top="exit"
+                        duration={1}
+                        to="/weddings/necklaces/"
+                      >
+                        Necklaces
+                      </AniLink>
                     </li>
                     {/* <li>
                       <Link to="/weddings/tiaras/">Tiaras</Link>
@@ -353,53 +395,118 @@ class MainNav extends React.Component {
               </Styled_ToplevelItem>
 
               <Styled_ToplevelItem className="hasSubMenu">
-                <StyledLink activeClassName="is-active" to="/jewellery/">
+                <StyledLink
+                  activeClassName="is-active"
+                  fade
+                  top="exit"
+                  duration={1}
+                  to="/jewellery/"
+                >
                   Jewellery
                 </StyledLink>
                 <Styled_SubMenuContainer>
                   <p>Jewellery:</p>
                   <ul>
                     <li>
-                      <Link to="/jewellery/rings/">Rings</Link>
+                      <AniLink
+                        fade
+                        top="exit"
+                        duration={1}
+                        to="/jewellery/rings/"
+                      >
+                        Rings
+                      </AniLink>
                     </li>
                     <li>
-                      <Link to="/jewellery/earrings/">Earrings</Link>
+                      <AniLink
+                        fade
+                        top="exit"
+                        duration={1}
+                        to="/jewellery/earrings/"
+                      >
+                        Earrings
+                      </AniLink>
                     </li>
                     <li>
-                      <Link to="/jewellery/necklaces/">Necklaces</Link>
+                      <AniLink
+                        fade
+                        top="exit"
+                        duration={1}
+                        to="/jewellery/necklaces/"
+                      >
+                        Necklaces
+                      </AniLink>
                     </li>
                     <li>
-                      <Link to="/jewellery/bracelets/">Bracelets</Link>
+                      <AniLink
+                        fade
+                        top="exit"
+                        duration={1}
+                        to="/jewellery/bracelets/"
+                      >
+                        Bracelets
+                      </AniLink>
                     </li>
                   </ul>
                 </Styled_SubMenuContainer>
               </Styled_ToplevelItem>
 
               <Styled_ToplevelItem>
-                <StyledLink activeClassName="is-active" to="/collections/">
+                <StyledLink
+                  activeClassName="is-active"
+                  fade
+                  top="exit"
+                  duration={1}
+                  to="/collections/"
+                >
                   Collections
                 </StyledLink>
               </Styled_ToplevelItem>
 
               <Styled_ToplevelItem>
-                <StyledLink activeClassName="is-active" to="/gifts/">
+                <StyledLink
+                  activeClassName="is-active"
+                  fade
+                  top="exit"
+                  duration={1}
+                  to="/gifts/"
+                >
                   Gifts
                 </StyledLink>
               </Styled_ToplevelItem>
 
               <Styled_ToplevelItem>
-                <StyledLink activeClassName="is-active" to="/time-piece/">
+                <StyledLink
+                  activeClassName="is-active"
+                  fade
+                  top="exit"
+                  duration={1}
+                  to="/time-piece/"
+                >
                   Time piece
                 </StyledLink>
               </Styled_ToplevelItem>
 
               <Styled_ToplevelItem>
-                <StyledLink activeClassName="is-active" to="/about/">
+                <StyledLink
+                  activeClassName="is-active"
+                  fade
+                  top="exit"
+                  duration={1}
+                  to="/about/"
+                >
                   Heritage
                 </StyledLink>
               </Styled_ToplevelItem>
+
               <Styled_MobileItems>
-                <StyledLink activeClassName="is-active" to="/contact/">
+                <StyledLink
+                  activeClassName="is-active"
+                  fade
+                  top="exit"
+                  duration={1}
+                  to="/contact/"
+                >
                   Contact
                 </StyledLink>
               </Styled_MobileItems>

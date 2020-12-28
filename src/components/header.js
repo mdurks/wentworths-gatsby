@@ -1,5 +1,7 @@
 import React from "react"
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
+import Link from "gatsby-plugin-transition-link"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 import styled from "styled-components"
 import { Styled_SiteContainer } from "../styles/commonStyles"
@@ -18,7 +20,7 @@ const Styled_HeaderLinks = styled.div`
   }
 `
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(AniLink)`
   display: inline-block;
   text-align: center;
 `
@@ -71,7 +73,9 @@ const Header = () => (
   <header>
     <Styled_SiteContainer>
       <Styled_HeaderLinks>
-        <Link to="/contact/">Contact</Link>
+        <AniLink to="/contact/" fade top="exit" duration={1}>
+          Contact
+        </AniLink>
         {/*  | <Link to="/contact/">Services</Link>{" "}
       | <Link to="/contact/">Blog</Link> */}
         {/* <button className="snipcart-checkout">
@@ -81,7 +85,7 @@ const Header = () => (
       <Snipcart />
     </Styled_SiteContainer>
     <Styled_SiteContainer textCenter>
-      <StyledLink to="/">
+      <StyledLink to="/" fade top="exit" duration={1}>
         <Styled_WentworthSymbolImg />
         <Styled_WentworthTitle>Wentworth</Styled_WentworthTitle>
         <Styled_WentworthTitle>Jewels</Styled_WentworthTitle>

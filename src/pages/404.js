@@ -5,7 +5,7 @@ import SEO from "../components/seo"
 import { Styled_SiteContainer } from "../styles/commonStyles"
 
 const NotFoundPage = () => (
-  <Layout>
+  <>
     <Styled_SiteContainer>
       <SEO title="404: Not found" />
       <h1>We're sorry, the page wasn't found</h1>
@@ -14,7 +14,7 @@ const NotFoundPage = () => (
         yet.
       </p>
     </Styled_SiteContainer>
-  </Layout>
+  </>
 )
 
 export default NotFoundPage

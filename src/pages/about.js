@@ -23,7 +23,7 @@ const AboutPage = () => {
   } = useStaticQuery(pageQuery)
 
   return (
-    <Layout>
+    <>
       <Styled_SiteContainer>
         <h1>{abouts[0].heroHeading}</h1>
         <div
@@ -32,7 +32,7 @@ const AboutPage = () => {
           }}
         ></div>
       </Styled_SiteContainer>
-    </Layout>
+    </>
   )
 }
 

@@ -101,7 +101,7 @@ const DetailsPage = ({
   pageContext,
 }) => {
   return (
-    <Layout>
+    <>
       <Styled_SiteContainer>
         <Styled_Title>{product.name}</Styled_Title>
         <p>{product.description}</p>
@@ -176,7 +176,7 @@ const DetailsPage = ({
         <Form_Enquire product={product.name} pageURL={pageContext.pageURL} />
         <Form_Viewing product={product.name} pageURL={pageContext.pageURL} />
       </Styled_SiteContainer>
-    </Layout>
+    </>
   )
 }
 

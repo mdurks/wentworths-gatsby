@@ -22,7 +22,7 @@ const ProductsPage = () => {
   } = useStaticQuery(pageQuery)
 
   return (
-    <Layout>
+    <>
       <Styled_SiteContainer>
         <h1>Products</h1>
         <ul>
@@ -33,7 +33,7 @@ const ProductsPage = () => {
           ))}
         </ul>
       </Styled_SiteContainer>
-    </Layout>
+    </>
   )
 }
 

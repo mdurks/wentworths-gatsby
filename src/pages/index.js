@@ -60,7 +60,7 @@ const IndexPage = () => {
   } = useStaticQuery(pageQuery)
 
   return (
-    <Layout>
+    <>
       <Styled_SiteContainer>
         {/* <h1>{welcomes[0].heroHeading}</h1> */}
         <div
@@ -108,7 +108,7 @@ const IndexPage = () => {
           facilis deserunt eius.
         </p>
       </Styled_SiteContainer>
-    </Layout>
+    </>
   )
 }
 

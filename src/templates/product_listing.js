@@ -15,7 +15,7 @@ const ProductPage = ({
 }) => {
   console.log(pageContext)
   return (
-    <Layout>
+    <>
       <Styled_SiteContainer productFlexList>
         {products.map(({ id, ...product }) => (
           <Product
@@ -25,7 +25,7 @@ const ProductPage = ({
           />
         ))}
       </Styled_SiteContainer>
-    </Layout>
+    </>
   )
 }
 

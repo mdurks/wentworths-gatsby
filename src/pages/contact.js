@@ -21,7 +21,7 @@ const ContactPage = () => {
   } = useStaticQuery(pageQuery)
 
   return (
-    <Layout>
+    <>
       <Styled_SiteContainer>
         <h1>{contacts[0].heroHeading}</h1>
         <div
@@ -59,7 +59,7 @@ const ContactPage = () => {
           </p>
         </form>
       </Styled_SiteContainer>
-    </Layout>
+    </>
   )
 }
 
