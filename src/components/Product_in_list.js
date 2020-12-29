@@ -1,9 +1,10 @@
 import React from "react"
 import { Link } from "gatsby"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 import GraphImg from "graphcms-image"
 import styled from "styled-components"
 
-const Styled_ProductItem = styled(Link)`
+const Styled_ProductItem = styled(AniLink)`
   margin-bottom: 40px;
   padding-bottom: 30px;
   border-bottom: 1px dashed #bdbdbd;
@@ -26,7 +27,13 @@ const Styled_Title = styled.h2`
 
 const Product = props => {
   return (
-    <Styled_ProductItem to={`/${props.category}/${props.product.slug}/`}>
+    <Styled_ProductItem
+      to={`/${props.category}/${props.product.slug}/`}
+      swipe
+      direction="up"
+      top="exit"
+      duration={0.75}
+    >
       <Styled_Title>{props.product.name}</Styled_Title>
       <Styled_Img>
         <GraphImg

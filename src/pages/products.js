@@ -24,7 +24,7 @@ const ProductsPage = () => {
   return (
     <>
       <Styled_SiteContainer>
-        <h1>Products</h1>
+        <h2>Products</h2>
         <ul>
           {products.map(({ slug, ...product }) => (
             <li key={slug}>

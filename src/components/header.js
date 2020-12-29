@@ -72,21 +72,21 @@ const Styled_WentworthTitle = styled.span`
 const Header = () => (
   <header>
     <Styled_SiteContainer>
-      <Styled_HeaderLinks>
+      {/* <Styled_HeaderLinks>
         <AniLink to="/contact/" fade top="exit" duration={1}>
           Contact
         </AniLink>
-        {/*  | <Link to="/contact/">Services</Link>{" "}
-      | <Link to="/contact/">Blog</Link> */}
-        {/* <button className="snipcart-checkout">
+         | <Link to="/contact/">Services</Link>{" "}
+      | <Link to="/contact/">Blog</Link>
+        <button className="snipcart-checkout">
         Cart (<span className="snipcart-items-count"></span>)
-      </button> */}
-      </Styled_HeaderLinks>
+      </button>
+      </Styled_HeaderLinks> */}
       <Snipcart />
     </Styled_SiteContainer>
     <Styled_SiteContainer textCenter>
       <StyledLink to="/" fade top="exit" duration={1}>
-        <Styled_WentworthSymbolImg />
+        {/* <Styled_WentworthSymbolImg /> */}
         <Styled_WentworthTitle>Wentworth</Styled_WentworthTitle>
         <Styled_WentworthTitle>Jewels</Styled_WentworthTitle>
       </StyledLink>

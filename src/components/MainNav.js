@@ -292,7 +292,7 @@ class MainNav extends React.Component {
                   activeClassName="is-active"
                   fade
                   top="exit"
-                  duration={1}
+                  duration={0.75}
                   to="/engagement/"
                 >
                   Engagement
@@ -304,7 +304,7 @@ class MainNav extends React.Component {
                       <AniLink
                         fade
                         top="exit"
-                        duration={1}
+                        duration={0.75}
                         to="/engagement/rings/"
                       >
                         Rings
@@ -338,7 +338,7 @@ class MainNav extends React.Component {
                   activeClassName="is-active"
                   fade
                   top="exit"
-                  duration={1}
+                  duration={0.75}
                   to="/weddings/"
                 >
                   Weddings
@@ -350,7 +350,7 @@ class MainNav extends React.Component {
                       <AniLink
                         fade
                         top="exit"
-                        duration={1}
+                        duration={0.75}
                         to="/weddings/rings/"
                       >
                         Rings
@@ -360,7 +360,7 @@ class MainNav extends React.Component {
                       <AniLink
                         fade
                         top="exit"
-                        duration={1}
+                        duration={0.75}
                         to="/weddings/earrings/"
                       >
                         Earrings
@@ -370,7 +370,7 @@ class MainNav extends React.Component {
                       <AniLink
                         fade
                         top="exit"
-                        duration={1}
+                        duration={0.75}
                         to="/weddings/necklaces/"
                       >
                         Necklaces
@@ -399,7 +399,7 @@ class MainNav extends React.Component {
                   activeClassName="is-active"
                   fade
                   top="exit"
-                  duration={1}
+                  duration={0.75}
                   to="/jewellery/"
                 >
                   Jewellery
@@ -409,9 +409,10 @@ class MainNav extends React.Component {
                   <ul>
                     <li>
                       <AniLink
-                        fade
+                        swipe
+                        direction="down"
                         top="exit"
-                        duration={1}
+                        duration={0.75}
                         to="/jewellery/rings/"
                       >
                         Rings
@@ -419,9 +420,10 @@ class MainNav extends React.Component {
                     </li>
                     <li>
                       <AniLink
-                        fade
+                        swipe
+                        direction="down"
                         top="exit"
-                        duration={1}
+                        duration={0.75}
                         to="/jewellery/earrings/"
                       >
                         Earrings
@@ -429,9 +431,10 @@ class MainNav extends React.Component {
                     </li>
                     <li>
                       <AniLink
-                        fade
+                        swipe
+                        direction="down"
                         top="exit"
-                        duration={1}
+                        duration={0.75}
                         to="/jewellery/necklaces/"
                       >
                         Necklaces
@@ -439,9 +442,10 @@ class MainNav extends React.Component {
                     </li>
                     <li>
                       <AniLink
-                        fade
+                        swipe
+                        direction="down"
                         top="exit"
-                        duration={1}
+                        duration={0.75}
                         to="/jewellery/bracelets/"
                       >
                         Bracelets
@@ -456,7 +460,7 @@ class MainNav extends React.Component {
                   activeClassName="is-active"
                   fade
                   top="exit"
-                  duration={1}
+                  duration={0.75}
                   to="/collections/"
                 >
                   Collections
@@ -468,7 +472,7 @@ class MainNav extends React.Component {
                   activeClassName="is-active"
                   fade
                   top="exit"
-                  duration={1}
+                  duration={0.75}
                   to="/gifts/"
                 >
                   Gifts
@@ -480,7 +484,7 @@ class MainNav extends React.Component {
                   activeClassName="is-active"
                   fade
                   top="exit"
-                  duration={1}
+                  duration={0.75}
                   to="/time-piece/"
                 >
                   Time piece
@@ -492,7 +496,7 @@ class MainNav extends React.Component {
                   activeClassName="is-active"
                   fade
                   top="exit"
-                  duration={1}
+                  duration={0.75}
                   to="/about/"
                 >
                   Heritage
@@ -504,7 +508,7 @@ class MainNav extends React.Component {
                   activeClassName="is-active"
                   fade
                   top="exit"
-                  duration={1}
+                  duration={0.75}
                   to="/contact/"
                 >
                   Contact
