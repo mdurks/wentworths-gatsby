@@ -70,7 +70,7 @@ const Styled_WentworthTitle = styled.span`
 `
 
 const Header = () => (
-  <header>
+  <header className="mainHeader">
     <Styled_SiteContainer>
       {/* <Styled_HeaderLinks>
         <AniLink to="/contact/" fade top="exit" duration={1}>

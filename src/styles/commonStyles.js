@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components"
 
 export const Styled_SiteContainer = styled.section`
-  position: relative;
+  /* position: relative; */
   display: block;
   width: calc(100% - 30px);
   max-width: 1060px;

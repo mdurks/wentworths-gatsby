@@ -4,6 +4,7 @@ import { Styled_SiteContainer } from "../styles/commonStyles"
 
 const Styled_footer = styled.footer`
   margin-top: auto;
+  z-index: 10;
 `
 
 const Footer = () => (

@@ -15,6 +15,21 @@ import { Styled_SiteContainer } from "../styles/commonStyles"
 
 import { gsap } from "gsap/all"
 
+import backgroundImg from "../images/rings-on-necklace-large.jpg"
+
+const Styled_BackgroundImg = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url(${backgroundImg});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  z-index: -1;
+`
+
 const Styled_Img = styled.div`
   @media (min-width: 768px) {
     width: 100%;
@@ -271,104 +286,192 @@ class DetailsPage extends React.Component {
       pageContext,
     } = this.props
     return (
-      <Styled_SiteContainer>
-        {/* Overide css wrapper classes to change backround colour */}
-        <style
-          dangerouslySetInnerHTML={{
-            __html:
-              `
+      <>
+        <Styled_SiteContainer>
+          {/* Overide css wrapper classes to change backround colour */}
+          <style
+            dangerouslySetInnerHTML={{
+              __html:
+                `
             #gatsby-focus-wrapper,
             .tl-wrapper--unmount,
-            .tl-wrapper--mount { background-color: hsl(` +
-              Math.floor(Math.random() * 360) +
-              `deg 32% 93%); }
+            .tl-wrapper--mount {
+              background-color: hsl(` +
+                Math.floor(Math.random() * 360) +
+                `deg 30% 90%);
+            }
+
+            .tl-wrapper {
+              top: -191px;
+              padding-top: 191px;
+              overflow-x: hidden;
+            }
+
+            /*
+            #gatsby-focus-wrapper {
+              background-image: url('/static/rings-on-necklace-large-2cc6c33b94b8a444bd171bbc1fd8047e.jpg');
+            }
+            */
+
+            #gatsby-focus-wrapper footer {
+              color: white;
+            }
         `,
-          }}
-        ></style>
-        <Styled_Title ref={h2 => (this.gsap__title = h2)}>
-          {product.name}
-        </Styled_Title>
-        <p ref={p => (this.gsap__title_p = p)}>{product.description}</p>
+            }}
+          ></style>
+          <Styled_BackgroundImg></Styled_BackgroundImg>
 
-        <Styled_ProductInfoDisplay>
-          <Styled_Img ref={div => (this.gsap__primaryImg = div)}>
-            <GraphImg
-              image={product.image[0]}
-              transforms={["quality=value:80"]}
-              maxWidth={500}
-            />
-          </Styled_Img>
-          <Styled_CMScontent>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: product.detailedDescription.html,
-              }}
-              ref={div => (this.gsap__description = div)}
-            ></div>
-            <p ref={p => (this.gsap__price = p)}>£{product.price}</p>
+          <Styled_Title ref={h2 => (this.gsap__title = h2)}>
+            {product.name}
+          </Styled_Title>
 
-            <p
-              style={{ textAlign: "center", marginTop: "50px" }}
-              ref={p => (this.gsap__callText = p)}
-            >
-              If you have a questions you can always call{" "}
-              <a
-                href="tel:080012341234"
-                style={{ textDecoration: "underline", display: "inline-block" }}
-              >
-                0800 1234 1234
-              </a>{" "}
-              and speak to an advisor.
-            </p>
-            <p
-              style={{ textAlign: "center" }}
-              ref={p => (this.gsap__addToCart = p)}
-            >
-              <Styled_btn
-                className="snipcart-add-item"
-                data-item-id={product.id}
-                data-item-price={product.price}
-                data-item-url={pageContext.pageURL}
-                data-item-description={product.description}
-                data-item-image={product.image[0].url}
-                data-item-name={product.name}
-              >
-                Add to cart
-              </Styled_btn>
-            </p>
-            <p style={{ textAlign: "center" }}>
-              <Styled_btn
-                btn_sml
-                onClick={() => {
-                  document.documentElement.classList.remove("showViewing")
-                  document.documentElement.classList.toggle("showEnquire")
-                  document.documentElement.classList.toggle("pageNoScrollY")
+          <p ref={p => (this.gsap__title_p = p)}>{product.description}</p>
+
+          <Styled_ProductInfoDisplay>
+            <Styled_Img ref={div => (this.gsap__primaryImg = div)}>
+              <GraphImg
+                image={product.image[0]}
+                transforms={["quality=value:80"]}
+                maxWidth={500}
+              />
+            </Styled_Img>
+            <Styled_CMScontent>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: product.detailedDescription.html,
                 }}
-                ref={button => (this.gsap__enquireBtn = button)}
+                ref={div => (this.gsap__description = div)}
+              ></div>
+              <p ref={p => (this.gsap__price = p)}>£{product.price}</p>
+
+              <p
+                style={{ textAlign: "center", marginTop: "50px" }}
+                ref={p => (this.gsap__callText = p)}
               >
-                Enquire
-              </Styled_btn>
-              <Styled_btn
-                btn_sml
-                onClick={() => {
-                  document.documentElement.classList.remove("showEnquire")
-                  document.documentElement.classList.toggle("showViewing")
-                  document.documentElement.classList.toggle("pageNoScrollY")
-                }}
-                ref={button => (this.gsap__bookViewingBtn = button)}
+                If you have a questions you can always call{" "}
+                <a
+                  href="tel:080012341234"
+                  style={{
+                    textDecoration: "underline",
+                    display: "inline-block",
+                  }}
+                >
+                  0800 1234 1234
+                </a>{" "}
+                and speak to an advisor.
+              </p>
+              <p
+                style={{ textAlign: "center" }}
+                ref={p => (this.gsap__addToCart = p)}
               >
-                Book a viewing
-              </Styled_btn>
-              {/* <Styled_btn printBtn onClick={window.print}>
+                <Styled_btn
+                  className="snipcart-add-item"
+                  data-item-id={product.id}
+                  data-item-price={product.price}
+                  data-item-url={pageContext.pageURL}
+                  data-item-description={product.description}
+                  data-item-image={product.image[0].url}
+                  data-item-name={product.name}
+                >
+                  Add to cart
+                </Styled_btn>
+              </p>
+              <p style={{ textAlign: "center" }}>
+                <Styled_btn
+                  btn_sml
+                  onClick={() => {
+                    document.documentElement.classList.remove("showViewing")
+                    document.documentElement.classList.toggle("showEnquire")
+                    document.documentElement.classList.toggle("pageNoScrollY")
+                  }}
+                  ref={button => (this.gsap__enquireBtn = button)}
+                >
+                  Enquire
+                </Styled_btn>
+                <Styled_btn
+                  btn_sml
+                  onClick={() => {
+                    document.documentElement.classList.remove("showEnquire")
+                    document.documentElement.classList.toggle("showViewing")
+                    document.documentElement.classList.toggle("pageNoScrollY")
+                  }}
+                  ref={button => (this.gsap__bookViewingBtn = button)}
+                >
+                  Book a viewing
+                </Styled_btn>
+                {/* <Styled_btn printBtn onClick={window.print}>
               Print
             </Styled_btn> */}
-            </p>
-          </Styled_CMScontent>
-        </Styled_ProductInfoDisplay>
-
-        <Form_Enquire product={product.name} pageURL={pageContext.pageURL} />
-        <Form_Viewing product={product.name} pageURL={pageContext.pageURL} />
-      </Styled_SiteContainer>
+              </p>
+              <p>
+                <span>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Soluta numquam, perspiciatis necessitatibus est nemo sunt ab
+                  corporis maiores porro eum inventore atque neque animi error
+                  aliquid placeat quis hic vel.
+                </span>
+                <span>
+                  Dolor obcaecati maxime officiis quos architecto in esse
+                  debitis consequatur tenetur? Assumenda nulla inventore
+                  quisquam nostrum consequatur. Provident debitis ad fugiat
+                  animi! Voluptatem alias eveniet sit optio voluptas, voluptate
+                  error!
+                </span>
+                <span>
+                  Eligendi omnis voluptates, error iure optio corporis unde
+                  culpa cupiditate et doloremque, esse voluptate ab architecto
+                  temporibus consectetur repudiandae nostrum nisi sint magni
+                  quidem? Error natus beatae labore necessitatibus tempora.
+                </span>
+                <span>
+                  Cumque quo ut, temporibus fugit distinctio eaque non repellat
+                  adipisci doloremque placeat ducimus laborum nam, voluptates
+                  aperiam excepturi unde ab culpa fugiat libero numquam at sint
+                  corrupti provident. Culpa, dicta.
+                </span>
+                <span>
+                  Accusantium ex reiciendis omnis, soluta pariatur eligendi sint
+                  quos voluptatibus minima aperiam accusamus aliquid suscipit
+                  esse rem, quam tenetur adipisci deleniti! Optio voluptates
+                  quasi ipsam quia iste officia, odio consectetur.
+                </span>
+                <span>
+                  Nihil ratione consequatur quae at, veritatis quis impedit
+                  repellat ipsum autem! Pariatur distinctio quam voluptatum sed
+                  at expedita. Asperiores modi nam reiciendis possimus minus,
+                  aperiam inventore nisi velit quis dolores?
+                </span>
+                <span>
+                  Amet ut architecto iste voluptate? Officia fugiat ex
+                  laboriosam tempora blanditiis, voluptas eligendi, eum
+                  repellat, quod sequi dignissimos placeat deleniti quam atque
+                  eveniet? Dicta, illum laborum iusto hic asperiores maxime!
+                </span>
+                <span>
+                  Est, voluptas animi iure, sed magni mollitia quibusdam, sunt
+                  soluta minus a omnis ad illum. Distinctio sint labore
+                  repudiandae quas ea? Rerum dolorem dolor dolorum, molestias
+                  quibusdam enim cum error!
+                </span>
+                <span>
+                  Minima incidunt, doloribus quo quia nobis nemo ipsam quod hic
+                  praesentium numquam tenetur id in distinctio pariatur optio
+                  eius, accusantium autem? Aut veniam nihil, repellendus non ex
+                  ipsa eos at?
+                </span>
+                <span>
+                  Reiciendis, atque ut nisi eveniet quisquam quidem dicta
+                  accusamus commodi ipsam? Ipsa soluta dicta quisquam voluptates
+                  molestias, repellendus incidunt aliquam eos? Architecto,
+                  itaque maiores? Non minima dicta at iure et.
+                </span>
+              </p>
+            </Styled_CMScontent>
+          </Styled_ProductInfoDisplay>
+          <Form_Enquire product={product.name} pageURL={pageContext.pageURL} />
+          <Form_Viewing product={product.name} pageURL={pageContext.pageURL} />
+        </Styled_SiteContainer>
+      </>
     )
   }
 }
