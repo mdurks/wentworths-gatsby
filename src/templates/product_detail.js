@@ -13,7 +13,7 @@ import styled, { css } from "styled-components"
 import { Styled_SiteContainer } from "../styles/commonStyles"
 //import { render } from "preact"
 
-import { TweenLite, CSSPlugin } from "gsap/all"
+import { gsap } from "gsap/all"
 
 const Styled_Img = styled.div`
   @media (min-width: 768px) {
@@ -23,8 +23,9 @@ const Styled_Img = styled.div`
 `
 
 const Styled_Title = styled.h2`
-  opacity: 0;
   @media (min-width: 768px) {
+    margin-top: 25px;
+    margin-bottom: 50px;
     text-align: center;
   }
 `
@@ -187,19 +188,79 @@ const Styled_ProductInfoDisplay = styled.div`
 class DetailsPage extends React.Component {
   constructor(props) {
     super(props)
-    // reference to the DOM node
-    this.myElement = null
+    // init gsap timeline for this page
+    this.tl = gsap.timeline()
+    // reference to the DOM nodes
+    this.gsap__title = null
+    this.gsap__title_p = null
+    this.gsap__primaryImg = null
+    this.gsap__description = null
+    this.gsap__price = null
+    this.gsap__callText = null
+    this.gsap__addToCart = null
+    this.gsap__enquireBtn = null
+    this.gsap__bookViewingBtn = null
+    // define array to store all gsap items to animate
+    this.gsap__items = []
     // reference to the animation
     this.myTween = null
   }
 
   componentDidMount() {
     // use the node ref to create the animation
-    this.myTween = TweenLite.to(this.myElement, {
-      duration: 3,
-      delay: 1.25,
-      opacity: 1,
+    // this.myTween = gsap.from(this.gsap__title, {
+    //   duration: 3,
+    //   delay: 1.25,
+    //   opacity: 0,
+    // })
+    // this.tl.from(this.gsap__title, {
+    //   duration: 1.5,
+    //   delay: 1.25,
+    //   opacity: 0,
+    // })
+    // this.tl.from(
+    //   this.gsap__title_p,
+    //   {
+    //     duration: 1.5,
+    //     opacity: 0,
+    //   },
+    //   "-=1"
+    // )
+
+    this.gsap__items = [
+      this.gsap__primaryImg,
+      this.gsap__description,
+      this.gsap__price,
+      this.gsap__callText,
+      this.gsap__addToCart,
+      this.gsap__enquireBtn,
+      this.gsap__bookViewingBtn,
+    ]
+    this.tl.from(this.gsap__title, {
+      delay: 1.5,
+      duration: 1.5,
+      y: 15,
+      opacity: 0,
     })
+    this.tl.from(
+      this.gsap__title_p,
+      {
+        duration: 1,
+        y: 15,
+        opacity: 0,
+      },
+      "-=1"
+    )
+    this.tl.from(
+      this.gsap__items,
+      {
+        duration: 0.55,
+        y: 15,
+        opacity: 0,
+        stagger: 0.15,
+      },
+      "-=0.5"
+    )
   }
 
   render() {
@@ -211,13 +272,26 @@ class DetailsPage extends React.Component {
     } = this.props
     return (
       <Styled_SiteContainer>
-        <Styled_Title ref={h2 => (this.myElement = h2)}>
+        {/* Overide css wrapper classes to change backround colour */}
+        <style
+          dangerouslySetInnerHTML={{
+            __html:
+              `
+            #gatsby-focus-wrapper,
+            .tl-wrapper--unmount,
+            .tl-wrapper--mount { background-color: hsl(` +
+              Math.floor(Math.random() * 360) +
+              `deg 32% 93%); }
+        `,
+          }}
+        ></style>
+        <Styled_Title ref={h2 => (this.gsap__title = h2)}>
           {product.name}
         </Styled_Title>
-        <p>{product.description}</p>
+        <p ref={p => (this.gsap__title_p = p)}>{product.description}</p>
 
         <Styled_ProductInfoDisplay>
-          <Styled_Img>
+          <Styled_Img ref={div => (this.gsap__primaryImg = div)}>
             <GraphImg
               image={product.image[0]}
               transforms={["quality=value:80"]}
@@ -229,10 +303,14 @@ class DetailsPage extends React.Component {
               dangerouslySetInnerHTML={{
                 __html: product.detailedDescription.html,
               }}
+              ref={div => (this.gsap__description = div)}
             ></div>
-            <p>£{product.price}</p>
+            <p ref={p => (this.gsap__price = p)}>£{product.price}</p>
 
-            <p style={{ textAlign: "center", marginTop: "50px" }}>
+            <p
+              style={{ textAlign: "center", marginTop: "50px" }}
+              ref={p => (this.gsap__callText = p)}
+            >
               If you have a questions you can always call{" "}
               <a
                 href="tel:080012341234"
@@ -242,7 +320,10 @@ class DetailsPage extends React.Component {
               </a>{" "}
               and speak to an advisor.
             </p>
-            <p style={{ textAlign: "center" }}>
+            <p
+              style={{ textAlign: "center" }}
+              ref={p => (this.gsap__addToCart = p)}
+            >
               <Styled_btn
                 className="snipcart-add-item"
                 data-item-id={product.id}
@@ -263,6 +344,7 @@ class DetailsPage extends React.Component {
                   document.documentElement.classList.toggle("showEnquire")
                   document.documentElement.classList.toggle("pageNoScrollY")
                 }}
+                ref={button => (this.gsap__enquireBtn = button)}
               >
                 Enquire
               </Styled_btn>
@@ -273,6 +355,7 @@ class DetailsPage extends React.Component {
                   document.documentElement.classList.toggle("showViewing")
                   document.documentElement.classList.toggle("pageNoScrollY")
                 }}
+                ref={button => (this.gsap__bookViewingBtn = button)}
               >
                 Book a viewing
               </Styled_btn>

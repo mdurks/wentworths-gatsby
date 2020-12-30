@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import GraphImg from "graphcms-image"
 import styled from "styled-components"
@@ -32,7 +32,7 @@ const Product = props => {
       swipe
       direction="up"
       top="exit"
-      duration={0.75}
+      duration={1}
     >
       <Styled_Title>{props.product.name}</Styled_Title>
       <Styled_Img>

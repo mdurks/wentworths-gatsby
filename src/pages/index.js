@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import GraphImg from "graphcms-image"
 
-import Layout from "../components/layout"
+// import Layout from "../components/layout"
 // import Snipcart from "../components/snipcart"
 import styled from "styled-components"
 import { Styled_SiteContainer } from "../styles/commonStyles"

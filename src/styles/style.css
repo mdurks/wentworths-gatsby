@@ -32,11 +32,13 @@ body {
 
 #___gatsby {
   height: 100%;
+  overflow-y: scroll;
 }
 
 #gatsby-focus-wrapper {
   margin-bottom: 10px;
   background-color: #fff;
+  transition: background-color ease 0.5s;
 }
 @media (min-width: 768px) {
   #gatsby-focus-wrapper {
@@ -115,7 +117,7 @@ h5 {
     font-size: 40px;
   }
   h2 {
-    font-size: 30px;
+    font-size: 45px;
   }
   h3 {
     font-size: 25px;
@@ -175,22 +177,42 @@ img {
     Just make sure animation time is same that transition duration in <AniLink />
     as well add some delay (e.g. 0.2s as in example) to avoid weird blinking at the end
   */
-  animation: 2s ease-out 0.2s normal fadeout;
+  animation: 1s ease normal fadeout;
 }
 @keyframes fadeout {
   0% {
-  }
-  49% {
+    opacity: 1;
   }
   90% {
+    opacity: 0;
   }
   100% {
+    opacity: 0;
+  }
+}
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
 .tl-wrapper--mount {
   background-color: white;
   overflow-y: hidden !important;
+  overflow-x: hidden;
+  transition: background-color ease 0.5s;
+  animation: 0.1s ease normal fadein;
+}
+
+.tl-wrapper--unmount {
+  box-shadow: none !important;
+  transition: background-color ease 0.5s;
 }
 
 .tl-edges {

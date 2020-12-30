@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
-import Layout from "../components/layout"
+// import Layout from "../components/layout"
 import { Styled_SiteContainer } from "../styles/commonStyles"
 
 const pageQuery = graphql`

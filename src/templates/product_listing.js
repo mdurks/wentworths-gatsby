@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import Layout from "../components/layout"
+// import Layout from "../components/layout"
 import Product from "../components/Product_in_list"
 
 import { Styled_SiteContainer } from "../styles/commonStyles"
@@ -13,7 +13,7 @@ const ProductPage = ({
   },
   pageContext,
 }) => {
-  console.log("pageContext: ", pageContext)
+  // console.log("pageContext: ", pageContext)
   return (
     <>
       <Styled_SiteContainer productFlexList>
