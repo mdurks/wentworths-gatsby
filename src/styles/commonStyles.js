@@ -28,6 +28,12 @@ export const Styled_SiteContainer = styled.section`
     `};
 
   ${props =>
+    props.productDetailFirstBlock &&
+    css`
+      height: calc(100vh - 191px);
+    `};
+
+  ${props =>
     props.productFlexList &&
     css`
       display: flex;

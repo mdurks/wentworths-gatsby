@@ -31,6 +31,8 @@ const Styled_BackgroundImg = styled.div`
 `
 
 const Styled_Img = styled.div`
+  opacity: 0;
+
   @media (min-width: 768px) {
     width: 100%;
     margin: 0 auto 25px;
@@ -112,6 +114,10 @@ const Styled_ProductInfoDisplay = styled.div`
       padding-left: 40px;
     }
   }
+`
+
+const Styled_section = styled.section`
+  background-color: #bdc9d9;
 `
 
 // const DetailsPage = ({
@@ -287,7 +293,7 @@ class DetailsPage extends React.Component {
     } = this.props
     return (
       <>
-        <Styled_SiteContainer>
+        <Styled_SiteContainer productDetailFirstBlock>
           {/* Overide css wrapper classes to change backround colour */}
           <style
             dangerouslySetInnerHTML={{
@@ -303,8 +309,11 @@ class DetailsPage extends React.Component {
 
             .tl-wrapper {
               top: -191px;
+              margin-bottom: -191px;
               padding-top: 191px;
               overflow-x: hidden;
+              overflow-y: hidden;
+              // height: calc(100vh - 51px);
             }
 
             /*
@@ -312,10 +321,6 @@ class DetailsPage extends React.Component {
               background-image: url('/static/rings-on-necklace-large-2cc6c33b94b8a444bd171bbc1fd8047e.jpg');
             }
             */
-
-            #gatsby-focus-wrapper footer {
-              color: white;
-            }
         `,
             }}
           ></style>
@@ -403,74 +408,58 @@ class DetailsPage extends React.Component {
               Print
             </Styled_btn> */}
               </p>
-              <p>
-                <span>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Soluta numquam, perspiciatis necessitatibus est nemo sunt ab
-                  corporis maiores porro eum inventore atque neque animi error
-                  aliquid placeat quis hic vel.
-                </span>
-                <span>
-                  Dolor obcaecati maxime officiis quos architecto in esse
-                  debitis consequatur tenetur? Assumenda nulla inventore
-                  quisquam nostrum consequatur. Provident debitis ad fugiat
-                  animi! Voluptatem alias eveniet sit optio voluptas, voluptate
-                  error!
-                </span>
-                <span>
-                  Eligendi omnis voluptates, error iure optio corporis unde
-                  culpa cupiditate et doloremque, esse voluptate ab architecto
-                  temporibus consectetur repudiandae nostrum nisi sint magni
-                  quidem? Error natus beatae labore necessitatibus tempora.
-                </span>
-                <span>
-                  Cumque quo ut, temporibus fugit distinctio eaque non repellat
-                  adipisci doloremque placeat ducimus laborum nam, voluptates
-                  aperiam excepturi unde ab culpa fugiat libero numquam at sint
-                  corrupti provident. Culpa, dicta.
-                </span>
-                <span>
-                  Accusantium ex reiciendis omnis, soluta pariatur eligendi sint
-                  quos voluptatibus minima aperiam accusamus aliquid suscipit
-                  esse rem, quam tenetur adipisci deleniti! Optio voluptates
-                  quasi ipsam quia iste officia, odio consectetur.
-                </span>
-                <span>
-                  Nihil ratione consequatur quae at, veritatis quis impedit
-                  repellat ipsum autem! Pariatur distinctio quam voluptatum sed
-                  at expedita. Asperiores modi nam reiciendis possimus minus,
-                  aperiam inventore nisi velit quis dolores?
-                </span>
-                <span>
-                  Amet ut architecto iste voluptate? Officia fugiat ex
-                  laboriosam tempora blanditiis, voluptas eligendi, eum
-                  repellat, quod sequi dignissimos placeat deleniti quam atque
-                  eveniet? Dicta, illum laborum iusto hic asperiores maxime!
-                </span>
-                <span>
-                  Est, voluptas animi iure, sed magni mollitia quibusdam, sunt
-                  soluta minus a omnis ad illum. Distinctio sint labore
-                  repudiandae quas ea? Rerum dolorem dolor dolorum, molestias
-                  quibusdam enim cum error!
-                </span>
-                <span>
-                  Minima incidunt, doloribus quo quia nobis nemo ipsam quod hic
-                  praesentium numquam tenetur id in distinctio pariatur optio
-                  eius, accusantium autem? Aut veniam nihil, repellendus non ex
-                  ipsa eos at?
-                </span>
-                <span>
-                  Reiciendis, atque ut nisi eveniet quisquam quidem dicta
-                  accusamus commodi ipsam? Ipsa soluta dicta quisquam voluptates
-                  molestias, repellendus incidunt aliquam eos? Architecto,
-                  itaque maiores? Non minima dicta at iure et.
-                </span>
-              </p>
             </Styled_CMScontent>
           </Styled_ProductInfoDisplay>
           <Form_Enquire product={product.name} pageURL={pageContext.pageURL} />
           <Form_Viewing product={product.name} pageURL={pageContext.pageURL} />
         </Styled_SiteContainer>
+
+        <Styled_section>
+          <Styled_SiteContainer>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+              fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
+              nemo similique, sequi sunt ratione ab nam consequuntur placeat
+              perspiciatis! Quod commodi libero fuga.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+              fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
+              nemo similique, sequi sunt ratione ab nam consequuntur placeat
+              perspiciatis! Quod commodi libero fuga.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+              fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
+              nemo similique, sequi sunt ratione ab nam consequuntur placeat
+              perspiciatis! Quod commodi libero fuga.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+              fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
+              nemo similique, sequi sunt ratione ab nam consequuntur placeat
+              perspiciatis! Quod commodi libero fuga.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+              fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
+              nemo similique, sequi sunt ratione ab nam consequuntur placeat
+              perspiciatis! Quod commodi libero fuga.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+              fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
+              nemo similique, sequi sunt ratione ab nam consequuntur placeat
+              perspiciatis! Quod commodi libero fuga.
+            </p>
+            <p>
+              1234 Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Impedit fugiat, excepturi tempora a necessitatibus incidunt
+              voluptatibus nemo similique, sequi sunt ratione ab nam
+              consequuntur placeat perspiciatis! Quod commodi libero fuga.
+            </p>
+          </Styled_SiteContainer>
+        </Styled_section>
       </>
     )
   }
