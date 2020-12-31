@@ -79,7 +79,7 @@ const Styled_Nav = styled.nav`
   background-color: hsl(53, 90%, 87%);
   transition: all ease 0.4s;
   opacity: 0;
-  z-index: 10;
+  z-index: 20;
   pointer-events: none;
   overflow: scroll;
 
@@ -410,7 +410,7 @@ class MainNav extends React.Component {
                     <li>
                       <AniLink
                         swipe
-                        direction="down"
+                        direction="up"
                         top="exit"
                         duration={1}
                         to="/jewellery/rings/"
@@ -421,7 +421,7 @@ class MainNav extends React.Component {
                     <li>
                       <AniLink
                         swipe
-                        direction="down"
+                        direction="up"
                         top="exit"
                         duration={1}
                         to="/jewellery/earrings/"
@@ -432,7 +432,7 @@ class MainNav extends React.Component {
                     <li>
                       <AniLink
                         swipe
-                        direction="down"
+                        direction="up"
                         top="exit"
                         duration={1}
                         to="/jewellery/necklaces/"
@@ -443,7 +443,7 @@ class MainNav extends React.Component {
                     <li>
                       <AniLink
                         swipe
-                        direction="down"
+                        direction="up"
                         top="exit"
                         duration={1}
                         to="/jewellery/bracelets/"

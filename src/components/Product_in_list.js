@@ -30,7 +30,7 @@ const Product = props => {
     <Styled_ProductItem
       to={`/${props.category}/${props.product.slug}/`}
       swipe
-      direction="up"
+      d
       top="exit"
       duration={1}
     >
