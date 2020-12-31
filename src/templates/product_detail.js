@@ -28,6 +28,12 @@ const Styled_BackgroundImg = styled.div`
   background-position: center;
   background-size: cover;
   z-index: -1;
+
+  > div {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 `
 
 const Styled_Img = styled.div`
@@ -324,7 +330,14 @@ class DetailsPage extends React.Component {
         `,
             }}
           ></style>
-          <Styled_BackgroundImg></Styled_BackgroundImg>
+
+          <Styled_BackgroundImg>
+            {/* <GraphImg
+              image={product.image[0]}
+              transforms={["quality=value:80"]}
+              maxWidth={500}
+            /> */}
+          </Styled_BackgroundImg>
 
           <Styled_Title ref={h2 => (this.gsap__title = h2)}>
             {product.name}

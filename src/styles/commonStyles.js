@@ -30,7 +30,9 @@ export const Styled_SiteContainer = styled.section`
   ${props =>
     props.productDetailFirstBlock &&
     css`
-      height: calc(100vh - 191px);
+      @media (min-width: 768px) {
+        height: calc(100vh - 191px);
+      }
     `};
 
   ${props =>
