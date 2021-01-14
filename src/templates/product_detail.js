@@ -15,7 +15,7 @@ import { Styled_SiteContainer } from "../styles/commonStyles"
 
 import { gsap } from "gsap/all"
 
-import backgroundImg from "../images/rings-on-necklace-large.jpg"
+// import backgroundImg from "../images/rings-on-necklace-large.jpg"
 
 const Styled_BackgroundImg = styled.div`
   position: absolute;
@@ -23,7 +23,6 @@ const Styled_BackgroundImg = styled.div`
   left: 0;
   width: 100%;
   height: 100vh;
-  background-image: url(${backgroundImg});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -124,6 +123,10 @@ const Styled_ProductInfoDisplay = styled.div`
 
 const Styled_section = styled.section`
   background-color: #bdc9d9;
+`
+
+const Styled_section2 = styled.section`
+  background-color: #93a7c1;
 `
 
 // const DetailsPage = ({
@@ -264,7 +267,7 @@ class DetailsPage extends React.Component {
       this.gsap__bookViewingBtn,
     ]
     this.tl.from(this.gsap__title, {
-      delay: 1.5,
+      delay: 2.25,
       duration: 1.5,
       y: 15,
       opacity: 0,
@@ -288,6 +291,20 @@ class DetailsPage extends React.Component {
       },
       "-=0.5"
     )
+
+    // Hero block parallax
+    let heroBlock__backGroundImg = document.getElementById("heroImg")
+    function manage_parallax() {
+      // let scrollPos = document.documentElement.scrollTop
+      requestAnimationFrame(function () {
+        heroBlock__backGroundImg.style.transform = String(
+          "translateY(" +
+            document.documentElement.scrollTop / 4 +
+            "px) translateZ(0)"
+        )
+      })
+    }
+    document.addEventListener("scroll", manage_parallax, false)
   }
 
   render() {
@@ -305,38 +322,42 @@ class DetailsPage extends React.Component {
             dangerouslySetInnerHTML={{
               __html:
                 `
-            #gatsby-focus-wrapper,
-            .tl-wrapper--unmount,
-            .tl-wrapper--mount {
-              background-color: hsl(` +
+                  /*
+                  #gatsby-focus-wrapper,
+                  .tl-wrapper--unmount,
+                  .tl-wrapper--mount {
+                    background-color: hsl(` +
                 Math.floor(Math.random() * 360) +
                 `deg 30% 90%);
-            }
+                  }
+                  */
 
-            .tl-wrapper {
-              top: -191px;
-              margin-bottom: -191px;
-              padding-top: 191px;
-              overflow-x: hidden;
-              overflow-y: hidden;
-              // height: calc(100vh - 51px);
-            }
+                  .tl-wrapper {
+                    top: -191px;
+                    margin-bottom: -191px;
+                    padding-top: 191px;
+                    overflow-x: hidden;
+                    overflow-y: hidden;
+                    // height: calc(100vh - 51px);
+                  }
 
-            /*
-            #gatsby-focus-wrapper {
-              background-image: url('/static/rings-on-necklace-large-2cc6c33b94b8a444bd171bbc1fd8047e.jpg');
-            }
-            */
-        `,
+                  /*
+                  #gatsby-focus-wrapper {
+                    background-image: url('/static/rings-on-necklace-large-2cc6c33b94b8a444bd171bbc1fd8047e.jpg');
+                  }
+                  */
+              `,
             }}
           ></style>
 
-          <Styled_BackgroundImg>
-            {/* <GraphImg
+          <Styled_BackgroundImg id="heroImg">
+            <GraphImg
               image={product.image[0]}
               transforms={["quality=value:80"]}
               maxWidth={500}
-            /> */}
+              fadeIn={false}
+              blurryPlaceholder={false}
+            />
           </Styled_BackgroundImg>
 
           <Styled_Title ref={h2 => (this.gsap__title = h2)}>
@@ -400,7 +421,7 @@ class DetailsPage extends React.Component {
                   onClick={() => {
                     document.documentElement.classList.remove("showViewing")
                     document.documentElement.classList.toggle("showEnquire")
-                    document.documentElement.classList.toggle("pageNoScrollY")
+                    // document.documentElement.classList.toggle("pageNoScrollY")
                   }}
                   ref={button => (this.gsap__enquireBtn = button)}
                 >
@@ -411,7 +432,7 @@ class DetailsPage extends React.Component {
                   onClick={() => {
                     document.documentElement.classList.remove("showEnquire")
                     document.documentElement.classList.toggle("showViewing")
-                    document.documentElement.classList.toggle("pageNoScrollY")
+                    // document.documentElement.classList.toggle("pageNoScrollY")
                   }}
                   ref={button => (this.gsap__bookViewingBtn = button)}
                 >
@@ -473,6 +494,53 @@ class DetailsPage extends React.Component {
             </p>
           </Styled_SiteContainer>
         </Styled_section>
+
+        <Styled_section2>
+          <Styled_SiteContainer>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+              fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
+              nemo similique, sequi sunt ratione ab nam consequuntur placeat
+              perspiciatis! Quod commodi libero fuga.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+              fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
+              nemo similique, sequi sunt ratione ab nam consequuntur placeat
+              perspiciatis! Quod commodi libero fuga.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+              fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
+              nemo similique, sequi sunt ratione ab nam consequuntur placeat
+              perspiciatis! Quod commodi libero fuga.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+              fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
+              nemo similique, sequi sunt ratione ab nam consequuntur placeat
+              perspiciatis! Quod commodi libero fuga.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+              fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
+              nemo similique, sequi sunt ratione ab nam consequuntur placeat
+              perspiciatis! Quod commodi libero fuga.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+              fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
+              nemo similique, sequi sunt ratione ab nam consequuntur placeat
+              perspiciatis! Quod commodi libero fuga.
+            </p>
+            <p>
+              1234 Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Impedit fugiat, excepturi tempora a necessitatibus incidunt
+              voluptatibus nemo similique, sequi sunt ratione ab nam
+              consequuntur placeat perspiciatis! Quod commodi libero fuga.
+            </p>
+          </Styled_SiteContainer>
+        </Styled_section2>
       </>
     )
   }

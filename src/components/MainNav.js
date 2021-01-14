@@ -1,9 +1,12 @@
 import React from "react"
 // import { Link } from "gatsby"
 // import Link from "gatsby-plugin-transition-link"
+
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import styled from "styled-components"
 import { Styled_SiteContainer } from "../styles/commonStyles"
+
+import { gsap } from "gsap/all"
 
 const Styled_BurgerBtn = styled.button`
   position: absolute;
@@ -252,7 +255,25 @@ const Styled_MobileItems = styled.li`
 `
 
 class MainNav extends React.Component {
+  constructor(props) {
+    super(props)
+    // init gsap timeline for this page
+    this.tl = gsap.timeline()
+
+    // reference to the animation
+    this.page_exit_animation = null
+    this.page_exit_animation_duration = 1
+  }
+
   componentDidMount() {
+    this.page_exit_animation = (exit, node) => {
+      console.log(exit, node)
+      gsap.to("#gatsby-focus-wrapper", {
+        duration: this.page_exit_animation_duration,
+        opacity: 0,
+      })
+    }
+
     let mobileBurgerBtn = document.getElementById("mobileBurgerBtn")
     let htmlTag = document.documentElement
     let mainNav = document.getElementById("mainNav")
@@ -297,6 +318,19 @@ class MainNav extends React.Component {
                 >
                   Engagement
                 </StyledLink>
+                {/* <Link
+                  to="/about/"
+                  exit={{
+                    trigger: ({ exit, node }) =>
+                      this.page_exit_animation(exit, node),
+                    length: this.page_exit_animation_duration,
+                  }}
+                  entry={{
+                    delay: this.page_exit_animation_duration,
+                  }}
+                >
+                  Go to About
+                </Link> */}
                 <Styled_SubMenuContainer>
                   <p>Engagement:</p>
                   <ul>
