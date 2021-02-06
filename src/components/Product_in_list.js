@@ -20,18 +20,19 @@ const Styled_ProductItem = styled(Link)`
 
 const Styled_Img = styled.div`
   /* margin-bottom: 25px; */
-  /* > div {
+  > div {
     height: 100%;
 
     > div {
       height: 100%;
     }
-  } */
+  }
 `
 
 const Styled_Title = styled.h2`
   @media (min-width: 768px) {
-    min-height: 80px;
+    font-size: 30px;
+    min-height: 40px;
     text-align: center;
   }
 `
@@ -46,8 +47,6 @@ const Product = props => {
   let tl_target_image_container = `.image_${props.product.slug}`
 
   let page_exit_animation = (exit, node) => {
-    //
-    //
     //
     // Target Hole To Fill
     //
@@ -67,52 +66,6 @@ const Product = props => {
         marginBottom: tl_target_hole_to_fill,
       },
     })
-    //
-    //
-    //
-    // Calculate Image Size
-    //
-    // get width of image
-    let target_image_width = document
-      .querySelector(tl_target_image_container)
-      .getBoundingClientRect().width
-    // get height of image
-    let target_image_height = document
-      .querySelector(tl_target_image_container)
-      .getBoundingClientRect().height
-    //
-    let target_image_xpos_to_place_center
-    let target_image_ypos_to_place_center
-    let target_image_end_width
-    let adjusted_width
-    let adjusted_height
-    //
-    //
-    //
-    // Calculate X/Y Destination
-    //
-    // Portrait Img:
-    if (target_image_width <= target_image_height) {
-      // finding the aspect ratio, calculate the new height of the image when the width is as wide as the browser width
-      adjusted_height = (target_image_height / target_image_width) * window.innerWidth
-      // calculate y position of image to place the center of the image in the center of the page
-      target_image_ypos_to_place_center = (adjusted_height - window.innerHeight) / 2
-      //
-      target_image_end_width = "100%"
-      target_image_xpos_to_place_center = "0px"
-      target_image_ypos_to_place_center = 10 - target_image_ypos_to_place_center + window.scrollY
-    }
-    // Landscape Img:
-    else {
-      let target_image_aspectratio = target_image_width / target_image_height
-      adjusted_width = window.innerHeight * target_image_aspectratio
-      target_image_end_width = adjusted_width + "px"
-      target_image_xpos_to_place_center = "-" + ((adjusted_width - window.innerWidth) / 2 + 7) + "px"
-      // calculate y position of image to place the center of the image in the center of the page
-      target_image_ypos_to_place_center = target_image_aspectratio + window.scrollY + 59
-    }
-    //
-    //
     //
     // Begin Animating Image
     //
@@ -141,10 +94,9 @@ const Product = props => {
       // ease: CustomEase.create("custom", "M0,0 C0.6,0.01 -0.05,0.9 1,1 "),
       // ease: Expo.easeInOut,
       ease: Power2.easeInOut,
-      left: target_image_xpos_to_place_center,
-      top: target_image_ypos_to_place_center,
-      width: target_image_end_width,
-      // height: "100%",
+      left: "-8px",
+      top: window.scrollY,
+      width: window.innerWidth,
       height: window.innerHeight,
     })
     //
@@ -170,7 +122,7 @@ const Product = props => {
         delay: 0,
       }}
     >
-      {/* <Styled_Title>{props.product.name}</Styled_Title> */}
+      <Styled_Title>{props.product.name}</Styled_Title>
       {/* the image div below gets an animated transition through to its page by targetting its class */}
       <Styled_Img className={`image_${props.product.slug}`}>
         <GraphImg

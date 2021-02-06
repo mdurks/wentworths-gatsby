@@ -36,6 +36,10 @@ const Styled_BackgroundImg = styled.div`
 
     > div {
       height: 100%;
+
+      img {
+        transform: scale(1.01);
+      }
     }
   }
 `
@@ -127,11 +131,11 @@ const Styled_ProductInfoDisplay = styled.div`
 `
 
 const Styled_section = styled.section`
-  background-color: #bdc9d9;
+  background-color: #c5c3ac;
 `
 
 const Styled_section2 = styled.section`
-  background-color: #93a7c1;
+  background-color: #b3b091;
 `
 
 // const DetailsPage = ({
