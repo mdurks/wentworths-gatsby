@@ -36,10 +36,6 @@ const Styled_BackgroundImg = styled.div`
 
     > div {
       height: 100%;
-
-      img {
-        transform: scale(1.01);
-      }
     }
   }
 `

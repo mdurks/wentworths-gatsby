@@ -48,6 +48,8 @@ const Product = props => {
 
   let page_exit_animation = (exit, node) => {
     //
+    //
+    //
     // Target Hole To Fill
     //
     // get previous element before the image
@@ -66,6 +68,21 @@ const Product = props => {
         marginBottom: tl_target_hole_to_fill,
       },
     })
+    //
+    //
+    //
+    // Calculate Image Size
+    //
+    // get width of image
+    let target_image_width = document
+      .querySelector(tl_target_image_container)
+      .getBoundingClientRect().width
+    // get height of image
+    let target_image_height = document
+      .querySelector(tl_target_image_container)
+      .getBoundingClientRect().height
+    //
+    //
     //
     // Begin Animating Image
     //
