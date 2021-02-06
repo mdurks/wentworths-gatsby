@@ -237,3 +237,7 @@ button {
 
 /* End: CMS Rules */
 /* --------------------------------------------- */
+
+gatsby-portal {
+  display: none;
+}

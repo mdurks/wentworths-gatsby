@@ -32,6 +32,11 @@ const Styled_BackgroundImg = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    height: 100%;
+
+    > div {
+      height: 100%;
+    }
   }
 `
 
@@ -354,7 +359,7 @@ class DetailsPage extends React.Component {
             <GraphImg
               image={product.image[0]}
               transforms={["quality=value:80"]}
-              maxWidth={500}
+              maxWidth={1920}
               fadeIn={false}
               blurryPlaceholder={false}
             />
