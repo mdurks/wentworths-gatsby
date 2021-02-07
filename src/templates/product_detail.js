@@ -20,8 +20,8 @@ import { gsap } from "gsap/all"
 const Styled_BackgroundImg = styled.div`
   position: absolute;
   top: 100px;
-  left: 0;
-  width: 100%;
+  left: -1px;
+  width: calc(100% + 2px);
   height: 100vh;
   background-repeat: no-repeat;
   background-position: center;
