@@ -112,7 +112,7 @@ const Product = props => {
       // ease: Expo.easeInOut,
       ease: Power2.easeInOut,
       left: "-8px",
-      top: window.scrollY,
+      top: window.innerWidth < 768 ? window.scrollY + 100 : window.scrollY,
       width: window.innerWidth,
       height: window.innerHeight,
     })
