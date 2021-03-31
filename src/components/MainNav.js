@@ -156,8 +156,8 @@ const StyledLink = styled(AniLink)`
   padding: 20px;
   font-size: 15px;
   font-family: "Playfair Display", serif;
-  text-transform: uppercase;
   font-weight: bold;
+  text-transform: uppercase;
 
   @media (min-width: 768px) {
     display: inline-block;
