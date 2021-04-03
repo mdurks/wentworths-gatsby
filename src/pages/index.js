@@ -8,6 +8,9 @@ import styled from "styled-components"
 import { Styled_SiteContainer } from "../styles/commonStyles"
 
 import two_diamond_rings_bluebackground_large from "../images/general-product/two-diamond-rings-bluebackground-large.jpg"
+import white_bordered_two_ringss_pink_ribbon from "../images/general-product/white-bordered-two-ringss-pink-ribbon.jpg"
+import white_bordered_pink_diamon_ring from "../images/general-product/white-bordered-pink-diamon-ring.jpg"
+import sparkle_background_blue from "../images/sparkle-background-blue.png"
 
 const bp_min_desktop = "@media (min-width: 1024px)"
 const bp_max_desktop = "@media (max-width: 1024px)"
@@ -111,12 +114,81 @@ const Section__hero = styled.section`
     color: white;
     text-shadow: 0px 4px 4px rgb(0 0 0 / 50%);
     z-index: -1;
+  }
+`
 
-    ${bp_min_desktop} {
-      /* top: 80px;
-      left: 120px; */
+const Div__ITB = styled.div`
+  padding: (${section_vertical_padding} / 2) ${section_horizontal_padding};
+  min-height: calc(100vh + ${section_vertical_padding});
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    > div {
+      flex: 1 0 50%;
     }
   }
+
+  h1 {
+    margin-bottom: 30px;
+    text-transform: uppercase;
+  }
+
+  p + p {
+    margin-top: 25px;
+  }
+
+  img {
+    width: auto;
+  }
+`
+
+const Div__ITB__imgGroup = styled.div`
+  position: relative;
+  height: 100%;
+`
+
+const Div__ITB__colorBox01 = styled.div`
+  position: absolute;
+  top: 0;
+  left: calc(50% + 167px);
+  width: 11px;
+  height: 185px;
+  background-color: #9cccd7;
+`
+
+const Div__ITB__colorBox02 = styled.div`
+  position: absolute;
+  bottom: 2px;
+  left: calc(50% - 177px);
+  width: 11px;
+  height: 185px;
+  background-color: #9cccd7;
+`
+
+const Img__ITB__imgSparkle = styled.img`
+  position: relative;
+  left: calc(50% - (310px / 2));
+  top: calc(50% - (607px / 2));
+`
+
+const Img__ITB__img1__layout1 = styled.img`
+  position: absolute;
+  left: calc(40% - (326px / 2));
+  top: calc(50% - (444px / 2));
+`
+
+const Img__ITB__img1__layout2 = styled.img`
+  position: absolute;
+  left: calc(59% - (356px / 2));
+  top: calc(95% - (211px / 2));
+  z-index: 1;
 `
 
 const IndexPage = () => {
@@ -140,14 +212,32 @@ const IndexPage = () => {
         </Styled_SiteContainer>
       </Section__hero>
 
-      <Styled_SiteContainer>
-        {/* <h1>{welcomes[0].heroHeading}</h1> */}
-        <div
-          dangerouslySetInnerHTML={{
-            __html: welcomes[0].firstIntroMessage.html,
-          }}
-        ></div>
-      </Styled_SiteContainer>
+      <Div__ITB>
+        <Styled_SiteContainer>
+          <Div__ITB__imgGroup>
+            <Div__ITB__colorBox01></Div__ITB__colorBox01>
+            <Div__ITB__colorBox02></Div__ITB__colorBox02>
+            <Img__ITB__imgSparkle src={sparkle_background_blue} alt="" />
+            <Img__ITB__img1__layout1
+              src={white_bordered_two_ringss_pink_ribbon}
+              alt=""
+            />
+            <Img__ITB__img1__layout2
+              src={white_bordered_pink_diamon_ring}
+              alt=""
+            />
+          </Div__ITB__imgGroup>
+          <div>
+            <h1>{welcomes[0].heroHeading}</h1>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: welcomes[0].firstIntroMessage.html,
+              }}
+            ></div>
+          </div>
+        </Styled_SiteContainer>
+      </Div__ITB>
+
       {/* <Styled_HeroImg>
         <div>
           <GraphImg
@@ -157,36 +247,6 @@ const IndexPage = () => {
           />
         </div>
       </Styled_HeroImg> */}
-      <Styled_SiteContainer>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero enim
-          molestias quasi asperiores fugit, veritatis ipsam natus, laborum
-          quaerat neque molestiae. Quasi a eaque quibusdam? Excepturi odit
-          numquam nostrum perferendis. Explicabo recusandae voluptatem corrupti
-          ipsam provident ullam optio, mollitia error assumenda voluptate nihil
-          minus quo ut animi ex labore esse laudantium. Deleniti quos ipsa,
-          numquam repellat sapiente molestiae modi impedit distinctio quam.
-          Dolor vero exercitationem beatae nesciunt numquam ea perferendis
-          corporis id inventore praesentium cumque fugiat deserunt earum quos
-          maiores sit maxime aliquam ipsa, eligendi consequatur labore aperiam
-          at vitae laborum? Possimus fugit ullam minima quisquam adipisci,
-          facilis deserunt eius.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero enim
-          molestias quasi asperiores fugit, veritatis ipsam natus, laborum
-          quaerat neque molestiae. Quasi a eaque quibusdam? Excepturi odit
-          numquam nostrum perferendis. Explicabo recusandae voluptatem corrupti
-          ipsam provident ullam optio, mollitia error assumenda voluptate nihil
-          minus quo ut animi ex labore esse laudantium. Deleniti quos ipsa,
-          numquam repellat sapiente molestiae modi impedit distinctio quam.
-          Dolor vero exercitationem beatae nesciunt numquam ea perferendis
-          corporis id inventore praesentium cumque fugiat deserunt earum quos
-          maiores sit maxime aliquam ipsa, eligendi consequatur labore aperiam
-          at vitae laborum? Possimus fugit ullam minima quisquam adipisci,
-          facilis deserunt eius.
-        </p>
-      </Styled_SiteContainer>
     </>
   )
 }
