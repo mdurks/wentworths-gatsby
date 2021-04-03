@@ -1,18 +1,14 @@
 import styled, { css } from "styled-components"
 
+const bp_desktop_max = "1400px"
+
 export const Styled_SiteContainer = styled.section`
   /* position: relative; */
   display: block;
   width: calc(100% - 30px);
-  max-width: 1060px;
+  max-width: ${bp_desktop_max};
   margin: auto;
   padding: 15px;
-
-  ${props =>
-    props.mainNav &&
-    css`
-      padding: 0 0 30px;
-    `};
 
   ${props =>
     props.textCenter &&
