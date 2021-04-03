@@ -82,15 +82,15 @@ const Header = () => (
         Cart (<span className="snipcart-items-count"></span>)
       </button>
       </Styled_HeaderLinks> */}
-      <Snipcart />
+      {/* <Snipcart /> */}
     </Styled_SiteContainer>
-    <Styled_SiteContainer textCenter>
+
+    {/* <Styled_SiteContainer textCenter>
       <StyledLink to="/" fade top="exit" duration={1}>
-        {/* <Styled_WentworthSymbolImg /> */}
         <Styled_WentworthTitle>Wentworth</Styled_WentworthTitle>
         <Styled_WentworthTitle>Jewels</Styled_WentworthTitle>
       </StyledLink>
-    </Styled_SiteContainer>
+    </Styled_SiteContainer> */}
   </header>
 )
 

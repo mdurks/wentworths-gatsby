@@ -16,9 +16,10 @@ export const onRenderBody = (
     <link rel="preconnect" href="https://app.snipcart.com" />,
     <link rel="preconnect" href="https://cdn.snipcart.com" />,
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Raleway:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Raleway:wght@400;500&display=swap"
       rel="stylesheet"
     ></link>,
+    ,
   ])
 
   setPostBodyComponents([

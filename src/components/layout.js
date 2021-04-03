@@ -29,7 +29,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <SEO title="Home" />
-      <Header siteTitle={data.site.siteMetadata.title} />
+      {/* <Header siteTitle={data.site.siteMetadata.title} /> */}
       <MainNav />
       <main>{children}</main>
       <Footer />
