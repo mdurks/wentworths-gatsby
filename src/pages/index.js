@@ -7,6 +7,16 @@ import GraphImg from "graphcms-image"
 import styled from "styled-components"
 import { Styled_SiteContainer } from "../styles/commonStyles"
 
+import two_diamond_rings_bluebackground_large from "../images/general-product/two-diamond-rings-bluebackground-large.jpg"
+
+const bp_min_desktop = "@media (min-width: 1024px)"
+const bp_max_desktop = "@media (max-width: 1024px)"
+const bp_desktop_max = "1400px"
+
+const section_vertical_padding = "0vh"
+const section_horizontal_padding = "50px"
+const section_content_max_width = "1800px"
+
 const pageQuery = graphql`
   {
     gcms {
@@ -54,6 +64,61 @@ const Styled_HeroImg = styled.div`
   }
 `
 
+const Section__hero = styled.section`
+  padding: (${section_vertical_padding} / 2) ${section_horizontal_padding};
+  min-height: calc(100vh + ${section_vertical_padding});
+  position: relative;
+  display: flex;
+  overflow: hidden;
+
+  .Section__hero__backgroundImg {
+    object-fit: cover;
+    // z-index: -1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+
+    @media (min-width: 2500px) {
+      // width of image
+      max-width: 2500px;
+      // width: $section_content_max_width;
+    }
+  }
+
+  .Section__hero__heading {
+    position: absolute;
+    top: 26%;
+    left: 27%;
+    margin: 0;
+    font-size: clamp(24px, 5vw, 52px);
+    font-family: "Playfair Display", serif;
+    text-transform: uppercase;
+    color: black;
+    text-shadow: 0px 4px 4px rgb(0 0 0 / 50%);
+    z-index: 1;
+  }
+
+  .Section__hero__heading--handwritten {
+    position: absolute;
+    top: 220%;
+    left: 26%;
+    font-size: clamp(80px, 13vw, 220px);
+    font-family: "Alex Brush", serif;
+    text-transform: none;
+    color: white;
+    text-shadow: 0px 4px 4px rgb(0 0 0 / 50%);
+    z-index: -1;
+
+    ${bp_min_desktop} {
+      /* top: 80px;
+      left: 120px; */
+    }
+  }
+`
+
 const IndexPage = () => {
   const {
     gcms: { welcomes },
@@ -61,6 +126,20 @@ const IndexPage = () => {
 
   return (
     <>
+      <Section__hero>
+        <img
+          class="Section__hero__backgroundImg"
+          src={two_diamond_rings_bluebackground_large}
+          alt=""
+        />
+        <Styled_SiteContainer>
+          <p class="Section__hero__heading">
+            We are the memory{" "}
+            <span class="Section__hero__heading--handwritten">makers</span>
+          </p>
+        </Styled_SiteContainer>
+      </Section__hero>
+
       <Styled_SiteContainer>
         {/* <h1>{welcomes[0].heroHeading}</h1> */}
         <div
@@ -69,7 +148,7 @@ const IndexPage = () => {
           }}
         ></div>
       </Styled_SiteContainer>
-      <Styled_HeroImg>
+      {/* <Styled_HeroImg>
         <div>
           <GraphImg
             image={welcomes[0].heroImage}
@@ -77,7 +156,7 @@ const IndexPage = () => {
             maxWidth={1200}
           />
         </div>
-      </Styled_HeroImg>
+      </Styled_HeroImg> */}
       <Styled_SiteContainer>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero enim
