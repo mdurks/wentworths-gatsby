@@ -89,10 +89,10 @@ const Div__block_one_row_jewellery = styled.div`
     ${bp_min_desktop} {
       &:hover {
         .productImg {
-          top: 17px;
-          left: calc(50% + 7px);
-          width: 135px;
-          height: 189px;
+          top: -33px;
+          left: calc(50% + 3px);
+          width: 175px;
+          height: 245px;
         }
 
         .productStage {
@@ -109,7 +109,7 @@ const Div__block_one_row_jewellery = styled.div`
 
       &:nth-child(even):hover {
         .productImg {
-          top: 88px;
+          top: 36px;
         }
 
         .productStage {
