@@ -13,15 +13,19 @@ const section_horizontal_padding = "50px"
 const section_content_max_width = "1800px"
 
 const Div__block_one_row_jewellery = styled.div`
-  padding: (${section_vertical_padding} / 2) ${section_horizontal_padding};
-  min-height: calc(100vh + ${section_vertical_padding});
+  min-height: 100vh;
   position: relative;
   display: flex;
   justify-content: center;
+  padding: 25px 0 70px;
   align-items: center;
-  padding: 75px 0;
   text-align: center;
   background-color: #e5e3de;
+
+  ${bp_min_desktop} {
+    min-height: calc(100vh + ${section_vertical_padding});
+    padding: 75px 0;
+  }
 
   > section {
     position: relative;
@@ -33,25 +37,39 @@ const Div__block_one_row_jewellery = styled.div`
 
   .entryHeading {
     position: relative;
-    top: 70px;
+    margin-top: 30px;
     letter-spacing: -1px;
-    font-size: 25px;
+    font-size: clamp(18px, 4vw, 25px);
     text-transform: uppercase;
     font-family: "Playfair Display", serif;
 
+    ${bp_min_desktop} {
+      top: 70px;
+      margin-top: 0;
+    }
+
     > div {
-      margin-top: 10px;
-      font-size: 50px;
+      font-size: clamp(25px, 4vw, 50px);
+
+      ${bp_min_desktop} {
+        margin-top: 10px;
+      }
     }
   }
 
   h2 {
     position: relative;
-    left: -50px;
+    margin-bottom: 20px;
+    text-align: center;
     font-family: "Alex Brush", serif;
-    font-size: 235px;
+    font-size: clamp(78px, 14vw, 235px);
     letter-spacing: -1px;
     color: #ba9b7c;
+
+    ${bp_min_desktop} {
+      left: -50px;
+      margin-bottom: 0;
+    }
   }
 
   img {
@@ -71,11 +89,13 @@ const Div__block_one_row_jewellery = styled.div`
 
   .productItem {
     position: relative;
-    padding: 30px 0 100px;
+    padding: 30px 0;
     text-decoration: none;
     color: #90836b;
 
     ${bp_min_desktop} {
+      padding: 30px 0 100px;
+
       &:nth-child(even) {
         display: block;
         padding: 100px 0 30px;

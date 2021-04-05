@@ -8,7 +8,6 @@ export const Styled_SiteContainer = styled.section`
   width: calc(100% - 30px);
   max-width: ${bp_desktop_max};
   margin: auto;
-  padding: 15px;
 
   ${props =>
     props.textCenter &&
