@@ -7,6 +7,7 @@ import white_bordered_two_ringss_pink_ribbon from "../images/general-product/whi
 import white_bordered_pink_diamon_ring from "../images/general-product/white-bordered-pink-diamon-ring.jpg"
 import sparkle_background_blue from "../images/sparkle-background-blue.png"
 
+const bp_min_tablet = "@media (min-width: 768px)"
 const bp_min_desktop = "@media (min-width: 1024px)"
 const bp_max_desktop = "@media (max-width: 1024px)"
 const bp_desktop_max = "1400px"
@@ -36,27 +37,40 @@ const pageQuery = graphql`
 `
 
 const Div__ITB = styled.div`
-  padding: (${section_vertical_padding} / 2) ${section_horizontal_padding};
-  min-height: calc(100vh + ${section_vertical_padding});
+  min-height: 100vh;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 75px 0;
+  padding: 15px 0 75px;
+
+  ${bp_min_desktop} {
+    min-height: calc(100vh + ${section_vertical_padding});
+    padding: 75px 0;
+  }
 
   > section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    ${bp_min_desktop} {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: center;
+      align-items: center;
+    }
 
     > div {
-      flex: 1 0 50%;
+      ${bp_min_desktop} {
+        flex: 1 0 50%;
+      }
     }
   }
 
   h1 {
-    margin-bottom: 30px;
+    margin: 20px 0 30px;
     text-transform: uppercase;
+
+    ${bp_min_desktop} {
+      margin: 0 0 30px;
+    }
   }
 
   p + p {
@@ -64,7 +78,11 @@ const Div__ITB = styled.div`
   }
 
   img {
-    width: auto;
+    width: 100%;
+
+    ${bp_min_desktop} {
+      width: auto;
+    }
   }
 `
 
@@ -73,45 +91,65 @@ const Div__ITB__imgGroup = styled.div`
 `
 
 const Div__ITB__colorBox01 = styled.div`
-  position: absolute;
-  top: 0;
-  left: calc(50% + 167px);
-  width: 11px;
-  height: 185px;
-  background-color: #9cccd7;
+  ${bp_min_tablet} {
+    position: absolute;
+    top: 0;
+    left: calc(50% + 167px);
+    width: 11px;
+    height: 185px;
+    background-color: #9cccd7;
+  }
 `
 
 const Div__ITB__colorBox02 = styled.div`
-  position: absolute;
-  bottom: 2px;
-  left: calc(50% - 177px);
-  width: 11px;
-  height: 185px;
-  background-color: #9cccd7;
+  ${bp_min_tablet} {
+    position: absolute;
+    bottom: 2px;
+    left: calc(50% - 177px);
+    width: 11px;
+    height: 185px;
+    background-color: #9cccd7;
+  }
 `
 
 const Img__ITB__imgSparkle = styled.img`
-  position: relative;
-  left: calc(50% - (310px / 2));
-  top: calc(50% - (607px / 2));
+  display: none;
+
+  ${bp_min_desktop} {
+    display: block;
+    position: relative;
+    right: auto;
+    bottom: auto;
+    left: calc(50% - (310px / 2));
+    top: calc(50% - (607px / 2));
+  }
 `
 
 const Img__ITB__layout1__img1 = styled.img`
-  position: absolute;
-  left: calc(40% - (326px / 2));
-  top: calc(50% - (444px / 2));
+  display: none;
+  ${bp_min_desktop} {
+    display: block;
+    position: absolute;
+    left: calc(40% - (326px / 2));
+    top: calc(50% - (444px / 2));
+  }
 `
 
 const Img__ITB__layout1__img2 = styled.img`
-  position: absolute;
-  left: calc(59% - (356px / 2));
-  top: calc(95% - (211px / 2));
-  z-index: 1;
+  margin: 20px 0 0 -5px;
+
+  ${bp_min_desktop} {
+    margin: 0;
+    position: absolute;
+    left: calc(59% - (356px / 2));
+    top: calc(95% - (211px / 2));
+    z-index: 1;
+  }
 `
 
 const Div__ITB__textGroup = styled.div`
-  padding: 0 5%;
-  > div {
+  ${bp_min_desktop} {
+    padding: 0 5%;
   }
 `
 
@@ -124,6 +162,14 @@ const ImageTextBox = () => {
     <>
       <Div__ITB>
         <Styled_SiteContainer>
+          <Div__ITB__textGroup>
+            <h1>{welcomes[0].heroHeading}</h1>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: welcomes[0].firstIntroMessage.html,
+              }}
+            ></div>
+          </Div__ITB__textGroup>
           <Div__ITB__imgGroup>
             <Div__ITB__colorBox01></Div__ITB__colorBox01>
             <Div__ITB__colorBox02></Div__ITB__colorBox02>
@@ -137,14 +183,6 @@ const ImageTextBox = () => {
               alt=""
             />
           </Div__ITB__imgGroup>
-          <Div__ITB__textGroup>
-            <h1>{welcomes[0].heroHeading}</h1>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: welcomes[0].firstIntroMessage.html,
-              }}
-            ></div>
-          </Div__ITB__textGroup>
         </Styled_SiteContainer>
       </Div__ITB>
     </>
