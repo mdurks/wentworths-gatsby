@@ -8,6 +8,7 @@ import styled from "styled-components"
 import Image_text_box from "../components/image_text_box"
 import Block_one_row_jewellery from "../components/block_one_row_jewellery"
 import Block_full_size_image from "../components/block_full_size_image"
+import Block_bespoke_design_advert from "../components/block_bespoke_design_advert"
 import { Styled_SiteContainer } from "../styles/commonStyles"
 
 import two_diamond_rings_bluebackground_large from "../images/general-product/two-diamond-rings-bluebackground-large.jpg"
@@ -143,6 +144,8 @@ const IndexPage = () => {
       <Block_one_row_jewellery />
 
       <Block_full_size_image />
+
+      <Block_bespoke_design_advert />
 
       {/* <Styled_HeroImg>
         <div>

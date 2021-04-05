@@ -63,6 +63,10 @@ const Div__block_one_row_jewellery = styled.div`
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+
+    ${bp_min_desktop} {
+      margin: 40px 0 0;
+    }
   }
 
   .productItem {
