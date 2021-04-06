@@ -1,4 +1,6 @@
 import React from "react"
+import { useEffect } from "react"
+
 import { Link } from "gatsby"
 // import Link from "gatsby-plugin-transition-link"
 
@@ -603,77 +605,78 @@ const Li__mainNav__topLevelLink = styled.li`
 //   }
 // `
 
-class MainNav extends React.Component {
-  constructor(props) {
-    super(props)
-    // init gsap timeline for this page
-    this.tl = gsap.timeline()
+const MainNav = () => {
+  // class MainNav extends React.Component {
+  // constructor(props) {
+  //   super(props)
+  //   // init gsap timeline for this page
+  //   this.tl = gsap.timeline()
 
-    // reference to the animation
-    this.page_exit_animation = null
-    this.page_exit_animation_duration = 1
+  //   // reference to the animation
+  //   this.page_exit_animation = null
+  //   this.page_exit_animation_duration = 1
+  // }
+
+  // componentDidMount() {
+  //   this.page_exit_animation = (exit, node) => {
+  //     console.log(exit, node)
+  //     gsap.to("#gatsby-focus-wrapper", {
+  //       duration: this.page_exit_animation_duration,
+  //       opacity: 0,
+  //     })
+  //   }
+
+  // let mobileBurgerBtn = document.getElementById("mobileBurgerBtn")
+  // let htmlTag = document.documentElement
+  // let mainNav = document.getElementById("mainNav")
+
+  // // Toggle this in dev to keep menu open
+  // // htmlTag.classList.add("pageNoScrollY");
+
+  // mobileBurgerBtn.addEventListener("click", () => {
+  //   htmlTag.classList.toggle("pageNoScrollY")
+  // })
+
+  // mainNav.addEventListener("click", e => {
+  //   let el = e.target
+
+  //   if (el.matches("a")) {
+  //     htmlTag.classList.remove("pageNoScrollY")
+  //   }
+  //   if (el.matches(".hasSubMenu")) {
+  //     el.classList.toggle("openSubMenu")
+  //   }
+  // })
+  // }
+
+  let clickedMobileBurgerBtn = () => {
+    if (
+      String(document.documentElement.classList).indexOf("no_scroll") < 0 &&
+      window.innerWidth < 1024
+    ) {
+      document.documentElement.classList.add("no_scroll")
+      document.documentElement.classList.add("showMobileNav")
+    } else {
+      document.documentElement.classList.remove("no_scroll")
+      document.documentElement.classList.remove("showMobileNav")
+    }
   }
 
-  componentDidMount() {
-    this.page_exit_animation = (exit, node) => {
-      console.log(exit, node)
-      gsap.to("#gatsby-focus-wrapper", {
-        duration: this.page_exit_animation_duration,
-        opacity: 0,
+  let mainNavToggleSubNavOpenClassOnParent = e => {
+    if (
+      String(e.target.parentNode.classList).indexOf("open") < 0 &&
+      window.innerWidth < 1024
+    ) {
+      document.querySelectorAll(".cvtXAg").forEach(el => {
+        el.classList.remove("open")
       })
+      e.target.parentNode.classList.toggle("open")
+    } else {
+      e.target.parentNode.classList.remove("open")
     }
-
-    // let mobileBurgerBtn = document.getElementById("mobileBurgerBtn")
-    // let htmlTag = document.documentElement
-    // let mainNav = document.getElementById("mainNav")
-
-    // // Toggle this in dev to keep menu open
-    // // htmlTag.classList.add("pageNoScrollY");
-
-    // mobileBurgerBtn.addEventListener("click", () => {
-    //   htmlTag.classList.toggle("pageNoScrollY")
-    // })
-
-    // mainNav.addEventListener("click", e => {
-    //   let el = e.target
-
-    //   if (el.matches("a")) {
-    //     htmlTag.classList.remove("pageNoScrollY")
-    //   }
-    //   if (el.matches(".hasSubMenu")) {
-    //     el.classList.toggle("openSubMenu")
-    //   }
-    // })
   }
 
-  render() {
-    let clickedMobileBurgerBtn = () => {
-      if (
-        String(document.documentElement.classList).indexOf("no_scroll") < 0 &&
-        window.innerWidth < 1024
-      ) {
-        document.documentElement.classList.add("no_scroll")
-        document.documentElement.classList.add("showMobileNav")
-      } else {
-        document.documentElement.classList.remove("no_scroll")
-        document.documentElement.classList.remove("showMobileNav")
-      }
-    }
-
-    let mainNavToggleSubNavOpenClassOnParent = e => {
-      if (
-        String(e.target.parentNode.classList).indexOf("open") < 0 &&
-        window.innerWidth < 1024
-      ) {
-        document.querySelectorAll(".cvtXAg").forEach(el => {
-          el.classList.remove("open")
-        })
-        e.target.parentNode.classList.toggle("open")
-      } else {
-        e.target.parentNode.classList.remove("open")
-      }
-    }
-
+  useEffect(() => {
     let bodyObserverToggleMainNavClass = (entries, observer) => {
       for (let entry of entries) {
         if (entry.isIntersecting) {
@@ -697,160 +700,160 @@ class MainNav extends React.Component {
       bodyObserverOptions
     )
     bodyObserver.observe(document.getElementById("___gatsby"))
+  }, [])
 
-    return (
-      <>
-        <Button__burgerBtn onClick={clickedMobileBurgerBtn}>
-          <div></div>
-        </Button__burgerBtn>
+  return (
+    <>
+      <Button__burgerBtn onClick={clickedMobileBurgerBtn}>
+        <div></div>
+      </Button__burgerBtn>
 
-        <Nav__mainNav>
-          <Div__mainNav__container>
-            <A__mainNav__logo as={Link} to="/">
-              Wentworth Jewels
-            </A__mainNav__logo>
+      <Nav__mainNav>
+        <Div__mainNav__container>
+          <A__mainNav__logo as={Link} to="/">
+            Wentworth Jewels
+          </A__mainNav__logo>
 
-            <Ul__mainNav__listContainer>
-              <Li__mainNav__topLevelLink mainNav__topLevelLink__hasSubMenu>
-                <Button__topLevelLink
-                  onClick={mainNavToggleSubNavOpenClassOnParent}
-                >
-                  Engagement
-                </Button__topLevelLink>
+          <Ul__mainNav__listContainer>
+            <Li__mainNav__topLevelLink mainNav__topLevelLink__hasSubMenu>
+              <Button__topLevelLink
+                onClick={mainNavToggleSubNavOpenClassOnParent}
+              >
+                Engagement
+              </Button__topLevelLink>
 
-                <Div__mainNav__subNavGroupWrapper>
-                  <Div__mainNav__subNavGroup>
-                    <Div__mainNav__subNavGroup__container>
-                      <Div__mainNav__subNavGroup__linkImg></Div__mainNav__subNavGroup__linkImg>
+              <Div__mainNav__subNavGroupWrapper>
+                <Div__mainNav__subNavGroup>
+                  <Div__mainNav__subNavGroup__container>
+                    <Div__mainNav__subNavGroup__linkImg></Div__mainNav__subNavGroup__linkImg>
 
-                      <Ul__mainNav__subNavList>
-                        <li>
-                          <a href="/engagement/rings/">Rings</a>
-                        </li>
-                      </Ul__mainNav__subNavList>
+                    <Ul__mainNav__subNavList>
+                      <li>
+                        <a href="/engagement/rings/">Rings</a>
+                      </li>
+                    </Ul__mainNav__subNavList>
 
-                      <Div__mainNav__subNavMessage>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing
-                          elit. Sit officia impedit atque aperiam ratione cum
-                          distinctio similique ipsam? Tempora magni quam nemo
-                          quasi architecto maxime neque nostrum obcaecati ut
-                          suscipit!
-                        </p>
-                      </Div__mainNav__subNavMessage>
-                    </Div__mainNav__subNavGroup__container>
-                  </Div__mainNav__subNavGroup>
-                </Div__mainNav__subNavGroupWrapper>
-              </Li__mainNav__topLevelLink>
+                    <Div__mainNav__subNavMessage>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Sit officia impedit atque aperiam ratione cum
+                        distinctio similique ipsam? Tempora magni quam nemo
+                        quasi architecto maxime neque nostrum obcaecati ut
+                        suscipit!
+                      </p>
+                    </Div__mainNav__subNavMessage>
+                  </Div__mainNav__subNavGroup__container>
+                </Div__mainNav__subNavGroup>
+              </Div__mainNav__subNavGroupWrapper>
+            </Li__mainNav__topLevelLink>
 
-              <Li__mainNav__topLevelLink mainNav__topLevelLink__hasSubMenu>
-                <Button__topLevelLink
-                  onClick={mainNavToggleSubNavOpenClassOnParent}
-                >
-                  Weddings
-                </Button__topLevelLink>
+            <Li__mainNav__topLevelLink mainNav__topLevelLink__hasSubMenu>
+              <Button__topLevelLink
+                onClick={mainNavToggleSubNavOpenClassOnParent}
+              >
+                Weddings
+              </Button__topLevelLink>
 
-                <Div__mainNav__subNavGroupWrapper>
-                  <Div__mainNav__subNavGroup>
-                    <Div__mainNav__subNavGroup__container>
-                      <Div__mainNav__subNavGroup__linkImg></Div__mainNav__subNavGroup__linkImg>
+              <Div__mainNav__subNavGroupWrapper>
+                <Div__mainNav__subNavGroup>
+                  <Div__mainNav__subNavGroup__container>
+                    <Div__mainNav__subNavGroup__linkImg></Div__mainNav__subNavGroup__linkImg>
 
-                      <Ul__mainNav__subNavList>
-                        <li>
-                          <a href="/weddings/rings/">Rings</a>
-                        </li>
-                        <li>
-                          <a href="/weddings/earrings/">Earrings</a>
-                        </li>
-                        <li>
-                          <a href="/weddings/necklaces/">Necklaces</a>
-                        </li>
-                      </Ul__mainNav__subNavList>
+                    <Ul__mainNav__subNavList>
+                      <li>
+                        <a href="/weddings/rings/">Rings</a>
+                      </li>
+                      <li>
+                        <a href="/weddings/earrings/">Earrings</a>
+                      </li>
+                      <li>
+                        <a href="/weddings/necklaces/">Necklaces</a>
+                      </li>
+                    </Ul__mainNav__subNavList>
 
-                      <Div__mainNav__subNavMessage>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing
-                          elit. Sit officia impedit atque aperiam ratione cum
-                          distinctio similique ipsam? Tempora magni quam nemo
-                          quasi architecto maxime neque nostrum obcaecati ut
-                          suscipit!
-                        </p>
-                      </Div__mainNav__subNavMessage>
-                    </Div__mainNav__subNavGroup__container>
-                  </Div__mainNav__subNavGroup>
-                </Div__mainNav__subNavGroupWrapper>
-              </Li__mainNav__topLevelLink>
+                    <Div__mainNav__subNavMessage>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Sit officia impedit atque aperiam ratione cum
+                        distinctio similique ipsam? Tempora magni quam nemo
+                        quasi architecto maxime neque nostrum obcaecati ut
+                        suscipit!
+                      </p>
+                    </Div__mainNav__subNavMessage>
+                  </Div__mainNav__subNavGroup__container>
+                </Div__mainNav__subNavGroup>
+              </Div__mainNav__subNavGroupWrapper>
+            </Li__mainNav__topLevelLink>
 
-              <Li__mainNav__topLevelLink mainNav__topLevelLink__hasSubMenu>
-                <Button__topLevelLink
-                  onClick={mainNavToggleSubNavOpenClassOnParent}
-                >
-                  Jewellery
-                </Button__topLevelLink>
+            <Li__mainNav__topLevelLink mainNav__topLevelLink__hasSubMenu>
+              <Button__topLevelLink
+                onClick={mainNavToggleSubNavOpenClassOnParent}
+              >
+                Jewellery
+              </Button__topLevelLink>
 
-                <Div__mainNav__subNavGroupWrapper>
-                  <Div__mainNav__subNavGroup>
-                    <Div__mainNav__subNavGroup__container>
-                      <Div__mainNav__subNavGroup__linkImg></Div__mainNav__subNavGroup__linkImg>
+              <Div__mainNav__subNavGroupWrapper>
+                <Div__mainNav__subNavGroup>
+                  <Div__mainNav__subNavGroup__container>
+                    <Div__mainNav__subNavGroup__linkImg></Div__mainNav__subNavGroup__linkImg>
 
-                      <Ul__mainNav__subNavList>
-                        <li>
-                          <a href="/jewellery/rings/">Rings</a>
-                        </li>
-                        <li>
-                          <a href="/jewellery/earrings/">Earrings</a>
-                        </li>
-                        <li>
-                          <a href="/jewellery/necklaces/">Necklaces</a>
-                        </li>
-                        <li>
-                          <a href="/jewellery/bracelets/">Bracelets</a>
-                        </li>
-                      </Ul__mainNav__subNavList>
+                    <Ul__mainNav__subNavList>
+                      <li>
+                        <a href="/jewellery/rings/">Rings</a>
+                      </li>
+                      <li>
+                        <a href="/jewellery/earrings/">Earrings</a>
+                      </li>
+                      <li>
+                        <a href="/jewellery/necklaces/">Necklaces</a>
+                      </li>
+                      <li>
+                        <a href="/jewellery/bracelets/">Bracelets</a>
+                      </li>
+                    </Ul__mainNav__subNavList>
 
-                      <Div__mainNav__subNavMessage>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing
-                          elit. Sit officia impedit atque aperiam ratione cum
-                          distinctio similique ipsam? Tempora magni quam nemo
-                          quasi architecto maxime neque nostrum obcaecati ut
-                          suscipit!
-                        </p>
-                      </Div__mainNav__subNavMessage>
-                    </Div__mainNav__subNavGroup__container>
-                  </Div__mainNav__subNavGroup>
-                </Div__mainNav__subNavGroupWrapper>
-              </Li__mainNav__topLevelLink>
+                    <Div__mainNav__subNavMessage>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Sit officia impedit atque aperiam ratione cum
+                        distinctio similique ipsam? Tempora magni quam nemo
+                        quasi architecto maxime neque nostrum obcaecati ut
+                        suscipit!
+                      </p>
+                    </Div__mainNav__subNavMessage>
+                  </Div__mainNav__subNavGroup__container>
+                </Div__mainNav__subNavGroup>
+              </Div__mainNav__subNavGroupWrapper>
+            </Li__mainNav__topLevelLink>
 
-              <Li__mainNav__topLevelLink>
-                <Button__topLevelLink as={Link} to="/collections/">
-                  Collections
-                </Button__topLevelLink>
-              </Li__mainNav__topLevelLink>
+            <Li__mainNav__topLevelLink>
+              <Button__topLevelLink as={Link} to="/collections/">
+                Collections
+              </Button__topLevelLink>
+            </Li__mainNav__topLevelLink>
 
-              <Li__mainNav__topLevelLink>
-                <Button__topLevelLink as={Link} to="/gifts/">
-                  Gifts
-                </Button__topLevelLink>
-              </Li__mainNav__topLevelLink>
+            <Li__mainNav__topLevelLink>
+              <Button__topLevelLink as={Link} to="/gifts/">
+                Gifts
+              </Button__topLevelLink>
+            </Li__mainNav__topLevelLink>
 
-              <Li__mainNav__topLevelLink>
-                <Button__topLevelLink as={Link} to="/time-piece/">
-                  Time Piece
-                </Button__topLevelLink>
-              </Li__mainNav__topLevelLink>
+            <Li__mainNav__topLevelLink>
+              <Button__topLevelLink as={Link} to="/time-piece/">
+                Time Piece
+              </Button__topLevelLink>
+            </Li__mainNav__topLevelLink>
 
-              <Li__mainNav__topLevelLink>
-                <Button__topLevelLink as={Link} to="/about/">
-                  Heritage
-                </Button__topLevelLink>
-              </Li__mainNav__topLevelLink>
-            </Ul__mainNav__listContainer>
-          </Div__mainNav__container>
-        </Nav__mainNav>
-      </>
-    )
-  }
+            <Li__mainNav__topLevelLink>
+              <Button__topLevelLink as={Link} to="/about/">
+                Heritage
+              </Button__topLevelLink>
+            </Li__mainNav__topLevelLink>
+          </Ul__mainNav__listContainer>
+        </Div__mainNav__container>
+      </Nav__mainNav>
+    </>
+  )
 }
 
 export default MainNav
