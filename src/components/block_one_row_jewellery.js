@@ -76,17 +76,6 @@ const Div__block_one_row_jewellery = styled.div`
     width: auto;
   }
 
-  .productRow {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-
-    ${bp_min_desktop} {
-      margin: 40px 0 0;
-    }
-  }
-
   .productItem {
     position: relative;
     padding: 30px 0;
@@ -179,6 +168,17 @@ const Div__block_one_row_jewellery = styled.div`
   }
 `
 
+const Div__productRow = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  ${bp_min_desktop} {
+    margin: 40px 0 0;
+  }
+`
+
 const Block_one_row_jewellery = () => {
   return (
     <>
@@ -188,56 +188,59 @@ const Block_one_row_jewellery = () => {
             A mutual promise <div>Wentworth Jewels</div>
           </p>
           <h2>Engagement</h2>
-          <div className="productRow">
-            <a href="/" className="productItem">
-              <img
-                className="productImg"
-                src={img_product_ring_silver_round_blue_diamond}
-                alt=""
-              />
-              <div className="productStage"></div>
-              <p className="productDesc">Silver 1.2ct Round Blue Diamond</p>
-            </a>
+          {/* Extra div added below because gatsby would not apply the styled component when building, works when wrappd in another div ?/?? */}
+          <div>
+            <Div__productRow>
+              <a href="/" className="productItem">
+                <img
+                  className="productImg"
+                  src={img_product_ring_silver_round_blue_diamond}
+                  alt=""
+                />
+                <div className="productStage"></div>
+                <p className="productDesc">Silver 1.2ct Round Blue Diamond</p>
+              </a>
 
-            <a href="/" className="productItem">
-              <img
-                className="productImg"
-                src={img_product_ring_silver_round_blue_diamond}
-                alt=""
-              />
-              <div className="productStage"></div>
-              <p className="productDesc">Silver 1.2ct Round Blue Diamond</p>
-            </a>
+              <a href="/" className="productItem">
+                <img
+                  className="productImg"
+                  src={img_product_ring_silver_round_blue_diamond}
+                  alt=""
+                />
+                <div className="productStage"></div>
+                <p className="productDesc">Silver 1.2ct Round Blue Diamond</p>
+              </a>
 
-            <a href="/" className="productItem">
-              <img
-                className="productImg"
-                src={img_product_ring_silver_round_blue_diamond}
-                alt=""
-              />
-              <div className="productStage"></div>
-              <p className="productDesc">Silver 1.2ct Round Blue Diamond</p>
-            </a>
+              <a href="/" className="productItem">
+                <img
+                  className="productImg"
+                  src={img_product_ring_silver_round_blue_diamond}
+                  alt=""
+                />
+                <div className="productStage"></div>
+                <p className="productDesc">Silver 1.2ct Round Blue Diamond</p>
+              </a>
 
-            <a href="/" className="productItem">
-              <img
-                className="productImg"
-                src={img_product_ring_silver_round_blue_diamond}
-                alt=""
-              />
-              <div className="productStage"></div>
-              <p className="productDesc">Silver 1.2ct Round Blue Diamond</p>
-            </a>
+              <a href="/" className="productItem">
+                <img
+                  className="productImg"
+                  src={img_product_ring_silver_round_blue_diamond}
+                  alt=""
+                />
+                <div className="productStage"></div>
+                <p className="productDesc">Silver 1.2ct Round Blue Diamond</p>
+              </a>
 
-            <a href="/" className="productItem">
-              <img
-                className="productImg"
-                src={img_product_ring_silver_round_blue_diamond}
-                alt=""
-              />
-              <div className="productStage"></div>
-              <p className="productDesc">Silver 1.2ct Round Blue Diamond</p>
-            </a>
+              <a href="/" className="productItem">
+                <img
+                  className="productImg"
+                  src={img_product_ring_silver_round_blue_diamond}
+                  alt=""
+                />
+                <div className="productStage"></div>
+                <p className="productDesc">Silver 1.2ct Round Blue Diamond</p>
+              </a>
+            </Div__productRow>
           </div>
         </Styled_SiteContainer>
       </Div__block_one_row_jewellery>
