@@ -667,7 +667,7 @@ const MainNav = () => {
       String(e.target.parentNode.classList).indexOf("open") < 0 &&
       window.innerWidth < 1024
     ) {
-      document.querySelectorAll(".cvtXAg").forEach(el => {
+      document.querySelectorAll("nav .open").forEach(el => {
         el.classList.remove("open")
       })
       e.target.parentNode.classList.toggle("open")
