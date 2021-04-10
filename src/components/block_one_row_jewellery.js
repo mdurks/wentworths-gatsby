@@ -179,9 +179,9 @@ const Div__block_one_row_jewellery = styled.div`
     color: #a59985;
     transition: all ease 0.5s;
 
-    ${bp_min_desktop} {
+    /* ${bp_min_desktop} {
       opacity: 0;
-    }
+    } */
   }
 `
 
@@ -201,7 +201,6 @@ const Block_one_row_jewellery = () => {
   let gsap__entryHeading = null // A Mutual Promise
   let gsap__entryHeading_wj = null // Wentworth Jewels
   let gsap__entryHeading_category_title = null // Engagement
-  // let tl_gsap__entryHeading = gsap.timeline()
 
   let return_array_center_out = a => {
     var o = [],
@@ -248,10 +247,8 @@ const Block_one_row_jewellery = () => {
       "-=2.5"
     )
 
-    let product_items_array = document.querySelectorAll(".productItem")
-
     if (window.innerWidth < 768) {
-      product_items_array.forEach(el => {
+      document.querySelectorAll(".productItem").forEach(el => {
         gsap.from(el, {
           scrollTrigger: {
             trigger: el,
@@ -259,22 +256,26 @@ const Block_one_row_jewellery = () => {
             start: "top 88%",
             toggleActions: "restart none none reset",
           },
-          duration: 3.5,
+          duration: 2.5,
           opacity: 0,
-          scale: 0.5,
+          scale: 0.6,
           ease: "elastic",
         })
       })
     } else {
-      gsap.from(
+      let tl_gsap__productItem = gsap.timeline({
+        paused: true,
+        scrollTrigger: {
+          trigger: Block_one_row_jewellery,
+          // markers: true,
+          id: "tl_gsap__productItem",
+          start: "top 35%",
+          toggleActions: "play none none reset",
+        },
+      })
+      tl_gsap__productItem.from(
         return_array_center_out(document.querySelectorAll(".productItem")),
         {
-          scrollTrigger: {
-            trigger: Block_one_row_jewellery,
-            // markers: true,
-            start: "top 35%",
-            toggleActions: "restart none none reset",
-          },
           duration: 1.2,
           opacity: 0,
           y: 120,
@@ -282,23 +283,15 @@ const Block_one_row_jewellery = () => {
           stagger: 0.2,
         }
       )
-
-      setTimeout(() => {
-        gsap.to(
-          return_array_center_out(document.querySelectorAll(".productDesc")),
-          {
-            scrollTrigger: {
-              trigger: Block_one_row_jewellery,
-              // markers: true,
-              start: "top 35%",
-              toggleActions: "restart none none reset",
-            },
-            duration: 0.5,
-            opacity: 1,
-            // stagger: 0.2,
-          }
-        )
-      }, 3500)
+      tl_gsap__productItem.from(
+        return_array_center_out(document.querySelectorAll(".productDesc")),
+        {
+          duration: 0.25,
+          opacity: 0,
+          stagger: 0.2,
+        },
+        "-=.75"
+      )
     }
 
     // return function to kill timeline on dismount
