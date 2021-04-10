@@ -305,7 +305,7 @@ const Div__mainNav__subNavGroup__linkImg = styled.div`
   }
 `
 
-const Ul__mainNav__subNavList = styled.div`
+const Ul__mainNav__subNavList = styled.ul`
   position: relative;
   padding: 0 0 20px;
   text-align: center;
