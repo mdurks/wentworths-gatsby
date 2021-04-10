@@ -649,7 +649,7 @@ const MainNav = () => {
   // })
   // }
 
-  let clickedMobileBurgerBtn = () => {
+  let click_mobile_burger_btn = () => {
     if (
       String(document.documentElement.classList).indexOf("no_scroll") < 0 &&
       window.innerWidth < 1024
@@ -662,7 +662,7 @@ const MainNav = () => {
     }
   }
 
-  let mainNavToggleSubNavOpenClassOnParent = e => {
+  let main_nav_toggle_sub_nav_open = e => {
     if (
       String(e.target.parentNode.classList).indexOf("open") < 0 &&
       window.innerWidth < 1024
@@ -687,7 +687,7 @@ const MainNav = () => {
   }
 
   useEffect(() => {
-    let bodyObserverToggleMainNavClass = (entries, observer) => {
+    let body_observer_toggle_main_nav_class = (entries, observer) => {
       for (let entry of entries) {
         if (entry.isIntersecting) {
           // In view
@@ -700,21 +700,21 @@ const MainNav = () => {
         }
       }
     }
-    let bodyObserverOptions = {
+    let body_observer_options = {
       root: null, // relative to document viewport
       rootMargin: "25%", // margin around root. Values are similar to css property. Unitless values not allowed
       threshold: 1.0, // visible amount of item shown in relation to root
     }
     let bodyObserver = new IntersectionObserver(
-      bodyObserverToggleMainNavClass,
-      bodyObserverOptions
+      body_observer_toggle_main_nav_class,
+      body_observer_options
     )
     bodyObserver.observe(document.getElementById("___gatsby"))
   }, [])
 
   return (
     <>
-      <Button__burgerBtn onClick={clickedMobileBurgerBtn}>
+      <Button__burgerBtn onClick={click_mobile_burger_btn}>
         <div></div>
       </Button__burgerBtn>
 
@@ -726,9 +726,7 @@ const MainNav = () => {
 
           <Ul__mainNav__listContainer>
             <Li__mainNav__topLevelLink mainNav__topLevelLink__hasSubMenu>
-              <Button__topLevelLink
-                onClick={mainNavToggleSubNavOpenClassOnParent}
-              >
+              <Button__topLevelLink onClick={main_nav_toggle_sub_nav_open}>
                 Engagement
               </Button__topLevelLink>
 
@@ -758,9 +756,7 @@ const MainNav = () => {
             </Li__mainNav__topLevelLink>
 
             <Li__mainNav__topLevelLink mainNav__topLevelLink__hasSubMenu>
-              <Button__topLevelLink
-                onClick={mainNavToggleSubNavOpenClassOnParent}
-              >
+              <Button__topLevelLink onClick={main_nav_toggle_sub_nav_open}>
                 Weddings
               </Button__topLevelLink>
 
@@ -796,9 +792,7 @@ const MainNav = () => {
             </Li__mainNav__topLevelLink>
 
             <Li__mainNav__topLevelLink mainNav__topLevelLink__hasSubMenu>
-              <Button__topLevelLink
-                onClick={mainNavToggleSubNavOpenClassOnParent}
-              >
+              <Button__topLevelLink onClick={main_nav_toggle_sub_nav_open}>
                 Jewellery
               </Button__topLevelLink>
 
