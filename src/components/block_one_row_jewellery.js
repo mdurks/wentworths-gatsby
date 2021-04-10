@@ -1,14 +1,21 @@
 import React from "react"
+import { useEffect } from "react"
+import { gsap, ScrollTrigger, Elastic } from "gsap/all"
+
 import styled from "styled-components"
 import { Styled_SiteContainer } from "../styles/commonStyles"
 
 import img_product_ring_silver_round_blue_diamond from "../images/products/ring/product-ring-silver-round-blue-diamond.png"
 
+gsap.registerPlugin(ScrollTrigger)
+gsap.core.globals("ScrollTrigger", ScrollTrigger)
+
 const bp_min_desktop = "@media (min-width: 1024px)"
 const bp_max_desktop = "@media (max-width: 1024px)"
 const bp_desktop_max = "1400px"
 
-const section_vertical_padding = "12vh"
+const section_vertical_height = "100vh"
+const section_vertical_padding = "0vh"
 const section_horizontal_padding = "50px"
 const section_content_max_width = "1800px"
 
@@ -23,7 +30,7 @@ const Div__block_one_row_jewellery = styled.div`
   background-color: #e5e3de;
 
   ${bp_min_desktop} {
-    min-height: calc(100vh + ${section_vertical_padding});
+    min-height: calc(${section_vertical_height} + ${section_vertical_padding});
     padding: 75px 0;
   }
 
@@ -48,7 +55,12 @@ const Div__block_one_row_jewellery = styled.div`
       margin-top: 0;
     }
 
+    > span {
+      opacity: 0;
+    }
+
     > div {
+      opacity: 0;
       font-size: clamp(25px, 4vw, 50px);
 
       ${bp_min_desktop} {
@@ -65,6 +77,7 @@ const Div__block_one_row_jewellery = styled.div`
     font-size: clamp(78px, 14vw, 235px);
     letter-spacing: -1px;
     color: #ba9b7c;
+    opacity: 0;
 
     ${bp_min_desktop} {
       left: -50px;
@@ -165,6 +178,10 @@ const Div__block_one_row_jewellery = styled.div`
     line-height: 25px;
     color: #a59985;
     transition: all ease 0.5s;
+
+    ${bp_min_desktop} {
+      opacity: 0;
+    }
   }
 `
 
@@ -180,14 +197,123 @@ const Div__productRow = styled.div`
 `
 
 const Block_one_row_jewellery = () => {
+  let Block_one_row_jewellery = null
+  let gsap__entryHeading = null // A Mutual Promise
+  let gsap__entryHeading_wj = null // Wentworth Jewels
+  let gsap__entryHeading_category_title = null // Engagement
+  // let tl_gsap__entryHeading = gsap.timeline()
+
+  let return_array_center_out = a => {
+    var o = [],
+      s = a.length,
+      l = Math.floor(s / 2),
+      c
+    for (c = 0; c < s; c++)
+      o.push(a[(l += s % 2 ? (c % 2 ? +c : -c) : c % 2 ? -c : +c)])
+    return o
+  }
+
+  useEffect(() => {
+    let tl_gsap__entryHeading = gsap.timeline({
+      paused: true,
+      scrollTrigger: {
+        trigger: Block_one_row_jewellery,
+        // markers: true,
+        id: "tl_gsap__entryHeading",
+        start: window.innerWidth < 768 ? "top 70%" : "top 60%",
+        toggleActions: "play none none reset",
+      },
+    })
+    tl_gsap__entryHeading.to(gsap__entryHeading, {
+      duration: 3,
+      opacity: 1,
+      ease: "back",
+    })
+    tl_gsap__entryHeading.to(
+      gsap__entryHeading_wj,
+      {
+        duration: 3,
+        opacity: 1,
+        ease: "back",
+      },
+      "-=2.5"
+    )
+    tl_gsap__entryHeading.to(
+      gsap__entryHeading_category_title,
+      {
+        duration: 3,
+        opacity: 1,
+        ease: "back",
+      },
+      "-=2.5"
+    )
+
+    let product_items_array = document.querySelectorAll(".productItem")
+
+    if (window.innerWidth < 768) {
+      product_items_array.forEach(el => {
+        gsap.from(el, {
+          scrollTrigger: {
+            trigger: el,
+            // markers: true,
+            start: "top 88%",
+            toggleActions: "restart none none reset",
+          },
+          duration: 3.5,
+          opacity: 0,
+          scale: 0.5,
+          ease: "elastic",
+        })
+      })
+    } else {
+      gsap.from(
+        return_array_center_out(document.querySelectorAll(".productItem")),
+        {
+          scrollTrigger: {
+            trigger: Block_one_row_jewellery,
+            // markers: true,
+            start: "top 35%",
+            toggleActions: "restart none none reset",
+          },
+          duration: 1.2,
+          opacity: 0,
+          y: 120,
+          ease: "back",
+          stagger: 0.2,
+        }
+      )
+
+      setTimeout(() => {
+        gsap.to(
+          return_array_center_out(document.querySelectorAll(".productDesc")),
+          {
+            scrollTrigger: {
+              trigger: Block_one_row_jewellery,
+              // markers: true,
+              start: "top 35%",
+              toggleActions: "restart none none reset",
+            },
+            duration: 0.5,
+            opacity: 1,
+            // stagger: 0.2,
+          }
+        )
+      }, 3500)
+    }
+
+    // return function to kill timeline on dismount
+    // return () => tl_gsap__entryHeading.kill()
+  }, [])
+
   return (
     <>
-      <Div__block_one_row_jewellery>
+      <Div__block_one_row_jewellery ref={e => (Block_one_row_jewellery = e)}>
         <Styled_SiteContainer>
           <p className="entryHeading">
-            A mutual promise <div>Wentworth Jewels</div>
+            <span ref={e => (gsap__entryHeading = e)}>A mutual promise</span>{" "}
+            <div ref={e => (gsap__entryHeading_wj = e)}>Wentworth Jewels</div>
           </p>
-          <h2>Engagement</h2>
+          <h2 ref={e => (gsap__entryHeading_category_title = e)}>Engagement</h2>
           {/* Extra div added below because gatsby would not apply the styled component when building, works when wrappd in another div ?/?? */}
           <div>
             <Div__productRow>
