@@ -222,9 +222,9 @@ const Div__mainNav__subNavGroupWrapper = styled.div`
   flex: 1 0 0px;
   transition: all ease 0.6s;
 
-  .open & {
+  /* .open & {
     flex: 1 0 268px;
-  }
+  } */
 
   ${bp_min_desktop} {
     display: block;
@@ -667,12 +667,22 @@ const MainNav = () => {
       String(e.target.parentNode.classList).indexOf("open") < 0 &&
       window.innerWidth < 1024
     ) {
+      if (document.querySelector("nav .open > div") != null) {
+        document.querySelector("nav .open > div").removeAttribute("style")
+      }
       document.querySelectorAll("nav .open").forEach(el => {
         el.classList.remove("open")
       })
       e.target.parentNode.classList.toggle("open")
+      e.target.nextSibling.setAttribute(
+        "style",
+        "flex: 1 0 " +
+          (e.target.nextSibling.firstChild.offsetHeight + 19) +
+          "px"
+      )
     } else {
       e.target.parentNode.classList.remove("open")
+      e.target.nextSibling.removeAttribute("style")
     }
   }
 
