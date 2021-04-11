@@ -1,6 +1,6 @@
 import React from "react"
 import { useEffect } from "react"
-import { gsap, ScrollTrigger, Elastic } from "gsap/all"
+import { gsap, ScrollTrigger } from "gsap/all"
 
 import styled from "styled-components"
 import { Styled_SiteContainer } from "../styles/commonStyles"
