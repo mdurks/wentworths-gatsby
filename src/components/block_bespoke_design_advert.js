@@ -7,6 +7,7 @@ import { gsap, ScrollTrigger, MotionPathPlugin } from "gsap/all"
 import img_sketch_rings from "../images/misc/sketch-rings.jpg"
 import img_sketch_book from "../images/misc/sketch-book.jpg"
 import img_background_tools from "../images/misc/block_bespoke_design_advert_background-tools.jpg"
+import img_background_tools_mobile from "../images/misc/block_bespoke_design_advert_background-tools-mobile.jpg"
 
 gsap.registerPlugin(MotionPathPlugin)
 gsap.core.globals("MotionPathPlugin", MotionPathPlugin)
@@ -41,21 +42,21 @@ const Div__block_bespoke_design_advert = styled.div`
     justify-content: center;
     align-items: center;
 
-    ${bp_max_mobile} {
+    /* ${bp_max_mobile} {
       padding: 510px 15px 0;
-    }
+    } */
   }
 
   .img_sketch_rings {
     position: absolute;
-    top: -40px;
-    right: 0;
+    top: 9%;
+    left: 35%;
     height: 187px;
     width: auto;
     background: white;
     border: 10px solid white;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    transform: rotate(2.68deg);
+    transform: rotate(2.68deg) scale(0.65);
     opacity: 0;
 
     ${bp_min_desktop} {
@@ -64,6 +65,7 @@ const Div__block_bespoke_design_advert = styled.div`
       left: 40%;
       width: 287px;
       height: 287px;
+      transform: rotate(2.68deg) scale(1);
     }
   }
 
@@ -89,10 +91,18 @@ const Div__block_bespoke_design_advert = styled.div`
   }
 
   .img_background_tools {
-    object-fit: cover;
     position: absolute;
-    opacity: 0.8;
-    /* display: none; */
+    width: 100%;
+    height: 100%;
+    background-image: url('${img_background_tools_mobile}');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+
+    ${bp_min_desktop} {
+      opacity: 0.8;
+      background-image: url('${img_background_tools}');
+    }
   }
 
   // -------------------------------
@@ -124,7 +134,7 @@ const Div__block_bespoke_design_advert = styled.div`
 
   .bespoke_design_gsap_scrolling_image_container {
     position: absolute;
-    width: calc(100vw - 20px);
+    width: 100vw;
     height: 100vh;
     /* outline: 1px solid blue; */
     overflow: hidden;
@@ -133,11 +143,16 @@ const Div__block_bespoke_design_advert = styled.div`
   }
   .offscreen_right {
     position: absolute;
-    left: -75%;
-    top: 0;
+    left: -460px;
+    top: -531px;
     height: 100%;
     width: 100%;
     transform-style: preserve-3d;
+
+    ${bp_min_desktop} {
+      top: 0;
+      left: -75%;
+    }
 
     .gsap_scrolling_img {
       position: absolute;
@@ -167,6 +182,7 @@ const Div__block_bespoke_design_advert = styled.div`
 
   .bespoke_design_heading1 {
     position: relative;
+    margin: 70% 0 0;
     width: 100%;
     text-align: center;
     font-size: 26px;
@@ -179,12 +195,14 @@ const Div__block_bespoke_design_advert = styled.div`
       position: absolute;
       top: 170%;
       left: 46.5%;
+      margin: 0;
       width: auto;
     }
   }
 
   .bespoke_design_heading2 {
     position: relative;
+    top: 7px;
     width: 100%;
     margin: 10px 0 25px;
     text-align: center;
@@ -339,16 +357,25 @@ const Block_bespoke_design_advert = () => {
       let random_stagger_time = random_number_between_range(30, 40)
       let random_duration = random_number_between_range(30, 40)
       //
+      let gsap__sketch_group_left =
+        viewportWidth < 768
+          ? random_number_between_range(-200, -220) + "%"
+          : random_number_between_range(-66, -18) + "%"
+      let gsap__sketch_group_top =
+        viewportWidth < 768
+          ? random_number_between_range(-35, -45) + "%"
+          : random_number_between_range(0, 15) + "%"
+      let gsap__sketch_group_scale = viewportWidth < 768 ? 0.5 : 0.75
       //
       tl_gsap__sketch_playreel.to(
         gsap__sketch_group[index],
         {
-          top: random_number_between_range(0, 15) + "%",
-          left: random_number_between_range(-66, -18) + "%",
+          top: gsap__sketch_group_top,
+          left: gsap__sketch_group_left,
           duration: random_duration,
           ease: "easeIn",
           rotationY: 350,
-          scale: 0.75,
+          scale: gsap__sketch_group_scale,
           // y: window.innerHeight / 2 + "px",
           motionPath: {
             path:
@@ -357,25 +384,6 @@ const Block_bespoke_design_advert = () => {
         },
         "-=" + random_stagger_time
       )
-      //
-      // fade out images
-      //
-      // tl_gsap__sketch_playreel.to(
-      //   gsap__sketch_group[index],
-      //   {
-      //     duration: 5,
-      //     ease: "ease",
-      //     opacity: 0,
-      //     // rotationY: 0,
-      //     rotationY: random_number_between_range(-550, 110),
-      //     // top: "-35%",
-      //     // left: "-40%",
-      //     top: random_number_between_range(-30, -40) + "%",
-      //     left: random_number_between_range(-35, -45) + "%",
-      //     scale: 0.35,
-      //   },
-      //   "-=" + index
-      // )
     })
     // end sketch group forEach
     //
@@ -407,6 +415,13 @@ const Block_bespoke_design_advert = () => {
     //
     // fade out sketch images
     //
+    let gsap__sketch_group_left =
+      viewportWidth < 768
+        ? "-200%"
+        : random_number_between_range(-32, -42) + "%"
+    let gsap__sketch_group_top =
+      viewportWidth < 768 ? "-80%" : random_number_between_range(-30, -40) + "%"
+    //
     tl_gsap__sketch_playreel.to(
       gsap__sketch_group,
       {
@@ -417,8 +432,8 @@ const Block_bespoke_design_advert = () => {
         rotationY: random_number_between_range(-550, 110),
         // top: "-35%",
         // left: "-40%",
-        top: random_number_between_range(-30, -40) + "%",
-        left: random_number_between_range(-32, -42) + "%",
+        top: gsap__sketch_group_top,
+        left: gsap__sketch_group_left,
         scale: 0.35,
         stagger: 0.6,
       },
@@ -440,6 +455,10 @@ const Block_bespoke_design_advert = () => {
     //
     // animate in finishing images
     //
+    let gsap_img_sketch_book_scale = viewportWidth < 768 ? 0.65 : 1
+    let gsap_img_sketch_book_x = viewportWidth < 768 ? "-10%" : "-68%"
+    let gsap_img_sketch_book_y = viewportWidth < 768 ? "-44%" : "-11%"
+    //
     gsap.set(gsap_img_sketch_book, {
       rotationX: 0,
       rotationY: 0,
@@ -451,20 +470,26 @@ const Block_bespoke_design_advert = () => {
         duration: 30,
         ease: "ease",
         opacity: 1,
-        scale: 1,
-        y: "-11%",
-        x: "-68%",
+        scale: gsap_img_sketch_book_scale,
+        x: gsap_img_sketch_book_x,
+        y: gsap_img_sketch_book_y,
         rotationX: 10,
         rotationY: 383,
       },
       "-=16"
     )
+    //
+    let gsap_img_sketch_rings_x = viewportWidth < 768 ? "27%" : "17%"
+    let gsap_img_sketch_rings_y = viewportWidth < 768 ? "3%" : "-6%"
+    //
     tl_gsap__sketch_playreel.to(
       gsap_img_sketch_rings,
       {
         duration: 20,
         ease: "ease",
         opacity: 1,
+        x: gsap_img_sketch_rings_x,
+        y: gsap_img_sketch_rings_y,
       },
       "-=5"
     )
@@ -480,12 +505,15 @@ const Block_bespoke_design_advert = () => {
       },
       "-=6"
     )
+    //
+    let bespoke_design_heading2_top = viewportWidth < 768 ? -7 : 0
+    //
     tl_gsap__sketch_playreel.to(
       ".bespoke_design_heading2 span",
       {
         duration: 20,
         ease: "ease",
-        top: 0,
+        top: bespoke_design_heading2_top,
       },
       "-=1"
     )
@@ -507,11 +535,11 @@ const Block_bespoke_design_advert = () => {
       },
       "-=1"
     )
-    tl_gsap__sketch_playreel.to(gsap__sketch1, {
-      left: "-300px",
-      duration: 10,
-      ease: "ease",
-    })
+    // tl_gsap__sketch_playreel.to(gsap__sketch1, {
+    //   left: "-300px",
+    //   duration: 10,
+    //   ease: "ease",
+    // })
   }, [])
 
   return (
@@ -519,12 +547,12 @@ const Block_bespoke_design_advert = () => {
       <Div__block_bespoke_design_advert
         ref={e => (gsap__block_bespoke_design_advert = e)}
       >
-        <img
+        <div
           ref={e => (gsap_img_background_tools = e)}
           className="img_background_tools"
-          src={img_background_tools}
-          alt=""
-        />
+          // src={img_background_tools}
+          // alt=""
+        ></div>
 
         <Styled_SiteContainer>
           <div className="gsap_bespoke_design_it_all_starts">
