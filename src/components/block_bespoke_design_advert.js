@@ -4,7 +4,6 @@ import styled from "styled-components"
 import { Styled_SiteContainer } from "../styles/commonStyles"
 import { gsap, ScrollTrigger, MotionPathPlugin } from "gsap/all"
 
-import img_star from "../images/misc/star.svg"
 import img_sketch_rings from "../images/misc/sketch-rings.jpg"
 import img_sketch_book from "../images/misc/sketch-book.jpg"
 import img_background_tools from "../images/misc/block_bespoke_design_advert_background-tools.jpg"
