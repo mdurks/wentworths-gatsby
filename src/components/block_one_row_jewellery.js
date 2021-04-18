@@ -267,20 +267,25 @@ const Block_one_row_jewellery = () => {
         paused: true,
         scrollTrigger: {
           trigger: Block_one_row_jewellery,
-          // markers: true,
-          id: "tl_gsap__productItem",
+          markers: true,
           start: "top 35%",
           toggleActions: "play none none reset",
         },
       })
+      //
+      let product_items = document.querySelectorAll(".productItem")
+      //
       tl_gsap__productItem.from(
         return_array_center_out(document.querySelectorAll(".productItem")),
         {
           duration: 1.2,
           opacity: 0,
-          y: 120,
+          // y: 120,
+          y: function (i) {
+            return "+=" + (product_items.length - i) * 100
+          },
           ease: "back",
-          stagger: 0.2,
+          stagger: 0.15,
         }
       )
       tl_gsap__productItem.from(
