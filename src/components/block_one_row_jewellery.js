@@ -267,7 +267,7 @@ const Block_one_row_jewellery = () => {
         paused: true,
         scrollTrigger: {
           trigger: Block_one_row_jewellery,
-          markers: true,
+          // markers: true,
           start: "top 35%",
           toggleActions: "play none none reset",
         },
