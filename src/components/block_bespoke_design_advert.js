@@ -574,6 +574,7 @@ const Block_bespoke_design_advert = () => {
                 <span>r</span>
                 <span>t</span>
                 <span>s</span>
+                <span>&nbsp;</span>
               </span>
               <span
                 ref={e => (gsap_bespoke_design_it_all_starts_word2 = e)}
