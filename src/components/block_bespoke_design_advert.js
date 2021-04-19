@@ -326,7 +326,7 @@ const Block_bespoke_design_advert = () => {
         trigger: gsap__block_bespoke_design_advert,
         start: "top top",
         toggleActions: "play none none none",
-        markers: true,
+        // markers: true,
         // end: `+=${viewportWidth}`,
         scrub: 3,
         pin: true,
