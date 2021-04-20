@@ -158,7 +158,7 @@ const Div__block_bespoke_design_advert = styled.div`
     }
 
     .gsap_scrolling_img {
-      position: absolute;
+      position: absolute !important;
       top: 0;
       height: 287px;
       width: 287px;
@@ -445,12 +445,12 @@ const Block_bespoke_design_advert = () => {
       //
       let gsap__sketch_group_left =
         viewportWidth < 768
-          ? random_number_between_range(-200, -220) + "%"
-          : random_number_between_range(-66, -18) + "%"
+          ? random_number_between_range(-197, -157) + "%"
+          : random_number_between_range(-20, 20) + "%"
       let gsap__sketch_group_top =
         viewportWidth < 768
-          ? random_number_between_range(-35, -45) + "%"
-          : random_number_between_range(0, 15) + "%"
+          ? random_number_between_range(-40, -30) + "%"
+          : random_number_between_range(-14, 3) + "%"
       let gsap__sketch_group_scale = viewportWidth < 768 ? 0.5 : 0.75
       //
       tl_gsap__sketch_playreel.to(
@@ -503,10 +503,10 @@ const Block_bespoke_design_advert = () => {
     //
     let gsap__sketch_group_left =
       viewportWidth < 768
-        ? "-200%"
+        ? "-180%"
         : random_number_between_range(-32, -42) + "%"
     let gsap__sketch_group_top =
-      viewportWidth < 768 ? "-80%" : random_number_between_range(-30, -40) + "%"
+      viewportWidth < 768 ? "-70%" : random_number_between_range(-30, -40) + "%"
     //
     tl_gsap__sketch_playreel.to(
       gsap__sketch_group,
