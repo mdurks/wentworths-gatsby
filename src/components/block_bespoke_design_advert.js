@@ -1,5 +1,7 @@
 import React from "react"
 import { useEffect } from "react"
+import { graphql, useStaticQuery } from "gatsby"
+import GraphImg from "graphcms-image"
 import styled from "styled-components"
 import { Styled_SiteContainer } from "../styles/commonStyles"
 import { gsap, ScrollTrigger, MotionPathPlugin } from "gsap/all"
@@ -141,6 +143,7 @@ const Div__block_bespoke_design_advert = styled.div`
     perspective: 1400px;
     z-index: 5;
   }
+
   .offscreen_right {
     position: absolute;
     left: -460px;
@@ -164,7 +167,7 @@ const Div__block_bespoke_design_advert = styled.div`
       /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
     }
 
-    > div {
+    .gsap_scolling_img_backface {
       content: " ";
       position: absolute;
       top: 0;
@@ -276,7 +279,90 @@ const Div__block_bespoke_design_advert = styled.div`
   }
 `
 
+const pageQuery = graphql`
+  {
+    gcms {
+      blockBespokeDesignAdverts {
+        sketchOne {
+          id
+          url
+          handle
+          width
+          height
+        }
+        sketchTwo {
+          id
+          url
+          handle
+          width
+          height
+        }
+        sketchThree {
+          id
+          url
+          handle
+          width
+          height
+        }
+        sketchFour {
+          id
+          url
+          handle
+          width
+          height
+        }
+        sketchFive {
+          id
+          url
+          handle
+          width
+          height
+        }
+        sketchSix {
+          id
+          url
+          handle
+          width
+          height
+        }
+        sketchSeven {
+          id
+          url
+          handle
+          width
+          height
+        }
+        sketchEight {
+          id
+          url
+          handle
+          width
+          height
+        }
+        sketchNine {
+          id
+          url
+          handle
+          width
+          height
+        }
+        sketchTen {
+          id
+          url
+          handle
+          width
+          height
+        }
+      }
+    }
+  }
+`
+
 const Block_bespoke_design_advert = () => {
+  //
+  const {
+    gcms: { blockBespokeDesignAdverts },
+  } = useStaticQuery(pageQuery)
   //
   //
   function random_number_between_range(min, max) {
@@ -328,7 +414,7 @@ const Block_bespoke_design_advert = () => {
         toggleActions: "play none none none",
         // markers: true,
         // end: `+=${viewportWidth}`,
-        scrub: 3,
+        scrub: 1,
         pin: true,
         anticipatePin: 1,
       },
@@ -597,85 +683,98 @@ const Block_bespoke_design_advert = () => {
           </div>
 
           <div className="bespoke_design_gsap_scrolling_image_container">
-            <div className="offscreen_right" ref={e => (gsap__sketch1 = e)}>
-              <img
+            <div
+              className="offscreen_right testing1"
+              ref={e => (gsap__sketch1 = e)}
+            >
+              <GraphImg
                 className="gsap_scrolling_img"
-                src={img_sketch_rings}
-                alt=""
+                image={blockBespokeDesignAdverts[0].sketchOne}
+                transforms={["quality=value:80"]}
+                maxWidth={1200}
               />
-              <div></div>
+              <div className="gsap_scolling_img_backface"></div>
             </div>
             <div className="offscreen_right" ref={e => (gsap__sketch2 = e)}>
-              <img
+              <GraphImg
                 className="gsap_scrolling_img"
-                src={img_sketch_rings}
-                alt=""
+                image={blockBespokeDesignAdverts[0].sketchTwo}
+                transforms={["quality=value:80"]}
+                maxWidth={1200}
               />
-              <div></div>
+              <div className="gsap_scolling_img_backface"></div>
             </div>
             <div className="offscreen_right" ref={e => (gsap__sketch3 = e)}>
-              <img
+              <GraphImg
                 className="gsap_scrolling_img"
-                src={img_sketch_rings}
-                alt=""
+                image={blockBespokeDesignAdverts[0].sketchThree}
+                transforms={["quality=value:80"]}
+                maxWidth={1200}
               />
-              <div></div>
+              <div className="gsap_scolling_img_backface"></div>
             </div>
             <div className="offscreen_right" ref={e => (gsap__sketch4 = e)}>
-              <img
+              <GraphImg
                 className="gsap_scrolling_img"
-                src={img_sketch_rings}
-                alt=""
+                image={blockBespokeDesignAdverts[0].sketchFour}
+                transforms={["quality=value:80"]}
+                maxWidth={1200}
               />
-              <div></div>
+              <div className="gsap_scolling_img_backface"></div>
             </div>
             <div className="offscreen_right" ref={e => (gsap__sketch5 = e)}>
-              <img
+              <GraphImg
                 className="gsap_scrolling_img"
-                src={img_sketch_rings}
-                alt=""
+                image={blockBespokeDesignAdverts[0].sketchFive}
+                transforms={["quality=value:80"]}
+                maxWidth={1200}
               />
-              <div></div>
+              <div className="gsap_scolling_img_backface"></div>
             </div>
             <div className="offscreen_right" ref={e => (gsap__sketch6 = e)}>
-              <img
+              <GraphImg
                 className="gsap_scrolling_img"
-                src={img_sketch_rings}
-                alt=""
+                image={blockBespokeDesignAdverts[0].sketchSix}
+                transforms={["quality=value:80"]}
+                maxWidth={1200}
               />
-              <div></div>
+              <div className="gsap_scolling_img_backface"></div>
             </div>
             <div className="offscreen_right" ref={e => (gsap__sketch7 = e)}>
-              <img
+              <GraphImg
                 className="gsap_scrolling_img"
-                src={img_sketch_rings}
-                alt=""
+                image={blockBespokeDesignAdverts[0].sketchSeven}
+                transforms={["quality=value:80"]}
+                maxWidth={1200}
               />
-              <div></div>
+              <div className="gsap_scolling_img_backface"></div>
             </div>
             <div className="offscreen_right" ref={e => (gsap__sketch8 = e)}>
-              <img
+              <GraphImg
                 className="gsap_scrolling_img"
-                src={img_sketch_rings}
-                alt=""
+                image={blockBespokeDesignAdverts[0].sketchEight}
+                transforms={["quality=value:80"]}
+                maxWidth={1200}
               />
-              <div></div>
+              <div className="gsap_scolling_img_backface"></div>
             </div>
             <div className="offscreen_right" ref={e => (gsap__sketch9 = e)}>
-              <img
+              <GraphImg
                 className="gsap_scrolling_img"
-                src={img_sketch_rings}
-                alt=""
+                image={blockBespokeDesignAdverts[0].sketchNine}
+                transforms={["quality=value:80"]}
+                maxWidth={1200}
               />
-              <div></div>
+              <div className="gsap_scolling_img_backface"></div>
             </div>
             <div className="offscreen_right" ref={e => (gsap__sketch10 = e)}>
-              <img
+              <GraphImg
                 className="gsap_scrolling_img"
-                src={img_sketch_rings}
-                alt=""
+                image={blockBespokeDesignAdverts[0].sketchTen}
+                transforms={["quality=value:80"]}
+                maxWidth={1200}
               />
-              <div></div>
+              <div className="gsap_scolling_img_backface"></div>
             </div>
 
             <img
