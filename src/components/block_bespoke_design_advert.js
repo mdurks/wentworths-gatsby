@@ -1,15 +1,18 @@
 import React from "react"
 import { useEffect } from "react"
+
 import { graphql, useStaticQuery } from "gatsby"
 import GraphImg from "graphcms-image"
+
 import styled from "styled-components"
 import { Styled_SiteContainer } from "../styles/commonStyles"
+
 import { gsap, ScrollTrigger, MotionPathPlugin } from "gsap/all"
 
 import img_sketch_rings from "../images/misc/sketch-rings.jpg"
 import img_sketch_book from "../images/misc/sketch-book.jpg"
-import img_background_tools from "../images/misc/block_bespoke_design_advert_background-tools.jpg"
-import img_background_tools_mobile from "../images/misc/block_bespoke_design_advert_background-tools-mobile.jpg"
+// import img_background_tools from "../images/misc/block_bespoke_design_advert_background-tools.jpg"
+// import img_background_tools_mobile from "../images/misc/block_bespoke_design_advert_background-tools-mobile.jpg"
 
 gsap.registerPlugin(MotionPathPlugin)
 gsap.core.globals("MotionPathPlugin", MotionPathPlugin)
@@ -54,12 +57,17 @@ const Div__block_bespoke_design_advert = styled.div`
     top: 9%;
     left: 35%;
     height: 187px;
-    width: auto;
+    width: 187px;
     background: white;
     border: 10px solid white;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     transform: rotate(2.68deg) scale(0.65);
     opacity: 0;
+
+    div {
+      width: 100%;
+      height: 100%;
+    }
 
     ${bp_min_desktop} {
       position: absolute;
@@ -76,12 +84,17 @@ const Div__block_bespoke_design_advert = styled.div`
     top: 150px;
     left: 0;
     height: 316px;
-    width: auto;
+    width: 316px;
     background: white;
     border: 10px solid white;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     transform: scale(0.2);
     opacity: 0;
+
+    div {
+      width: 100%;
+      height: 100%;
+    }
 
     ${bp_min_desktop} {
       position: absolute;
@@ -96,14 +109,20 @@ const Div__block_bespoke_design_advert = styled.div`
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url('${img_background_tools_mobile}');
+
+    div {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* background-image: url('${img_background_tools_mobile}');
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: cover;
+    background-size: cover; */
 
     ${bp_min_desktop} {
       opacity: 0.8;
-      background-image: url('${img_background_tools}');
+      /* background-image: url('${img_background_tools}'); */
     }
   }
 
@@ -283,6 +302,34 @@ const pageQuery = graphql`
   {
     gcms {
       blockBespokeDesignAdverts {
+        backgroundDesktop {
+          id
+          url
+          handle
+          width
+          height
+        }
+        backgroundMobile {
+          id
+          url
+          handle
+          width
+          height
+        }
+        finishedProductImage {
+          id
+          url
+          handle
+          width
+          height
+        }
+        sketchFinal {
+          id
+          url
+          handle
+          width
+          height
+        }
         sketchOne {
           id
           url
@@ -636,9 +683,22 @@ const Block_bespoke_design_advert = () => {
         <div
           ref={e => (gsap_img_background_tools = e)}
           className="img_background_tools"
-          // src={img_background_tools}
-          // alt=""
-        ></div>
+        >
+          {/* conditional rendering - check screen width and set background image */}
+          {window.innerWidth < 600 ? (
+            <GraphImg
+              image={blockBespokeDesignAdverts[0].backgroundMobile}
+              transforms={["quality=value:80"]}
+              maxWidth={1920}
+            />
+          ) : (
+            <GraphImg
+              image={blockBespokeDesignAdverts[0].backgroundDesktop}
+              transforms={["quality=value:80"]}
+              maxWidth={1920}
+            />
+          )}
+        </div>
 
         <Styled_SiteContainer>
           <div className="gsap_bespoke_design_it_all_starts">
@@ -777,18 +837,38 @@ const Block_bespoke_design_advert = () => {
               <div className="gsap_scolling_img_backface"></div>
             </div>
 
-            <img
+            {/* <img
               ref={e => (gsap_img_sketch_rings = e)}
               className="img_sketch_rings"
               src={img_sketch_rings}
               alt=""
-            />
-            <img
+            /> */}
+            <div
+              ref={e => (gsap_img_sketch_rings = e)}
+              className="img_sketch_rings"
+            >
+              <GraphImg
+                image={blockBespokeDesignAdverts[0].sketchFinal}
+                transforms={["quality=value:80"]}
+                maxWidth={1200}
+              />
+            </div>
+            {/* <img
               ref={e => (gsap_img_sketch_book = e)}
               className="img_sketch_book"
               src={img_sketch_book}
               alt=""
-            />
+            /> */}
+            <div
+              ref={e => (gsap_img_sketch_book = e)}
+              className="img_sketch_book"
+            >
+              <GraphImg
+                image={blockBespokeDesignAdverts[0].finishedProductImage}
+                transforms={["quality=value:80"]}
+                maxWidth={1200}
+              />
+            </div>
           </div>
 
           <p
