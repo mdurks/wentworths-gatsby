@@ -685,7 +685,7 @@ const Block_bespoke_design_advert = () => {
           className="img_background_tools"
         >
           {/* conditional rendering - check screen width and set background image */}
-          {window.innerWidth < 600 ? (
+          {typeof window !== "undefined" && window.innerWidth < 600 ? (
             <GraphImg
               image={blockBespokeDesignAdverts[0].backgroundMobile}
               transforms={["quality=value:80"]}
