@@ -480,7 +480,7 @@ const Block_bespoke_design_advert = () => {
           (viewportHeight - 300) * 0.9
         ),
         rotationX: 10,
-        rotationY: random_number_between_range(-650, -310),
+        rotationY: random_number_between_range(-950, -310),
         rotationZ: 353,
         zIndex: index,
       })
