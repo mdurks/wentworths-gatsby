@@ -30,6 +30,13 @@ const pageQuery = graphql`
           width
           height
         }
+        imagesMobile {
+          id
+          url
+          handle
+          width
+          height
+        }
       }
     }
   }
@@ -102,12 +109,22 @@ const Block_one_row_jewellery = () => {
     <>
       <Section__hero>
         <Styled_HeroImg>
-          <GraphImg
-            className="Section__hero__backgroundImg"
-            image={blockHeroImages[0].images[0]}
-            transforms={["quality=value:80"]}
-            maxWidth={2000}
-          />
+          {/* conditional rendering - check screen width and set background image */}
+          {typeof window !== "undefined" && window.innerWidth < 600 ? (
+            <GraphImg
+              className="Section__hero__backgroundImg"
+              image={blockHeroImages[0].imagesMobile[0]}
+              transforms={["quality=value:80"]}
+              maxWidth={2000}
+            />
+          ) : (
+            <GraphImg
+              className="Section__hero__backgroundImg"
+              image={blockHeroImages[0].images[0]}
+              transforms={["quality=value:80"]}
+              maxWidth={2000}
+            />
+          )}
         </Styled_HeroImg>
         <Styled_SiteContainer>
           <p class="Section__hero__heading">
