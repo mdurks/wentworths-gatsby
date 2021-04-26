@@ -12,13 +12,13 @@ export const onRenderBody = (
   pluginOptions
 ) => {
   setHeadComponents([
-    // <link rel="preconnect" href="https://fonts.gstatic.com/" />,
-    // // <link rel="preconnect" href="https://app.snipcart.com" />,
-    // // <link rel="preconnect" href="https://cdn.snipcart.com" />,
-    // <link
-    //   href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Alex+Brush&family=Raleway:wght@400;500&display=swap"
-    //   rel="stylesheet"
-    // ></link>,
+    <link rel="preconnect" href="https://fonts.gstatic.com/" />,
+    // <link rel="preconnect" href="https://app.snipcart.com" />,
+    // <link rel="preconnect" href="https://cdn.snipcart.com" />,
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Alex+Brush&family=Raleway:wght@400;500&display=swap"
+      rel="stylesheet"
+    ></link>,
   ])
 
   setPostBodyComponents([
