@@ -6,6 +6,7 @@ import styled from "styled-components"
 // import Layout from "../components/layout"
 // import Snipcart from "../components/snipcart"
 import Image_text_box from "../components/image_text_box"
+import Block_hero_images from "../components/block_hero_images"
 import Block_single_image_text from "../components/block_single_image_text"
 import Block_one_row_jewellery from "../components/block_one_row_jewellery"
 import Block_full_size_image from "../components/block_full_size_image"
@@ -126,19 +127,7 @@ const IndexPage = () => {
 
   return (
     <>
-      <Section__hero>
-        <img
-          class="Section__hero__backgroundImg"
-          src={two_diamond_rings_bluebackground_large}
-          alt=""
-        />
-        <Styled_SiteContainer>
-          <p class="Section__hero__heading">
-            We are the memory{" "}
-            <span class="Section__hero__heading--handwritten">makers</span>
-          </p>
-        </Styled_SiteContainer>
-      </Section__hero>
+      <Block_hero_images />
 
       <Block_single_image_text />
 
