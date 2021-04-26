@@ -6,6 +6,7 @@ import styled from "styled-components"
 // import Layout from "../components/layout"
 // import Snipcart from "../components/snipcart"
 import Image_text_box from "../components/image_text_box"
+import Block_single_image_text from "../components/block_single_image_text"
 import Block_one_row_jewellery from "../components/block_one_row_jewellery"
 import Block_full_size_image from "../components/block_full_size_image"
 import Block_bespoke_design_advert from "../components/block_bespoke_design_advert"
@@ -139,7 +140,9 @@ const IndexPage = () => {
         </Styled_SiteContainer>
       </Section__hero>
 
-      <Image_text_box />
+      <Block_single_image_text />
+
+      {/* <Image_text_box /> */}
 
       <Block_one_row_jewellery />
 
