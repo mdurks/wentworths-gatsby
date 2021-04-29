@@ -68,28 +68,38 @@ const Section__hero = styled.section`
 
   .Section__hero__heading {
     position: absolute;
-    top: 26%;
-    left: 27%;
+    top: 29%;
+    left: 9%;
     margin: 0;
-    font-size: clamp(24px, 5vw, 52px);
+    font-size: clamp(26px, 5vw, 52px);
     font-family: "Playfair Display", serif;
     text-transform: uppercase;
     color: black;
     text-shadow: 0px 4px 4px rgb(0 0 0 / 50%);
     z-index: 1;
+
+    ${bp_min_desktop} {
+      top: 26%;
+      left: 27%;
+    }
   }
 
   .Section__hero__heading--handwritten {
     position: absolute;
-    top: 252%;
-    left: 17%;
-    font-size: clamp(80px, 13vw, 200px);
-    /* font-family: "Alex Brush", serif; */
+    top: 127%;
+    left: 20%;
+    font-size: clamp(60px, 13vw, 200px);
     font-family: "Amalfi Coast", serif;
     text-transform: none;
     color: white;
     text-shadow: 0px 4px 4px rgb(0 0 0 / 50%);
     z-index: -1;
+
+    ${bp_min_desktop} {
+      top: 252%;
+      left: 17%;
+      font-size: clamp(80px, 13vw, 200px);
+    }
   }
 `
 
