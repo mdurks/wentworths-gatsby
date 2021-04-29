@@ -81,10 +81,11 @@ const Section__hero = styled.section`
 
   .Section__hero__heading--handwritten {
     position: absolute;
-    top: 220%;
-    left: 26%;
-    font-size: clamp(80px, 13vw, 220px);
-    font-family: "Alex Brush", serif;
+    top: 252%;
+    left: 17%;
+    font-size: clamp(80px, 13vw, 200px);
+    /* font-family: "Alex Brush", serif; */
+    font-family: "Amalfi Coast", serif;
     text-transform: none;
     color: white;
     text-shadow: 0px 4px 4px rgb(0 0 0 / 50%);

@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "Amalfi Coast";
+  src: url("../static/Amalfi-Coast.woff") format("woff"),
+    url("../static/Amalfi-Coast.woff2") format("woff2");
+}
+
 html {
   height: 100%;
   box-sizing: border-box;
