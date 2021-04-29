@@ -2,6 +2,7 @@
   font-family: "Amalfi Coast";
   src: url("../static/Amalfi-Coast.woff2") format("woff2"),
     url("../static/Amalfi-Coast.woff") format("woff");
+  font-display: swap;
 }
 
 html {
