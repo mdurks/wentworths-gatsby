@@ -16,7 +16,7 @@ export const onRenderBody = (
     // <link rel="preconnect" href="https://app.snipcart.com" />,
     // <link rel="preconnect" href="https://cdn.snipcart.com" />,
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Alex+Brush&family=Raleway:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Raleway:wght@400;500&display=swap"
       rel="stylesheet"
     ></link>,
   ])
