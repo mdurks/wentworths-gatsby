@@ -46,7 +46,7 @@ const Div__block_one_row_jewellery = styled.div`
     position: relative;
     margin-top: 30px;
     letter-spacing: -1px;
-    font-size: clamp(18px, 4vw, 25px);
+    font-size: clamp(16px, 4vw, 25px);
     text-transform: uppercase;
     font-family: "Playfair Display", serif;
 
@@ -60,10 +60,13 @@ const Div__block_one_row_jewellery = styled.div`
     }
 
     > div {
+      position: relative;
+      top: -5px;
       opacity: 0;
-      font-size: clamp(25px, 4vw, 50px);
+      font-size: clamp(21px, 4vw, 50px);
 
       ${bp_min_desktop} {
+        top: auto;
         margin-top: 10px;
       }
     }
@@ -71,17 +74,22 @@ const Div__block_one_row_jewellery = styled.div`
 
   h2 {
     position: relative;
-    margin-bottom: 20px;
+    left: calc(50% - 10px);
+    top: -53px;
+    transform: translateX(-50%);
+    margin-bottom: -20px;
     text-align: center;
-    font-family: "Alex Brush", serif;
-    font-size: clamp(78px, 14vw, 235px);
+    font-family: "Amalfi Coast", serif;
+    font-size: clamp(44px,7vw,115px);
     letter-spacing: -1px;
     color: #ba9b7c;
     opacity: 0;
 
     ${bp_min_desktop} {
-      left: -50px;
-      margin-bottom: 0;
+      transform: translateX(0);
+      left: -40px;
+      top: -45px;
+      margin-bottom: -60px;
     }
   }
 
