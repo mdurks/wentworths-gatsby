@@ -19,20 +19,6 @@ export const onRenderBody = (
       href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Raleway:wght@400;500&display=swap"
       rel="stylesheet"
     ></link>,
-    <link
-      rel="preload"
-      href="/static/Amalfi-Coast.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    ></link>,
-    <link
-      rel="preload"
-      href="/static/Amalfi-Coast.woff"
-      as="font"
-      type="font/woff"
-      crossorigin
-    ></link>,
   ])
 
   setPostBodyComponents([
