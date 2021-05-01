@@ -227,7 +227,7 @@ const Block_one_row_jewellery = () => {
         // markers: true,
         id: "tl_gsap__entryHeading",
         start: window.innerWidth < 768 ? "top 70%" : "top 60%",
-        toggleActions: "play none none reset",
+        // toggleActions: "play none none reset",
       },
     })
     tl_gsap__entryHeading.to(gsap__entryHeading, {
