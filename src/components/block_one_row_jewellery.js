@@ -74,9 +74,8 @@ const Div__block_one_row_jewellery = styled.div`
 
   h2 {
     position: relative;
-    left: calc(50% - 10px);
+    left: -13px;
     top: -53px;
-    transform: translateX(-50%);
     margin-bottom: -20px;
     text-align: center;
     font-family: "Amalfi Coast", serif;
