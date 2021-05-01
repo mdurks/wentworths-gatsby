@@ -68,13 +68,15 @@ const Div__SIT = styled.div`
 
   h1 {
     position: relative;
-    margin: 20px 0 30px;
-    font-size: clamp(47px, 5vw, 78px);
-    text-transform: uppercase;
+    margin: 50px 0 50px;
+    font-size: clamp(54px, 6vw, 98px);
+    /* text-transform: uppercase; */
+    font-family: "Amalfi Coast", serif;
     color: #83674d;
 
     ${bp_min_desktop} {
-      top: -69px;
+      top: -54px;
+      left: -20px;
       margin: 0 0 30px;
     }
   }
