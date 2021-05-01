@@ -69,13 +69,14 @@ const Section__hero = styled.section`
   .Section__hero__heading {
     position: absolute;
     top: 29%;
-    left: 9%;
+    left: 0;
     margin: 0;
     font-size: clamp(26px, 5vw, 52px);
     font-family: "Playfair Display", serif;
     text-transform: uppercase;
     color: black;
     text-shadow: 0px 4px 4px rgb(0 0 0 / 50%);
+    opacity: 0;
     z-index: 1;
 
     ${bp_min_desktop} {
@@ -87,17 +88,18 @@ const Section__hero = styled.section`
   .Section__hero__heading--handwritten {
     position: absolute;
     top: 127%;
-    left: 20%;
+    left: 30%;
     font-size: clamp(60px, 13vw, 200px);
     font-family: "Amalfi Coast", serif;
     text-transform: none;
     color: white;
     text-shadow: 0px 4px 4px rgb(0 0 0 / 50%);
+    opacity: 0;
     z-index: -1;
 
     ${bp_min_desktop} {
       top: 252%;
-      left: 17%;
+      left: 27%;
       font-size: clamp(80px, 13vw, 200px);
     }
   }
@@ -108,17 +110,49 @@ const Block_one_row_jewellery = () => {
     gcms: { blockHeroImages },
   } = useStaticQuery(pageQuery)
 
+  let gsap_section_hero = null
+
   useEffect(() => {
+    let viewportWidth = window.innerWidth
+
     gsap.from(".Section__hero__backgroundImg", {
       duration: 3,
       scale: 1.1,
+      ease: "power2.out",
+    })
+    gsap.to(gsap_section_hero, {
+      scrollTrigger: {
+        trigger: document.body,
+        start: "top top",
+        toggleActions: "play none none none",
+        // markers: true,
+        scrub: 1,
+      },
+      y: "-=200",
+    })
+
+    gsap.to(".Section__hero__heading", {
+      duration: 3,
+      delay: 1,
+      opacity: 1,
+      x: "10%",
+      ease: "power2.out",
+    })
+
+    let hero_heading_handwriting = viewportWidth < 768 ? "-7%" : "-7%"
+
+    gsap.to(".Section__hero__heading--handwritten", {
+      duration: 3,
+      delay: 2,
+      opacity: 1,
+      x: hero_heading_handwriting,
       ease: "power2.out",
     })
   }, [])
 
   return (
     <>
-      <Section__hero>
+      <Section__hero ref={e => (gsap_section_hero = e)}>
         <Styled_HeroImg>
           {/* conditional rendering - check screen width and set background image */}
           {typeof window !== "undefined" && window.innerWidth < 600 ? (
