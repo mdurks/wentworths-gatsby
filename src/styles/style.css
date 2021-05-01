@@ -4,6 +4,18 @@
     url("../static/Amalfi-Coast.woff") format("woff");
   font-display: swap;
 }
+@font-face {
+  font-family: "Playfair Display";
+  src: url("../static/Playfair-Display-Regular.woff2") format("woff2"),
+    url("../static/Playfair-Display-Regular.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Raleway";
+  src: url("../static/Raleway-Regular.woff2") format("woff2"),
+    url("../static/Raleway-Regular.woff") format("woff");
+  font-display: swap;
+}
 
 html {
   height: 100%;
