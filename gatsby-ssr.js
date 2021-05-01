@@ -19,27 +19,27 @@ export const onRenderBody = (
     //   href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Raleway:wght@400;500&display=swap"
     //   rel="stylesheet"
     // ></link>,
-    <link
-      rel="preload"
-      href="https://wentworths-gatsby.netlify.app/static/Playfair-Display-Regular-2309aaf8b332d5e280c088afca29ed55.woff2"
-      as="font"
-      type="font/woff2"
-      crossOrigin="true"
-    ></link>,
-    <link
-      rel="preload"
-      href="https://wentworths-gatsby.netlify.app/static/Raleway-Regular-c514c0792d32c2c5bf75842ec72bebc6.woff2"
-      as="font"
-      type="font/woff2"
-      crossOrigin="true"
-    ></link>,
-    <link
-      rel="preload"
-      href="https://wentworths-gatsby.netlify.app/static/Amalfi-Coast-c72f889e92703c68010e503b801a1df6.woff2"
-      as="font"
-      type="font/woff2"
-      crossOrigin="true"
-    ></link>,
+    // <link
+    //   rel="preload"
+    //   href="https://wentworths-gatsby.netlify.app/static/Playfair-Display-Regular-2309aaf8b332d5e280c088afca29ed55.woff2"
+    //   as="font"
+    //   type="font/woff2"
+    //   crossOrigin="true"
+    // ></link>,
+    // <link
+    //   rel="preload"
+    //   href="https://wentworths-gatsby.netlify.app/static/Raleway-Regular-c514c0792d32c2c5bf75842ec72bebc6.woff2"
+    //   as="font"
+    //   type="font/woff2"
+    //   crossOrigin="true"
+    // ></link>,
+    // <link
+    //   rel="preload"
+    //   href="https://wentworths-gatsby.netlify.app/static/Amalfi-Coast-c72f889e92703c68010e503b801a1df6.woff2"
+    //   as="font"
+    //   type="font/woff2"
+    //   crossOrigin="true"
+    // ></link>,
   ])
 
   setPostBodyComponents([
