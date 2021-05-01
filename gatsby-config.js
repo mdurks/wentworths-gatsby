@@ -50,6 +50,27 @@ module.exports = {
           "https://api-eu-central-1.graphcms.com/v2/ckcgmjdl73ds501xrercafl4c/master",
       },
     },
+    {
+      resolve: `gatsby-plugin-webfonts`,
+      options: {
+        fonts: {
+          google: [
+            {
+              family: "Playfair Display",
+              variants: ["400"],
+              fontDisplay: "swap",
+              strategy: "selfHosted", // 'base64' || 'cdn'
+            },
+            {
+              family: "Raleway",
+              variants: ["400"],
+              fontDisplay: "swap",
+              strategy: "selfHosted", // 'base64' || 'cdn'
+            },
+          ],
+        },
+      },
+    },
     // {
     //   resolve: `gatsby-plugin-prefetch-google-fonts`,
     //   options: {
@@ -64,14 +85,15 @@ module.exports = {
     //     ],
     //   },
     // },
-    {
-      resolve: "gatsby-plugin-web-font-loader",
-      options: {
-        google: {
-          families: ["Playfair Display", "Raleway"],
-        },
-      },
-    },
+    // {
+    //   resolve: "gatsby-plugin-web-font-loader",
+    //   options: {
+    //     google: {
+    //       families: ["Playfair Display", "Raleway"],
+    //       strategy: "selfHosted",
+    //     },
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-styled-components`,
       options: {
