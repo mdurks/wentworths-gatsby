@@ -65,6 +65,14 @@ module.exports = {
     //   },
     // },
     {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        google: {
+          families: ["Playfair Display", "Raleway"],
+        },
+      },
+    },
+    {
       resolve: `gatsby-plugin-styled-components`,
       options: {
         displayName: true,
