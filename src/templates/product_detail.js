@@ -1,4 +1,5 @@
 import React from "react"
+import { useEffect } from "react"
 import { graphql } from "gatsby"
 import GraphImg from "graphcms-image"
 
@@ -11,123 +12,151 @@ import Form_Viewing from "../components/Form-Viewing"
 
 import styled, { css } from "styled-components"
 import { Styled_SiteContainer } from "../styles/commonStyles"
-//import { render } from "preact"
 
-import { gsap } from "gsap/all"
+import { gsap, Power2 } from "gsap/all"
 
-// import backgroundImg from "../images/rings-on-necklace-large.jpg"
+const bp_min_desktop = "@media (min-width: 1024px)"
+const section_vertical_height = "100vh"
+const section_vertical_padding = "0vh"
 
-const Styled_BackgroundImg = styled.div`
-  position: absolute;
-  top: 100px;
-  left: -1px;
-  width: calc(100% + 2px);
-  height: 100vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  z-index: -1;
+const Div__detail_hero_block = styled.div`
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 25px 0 70px;
+  align-items: center;
+  background-color: #e5e3de;
 
-  @media (min-width: 768px) {
-    top: 0;
+  ${bp_min_desktop} {
+    min-height: calc(${section_vertical_height} + ${section_vertical_padding});
+    padding: 75px 0;
   }
 
-  > div {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 100%;
+  > section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
-    > div {
-      height: 100%;
-    }
+  .productPrice {
+    font-family: "Playfair Display", serif;
+    font-size: 32px;
+    color: #776a54;
+    opacity: 0;
+  }
+
+  .productVAT {
+    margin: 0 0 50px;
+    font-family: "Playfair Display", serif;
+    font-size: 17px;
+    color: #000;
+    opacity: 0;
+  }
+
+  .productStage {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 433px;
+    height: 176px;
+    background-color: white;
+    border-radius: 100%;
+    box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.2),
+      inset 0px 0px 20px 10px rgba(0, 0, 0, 0.08);
+    transition: all ease 0.5s;
   }
 `
+
+// const Styled_BackgroundImg = styled.div`
+//   position: absolute;
+//   top: 100px;
+//   left: -1px;
+//   width: calc(100% + 2px);
+//   height: 100vh;
+//   background-repeat: no-repeat;
+//   background-position: center;
+//   background-size: cover;
+//   z-index: -1;
+
+//   @media (min-width: 768px) {
+//     top: 0;
+//   }
+
+//   > div {
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//     height: 100%;
+
+//     > div {
+//       height: 100%;
+//     }
+//   }
+// `
 
 const Styled_Img = styled.div`
-  opacity: 0;
-
-  @media (min-width: 768px) {
-    width: 100%;
-    margin: 0 auto 25px;
-  }
-`
-
-const Styled_Title = styled.h2`
-  @media (min-width: 768px) {
-    margin-top: 25px;
-    margin-bottom: 50px;
-    text-align: center;
-  }
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  width: 540px;
+  height: 540px;
 `
 
 const Styled_CMScontent = styled.div`
-  img {
-    height: auto;
-  }
+  position: absolute;
+  top: 50%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+`
+
+const Styled_Title = styled.h2`
+  margin-bottom: 50px;
+  font-size: 29px;
+  color: #776a54;
+  opacity: 0;
 `
 
 const Styled_btn = styled.button`
   display: block;
   margin: 50px auto;
   padding: 15px 20px;
-  width: 75%;
-  background-color: #aba157;
-  color: #ffffff;
-  border: none;
+  color: #9c7043;
+  background-color: transparent;
+  border: 1px solid #b6926d;
   border-radius: 200px;
   font-family: "Playfair Display", serif;
   font-family: "Raleway", sans-serif;
-  font-size: 20px;
+  font-size: 18px;
+  transition: all ease 0.4s;
+  opacity: 0;
   /* box-shadow: inset 0px 7px 11px 0px rgba(0, 0, 0, 0.3); */
 
   @media (min-width: 768px) {
     display: inline-block;
-    margin: 40px 20px 0 0;
-    padding: 15px 20px 17px;
-    width: 210px;
+    margin: 0 0 22px;
+    padding: 7px 36px;
+    font-size: 15px;
     cursor: pointer;
-    font-size: 25px;
 
     &:hover {
-      /* background-color: #8d8547; */
+      color: #fff;
+      background-color: #b6926d;
       box-shadow: none;
     }
   }
 
   ${props =>
-    props.printBtn &&
+    props.btn_selected &&
     css`
-      @media (max-width: 767px) {
-        display: none;
-      }
+      color: #fff;
+      background-color: #b6926d;
     `};
-
-  ${props =>
-    props.btn_sml &&
-    css`
-      margin: 10px auto 30px;
-      background-color: #a09d83;
-      @media (min-width: 768px) {
-        width: 160px;
-        font-size: 16px;
-      }
-    `};
-`
-
-const Styled_ProductInfoDisplay = styled.div`
-  @media (min-width: 768px) {
-    display: flex;
-    margin: 50px 0;
-
-    > div:first-child {
-      flex: 1 0 55%;
-    }
-
-    > div:last-child {
-      padding-left: 40px;
-    }
-  }
 `
 
 const Styled_section = styled.section`
@@ -138,194 +167,59 @@ const Styled_section2 = styled.section`
   background-color: #b3b091;
 `
 
-// const DetailsPage = ({
-//   data: {
-//     gcms: { product },
-//   },
-//   pageContext,
-// }) => {
-//   return (
-//     <>
-//       <Styled_SiteContainer>
-//         <Styled_Title id="productTitle">{product.name}</Styled_Title>
-//         <p>{product.description}</p>
+const DetailsPage = ({
+  data: {
+    gcms: { product },
+  },
+  pageContext,
+}) => {
+  // reference to the DOM nodes
+  let gsap__title = null
+  let gsap__title_p = null
+  let gsap__primaryImg = null
+  let gsap__description = null
+  let gsap__callText = null
+  let gsap__enquireBtn = null
+  let gsap__bookViewingBtn = null
 
-//         <Styled_ProductInfoDisplay>
-//           <Styled_Img>
-//             <GraphImg
-//               image={product.image[0]}
-//               transforms={["quality=value:80"]}
-//               maxWidth={500}
-//             />
-//           </Styled_Img>
-//           <Styled_CMScontent>
-//             <div
-//               dangerouslySetInnerHTML={{
-//                 __html: product.detailedDescription.html,
-//               }}
-//             ></div>
-//             <p>£{product.price}</p>
+  useEffect(() => {
+    //
+    let hero_detail_els = document.querySelector(".hero_details").childNodes
 
-//             <p style={{ textAlign: "center", marginTop: "50px" }}>
-//               If you have a questions you can always call{" "}
-//               <a
-//                 href="tel:080012341234"
-//                 style={{ textDecoration: "underline", display: "inline-block" }}
-//               >
-//                 0800 1234 1234
-//               </a>{" "}
-//               and speak to an advisor.
-//             </p>
-//             <p style={{ textAlign: "center" }}>
-//               <Styled_btn
-//                 className="snipcart-add-item"
-//                 data-item-id={product.id}
-//                 data-item-price={product.price}
-//                 data-item-url={pageContext.pageURL}
-//                 data-item-description={product.description}
-//                 data-item-image={product.image[0].url}
-//                 data-item-name={product.name}
-//               >
-//                 Add to cart
-//               </Styled_btn>
-//             </p>
-//             <p style={{ textAlign: "center" }}>
-//               <Styled_btn
-//                 btn_sml
-//                 onClick={() => {
-//                   document.documentElement.classList.remove("showViewing")
-//                   document.documentElement.classList.toggle("showEnquire")
-//                   document.documentElement.classList.toggle("pageNoScrollY")
-//                 }}
-//               >
-//                 Enquire
-//               </Styled_btn>
-//               <Styled_btn
-//                 btn_sml
-//                 onClick={() => {
-//                   document.documentElement.classList.remove("showEnquire")
-//                   document.documentElement.classList.toggle("showViewing")
-//                   document.documentElement.classList.toggle("pageNoScrollY")
-//                 }}
-//               >
-//                 Book a viewing
-//               </Styled_btn>
-//               {/* <Styled_btn printBtn onClick={window.print}>
-//             Print
-//           </Styled_btn> */}
-//             </p>
-//           </Styled_CMScontent>
-//         </Styled_ProductInfoDisplay>
-
-//         <Form_Enquire product={product.name} pageURL={pageContext.pageURL} />
-//         <Form_Viewing product={product.name} pageURL={pageContext.pageURL} />
-//       </Styled_SiteContainer>
-//     </>
-//   )
-// }
-
-class DetailsPage extends React.Component {
-  constructor(props) {
-    super(props)
-    // init gsap timeline for this page
-    this.tl = gsap.timeline()
-    // reference to the DOM nodes
-    this.gsap__title = null
-    this.gsap__title_p = null
-    this.gsap__primaryImg = null
-    this.gsap__description = null
-    this.gsap__price = null
-    this.gsap__callText = null
-    this.gsap__addToCart = null
-    this.gsap__enquireBtn = null
-    this.gsap__bookViewingBtn = null
-    // define array to store all gsap items to animate
-    this.gsap__items = []
-    // reference to the animation
-    this.myTween = null
-  }
-
-  componentDidMount() {
-    // use the node ref to create the animation
-    // this.myTween = gsap.from(this.gsap__title, {
-    //   duration: 3,
-    //   delay: 1.25,
-    //   opacity: 0,
-    // })
-    // this.tl.from(this.gsap__title, {
-    //   duration: 1.5,
-    //   delay: 1.25,
-    //   opacity: 0,
-    // })
-    // this.tl.from(
-    //   this.gsap__title_p,
-    //   {
-    //     duration: 1.5,
-    //     opacity: 0,
-    //   },
-    //   "-=1"
-    // )
-
-    this.gsap__items = [
-      this.gsap__primaryImg,
-      this.gsap__description,
-      this.gsap__price,
-      this.gsap__callText,
-      this.gsap__addToCart,
-      this.gsap__enquireBtn,
-      this.gsap__bookViewingBtn,
-    ]
-    this.tl.from(this.gsap__title, {
-      delay: 2.25,
+    gsap.to(hero_detail_els, {
+      delay: 0.75,
+      opacity: 1,
       duration: 1.5,
-      y: 15,
-      opacity: 0,
+      stagger: 0.25,
+      y: 20,
+      ease: Power2.easeInOut,
     })
-    this.tl.from(
-      this.gsap__title_p,
-      {
-        duration: 1,
-        y: 15,
-        opacity: 0,
-      },
-      "-=1"
-    )
-    this.tl.from(
-      this.gsap__items,
-      {
-        duration: 0.55,
-        y: 15,
-        opacity: 0,
-        stagger: 0.15,
-      },
-      "-=0.5"
-    )
-
+    //
     // Hero block parallax
-    let heroBlock__backGroundImg = document.getElementById("heroImg")
-    function manage_parallax() {
-      // let scrollPos = document.documentElement.scrollTop
-      requestAnimationFrame(function () {
-        heroBlock__backGroundImg.style.transform = String(
-          "translateY(" +
-            document.documentElement.scrollTop / 4 +
-            "px) translateZ(0)"
-        )
-      })
-    }
-    document.addEventListener("scroll", manage_parallax, false)
-  }
+    // let heroBlock__backGroundImg = document.getElementById("heroImg")
+    //
+    // function manage_parallax() {
+    //   // let scrollPos = document.documentElement.scrollTop
+    //   requestAnimationFrame(function () {
+    //     heroBlock__backGroundImg.style.transform = String(
+    //       "translateY(" +
+    //         document.documentElement.scrollTop / 4 +
+    //         "px) translateZ(0)"
+    //     )
+    //   })
+    // }
+    // document.addEventListener("scroll", manage_parallax, false)
+    //
+    //
+    document.body.style.backgroundColor = "#e5e3de"
+    document.getElementsByTagName("nav")[0].style.background =
+      "linear-gradient(0deg, #6db2c300 0%, #7B7262 100%)"
+  }, [])
 
-  render() {
-    const {
-      data: {
-        gcms: { product },
-      },
-      pageContext,
-    } = this.props
-    return (
-      <>
-        <Styled_SiteContainer productDetailFirstBlock>
+  return (
+    <>
+      <Div__detail_hero_block>
+        <Styled_SiteContainer>
           {/* Overide css wrapper classes to change backround colour */}
           <style
             dangerouslySetInnerHTML={{
@@ -342,11 +236,11 @@ class DetailsPage extends React.Component {
                   */
 
                   .tl-wrapper {
-                    top: -191px;
-                    margin-bottom: -191px;
-                    padding-top: 191px;
-                    overflow-x: hidden;
-                    overflow-y: hidden;
+                    // top: -191px;
+                    // margin-bottom: -191px;
+                    // padding-top: 191px;
+                    // overflow-x: hidden;
+                    // overflow-y: hidden;
                     // height: calc(100vh - 51px);
                   }
 
@@ -359,7 +253,18 @@ class DetailsPage extends React.Component {
             }}
           ></style>
 
-          <Styled_BackgroundImg id="heroImg">
+          {/* <Styled_BackgroundImg id="heroImg">
+          <GraphImg
+            image={product.image[0]}
+            transforms={["quality=value:80"]}
+            maxWidth={1920}
+            fadeIn={false}
+            blurryPlaceholder={false}
+          />
+        </Styled_BackgroundImg> */}
+
+          <Styled_Img ref={div => (gsap__primaryImg = div)}>
+            <div className="productStage"></div>
             <GraphImg
               image={product.image[0]}
               transforms={["quality=value:80"]}
@@ -367,192 +272,188 @@ class DetailsPage extends React.Component {
               fadeIn={false}
               blurryPlaceholder={false}
             />
-          </Styled_BackgroundImg>
+          </Styled_Img>
 
-          <Styled_Title ref={h2 => (this.gsap__title = h2)}>
-            {product.name}
-          </Styled_Title>
+          <Styled_CMScontent className="hero_details">
+            <Styled_Title ref={h2 => (gsap__title = h2)}>
+              {product.name}
+            </Styled_Title>
 
-          <p ref={p => (this.gsap__title_p = p)}>{product.description}</p>
+            <p className="productPrice">£{product.price}</p>
+            <p className="productVAT">Includes VAT + Delivery</p>
 
-          <Styled_ProductInfoDisplay>
-            <Styled_Img ref={div => (this.gsap__primaryImg = div)}>
-              <GraphImg
-                image={product.image[0]}
-                transforms={["quality=value:80"]}
-                maxWidth={500}
-              />
-            </Styled_Img>
-            <Styled_CMScontent>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: product.detailedDescription.html,
+            {/*
+            <p ref={p => (gsap__title_p = p)}>{product.description}</p>
+
+            <div
+              dangerouslySetInnerHTML={{
+                __html: product.detailedDescription.html,
+              }}
+              ref={div => (gsap__description = div)}
+            ></div>
+
+            <p
+              style={{ textAlign: "center", marginTop: "50px" }}
+              ref={p => (gsap__callText = p)}
+            >
+              If you have a questions you can always call{" "}
+              <a
+                href="tel:080012341234"
+                style={{
+                  textDecoration: "underline",
+                  display: "inline-block",
                 }}
-                ref={div => (this.gsap__description = div)}
-              ></div>
-              <p ref={p => (this.gsap__price = p)}>£{product.price}</p>
+              >
+                0800 1234 1234
+              </a>{" "}
+              and speak to an advisor.
+            </p>
+            */}
 
-              <p
-                style={{ textAlign: "center", marginTop: "50px" }}
-                ref={p => (this.gsap__callText = p)}
-              >
-                If you have a questions you can always call{" "}
-                <a
-                  href="tel:080012341234"
-                  style={{
-                    textDecoration: "underline",
-                    display: "inline-block",
-                  }}
-                >
-                  0800 1234 1234
-                </a>{" "}
-                and speak to an advisor.
-              </p>
-              <p
-                style={{ textAlign: "center" }}
-                ref={p => (this.gsap__addToCart = p)}
-              >
-                <Styled_btn
-                  className="snipcart-add-item"
-                  data-item-id={product.id}
-                  data-item-price={product.price}
-                  data-item-url={pageContext.pageURL}
-                  data-item-description={product.description}
-                  data-item-image={product.image[0].url}
-                  data-item-name={product.name}
-                >
-                  Add to cart
-                </Styled_btn>
-              </p>
-              <p style={{ textAlign: "center" }}>
-                <Styled_btn
-                  btn_sml
-                  onClick={() => {
-                    document.documentElement.classList.remove("showViewing")
-                    document.documentElement.classList.toggle("showEnquire")
-                    // document.documentElement.classList.toggle("pageNoScrollY")
-                  }}
-                  ref={button => (this.gsap__enquireBtn = button)}
-                >
-                  Enquire
-                </Styled_btn>
-                <Styled_btn
-                  btn_sml
-                  onClick={() => {
-                    document.documentElement.classList.remove("showEnquire")
-                    document.documentElement.classList.toggle("showViewing")
-                    // document.documentElement.classList.toggle("pageNoScrollY")
-                  }}
-                  ref={button => (this.gsap__bookViewingBtn = button)}
-                >
-                  Book a viewing
-                </Styled_btn>
-                {/* <Styled_btn printBtn onClick={window.print}>
+            <Styled_btn
+              btn_selected
+              className="snipcart-add-item"
+              data-item-id={product.id}
+              data-item-price={product.price}
+              data-item-url={pageContext.pageURL}
+              data-item-description={product.description}
+              data-item-image={product.image[0].url}
+              data-item-name={product.name}
+            >
+              Add to cart
+            </Styled_btn>
+
+            <br></br>
+
+            <Styled_btn
+              onClick={() => {
+                document.documentElement.classList.remove("showEnquire")
+                document.documentElement.classList.toggle("showViewing")
+                // document.documentElement.classList.toggle("pageNoScrollY")
+              }}
+              ref={button => (gsap__bookViewingBtn = button)}
+            >
+              Book a viewing
+            </Styled_btn>
+
+            <br></br>
+
+            <Styled_btn
+              onClick={() => {
+                document.documentElement.classList.remove("showViewing")
+                document.documentElement.classList.toggle("showEnquire")
+                // document.documentElement.classList.toggle("pageNoScrollY")
+              }}
+              ref={button => (gsap__enquireBtn = button)}
+            >
+              Enquire
+            </Styled_btn>
+
+            {/* <Styled_btn printBtn onClick={window.print}>
               Print
             </Styled_btn> */}
-              </p>
-            </Styled_CMScontent>
-          </Styled_ProductInfoDisplay>
+          </Styled_CMScontent>
+
           <Form_Enquire product={product.name} pageURL={pageContext.pageURL} />
           <Form_Viewing product={product.name} pageURL={pageContext.pageURL} />
         </Styled_SiteContainer>
+      </Div__detail_hero_block>
 
-        <Styled_section>
-          <Styled_SiteContainer>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-              fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
-              nemo similique, sequi sunt ratione ab nam consequuntur placeat
-              perspiciatis! Quod commodi libero fuga.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-              fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
-              nemo similique, sequi sunt ratione ab nam consequuntur placeat
-              perspiciatis! Quod commodi libero fuga.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-              fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
-              nemo similique, sequi sunt ratione ab nam consequuntur placeat
-              perspiciatis! Quod commodi libero fuga.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-              fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
-              nemo similique, sequi sunt ratione ab nam consequuntur placeat
-              perspiciatis! Quod commodi libero fuga.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-              fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
-              nemo similique, sequi sunt ratione ab nam consequuntur placeat
-              perspiciatis! Quod commodi libero fuga.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-              fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
-              nemo similique, sequi sunt ratione ab nam consequuntur placeat
-              perspiciatis! Quod commodi libero fuga.
-            </p>
-            <p>
-              1234 Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Impedit fugiat, excepturi tempora a necessitatibus incidunt
-              voluptatibus nemo similique, sequi sunt ratione ab nam
-              consequuntur placeat perspiciatis! Quod commodi libero fuga.
-            </p>
-          </Styled_SiteContainer>
-        </Styled_section>
+      {/* <Styled_section>
+        <Styled_SiteContainer>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+            fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
+            nemo similique, sequi sunt ratione ab nam consequuntur placeat
+            perspiciatis! Quod commodi libero fuga.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+            fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
+            nemo similique, sequi sunt ratione ab nam consequuntur placeat
+            perspiciatis! Quod commodi libero fuga.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+            fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
+            nemo similique, sequi sunt ratione ab nam consequuntur placeat
+            perspiciatis! Quod commodi libero fuga.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+            fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
+            nemo similique, sequi sunt ratione ab nam consequuntur placeat
+            perspiciatis! Quod commodi libero fuga.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+            fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
+            nemo similique, sequi sunt ratione ab nam consequuntur placeat
+            perspiciatis! Quod commodi libero fuga.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+            fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
+            nemo similique, sequi sunt ratione ab nam consequuntur placeat
+            perspiciatis! Quod commodi libero fuga.
+          </p>
+          <p>
+            1234 Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Impedit fugiat, excepturi tempora a necessitatibus incidunt
+            voluptatibus nemo similique, sequi sunt ratione ab nam consequuntur
+            placeat perspiciatis! Quod commodi libero fuga.
+          </p>
+        </Styled_SiteContainer>
+      </Styled_section>
 
-        <Styled_section2>
-          <Styled_SiteContainer>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-              fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
-              nemo similique, sequi sunt ratione ab nam consequuntur placeat
-              perspiciatis! Quod commodi libero fuga.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-              fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
-              nemo similique, sequi sunt ratione ab nam consequuntur placeat
-              perspiciatis! Quod commodi libero fuga.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-              fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
-              nemo similique, sequi sunt ratione ab nam consequuntur placeat
-              perspiciatis! Quod commodi libero fuga.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-              fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
-              nemo similique, sequi sunt ratione ab nam consequuntur placeat
-              perspiciatis! Quod commodi libero fuga.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-              fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
-              nemo similique, sequi sunt ratione ab nam consequuntur placeat
-              perspiciatis! Quod commodi libero fuga.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-              fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
-              nemo similique, sequi sunt ratione ab nam consequuntur placeat
-              perspiciatis! Quod commodi libero fuga.
-            </p>
-            <p>
-              1234 Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Impedit fugiat, excepturi tempora a necessitatibus incidunt
-              voluptatibus nemo similique, sequi sunt ratione ab nam
-              consequuntur placeat perspiciatis! Quod commodi libero fuga.
-            </p>
-          </Styled_SiteContainer>
-        </Styled_section2>
-      </>
-    )
-  }
+      <Styled_section2>
+        <Styled_SiteContainer>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+            fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
+            nemo similique, sequi sunt ratione ab nam consequuntur placeat
+            perspiciatis! Quod commodi libero fuga.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+            fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
+            nemo similique, sequi sunt ratione ab nam consequuntur placeat
+            perspiciatis! Quod commodi libero fuga.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+            fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
+            nemo similique, sequi sunt ratione ab nam consequuntur placeat
+            perspiciatis! Quod commodi libero fuga.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+            fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
+            nemo similique, sequi sunt ratione ab nam consequuntur placeat
+            perspiciatis! Quod commodi libero fuga.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+            fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
+            nemo similique, sequi sunt ratione ab nam consequuntur placeat
+            perspiciatis! Quod commodi libero fuga.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+            fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
+            nemo similique, sequi sunt ratione ab nam consequuntur placeat
+            perspiciatis! Quod commodi libero fuga.
+          </p>
+          <p>
+            1234 Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Impedit fugiat, excepturi tempora a necessitatibus incidunt
+            voluptatibus nemo similique, sequi sunt ratione ab nam consequuntur
+            placeat perspiciatis! Quod commodi libero fuga.
+          </p>
+        </Styled_SiteContainer>
+      </Styled_section2> */}
+    </>
+  )
 }
 
 export const pageQuery = graphql`

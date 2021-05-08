@@ -67,9 +67,10 @@ const Nav__mainNav = styled.nav`
   top: 0;
   left: 0;
   width: 100%;
-  background: linear-gradient(0deg, #6db2c300 0%, #6db2c3 100%);
   padding: 0;
   z-index: 5;
+  background: linear-gradient(0deg, #6db2c300 0%, #6db2c3 100%);
+  transition: background ease 0.5s;
 
   .showMobileNav & {
     background: #3d8799;

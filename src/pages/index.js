@@ -1,4 +1,5 @@
 import React from "react"
+import { useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import GraphImg from "graphcms-image"
 import styled from "styled-components"
@@ -124,6 +125,11 @@ const IndexPage = () => {
   const {
     gcms: { welcomes },
   } = useStaticQuery(pageQuery)
+
+  useEffect(() => {
+    document.body.style.backgroundColor = "#fff"
+    document.getElementsByTagName("nav")[0].style = ""
+  }, [])
 
   return (
     <>

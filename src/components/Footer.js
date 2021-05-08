@@ -7,6 +7,8 @@ const bp_max_desktop = "@media (max-width: 1024px)"
 const bp_desktop_max = "1400px"
 
 const Styled_footer = styled.footer`
+  background-color: #fff;
+
   .footerContainer {
     ${bp_min_desktop} {
       display: flex;

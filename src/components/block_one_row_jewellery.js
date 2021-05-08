@@ -473,7 +473,7 @@ const Block_one_row_jewellery = () => {
                 <p className="productDesc">Silver 1.2ct Round Blue Diamond</p>
               </a>
             </Div__productRow>
-            <Div__productRow>
+            {/* <Div__productRow>
               <a href="/" className="productItem productItem6">
                 <img
                   className="productImg"
@@ -624,7 +624,7 @@ const Block_one_row_jewellery = () => {
                 <div className="productStage"></div>
                 <p className="productDesc">Silver 1.2ct Round Blue Diamond</p>
               </a>
-            </Div__productRow>
+            </Div__productRow> */}
           </div>
         </Styled_SiteContainer>
       </Div__block_one_row_jewellery>
