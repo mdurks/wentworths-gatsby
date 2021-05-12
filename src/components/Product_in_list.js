@@ -249,7 +249,7 @@ const Product = props => {
       }
     )
     tl.to(document.querySelector(".productsPageHeaeder").childNodes, {
-      duration: 0.5,
+      duration: 0.25,
       ease: Power2.easeInOut,
       opacity: 0,
     })

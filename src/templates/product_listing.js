@@ -103,7 +103,7 @@ const ProductPage = ({
       delay: 0.5,
       opacity: 1,
       duration: 1.5,
-      stagger: 0.5,
+      stagger: 0.35,
     })
     //
     //
