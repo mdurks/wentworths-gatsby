@@ -60,6 +60,12 @@ const Styled_ProductItem = styled(Link)`
         top: 20px;
         color: #000;
       }
+
+      .productPrice {
+        top: 20px;
+        color: #000;
+        opacity: 1;
+      }
     }
 
     /* &:nth-child(even):hover {
@@ -122,6 +128,14 @@ const Styled_ProductItem = styled(Link)`
     margin: 200px auto 0;
     line-height: 25px;
     color: #a59985;
+    transition: all ease 0.5s;
+  }
+
+  .productPrice {
+    position: relative;
+    top: 0;
+    color: #a59985;
+    opacity: 0;
     transition: all ease 0.5s;
   }
 `
@@ -318,9 +332,9 @@ const Product = props => {
         <div className="productStage"></div>
       </div>
       <p className="productDesc">{props.product.name}</p>
+      <p className="productPrice">£{props.product.price}</p>
       {/* <div>
         <p>{props.product.description}</p>
-        <p>£{props.product.price}</p>
       </div> */}
     </Styled_ProductItem>
   )
