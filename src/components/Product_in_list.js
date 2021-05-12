@@ -27,13 +27,17 @@ const Styled_ProductItem = styled(Link)`
       display: block;
       padding: 100px 0 30px;
 
-      .productImg {
+      .image_to_animate_on_click {
+        top: 70px;
+      }
+
+      /* .productImg {
         top: 71px;
       }
 
       .productStage {
         top: 187px;
-      }
+      } */
     }
   }
 
@@ -58,7 +62,7 @@ const Styled_ProductItem = styled(Link)`
       }
     }
 
-    &:nth-child(even):hover {
+    /* &:nth-child(even):hover {
       .productImg {
         top: 36px;
       }
@@ -66,7 +70,7 @@ const Styled_ProductItem = styled(Link)`
       .productStage {
         top: 197px;
       }
-    }
+    } */
   }
 
   img {
@@ -194,11 +198,19 @@ const Product = props => {
     //     height: target_image_height,
     //   },
     // })
-
+    //
+    // find original position of element, and because they're placed unevenly on the yaxis,
+    // remove any extra 'top' that might be there
     let originY =
       window.scrollY +
       document.querySelector(tl_target_image_container).getBoundingClientRect()
-        .top
+        .top -
+      Number(
+        window
+          .getComputedStyle(document.querySelector(tl_target_image_container))
+          .getPropertyValue("top")
+          .slice(0, -2)
+      )
     //
     let destination_width = 540
     let destination_height = 540
@@ -212,7 +224,7 @@ const Product = props => {
     let parent_offset_top = window.innerHeight / 2 - destination_height / 2
     //
     let destination_x = parent_offset_right * -1 + parent_width * 0.3
-    let destination_y = window.scrollY + parent_offset_top - originY // fix this static 301 value
+    let destination_y = window.scrollY + parent_offset_top - originY
     //
     tl.set(
       document.querySelector(tl_target_image_container).nextElementSibling,
