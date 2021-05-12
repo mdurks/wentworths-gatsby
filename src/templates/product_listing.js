@@ -84,7 +84,7 @@ const ProductPage = ({
   pageContext,
 }) => {
   // console.log("pageContext: ", pageContext)
-  // console.log("products: ", products)
+  console.log("products: ", products)
 
   let return_array_center_out = a => {
     var o = [],
@@ -257,6 +257,9 @@ export const pageQuery = graphql`
         productType
         price
         description
+        gemstone
+        metal
+        stoneCut
         createdAt
         image {
           id
