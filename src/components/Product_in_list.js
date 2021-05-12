@@ -62,8 +62,8 @@ const Styled_ProductItem = styled(Link)`
       }
 
       .productPrice {
-        top: 20px;
-        color: #000;
+        top: 25px;
+        color: #ba9b7c;
         opacity: 1;
       }
     }
@@ -135,8 +135,14 @@ const Styled_ProductItem = styled(Link)`
     position: relative;
     top: 0;
     color: #a59985;
-    opacity: 0;
+    font-size: 24px;
     transition: all ease 0.5s;
+
+    ${bp_min_desktop} {
+      font-size: 30px;
+      top: -20px;
+      opacity: 0;
+    }
   }
 `
 
@@ -152,6 +158,10 @@ const Styled_Img = styled.div`
 `
 
 const Product = props => {
+  //
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
+  }
   //
   let tl = gsap.timeline()
   let tl_duration = 1.5
