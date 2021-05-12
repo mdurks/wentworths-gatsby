@@ -66,6 +66,7 @@ const Div__pageHeader = styled.div`
 
 const Div__productRow = styled.div`
   text-align: center;
+  /* outline: 1px solid rgba(0, 0, 0, 0.3); */
 
   ${bp_min_desktop} {
     display: flex;
@@ -214,7 +215,7 @@ const ProductPage = ({
               diamond, chosen by our experts, for brilliance and shine.
             </p>
           </Div__pageHeader>
-          <Div__productRow>
+          <Div__productRow className="productRow">
             {products.map(({ id, ...product }, index) => (
               <>
                 <Product_in_list

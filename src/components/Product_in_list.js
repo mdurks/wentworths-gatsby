@@ -80,6 +80,7 @@ const Styled_ProductItem = styled(Link)`
     transform: translateX(-50%);
     width: 200px;
     height: 200px;
+    /* outline: 1px solid rgba(0, 0, 0, 0.3); */
   }
 
   .productImg {
@@ -133,8 +134,9 @@ const Styled_Img = styled.div`
 `
 
 const Product = props => {
+  //
   let tl = gsap.timeline()
-  let tl_duration = 1.25
+  let tl_duration = 1.5
   let tl_target_image_container = `.image_${props.product.slug}`
 
   let page_exit_animation = (exit, node) => {
@@ -161,16 +163,16 @@ const Product = props => {
     // Calculate Image Size
     //
     // get width of image
-    let target_image_width = document
-      .querySelector(tl_target_image_container)
-      .getBoundingClientRect().width
-    // get height of image
-    let target_image_height =
-      document
-        .querySelector(tl_target_image_container)
-        .firstElementChild.getBoundingClientRect().height - 45
-    //
-    console.log(target_image_width, target_image_height)
+    // let target_image_width = document
+    //   .querySelector(tl_target_image_container)
+    //   .getBoundingClientRect().width
+    // // get height of image
+    // let target_image_height =
+    //   document
+    //     .querySelector(tl_target_image_container)
+    //     .firstElementChild.getBoundingClientRect().height - 45
+    // //
+    // console.log(target_image_width, target_image_height)
     //
     // Begin Animating Image
     //
@@ -197,23 +199,21 @@ const Product = props => {
       window.scrollY +
       document.querySelector(tl_target_image_container).getBoundingClientRect()
         .top
-
-    let originX = document
-      .querySelector(tl_target_image_container)
-      .getBoundingClientRect().left
-
-    console.log("Origin-X-Y: ", originY, originX)
-
+    //
     let destination_width = 540
     let destination_height = 540
-    let destination_x = 325 //- originX
-    let destination_y = window.scrollY + 244 - originY
-
-    //Origin-X-Y:  621 227
-    //destination-X-Y:  98 -407
-
-    console.log("destination-X-Y: ", destination_x, destination_y)
-
+    //
+    let parent_width = document.querySelector(".productRow").offsetWidth
+    let parent_offset_right =
+      document.querySelector(tl_target_image_container).parentElement
+        .offsetLeft -
+      document.querySelector(".productRow").offsetLeft +
+      5
+    let parent_offset_top = window.innerHeight / 2 - destination_height / 2
+    //
+    let destination_x = parent_offset_right * -1 + parent_width * 0.3
+    let destination_y = window.scrollY + parent_offset_top - originY // fix this static 301 value
+    //
     tl.set(
       document.querySelector(tl_target_image_container).nextElementSibling,
       {
@@ -222,39 +222,38 @@ const Product = props => {
         },
       }
     )
-
-    // tl.set(tl_target_image_container, {
-    //   css: {
-    //     zIndex: 20,
-    //     position: "absolute",
-    //     top: originY,
-    //     left: originX,
-    //     width: target_image_width,
-    //     height: target_image_height,
-    //   },
-    // })
-    //
-    // animate image to new position, filling the whole screen, centered and in the same position as the same image on the incoming product detail page, seamlessly
-    tl.to(tl_target_image_container, {
-      duration: tl_duration,
+    tl.to(document.querySelector(".productsPageHeaeder").childNodes, {
+      duration: 0.5,
       ease: Power2.easeInOut,
-      left: destination_x,
-      // top: window.innerWidth < 768 ? window.scrollY + 100 : window.scrollY,
-      top: destination_y,
-      width: destination_width,
-      height: destination_height,
+      opacity: 0,
     })
     //
+    // animate image to new position, filling the whole screen, centered and in the same position as the same image on the incoming product detail page, seamlessly
     tl.to(
-      document.querySelector(".productsPageHeaeder").childNodes,
+      tl_target_image_container,
       {
-        duration: 1,
+        duration: tl_duration,
         ease: Power2.easeInOut,
-        opacity: 0,
+        left: destination_x,
+        // top: window.innerWidth < 768 ? window.scrollY + 100 : window.scrollY,
+        top: destination_y,
+        width: destination_width,
+        height: destination_height,
       },
-      "-=1.25"
+      "-=0.5"
     )
-
+    //
+    tl.to(
+      document.querySelector(tl_target_image_container + " .productStage"),
+      {
+        duration: tl_duration - tl_duration * 0.5,
+        ease: Power2.out,
+        width: "433px",
+        height: "176px",
+      },
+      `-=${tl_duration}`
+    )
+    //
     let jewellery_items_array = Array.from(
       document.querySelectorAll(".productInListItem")
     )
@@ -262,13 +261,13 @@ const Product = props => {
     tl.to(
       jewellery_items_array,
       {
-        duration: 0.6,
+        duration: 0.5,
         ease: Power2.easeInOut,
         opacity: 0,
         y: 20,
-        stagger: 0.1,
+        stagger: 0.075,
       },
-      "-=1.5"
+      `-=${tl_duration}`
     )
     //
     // Fade the page out

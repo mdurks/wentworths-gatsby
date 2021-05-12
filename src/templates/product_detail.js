@@ -13,7 +13,7 @@ import Form_Viewing from "../components/Form-Viewing"
 import styled, { css } from "styled-components"
 import { Styled_SiteContainer } from "../styles/commonStyles"
 
-import { gsap, Power2 } from "gsap/all"
+import { gsap, Power3 } from "gsap/all"
 
 const bp_min_desktop = "@media (min-width: 1024px)"
 const section_vertical_height = "100vh"
@@ -105,6 +105,7 @@ const Styled_Img = styled.div`
   transform: translate(-50%, -50%);
   width: 540px;
   height: 540px;
+  /* outline: 1px solid rgba(0, 0, 0, 0.3); */
 `
 
 const Styled_CMScontent = styled.div`
@@ -133,12 +134,12 @@ const Styled_btn = styled.button`
   font-family: "Playfair Display", serif;
   font-family: "Raleway", sans-serif;
   font-size: 18px;
-  transition: all ease 0.4s;
+  transition: background-color ease 0.4s;
   opacity: 0;
   /* box-shadow: inset 0px 7px 11px 0px rgba(0, 0, 0, 0.3); */
 
   @media (min-width: 768px) {
-    display: inline-block;
+    /* display: inline-block; */
     margin: 0 0 22px;
     padding: 7px 36px;
     font-size: 15px;
@@ -184,15 +185,17 @@ const DetailsPage = ({
 
   useEffect(() => {
     //
+    let previous_page_exit_animation_duration = 1.5
     let hero_detail_els = document.querySelector(".hero_details").childNodes
 
     gsap.to(hero_detail_els, {
-      delay: 0.75,
+      delay: previous_page_exit_animation_duration,
       opacity: 1,
-      duration: 1.5,
-      stagger: 0.25,
-      y: 20,
-      ease: Power2.easeInOut,
+      duration: 1,
+      stagger: 0.2,
+      ease: Power3.inOut,
+      y: -30,
+      // ease: Power3.out,
     })
     //
     // Hero block parallax
@@ -323,8 +326,6 @@ const DetailsPage = ({
               Add to cart
             </Styled_btn>
 
-            <br></br>
-
             <Styled_btn
               onClick={() => {
                 document.documentElement.classList.remove("showEnquire")
@@ -335,8 +336,6 @@ const DetailsPage = ({
             >
               Book a viewing
             </Styled_btn>
-
-            <br></br>
 
             <Styled_btn
               onClick={() => {
