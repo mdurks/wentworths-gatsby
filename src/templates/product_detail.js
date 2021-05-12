@@ -185,6 +185,33 @@ const DetailsPage = ({
 
   useEffect(() => {
     //
+    // intercept browser action to go back and stop it
+    // call function to do exit animation, then redirect url to previous page
+    history.pushState(null, document.title, location.href)
+    window.addEventListener("popstate", function (event) {
+      history.pushState(null, document.title, location.href)
+      exit_animation()
+    })
+    //
+    let exit_animation = () => {
+      //
+      let pathArray = window.location.href.split("/")
+      let newPathname = ""
+      for (let i = 0; i < pathArray.length - 2; i++) {
+        newPathname += pathArray[i] + "/"
+      }
+      window.location = newPathname
+      //
+      gsap.to(".tl-wrapper--mount", {
+        opacity: 0,
+        duration: 0.3,
+        ease: Power3.inOut,
+        y: 30,
+      })
+    }
+
+    // JS to go back
+    //
     let previous_page_exit_animation_duration = 1.5
     let hero_detail_els = document.querySelector(".hero_details").childNodes
 
