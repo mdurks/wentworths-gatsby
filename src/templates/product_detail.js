@@ -200,13 +200,36 @@ const Div_detailed_description_block = styled.section`
     }
   }
 
+  .detailed_description_text {
+    opacity: 0;
+  }
+
   .productScrollingImg {
     position: relative;
     top: 100px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     /* outline: 1px solid grey; */
     opacity: 0;
-    transform: scale(0.65);
+    transform: scale(0.8);
+  }
+
+  .graphcms-image-outer-wrapper {
+    transition: all 0.4s ease;
+    transform: scale(1);
+    cursor: pointer;
+
+    .productScrollingImg {
+      box-shadow: 1px 1px 7px 1px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s ease;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+
+      .productScrollingImg {
+        box-shadow: 5px 5px 15px 3px rgba(0, 0, 0, 0.2);
+      }
+    }
   }
 `
 
@@ -290,6 +313,18 @@ const DetailsPage = ({
       scrollTrigger: {
         trigger: ".detailed_description_block",
         // markers: true,
+        start: "top 70%",
+        toggleActions: "play none none none",
+      },
+      ease: Power3.inOut,
+      opacity: 1,
+      duration: 2,
+    })
+    //
+    gsap.to(".detailed_description_text", {
+      scrollTrigger: {
+        trigger: ".detailed_description_block",
+        // markers: true,
         start: "top top",
         toggleActions: "play none none reset",
         scrub: true,
@@ -310,15 +345,15 @@ const DetailsPage = ({
         scrollTrigger: {
           trigger: product_scrolling_images[i],
           // markers: true,
-          start: "-20% 50%",
-          toggleActions: "play none none none",
+          start: "-60% 50%",
+          toggleActions: "play none none reset",
           // scrub: true,
         },
-        duration: 1,
+        duration: 0.5,
         ease: Power3.inOut,
         y: -100,
         opacity: 1,
-        scale: 0.8,
+        scale: 0.9,
       })
     }
     //
