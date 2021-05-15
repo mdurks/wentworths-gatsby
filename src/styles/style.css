@@ -30,6 +30,7 @@ html {
 
 * {
   margin-top: 0;
+  /* outline: 1px solid; */
 }
 
 /* @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Raleway:wght@400;700&display=swap"); */

@@ -5,6 +5,7 @@ import GraphImg from "graphcms-image"
 
 //import Layout from "../components/layout"
 
+import Block_bespoke_design_advert from "../components/block_bespoke_design_advert"
 import Form_Enquire from "../components/Form-Enquire"
 import Form_Viewing from "../components/Form-Viewing"
 
@@ -13,11 +14,14 @@ import Form_Viewing from "../components/Form-Viewing"
 import styled, { css } from "styled-components"
 import { Styled_SiteContainer } from "../styles/commonStyles"
 
-import { gsap, Power3 } from "gsap/all"
+import { gsap, ScrollTrigger, Power3 } from "gsap/all"
+
+gsap.registerPlugin(ScrollTrigger)
+gsap.core.globals("ScrollTrigger", ScrollTrigger)
 
 const bp_min_desktop = "@media (min-width: 1024px)"
 const section_vertical_height = "100vh"
-const section_vertical_padding = "0vh"
+const section_vertical_padding = "5vh"
 
 const Div__detail_hero_block = styled.div`
   min-height: 100vh;
@@ -160,12 +164,50 @@ const Styled_btn = styled.button`
     `};
 `
 
-const Styled_section = styled.section`
-  background-color: #c5c3ac;
-`
+const Div_detailed_description_block = styled.section`
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: #fff;
 
-const Styled_section2 = styled.section`
-  background-color: #b3b091;
+  ${bp_min_desktop} {
+    min-height: calc(100vh + ${section_vertical_padding});
+    padding: 75px 0;
+  }
+
+  p + p {
+    margin-top: 40px;
+  }
+
+  .detailed_description_colWrapper {
+    display: flex;
+    flex-direction: column;
+
+    ${bp_min_desktop} {
+      flex-direction: row;
+    }
+
+    > div {
+      padding: 20px 0;
+
+      ${bp_min_desktop} {
+        flex: 1 1 50%;
+        padding: 50px;
+      }
+    }
+  }
+
+  .productScrollingImg {
+    position: relative;
+    top: 100px;
+    margin-bottom: 50px;
+    /* outline: 1px solid grey; */
+    opacity: 0;
+    transform: scale(0.65);
+  }
 `
 
 const DetailsPage = ({
@@ -174,6 +216,8 @@ const DetailsPage = ({
   },
   pageContext,
 }) => {
+  console.log("product: ", product)
+
   // reference to the DOM nodes
   let gsap__title = null
   let gsap__title_p = null
@@ -240,6 +284,46 @@ const DetailsPage = ({
     // }
     // document.addEventListener("scroll", manage_parallax, false)
     //
+    //
+    //
+    gsap.to(".detailed_description_text", {
+      scrollTrigger: {
+        trigger: ".detailed_description_block",
+        // markers: true,
+        start: "top top",
+        toggleActions: "play none none reset",
+        scrub: true,
+      },
+      ease: Power3.inOut,
+      y:
+        document.querySelector(".detailed_description_colWrapper")
+          .offsetHeight / 1.45,
+    })
+    //
+    // product scrolling images
+    let product_scrolling_images = document.querySelectorAll(
+      ".productScrollingImg"
+    )
+    //
+    for (let i = 0; i < product_scrolling_images.length; i++) {
+      gsap.to(product_scrolling_images[i], {
+        scrollTrigger: {
+          trigger: product_scrolling_images[i],
+          // markers: true,
+          start: "-20% 50%",
+          toggleActions: "play none none none",
+          // scrub: true,
+        },
+        duration: 1,
+        ease: Power3.inOut,
+        y: -100,
+        opacity: 1,
+        scale: 0.8,
+      })
+    }
+    //
+    //
+    // Set page colours
     //
     document.body.style.backgroundColor = "#e5e3de"
     document.getElementsByTagName("nav")[0].style.background =
@@ -312,34 +396,6 @@ const DetailsPage = ({
             <p className="productPrice">£{product.price}</p>
             <p className="productVAT">Includes VAT + Delivery</p>
 
-            {/*
-            <p ref={p => (gsap__title_p = p)}>{product.description}</p>
-
-            <div
-              dangerouslySetInnerHTML={{
-                __html: product.detailedDescription.html,
-              }}
-              ref={div => (gsap__description = div)}
-            ></div>
-
-            <p
-              style={{ textAlign: "center", marginTop: "50px" }}
-              ref={p => (gsap__callText = p)}
-            >
-              If you have a questions you can always call{" "}
-              <a
-                href="tel:080012341234"
-                style={{
-                  textDecoration: "underline",
-                  display: "inline-block",
-                }}
-              >
-                0800 1234 1234
-              </a>{" "}
-              and speak to an advisor.
-            </p>
-            */}
-
             <Styled_btn
               btn_selected
               className="snipcart-add-item"
@@ -385,99 +441,35 @@ const DetailsPage = ({
         </Styled_SiteContainer>
       </Div__detail_hero_block>
 
-      {/* <Styled_section>
+      <Div_detailed_description_block className="detailed_description_block">
         <Styled_SiteContainer>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-            fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
-            nemo similique, sequi sunt ratione ab nam consequuntur placeat
-            perspiciatis! Quod commodi libero fuga.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-            fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
-            nemo similique, sequi sunt ratione ab nam consequuntur placeat
-            perspiciatis! Quod commodi libero fuga.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-            fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
-            nemo similique, sequi sunt ratione ab nam consequuntur placeat
-            perspiciatis! Quod commodi libero fuga.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-            fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
-            nemo similique, sequi sunt ratione ab nam consequuntur placeat
-            perspiciatis! Quod commodi libero fuga.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-            fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
-            nemo similique, sequi sunt ratione ab nam consequuntur placeat
-            perspiciatis! Quod commodi libero fuga.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-            fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
-            nemo similique, sequi sunt ratione ab nam consequuntur placeat
-            perspiciatis! Quod commodi libero fuga.
-          </p>
-          <p>
-            1234 Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Impedit fugiat, excepturi tempora a necessitatibus incidunt
-            voluptatibus nemo similique, sequi sunt ratione ab nam consequuntur
-            placeat perspiciatis! Quod commodi libero fuga.
-          </p>
+          <div className="detailed_description_colWrapper">
+            <div>
+              {/* loop out all the product images, skipping the first one since it's the hero img */}
+              {product.image.slice(1).map((el, index) => (
+                <>
+                  <GraphImg
+                    image={el}
+                    transforms={["quality=value:80"]}
+                    maxWidth={1920}
+                    className="productScrollingImg"
+                  />
+                </>
+              ))}
+            </div>
+            <div
+              className="detailed_description_text"
+              dangerouslySetInnerHTML={{
+                __html: product.detailedDescription.html,
+              }}
+            ></div>
+          </div>
         </Styled_SiteContainer>
-      </Styled_section>
+      </Div_detailed_description_block>
 
-      <Styled_section2>
-        <Styled_SiteContainer>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-            fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
-            nemo similique, sequi sunt ratione ab nam consequuntur placeat
-            perspiciatis! Quod commodi libero fuga.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-            fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
-            nemo similique, sequi sunt ratione ab nam consequuntur placeat
-            perspiciatis! Quod commodi libero fuga.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-            fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
-            nemo similique, sequi sunt ratione ab nam consequuntur placeat
-            perspiciatis! Quod commodi libero fuga.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-            fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
-            nemo similique, sequi sunt ratione ab nam consequuntur placeat
-            perspiciatis! Quod commodi libero fuga.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-            fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
-            nemo similique, sequi sunt ratione ab nam consequuntur placeat
-            perspiciatis! Quod commodi libero fuga.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-            fugiat, excepturi tempora a necessitatibus incidunt voluptatibus
-            nemo similique, sequi sunt ratione ab nam consequuntur placeat
-            perspiciatis! Quod commodi libero fuga.
-          </p>
-          <p>
-            1234 Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Impedit fugiat, excepturi tempora a necessitatibus incidunt
-            voluptatibus nemo similique, sequi sunt ratione ab nam consequuntur
-            placeat perspiciatis! Quod commodi libero fuga.
-          </p>
-        </Styled_SiteContainer>
-      </Styled_section2> */}
+      {/* <div style="height: 2000px"></div> */}
+
+      <Block_bespoke_design_advert />
     </>
   )
 }
