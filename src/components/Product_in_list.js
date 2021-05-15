@@ -247,8 +247,8 @@ const Product = props => {
       5
     let parent_offset_top = window.innerHeight / 2 - destination_height / 2
     //
-    let destination_x = parent_offset_right * -1 + parent_width * 0.3
-    let destination_y = window.scrollY + parent_offset_top - originY
+    let destination_x = parent_offset_right * -1 + parent_width * 0.3 - 1
+    let destination_y = window.scrollY + parent_offset_top - originY + 24
     //
     tl.set(
       document.querySelector(tl_target_image_container).nextElementSibling,
