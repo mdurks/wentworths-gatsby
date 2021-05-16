@@ -68,22 +68,23 @@ const Nav__mainNav = styled.nav`
   left: 0;
   width: 100%;
   padding: 0;
-  z-index: 5;
   background: linear-gradient(0deg, #6db2c300 0%, #6db2c3 100%);
   transition: background ease 0.5s;
 
-  .showMobileNav & {
-    background: #3d8799;
-    height: 100%;
-    background: linear-gradient(0deg, #3d8799 99.9%, #6db2c3 100%);
-  }
-
   ${bp_min_desktop} {
+    z-index: 5;
     transition: all ease-out 0.5s;
     position: fixed;
     height: auto;
     background: linear-gradient(0deg, #6db2c300 0%, #6db2c3 100%);
     padding: 50px 50px 80px;
+  }
+
+  .showMobileNav & {
+    z-index: 5;
+    background: #3d8799;
+    height: 100%;
+    background: linear-gradient(0deg, #3d8799 99.9%, #6db2c3 100%);
   }
 
   .mainNav--shrink & {
@@ -109,6 +110,7 @@ const Div__mainNav__container = styled.div`
 `
 
 const A__mainNav__logo = styled.a`
+  position: relative;
   display: block;
   margin: 0;
   padding: 20px 60px 20px 20px;
@@ -118,6 +120,7 @@ const A__mainNav__logo = styled.a`
   text-decoration: none !important;
   color: white;
   transition: all ease 0.5s;
+  z-index: 5;
 
   &:hover {
     color: black;

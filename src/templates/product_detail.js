@@ -31,7 +31,7 @@ const Div__detail_hero_block = styled.div`
   justify-content: center;
   padding: 25px 0 0;
   align-items: center;
-  background-color: #e5e3de;
+  /* background-color: #e5e3de; */
 
   ${bp_min_desktop} {
     min-height: calc(${section_vertical_height} + ${section_vertical_padding});
@@ -212,21 +212,27 @@ const Div_detailed_description_block = styled.section`
     padding: 75px 0;
   }
 
-  p + p {
-    margin-top: 40px;
+  p {
+    + p {
+      margin-top: 40px;
+    }
+
+    &:last-of-type {
+      margin-bottom: 40px;
+    }
   }
 
   .detailed_description_colWrapper {
     display: flex;
     flex-direction: column;
+    padding: 30px 0 0;
 
     ${bp_min_desktop} {
       flex-direction: row;
+      padding: 0;
     }
 
     > div {
-      padding: 20px 0;
-
       ${bp_min_desktop} {
         flex: 1 1 50%;
         padding: 50px;
@@ -383,7 +389,7 @@ const DetailsPage = ({
         scrollTrigger: {
           trigger: product_scrolling_images[i],
           // markers: true,
-          start: "-60% 50%",
+          start: window.innerWidth < 768 ? "-100% 50%" : "-80% 50%",
           toggleActions: "play none none reset",
           // scrub: true,
         },
