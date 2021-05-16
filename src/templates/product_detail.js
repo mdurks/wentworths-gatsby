@@ -19,6 +19,7 @@ import { gsap, ScrollTrigger, Power3 } from "gsap/all"
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
 
+const bp_min_tablet = "@media (min-width: 768px)"
 const bp_min_desktop = "@media (min-width: 1024px)"
 const section_vertical_height = "100vh"
 const section_vertical_padding = "5vh"
@@ -28,7 +29,7 @@ const Div__detail_hero_block = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-  padding: 25px 0 70px;
+  padding: 25px 0 0;
   align-items: center;
   background-color: #e5e3de;
 
@@ -39,10 +40,13 @@ const Div__detail_hero_block = styled.div`
 
   > section {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
+    ${bp_min_desktop} {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   .productPrice {
@@ -53,25 +57,35 @@ const Div__detail_hero_block = styled.div`
   }
 
   .productVAT {
-    margin: 0 0 50px;
+    margin: 20px 0 50px;
     font-family: "Playfair Display", serif;
-    font-size: 17px;
+    font-size: 16px;
     color: #000;
     opacity: 0;
+
+    ${bp_min_desktop} {
+      margin: 10px 0 50px;
+    }
   }
 
   .productStage {
     position: absolute;
-    bottom: 0px;
+    height: 120px;
+    width: 100%;
     left: 50%;
+    bottom: -8px;
     transform: translateX(-50%);
-    width: 433px;
-    height: 176px;
     background-color: white;
     border-radius: 100%;
     box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.2),
       inset 0px 0px 20px 10px rgba(0, 0, 0, 0.08);
     transition: all ease 0.5s;
+
+    ${bp_min_desktop} {
+      bottom: 0px;
+      width: 433px;
+      height: 176px;
+    }
   }
 `
 
@@ -103,34 +117,54 @@ const Div__detail_hero_block = styled.div`
 // `
 
 const Styled_Img = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 30%;
-  transform: translate(-50%, -50%);
-  width: 540px;
-  height: 540px;
-  /* outline: 1px solid rgba(0, 0, 0, 0.3); */
+  position: relative;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 80px 0 100px;
+  width: 100%;
+  height: 100%;
+
+  ${bp_min_desktop} {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    width: 540px;
+    height: 540px;
+    margin: 0;
+    /* outline: 1px solid rgba(0, 0, 0, 0.3); */
+  }
 `
 
 const Styled_CMScontent = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 75%;
-  transform: translate(-50%, -50%);
-  width: 30%;
+  text-align: center;
+
+  ${bp_min_desktop} {
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    text-align: left;
+  }
 `
 
 const Styled_Title = styled.h2`
-  margin-bottom: 50px;
   font-size: 29px;
   color: #776a54;
   opacity: 0;
+
+  ${bp_min_desktop} {
+    margin-bottom: 50px;
+  }
 `
 
 const Styled_btn = styled.button`
   display: block;
-  margin: 50px auto;
+  margin: 25px auto;
   padding: 15px 20px;
+  width: 100%;
   color: #9c7043;
   background-color: transparent;
   border: 1px solid #b6926d;
@@ -142,10 +176,10 @@ const Styled_btn = styled.button`
   opacity: 0;
   /* box-shadow: inset 0px 7px 11px 0px rgba(0, 0, 0, 0.3); */
 
-  @media (min-width: 768px) {
-    /* display: inline-block; */
+  ${bp_min_tablet} {
     margin: 0 0 22px;
     padding: 7px 36px;
+    width: auto;
     font-size: 15px;
     cursor: pointer;
 
@@ -201,7 +235,9 @@ const Div_detailed_description_block = styled.section`
   }
 
   .detailed_description_text {
-    opacity: 0;
+    ${bp_min_desktop} {
+      opacity: 0;
+    }
   }
 
   .productScrollingImg {
@@ -239,7 +275,7 @@ const DetailsPage = ({
   },
   pageContext,
 }) => {
-  console.log("product: ", product)
+  // console.log("product: ", product)
 
   // reference to the DOM nodes
   let gsap__title = null
@@ -309,31 +345,33 @@ const DetailsPage = ({
     //
     //
     //
-    gsap.to(".detailed_description_text", {
-      scrollTrigger: {
-        trigger: ".detailed_description_block",
-        // markers: true,
-        start: "top 70%",
-        toggleActions: "play none none none",
-      },
-      ease: Power3.inOut,
-      opacity: 1,
-      duration: 2,
-    })
-    //
-    gsap.to(".detailed_description_text", {
-      scrollTrigger: {
-        trigger: ".detailed_description_block",
-        // markers: true,
-        start: "top top",
-        toggleActions: "play none none reset",
-        scrub: true,
-      },
-      ease: Power3.inOut,
-      y:
-        document.querySelector(".detailed_description_colWrapper")
-          .offsetHeight / 1.45,
-    })
+    if (window.innerWidth >= 768) {
+      gsap.to(".detailed_description_text", {
+        scrollTrigger: {
+          trigger: ".detailed_description_block",
+          // markers: true,
+          start: "top 70%",
+          toggleActions: "play none none none",
+        },
+        ease: Power3.inOut,
+        opacity: 1,
+        duration: 2,
+      })
+      //
+      gsap.to(".detailed_description_text", {
+        scrollTrigger: {
+          trigger: ".detailed_description_block",
+          // markers: true,
+          start: "top top",
+          toggleActions: "play none none reset",
+          scrub: true,
+        },
+        ease: Power3.inOut,
+        y:
+          document.querySelector(".detailed_description_colWrapper")
+            .offsetHeight / 1.45,
+      })
+    }
     //
     // product scrolling images
     let product_scrolling_images = document.querySelectorAll(
@@ -382,18 +420,16 @@ const DetailsPage = ({
                 Math.floor(Math.random() * 360) +
                 `deg 30% 90%);
                   }
-                  */
 
                   .tl-wrapper {
-                    // top: -191px;
-                    // margin-bottom: -191px;
-                    // padding-top: 191px;
-                    // overflow-x: hidden;
-                    // overflow-y: hidden;
-                    // height: calc(100vh - 51px);
+                    top: -191px;
+                    margin-bottom: -191px;
+                    padding-top: 191px;
+                    overflow-x: hidden;
+                    overflow-y: hidden;
+                    height: calc(100vh - 51px);
                   }
 
-                  /*
                   #gatsby-focus-wrapper {
                     background-image: url('/static/rings-on-necklace-large-2cc6c33b94b8a444bd171bbc1fd8047e.jpg');
                   }
