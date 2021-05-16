@@ -390,7 +390,7 @@ const DetailsPage = ({
       gsap.to(product_scrolling_images[i], {
         scrollTrigger: {
           trigger: product_scrolling_images[i],
-          markers: true,
+          // markers: true,
           start: window.innerWidth < 768 ? "-120% 50%" : "-80% 50%",
           toggleActions: "play none none reset",
           // scrub: true,
