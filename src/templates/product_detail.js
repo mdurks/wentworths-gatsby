@@ -399,7 +399,7 @@ const DetailsPage = ({
         ease: Power3.inOut,
         y: -100,
         opacity: 1,
-        scale: 0.9,
+        scale: window.innerWidth < 768 ? "1" : "0.9",
       })
     }
     //
