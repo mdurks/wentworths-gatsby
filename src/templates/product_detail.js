@@ -35,7 +35,7 @@ const Div__detail_hero_block = styled.div`
 
   ${bp_min_desktop} {
     min-height: calc(${section_vertical_height} + ${section_vertical_padding});
-    padding: 75px 0;
+    padding-top: 75px;
   }
 
   > section {
@@ -205,11 +205,13 @@ const Div_detailed_description_block = styled.section`
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background-color: #fff;
+  background-color: #f4f3f1;
 
   ${bp_min_desktop} {
     min-height: calc(100vh + ${section_vertical_padding});
-    padding: 75px 0;
+    padding: 0;
+    padding-top: 75px;
+    padding-bottom: 75px;
   }
 
   p {
@@ -241,10 +243,24 @@ const Div_detailed_description_block = styled.section`
   }
 
   .detailed_description_text {
+    opacity: 0;
+    padding-top: 20px;
+
     ${bp_min_desktop} {
-      opacity: 0;
+      height: 75vh;
+      padding-top: 0;
+      padding-right: 30px;
+      overflow-y: auto;
+      font-size: 16px;
     }
   }
+  /* &.stick_description .detailed_description_text {
+    position: fixed;
+    top: 150px;
+    width: ${
+      document.querySelector(".detailed_description_text").offsetWidth + "px"
+    };
+  } */
 
   .productScrollingImg {
     position: relative;
@@ -258,7 +274,6 @@ const Div_detailed_description_block = styled.section`
   .graphcms-image-outer-wrapper {
     transition: all 0.4s ease;
     transform: scale(1);
-    cursor: pointer;
 
     .productScrollingImg {
       box-shadow: 1px 1px 7px 1px rgba(0, 0, 0, 0.1);
@@ -266,6 +281,8 @@ const Div_detailed_description_block = styled.section`
     }
 
     @media (hover: hover) {
+      cursor: zoom-in;
+
       &:hover {
         transform: scale(1.05);
 
@@ -301,12 +318,19 @@ const Div_modal = styled.div`
     left: 0;
     top: 0;
 
+    @media (hover: hover) {
+      cursor: zoom-in;
+    }
+
     &.modalContent--zoom {
       width: 200%;
       height: auto;
 
       ${bp_min_desktop} {
         width: 150%;
+        @media (hover: hover) {
+          cursor: zoom-out;
+        }
       }
 
       div {
@@ -422,31 +446,70 @@ const DetailsPage = ({
     //
     //
     //
-    if (window.innerWidth >= 768) {
-      gsap.to(".detailed_description_text", {
-        scrollTrigger: {
-          trigger: ".detailed_description_block",
-          // markers: true,
-          start: "top 70%",
-          toggleActions: "play none none none",
-        },
-        ease: Power3.inOut,
-        opacity: 1,
-        duration: 2,
-      })
+    gsap.to(".detailed_description_text", {
+      scrollTrigger: {
+        trigger:
+          window.innerWidth < 768
+            ? ".detailed_description_text"
+            : ".detailed_description_block",
+        // markers: true,
+        start: "top 70%",
+        toggleActions: "play none none none",
+      },
+      ease: Power3.inOut,
+      opacity: 1,
+      duration: 2,
+    })
+    //
+
+    if (window.innerWidth >= 1024) {
+      let stick_detailed_description_text = () => {
+        let el = document.querySelector(".detailed_description_text")
+        el.style.position = ""
+        el.style.top = ""
+        el.style.top = el.offsetTop + "px"
+        el.style.width =
+          document.querySelector(".detailed_description_text").parentNode
+            .offsetWidth -
+          100 +
+          "px"
+        el.style.position = "fixed"
+      }
+      let un_stick_detailed_description_text = () => {
+        let el = document.querySelector(".detailed_description_text")
+        el.style.position = ""
+        el.style.top = ""
+        el.style.width = ""
+      }
+      let detailed_description_text_style = window.getComputedStyle(
+        document.querySelector(".detailed_description_block"),
+        null
+      )
+      let stick_to_bottom_detailed_description_text = () => {
+        let el = document.querySelector(".detailed_description_text")
+        el.style.position = "relative"
+        el.style.top =
+          window.scrollY -
+          Number(
+            detailed_description_text_style
+              .getPropertyValue("padding-top")
+              .slice(0, -2)
+          ) +
+          15 -
+          window.innerHeight +
+          "px"
+      }
       //
-      gsap.to(".detailed_description_text", {
-        scrollTrigger: {
-          trigger: ".detailed_description_block",
-          // markers: true,
-          start: "top top",
-          toggleActions: "play none none reset",
-          scrub: true,
-        },
-        ease: Power3.inOut,
-        y:
-          document.querySelector(".detailed_description_colWrapper")
-            .offsetHeight / 1.45,
+      ScrollTrigger.create({
+        trigger: ".detailed_description_block",
+        // markers: true,
+        start: "top top",
+        end: "bottom bottom",
+        // toggleClass: "stick_description",
+        onEnter: stick_detailed_description_text,
+        onLeave: stick_to_bottom_detailed_description_text,
+        onEnterBack: stick_detailed_description_text,
+        onLeaveBack: un_stick_detailed_description_text,
       })
     }
     //
@@ -479,8 +542,11 @@ const DetailsPage = ({
       "linear-gradient(0deg, #6db2c300 0%, #7B7262 100%)"
   }, [])
 
-  const [modalOpen, setModalOpen] = useState("none")
-  const [modalImg, setModalImg] = useState(0)
+  const [modal_open, setModal_open] = useState("none")
+  const [
+    modal_img_from_product_array,
+    setModal_img_from_product_array,
+  ] = useState(0)
 
   return (
     <>
@@ -600,8 +666,8 @@ const DetailsPage = ({
                 <>
                   <div
                     onClick={() => {
-                      setModalOpen("block")
-                      setModalImg(index + 1)
+                      setModal_open("block")
+                      setModal_img_from_product_array(index + 1)
                       document.body.classList.toggle("no_scroll")
                       if (window.innerWidth >= 768) {
                         document.getElementsByTagName("nav")[0].style.top =
@@ -619,22 +685,26 @@ const DetailsPage = ({
                 </>
               ))}
             </div>
-            <div
-              className="detailed_description_text"
-              dangerouslySetInnerHTML={{
-                __html: product.detailedDescription.html,
-              }}
-            ></div>
+            <div>
+              <div
+                className="detailed_description_text"
+                dangerouslySetInnerHTML={{
+                  __html: product.detailedDescription.html,
+                }}
+              ></div>
+            </div>
           </div>
         </Styled_SiteContainer>
       </Div_detailed_description_block>
 
       <Div_modal
-        style={{ display: modalOpen }}
+        style={{ display: modal_open }}
         onClick={() => {
-          document
-            .querySelector(".modalContent")
-            .classList.toggle("modalContent--zoom")
+          if (window.innerWidth >= 1025) {
+            document
+              .querySelector(".modalContent")
+              .classList.toggle("modalContent--zoom")
+          }
         }}
       >
         <div
@@ -642,7 +712,7 @@ const DetailsPage = ({
           onClick={e => {
             e.preventDefault()
             e.stopPropagation()
-            setModalOpen("none")
+            setModal_open("none")
             document
               .querySelector(".modalContent")
               .classList.remove("modalContent--zoom")
@@ -654,7 +724,7 @@ const DetailsPage = ({
         </div>
         <div className="modalContent">
           <GraphImg
-            image={product.image[modalImg]}
+            image={product.image[modal_img_from_product_array]}
             transforms={["quality=value:80"]}
             maxWidth={1920}
           />
