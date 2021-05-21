@@ -540,6 +540,28 @@ const DetailsPage = ({
     document.body.style.backgroundColor = "#e5e3de"
     document.getElementsByTagName("nav")[0].style.background =
       "linear-gradient(0deg, #6db2c300 0%, #7B7262 100%)"
+
+    //
+    //
+    let touchstartX = 0
+    let touchendX = 0
+
+    const slider = document.querySelector(".productStage")
+
+    function handleGesture() {
+      if (touchendX < touchstartX) console.log("swiped left!")
+      if (touchendX > touchstartX) console.log("swiped right!")
+    }
+
+    slider.addEventListener("touchstart", e => {
+      touchstartX = e.changedTouches[0].screenX
+    })
+
+    slider.addEventListener("touchend", e => {
+      touchendX = e.changedTouches[0].screenX
+      handleGesture()
+    })
+    //
   }, [])
 
   const [modal_open, setModal_open] = useState("none")
