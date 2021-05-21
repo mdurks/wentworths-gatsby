@@ -72,7 +72,7 @@ const Nav__mainNav = styled.nav`
   transition: background ease 0.5s;
 
   ${bp_min_desktop} {
-    z-index: 5;
+    z-index: 2;
     transition: all ease-out 0.5s;
     position: fixed;
     height: auto;

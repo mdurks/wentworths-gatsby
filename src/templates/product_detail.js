@@ -1,5 +1,5 @@
 import React from "react"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { graphql } from "gatsby"
 import GraphImg from "graphcms-image"
 
@@ -277,6 +277,26 @@ const Div_detailed_description_block = styled.section`
   }
 `
 
+const Div_modal = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+
+  .modalContent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: white;
+  }
+`
+
 const DetailsPage = ({
   data: {
     gcms: { product },
@@ -411,6 +431,10 @@ const DetailsPage = ({
       "linear-gradient(0deg, #6db2c300 0%, #7B7262 100%)"
   }, [])
 
+  const [modalOpen, setModalOpen] = useState('none')
+  const [modalImg, setModalImg] = useState(0)
+  const [bodyScroll, setbodyScroll] = useState('')
+
   return (
     <>
       <Div__detail_hero_block>
@@ -527,12 +551,20 @@ const DetailsPage = ({
               {/* loop out all the product images, skipping the first one since it's the hero img */}
               {product.image.slice(1).map((el, index) => (
                 <>
-                  <GraphImg
-                    image={el}
-                    transforms={["quality=value:80"]}
-                    maxWidth={1920}
-                    className="productScrollingImg"
-                  />
+                  <div
+                    onClick={() => {
+                      setModalOpen("block")
+                      setModalImg(index + 1)
+                      document.body.toggleClass("no_scroll")
+                    }}
+                  >
+                    <GraphImg
+                      image={el}
+                      transforms={["quality=value:80"]}
+                      maxWidth={1920}
+                      className="productScrollingImg"
+                    />
+                  </div>
                 </>
               ))}
             </div>
@@ -546,9 +578,24 @@ const DetailsPage = ({
         </Styled_SiteContainer>
       </Div_detailed_description_block>
 
+      <Div_modal
+        style={{ display: modalOpen }}
+        onClick={() => {setModalOpen("none"); document.body.toggleClass(
+                                                "no_scroll"
+                                              )}}
+      >
+        <div className="modalContent">
+          <GraphImg
+            image={product.image[modalImg]}
+            transforms={["quality=value:80"]}
+            maxWidth={1920}
+          />
+        </div>
+      </Div_modal>
+
       {/* <div style="height: 2000px"></div> */}
 
-      <Block_bespoke_design_advert />
+      {/* <Block_bespoke_design_advert /> */}
     </>
   )
 }
