@@ -281,19 +281,68 @@ const Div_modal = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.5);
   z-index: 5;
+  overflow: auto;
 
   .modalContent {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
+    /* position: absolute;
+    width: 100vw;
+    height: 100vh;
     background: white;
+    */
+
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+    left: 0;
+    top: 0;
+
+    &.modalContent--zoom {
+      width: 200%;
+      height: auto;
+
+      ${bp_min_desktop} {
+        width: 150%;
+      }
+
+      div {
+        width: auto;
+        height: auto;
+      }
+    }
+
+    div {
+      width: 100%;
+      height: 100%;
+    }
+
+    img {
+      object-fit: contain !important;
+    }
+  }
+
+  .modal_close {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 15px;
+    background-color: black;
+    color: white;
+    border-radius: 100%;
+    line-height: 15px;
+    font-size: 26px;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 5;
+
+    ${bp_min_desktop} {
+      top: 20px;
+      right: 20px;
+    }
   }
 `
 
@@ -412,8 +461,7 @@ const DetailsPage = ({
           trigger: product_scrolling_images[i],
           // markers: true,
           start: window.innerWidth < 768 ? "-120% 50%" : "-80% 50%",
-          toggleActions: "play none none reset",
-          // scrub: true,
+          toggleActions: "play none none none",
         },
         duration: 0.5,
         ease: Power3.inOut,
@@ -431,9 +479,8 @@ const DetailsPage = ({
       "linear-gradient(0deg, #6db2c300 0%, #7B7262 100%)"
   }, [])
 
-  const [modalOpen, setModalOpen] = useState('none')
+  const [modalOpen, setModalOpen] = useState("none")
   const [modalImg, setModalImg] = useState(0)
-  const [bodyScroll, setbodyScroll] = useState('')
 
   return (
     <>
@@ -555,7 +602,11 @@ const DetailsPage = ({
                     onClick={() => {
                       setModalOpen("block")
                       setModalImg(index + 1)
-                      document.body.toggleClass("no_scroll")
+                      document.body.classList.toggle("no_scroll")
+                      if (window.innerWidth >= 768) {
+                        document.getElementsByTagName("nav")[0].style.top =
+                          "-100px"
+                      }
                     }}
                   >
                     <GraphImg
@@ -580,10 +631,27 @@ const DetailsPage = ({
 
       <Div_modal
         style={{ display: modalOpen }}
-        onClick={() => {setModalOpen("none"); document.body.toggleClass(
-                                                "no_scroll"
-                                              )}}
+        onClick={() => {
+          document
+            .querySelector(".modalContent")
+            .classList.toggle("modalContent--zoom")
+        }}
       >
+        <div
+          className="modal_close"
+          onClick={e => {
+            e.preventDefault()
+            e.stopPropagation()
+            setModalOpen("none")
+            document
+              .querySelector(".modalContent")
+              .classList.remove("modalContent--zoom")
+            document.body.classList.toggle("no_scroll")
+            document.getElementsByTagName("nav")[0].style.top = ""
+          }}
+        >
+          X
+        </div>
         <div className="modalContent">
           <GraphImg
             image={product.image[modalImg]}
