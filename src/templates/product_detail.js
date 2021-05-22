@@ -393,7 +393,10 @@ const Div_modal = styled.div`
   }
 
   .modal_next_prev_btn {
-    @media (hover: hover) {
+    opacity: 0;
+
+    ${bp_min_desktop} {
+      opacity: 1;
       position: fixed;
       top: 50%;
       left: 50px;
@@ -414,18 +417,20 @@ const Div_modal = styled.div`
         right: 50px;
       }
 
-      &:not([disabled]):hover {
-        left: 35px;
-        top: calc(50% - 10px);
-        padding: 17px 30px 26px 12px;
-        font-size: 40px;
-      }
-
-      &--next {
+      @media (hover: hover) {
         &:not([disabled]):hover {
-          left: auto;
-          right: 35px;
-          padding: 17px 12px 26px 30px;
+          left: 35px;
+          top: calc(50% - 10px);
+          padding: 17px 30px 26px 12px;
+          font-size: 40px;
+        }
+
+        &--next {
+          &:not([disabled]):hover {
+            left: auto;
+            right: 35px;
+            padding: 17px 12px 26px 30px;
+          }
         }
       }
 
@@ -445,9 +450,6 @@ const Div_modal = styled.div`
           top: calc(50% - 6px);
         }
       }
-    }
-
-    ${bp_min_desktop} {
     }
   }
 `
@@ -624,6 +626,25 @@ const DetailsPage = ({
     }
     //
     //
+    // Swipe events for modal
+    let touchstartX = 0
+    let touchendX = 0
+    const el_to_listen_for_swipe = document.querySelector(".modalContent")
+    function handle_gesture() {
+      if (touchendX < touchstartX)
+        document.querySelector(".modal_next_prev_btn--next").click()
+      if (touchendX > touchstartX)
+        document.querySelector(".modal_next_prev_btn--prev").click()
+    }
+    el_to_listen_for_swipe.addEventListener("touchstart", e => {
+      touchstartX = e.changedTouches[0].screenX
+    })
+    el_to_listen_for_swipe.addEventListener("touchend", e => {
+      touchendX = e.changedTouches[0].screenX
+      handle_gesture()
+    })
+    //
+    //
     // Set page colours
     //
     document.body.style.backgroundColor = "#e5e3de"
@@ -682,6 +703,9 @@ const DetailsPage = ({
     product_detail_modal_content.style.left = ""
     product_detail_modal_content.style.top = ""
   }
+  //
+  //
+  //
 
   return (
     <>
