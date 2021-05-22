@@ -367,11 +367,87 @@ const Div_modal = styled.div`
     font-size: 26px;
     cursor: pointer;
     font-weight: bold;
+    user-select: none;
+    transition: all ease 0.3s;
     z-index: 5;
 
     ${bp_min_desktop} {
-      top: 20px;
-      right: 20px;
+      top: 40px;
+      right: 45px;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        padding: 28px;
+        top: 27px;
+        right: 32px;
+        font-size: 20px;
+      }
+
+      &:active {
+        padding: 22px;
+        top: 33px;
+        right: 38px;
+      }
+    }
+  }
+
+  .modal_next_prev_btn {
+    @media (hover: hover) {
+      position: fixed;
+      top: 50%;
+      left: 50px;
+      padding: 12px 16px 16px;
+      background-color: black;
+      color: white;
+      border-radius: 100%;
+      line-height: 15px;
+      font-size: 26px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all ease 0.3s;
+      user-select: none;
+      z-index: 5;
+
+      &--next {
+        left: auto;
+        right: 50px;
+      }
+
+      &:not([disabled]):hover {
+        left: 35px;
+        top: calc(50% - 10px);
+        padding: 17px 30px 26px 12px;
+        font-size: 40px;
+      }
+
+      &--next {
+        &:not([disabled]):hover {
+          left: auto;
+          right: 35px;
+          padding: 17px 12px 26px 30px;
+        }
+      }
+
+      &:disabled {
+        background-color: #c0c0c0;
+        cursor: not-allowed;
+      }
+
+      &:not([disabled]):active {
+        padding: 14px 27px 23px 9px;
+        top: calc(50% - 6px);
+      }
+
+      &--next {
+        &:not([disabled]):active {
+          padding: 14px 9px 23px 27px;
+          top: calc(50% - 6px);
+        }
+      }
+    }
+
+    ${bp_min_desktop} {
     }
   }
 `
@@ -760,7 +836,7 @@ const DetailsPage = ({
           }
         }}
       >
-        <div
+        <button
           className="modal_close"
           onClick={e => {
             e.preventDefault()
@@ -769,12 +845,57 @@ const DetailsPage = ({
             document
               .querySelector(".modalContent")
               .classList.remove("modalContent--zoom")
+            modal_desktop_zoomed = false
             document.body.classList.toggle("no_scroll")
             document.getElementsByTagName("nav")[0].style.top = ""
+            product_detail_modal_content.style.left = ""
+            product_detail_modal_content.style.top = ""
           }}
         >
           X
-        </div>
+        </button>
+        <button
+          className="modal_next_prev_btn modal_next_prev_btn--prev"
+          disabled={modal_img_from_product_array === 0}
+          onClick={e => {
+            e.preventDefault()
+            e.stopPropagation()
+            setModal_img_from_product_array(
+              modal_img_from_product_array >= 1
+                ? modal_img_from_product_array - 1
+                : 0
+            )
+            document
+              .querySelector(".modalContent")
+              .classList.remove("modalContent--zoom")
+            modal_desktop_zoomed = false
+            product_detail_modal_content.style.left = ""
+            product_detail_modal_content.style.top = ""
+          }}
+        >
+          &lt;
+        </button>
+        <button
+          className="modal_next_prev_btn modal_next_prev_btn--next"
+          disabled={modal_img_from_product_array === product.image.length - 1}
+          onClick={e => {
+            e.preventDefault()
+            e.stopPropagation()
+            setModal_img_from_product_array(
+              modal_img_from_product_array <= product.image.length - 2
+                ? modal_img_from_product_array + 1
+                : product.image.length - 1
+            )
+            document
+              .querySelector(".modalContent")
+              .classList.remove("modalContent--zoom")
+            modal_desktop_zoomed = false
+            product_detail_modal_content.style.left = ""
+            product_detail_modal_content.style.top = ""
+          }}
+        >
+          &gt;
+        </button>
         <div className="modalContent">
           <GraphImg
             image={product.image[modal_img_from_product_array]}
