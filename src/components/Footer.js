@@ -106,7 +106,8 @@ const Footer = () => (
           <h3>Newsletter</h3>
           <p>Keep up to date with news, events and special offers.</p>
           <form action="">
-            <input type="text" />
+            <label htmlFor="newsletterInput">Newsletter sign-up:</label>
+            <input id="newsletterInput" type="text" />
             <button>Submit</button>
           </form>
         </div>

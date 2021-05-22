@@ -718,7 +718,10 @@ const MainNav = () => {
 
   return (
     <>
-      <Button__burgerBtn onClick={click_mobile_burger_btn}>
+      <Button__burgerBtn
+        aria-label="mobile main navigation toggle"
+        onClick={click_mobile_burger_btn}
+      >
         <div></div>
       </Button__burgerBtn>
 
