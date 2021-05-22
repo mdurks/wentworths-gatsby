@@ -113,7 +113,7 @@ const ProductPage = ({
           scrollTrigger: {
             trigger: el,
             // markers: true,
-            start: "top 88%",
+            start: "-30px 88%",
             toggleActions: "restart none none reset",
           },
           duration: 2.5,

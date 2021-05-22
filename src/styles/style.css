@@ -44,6 +44,7 @@ body {
   line-height: normal;
   font-family: "Raleway", sans-serif;
   transition: background-color ease 0.75s;
+  cursor: default;
 }
 @media only screen and (min-width: 767px) {
   body {

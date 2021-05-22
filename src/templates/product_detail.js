@@ -389,6 +389,9 @@ const DetailsPage = ({
 
   useEffect(() => {
     //
+    //
+    // JS to go back
+    //
     // intercept browser action to go back and stop it
     // call function to do exit animation, then redirect url to previous page
     history.pushState(null, document.title, location.href)
@@ -413,14 +416,12 @@ const DetailsPage = ({
         y: 30,
       })
     }
-
-    // JS to go back
     //
-    let previous_page_exit_animation_duration = 1.5
-    let hero_detail_els = document.querySelector(".hero_details").childNodes
-
-    gsap.to(hero_detail_els, {
-      delay: previous_page_exit_animation_duration,
+    //
+    // Fade in hero elements
+    //
+    gsap.to(document.querySelector(".hero_details").childNodes, {
+      delay: 1.5,
       opacity: 1,
       duration: 1,
       stagger: 0.2,
@@ -429,7 +430,9 @@ const DetailsPage = ({
       // ease: Power3.out,
     })
     //
+    //
     // Hero block parallax
+    //
     // let heroBlock__backGroundImg = document.getElementById("heroImg")
     //
     // function manage_parallax() {
@@ -445,6 +448,7 @@ const DetailsPage = ({
     // document.addEventListener("scroll", manage_parallax, false)
     //
     //
+    // Fade in descriptive text
     //
     gsap.to(".detailed_description_text", {
       scrollTrigger: {
@@ -461,7 +465,9 @@ const DetailsPage = ({
       duration: 2,
     })
     //
-
+    //
+    // Sticky descriptive text
+    //
     if (window.innerWidth >= 1024) {
       let stick_detailed_description_text = () => {
         let el = document.querySelector(".detailed_description_text")
@@ -513,11 +519,12 @@ const DetailsPage = ({
       })
     }
     //
-    // product scrolling images
+    //
+    // Product scrolling images
+    //
     let product_scrolling_images = document.querySelectorAll(
       ".productScrollingImg"
     )
-    //
     for (let i = 0; i < product_scrolling_images.length; i++) {
       gsap.to(product_scrolling_images[i], {
         scrollTrigger: {
@@ -542,25 +549,6 @@ const DetailsPage = ({
       "linear-gradient(0deg, #6db2c300 0%, #7B7262 100%)"
 
     //
-    //
-    let touchstartX = 0
-    let touchendX = 0
-
-    const slider = document.querySelector(".productStage")
-
-    function handleGesture() {
-      if (touchendX < touchstartX) console.log("swiped left!")
-      if (touchendX > touchstartX) console.log("swiped right!")
-    }
-
-    slider.addEventListener("touchstart", e => {
-      touchstartX = e.changedTouches[0].screenX
-    })
-
-    slider.addEventListener("touchend", e => {
-      touchendX = e.changedTouches[0].screenX
-      handleGesture()
-    })
     //
   }, [])
 

@@ -14,7 +14,7 @@ const bp_min_desktop = "@media (min-width: 1024px)"
 const Styled_ProductItem = styled(Link)`
   display: block;
   position: relative;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
   padding: 30px 0;
   text-decoration: none;
   color: #90836b;
