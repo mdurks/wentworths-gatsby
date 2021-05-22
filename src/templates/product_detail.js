@@ -671,6 +671,17 @@ const DetailsPage = ({
       }
     }
   }
+  //
+  //
+  // Reset modal zoom state
+  let reset_modal_zoom_state = () => {
+    document
+      .querySelector(".modalContent")
+      .classList.remove("modalContent--zoom")
+    modal_desktop_zoomed = false
+    product_detail_modal_content.style.left = ""
+    product_detail_modal_content.style.top = ""
+  }
 
   return (
     <>
@@ -842,14 +853,9 @@ const DetailsPage = ({
             e.preventDefault()
             e.stopPropagation()
             setModal_open("none")
-            document
-              .querySelector(".modalContent")
-              .classList.remove("modalContent--zoom")
-            modal_desktop_zoomed = false
+            reset_modal_zoom_state()
             document.body.classList.toggle("no_scroll")
             document.getElementsByTagName("nav")[0].style.top = ""
-            product_detail_modal_content.style.left = ""
-            product_detail_modal_content.style.top = ""
           }}
         >
           X
@@ -865,12 +871,7 @@ const DetailsPage = ({
                 ? modal_img_from_product_array - 1
                 : 0
             )
-            document
-              .querySelector(".modalContent")
-              .classList.remove("modalContent--zoom")
-            modal_desktop_zoomed = false
-            product_detail_modal_content.style.left = ""
-            product_detail_modal_content.style.top = ""
+            reset_modal_zoom_state()
           }}
         >
           &lt;
@@ -886,12 +887,7 @@ const DetailsPage = ({
                 ? modal_img_from_product_array + 1
                 : product.image.length - 1
             )
-            document
-              .querySelector(".modalContent")
-              .classList.remove("modalContent--zoom")
-            modal_desktop_zoomed = false
-            product_detail_modal_content.style.left = ""
-            product_detail_modal_content.style.top = ""
+            reset_modal_zoom_state()
           }}
         >
           &gt;
