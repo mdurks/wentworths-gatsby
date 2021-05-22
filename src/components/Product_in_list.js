@@ -159,7 +159,7 @@ const Styled_Img = styled.div`
 
 const Product = props => {
   //
-  function numberWithCommas(x) {
+  function number_with_commas(x) {
     return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
   }
   //
@@ -342,7 +342,7 @@ const Product = props => {
         <div className="productStage"></div>
       </div>
       <p className="productDesc">{props.product.name}</p>
-      <p className="productPrice">£{props.product.price}</p>
+      <p className="productPrice">£{number_with_commas(props.product.price)}</p>
       {/* <div>
         <p>{props.product.description}</p>
       </div> */}

@@ -707,6 +707,12 @@ const DetailsPage = ({
   //
   //
   //
+  function number_with_commas(x) {
+    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
+  }
+  //
+  //
+  //
 
   return (
     <>
@@ -769,14 +775,14 @@ const DetailsPage = ({
               {product.name}
             </Styled_Title>
 
-            <p className="productPrice">£{product.price}</p>
+            <p className="productPrice">£{number_with_commas(product.price)}</p>
             <p className="productVAT">Includes VAT + Delivery</p>
 
             <Styled_btn
               btn_selected
               className="snipcart-add-item"
               data-item-id={product.id}
-              data-item-price={product.price}
+              data-item-price={number_with_commas(product.price)}
               data-item-url={pageContext.pageURL}
               data-item-description={product.description}
               data-item-image={product.image[0].url}
