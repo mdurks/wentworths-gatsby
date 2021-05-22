@@ -302,7 +302,7 @@ const Div_modal = styled.div`
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
   z-index: 5;
-  overflow: auto;
+  /* overflow: auto; */
 
   .modalContent {
     /* position: absolute;
@@ -318,6 +318,10 @@ const Div_modal = styled.div`
     left: 0;
     top: 0;
 
+    ${bp_min_desktop} {
+      padding: 30px;
+    }
+
     @media (hover: hover) {
       cursor: zoom-in;
     }
@@ -328,6 +332,8 @@ const Div_modal = styled.div`
 
       ${bp_min_desktop} {
         width: 150%;
+        padding: 100px;
+
         @media (hover: hover) {
           cursor: zoom-out;
         }
@@ -547,7 +553,7 @@ const DetailsPage = ({
     document.body.style.backgroundColor = "#e5e3de"
     document.getElementsByTagName("nav")[0].style.background =
       "linear-gradient(0deg, #6db2c300 0%, #7B7262 100%)"
-
+    //
     //
     //
   }, [])
@@ -557,6 +563,38 @@ const DetailsPage = ({
     modal_img_from_product_array,
     setModal_img_from_product_array,
   ] = useState(0)
+
+  //
+  //
+  // Modal zoomed in mouse mover
+  //
+  let modal_desktop_zoomed = false
+  let product_detail_modal = document.querySelector(".product_detail_modal")
+  let product_detail_modal_content = document.querySelector(".modalContent")
+
+  let modal_mouse_mover = () => {
+    //
+    let product_detail_modal_content_xratio =
+      window.innerWidth /
+      (product_detail_modal_content.offsetWidth + window.innerWidth)
+    //
+    let product_detail_modal_content_yratio =
+      (product_detail_modal_content.offsetHeight - window.innerHeight) /
+      window.innerHeight
+    //
+    product_detail_modal.onmousemove = function (e) {
+      if (modal_desktop_zoomed) {
+        // console.log(e.pageX, e.pageY - window.scrollY)
+        product_detail_modal_content.style.left =
+          e.pageX * product_detail_modal_content_xratio * -1 + "px"
+        product_detail_modal_content.style.top =
+          (e.pageY - window.scrollY) *
+            product_detail_modal_content_yratio *
+            -1 +
+          "px"
+      }
+    }
+  }
 
   return (
     <>
@@ -708,12 +746,17 @@ const DetailsPage = ({
       </Div_detailed_description_block>
 
       <Div_modal
+        className="product_detail_modal"
         style={{ display: modal_open }}
         onClick={() => {
-          if (window.innerWidth >= 1025) {
+          if (window.innerWidth > 1024) {
             document
               .querySelector(".modalContent")
               .classList.toggle("modalContent--zoom")
+            modal_desktop_zoomed = !modal_desktop_zoomed
+            modal_mouse_mover()
+            product_detail_modal_content.style.left = ""
+            product_detail_modal_content.style.top = ""
           }
         }}
       >
