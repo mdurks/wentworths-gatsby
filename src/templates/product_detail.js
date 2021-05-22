@@ -474,34 +474,6 @@ const DetailsPage = ({
   useEffect(() => {
     //
     //
-    // JS to go back
-    //
-    // intercept browser action to go back and stop it
-    // call function to do exit animation, then redirect url to previous page
-    history.pushState(null, document.title, location.href)
-    window.addEventListener("popstate", function (event) {
-      history.pushState(null, document.title, location.href)
-      exit_animation()
-    })
-    //
-    let exit_animation = () => {
-      //
-      let pathArray = window.location.href.split("/")
-      let newPathname = ""
-      for (let i = 0; i < pathArray.length - 2; i++) {
-        newPathname += pathArray[i] + "/"
-      }
-      window.location = newPathname
-      //
-      gsap.to(".tl-wrapper--mount", {
-        opacity: 0,
-        duration: 0.3,
-        ease: Power3.inOut,
-        y: 30,
-      })
-    }
-    //
-    //
     // Fade in hero elements
     //
     gsap.to(document.querySelector(".hero_details").childNodes, {
@@ -653,6 +625,34 @@ const DetailsPage = ({
     //
     //
     //
+    //
+    //
+    // JS to go back
+    //
+    // intercept browser action to go back and stop it
+    // call function to do exit animation, then redirect url to previous page
+    history.pushState(null, document.title, location.href)
+    window.addEventListener("popstate", function (event) {
+      history.pushState(null, document.title, location.href)
+      exit_animation()
+    })
+    //
+    let exit_animation = () => {
+      //
+      let pathArray = window.location.href.split("/")
+      let newPathname = ""
+      for (let i = 0; i < pathArray.length - 2; i++) {
+        newPathname += pathArray[i] + "/"
+      }
+      window.location = newPathname
+      //
+      gsap.to(".tl-wrapper--mount", {
+        opacity: 0,
+        duration: 0.3,
+        ease: Power3.inOut,
+        y: 30,
+      })
+    }
   }, [])
 
   const [modal_open, setModal_open] = useState("none")
@@ -666,10 +666,10 @@ const DetailsPage = ({
   // Modal zoomed in mouse mover
   //
   let modal_desktop_zoomed = false
-  let product_detail_modal = document.querySelector(".product_detail_modal")
-  let product_detail_modal_content = document.querySelector(".modalContent")
 
   let modal_mouse_mover = () => {
+    let product_detail_modal = document.querySelector(".product_detail_modal")
+    let product_detail_modal_content = document.querySelector(".modalContent")
     //
     let product_detail_modal_content_xratio =
       window.innerWidth /
@@ -696,6 +696,7 @@ const DetailsPage = ({
   //
   // Reset modal zoom state
   let reset_modal_zoom_state = () => {
+    let product_detail_modal_content = document.querySelector(".modalContent")
     document
       .querySelector(".modalContent")
       .classList.remove("modalContent--zoom")
@@ -866,8 +867,8 @@ const DetailsPage = ({
               .classList.toggle("modalContent--zoom")
             modal_desktop_zoomed = !modal_desktop_zoomed
             modal_mouse_mover()
-            product_detail_modal_content.style.left = ""
-            product_detail_modal_content.style.top = ""
+            document.querySelector(".modalContent").style.left = ""
+            document.querySelector(".modalContent").style.top = ""
           }
         }}
       >
