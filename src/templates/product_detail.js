@@ -269,11 +269,40 @@ const Div_detailed_description_block = styled.section`
     /* outline: 1px solid grey; */
     opacity: 0;
     transform: scale(0.8);
+
+    &.animating_to_modal {
+      height: 100%;
+      margin: 0;
+      top: 0;
+      box-shadow: none !important;
+      transform: translate(0px, 0px) scale(1) !important;
+      transition: none !important;
+      opacity: 1 !important;
+
+      img {
+        object-fit: contain !important;
+      }
+    }
+
+    &.reset_after_animated_to_modal {
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      opacity: 1;
+      transform: translate(0px, -100px) scale(1);
+      transition: none !important;
+
+      ${bp_min_desktop} {
+        transform: translate(0px, -100px) scale(0.9);
+      }
+    }
   }
 
   .graphcms-image-outer-wrapper {
     transition: all 0.4s ease;
     transform: scale(1);
+    height: 100%;
+    width: 100%;
 
     .productScrollingImg {
       box-shadow: 1px 1px 7px 1px rgba(0, 0, 0, 0.1);
@@ -369,6 +398,7 @@ const Div_modal = styled.div`
     font-weight: bold;
     user-select: none;
     transition: all ease 0.3s;
+    opacity: 0;
     z-index: 5;
 
     ${bp_min_desktop} {
@@ -396,7 +426,6 @@ const Div_modal = styled.div`
     opacity: 0;
 
     ${bp_min_desktop} {
-      opacity: 1;
       position: fixed;
       top: 50%;
       left: 50px;
@@ -461,15 +490,6 @@ const DetailsPage = ({
   pageContext,
 }) => {
   // console.log("product: ", product)
-
-  // reference to the DOM nodes
-  let gsap__title = null
-  let gsap__title_p = null
-  let gsap__primaryImg = null
-  let gsap__description = null
-  let gsap__callText = null
-  let gsap__enquireBtn = null
-  let gsap__bookViewingBtn = null
 
   useEffect(() => {
     //
@@ -660,7 +680,119 @@ const DetailsPage = ({
     modal_img_from_product_array,
     setModal_img_from_product_array,
   ] = useState(0)
+  //
+  //
+  // Click product image to start zoom in to modal
+  let open_modal_animation = index => {
+    document.body.classList.add("no_scroll")
+    // hide the nav by animating it off-screen
+    if (window.innerWidth >= 768) {
+      document.getElementsByTagName("nav")[0].style.top = "-100px"
+    }
 
+    // show the modal and image, but set opacity to 0
+    document.querySelector(".product_detail_modal").style.opacity = "0"
+    setModal_open("block")
+    setModal_img_from_product_array(index + 1)
+
+    let target_product_img = document.querySelector(
+      ".productScrollingImg_" + index
+    )
+    let target_product_img_parent = target_product_img.parentNode.parentNode
+
+    // 'Lift' product image off the page with css 'fixed' and place it
+    // exactly where it was, then we can animate it to fill the page
+    gsap.set(target_product_img_parent, {
+      css: {
+        position: "fixed",
+        top:
+          target_product_img_parent.offsetTop -
+          window.scrollY +
+          document.querySelector(".detailed_description_block").offsetTop +
+          "px",
+        left:
+          target_product_img_parent.offsetLeft +
+          document.querySelector(".detailed_description_block").offsetLeft +
+          "px",
+        width: target_product_img_parent.offsetWidth + "px",
+        height: target_product_img_parent.offsetHeight + "px",
+        padding: window.innerWidth < 1024 ? "0px" : "30px",
+        backgroundColor: "#ffffff00",
+        zIndex: 5,
+      },
+    })
+    target_product_img.classList.remove("reset_after_animated_to_modal")
+    target_product_img.classList.add("animating_to_modal")
+    //
+    // now animate
+    gsap.to(target_product_img_parent, {
+      duration: 0.76,
+      left: 0,
+      top: 0,
+      width: "100%",
+      height: "100%",
+      backgroundColor: "#ffffff",
+      ease: "power1.inOut",
+      // call the function that shows the modal after the animation finishes
+      onComplete: click_product,
+      onCompleteParams: [index],
+    })
+  }
+  //
+  //
+  // click_product(index)
+  let click_product = index => {
+    let target_product_img = document.querySelector(
+      ".productScrollingImg_" + index
+    )
+    target_product_img.classList.remove("animating_to_modal")
+    target_product_img.classList.add("reset_after_animated_to_modal")
+
+    // clear the css properties set on the product image after zooming it in
+    target_product_img.parentNode.parentNode.style = ""
+    target_product_img.style = ""
+
+    document.querySelector(".product_detail_modal").style.opacity = ""
+    gsap.to(
+      [
+        ".modal_close",
+        ".modal_next_prev_btn--prev",
+        ".modal_next_prev_btn--next",
+      ],
+      {
+        duration: 0.5,
+        opacity: 1,
+        stagger: 0.2,
+      }
+    )
+  }
+  //
+  //
+  // Close modal animation
+  let hide_modal = () => {
+    setModal_open("none")
+    reset_modal_zoom_state()
+  }
+
+  let close_modal_animation = () => {
+    gsap.to(".product_detail_modal", {
+      duration: 0.5,
+      opacity: 0,
+    })
+    gsap.to(
+      [
+        ".modal_close",
+        ".modal_next_prev_btn--prev",
+        ".modal_next_prev_btn--next",
+      ],
+      {
+        duration: 0.5,
+        opacity: 0,
+        stagger: 0.2,
+        onComplete: hide_modal,
+      }
+    )
+  }
   //
   //
   // Modal zoomed in mouse mover
@@ -759,7 +891,7 @@ const DetailsPage = ({
           />
         </Styled_BackgroundImg> */}
 
-          <Styled_Img ref={div => (gsap__primaryImg = div)}>
+          <Styled_Img>
             <div className="productStage"></div>
             <GraphImg
               image={product.image[0]}
@@ -771,9 +903,7 @@ const DetailsPage = ({
           </Styled_Img>
 
           <Styled_CMScontent className="hero_details">
-            <Styled_Title ref={h2 => (gsap__title = h2)}>
-              {product.name}
-            </Styled_Title>
+            <Styled_Title>{product.name}</Styled_Title>
 
             <p className="productPrice">£{number_with_commas(product.price)}</p>
             <p className="productVAT">Includes VAT + Delivery</p>
@@ -797,7 +927,6 @@ const DetailsPage = ({
                 document.documentElement.classList.toggle("showViewing")
                 // document.documentElement.classList.toggle("pageNoScrollY")
               }}
-              ref={button => (gsap__bookViewingBtn = button)}
             >
               Book a viewing
             </Styled_btn>
@@ -808,7 +937,6 @@ const DetailsPage = ({
                 document.documentElement.classList.toggle("showEnquire")
                 // document.documentElement.classList.toggle("pageNoScrollY")
               }}
-              ref={button => (gsap__enquireBtn = button)}
             >
               Enquire
             </Styled_btn>
@@ -832,20 +960,14 @@ const DetailsPage = ({
                 <>
                   <div
                     onClick={() => {
-                      setModal_open("block")
-                      setModal_img_from_product_array(index + 1)
-                      document.body.classList.toggle("no_scroll")
-                      if (window.innerWidth >= 768) {
-                        document.getElementsByTagName("nav")[0].style.top =
-                          "-100px"
-                      }
+                      open_modal_animation(index)
                     }}
                   >
                     <GraphImg
                       image={el}
                       transforms={["quality=value:80"]}
                       maxWidth={1920}
-                      className="productScrollingImg"
+                      className={`productScrollingImg productScrollingImg_${index}`}
                     />
                   </div>
                 </>
@@ -883,10 +1005,9 @@ const DetailsPage = ({
           onClick={e => {
             e.preventDefault()
             e.stopPropagation()
-            setModal_open("none")
-            reset_modal_zoom_state()
-            document.body.classList.toggle("no_scroll")
+            document.body.classList.remove("no_scroll")
             document.getElementsByTagName("nav")[0].style.top = ""
+            close_modal_animation()
           }}
         >
           X
