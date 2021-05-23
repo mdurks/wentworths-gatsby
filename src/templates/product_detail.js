@@ -772,12 +772,17 @@ const DetailsPage = ({
   let hide_modal = () => {
     setModal_open("none")
     reset_modal_zoom_state()
+    gsap.set(".product_detail_modal", {
+      scale: 1,
+    })
   }
 
   let close_modal_animation = () => {
     gsap.to(".product_detail_modal", {
-      duration: 0.5,
+      duration: 0.35,
       opacity: 0,
+      scale: 0.8,
+      ease: "power1.inOut",
     })
     gsap.to(
       [
