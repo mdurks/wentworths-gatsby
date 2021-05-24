@@ -234,9 +234,16 @@ const Div_detailed_description_block = styled.section`
       padding: 0;
     }
 
-    > div {
+    > div:first-of-type {
       ${bp_min_desktop} {
-        flex: 1 1 50%;
+        flex: 1 1 55%;
+        padding: 0 0 50px;
+      }
+    }
+
+    > div:last-of-type {
+      ${bp_min_desktop} {
+        flex: 1 1 45%;
         padding: 50px;
       }
     }
@@ -683,6 +690,7 @@ const DetailsPage = ({
   //
   //
   // Click product image to start zoom in to modal
+  //
   let open_modal_animation = index => {
     document.body.classList.add("no_scroll")
     // hide the nav by animating it off-screen
@@ -741,6 +749,7 @@ const DetailsPage = ({
   //
   //
   // click_product(index)
+  //
   let click_product = index => {
     let target_product_img = document.querySelector(
       ".productScrollingImg_" + index
@@ -769,6 +778,7 @@ const DetailsPage = ({
   //
   //
   // Close modal animation
+  //
   let hide_modal = () => {
     setModal_open("none")
     reset_modal_zoom_state()
@@ -777,7 +787,7 @@ const DetailsPage = ({
     })
   }
 
-  let close_modal_animation = () => {
+  let modal_close_animation = () => {
     gsap.to(".product_detail_modal", {
       duration: 0.35,
       opacity: 0,
@@ -796,6 +806,88 @@ const DetailsPage = ({
         stagger: 0.2,
         onComplete: hide_modal,
       }
+    )
+  }
+  //
+  //
+  // Modal show prev image
+  //
+  let modal_show_prev_image_animation = () => {
+    let target_img = document.querySelector(
+      ".modalContent  .graphcms-image-wrapper"
+    ).lastElementChild
+
+    let tl = gsap.timeline()
+
+    tl.to(target_img, {
+      duration: 0.3,
+      x: "10%",
+      opacity: -0.55,
+    })
+    tl.set(
+      target_img,
+      {
+        x: "-20%",
+        onComplete: function () {
+          setModal_img_from_product_array(
+            modal_img_from_product_array >= 1
+              ? modal_img_from_product_array - 1
+              : 0
+          )
+          reset_modal_zoom_state()
+        },
+      },
+      "+=0.35"
+    )
+    tl.to(
+      target_img,
+      {
+        duration: 0.3,
+        x: "0px",
+        opacity: 1,
+      },
+      "+=0.15"
+    )
+  }
+  //
+  //
+  // Modal show next image
+  //
+  let modal_show_next_image_animation = () => {
+    let target_img = document.querySelector(
+      ".modalContent  .graphcms-image-wrapper"
+    ).lastElementChild
+
+    let tl = gsap.timeline()
+
+    tl.to(target_img, {
+      duration: 0.3,
+      x: "-10%",
+      opacity: -0.55,
+    })
+    tl.set(
+      target_img,
+      {
+        x: "+20%",
+        onComplete: function () {
+          setModal_img_from_product_array(
+            modal_img_from_product_array <= product.image.length - 2
+              ? modal_img_from_product_array + 1
+              : product.image.length - 1
+          )
+          reset_modal_zoom_state()
+        },
+      },
+      "+=0.35"
+    )
+    tl.to(
+      target_img,
+      {
+        duration: 0.3,
+        x: "0px",
+        opacity: 1,
+      },
+      "+=0.15"
     )
   }
   //
@@ -1008,11 +1100,10 @@ const DetailsPage = ({
         <button
           className="modal_close"
           onClick={e => {
-            e.preventDefault()
             e.stopPropagation()
             document.body.classList.remove("no_scroll")
             document.getElementsByTagName("nav")[0].style.top = ""
-            close_modal_animation()
+            modal_close_animation()
           }}
         >
           X
@@ -1021,14 +1112,8 @@ const DetailsPage = ({
           className="modal_next_prev_btn modal_next_prev_btn--prev"
           disabled={modal_img_from_product_array === 0}
           onClick={e => {
-            e.preventDefault()
             e.stopPropagation()
-            setModal_img_from_product_array(
-              modal_img_from_product_array >= 1
-                ? modal_img_from_product_array - 1
-                : 0
-            )
-            reset_modal_zoom_state()
+            modal_show_prev_image_animation()
           }}
         >
           &lt;
@@ -1037,14 +1122,8 @@ const DetailsPage = ({
           className="modal_next_prev_btn modal_next_prev_btn--next"
           disabled={modal_img_from_product_array === product.image.length - 1}
           onClick={e => {
-            e.preventDefault()
             e.stopPropagation()
-            setModal_img_from_product_array(
-              modal_img_from_product_array <= product.image.length - 2
-                ? modal_img_from_product_array + 1
-                : product.image.length - 1
-            )
-            reset_modal_zoom_state()
+            modal_show_next_image_animation()
           }}
         >
           &gt;
