@@ -1,5 +1,5 @@
 import React from "react"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { graphql } from "gatsby"
 
 import { gsap, ScrollTrigger } from "gsap/all"
@@ -61,6 +61,49 @@ const Div__pageHeader = styled.div`
     ${bp_min_desktop} {
       margin: 0 0 60px;
     }
+  }
+`
+
+const Div__filter = styled.div`
+  text-align: center;
+
+  fieldset {
+    border: 1px solid #ada99f;
+  }
+
+  label {
+    display: block;
+    padding: 10px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+
+    ${bp_min_desktop} {
+      display: inline-block;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: #efede9;
+      }
+    }
+  }
+  input {
+    width: 20px;
+    height: 20px;
+    margin: 0 10px 0 0;
+    border-radius: 5px;
+    vertical-align: text-top;
+    border: 1px solid #ada99f;
+    cursor: pointer;
+  }
+
+  button {
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+    cursor: pointer;
   }
 `
 
@@ -195,10 +238,88 @@ const ProductPage = ({
       }
     }
 
+    //
+    //
+    // Filters:
+
+    // gemstone
+    // metal
+    // stoneCut
+
+    let create_filter_object = e => {
+      // reset filters every time a filter clicked
+      let filters = {}
+      let checked_filters_ids = []
+
+      // grab all checked checkboxs that are part of the filter
+      // pass their id values over which help build the filter object
+      document
+        .querySelectorAll(".filter input[type=checkbox]:checked")
+        .forEach(el => {
+          // ignore the filter 'All' as there aren't products with that attribute obviously
+          if (el.id.indexOf("All") === -1) {
+            checked_filters_ids.push(el.id)
+          }
+        })
+
+      // check ids to see if a property exists simply to add that key to the filters object
+      // the following forEeach can then push strings to the array
+      checked_filters_ids.forEach(el => {
+        if (el.indexOf("metal") !== -1) {
+          filters.metal = []
+        } else if (el.indexOf("gemstone") !== -1) {
+          filters.gemstone = []
+        } else if (el.indexOf("stoneCut") !== -1) {
+          filters.stoneCut = []
+        }
+      })
+
+      // populate filters with chosen filter value(s)
+      checked_filters_ids.forEach(el => {
+        if (el.indexOf("metal") !== -1) {
+          filters.metal.push(el.slice(el.indexOf("metal_") + 6))
+        } else if (el.indexOf("gemstone") !== -1) {
+          filters.gemstone.push(el.slice(el.indexOf("gemstone_") + 9))
+        } else if (el.indexOf("stoneCut") !== -1) {
+          filters.stoneCut.push(el.slice(el.indexOf("stoneCut_") + 9))
+        }
+      })
+
+      console.log("filters: ", filters)
+
+      // now we have defined the filter, pass it over to the function to do the filtering
+      filterProducts(filters)
+    }
+
+    // take the built filters object and do the filtering
+    // this uses a react useState hook to update the JS map
+    // function which renders out the product_in_list component
+    function filterProducts(filters) {
+      let filterKeys = Object.keys(filters)
+
+      setProductList(
+        products.filter(item => {
+          return filterKeys.every(key => {
+            return filters[key].indexOf(item[key]) !== -1
+          })
+        })
+      )
+    }
+
+    // add a 'change' eventlistener to every filter checkbox
+    document.querySelectorAll(".filter input[type=checkbox]").forEach(el => {
+      el.addEventListener("change", create_filter_object, false)
+    })
+
+    //
+    //
+
     document.body.style.backgroundColor = "#e5e3de"
     document.getElementsByTagName("nav")[0].style.background =
       "linear-gradient(0deg, #6db2c300 0%, #7B7262 100%)"
   }, [])
+
+  const [productList, setProductList] = useState(products)
 
   return (
     <>
@@ -215,8 +336,185 @@ const ProductPage = ({
               diamond, chosen by our experts, for brilliance and shine.
             </p>
           </Div__pageHeader>
+          <Div__filter className="filter">
+            <fieldset>
+              <legend>Metal:</legend>
+
+              <label for="filter_chkbx_metal_All">
+                <input
+                  type="checkbox"
+                  id="filter_chkbx_metal_All"
+                  name="filter_chkbx_metal_All"
+                />
+                All
+              </label>
+
+              <label for="filter_chkbx_metal_Platinum">
+                <input
+                  type="checkbox"
+                  id="filter_chkbx_metal_Platinum"
+                  name="filter_chkbx_metal_Platinum"
+                />
+                Platinum
+              </label>
+
+              <label for="filter_chkbx_metal_Rose_Gold">
+                <input
+                  type="checkbox"
+                  id="filter_chkbx_metal_Rose_Gold"
+                  name="filter_chkbx_metal_Rose_Gold"
+                />
+                Rose gold
+              </label>
+
+              <label for="filter_chkbx_metal_White_Gold">
+                <input
+                  type="checkbox"
+                  id="filter_chkbx_metal_White_Gold"
+                  name="filter_chkbx_metal_White_Gold"
+                />
+                White gold
+              </label>
+
+              <label for="filter_chkbx_metal_Gold">
+                <input
+                  type="checkbox"
+                  id="filter_chkbx_metal_Gold"
+                  name="filter_chkbx_metal_Gold"
+                />
+                Gold
+              </label>
+
+              <label for="filter_chkbx_metal_Silver">
+                <input
+                  type="checkbox"
+                  id="filter_chkbx_metal_Silver"
+                  name="filter_chkbx_metal_Silver"
+                />
+                Silver
+              </label>
+            </fieldset>
+
+            <fieldset>
+              <legend>Gem:</legend>
+
+              <label for="filter_chkbx_gemstone_All">
+                <input
+                  type="checkbox"
+                  id="filter_chkbx_gemstone_All"
+                  name="filter_chkbx_gemstone_All"
+                />
+                All
+              </label>
+
+              <label for="filter_chkbx_gemstone_Diamond">
+                <input
+                  type="checkbox"
+                  id="filter_chkbx_gemstone_Diamond"
+                  name="filter_chkbx_gemstone_Diamond"
+                />
+                Diamond
+              </label>
+
+              <label for="filter_chkbx_gemstone_Morganite">
+                <input
+                  type="checkbox"
+                  id="filter_chkbx_gemstone_Morganite"
+                  name="filter_chkbx_gemstone_Morganite"
+                />
+                Morganite
+              </label>
+
+              <label for="filter_chkbx_gemstone_Aquamarine">
+                <input
+                  type="checkbox"
+                  id="filter_chkbx_gemstone_Aquamarine"
+                  name="filter_chkbx_gemstone_Aquamarine"
+                />
+                Aquamarine
+              </label>
+
+              <label for="filter_chkbx_gemstone_Coloured_Diamond">
+                <input
+                  type="checkbox"
+                  id="filter_chkbx_gemstone_Coloured_Diamond"
+                  name="filter_chkbx_gemstone_Coloured_Diamond"
+                />
+                Coloured Diamond
+              </label>
+            </fieldset>
+
+            <fieldset>
+              <legend>Shape:</legend>
+
+              <label for="filter_chkbx_stoneCut_All">
+                <input
+                  type="checkbox"
+                  id="filter_chkbx_stoneCut_All"
+                  name="filter_chkbx_stoneCut_All"
+                />
+                All
+              </label>
+
+              <label for="filter_chkbx_stoneCut_Princess">
+                <input
+                  type="checkbox"
+                  id="filter_chkbx_stoneCut_Princess"
+                  name="filter_chkbx_stoneCut_Princess"
+                />
+                Princess
+              </label>
+
+              <label for="filter_chkbx_stoneCut_Oval">
+                <input
+                  type="checkbox"
+                  id="filter_chkbx_stoneCut_Oval"
+                  name="filter_chkbx_stoneCut_Oval"
+                />
+                Oval
+              </label>
+
+              <label for="filter_chkbx_stoneCut_Emerald">
+                <input
+                  type="checkbox"
+                  id="filter_chkbx_stoneCut_Emerald"
+                  name="filter_chkbx_stoneCut_Emerald"
+                />
+                Emerald
+              </label>
+
+              <label for="filter_chkbx_stoneCut_Cushion">
+                <input
+                  type="checkbox"
+                  id="filter_chkbx_stoneCut_Cushion"
+                  name="filter_chkbx_stoneCut_Cushion"
+                />
+                Cushion
+              </label>
+
+              <label for="filter_chkbx_stoneCut_Assher">
+                <input
+                  type="checkbox"
+                  id="filter_chkbx_stoneCut_Assher"
+                  name="filter_chkbx_stoneCut_Assher"
+                />
+                Assher
+              </label>
+
+              <label for="filter_chkbx_stoneCut_Round">
+                <input
+                  type="checkbox"
+                  id="filter_chkbx_stoneCut_Round"
+                  name="filter_chkbx_stoneCut_Round"
+                />
+                Round
+              </label>
+            </fieldset>
+
+            {/* <button id="filter_btn_apply_filter">Filter</button> */}
+          </Div__filter>
           <Div__productRow className="productRow">
-            {products.map(({ id, ...product }, index) => (
+            {productList.map(({ id, ...product }, index) => (
               <>
                 <Product_in_list
                   key={id}
