@@ -256,14 +256,11 @@ const ProductPage = ({
       document
         .querySelectorAll(".filter input[type=checkbox]:checked")
         .forEach(el => {
-          // ignore the filter 'All' as there aren't products with that attribute obviously
-          if (el.id.indexOf("All") === -1) {
-            checked_filters_ids.push(el.id)
-          }
+          checked_filters_ids.push(el.id)
         })
 
       // check ids to see if a property exists simply to add that key to the filters object
-      // the following forEeach can then push strings to the array
+      // the following forEeach can then push strings to the empty array created below
       checked_filters_ids.forEach(el => {
         if (el.indexOf("metal") !== -1) {
           filters.metal = []
@@ -338,74 +335,7 @@ const ProductPage = ({
           </Div__pageHeader>
           <Div__filter className="filter">
             <fieldset>
-              <legend>Metal:</legend>
-
-              <label for="filter_chkbx_metal_All">
-                <input
-                  type="checkbox"
-                  id="filter_chkbx_metal_All"
-                  name="filter_chkbx_metal_All"
-                />
-                All
-              </label>
-
-              <label for="filter_chkbx_metal_Platinum">
-                <input
-                  type="checkbox"
-                  id="filter_chkbx_metal_Platinum"
-                  name="filter_chkbx_metal_Platinum"
-                />
-                Platinum
-              </label>
-
-              <label for="filter_chkbx_metal_Rose_Gold">
-                <input
-                  type="checkbox"
-                  id="filter_chkbx_metal_Rose_Gold"
-                  name="filter_chkbx_metal_Rose_Gold"
-                />
-                Rose gold
-              </label>
-
-              <label for="filter_chkbx_metal_White_Gold">
-                <input
-                  type="checkbox"
-                  id="filter_chkbx_metal_White_Gold"
-                  name="filter_chkbx_metal_White_Gold"
-                />
-                White gold
-              </label>
-
-              <label for="filter_chkbx_metal_Gold">
-                <input
-                  type="checkbox"
-                  id="filter_chkbx_metal_Gold"
-                  name="filter_chkbx_metal_Gold"
-                />
-                Gold
-              </label>
-
-              <label for="filter_chkbx_metal_Silver">
-                <input
-                  type="checkbox"
-                  id="filter_chkbx_metal_Silver"
-                  name="filter_chkbx_metal_Silver"
-                />
-                Silver
-              </label>
-            </fieldset>
-
-            <fieldset>
               <legend>Gem:</legend>
-
-              <label for="filter_chkbx_gemstone_All">
-                <input
-                  type="checkbox"
-                  id="filter_chkbx_gemstone_All"
-                  name="filter_chkbx_gemstone_All"
-                />
-                All
-              </label>
 
               <label for="filter_chkbx_gemstone_Diamond">
                 <input
@@ -446,15 +376,6 @@ const ProductPage = ({
 
             <fieldset>
               <legend>Shape:</legend>
-
-              <label for="filter_chkbx_stoneCut_All">
-                <input
-                  type="checkbox"
-                  id="filter_chkbx_stoneCut_All"
-                  name="filter_chkbx_stoneCut_All"
-                />
-                All
-              </label>
 
               <label for="filter_chkbx_stoneCut_Princess">
                 <input
@@ -508,6 +429,55 @@ const ProductPage = ({
                   name="filter_chkbx_stoneCut_Round"
                 />
                 Round
+              </label>
+            </fieldset>
+
+            <fieldset>
+              <legend>Metal:</legend>
+
+              <label for="filter_chkbx_metal_Platinum">
+                <input
+                  type="checkbox"
+                  id="filter_chkbx_metal_Platinum"
+                  name="filter_chkbx_metal_Platinum"
+                />
+                Platinum
+              </label>
+
+              <label for="filter_chkbx_metal_Rose_Gold">
+                <input
+                  type="checkbox"
+                  id="filter_chkbx_metal_Rose_Gold"
+                  name="filter_chkbx_metal_Rose_Gold"
+                />
+                Rose gold
+              </label>
+
+              <label for="filter_chkbx_metal_White_Gold">
+                <input
+                  type="checkbox"
+                  id="filter_chkbx_metal_White_Gold"
+                  name="filter_chkbx_metal_White_Gold"
+                />
+                White gold
+              </label>
+
+              <label for="filter_chkbx_metal_Gold">
+                <input
+                  type="checkbox"
+                  id="filter_chkbx_metal_Gold"
+                  name="filter_chkbx_metal_Gold"
+                />
+                Gold
+              </label>
+
+              <label for="filter_chkbx_metal_Silver">
+                <input
+                  type="checkbox"
+                  id="filter_chkbx_metal_Silver"
+                  name="filter_chkbx_metal_Silver"
+                />
+                Silver
               </label>
             </fieldset>
 
