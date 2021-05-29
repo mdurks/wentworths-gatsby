@@ -263,26 +263,26 @@ const ProductPage = ({
       // the following forEeach can then push strings to the empty array created below
       checked_filters_ids.forEach(el => {
         if (el.indexOf("metal") !== -1) {
-          filters.metal = []
+          filters.filter_metal = []
         } else if (el.indexOf("gemstone") !== -1) {
-          filters.gemstone = []
+          filters.filter_gemstone = []
         } else if (el.indexOf("stoneCut") !== -1) {
-          filters.stoneCut = []
+          filters.filter_stoneCut = []
         }
       })
 
       // populate filters with chosen filter value(s)
       checked_filters_ids.forEach(el => {
         if (el.indexOf("metal") !== -1) {
-          filters.metal.push(el.slice(el.indexOf("metal_") + 6))
+          filters.filter_metal.push(el.slice(el.indexOf("metal_") + 6))
         } else if (el.indexOf("gemstone") !== -1) {
-          filters.gemstone.push(el.slice(el.indexOf("gemstone_") + 9))
+          filters.filter_gemstone.push(el.slice(el.indexOf("gemstone_") + 9))
         } else if (el.indexOf("stoneCut") !== -1) {
-          filters.stoneCut.push(el.slice(el.indexOf("stoneCut_") + 9))
+          filters.filter_stoneCut.push(el.slice(el.indexOf("stoneCut_") + 9))
         }
       })
 
-      console.log("filters: ", filters)
+      // console.log("filters: ", filters)
 
       // now we have defined the filter, pass it over to the function to do the filtering
       filterProducts(filters)
@@ -525,9 +525,10 @@ export const pageQuery = graphql`
         productType
         price
         description
-        gemstone
-        metal
-        stoneCut
+        filter_gemstone
+        filter_metal
+        filter_stoneCut
+        filter_stoneColour
         createdAt
         image {
           id
@@ -540,5 +541,41 @@ export const pageQuery = graphql`
     }
   }
 `
+
+// export const pageQuery = graphql`
+//   query ProductListingQuery(
+//     $category: [GCMS_CategoryType!]
+//     $product_type: GCMS_ProductType
+//   ) {
+//     gcms {
+//       products(
+//         orderBy: updatedAt_DESC
+//         where: {
+//           productType: $product_type
+//           AND: { categoryType_contains_some: $category }
+//         }
+//       ) {
+//         id
+//         slug
+//         name
+//         categoryType
+//         productType
+//         price
+//         description
+//         gemstone
+//         metal
+//         stoneCut
+//         createdAt
+//         image {
+//           id
+//           url
+//           handle
+//           width
+//           height
+//         }
+//       }
+//     }
+//   }
+// `
 
 export default ProductPage
