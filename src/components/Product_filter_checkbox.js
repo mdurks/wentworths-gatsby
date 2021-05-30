@@ -9,7 +9,7 @@ const Product_filter_checkbox = props => (
     />
     {props.filterName.replace(/_/g, " ")} &nbsp;
     <span style={{ fontFamily: "Arial, sans-serif" }}>
-      {props.filterAmount}
+      ({props.filterAmount})
     </span>
   </label>
 )
