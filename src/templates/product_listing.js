@@ -66,10 +66,14 @@ const Div__pageHeader = styled.div`
 `
 
 const Div__filter = styled.div`
-  text-align: center;
+  /* text-align: center; */
+  ${bp_min_desktop} {
+    display: flex;
+  }
 
   fieldset {
     border: 1px solid #ada99f;
+    flex: 1 1 auto;
   }
 
   label {
@@ -79,7 +83,7 @@ const Div__filter = styled.div`
     cursor: pointer;
 
     ${bp_min_desktop} {
-      display: inline-block;
+      display: block;
       border-radius: 5px;
 
       &:hover {
@@ -494,15 +498,14 @@ const ProductPage = ({
                 </span>
               ))}
             </fieldset>
-
-            <br />
-            <p>
-              Showing &nbsp;{productList.length} of
-              {" " + products.length}
-              &nbsp;&nbsp;
-              {pageContext.category} {pageContext.product_type}.
-            </p>
           </Div__filter>
+          <br />
+          <p>
+            Showing &nbsp;{productList.length} of
+            {" " + products.length}
+            &nbsp;&nbsp;
+            {pageContext.category} {pageContext.product_type}.
+          </p>
           <Div__productRow className="productRow">
             {productList.map(({ id, ...product }, index) => (
               <>
