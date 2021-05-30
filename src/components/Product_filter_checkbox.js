@@ -8,9 +8,7 @@ const Product_filter_checkbox = props => (
       name={`filter_chkbx_` + props.filterCategory + `_` + props.filterName}
     />
     {props.filterName.replace(/_/g, " ")} &nbsp;
-    <span style={{ fontFamily: "Arial, sans-serif" }}>
-      ({props.filterAmount})
-    </span>
+    <span className="filter_item_amount">{props.filterAmount}</span>
   </label>
 )
 

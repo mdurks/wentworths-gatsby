@@ -66,31 +66,170 @@ const Div__pageHeader = styled.div`
 `
 
 const Div__filter = styled.div`
+  position: relative;
   /* text-align: center; */
+
   ${bp_min_desktop} {
     display: flex;
+    justify-content: space-evenly;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 32px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: #c0b7a3;
+    }
   }
 
   fieldset {
-    border: 1px solid #ada99f;
-    flex: 1 1 auto;
+    position: relative;
+    flex: 0 1 280px;
+    padding: 0;
+    border: none;
+    border-bottom: 1px solid #ada99f;
+
+    ${bp_min_desktop} {
+      border: none;
+    }
+
+    &.item_checked,
+    &:hover {
+      .filter_list_container {
+        height: 275px;
+        padding: 20px 0 0;
+        overflow: visible;
+
+        ${bp_min_desktop} {
+          padding: 35px 11px 15px 10px;
+          border: 1px solid #c0b7a3;
+          border-top: none;
+        }
+      }
+
+      legend {
+        &:after {
+          opacity: 0;
+          top: 255px;
+        }
+      }
+    }
+
+    &.item_checked {
+      .filter_list_container {
+        position: relative;
+        height: 100px;
+
+        ul {
+          overflow-y: hidden;
+        }
+      }
+    }
+  }
+
+  legend {
+    display: block;
+    font-family: "Playfair Display", serif;
+    font-size: 25px;
+    text-transform: uppercase;
+    color: #ac832f;
+
+    ${bp_min_desktop} {
+      position: relative;
+      display: inline;
+      padding: 10px 30px;
+      text-align: center;
+      z-index: 10;
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: #e5e3de;
+        z-index: -1;
+      }
+      &:after {
+        /* content: "❯"; */
+        content: "❭";
+        position: absolute;
+        top: 38px;
+        left: 46%;
+        transform: rotate(90deg);
+        transition: all 0.3s;
+        transition-timing-function: ease-in-out;
+        opacity: 1;
+        pointer-events: none;
+        z-index: -1;
+      }
+    }
+  }
+
+  .filter_list_container {
+    width: 100%;
+    height: 0px;
+    padding: 0 10px;
+    border-radius: 0 0 10px 10px;
+    background-color: #e5e2dc;
+    transition: all 0.3s;
+    transition-timing-function: ease-in-out;
+    overflow: hidden;
+    z-index: 5;
+
+    ${bp_min_desktop} {
+      position: absolute;
+      top: -30px;
+    }
+  }
+
+  ul {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    ${bp_min_desktop} {
+      padding: 0 7px 0 0;
+
+      /* ::-webkit-scrollbar {
+        width: 14px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #efede9;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #d0c3a8;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #d0c3a8;
+      } */
+    }
   }
 
   label {
     display: block;
     padding: 10px 15px;
-    margin: 0 5px;
+    margin: 0 5px 4px;
     cursor: pointer;
+    background-color: #efede9;
 
     ${bp_min_desktop} {
       display: block;
       border-radius: 5px;
 
       &:hover {
-        background-color: #efede9;
+        background-color: #f5f3ef;
       }
     }
   }
+
+  li:last-child label {
+    margin-bottom: 0;
+  }
+
   input {
     width: 20px;
     height: 20px;
@@ -101,15 +240,18 @@ const Div__filter = styled.div`
     cursor: pointer;
   }
 
-  button {
-    padding: 10px 20px;
-    margin: 10px;
-    border-radius: 5px;
-    border: 1px solid black;
-    background-color: white;
-    color: black;
-    cursor: pointer;
+  .filter_item_amount {
+    /* font-family: "Arial, sans-serif"; */
+    float: right;
+    margin: -2px 0 0;
+    color: #966500;
+    font-weight: bold;
   }
+`
+
+const Div__filter_info = styled.div`
+  margin: 40px 0 50px;
+  text-align: center;
 `
 
 const Div__productRow = styled.div`
@@ -332,9 +474,20 @@ const ProductPage = ({
         .filter(return_unique_values_in_araray)
         .sort()
     )
+
     setTimeout(() => {
+      // reset any open filter fieldsets
+      document.querySelectorAll(".filter fieldset").forEach(el => {
+        el.classList.remove("item_checked")
+      })
+
       selected_checkboxs.forEach(el => {
         document.getElementById(el).checked = true
+        document
+          .getElementById(el)
+          .parentNode.parentNode.parentNode.parentNode.parentNode.classList.add(
+            "item_checked"
+          )
       })
     }, 300)
   }
@@ -451,61 +604,76 @@ const ProductPage = ({
           </Div__pageHeader>
           <Div__filter className="filter">
             <fieldset>
-              <legend>Gem:</legend>
-              {filters_for_gemstone.map((el, index) => (
-                <span onClick={create_filter_object}>
-                  <Product_filter_checkbox
-                    filterCategory={"gemstone"}
-                    filterName={el}
-                    filterAmount={occurances_gemstone[index]}
-                  />
-                </span>
-              ))}
+              <legend>Gem</legend>
+              <div className="filter_list_container">
+                <ul>
+                  {filters_for_gemstone.map((el, index) => (
+                    <li onClick={create_filter_object}>
+                      <Product_filter_checkbox
+                        filterCategory={"gemstone"}
+                        filterName={el}
+                        filterAmount={occurances_gemstone[index]}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </fieldset>
             <fieldset>
-              <legend>Shape:</legend>
-              {filters_for_stoneCut.map((el, index) => (
-                <span onClick={create_filter_object}>
-                  <Product_filter_checkbox
-                    filterCategory={"stoneCut"}
-                    filterName={el}
-                    filterAmount={occurances_stoneCut[index]}
-                  />
-                </span>
-              ))}
+              <legend>Shape</legend>
+              <div className="filter_list_container">
+                <ul>
+                  {filters_for_stoneCut.map((el, index) => (
+                    <li onClick={create_filter_object}>
+                      <Product_filter_checkbox
+                        filterCategory={"stoneCut"}
+                        filterName={el}
+                        filterAmount={occurances_stoneCut[index]}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </fieldset>
             <fieldset>
-              <legend>Metal:</legend>
-              {filters_for_metal.map((el, index) => (
-                <span onClick={create_filter_object}>
-                  <Product_filter_checkbox
-                    filterCategory={"metal"}
-                    filterName={el}
-                    filterAmount={occurances_metal[index]}
-                  />
-                </span>
-              ))}
+              <legend>Metal</legend>
+              <div className="filter_list_container">
+                <ul>
+                  {filters_for_metal.map((el, index) => (
+                    <li onClick={create_filter_object}>
+                      <Product_filter_checkbox
+                        filterCategory={"metal"}
+                        filterName={el}
+                        filterAmount={occurances_metal[index]}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </fieldset>
             <fieldset>
-              <legend>Colour:</legend>
-              {filters_for_stoneColour.map((el, index) => (
-                <span onClick={create_filter_object}>
-                  <Product_filter_checkbox
-                    filterCategory={"stoneColour"}
-                    filterName={el}
-                    filterAmount={occurances_stoneColour[index]}
-                  />
-                </span>
-              ))}
+              <legend>Colour</legend>
+              <div className="filter_list_container">
+                <ul>
+                  {filters_for_stoneColour.map((el, index) => (
+                    <li onClick={create_filter_object}>
+                      <Product_filter_checkbox
+                        filterCategory={"stoneColour"}
+                        filterName={el}
+                        filterAmount={occurances_stoneColour[index]}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </fieldset>
           </Div__filter>
-          <br />
-          <p>
+          <Div__filter_info>
             Showing &nbsp;{productList.length} of
             {" " + products.length}
             &nbsp;&nbsp;
             {pageContext.category} {pageContext.product_type}.
-          </p>
+          </Div__filter_info>
           <Div__productRow className="productRow">
             {productList.map(({ id, ...product }, index) => (
               <>
