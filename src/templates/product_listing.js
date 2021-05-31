@@ -803,6 +803,18 @@ const ProductPage = ({
 
     // style button
     e.target.classList.toggle("show_filters_btn_open")
+
+    setTimeout(() => {
+      if (
+        Array.from(
+          document.querySelector(".show_filters_btn").classList
+        ).indexOf("show_filters_btn_open") > -1
+      ) {
+        e.target.scrollIntoView({
+          behavior: "smooth",
+        })
+      }
+    }, 100)
   }
 
   return (
