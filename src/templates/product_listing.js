@@ -67,7 +67,12 @@ const Div__pageHeader = styled.div`
 
 const Div__filter = styled.div`
   position: relative;
-  /* text-align: center; */
+  height: 75px;
+  transition: all ease-in-out 0.5s;
+
+  &.checked_items {
+    height: 126px;
+  }
 
   ${bp_min_desktop} {
     display: flex;
@@ -512,6 +517,7 @@ const ProductPage = ({
       document.querySelectorAll(".filter fieldset").forEach(el => {
         el.classList.remove("item_checked")
       })
+      document.querySelector(".filter").classList.remove("checked_items")
 
       selected_checkboxs.forEach(el => {
         document.getElementById(el).checked = true
@@ -521,6 +527,9 @@ const ProductPage = ({
             "item_checked"
           )
       })
+      console.log("selected_checkboxs", selected_checkboxs.length)
+      if (selected_checkboxs.length)
+        document.querySelector(".filter").classList.add("checked_items")
     }, 300)
   }
   //
