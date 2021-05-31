@@ -20,7 +20,8 @@ const bp_min_desktop = "@media (min-width: 1024px)"
 const Div__productsPage = styled.div``
 
 const Div__pageHeader = styled.div`
-  padding: 130px 0 50px;
+  position: relative;
+  padding: 130px 0 70px;
   text-align: center;
 
   ${bp_min_desktop} {
@@ -63,20 +64,59 @@ const Div__pageHeader = styled.div`
       margin: 0 0 60px;
     }
   }
+
+  .show_filters_btn {
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    background-color: transparent;
+    padding: 10px 0;
+    border-bottom: 1px solid #ac832f;
+    font-family: "Playfair Display", serif;
+    font-size: 25px;
+    text-transform: uppercase;
+    color: #ac832f;
+    transition: all ease-in-out 0.5s;
+    -webkit-tap-highlight-color: transparent;
+
+    &:after {
+      content: "❯";
+      position: absolute;
+      top: 10px;
+      right: 1px;
+      transform: rotate(90deg);
+      transition: all ease 0.3s;
+    }
+
+    &_open {
+      color: black;
+      border-color: black;
+
+      &:after {
+        right: 4px;
+        transform: rotate(270deg);
+      }
+    }
+
+    ${bp_min_desktop} {
+      display: none;
+    }
+  }
 `
 
 const Div__filter = styled.div`
   position: relative;
-  height: 75px;
+  padding: 10px 0 0;
   transition: all ease-in-out 0.5s;
-
-  &.checked_items {
-    height: 126px;
-  }
+  overflow: hidden;
 
   ${bp_min_desktop} {
     display: flex;
     justify-content: space-evenly;
+    padding: 0;
+    height: 75px !important;
+    overflow: visible;
 
     &:before {
       content: "";
@@ -87,11 +127,16 @@ const Div__filter = styled.div`
       height: 1px;
       background-color: #c0b7a3;
     }
+
+    &.checked_items {
+      height: 126px !important;
+    }
   }
 
   fieldset {
     position: relative;
     flex: 0 1 280px;
+    margin: 0;
     padding: 0;
     border: none;
     border-bottom: 1px solid #ada99f;
@@ -101,13 +146,14 @@ const Div__filter = styled.div`
     }
 
     &.item_checked,
-    &:hover {
+    &.filter_menu_open {
       .filter_list_container {
-        height: 275px;
-        padding: 20px 0 0;
+        height: 244px;
+        padding: 10px 0 20px;
         overflow: visible;
 
         ${bp_min_desktop} {
+          height: 275px;
           padding: 35px 11px 15px 10px;
           border: 1px solid #c0b7a3;
           border-top: 1px solid #e5e3de;
@@ -124,7 +170,15 @@ const Div__filter = styled.div`
 
       legend {
         &:after {
-          top: 32px;
+          /* transform: rotate(630deg); */
+          transform: rotate(270deg);
+          right: 13px;
+
+          ${bp_min_desktop} {
+            top: 32px;
+            right: auto;
+            transform: rotate(90deg);
+          }
         }
       }
 
@@ -139,7 +193,11 @@ const Div__filter = styled.div`
       .filter_list_container {
         position: relative;
         height: 88px;
-        padding-top: 23px;
+        padding-top: 10px;
+
+        ${bp_min_desktop} {
+          padding-top: 23px;
+        }
 
         ul {
           overflow-y: hidden;
@@ -155,16 +213,35 @@ const Div__filter = styled.div`
   }
 
   legend {
+    position: relative;
     display: block;
+    width: 100%;
+    padding: 0;
     font-family: "Playfair Display", serif;
     font-size: 25px;
     text-transform: uppercase;
     color: #ac832f;
-    transition: all ease 0.3s;
+    transition: all ease-in-out 0.3s;
+
+    &:after {
+      content: "❯";
+      /* content: "❭"; */
+      position: absolute;
+      top: 0;
+      right: 10px;
+      transform: rotate(90deg);
+      transition: all ease 0.3s;
+    }
+
+    .filter_legend_amount {
+      margin: 8px 40px 0 5px;
+      font-size: 22px;
+      font-family: "Arial, sans-serif";
+    }
 
     ${bp_min_desktop} {
-      position: relative;
       display: inline;
+      width: auto;
       padding: 10px 30px;
       text-align: center;
       z-index: 10;
@@ -185,6 +262,7 @@ const Div__filter = styled.div`
         position: absolute;
         top: 38px;
         left: 46%;
+        right: auto;
         transform: rotate(90deg);
         transition: all ease 0.3s;
         opacity: 1;
@@ -197,7 +275,6 @@ const Div__filter = styled.div`
   .filter_list_container {
     width: 100%;
     height: 0px;
-    padding: 0 10px;
     border: 1px solid #e5e3de;
     border-radius: 0 0 10px 10px;
     background-color: #e5e2dc;
@@ -208,6 +285,7 @@ const Div__filter = styled.div`
     ${bp_min_desktop} {
       position: absolute;
       top: -30px;
+      padding: 0 10px;
     }
   }
 
@@ -238,9 +316,11 @@ const Div__filter = styled.div`
     display: block;
     padding: 10px 15px;
     margin: 0 5px 2px;
-    cursor: pointer;
-    transition: all ease-in-out 0.65s;
     background-color: #efede9;
+    color: #ac832f;
+    transition: all ease-in-out 0.65s;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
 
     ${bp_min_desktop} {
       display: block;
@@ -248,7 +328,12 @@ const Div__filter = styled.div`
 
       &:hover {
         background-color: #f9f8f6;
+        color: #000;
         transition: all ease-in-out 0.3s;
+
+        .filter_item_amount {
+          color: #000;
+        }
       }
     }
   }
@@ -282,13 +367,17 @@ const Div__filter = styled.div`
     float: right;
     margin: -1px 0 0;
     color: #966500;
-    font-weight: bold;
+    transition: all ease-in-out 0.3s;
   }
 `
 
 const Div__filter_info = styled.div`
   margin: 40px 0 50px;
   text-align: center;
+
+  ${bp_min_desktop} {
+    margin-bottom: 80px;
+  }
 `
 
 const Div__productRow = styled.div`
@@ -444,6 +533,59 @@ const ProductPage = ({
     document.body.style.backgroundColor = "#e5e3de"
     document.getElementsByTagName("nav")[0].style.background =
       "linear-gradient(0deg, #6db2c300 0%, #7B7262 100%)"
+
+    //
+    //
+    // media query event handler
+    if (matchMedia) {
+      var mq = window.matchMedia("(min-width: 1024px)")
+      mq.addListener(WidthChange)
+      WidthChange(mq)
+    }
+    // media query change
+    function WidthChange(mq) {
+      if (mq.matches) {
+        //desktop
+        document.querySelectorAll(".filter fieldset").forEach(el => {
+          el.addEventListener(
+            "mouseover",
+            () => {
+              el.classList.add("filter_menu_open")
+            },
+            false
+          )
+        })
+        document.querySelectorAll(".filter fieldset").forEach(el => {
+          el.addEventListener(
+            "mouseout",
+            () => {
+              el.classList.remove("filter_menu_open")
+            },
+            false
+          )
+        })
+      } else {
+        // mobile
+        // click events for each filter category button to open sub menu
+        document.querySelectorAll(".filter legend").forEach(el => {
+          el.addEventListener(
+            "click",
+            event => {
+              // close all other filter menus except the one we clicked on
+              document.querySelectorAll(".filter legend").forEach(el => {
+                if (event.target !== el)
+                  el.parentNode.classList.remove("filter_menu_open")
+              })
+              // manually toggle the filter menu we clicked on
+              el.parentNode.classList.toggle("filter_menu_open")
+            },
+            false
+          )
+        })
+      }
+    }
+    //
+    //
   }, [])
   //
   // End useEffect
@@ -527,7 +669,7 @@ const ProductPage = ({
             "item_checked"
           )
       })
-      console.log("selected_checkboxs", selected_checkboxs.length)
+      // console.log("selected_checkboxs", selected_checkboxs.length)
       if (selected_checkboxs.length)
         document.querySelector(".filter").classList.add("checked_items")
     }, 300)
@@ -628,6 +770,41 @@ const ProductPage = ({
     init_filters()
   }, [productList])
 
+  let show_filters_btn = e => {
+    // This button should only be visible for mobile menu layout
+    // Calculate the total height of the child elements of filter
+    // Animate open/close of menu via calculating style.height due
+    // to a variable height
+    let el_filter = document.querySelector(".filter")
+    let el_filter_children = el_filter.childNodes
+    let el_filter_children_total_height = 0
+    el_filter_children.forEach(el => {
+      el_filter_children_total_height += el.offsetHeight
+    })
+    el_filter_children_total_height += "px"
+
+    // Manually set height of filter to this so annimation can slide open
+    if (el_filter.style.height === "0px") {
+      el_filter.style.height = el_filter_children_total_height
+    } else {
+      // Set height to what ever height it currenly is
+      // before setting it to 0 so the css transition will work
+      el_filter.style.height = el_filter.offsetHeight + "px"
+      setTimeout(() => {
+        el_filter.style.height = "0px"
+      }, 100)
+    }
+    // Clear the height after the menu opening transition to allow the sub
+    // menus to open and be visible
+    setTimeout(() => {
+      if (el_filter.style.height === el_filter_children_total_height)
+        el_filter.style.height = ""
+    }, 500)
+
+    // style button
+    e.target.classList.toggle("show_filters_btn_open")
+  }
+
   return (
     <>
       <Div__productsPage className="productsPageContainer">
@@ -642,10 +819,18 @@ const ProductPage = ({
               Perfectly made diamond engagement rings for your special day. Each
               diamond, chosen by our experts, for brilliance and shine.
             </p>
+            <button className="show_filters_btn" onClick={show_filters_btn}>
+              Show Filters
+            </button>
           </Div__pageHeader>
-          <Div__filter className="filter">
+          <Div__filter className="filter" style={{ height: "0px" }}>
             <fieldset>
-              <legend>Gem</legend>
+              <legend>
+                Gem{" "}
+                <span className="filter_legend_amount">
+                  ({filters_for_gemstone.length})
+                </span>
+              </legend>
               <div className="filter_list_container">
                 <ul>
                   {filters_for_gemstone.map((el, index) => (
@@ -662,7 +847,12 @@ const ProductPage = ({
               </div>
             </fieldset>
             <fieldset>
-              <legend>Shape</legend>
+              <legend>
+                Shape{" "}
+                <span className="filter_legend_amount">
+                  ({filters_for_stoneCut.length})
+                </span>
+              </legend>
               <div className="filter_list_container">
                 <ul>
                   {filters_for_stoneCut.map((el, index) => (
@@ -679,7 +869,12 @@ const ProductPage = ({
               </div>
             </fieldset>
             <fieldset>
-              <legend>Metal</legend>
+              <legend>
+                Metal{" "}
+                <span className="filter_legend_amount">
+                  ({filters_for_metal.length})
+                </span>
+              </legend>
               <div className="filter_list_container">
                 <ul>
                   {filters_for_metal.map((el, index) => (
@@ -696,7 +891,12 @@ const ProductPage = ({
               </div>
             </fieldset>
             <fieldset>
-              <legend>Colour</legend>
+              <legend>
+                Colour{" "}
+                <span className="filter_legend_amount">
+                  ({filters_for_stoneColour.length})
+                </span>
+              </legend>
               <div className="filter_list_container">
                 <ul>
                   {filters_for_stoneColour.map((el, index) => (
