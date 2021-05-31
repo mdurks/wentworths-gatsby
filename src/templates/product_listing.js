@@ -105,14 +105,27 @@ const Div__filter = styled.div`
         ${bp_min_desktop} {
           padding: 35px 11px 15px 10px;
           border: 1px solid #c0b7a3;
-          border-top: none;
+          border-top: 1px solid #e5e3de;
         }
+      }
+
+      label {
+        animation-name: animateIn;
+        animation-duration: 300ms;
+        animation-delay: calc((2 + var(--animation-order)) * 125ms);
+        animation-fill-mode: both;
+        animation-timing-function: ease-in-out;
       }
 
       legend {
         &:after {
-          opacity: 0;
-          top: 255px;
+          top: 32px;
+        }
+      }
+
+      &:hover {
+        legend {
+          color: black;
         }
       }
     }
@@ -120,10 +133,17 @@ const Div__filter = styled.div`
     &.item_checked {
       .filter_list_container {
         position: relative;
-        height: 100px;
+        height: 88px;
+        padding-top: 23px;
 
         ul {
           overflow-y: hidden;
+        }
+      }
+
+      legend {
+        &:after {
+          opacity: 0;
         }
       }
     }
@@ -135,6 +155,7 @@ const Div__filter = styled.div`
     font-size: 25px;
     text-transform: uppercase;
     color: #ac832f;
+    transition: all ease 0.3s;
 
     ${bp_min_desktop} {
       position: relative;
@@ -160,8 +181,7 @@ const Div__filter = styled.div`
         top: 38px;
         left: 46%;
         transform: rotate(90deg);
-        transition: all 0.3s;
-        transition-timing-function: ease-in-out;
+        transition: all ease 0.3s;
         opacity: 1;
         pointer-events: none;
         z-index: -1;
@@ -173,10 +193,10 @@ const Div__filter = styled.div`
     width: 100%;
     height: 0px;
     padding: 0 10px;
+    border: 1px solid #e5e3de;
     border-radius: 0 0 10px 10px;
     background-color: #e5e2dc;
-    transition: all 0.3s;
-    transition-timing-function: ease-in-out;
+    transition: all ease-in-out 0.4s;
     overflow: hidden;
     z-index: 5;
 
@@ -212,8 +232,9 @@ const Div__filter = styled.div`
   label {
     display: block;
     padding: 10px 15px;
-    margin: 0 5px 4px;
+    margin: 0 5px 2px;
     cursor: pointer;
+    transition: all ease-in-out 0.65s;
     background-color: #efede9;
 
     ${bp_min_desktop} {
@@ -221,13 +242,24 @@ const Div__filter = styled.div`
       border-radius: 5px;
 
       &:hover {
-        background-color: #f5f3ef;
+        background-color: #f9f8f6;
+        transition: all ease-in-out 0.3s;
       }
     }
   }
 
   li:last-child label {
     margin-bottom: 0;
+  }
+
+  @keyframes animateIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
   }
 
   input {
@@ -243,7 +275,7 @@ const Div__filter = styled.div`
   .filter_item_amount {
     /* font-family: "Arial, sans-serif"; */
     float: right;
-    margin: -2px 0 0;
+    margin: -1px 0 0;
     color: #966500;
     font-weight: bold;
   }
@@ -613,6 +645,7 @@ const ProductPage = ({
                         filterCategory={"gemstone"}
                         filterName={el}
                         filterAmount={occurances_gemstone[index]}
+                        index={index}
                       />
                     </li>
                   ))}
@@ -629,6 +662,7 @@ const ProductPage = ({
                         filterCategory={"stoneCut"}
                         filterName={el}
                         filterAmount={occurances_stoneCut[index]}
+                        index={index}
                       />
                     </li>
                   ))}
@@ -645,6 +679,7 @@ const ProductPage = ({
                         filterCategory={"metal"}
                         filterName={el}
                         filterAmount={occurances_metal[index]}
+                        index={index}
                       />
                     </li>
                   ))}
@@ -661,6 +696,7 @@ const ProductPage = ({
                         filterCategory={"stoneColour"}
                         filterName={el}
                         filterAmount={occurances_stoneColour[index]}
+                        index={index}
                       />
                     </li>
                   ))}
