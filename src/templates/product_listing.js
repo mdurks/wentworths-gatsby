@@ -158,12 +158,15 @@ const Div__filter = styled.div`
     &.item_checked,
     &.filter_menu_open {
       .filter_list_container {
-        height: 244px;
-        padding: 10px 0 20px;
+        height: calc((var(--number-of-menu-items)) * 47px - 2px);
+        max-height: 214px;
+        margin: 5px 0 15px;
         overflow: visible;
 
         ${bp_min_desktop} {
-          height: 275px;
+          height: calc((var(--number-of-menu-items) + 1) * 50px - 8px);
+          max-height: 275px;
+          margin: 0;
           padding: 35px 11px 15px 10px;
           border: 1px solid #c0b7a3;
           border-top: 1px solid #e5e3de;
@@ -205,6 +208,7 @@ const Div__filter = styled.div`
       .filter_list_container {
         position: relative;
         height: 60px;
+        margin: 0;
         padding: 0;
 
         ${bp_min_desktop} {
@@ -340,7 +344,7 @@ const Div__filter = styled.div`
     padding: 10px 15px;
     margin: 0 0 2px;
     background-color: #efede9;
-    color: #ac832f;
+    color: #000;
     transition: all ease-in-out 0.65s;
     -webkit-tap-highlight-color: transparent;
     cursor: pointer;
@@ -349,6 +353,7 @@ const Div__filter = styled.div`
       display: block;
       margin: 0 5px 2px;
       border-radius: 5px;
+      font-size: 16px;
 
       &:hover {
         background-color: #f9f8f6;
@@ -869,7 +874,12 @@ const ProductPage = ({
                   ({filters_for_gemstone.length})
                 </span>
               </legend>
-              <div className="filter_list_container">
+              <div
+                className="filter_list_container"
+                style={
+                  "--number-of-menu-items: " + filters_for_gemstone.length + ";"
+                }
+              >
                 <ul>
                   {filters_for_gemstone.map((el, index) => (
                     <li onClick={create_filter_object}>
@@ -891,7 +901,12 @@ const ProductPage = ({
                   ({filters_for_stoneCut.length})
                 </span>
               </legend>
-              <div className="filter_list_container">
+              <div
+                className="filter_list_container"
+                style={
+                  "--number-of-menu-items: " + filters_for_stoneCut.length + ";"
+                }
+              >
                 <ul>
                   {filters_for_stoneCut.map((el, index) => (
                     <li onClick={create_filter_object}>
@@ -913,7 +928,12 @@ const ProductPage = ({
                   ({filters_for_metal.length})
                 </span>
               </legend>
-              <div className="filter_list_container">
+              <div
+                className="filter_list_container"
+                style={
+                  "--number-of-menu-items: " + filters_for_metal.length + ";"
+                }
+              >
                 <ul>
                   {filters_for_metal.map((el, index) => (
                     <li onClick={create_filter_object}>
@@ -935,7 +955,14 @@ const ProductPage = ({
                   ({filters_for_stoneColour.length})
                 </span>
               </legend>
-              <div className="filter_list_container">
+              <div
+                className="filter_list_container"
+                style={
+                  "--number-of-menu-items: " +
+                  filters_for_stoneColour.length +
+                  ";"
+                }
+              >
                 <ul>
                   {filters_for_stoneColour.map((el, index) => (
                     <li onClick={create_filter_object}>
