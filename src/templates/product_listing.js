@@ -165,7 +165,7 @@ const Div__filter = styled.div`
 
         ${bp_min_desktop} {
           height: calc((var(--number-of-menu-items) + 1) * 50px - 8px);
-          max-height: 275px;
+          max-height: 265px;
           margin: 0;
           padding: 35px 11px 15px 10px;
           border: 1px solid #c0b7a3;
@@ -214,10 +214,6 @@ const Div__filter = styled.div`
         ${bp_min_desktop} {
           height: 88px;
           padding: 23px 11px 15px 10px;
-        }
-
-        ul {
-          overflow-y: hidden;
         }
       }
 
@@ -319,7 +315,7 @@ const Div__filter = styled.div`
   ul {
     height: 100%;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: hidden;
 
     ${bp_min_desktop} {
       padding: 0 7px 0 0;
@@ -880,7 +876,13 @@ const ProductPage = ({
                   "--number-of-menu-items: " + filters_for_gemstone.length + ";"
                 }
               >
-                <ul>
+                <ul
+                  style={
+                    filters_for_gemstone.length > 4
+                      ? { overflowY: "scroll" }
+                      : { padding: "0" }
+                  }
+                >
                   {filters_for_gemstone.map((el, index) => (
                     <li onClick={create_filter_object}>
                       <Product_filter_checkbox
@@ -907,7 +909,13 @@ const ProductPage = ({
                   "--number-of-menu-items: " + filters_for_stoneCut.length + ";"
                 }
               >
-                <ul>
+                <ul
+                  style={
+                    filters_for_stoneCut.length > 4
+                      ? { overflowY: "scroll" }
+                      : { padding: "0" }
+                  }
+                >
                   {filters_for_stoneCut.map((el, index) => (
                     <li onClick={create_filter_object}>
                       <Product_filter_checkbox
@@ -934,7 +942,13 @@ const ProductPage = ({
                   "--number-of-menu-items: " + filters_for_metal.length + ";"
                 }
               >
-                <ul>
+                <ul
+                  style={
+                    filters_for_metal.length > 4
+                      ? { overflowY: "scroll" }
+                      : { padding: "0" }
+                  }
+                >
                   {filters_for_metal.map((el, index) => (
                     <li onClick={create_filter_object}>
                       <Product_filter_checkbox
@@ -963,7 +977,13 @@ const ProductPage = ({
                   ";"
                 }
               >
-                <ul>
+                <ul
+                  style={
+                    filters_for_stoneColour.length > 4
+                      ? { overflowY: "scroll" }
+                      : { padding: "0" }
+                  }
+                >
                   {filters_for_stoneColour.map((el, index) => (
                     <li onClick={create_filter_object}>
                       <Product_filter_checkbox
