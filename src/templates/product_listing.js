@@ -86,12 +86,22 @@ const Div__pageHeader = styled.div`
       top: 10px;
       right: 1px;
       transform: rotate(90deg);
-      transition: all ease 0.3s;
+    }
+
+    .show_filters_btn_text_hide {
+      display: none;
     }
 
     &_open {
       color: black;
       border-color: black;
+
+      .show_filters_btn_text_show {
+        display: none;
+      }
+      .show_filters_btn_text_hide {
+        display: inline-block;
+      }
 
       &:after {
         right: 4px;
@@ -172,7 +182,7 @@ const Div__filter = styled.div`
         &:after {
           /* transform: rotate(630deg); */
           transform: rotate(270deg);
-          right: 13px;
+          right: 4px;
 
           ${bp_min_desktop} {
             top: 32px;
@@ -182,9 +192,11 @@ const Div__filter = styled.div`
         }
       }
 
-      &:hover {
-        legend {
-          color: black;
+      @media (hover: hover) {
+        &:hover {
+          legend {
+            color: black;
+          }
         }
       }
     }
@@ -192,11 +204,12 @@ const Div__filter = styled.div`
     &.item_checked {
       .filter_list_container {
         position: relative;
-        height: 88px;
-        padding-top: 10px;
+        height: 60px;
+        padding: 0;
 
         ${bp_min_desktop} {
-          padding-top: 23px;
+          height: 88px;
+          padding: 23px 11px 15px 10px;
         }
 
         ul {
@@ -205,9 +218,18 @@ const Div__filter = styled.div`
       }
 
       legend {
+        /* padding-left: 60px;
+        padding-right: 0; */
+
         &:after {
           opacity: 0;
         }
+      }
+
+      .filter_legend_amount {
+        /* display: none; */
+        opacity: 0;
+        position: absolute;
       }
     }
   }
@@ -228,7 +250,7 @@ const Div__filter = styled.div`
       /* content: "❭"; */
       position: absolute;
       top: 0;
-      right: 10px;
+      right: 0;
       transform: rotate(90deg);
       transition: all ease 0.3s;
     }
@@ -237,6 +259,7 @@ const Div__filter = styled.div`
       margin: 8px 40px 0 5px;
       font-size: 22px;
       font-family: "Arial, sans-serif";
+      transition: all ease 0.3s;
     }
 
     ${bp_min_desktop} {
@@ -315,7 +338,7 @@ const Div__filter = styled.div`
   label {
     display: block;
     padding: 10px 15px;
-    margin: 0 5px 2px;
+    margin: 0 0 2px;
     background-color: #efede9;
     color: #ac832f;
     transition: all ease-in-out 0.65s;
@@ -324,6 +347,7 @@ const Div__filter = styled.div`
 
     ${bp_min_desktop} {
       display: block;
+      margin: 0 5px 2px;
       border-radius: 5px;
 
       &:hover {
@@ -365,7 +389,8 @@ const Div__filter = styled.div`
   .filter_item_amount {
     /* font-family: "Arial, sans-serif"; */
     float: right;
-    margin: -1px 0 0;
+    margin: -2px 0 0;
+    font-size: 18px;
     color: #966500;
     transition: all ease-in-out 0.3s;
   }
@@ -832,7 +857,8 @@ const ProductPage = ({
               diamond, chosen by our experts, for brilliance and shine.
             </p>
             <button className="show_filters_btn" onClick={show_filters_btn}>
-              Show Filters
+              <span className="show_filters_btn_text_show">Show</span>
+              <span className="show_filters_btn_text_hide">Hide</span> Filters
             </button>
           </Div__pageHeader>
           <Div__filter className="filter" style={{ height: "0px" }}>
