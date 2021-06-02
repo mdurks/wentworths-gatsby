@@ -183,7 +183,6 @@ const Div__filter = styled.div`
 
       legend {
         &:after {
-          /* transform: rotate(630deg); */
           transform: rotate(270deg);
           right: 4px;
 
@@ -226,11 +225,10 @@ const Div__filter = styled.div`
         }
       }
 
-      .filter_legend_amount {
-        /* display: none; */
+      /* .filter_legend_amount {
         opacity: 0;
         position: absolute;
-      }
+      } */
     }
   }
 
@@ -798,9 +796,10 @@ const ProductPage = ({
 
   let show_filters_btn = e => {
     // This button should only be visible for mobile menu layout
+    //
     // Calculate the total height of the child elements of filter
-    // Animate open/close of menu via calculating style.height due
-    // to a variable height
+    // Animate open/close of menu via calculating style.height since
+    // the menu height will vary due to its contents
     let el_filter = document.querySelector(".filter")
     let el_filter_children = el_filter.childNodes
     let el_filter_children_total_height = 0
@@ -811,14 +810,21 @@ const ProductPage = ({
 
     // Manually set height of filter to this so annimation can slide open
     if (el_filter.style.height === "0px") {
+      // open menu
       el_filter.style.height = el_filter_children_total_height
     } else {
+      // close menu
       // Set height to what ever height it currenly is
       // before setting it to 0 so the css transition will work
       el_filter.style.height = el_filter.offsetHeight + "px"
       setTimeout(() => {
         el_filter.style.height = "0px"
       }, 100)
+      setTimeout(() => {
+        document.querySelectorAll(".filter_menu_open").forEach(el => {
+          el.classList.remove("filter_menu_open")
+        })
+      }, 400)
     }
     // Clear the height after the menu opening transition to allow the sub
     // menus to open and be visible
