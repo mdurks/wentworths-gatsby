@@ -843,6 +843,19 @@ const ProductPage = ({
     }, 100)
   }
 
+  const style_number_of_menu_items_for_gemstone = {
+    "--number-of-menu-items": filters_for_gemstone.length,
+  }
+  const style_number_of_menu_items_for_stoneCut = {
+    "--number-of-menu-items": filters_for_stoneCut.length,
+  }
+  const style_number_of_menu_items_for_metal = {
+    "--number-of-menu-items": filters_for_metal.length,
+  }
+  const style_number_of_menu_items_for_stoneColour = {
+    "--number-of-menu-items": filters_for_stoneColour.length,
+  }
+
   return (
     <>
       <Div__productsPage className="productsPageContainer">
@@ -872,9 +885,7 @@ const ProductPage = ({
               </legend>
               <div
                 className="filter_list_container"
-                style={
-                  "--number-of-menu-items: " + filters_for_gemstone.length + ";"
-                }
+                style={style_number_of_menu_items_for_gemstone}
               >
                 <ul
                   style={
@@ -905,9 +916,7 @@ const ProductPage = ({
               </legend>
               <div
                 className="filter_list_container"
-                style={
-                  "--number-of-menu-items: " + filters_for_stoneCut.length + ";"
-                }
+                style={style_number_of_menu_items_for_stoneCut}
               >
                 <ul
                   style={
@@ -938,9 +947,7 @@ const ProductPage = ({
               </legend>
               <div
                 className="filter_list_container"
-                style={
-                  "--number-of-menu-items: " + filters_for_metal.length + ";"
-                }
+                style={style_number_of_menu_items_for_metal}
               >
                 <ul
                   style={
@@ -971,11 +978,7 @@ const ProductPage = ({
               </legend>
               <div
                 className="filter_list_container"
-                style={
-                  "--number-of-menu-items: " +
-                  filters_for_stoneColour.length +
-                  ";"
-                }
+                style={style_number_of_menu_items_for_stoneColour}
               >
                 <ul
                   style={
