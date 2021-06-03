@@ -435,6 +435,18 @@ const ProductPage = ({
   // console.log("pageContext: ", pageContext)
   // console.log("products: ", products)
 
+  //
+  //
+  // sort products by newest date
+  let temp_products = products.sort(function (a, b) {
+    var c = new Date(a.createdAt)
+    var d = new Date(b.createdAt)
+    return d - c
+  })
+  products = [...temp_products]
+
+  //
+  //
   let return_array_center_out = a => {
     var o = [],
       s = a.length,
@@ -775,10 +787,44 @@ const ProductPage = ({
   }
   //
   //
-  // add a 'change' eventlistener to every filter checkbox
-  // document.querySelectorAll(".filter input[type=checkbox]").forEach(el => {
-  //   el.addEventListener("change", create_filter_object, false)
-  // })
+  let sortProducts = sort_by_value => event => {
+    switch (sort_by_value) {
+      case "Newest":
+        let newList = productList.sort(function (a, b) {
+          var c = new Date(a.createdAt)
+          var d = new Date(b.createdAt)
+          return d - c
+        })
+        setProductList([...newList])
+        break
+      case "Oldest":
+        newList = productList.sort(function (a, b) {
+          var c = new Date(a.createdAt)
+          var d = new Date(b.createdAt)
+          return c - d
+        })
+        setProductList([...newList])
+        break
+      case "Price_Ascending":
+        newList = productList.sort(function (a, b) {
+          var c = a.price
+          var d = b.price
+          return c - d
+        })
+        setProductList([...newList])
+        break
+      case "Price_Descending":
+        newList = productList.sort(function (a, b) {
+          var c = a.price
+          var d = b.price
+          return d - c
+        })
+        setProductList([...newList])
+        break
+      default:
+        break
+    }
+  }
   //
   //
   // Hooks
@@ -792,6 +838,7 @@ const ProductPage = ({
   // every time the productList hook changes, call init_filters()
   useEffect(() => {
     init_filters()
+    // console.log("productList", productList)
   }, [productList])
 
   let show_filters_btn = e => {
@@ -1013,6 +1060,18 @@ const ProductPage = ({
             &nbsp;&nbsp;
             {pageContext.category} {pageContext.product_type}.
           </Div__filter_info>
+          <div style={{ textAlign: "center" }}>
+            <span>Sort by: </span>
+            <button onClick={sortProducts("Newest")}>Newest</button>&nbsp;
+            <button onClick={sortProducts("Oldest")}>Oldest</button>&nbsp;
+            <button onClick={sortProducts("Price_Ascending")}>
+              Price Ascending
+            </button>
+            &nbsp;
+            <button onClick={sortProducts("Price_Descending")}>
+              Price Descending
+            </button>
+          </div>
           <Div__productRow className="productRow">
             {productList.map(({ id, ...product }, index) => (
               <>
