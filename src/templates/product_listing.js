@@ -396,11 +396,22 @@ const Div__filter = styled.div`
 `
 
 const Div__filter_info = styled.div`
-  margin: 40px 0 50px;
+  margin: 30px 0 50px;
   text-align: center;
 
   ${bp_min_desktop} {
     margin-bottom: 80px;
+  }
+
+  .sortProducts {
+    text-align: "center";
+    margin: 30px 0 30px;
+
+    button {
+      padding: 7px 15px;
+      margin: 0 5px 5px 0;
+      border-radius: 5px;
+    }
   }
 `
 
@@ -470,7 +481,7 @@ const ProductPage = ({
           scrollTrigger: {
             trigger: el,
             // markers: true,
-            start: "-30px 88%",
+            start: "-60px 88%",
             toggleActions: "restart none none reset",
           },
           duration: 2.5,
@@ -1049,19 +1060,18 @@ const ProductPage = ({
             {" " + products.length}
             &nbsp;&nbsp;
             {pageContext.category} {pageContext.product_type}.
+            <div className="sortProducts">
+              <span>Sort by:&nbsp;&nbsp;&nbsp;</span>
+              <button onClick={sortProducts("Newest")}>Newest</button>
+              <button onClick={sortProducts("Oldest")}>Oldest</button>
+              <button onClick={sortProducts("Price_Ascending")}>
+                Price Ascending
+              </button>
+              <button onClick={sortProducts("Price_Descending")}>
+                Price Descending
+              </button>
+            </div>
           </Div__filter_info>
-          <div style={{ textAlign: "center" }}>
-            <span>Sort by: </span>
-            <button onClick={sortProducts("Newest")}>Newest</button>&nbsp;
-            <button onClick={sortProducts("Oldest")}>Oldest</button>&nbsp;
-            <button onClick={sortProducts("Price_Ascending")}>
-              Price Ascending
-            </button>
-            &nbsp;
-            <button onClick={sortProducts("Price_Descending")}>
-              Price Descending
-            </button>
-          </div>
           <Div__productRow className="productRow">
             {productList.map(({ id, ...product }, index) => (
               <>
