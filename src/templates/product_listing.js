@@ -437,16 +437,6 @@ const ProductPage = ({
 
   //
   //
-  // sort products by newest date
-  let temp_products = products.sort(function (a, b) {
-    var c = new Date(a.createdAt)
-    var d = new Date(b.createdAt)
-    return d - c
-  })
-  products = [...temp_products]
-
-  //
-  //
   let return_array_center_out = a => {
     var o = [],
       s = a.length,
@@ -791,16 +781,16 @@ const ProductPage = ({
     switch (sort_by_value) {
       case "Newest":
         let newList = productList.sort(function (a, b) {
-          var c = new Date(a.createdAt)
-          var d = new Date(b.createdAt)
+          var c = new Date(a.updatedAt)
+          var d = new Date(b.updatedAt)
           return d - c
         })
         setProductList([...newList])
         break
       case "Oldest":
         newList = productList.sort(function (a, b) {
-          var c = new Date(a.createdAt)
-          var d = new Date(b.createdAt)
+          var c = new Date(a.updatedAt)
+          var d = new Date(b.updatedAt)
           return c - d
         })
         setProductList([...newList])
@@ -1119,6 +1109,7 @@ export const pageQuery = graphql`
         filter_stoneCut
         filter_stoneColour
         createdAt
+        updatedAt
         image {
           id
           url
