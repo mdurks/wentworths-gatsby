@@ -416,8 +416,21 @@ const Div__filter_info = styled.div`
 `
 
 const Div__productRow = styled.div`
-  text-align: center;
-  /* outline: 1px solid rgba(0, 0, 0, 0.3); */
+  @media (max-width: 1024px) {
+    text-align: center;
+    overflow-x: hidden;
+
+    > a {
+      margin-bottom: -30px;
+
+      &:nth-child(odd) {
+        left: -15%;
+      }
+      &:nth-child(even) {
+        left: 15%;
+      }
+    }
+  }
 
   ${bp_min_desktop} {
     display: flex;
