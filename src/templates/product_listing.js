@@ -21,10 +21,12 @@ const Div__productsPage = styled.div``
 
 const Div__pageHeader = styled.div`
   position: relative;
-  padding: 130px 0 70px;
+  padding: 130px 0;
   text-align: center;
+  min-height: 560px;
 
   ${bp_min_desktop} {
+    min-height: auto;
     padding: 250px 0 40px;
   }
 
@@ -416,18 +418,20 @@ const Div__filter_info = styled.div`
 `
 
 const Div__productRow = styled.div`
+  text-align: center;
+
   @media (max-width: 1024px) {
-    text-align: center;
-    overflow-x: hidden;
+    margin: 0 -30px 75px;
+    overflow: hidden;
 
     > a {
       margin-bottom: -30px;
 
       &:nth-child(odd) {
-        left: -15%;
+        left: -10%;
       }
       &:nth-child(even) {
-        left: 15%;
+        left: 10%;
       }
     }
   }
