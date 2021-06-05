@@ -398,21 +398,103 @@ const Div__filter = styled.div`
 `
 
 const Div__filter_info = styled.div`
-  margin: 30px 0 50px;
+  margin: 30px 0 90px;
   text-align: center;
 
   ${bp_min_desktop} {
-    margin-bottom: 80px;
+    margin-bottom: 110px;
   }
 
   .sortProducts {
-    text-align: "center";
     margin: 30px 0 30px;
 
-    button {
-      padding: 7px 15px;
-      margin: 0 5px 5px 0;
+    &__container {
+      position: relative;
+      display: flex;
+      margin: auto;
+      width: 275px;
+    }
+
+    &__label {
+      padding-top: 12px;
+      color: #ac832f;
+      font-size: 18px;
+    }
+
+    &__list_container {
+      position: absolute;
+      top: -5px;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      width: 200px;
+      height: 62px;
+      padding: 10px;
       border-radius: 5px;
+      border: 1px solid #c0b7a3;
+      background-color: #e5e3de;
+      overflow: hidden;
+      transition: all 0.4s ease-in-out;
+      z-index: 4;
+
+      &:before {
+        content: "❯";
+        position: absolute;
+        top: 14px;
+        right: 26px;
+        transform: rotate(90deg);
+        transition: all 0.4s ease-in-out;
+        z-index: 5;
+      }
+      &.open:before {
+        opacity: 0;
+      }
+
+      @media (hover: hover) {
+        &:hover {
+          height: 184px;
+
+          button {
+            opacity: 1;
+          }
+        }
+      }
+
+      &.open {
+        height: 184px;
+
+        button {
+          opacity: 1;
+        }
+      }
+    }
+
+    button {
+      order: 1;
+      padding: 7px 15px;
+      margin: 0 0 2px;
+      border-radius: 5px;
+      font-size: 16px;
+      text-align: left;
+      background-color: #efede9;
+      opacity: 0;
+      transition: all 0.4s ease-in-out;
+      -webkit-tap-highlight-color: transparent;
+
+      @media (hover: hover) {
+        &:hover {
+          background-color: #f9f8f6;
+        }
+      }
+
+      &.selected {
+        order: 0;
+        opacity: 1;
+      }
+
+      &:focus {
+        opacity: 1;
+      }
     }
   }
 `
@@ -805,7 +887,7 @@ const ProductPage = ({
   }
   //
   //
-  let sortProducts = sort_by_value => event => {
+  let sortProducts = sort_by_value => e => {
     switch (sort_by_value) {
       case "Newest":
         let newList = productList.sort(function (a, b) {
@@ -842,6 +924,16 @@ const ProductPage = ({
       default:
         break
     }
+
+    // style sort by buttons
+    let clicked_button = e.target
+    if (window.innerWidth < 768) {
+      clicked_button.parentNode.classList.toggle("open")
+    }
+    clicked_button.parentNode.childNodes.forEach(el => {
+      el.classList.remove("selected")
+    })
+    clicked_button.classList.add("selected")
   }
   //
   //
@@ -1078,15 +1170,21 @@ const ProductPage = ({
             &nbsp;&nbsp;
             {pageContext.category} {pageContext.product_type}.
             <div className="sortProducts">
-              <span>Sort by:&nbsp;&nbsp;&nbsp;</span>
-              <button onClick={sortProducts("Newest")}>Newest</button>
-              <button onClick={sortProducts("Oldest")}>Oldest</button>
-              <button onClick={sortProducts("Price_Ascending")}>
-                Price Ascending
-              </button>
-              <button onClick={sortProducts("Price_Descending")}>
-                Price Descending
-              </button>
+              <span className="sortProducts__container">
+                <span className="sortProducts__label">Sort by:</span>
+                <span className="sortProducts__list_container">
+                  <button onClick={sortProducts("Newest")} className="selected">
+                    Newest
+                  </button>
+                  <button onClick={sortProducts("Oldest")}>Oldest</button>
+                  <button onClick={sortProducts("Price_Ascending")}>
+                    Price Ascending
+                  </button>
+                  <button onClick={sortProducts("Price_Descending")}>
+                    Price Descending
+                  </button>
+                </span>
+              </span>
             </div>
           </Div__filter_info>
           <Div__productRow className="productRow">
