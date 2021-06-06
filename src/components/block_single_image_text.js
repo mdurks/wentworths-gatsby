@@ -17,7 +17,7 @@ const bp_min_desktop = "@media (min-width: 1024px)"
 const bp_max_desktop = "@media (max-width: 1024px)"
 const bp_desktop_max = "1400px"
 
-const section_vertical_padding = "0vh"
+const section_vertical_padding = "10vh"
 const section_horizontal_padding = "50px"
 const section_content_max_width = "1800px"
 
@@ -259,7 +259,8 @@ const Block_single_image_text = () => {
         },
         duration: 2,
         opacity: 0,
-        y: "+=100px",
+        // y: "+=100px",
+        y: `+=${window.innerHeight / 4}px`,
       })
     } else {
       tl_gsap.from(
@@ -271,7 +272,7 @@ const Block_single_image_text = () => {
           opacity: 0,
           ease: "power3.inOut",
         },
-        "-=1"
+        "-=2"
       )
 
       tl_gsap.from(
@@ -292,13 +293,14 @@ const Block_single_image_text = () => {
         gsap.to(gsap__Img__SIT__img1, {
           scrollTrigger: {
             trigger: gsap__Img__SIT__img1,
-            //markers: true,
+            // markers: true,
             //start: "top 90%", // colorBox, viewport start location
             start: "50% 50%",
             // end: () => gsap__Div__SIT.offsetTop * 0.9,
             scrub: 1.5,
           },
-          y: "-=30%",
+          y: `-=${window.innerHeight / 3}px`,
+          // y: "-=30%",
         })
         gsap.to(gsap__Img__SIT__img2, {
           scrollTrigger: {
