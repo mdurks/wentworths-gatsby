@@ -111,6 +111,7 @@ const Block_one_row_jewellery = () => {
   } = useStaticQuery(pageQuery)
 
   let gsap_section_hero = null
+  let gsap_section_hero_img = null
 
   useEffect(() => {
     let viewportWidth = window.innerWidth
@@ -120,15 +121,15 @@ const Block_one_row_jewellery = () => {
       scale: 1.1,
       ease: "power2.out",
     })
-    gsap.to(gsap_section_hero, {
+    gsap.to(gsap_section_hero_img, {
       scrollTrigger: {
         trigger: document.body,
         start: "top top",
         toggleActions: "play none none none",
         // markers: true,
-        scrub: 1,
+        scrub: true,
       },
-      y: "-=200",
+      y: `+=${window.innerHeight / 4}`,
     })
 
     gsap.to(".Section__hero__heading", {
@@ -153,7 +154,7 @@ const Block_one_row_jewellery = () => {
   return (
     <>
       <Section__hero ref={e => (gsap_section_hero = e)}>
-        <Styled_HeroImg>
+        <Styled_HeroImg ref={e => (gsap_section_hero_img = e)}>
           {/* conditional rendering - check screen width and set background image */}
           {typeof window !== "undefined" && window.innerWidth < 600 ? (
             <GraphImg
