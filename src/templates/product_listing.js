@@ -120,8 +120,9 @@ const Div__pageHeader = styled.div`
 const Div__filter = styled.div`
   position: relative;
   padding: 10px 0 0;
-  transition: all ease-in-out 0.5s;
+  /* transition: all ease-in-out 0.5s; */
   overflow: hidden;
+  opacity: 0;
 
   ${bp_min_desktop} {
     display: flex;
@@ -400,6 +401,7 @@ const Div__filter = styled.div`
 const Div__filter_info = styled.div`
   margin: 30px 0 90px;
   text-align: center;
+  opacity: 0;
 
   ${bp_min_desktop} {
     margin-bottom: 110px;
@@ -566,12 +568,16 @@ const ProductPage = ({
   useEffect(() => {
     //
     //
-    gsap.to(".subTitle, .pageTitle, .productsPageHeaeder p:last-of-type", {
-      delay: 0.5,
-      opacity: 1,
-      duration: 1.5,
-      stagger: 0.35,
-    })
+    gsap.to(
+      ".subTitle, .pageTitle, .productsPageHeaeder p:last-of-type, .filter, .filter_info",
+      {
+        delay: 0.35,
+        opacity: 1,
+        duration: 1,
+        stagger: 0.15,
+      }
+    )
+
     //
     //
     if (window.innerWidth < 768) {
@@ -1164,7 +1170,7 @@ const ProductPage = ({
               </div>
             </fieldset>
           </Div__filter>
-          <Div__filter_info>
+          <Div__filter_info className="filter_info">
             Showing &nbsp;{productList.length} of
             {" " + products.length}
             &nbsp;&nbsp;

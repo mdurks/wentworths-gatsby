@@ -7,7 +7,7 @@ import Link from "gatsby-plugin-transition-link"
 import GraphImg from "graphcms-image"
 import styled from "styled-components"
 
-import { gsap, Expo, Power2 } from "gsap/all"
+import { gsap, Power2 } from "gsap/all"
 
 const bp_min_desktop = "@media (min-width: 1024px)"
 
@@ -258,10 +258,21 @@ const Product = props => {
         },
       }
     )
-    tl.to(document.querySelector(".productsPageHeaeder").childNodes, {
+    //
+    // Fade out other page elements on page exit
+    let elements_to_fade_out = Array.from(
+      document.querySelector(".productsPageHeaeder").childNodes
+    )
+    elements_to_fade_out.push(document.querySelector(".filter"))
+    elements_to_fade_out.push(document.querySelector(".filter_info"))
+    elements_to_fade_out.reverse()
+    //
+    //
+    tl.to(elements_to_fade_out, {
       duration: 0.25,
       ease: Power2.easeInOut,
       opacity: 0,
+      stagger: 0.07,
     })
     //
     // animate image to new position, filling the whole screen, centered and in the same position as the same image on the incoming product detail page, seamlessly
