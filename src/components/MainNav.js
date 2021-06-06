@@ -247,7 +247,7 @@ const Button__topLevelLink = styled.button`
 
   ${bp_min_desktop} {
     .mainNav--shrink & {
-      color: #b3b3b3;
+      color: #909090;
     }
   }
 `
