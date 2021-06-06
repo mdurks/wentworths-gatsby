@@ -283,6 +283,9 @@ ul {
   list-style-type: none;
 }
 
-.no_scroll {
+.no_y_scroll {
   overflow-y: hidden;
+}
+.no_x_scroll {
+  overflow-x: hidden;
 }

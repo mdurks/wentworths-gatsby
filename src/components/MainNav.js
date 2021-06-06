@@ -686,13 +686,13 @@ const MainNav = () => {
 
   let click_mobile_burger_btn = () => {
     if (
-      String(document.documentElement.classList).indexOf("no_scroll") < 0 &&
+      String(document.documentElement.classList).indexOf("no_y_scroll") < 0 &&
       window.innerWidth < 1024
     ) {
-      document.documentElement.classList.add("no_scroll")
+      document.documentElement.classList.add("no_y_scroll")
       document.documentElement.classList.add("showMobileNav")
     } else {
-      document.documentElement.classList.remove("no_scroll")
+      document.documentElement.classList.remove("no_y_scroll")
       document.documentElement.classList.remove("showMobileNav")
     }
   }

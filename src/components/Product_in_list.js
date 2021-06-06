@@ -248,7 +248,7 @@ const Product = props => {
     let parent_offset_top = window.innerHeight / 2 - destination_height / 2
     //
     let destination_x = parent_offset_right * -1 + parent_width * 0.3 - 1
-    let destination_y = window.scrollY + parent_offset_top - originY + 24
+    let destination_y = window.scrollY + parent_offset_top - originY + 62
     //
     tl.set(
       document.querySelector(tl_target_image_container).nextElementSibling,
@@ -287,7 +287,7 @@ const Product = props => {
         width: destination_width,
         height: destination_height,
       },
-      "-=0.5"
+      "-=0.75"
     )
     //
     tl.to(
@@ -301,6 +301,8 @@ const Product = props => {
       `-=${tl_duration}`
     )
     //
+    //
+    // fade out other product images on the page
     let jewellery_items_array = Array.from(
       document.querySelectorAll(".productInListItem")
     )

@@ -647,8 +647,7 @@ const DetailsPage = ({
     // Set page colours
     //
     document.body.style.backgroundColor = "#e5e3de"
-    document.getElementsByTagName("nav")[0].style.background =
-      "linear-gradient(0deg, #6db2c300 0%, #7B7262 100%)"
+    document.body.classList.add("mainNav--brown")
     //
     //
     //
@@ -661,6 +660,7 @@ const DetailsPage = ({
     history.pushState(null, document.title, location.href)
     window.addEventListener("popstate", function (event) {
       history.pushState(null, document.title, location.href)
+      document.body.classList.add("no_x_scroll")
       exit_animation()
     })
     //
@@ -692,7 +692,7 @@ const DetailsPage = ({
   // Click product image to start zoom in to modal
   //
   let open_modal_animation = index => {
-    document.body.classList.add("no_scroll")
+    document.body.classList.add("no_y_scroll")
     // hide the nav by animating it off-screen
     if (window.innerWidth >= 768) {
       document.getElementsByTagName("nav")[0].style.top = "-100px"
@@ -1101,7 +1101,7 @@ const DetailsPage = ({
           className="modal_close"
           onClick={e => {
             e.stopPropagation()
-            document.body.classList.remove("no_scroll")
+            document.body.classList.remove("no_y_scroll")
             document.getElementsByTagName("nav")[0].style.top = ""
             modal_close_animation()
           }}
