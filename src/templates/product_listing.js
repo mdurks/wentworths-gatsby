@@ -671,11 +671,10 @@ const ProductPage = ({
     //
     init_filters()
     //
-
+    //
+    // Style page and nav
     document.body.style.backgroundColor = "#e5e3de"
-    document.getElementsByTagName("nav")[0].style.background =
-      "linear-gradient(0deg, #6db2c300 0%, #7B7262 100%)"
-
+    document.body.classList.add("mainNav--brown")
     //
     //
     // media query event handler

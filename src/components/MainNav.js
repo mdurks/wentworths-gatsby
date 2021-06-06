@@ -73,7 +73,7 @@ const Nav__mainNav = styled.nav`
 
   ${bp_min_desktop} {
     z-index: 2;
-    transition: all ease-out 0.5s;
+    transition: all ease-out 0.7s;
     position: fixed;
     height: auto;
     background: linear-gradient(0deg, #6db2c300 0%, #6db2c3 100%);
@@ -87,11 +87,42 @@ const Nav__mainNav = styled.nav`
     background: linear-gradient(0deg, #3d8799 99.9%, #6db2c3 100%);
   }
 
+  /* Style nav bar when on the product pages */
+  .mainNav--brown & {
+    background: linear-gradient(0deg, #6db2c300 0%, #7b7262 100%);
+  }
+
+  /* For when we scroll down the page, shrink the nav and make bg white */
   .mainNav--shrink & {
     ${bp_min_desktop} {
       background: white;
       box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.1);
       padding: 0 50px;
+    }
+  }
+
+  /* Style nav bar for when we want to hide the nav bar e.g block_full_size_image component */
+  .mainNav--shrink--transparent & {
+    /* background: #7b7262; */
+    /* opacity: 0; */
+    top: -22px;
+
+    > div > a {
+      padding-bottom: 0;
+    }
+    > div > ul {
+      opacity: 0;
+    }
+
+    &:hover {
+      top: 0px;
+
+      > div > a {
+        padding-bottom: 20px;
+      }
+      > div > ul {
+        opacity: 1;
+      }
     }
   }
 `
@@ -706,7 +737,7 @@ const MainNav = () => {
     }
     let body_observer_options = {
       root: null, // relative to document viewport
-      rootMargin: "25%", // margin around root. Values are similar to css property. Unitless values not allowed
+      rootMargin: "20%", // margin around root. Values are similar to css property. Unitless values not allowed
       threshold: 1.0, // visible amount of item shown in relation to root
     }
     let bodyObserver = new IntersectionObserver(

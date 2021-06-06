@@ -128,7 +128,7 @@ const IndexPage = () => {
 
   useEffect(() => {
     document.body.style.backgroundColor = "#fff"
-    document.getElementsByTagName("nav")[0].style = ""
+    document.body.classList = "mainNav--normal"
   }, [])
 
   return (

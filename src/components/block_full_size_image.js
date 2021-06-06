@@ -91,6 +91,29 @@ const Block_one_row_jewellery = () => {
       // duration: 2,
       scale: 1.3,
     })
+    //
+    //
+    // Show/Hide main nav when this component in central view
+    gsap.from(".Section__hero__backgroundImg", {
+      scrollTrigger: {
+        trigger: gsap__image,
+        // markers: true,
+        start: "-25% top",
+        end: "75% top",
+        onEnter: () => {
+          document.body.classList.add("mainNav--shrink--transparent")
+        },
+        onLeaveBack: () => {
+          document.body.classList.remove("mainNav--shrink--transparent")
+        },
+        onLeave: () => {
+          document.body.classList.remove("mainNav--shrink--transparent")
+        },
+        onEnterBack: () => {
+          document.body.classList.add("mainNav--shrink--transparent")
+        },
+      },
+    })
   }, [])
 
   return (
