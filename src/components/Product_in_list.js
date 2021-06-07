@@ -18,6 +18,7 @@ const Styled_ProductItem = styled(Link)`
   padding: 30px 0;
   text-decoration: none;
   color: #90836b;
+  -webkit-tap-highlight-color: transparent;
 
   ${bp_min_desktop} {
     flex: 0 0 20%;
