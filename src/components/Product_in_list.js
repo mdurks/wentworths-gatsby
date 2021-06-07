@@ -168,6 +168,7 @@ const Product = props => {
   let tl_target_image_container = `.image_${props.product.slug}`
 
   let page_exit_animation = (exit, node) => {
+    /*
     //
     //
     // Target Hole To Fill
@@ -222,9 +223,44 @@ const Product = props => {
     //     height: target_image_height,
     //   },
     // })
+    */
+    //
+    //
+    // fade out product title & price
+    //
+    tl.set(".productDesc, .productPrice", {
+      css: {
+        opacity: 0,
+        y: "+=20",
+      },
+    })
+    tl.set(".productRow", {
+      css: {
+        overflow: "visible",
+      },
+    })
+    //
+    //
+    // Fade out other page elements on page exit
+    //
+    let elements_to_fade_out = Array.from(
+      document.querySelector(".productsPageHeaeder").childNodes
+    )
+    elements_to_fade_out.push(document.querySelector(".filter"))
+    elements_to_fade_out.push(document.querySelector(".filter_info"))
+    elements_to_fade_out.reverse()
+    //
+    tl.to(elements_to_fade_out, {
+      duration: 0.25,
+      ease: Power2.easeInOut,
+      opacity: 0,
+      stagger: 0.07,
+    })
+    //
     //
     // find original position of element, and because they're placed unevenly on the yaxis,
     // remove any extra 'top' that might be there
+    //
     let originY =
       window.scrollY +
       document.querySelector(tl_target_image_container).getBoundingClientRect()
@@ -236,8 +272,8 @@ const Product = props => {
           .slice(0, -2)
       )
     //
-    let destination_width = 540
-    let destination_height = 540
+    let destination_width = window.innerWidth >= 1024 ? 540 : 315
+    let destination_height = window.innerWidth >= 1024 ? 540 : 315
     //
     let parent_width = document.querySelector(".productRow").offsetWidth
     let parent_offset_right =
@@ -247,35 +283,18 @@ const Product = props => {
       5
     let parent_offset_top = window.innerHeight / 2 - destination_height / 2
     //
-    let destination_x = parent_offset_right * -1 + parent_width * 0.3 - 1
-    let destination_y = window.scrollY + parent_offset_top - originY + 62
+    let destination_y_refine = window.innerWidth >= 1024 ? 62 : -62
+    let destination_x_refine = window.innerWidth >= 1024 ? 0.3 : 0.5
     //
-    tl.set(
-      document.querySelector(tl_target_image_container).nextElementSibling,
-      {
-        css: {
-          opacity: 0,
-        },
-      }
-    )
+    let destination_x =
+      parent_offset_right * -1 + parent_width * destination_x_refine - 1
+    let destination_y =
+      window.scrollY + parent_offset_top - originY + destination_y_refine
     //
-    // Fade out other page elements on page exit
-    let elements_to_fade_out = Array.from(
-      document.querySelector(".productsPageHeaeder").childNodes
-    )
-    elements_to_fade_out.push(document.querySelector(".filter"))
-    elements_to_fade_out.push(document.querySelector(".filter_info"))
-    elements_to_fade_out.reverse()
-    //
-    //
-    tl.to(elements_to_fade_out, {
-      duration: 0.25,
-      ease: Power2.easeInOut,
-      opacity: 0,
-      stagger: 0.07,
-    })
     //
     // animate image to new position, filling the whole screen, centered and in the same position as the same image on the incoming product detail page, seamlessly
+    //
+    // image animation:
     tl.to(
       tl_target_image_container,
       {
@@ -289,20 +308,21 @@ const Product = props => {
       },
       "-=0.75"
     )
-    //
+    // productStage animation:
     tl.to(
       document.querySelector(tl_target_image_container + " .productStage"),
       {
         duration: tl_duration - tl_duration * 0.5,
         ease: Power2.out,
-        width: "433px",
-        height: "176px",
+        width: window.innerWidth >= 1024 ? "433px" : "315px",
+        height: window.innerWidth >= 1024 ? "176px" : "120px",
       },
       `-=${tl_duration}`
     )
     //
     //
     // fade out other product images on the page
+    //
     let jewellery_items_array = Array.from(
       document.querySelectorAll(".productInListItem")
     )

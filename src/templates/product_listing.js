@@ -512,10 +512,10 @@ const Div__productRow = styled.div`
       margin-bottom: -30px;
 
       &:nth-child(odd) {
-        left: -10%;
+        left: -12%;
       }
       &:nth-child(even) {
-        left: 10%;
+        left: 12%;
       }
     }
   }
