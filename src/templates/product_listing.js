@@ -120,7 +120,7 @@ const Div__pageHeader = styled.div`
 const Div__filter = styled.div`
   position: relative;
   padding: 10px 0 0;
-  /* transition: all ease-in-out 0.5s; */
+  transition: all ease-in-out 0.5s;
   overflow: hidden;
   opacity: 0;
 
