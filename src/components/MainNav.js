@@ -179,6 +179,10 @@ const Ul__mainNav__listContainer = styled.ul`
 
   .mainNav--brown & {
     background: linear-gradient(0deg, #b7a78f 0%, #857e6f 100%);
+
+    ${bp_min_desktop} {
+      background: none;
+    }
   }
 
   ${bp_min_desktop} {
