@@ -69,11 +69,10 @@ const Nav__mainNav = styled.nav`
   width: 100%;
   padding: 0;
   background: linear-gradient(0deg, #6db2c300 0%, #6db2c3 100%);
-  transition: background ease 0.5s;
+  transition: all ease-out 0.7s;
 
   ${bp_min_desktop} {
     z-index: 2;
-    transition: all ease-out 0.7s;
     position: fixed;
     height: auto;
     background: linear-gradient(0deg, #6db2c300 0%, #6db2c3 100%);
@@ -176,6 +175,10 @@ const Ul__mainNav__listContainer = styled.ul`
 
   .showMobileNav & {
     display: flex;
+  }
+
+  .mainNav--brown & {
+    background: linear-gradient(0deg, #b7a78f 0%, #857e6f 100%);
   }
 
   ${bp_min_desktop} {
