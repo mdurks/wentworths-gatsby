@@ -124,6 +124,8 @@ const Styled_Img = styled.div`
   margin: 80px 0 100px;
   width: 100%;
   height: 100%;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 
   ${bp_min_desktop} {
     position: absolute;
@@ -134,6 +136,38 @@ const Styled_Img = styled.div`
     height: 540px;
     margin: 0;
     /* outline: 1px solid rgba(0, 0, 0, 0.3); */
+  }
+
+  div {
+    height: 100%;
+    width: 100%;
+  }
+
+  .animating_to_modal {
+    height: 100%;
+    margin: 0;
+    top: 0;
+    box-shadow: none !important;
+    transform: translate(0px, 0px) scale(1) !important;
+    transition: none !important;
+    opacity: 1 !important;
+
+    img {
+      object-fit: contain !important;
+    }
+  }
+
+  .reset_after_animated_to_modal {
+    /* position: relative;
+    overflow: hidden;
+    z-index: 1;
+    opacity: 1;
+    transform: translate(0px, -100px) scale(1);
+    transition: none !important;
+
+    ${bp_min_desktop} {
+      transform: translate(0px, -100px) scale(0.9);
+    } */
   }
 `
 
@@ -590,6 +624,7 @@ const DetailsPage = ({
       }
       //
       ScrollTrigger.create({
+        id: "detailed_description_block",
         trigger: ".detailed_description_block",
         // markers: true,
         start: "top top",
@@ -651,8 +686,6 @@ const DetailsPage = ({
     //
     //
     //
-    //
-    //
     // JS to go back
     //
     // intercept browser action to go back and stop it
@@ -679,7 +712,17 @@ const DetailsPage = ({
         ease: Power3.inOut,
         y: 30,
       })
+      //
     }
+    //
+    //
+    // when this component unmounts:
+    return () => {
+      ScrollTrigger.getById("detailed_description_block").kill(true)
+    }
+    //
+    //
+    //
   }, [])
 
   const [modal_open, setModal_open] = useState("none")
@@ -689,46 +732,118 @@ const DetailsPage = ({
   ] = useState(0)
   //
   //
+  //
   // Click product image to start zoom in to modal
   //
   let open_modal_animation = index => {
+    //
+    // disable the webpage beneath the model from scrolling
     document.body.classList.add("no_y_scroll")
     // hide the nav by animating it off-screen
     if (window.innerWidth >= 768) {
-      document.getElementsByTagName("nav")[0].style.top = "-100px"
+      document.getElementsByTagName("nav")[0].style.top = "-200px"
+    } else {
+      // mobile - hide the burger btn and nav so it doesn't overlap the modal
+      document.querySelector(".burgerBtn").style.display = "none"
+      document.querySelector(".mainNav").style.display = "none"
     }
-
+    //
     // show the modal and image, but set opacity to 0
     document.querySelector(".product_detail_modal").style.opacity = "0"
     setModal_open("block")
-    setModal_img_from_product_array(index + 1)
-
+    setModal_img_from_product_array(index)
+    //
+    // get handles on the elements to animate
     let target_product_img = document.querySelector(
       ".productScrollingImg_" + index
     )
     let target_product_img_parent = target_product_img.parentNode.parentNode
-
+    //
+    //
     // 'Lift' product image off the page with css 'fixed' and place it
     // exactly where it was, then we can animate it to fill the page
-    gsap.set(target_product_img_parent, {
-      css: {
-        position: "fixed",
-        top:
+    //
+    // if hero image
+    if (index === 0) {
+      gsap.set(".hero_details", {
+        css: {
+          marginTop: document.querySelector(".hero_details").offsetTop - 15,
+        },
+      })
+      //
+      // calculate where the image is before lift off
+      let image_starting_y_pos
+      let image_starting_x_pos
+      //
+      // mobile
+      if (window.innerWidth < 1024) {
+        image_starting_y_pos =
+          target_product_img_parent.offsetTop +
+          target_product_img_parent.offsetParent.offsetTop -
+          window.scrollY +
+          "px"
+        image_starting_x_pos =
+          target_product_img_parent.offsetLeft +
+          target_product_img_parent.offsetParent.offsetLeft -
+          target_product_img_parent.offsetWidth / 2 +
+          "px"
+        //
+        // tablet or desktop
+      } else {
+        image_starting_y_pos =
           target_product_img_parent.offsetTop -
           window.scrollY +
-          document.querySelector(".detailed_description_block").offsetTop +
-          "px",
-        left:
-          target_product_img_parent.offsetLeft +
-          document.querySelector(".detailed_description_block").offsetLeft +
-          "px",
-        width: target_product_img_parent.offsetWidth + "px",
-        height: target_product_img_parent.offsetHeight + "px",
-        padding: window.innerWidth < 1024 ? "0px" : "30px",
-        backgroundColor: "#ffffff00",
-        zIndex: 5,
-      },
-    })
+          (window.innerHeight / 2 -
+            target_product_img_parent.offsetHeight / 2) +
+          //75 +
+          "px"
+        image_starting_x_pos = target_product_img_parent.offsetLeft + "px"
+      }
+      gsap.set(target_product_img_parent, {
+        css: {
+          position: "fixed",
+          top: image_starting_y_pos,
+          left: image_starting_x_pos,
+          // document.querySelector(".detailed_description_block").offsetLeft +
+          width: target_product_img_parent.offsetWidth + "px",
+          height: target_product_img_parent.offsetHeight + "px",
+          padding: window.innerWidth < 1024 ? "0px" : "30px",
+          margin: window.innerWidth < 1024 ? "0px" : "30px",
+          backgroundColor: "#ffffff00",
+          transform: "none",
+          zIndex: 5,
+        },
+      })
+      gsap.set(".productStage", {
+        css: {
+          opacity: 0,
+        },
+      })
+      //
+      // else not hero image
+    } else {
+      gsap.set(target_product_img_parent, {
+        css: {
+          position: "fixed",
+          top:
+            target_product_img_parent.offsetTop -
+            window.scrollY +
+            document.querySelector(".detailed_description_block").offsetTop +
+            "px",
+          left:
+            target_product_img_parent.offsetLeft +
+            document.querySelector(".detailed_description_block").offsetLeft +
+            "px",
+          width: target_product_img_parent.offsetWidth + "px",
+          height: target_product_img_parent.offsetHeight + "px",
+          padding: window.innerWidth < 1024 ? "0px" : "30px",
+          backgroundColor: "#ffffff00",
+          zIndex: 5,
+        },
+      })
+    }
+    //
+    // override conflicting styles
     target_product_img.classList.remove("reset_after_animated_to_modal")
     target_product_img.classList.add("animating_to_modal")
     //
@@ -988,16 +1103,23 @@ const DetailsPage = ({
           />
         </Styled_BackgroundImg> */}
 
-          <Styled_Img>
-            <div className="productStage"></div>
-            <GraphImg
-              image={product.image[0]}
-              transforms={["quality=value:80"]}
-              maxWidth={1920}
-              fadeIn={false}
-              blurryPlaceholder={false}
-            />
-          </Styled_Img>
+          <div>
+            <Styled_Img
+              onClick={() => {
+                open_modal_animation(0)
+              }}
+            >
+              <div className="productStage"></div>
+              <GraphImg
+                image={product.image[0]}
+                transforms={["quality=value:80"]}
+                maxWidth={1920}
+                fadeIn={false}
+                blurryPlaceholder={false}
+                className="productScrollingImg_0"
+              />
+            </Styled_Img>
+          </div>
 
           <Styled_CMScontent className="hero_details">
             <Styled_Title>{product.name}</Styled_Title>
@@ -1057,14 +1179,16 @@ const DetailsPage = ({
                 <>
                   <div
                     onClick={() => {
-                      open_modal_animation(index)
+                      open_modal_animation(index + 1)
                     }}
                   >
                     <GraphImg
                       image={el}
                       transforms={["quality=value:80"]}
                       maxWidth={1920}
-                      className={`productScrollingImg productScrollingImg_${index}`}
+                      className={`productScrollingImg productScrollingImg_${
+                        index + 1
+                      }`}
                     />
                   </div>
                 </>
@@ -1103,6 +1227,10 @@ const DetailsPage = ({
             e.stopPropagation()
             document.body.classList.remove("no_y_scroll")
             document.getElementsByTagName("nav")[0].style.top = ""
+            document.querySelector(".productStage").style.opacity = ""
+            document.querySelector(".burgerBtn").style = ""
+            document.querySelector(".mainNav").style = ""
+            document.querySelector(".hero_details").style = ""
             modal_close_animation()
           }}
         >
@@ -1136,8 +1264,6 @@ const DetailsPage = ({
           />
         </div>
       </Div_modal>
-
-      {/* <div style="height: 2000px"></div> */}
 
       {/* <Block_bespoke_design_advert /> */}
     </>

@@ -750,13 +750,14 @@ const MainNav = () => {
   return (
     <>
       <Button__burgerBtn
+        className="burgerBtn"
         aria-label="mobile main navigation toggle"
         onClick={click_mobile_burger_btn}
       >
         <div></div>
       </Button__burgerBtn>
 
-      <Nav__mainNav>
+      <Nav__mainNav className="mainNav">
         <Div__mainNav__container>
           <A__mainNav__logo as={Link} to="/">
             Wentworth Jewels
