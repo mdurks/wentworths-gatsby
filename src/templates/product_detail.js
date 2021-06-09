@@ -441,6 +441,7 @@ const Div_modal = styled.div`
     transition: all ease 0.3s;
     opacity: 0;
     z-index: 5;
+    -webkit-tap-highlight-color: transparent;
 
     ${bp_min_desktop} {
       top: 40px;
