@@ -523,6 +523,59 @@ const Div_modal = styled.div`
       }
     }
   }
+
+  .modalPagination {
+    position: absolute;
+    bottom: 30px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    &__container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 80vw;
+      padding: 5px;
+      background: #ffffff7d;
+      border-radius: 3px;
+    }
+
+    &__pageBtn {
+      position: relative;
+      /* top: 50px; */
+      flex: 0 0 auto;
+      width: 50px;
+      height: 50px;
+      margin: 6px 6px 14px;
+      padding: 0px;
+      background-color: white;
+      border: 1px solid #dedede;
+      transition: border ease 0.1s;
+      /* opacity: 0; */
+      -webkit-tap-highlight-color: transparent;
+
+      &:before {
+        content: "";
+        position: absolute;
+        bottom: -12px;
+        left: 0;
+        width: 100%;
+        height: 0px;
+        background-color: grey;
+        z-index: 1;
+        transition: height ease 0.2s;
+      }
+
+      &.modalPagination__selected {
+        /* border: 2px solid black; */
+
+        &:before {
+          height: 5px;
+        }
+      }
+    }
+  }
 `
 
 const DetailsPage = ({
@@ -890,6 +943,22 @@ const DetailsPage = ({
         stagger: 0.2,
       }
     )
+    gsap.fromTo(
+      ".modalPagination__pageBtn",
+      {
+        opacity: 0,
+        // top: 50,
+        left: 50,
+      },
+      {
+        ease: "back",
+        duration: 0.7,
+        opacity: 1,
+        // top: 0,
+        left: 0,
+        stagger: 0.1,
+      }
+    )
   }
   //
   //
@@ -1004,6 +1073,39 @@ const DetailsPage = ({
         opacity: 1,
       },
       "+=0.15"
+    )
+  }
+  //
+  //
+  // Modal pagination
+  let modal_pagination_goto_page = index => {
+    let target_img = document.querySelector(
+      ".modalContent  .graphcms-image-wrapper"
+    ).lastElementChild
+
+    let tl = gsap.timeline()
+
+    tl.to(target_img, {
+      duration: 0.15,
+      opacity: -0.55,
+    })
+    tl.set(
+      target_img,
+      {
+        onComplete: function () {
+          setModal_img_from_product_array(index)
+          reset_modal_zoom_state()
+        },
+      },
+      "+=0.2"
+    )
+    tl.to(
+      target_img,
+      {
+        duration: 0.15,
+        opacity: 1,
+      },
+      "+=0.08"
     )
   }
   //
@@ -1263,6 +1365,32 @@ const DetailsPage = ({
             transforms={["quality=value:80"]}
             maxWidth={1920}
           />
+        </div>
+        <div className="modalPagination">
+          <div className="modalPagination__container">
+            {product.image.map((el, index) => (
+              <>
+                <button
+                  className={`modalPagination__pageBtn ${
+                    modal_img_from_product_array === index
+                      ? "modalPagination__selected"
+                      : ""
+                  }`}
+                  onClick={e => {
+                    e.stopPropagation()
+                    modal_pagination_goto_page(index)
+                  }}
+                  aria-label={`View image ${index + 1}`}
+                >
+                  <GraphImg
+                    image={el}
+                    transforms={["quality=value:50"]}
+                    maxWidth={50}
+                  />
+                </button>
+              </>
+            ))}
+          </div>
         </div>
       </Div_modal>
 
