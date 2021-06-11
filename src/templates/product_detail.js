@@ -1425,7 +1425,7 @@ const DetailsPage = ({
         </div>
       </Div_modal>
 
-      {/* <Block_bespoke_design_advert /> */}
+      <Block_bespoke_design_advert />
     </>
   )
 }
