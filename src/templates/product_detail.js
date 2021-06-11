@@ -430,7 +430,7 @@ const Div_modal = styled.div`
     top: 10px;
     right: 10px;
     padding: 15px;
-    background-color: black;
+    background-color: #846a4f;
     color: white;
     border-radius: 100%;
     line-height: 15px;
@@ -472,7 +472,7 @@ const Div_modal = styled.div`
       top: 50%;
       left: 50px;
       padding: 12px 16px 16px;
-      background-color: black;
+      background-color: #846a4f;
       color: white;
       border-radius: 100%;
       line-height: 15px;
@@ -526,7 +526,7 @@ const Div_modal = styled.div`
 
   .modalPagination {
     position: absolute;
-    bottom: 30px;
+    bottom: 50px;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -536,35 +536,51 @@ const Div_modal = styled.div`
       flex-wrap: wrap;
       justify-content: center;
       max-width: 80vw;
-      padding: 5px;
+      padding: 5px 5px 15px;
       background: #ffffff7d;
       border-radius: 3px;
+      height: 76px;
     }
 
     &__pageBtn {
       position: relative;
       /* top: 50px; */
       flex: 0 0 auto;
-      width: 50px;
-      height: 50px;
-      margin: 6px 6px 14px;
-      padding: 0px;
-      background-color: white;
-      border: 1px solid #dedede;
-      transition: border ease 0.1s;
-      /* opacity: 0; */
+      width: 62px;
+      height: 62px;
+      margin: 6px 0 14px;
+      padding: 0px 6px;
+      margin-top: 0;
+      background-color: transparent;
+      transition: margin-top ease 0.3s, width ease 0.3s, height ease 0.3s,
+        left ease 0.3s;
       -webkit-tap-highlight-color: transparent;
+
+      > div {
+        border: 1px solid #846a4f;
+        background-color: white;
+      }
+
+      &:hover {
+        width: 60px;
+        height: 60px;
+        margin-top: -5px;
+
+        &:before {
+          bottom: -16px;
+        }
+      }
 
       &:before {
         content: "";
         position: absolute;
-        bottom: -12px;
-        left: 0;
-        width: 100%;
+        bottom: -9px;
+        left: 6px;
+        width: 50px;
         height: 0px;
-        background-color: grey;
+        background-color: #846a4f;
         z-index: 1;
-        transition: height ease 0.2s;
+        transition: all ease 0.3s;
       }
 
       &.modalPagination__selected {
@@ -585,6 +601,16 @@ const DetailsPage = ({
   pageContext,
 }) => {
   // console.log("product: ", product)
+
+  let return_array_center_out = a => {
+    var o = [],
+      s = a.length,
+      l = Math.floor(s / 2),
+      c
+    for (c = 0; c < s; c++)
+      o.push(a[(l += s % 2 ? (c % 2 ? +c : -c) : c % 2 ? -c : +c)])
+    return o
+  }
 
   useEffect(() => {
     //
@@ -943,19 +969,24 @@ const DetailsPage = ({
         stagger: 0.2,
       }
     )
+
     gsap.fromTo(
-      ".modalPagination__pageBtn",
+      return_array_center_out(
+        document.querySelectorAll(".modalPagination__pageBtn")
+      ),
       {
         opacity: 0,
-        // top: 50,
-        left: 50,
+        top: 50,
+        // left: 50,
+        rotation: 45,
       },
       {
         ease: "back",
         duration: 0.7,
         opacity: 1,
-        // top: 0,
-        left: 0,
+        top: 0,
+        // left: 0,
+        rotation: 0,
         stagger: 0.1,
       }
     )
