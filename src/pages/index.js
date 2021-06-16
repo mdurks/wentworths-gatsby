@@ -10,6 +10,7 @@ import Image_text_box from "../components/image_text_box"
 import Block_hero_images from "../components/block_hero_images"
 import Block_single_image_text from "../components/block_single_image_text"
 import Block_one_row_jewellery from "../components/block_one_row_jewellery"
+import Block_best_seller from "../components/block_best_seller"
 import Block_full_size_image from "../components/block_full_size_image"
 import Block_bespoke_design_advert from "../components/block_bespoke_design_advert"
 import { Styled_SiteContainer } from "../styles/commonStyles"
@@ -139,7 +140,9 @@ const IndexPage = () => {
 
       {/* <Image_text_box /> */}
 
-      <Block_one_row_jewellery />
+      <Block_best_seller />
+
+      {/* <Block_one_row_jewellery /> */}
 
       <Block_full_size_image />
 
