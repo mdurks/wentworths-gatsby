@@ -5,10 +5,7 @@ import { useEffect } from "react"
 import { gsap, ScrollTrigger } from "gsap/all"
 
 import styled from "styled-components"
-import { Styled_SiteContainer } from "../styles/commonStyles"
 import Flickity from "react-flickity-component"
-
-import img_product_ring_silver_round_blue_diamond from "../images/products/ring/product-ring-silver-round-blue-diamond.png"
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
@@ -17,73 +14,45 @@ const bp_min_desktop = "@media (min-width: 1024px)"
 const bp_max_desktop = "@media (max-width: 1024px)"
 const bp_desktop_max = "1400px"
 
-const section_vertical_height = "100vh"
-const section_vertical_padding = "0vh"
-const section_horizontal_padding = "50px"
-const section_content_max_width = "1800px"
-
-const Div__flickity = styled.div`
-  /* height: 300px; */
-  .carousel {
-    height: 350px;
-    z-index: 456;
-  }
-  .flickity-slider > div {
-    height: 270px !important;
-    width: 300px !important;
-  }
-
-  .productItem {
-    .graphcms-image-outer-wrapper {
-      position: relative;
-      z-index: 1 !important;
-      transition: all ease-in-out 0.4s;
-      top: 0;
-      width: 270px;
-      margin: auto;
-    }
-
-    &:hover .graphcms-image-outer-wrapper {
-      top: -5px;
-      width: 300px;
-    }
-  }
-`
-
-const Div__block_one_row_jewellery = styled.div`
-  /* min-height: 100vh; */
+const Div__block_best_seller = styled.div`
   position: relative;
-  /* display: flex;
-  justify-content: center; */
-  padding: 25px 0 70px;
-  align-items: center;
+  margin-bottom: 14px;
   text-align: center;
   background-color: #e5e3de;
 
   ${bp_min_desktop} {
-    /* min-height: calc(${section_vertical_height} + ${section_vertical_padding}); */
-    padding: 75px 0 100px;
   }
 
-  > section {
+  .headingGroup {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    height: 390px;
+    background: linear-gradient(0deg, #ffffff 0%, #e5e3de 100%);
+
+    /* Tiling Diamond img */
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAANIilAAAAAPFBMVEUAAAD////////////////////////////////////////////////////////////////////////////YSWgTAAAAE3RSTlMA90v6fh+ZEw5WThpalJKMhXVoqNyq9wAAARdJREFUSMec1FEOhCAMBNAiqwgICNz/rgtxzWTTRKjzR5OX+aGlp+haNb3MUluW9xZabqHlVpeioYU2E2VokVWfnWj/KGihhRZacz2MTDv0otsJ7GkwMOe0tlVXlbqFTqoN7aSN/n/o45Q+ug23hQ5dHxN2W4ll3aCHVq4ts0zbsZVrB/uk3cBKNP5zaPZRh/ufcxs9DeLjpblN3HKdmF6wC6OYE5rt7yDYb3Y3xsFtYb3i7m41eue6ddc/m2HndL50bSkkTunuW3od0AAAwzAM48/aIAzg0vVvbVKH69rzYPNVMyQznrMYs5ITBhNDE4ATvRP6UzdTdFOxU+6DFQM0g1IDcYOPA66DzAnrrwkvKK9GL2WlgwB6HCGhU6TCrAAAAABJRU5ErkJggg==);
+      opacity: 0.4;
+    }
   }
 
   .entryHeading {
     position: relative;
-    margin-top: 30px;
+    padding: 30px 0 0;
     letter-spacing: -1px;
-    font-size: clamp(16px, 4vw, 25px);
+    font-size: clamp(18px, 4vw, 21px);
     text-transform: uppercase;
     font-family: "Playfair Display", serif;
+    z-index: 1;
 
     ${bp_min_desktop} {
       top: 70px;
-      margin-top: 0;
+      padding: 0;
     }
 
     > span {
@@ -94,148 +63,122 @@ const Div__block_one_row_jewellery = styled.div`
       position: relative;
       top: -5px;
       opacity: 0;
-      font-size: clamp(21px, 4vw, 50px);
+      font-size: clamp(34px, 4vw, 47px);
 
       ${bp_min_desktop} {
         top: auto;
-        margin-top: 10px;
+        margin-top: 3px;
       }
     }
   }
 
   h2 {
-    position: relative;
-    left: -13px;
-    top: -53px;
-    margin-bottom: -20px;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
     text-align: center;
     font-family: "Amalfi Coast", serif;
-    font-size: clamp(44px,7vw,115px);
+    font-size: clamp(44px, 7vw, 90px);
+    line-height: 80px;
     letter-spacing: -1px;
     color: #ba9b7c;
     opacity: 0;
 
     ${bp_min_desktop} {
-      transform: translateX(0);
-      left: -40px;
-      top: -45px;
-      margin-bottom: -60px;
+      line-height: 295px;
+    }
+  }
+`
+
+const Div__flickity = styled.div`
+  .carousel {
+    height: 180px;
+    z-index: 456;
+  }
+
+  .flickity-viewport {
+    height: 305px;
+    top: -125px;
+  }
+
+  .flickity-slider > div {
+    height: 250px !important;
+    width: 210px !important;
+
+    ${bp_min_desktop} {
+      width: 330px !important;
     }
   }
 
-  img {
-    width: auto;
-  }
-
-  .productItem {
-    position: relative;
-    padding: 30px 0;
-    text-decoration: none;
-    color: #90836b;
+  .bestSellerItem {
     cursor: grab;
 
     :active {
-    cursor: grabbing;
+      cursor: grabbing;
     }
 
-    ${bp_min_desktop} {
-      padding: 30px 0 100px;
-
-      &:nth-child(even) {
-        display: block;
-        padding: 100px 0 30px;
-
-        .productImg {
-          top: 103px;
-        }
-
-        .productStage {
-          top: 187px;
-        }
-      }
+    .graphcms-image-outer-wrapper {
+      position: relative;
+      z-index: 1 !important;
+      transition: all ease-in-out 0.4s;
+      top: 30px;
+      width: 200px;
+      margin: auto;
     }
 
-    ${bp_min_desktop} {
+    @media (hover: hover) {
       &:hover {
-        .productImg {
-          top: -33px;
-          left: calc(50% + 3px);
-          width: 175px;
-          height: 245px;
+        .graphcms-image-outer-wrapper {
+          top: -15px;
+          width: 250px;
         }
 
         .productStage {
-          top: 198px;
-          height: 104px;
-          width: 243px;
+          top: 145px;
+          height: 94px;
+          width: 263px;
         }
 
         .productDesc {
-          top: 20px;
-          color: #000;
-        }
-      }
-
-      &:nth-child(even):hover {
-        .productImg {
-          top: 36px;
-        }
-
-        .productStage {
-          top: 197px;
+          opacity: 1;
         }
       }
     }
-  }
-
-  .productImg {
-    position: absolute;
-    top: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 110px;
-    height: 154px;
-    z-index: 1;
-    transition: all ease-in-out 0.4s;
   }
 
   .productStage {
     position: absolute;
-    top: 184px;
+    top: 155px;
     left: 50%;
     transform: translateX(-50%);
-    width: 213px;
-    height: 85px;
+    width: 183px;
+    height: 80px;
     background-color: white;
     border-radius: 100%;
     box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.2),
       inset 0px 0px 20px 10px rgba(0, 0, 0, 0.08);
     transition: all ease-in-out 0.4s;
+
+    ${bp_min_desktop} {
+      top: 151px;
+      height: 85px;
+      width: 213px;
+    }
   }
 
   .productDesc {
-    position: relative;
-    top: 0;
-    width: 60%;
-    margin: 200px auto 0;
+    position: absolute;
+    top: 258px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 210px;
+    font-size: 16px;
     line-height: 25px;
-    color: #a59985;
-    transition: all ease-in-out 0.4s;
-
-    /* ${bp_min_desktop} {
-      opacity: 0;
-    } */
-  }
-`
-
-const Div__productRow = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-
-  ${bp_min_desktop} {
-    margin: 40px 0 0;
+    color: #000;
+    opacity: 0;
+    transition: top ease-in-out 0.4s, opacity ease-in-out 0.65s;
   }
 `
 
@@ -275,7 +218,7 @@ const Block_best_seller = () => {
   } = useStaticQuery(pageQuery)
 
   console.log("products", products)
-  let Block_one_row_jewellery = null
+  let Block_best_seller = null
   let gsap__entryHeading = null // A Mutual Promise
   let gsap__entryHeading_wj = null // Wentworth Jewels
   let gsap__entryHeading_category_title = null // Engagement
@@ -294,7 +237,7 @@ const Block_best_seller = () => {
     let tl_gsap__entryHeading = gsap.timeline({
       paused: true,
       scrollTrigger: {
-        trigger: Block_one_row_jewellery,
+        trigger: Block_best_seller,
         // markers: true,
         id: "tl_gsap__entryHeading",
         start: window.innerWidth < 768 ? "top 70%" : "top 60%",
@@ -326,7 +269,7 @@ const Block_best_seller = () => {
     )
 
     if (window.innerWidth < 768) {
-      document.querySelectorAll(".productItem").forEach(el => {
+      document.querySelectorAll(".bestSellerItem").forEach(el => {
         gsap.from(el, {
           scrollTrigger: {
             trigger: el,
@@ -381,7 +324,7 @@ const Block_best_seller = () => {
       let items = []
       for (
         let i = 1;
-        i <= document.querySelectorAll(".productItem").length;
+        i <= document.querySelectorAll(".bestSellerItem").length;
         i++
       ) {
         items.push(i)
@@ -412,16 +355,16 @@ const Block_best_seller = () => {
       //
       // Create timelines:
       //
-      let tl_gsap__productItem = []
+      let tl_gsap__bestSellerItem = []
       //
       for (let x = 0; x < items_centered_out.length; x++) {
         //
-        // tl_gsap__productItem[x] = gsap.timeline({
+        // tl_gsap__bestSellerItem[x] = gsap.timeline({
         //   paused: true,
         //   scrollTrigger: {
-        //     // trigger: Block_one_row_jewellery,
+        //     // trigger: Block_best_seller,
         //     trigger: document.querySelector(
-        //       ".productItem" + items_centered_out[x][0]
+        //       ".bestSellerItem" + items_centered_out[x][0]
         //     ),
         //     markers: true,
         //     start: "-100 75%",
@@ -437,9 +380,9 @@ const Block_best_seller = () => {
         //   let delayAmount = i * 0.15
         //   let yAmount = (mylength.length - i) * 0.2 * 400
         //   //
-        //   gsap.from(".productItem" + currentNumber, {
+        //   gsap.from(".bestSellerItem" + currentNumber, {
         //     scrollTrigger: {
-        //       trigger: document.querySelector(".productItem" + currentNumber)
+        //       trigger: document.querySelector(".bestSellerItem" + currentNumber)
         //         .parentElement,
         //       // markers: true,
         //       start: "-60 75%",
@@ -453,9 +396,9 @@ const Block_best_seller = () => {
         //   })
         // }
         //
-        //let product_items = document.querySelectorAll(".productItem")
+        //let product_items = document.querySelectorAll(".bestSellerItem")
         //
-        // tl_gsap__productItem[x].from(toNodeList(items_centered_out[x]), {
+        // tl_gsap__bestSellerItem[x].from(toNodeList(items_centered_out[x]), {
         //   duration: 2.2,
         //   opacity: 0,
         //   // y: 120,
@@ -465,7 +408,7 @@ const Block_best_seller = () => {
         //   ease: "back",
         //   stagger: 0.15,
         // })
-        // tl_gsap__productItem[x].from(
+        // tl_gsap__bestSellerItem[x].from(
         //   toNodeList(items_centered_out[x]),
         //   {
         //     duration: 0.25,
@@ -497,64 +440,15 @@ const Block_best_seller = () => {
 
   return (
     <>
-      <Div__block_one_row_jewellery ref={e => (Block_one_row_jewellery = e)}>
-        <p className="entryHeading">
-          <span ref={e => (gsap__entryHeading = e)}>Wentworth Jewels</span>{" "}
-          <div ref={e => (gsap__entryHeading_wj = e)}>Best sellers</div>
-        </p>
-        <h2 ref={e => (gsap__entryHeading_category_title = e)}>Engagement</h2>
-
-        {/* Extra div added below because gatsby would not apply the styled component when building, works when wrappd in another div ?/?? */}
-        <div>
-          {/* <Div__productRow>
-              <a href="/" className="productItem productItem1">
-                <img
-                  className="productImg"
-                  src={img_product_ring_silver_round_blue_diamond}
-                  alt=""
-                />
-                <div className="productStage"></div>
-                <p className="productDesc">Silver 1.2ct Round Blue Diamond</p>
-              </a>
-
-              <a href="/" className="productItem productItem2">
-                <img
-                  className="productImg"
-                  src={img_product_ring_silver_round_blue_diamond}
-                  alt=""
-                />
-                <div className="productStage"></div>
-                <p className="productDesc">Silver 1.2ct Round Blue Diamond</p>
-              </a>
-              <a href="/" className="productItem productItem3">
-                <img
-                  className="productImg"
-                  src={img_product_ring_silver_round_blue_diamond}
-                  alt=""
-                />
-                <div className="productStage"></div>
-                <p className="productDesc">Silver 1.2ct Round Blue Diamond</p>
-              </a>
-
-              <a href="/" className="productItem productItem4">
-                <img
-                  className="productImg"
-                  src={img_product_ring_silver_round_blue_diamond}
-                  alt=""
-                />
-                <div className="productStage"></div>
-                <p className="productDesc">Silver 1.2ct Round Blue Diamond</p>
-              </a>
-              <a href="/" className="productItem productItem5">
-                <img
-                  className="productImg"
-                  src={img_product_ring_silver_round_blue_diamond}
-                  alt=""
-                />
-                <div className="productStage"></div>
-                <p className="productDesc">Silver 1.2ct Round Blue Diamond</p>
-              </a>
-            </Div__productRow> */}
+      <Div__block_best_seller ref={e => (Block_best_seller = e)}>
+        <div className="headingGroup">
+          <p className="entryHeading">
+            <span ref={e => (gsap__entryHeading = e)}>Wentworth Jewels</span>{" "}
+            <div ref={e => (gsap__entryHeading_wj = e)}>Best selling</div>
+          </p>
+          <h2 ref={e => (gsap__entryHeading_category_title = e)}>
+            Engagement Rings
+          </h2>
         </div>
 
         <Div__flickity>
@@ -575,24 +469,22 @@ const Block_best_seller = () => {
                 <div>
                   <a
                     href={`/engagement/${el.productType}/${el.slug}/`}
-                    className="productItem productItem1"
+                    className="bestSellerItem bestSellerItem1"
                   >
                     <GraphImg
                       image={el.image[0]}
                       transforms={["quality=value:80"]}
-                      maxWidth={500}
+                      maxWidth={300}
                     />
                     <div className="productStage"></div>
-                    <p className="productDesc">
-                      Silver 1.2ct Round Blue Diamond
-                    </p>
+                    <p className="productDesc">{el.name}</p>
                   </a>
                 </div>
               </>
             ))}
           </Flickity>
         </Div__flickity>
-      </Div__block_one_row_jewellery>
+      </Div__block_best_seller>
     </>
   )
 }
