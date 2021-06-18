@@ -43,7 +43,7 @@ const Div__block_best_seller = styled.div`
 
   .entryHeading {
     position: relative;
-    padding: 30px 0 0;
+    padding: 80px 0 0;
     letter-spacing: -1px;
     font-size: clamp(18px, 4vw, 21px);
     text-transform: uppercase;
@@ -51,42 +51,65 @@ const Div__block_best_seller = styled.div`
     z-index: 1;
 
     ${bp_min_desktop} {
-      top: 70px;
+      top: 90px;
       padding: 0;
     }
 
     > span {
+      display: block;
       opacity: 0;
     }
 
     > div {
       position: relative;
-      top: -5px;
+      top: 0;
       opacity: 0;
       font-size: clamp(34px, 4vw, 47px);
 
       ${bp_min_desktop} {
-        top: auto;
+        display: inline-block;
         margin-top: 3px;
+
+        &:before {
+          content: "";
+          position: absolute;
+          top: 16px;
+          left: -180px;
+          width: 160px;
+          height: 1px;
+          background-color: black;
+        }
+
+        &:after {
+          content: "";
+          position: absolute;
+          top: 16px;
+          left: 325px;
+          width: 160px;
+          height: 1px;
+          background-color: black;
+        }
       }
     }
   }
 
   h2 {
     position: absolute;
-    top: 100px;
-    left: 50%;
+    top: 157px;
+    left: calc(50% - 10px);
     transform: translateX(-50%);
     width: 100%;
     text-align: center;
     font-family: "Amalfi Coast", serif;
     font-size: clamp(44px, 7vw, 90px);
-    line-height: 80px;
+    line-height: 69px;
     letter-spacing: -1px;
     color: #ba9b7c;
     opacity: 0;
 
     ${bp_min_desktop} {
+      top: 115px;
+      left: 50%;
       line-height: 295px;
     }
   }
