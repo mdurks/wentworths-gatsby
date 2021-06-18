@@ -134,24 +134,24 @@ const Img__SIT__img1 = styled.div`
   }
 `
 
-const Img__SIT__img2 = styled.div`
-  ${bp_min_desktop} {
-    position: absolute;
-    /* left: calc(59% - (356px / 2));
-    top: calc(95% - (211px / 2)); */
-    overflow: hidden;
-    left: 84%;
-    bottom: -33%;
-    width: 249px;
-    height: 165px;
-    z-index: 1;
-  }
+// const Img__SIT__img2 = styled.div`
+//   ${bp_min_desktop} {
+//     position: absolute;
+//     /* left: calc(59% - (356px / 2));
+//     top: calc(95% - (211px / 2)); */
+//     overflow: hidden;
+//     left: 84%;
+//     bottom: -33%;
+//     width: 249px;
+//     height: 165px;
+//     z-index: 1;
+//   }
 
-  div {
-    width: 100%;
-    height: 100%;
-  }
-`
+//   div {
+//     width: 100%;
+//     height: 100%;
+//   }
+// `
 
 const Div__SIT__textGroup = styled.div`
   ${bp_min_desktop} {
@@ -175,7 +175,7 @@ const Block_single_image_text = () => {
   let gsap__subTitle = null
   let gsap__introMessage = null
   let gsap__Img__SIT__img1 = null
-  let gsap__Img__SIT__img2 = null
+  // let gsap__Img__SIT__img2 = null
 
   useEffect(() => {
     let tl_gsap = gsap.timeline({
@@ -275,17 +275,17 @@ const Block_single_image_text = () => {
         "-=2"
       )
 
-      tl_gsap.from(
-        gsap__Img__SIT__img2,
-        {
-          duration: 3,
-          y: "+=75",
-          height: 0,
-          opacity: 0,
-          ease: "power3.out",
-        },
-        "-=1"
-      )
+      // tl_gsap.from(
+      //   gsap__Img__SIT__img2,
+      //   {
+      //     duration: 3,
+      //     y: "+=75",
+      //     height: 0,
+      //     opacity: 0,
+      //     ease: "power3.out",
+      //   },
+      //   "-=1"
+      // )
     }
 
     tl_gsap.call(() => {
@@ -302,18 +302,18 @@ const Block_single_image_text = () => {
           y: `-=${window.innerHeight / 3}px`,
           // y: "-=30%",
         })
-        gsap.to(gsap__Img__SIT__img2, {
-          scrollTrigger: {
-            trigger: gsap__Img__SIT__img2,
-            // markers: true,
-            start: "top 60%",
-            scrub: 0.75,
-          },
-          // y: "-=350%",
-          // opacity: 0,
-          height: 0,
-          y: "+=75px",
-        })
+        // gsap.to(gsap__Img__SIT__img2, {
+        //   scrollTrigger: {
+        //     trigger: gsap__Img__SIT__img2,
+        //     // markers: true,
+        //     start: "top 60%",
+        //     scrub: 0.75,
+        //   },
+        //   // y: "-=350%",
+        //   // opacity: 0,
+        //   height: 0,
+        //   y: "+=75px",
+        // })
       }
     }, null)
 
@@ -349,7 +349,7 @@ const Block_single_image_text = () => {
               />
             </Img__SIT__img1>
 
-            {typeof window !== "undefined" && window.innerWidth > 600 ? (
+            {/* {typeof window !== "undefined" && window.innerWidth > 600 ? (
               <Img__SIT__img2 ref={e => (gsap__Img__SIT__img2 = e)}>
                 <GraphImg
                   image={welcomes[0].supportingImage}
@@ -359,7 +359,7 @@ const Block_single_image_text = () => {
               </Img__SIT__img2>
             ) : (
               ""
-            )}
+            )} */}
           </Styled_SiteContainer>
         </Div__SIT__backgroundStrip>
       </Div__SIT>
