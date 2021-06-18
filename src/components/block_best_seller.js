@@ -136,6 +136,8 @@ const Div__flickity = styled.div`
   }
 
   .bestSellerItem {
+    display: block;
+    opacity: 0;
     cursor: grab;
 
     :active {
@@ -240,21 +242,10 @@ const Block_best_seller = () => {
     gcms: { products },
   } = useStaticQuery(pageQuery)
 
-  console.log("products", products)
   let Block_best_seller = null
   let gsap__entryHeading = null // A Mutual Promise
   let gsap__entryHeading_wj = null // Wentworth Jewels
   let gsap__entryHeading_category_title = null // Engagement
-
-  let return_array_center_out = a => {
-    var o = [],
-      s = a.length,
-      l = Math.floor(s / 2),
-      c
-    for (c = 0; c < s; c++)
-      o.push(a[(l += s % 2 ? (c % 2 ? +c : -c) : c % 2 ? -c : +c)])
-    return o
-  }
 
   useEffect(() => {
     let tl_gsap__entryHeading = gsap.timeline({
@@ -290,161 +281,17 @@ const Block_best_seller = () => {
       },
       "-=2.5"
     )
-
-    if (window.innerWidth < 768) {
-      document.querySelectorAll(".bestSellerItem").forEach(el => {
-        gsap.from(el, {
-          scrollTrigger: {
-            trigger: el,
-            // markers: true,
-            start: "top 88%",
-            toggleActions: "restart none none reset",
-          },
-          duration: 2.5,
-          opacity: 0,
-          scale: 0.6,
-          ease: "elastic",
-        })
-      })
-    } else {
-      //
-      //
-      var toNodeList = function (arrayOfNodes) {
-        arrayOfNodes.forEach(function (item) {
-          item.className = item.className + " custom_class"
-        })
-
-        var elems = document.querySelectorAll(".custom_class")
-
-        arrayOfNodes.forEach(function (item) {
-          item.className = item.className.replace("custom_class", "")
-        })
-
-        return elems
-      }
-
-      function isNodeList(nodes) {
-        var stringRepr = Object.prototype.toString.call(nodes)
-
-        return (
-          typeof nodes === "object" &&
-          /^\[object (HTMLCollection|NodeList|Object)\]$/.test(stringRepr) &&
-          nodes.hasOwnProperty("length") &&
-          (nodes.length === 0 ||
-            (typeof nodes[0] === "object" && nodes[0].nodeType > 0))
-        )
-      }
-      //
-      //
-      // grab each individual product and create array of arrays
-      // divided by how many there are on a row
-      //
-      // turn:
-      // [1,2,3,4,5,6,7,8,9,10,11,12,13]
-      // into:
-      // [[1,2,3,4,5], [6,7,8,9,10], [11,12,13]]
-      //
-      let items = []
-      for (
-        let i = 1;
-        i <= document.querySelectorAll(".bestSellerItem").length;
-        i++
-      ) {
-        items.push(i)
-      }
-      let group_size = 5
-      let number_of_divisions = Math.ceil(items.length / group_size) // round up: 13 / 5 = 2.6 = 3
-      let items_divided_up = []
-
-      let slice_start = 0
-      let slice_end = group_size
-
-      for (let i = 0; i < number_of_divisions; i++) {
-        items_divided_up.push(items.slice(slice_start, slice_end))
-        slice_start += group_size
-        slice_end += group_size
-      }
-      //
-      // take this array of arrays and sort each group 'centered out'
-      //
-      let items_centered_out = []
-      //
-      for (let i = 0; i < items_divided_up.length; i++) {
-        items_centered_out.push(return_array_center_out(items_divided_up[i]))
-      }
-      // we now have:
-      // [[3,4,2,5,1], [8,9,7,10,6], [12,13,11]]
-      //
-      //
-      // Create timelines:
-      //
-      let tl_gsap__bestSellerItem = []
-      //
-      for (let x = 0; x < items_centered_out.length; x++) {
-        //
-        // tl_gsap__bestSellerItem[x] = gsap.timeline({
-        //   paused: true,
-        //   scrollTrigger: {
-        //     // trigger: Block_best_seller,
-        //     trigger: document.querySelector(
-        //       ".bestSellerItem" + items_centered_out[x][0]
-        //     ),
-        //     markers: true,
-        //     start: "-100 75%",
-        //     toggleActions: "play none none reset",
-        //   },
-        // })
-        //
-        let mylength = [...items_centered_out[x]]
-        //
-        // for (let i = 0; i < mylength.length; i++) {
-        //   //
-        //   let currentNumber = items_centered_out[x][i]
-        //   let delayAmount = i * 0.15
-        //   let yAmount = (mylength.length - i) * 0.2 * 400
-        //   //
-        //   gsap.from(".bestSellerItem" + currentNumber, {
-        //     scrollTrigger: {
-        //       trigger: document.querySelector(".bestSellerItem" + currentNumber)
-        //         .parentElement,
-        //       // markers: true,
-        //       start: "-60 75%",
-        //       toggleActions: "play none none reset",
-        //     },
-        //     delay: delayAmount,
-        //     duration: 1.25,
-        //     opacity: 0,
-        //     y: yAmount,
-        //     ease: "back",
-        //   })
-        // }
-        //
-        //let product_items = document.querySelectorAll(".bestSellerItem")
-        //
-        // tl_gsap__bestSellerItem[x].from(toNodeList(items_centered_out[x]), {
-        //   duration: 2.2,
-        //   opacity: 0,
-        //   // y: 120,
-        //   y: function (i) {
-        //     return "+=" + (items_centered_out[x].length - i) * 100
-        //   },
-        //   ease: "back",
-        //   stagger: 0.15,
-        // })
-        // tl_gsap__bestSellerItem[x].from(
-        //   toNodeList(items_centered_out[x]),
-        //   {
-        //     duration: 0.25,
-        //     opacity: 0,
-        //     stagger: 0.2,
-        //   },
-        //   "-=.75"
-        // )
-        //
-      }
-      //
-      //
-    }
+    tl_gsap__entryHeading.to(
+      document.querySelectorAll(".bestSellerItem"),
+      {
+        opacity: 1,
+        duration: 0.8,
+        ease: "back",
+        x: -20,
+        stagger: 0.15,
+      },
+      "-=3"
+    )
 
     // return function to kill timeline on dismount
     // return () => tl_gsap__entryHeading.kill()
