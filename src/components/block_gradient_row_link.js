@@ -15,7 +15,7 @@ const bp_max_desktop = "@media (max-width: 1024px)"
 const bp_desktop_max = "1400px"
 
 const Div__gradient_row_link = styled.div`
-  height: 80px;
+  height: 110px;
   overflow: hidden;
   background: linear-gradient(
     to ${props => props.img_alignment},
@@ -25,14 +25,14 @@ const Div__gradient_row_link = styled.div`
   margin-bottom: 6px;
 
   ${bp_min_desktop} {
-    height: 250px;
+    height: 200px;
     margin-bottom: 10px;
   }
 
   .link_block {
     position: relative;
     display: block;
-    height: 80px;
+    height: 110px;
     background: linear-gradient(
       to ${props => props.img_alignment},
       #f9f6ee 50%,
@@ -40,13 +40,14 @@ const Div__gradient_row_link = styled.div`
     );
 
     ${bp_min_desktop} {
-      height: 250px;
+      height: 200px;
     }
   }
 
   .text {
     position: absolute;
-    left: ${props => (props.img_alignment === "right" ? "0" : "40%")};
+    left: ${props =>
+      props.img_alignment === "right" ? "-10px" : "calc(40% + 10px)"};
     display: flex;
     align-items: center;
     height: 100%;
@@ -106,10 +107,11 @@ const Div__gradient_row_link = styled.div`
       position: relative;
       left: 50%;
       transform: translateX(-50%);
-      width: 110%;
+      width: 130%;
 
       ${bp_min_desktop} {
-        width: 70%;
+        top: 0;
+        width: 60%;
       }
     }
   }
