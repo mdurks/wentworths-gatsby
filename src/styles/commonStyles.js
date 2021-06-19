@@ -11,6 +11,12 @@ export const Styled_SiteContainer = styled.section`
   padding: 15px;
 
   ${props =>
+    props.noPadding &&
+    css`
+      padding: 0;
+    `};
+
+  ${props =>
     props.textCenter &&
     css`
       text-align: center;

@@ -9,6 +9,7 @@ import styled from "styled-components"
 import Image_text_box from "../components/image_text_box"
 import Block_hero_images from "../components/block_hero_images"
 import Block_single_image_text from "../components/block_single_image_text"
+import Block_gradient_row_link from "../components/block_gradient_row_link"
 import Block_one_row_jewellery from "../components/block_one_row_jewellery"
 import Block_best_seller from "../components/block_best_seller"
 import Block_full_size_image from "../components/block_full_size_image"
@@ -39,6 +40,20 @@ const pageQuery = graphql`
           handle
           width
           height
+        }
+      }
+      blockGradientRowLinks {
+        preTitle
+        title
+        tintColour
+        imageAlignment
+        hyperlink
+        image {
+          id
+          url
+          handle
+          height
+          width
         }
       }
     }
@@ -124,7 +139,7 @@ const Section__hero = styled.section`
 
 const IndexPage = () => {
   const {
-    gcms: { welcomes },
+    gcms: { welcomes, blockGradientRowLinks },
   } = useStaticQuery(pageQuery)
 
   useEffect(() => {
@@ -137,6 +152,17 @@ const IndexPage = () => {
       <Block_hero_images />
 
       <Block_single_image_text />
+
+      {blockGradientRowLinks.map(el => (
+        <Block_gradient_row_link
+          pre_title={el.preTitle}
+          title={el.title}
+          tint_colour={el.tintColour}
+          img_alignment={el.imageAlignment}
+          hyperlink={el.hyperlink}
+          image={el.image}
+        />
+      ))}
 
       {/* <Image_text_box /> */}
 
