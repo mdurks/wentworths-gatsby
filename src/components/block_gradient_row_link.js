@@ -22,11 +22,11 @@ const Div__gradient_row_link = styled.div`
     #f9f6ee 49.99%,
     ${props => props.tint_colour} 50%
   );
-  margin-bottom: 6px;
+  margin: 6px 0;
 
   ${bp_min_desktop} {
     height: 200px;
-    margin-bottom: 10px;
+    margin: 10px 0;
   }
 
   .link_block {
