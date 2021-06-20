@@ -27,6 +27,7 @@ const Div__block_best_seller = styled.div`
     position: relative;
     height: 390px;
     background: linear-gradient(0deg, #ffffff 0%, #e5e3de 100%);
+    box-shadow: inset 0px 15px 75px -32px #00000050;
 
     /* Tiling Diamond img */
     &:before {
@@ -37,7 +38,7 @@ const Div__block_best_seller = styled.div`
       width: 100%;
       height: 100%;
       background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAANIilAAAAAPFBMVEUAAAD////////////////////////////////////////////////////////////////////////////YSWgTAAAAE3RSTlMA90v6fh+ZEw5WThpalJKMhXVoqNyq9wAAARdJREFUSMec1FEOhCAMBNAiqwgICNz/rgtxzWTTRKjzR5OX+aGlp+haNb3MUluW9xZabqHlVpeioYU2E2VokVWfnWj/KGihhRZacz2MTDv0otsJ7GkwMOe0tlVXlbqFTqoN7aSN/n/o45Q+ug23hQ5dHxN2W4ll3aCHVq4ts0zbsZVrB/uk3cBKNP5zaPZRh/ufcxs9DeLjpblN3HKdmF6wC6OYE5rt7yDYb3Y3xsFtYb3i7m41eue6ddc/m2HndL50bSkkTunuW3od0AAAwzAM48/aIAzg0vVvbVKH69rzYPNVMyQznrMYs5ITBhNDE4ATvRP6UzdTdFOxU+6DFQM0g1IDcYOPA66DzAnrrwkvKK9GL2WlgwB6HCGhU6TCrAAAAABJRU5ErkJggg==);
-      opacity: 0.4;
+      opacity: 0.3;
     }
   }
 
@@ -77,7 +78,7 @@ const Div__block_best_seller = styled.div`
           left: -180px;
           width: 160px;
           height: 1px;
-          background-color: black;
+          border-bottom: 1px dashed #ba9b7c;
         }
 
         &:after {
@@ -87,7 +88,7 @@ const Div__block_best_seller = styled.div`
           left: 325px;
           width: 160px;
           height: 1px;
-          background-color: black;
+          border-bottom: 1px dashed #ba9b7c;
         }
       }
     }
