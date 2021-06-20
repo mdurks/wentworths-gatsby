@@ -33,7 +33,7 @@ const Div__gradient_row_link = styled.div`
     background: linear-gradient(
       to ${props => props.img_alignment},
       #f9f6ee 49.99%,
-      ${props => props.tint_colour} 50%
+      hsl(${props => props.tint_colour}deg 100% 94%) 50%
     );
 
     ${bp_min_desktop} {
@@ -48,11 +48,32 @@ const Div__gradient_row_link = styled.div`
     background: linear-gradient(
       to ${props => props.img_alignment},
       #f9f6ee 50%,
-      ${props => props.tint_colour} 100%
+      hsl(${props => props.tint_colour}deg 100% 94%) 100%
     );
 
     ${bp_min_desktop} {
       height: 200px;
+    }
+
+    @media (hover: hover) {
+      :hover {
+        .text-title {
+          text-shadow: 0px 4px 0px rgb(0 0 0 / 1%);
+          color: hsl(${props => props.tint_colour}deg 50% 50%);
+          left: ${props =>
+            props.img_alignment === "right" ? "15px" : "-15px"};
+
+          span:before {
+            left: 0;
+          }
+        }
+        ${bp_min_desktop} {
+          .img > div {
+            top: -5px;
+            width: 63%;
+          }
+        }
+      }
     }
   }
 
@@ -106,6 +127,8 @@ const Div__gradient_row_link = styled.div`
     }
 
     &-title {
+      position: relative;
+      left: 0;
       display: block;
       overflow: hidden;
       height: 20px;
@@ -113,9 +136,10 @@ const Div__gradient_row_link = styled.div`
       font-family: "Playfair Display", serif;
       text-shadow: 0px 2px 3px rgb(0 0 0 / 30%);
       line-height: 20px;
+      transition: all ease-in-out 0.4s;
 
       ${bp_min_desktop} {
-        height: 40px;
+        height: 60px;
         line-height: 30px;
         font-size: 41px;
         text-shadow: 0px 4px 4px rgb(0 0 0 / 40%);
@@ -124,6 +148,22 @@ const Div__gradient_row_link = styled.div`
       span {
         position: relative;
         top: -20px;
+        display: inline-block;
+        height: 60px;
+        overflow: hidden;
+
+        &:before {
+          content: " ";
+          position: absolute;
+          top: 41px;
+          left: ${props =>
+            props.img_alignment === "right" ? "100%" : "-100%"};
+          width: 100%;
+          height: 1px;
+          border-bottom: 1px dashed
+            hsl(${props => props.tint_colour}deg 50% 50%);
+          transition: all ease-in-out 0.6s;
+        }
 
         ${bp_min_desktop} {
           top: -45px;
@@ -153,6 +193,7 @@ const Div__gradient_row_link = styled.div`
       ${bp_min_desktop} {
         top: 0;
         width: 60%;
+        transition: all ease-in-out 0.4s;
       }
     }
   }
