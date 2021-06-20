@@ -48,6 +48,11 @@ const Styled_HeroImg = styled.div`
   left: 0;
   height: 100%;
   width: 100%;
+  min-height: 100vh;
+
+  ${bp_min_desktop} {
+    min-height: auto;
+  }
 
   div {
     height: 100%;

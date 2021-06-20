@@ -178,6 +178,9 @@ const Block_single_image_text = () => {
   // let gsap__Img__SIT__img2 = null
 
   useEffect(() => {
+    //
+    gsap__Div__SIT.style.minHeight = gsap__Div__SIT.offsetHeight + "px"
+
     let tl_gsap = gsap.timeline({
       scrollTrigger: {
         trigger: gsap__SIT__backgroundStrip,
@@ -288,6 +291,7 @@ const Block_single_image_text = () => {
       // )
     }
 
+    // Parallax effect for desktop img1
     tl_gsap.call(() => {
       if (window.innerWidth > 600) {
         gsap.to(gsap__Img__SIT__img1, {
