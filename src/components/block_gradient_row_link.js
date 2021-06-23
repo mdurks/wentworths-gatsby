@@ -61,7 +61,7 @@ const Div__gradient_row_link = styled.div`
           text-shadow: 0px 4px 0px rgb(0 0 0 / 1%);
           color: hsl(${props => props.tint_colour}deg 50% 50%);
           left: ${props =>
-            props.img_alignment === "right" ? "15px" : "-15px"};
+            props.img_alignment === "right" ? "35px" : "-35px"};
 
           span:before {
             left: 0;
@@ -69,8 +69,8 @@ const Div__gradient_row_link = styled.div`
         }
         ${bp_min_desktop} {
           .img > div {
-            top: -5px;
-            width: 63%;
+            top: -20px;
+            width: 75%;
           }
         }
       }
