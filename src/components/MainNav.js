@@ -7,6 +7,8 @@ import { Link } from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import styled, { css } from "styled-components"
 import { Styled_SiteContainer } from "../styles/commonStyles"
+import Form_contact from "./form_contact"
+import Form_viewing from "./form_viewing"
 
 import { gsap } from "gsap/all"
 
@@ -647,6 +649,7 @@ const Li__mainNav__topLevelLink = styled.li`
 //   }
 // `
 
+
 const MainNav = () => {
   // class MainNav extends React.Component {
   // constructor(props) {
@@ -690,6 +693,7 @@ const MainNav = () => {
   //   }
   // })
   // }
+
 
   let click_mobile_burger_btn = () => {
     if (
@@ -763,7 +767,6 @@ const MainNav = () => {
       >
         <div></div>
       </Button__burgerBtn>
-
       <Nav__mainNav className="mainNav">
         <Div__mainNav__container>
           <A__mainNav__logo as={Link} to="/">
@@ -902,6 +905,8 @@ const MainNav = () => {
           </Ul__mainNav__listContainer>
         </Div__mainNav__container>
       </Nav__mainNav>
+      <Form_contact />
+      <Form_viewing />
     </>
   )
 }
