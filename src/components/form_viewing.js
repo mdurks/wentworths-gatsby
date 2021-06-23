@@ -62,10 +62,10 @@ const Section__contact_container = styled.section`
 
     &__closeBtn {
       position: absolute;
-      top: 22px;
+      top: 38px;
       right: 24px;
       padding: 5px 15px;
-      border: 1px solid white;
+      border: 2px solid white;
       background: none;
       border-radius: 8px;
       color: white;
@@ -73,12 +73,11 @@ const Section__contact_container = styled.section`
     }
 
     &__title {
-      padding: 30px 100px 30px 50px;
-      font-size: 30px;
-      font-weight: bold;
-      font-family: "Raleway", sans-serif;
-      text-transform: uppercase;
-      color: white;
+      padding: 35px 100px 25px 50px;
+      font-size: 45px;
+      font-family: "Playfair Display", serif;
+      text-transform: none;
+      color: #8e6600;
       background-color: hsl(43deg 67% 68% / 63%);
       border-radius: 20px 0 0 0;
     }
@@ -91,7 +90,7 @@ const Section__contact_container = styled.section`
     &__form {
       height: calc(100vh - 330px);
       padding: 40px 50px;
-      background: #eaeaeac7;
+      background: hsl(0deg 0% 100% / 82%);
       border-radius: 0 0 0 20px;
     }
 
@@ -108,7 +107,7 @@ const Section__contact_container = styled.section`
     &__label {
       display: block;
       padding: 0 0 20px;
-      color: hsl(43deg 60% 46%);
+      color: hsl(43deg 100% 35%);
       font-size: 20px;
       font-weight: bold;
     }
@@ -121,8 +120,20 @@ const Section__contact_container = styled.section`
       color: grey;
       font-family: "Raleway", sans-serif;
       background: white;
-      border: 1px solid grey;
+      border-width: 1px;
+      border-style: solid;
+      border-top-color: white;
+      border-left-color: white;
+      border-right-color: #adadad;
+      border-bottom-color: #adadad;
       border-radius: 5px;
+      box-shadow: inset 3px 3px 10px 1px rgb(0 0 0 / 20%);
+
+      &:focus {
+        outline: none;
+        border-width: 2px;
+        border-color: hsl(43deg 35% 65%);
+      }
     }
 
     &__submitGrp {
@@ -183,7 +194,7 @@ const form_viewing = props => {
         >
           ✖
         </button>
-        <h3 className="viewingContainer__title">Book a viewing</h3>
+        <h3 className="viewingContainer__title">Book a viewing...</h3>
         <div className="viewingContainer__glitterBar"></div>
         <form className="viewingContainer__form" action="">
           <div className="viewingContainer__2col">

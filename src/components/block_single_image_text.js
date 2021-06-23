@@ -290,8 +290,10 @@ const Block_single_image_text = () => {
       //   "-=1"
       // )
     }
-
+    //
+    //
     // Parallax effect for desktop img1
+    //
     tl_gsap.call(() => {
       if (window.innerWidth > 600) {
         gsap.to(gsap__Img__SIT__img1, {
@@ -303,7 +305,7 @@ const Block_single_image_text = () => {
             // end: () => gsap__Div__SIT.offsetTop * 0.9,
             scrub: 1.5,
           },
-          y: `-=${window.innerHeight / 3}px`,
+          y: `+=${window.innerHeight / 8}px`,
           // y: "-=30%",
         })
         // gsap.to(gsap__Img__SIT__img2, {
