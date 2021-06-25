@@ -37,7 +37,7 @@ const Div__block_best_seller = styled.div`
       width: 100%;
       height: 100%;
       background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAANIilAAAAAPFBMVEUAAAD////////////////////////////////////////////////////////////////////////////YSWgTAAAAE3RSTlMA90v6fh+ZEw5WThpalJKMhXVoqNyq9wAAARdJREFUSMec1FEOhCAMBNAiqwgICNz/rgtxzWTTRKjzR5OX+aGlp+haNb3MUluW9xZabqHlVpeioYU2E2VokVWfnWj/KGihhRZacz2MTDv0otsJ7GkwMOe0tlVXlbqFTqoN7aSN/n/o45Q+ug23hQ5dHxN2W4ll3aCHVq4ts0zbsZVrB/uk3cBKNP5zaPZRh/ufcxs9DeLjpblN3HKdmF6wC6OYE5rt7yDYb3Y3xsFtYb3i7m41eue6ddc/m2HndL50bSkkTunuW3od0AAAwzAM48/aIAzg0vVvbVKH69rzYPNVMyQznrMYs5ITBhNDE4ATvRP6UzdTdFOxU+6DFQM0g1IDcYOPA66DzAnrrwkvKK9GL2WlgwB6HCGhU6TCrAAAAABJRU5ErkJggg==);
-      opacity: 0.4;
+      opacity: 0.3;
     }
   }
 
@@ -104,7 +104,7 @@ const Div__block_best_seller = styled.div`
     font-size: clamp(44px, 7vw, 90px);
     line-height: 69px;
     letter-spacing: -1px;
-    color: #ba9b7c;
+    color: #d8cfbc;
     opacity: 0;
 
     ${bp_min_desktop} {
@@ -201,6 +201,7 @@ const Div__flickity = styled.div`
     width: 210px;
     font-size: 16px;
     line-height: 25px;
+    text-transform: capitalize;
     color: #000;
     opacity: 0;
     transition: top ease-in-out 0.4s, opacity ease-in-out 0.65s;
@@ -254,7 +255,7 @@ const Block_best_seller = () => {
         trigger: Block_best_seller,
         // markers: true,
         id: "tl_gsap__entryHeading",
-        start: window.innerWidth < 768 ? "top 70%" : "top 60%",
+        start: window.innerWidth < 768 ? "top 70%" : "top 70%",
         // toggleActions: "play none none reset",
       },
     })
