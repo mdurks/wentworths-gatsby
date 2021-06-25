@@ -144,6 +144,16 @@ const Block_one_row_jewellery = () => {
       x: "10%",
       ease: "power2.out",
     })
+    gsap.to(".Section__hero__heading", {
+      scrollTrigger: {
+        trigger: document.body,
+        start: "top top",
+        toggleActions: "play none none none",
+        // markers: true,
+        scrub: true,
+      },
+      y: `+=${window.innerHeight / 3}`,
+    })
 
     let hero_heading_handwriting = viewportWidth < 768 ? "-7%" : "-7%"
 
