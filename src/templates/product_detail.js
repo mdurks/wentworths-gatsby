@@ -5,6 +5,7 @@ import GraphImg from "graphcms-image"
 
 //import Layout from "../components/layout"
 
+import Block_may_also_like from "../components/block_may_also_like"
 import Block_bespoke_design_advert from "../components/block_bespoke_design_advert"
 import Form_Enquire from "../components/Form-Enquire"
 import Form_Viewing from "../components/Form-Viewing"
@@ -1424,6 +1425,8 @@ const DetailsPage = ({
           </div>
         </div>
       </Div_modal>
+
+      <Block_may_also_like />
 
       <Block_bespoke_design_advert />
     </>
