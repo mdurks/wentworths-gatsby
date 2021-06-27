@@ -24,6 +24,20 @@ const Div__block_may_also_like = styled.div`
     bottom: 80px;
   }
 
+  .flickity-slider {
+    > div {
+      transition: all ease-in-out 0.4s;
+      box-shadow: 0px 0px 5px 2px rgb(0 0 0 / 1%);
+      transform: scale(1);
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 0px 5px 2px rgb(0 0 0 / 33%);
+        z-index: 5546;
+      }
+    }
+  }
+
   .youMayAlsoLike {
     &__headingGroup {
     }
@@ -38,18 +52,16 @@ const Div__block_may_also_like = styled.div`
       height: 740px;
     }
 
-    .flickity-slider {
-      > div {
-        //width: 33%;
-      }
-    }
-
     &__itemLink {
       display: block;
       width: calc(1400px / 3);
       margin: 14px 9px;
       padding: 30px;
       background-color: #f4f3f1;
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
 
     &__productName {
@@ -66,9 +78,7 @@ const pageQuery = graphql`
     gcms {
       products(
         orderBy: updatedAt_DESC
-        where: {
-          categoryType_contains_some: engagement
-        }
+        where: { categoryType_contains_some: engagement }
       ) {
         id
         slug
