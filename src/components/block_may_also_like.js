@@ -21,21 +21,24 @@ const Div__block_may_also_like = styled.div`
   text-align: center;
 
   .flickity-page-dots {
-    bottom: 80px;
+    bottom: 70px;
+  }
+
+  .flickity-viewport {
+    overflow-y: visible;
+    overflow-x: hidden;
   }
 
   .flickity-slider {
-    > div {
-      transition: all ease-in-out 0.4s;
-      box-shadow: 0px 0px 5px 2px rgb(0 0 0 / 1%);
-      transform: scale(1);
+    padding-top: 15px;
 
-      &:hover {
-        transform: scale(1.05);
-        box-shadow: 0px 0px 5px 2px rgb(0 0 0 / 33%);
-        z-index: 5546;
-      }
+    > div:hover {
+      z-index: 5;
     }
+  }
+
+  .flickity-prev-next-button {
+    top: 41%;
   }
 
   .youMayAlsoLike {
@@ -49,7 +52,7 @@ const Div__block_may_also_like = styled.div`
     }
 
     &__carousel {
-      height: 740px;
+      height: 760px;
     }
 
     &__itemLink {
@@ -59,16 +62,26 @@ const Div__block_may_also_like = styled.div`
       padding: 30px;
       background-color: #f4f3f1;
 
+      transition: all ease-in-out 0.4s;
+      box-shadow: 0px 0px 5px 2px rgb(0 0 0 / 1%);
+      transform: scale(1);
+
       &:hover {
-        transform: scale(1.1);
+        transform: scale(1.05);
+        box-shadow: 0px 0px 10px 1px rgb(0 0 0 / 23%);
       }
     }
 
-    &__productName {
-      margin: 30px 0;
+    &__productTitle {
+      height: 85px;
+      margin: 15px 0 0;
       font-size: 24px;
       font-family: "Playfair Display", serif;
       text-transform: capitalize;
+    }
+
+    &__productPrice {
+      color: #a0703e;
     }
   }
 `
@@ -105,6 +118,10 @@ const Block_best_seller = () => {
   const {
     gcms: { products },
   } = useStaticQuery(pageQuery)
+
+  function number_with_commas(x) {
+    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
+  }
 
   const flickityOptions = {
     prevNextButtons: true,
@@ -146,7 +163,12 @@ const Block_best_seller = () => {
                   transforms={["quality=value:80"]}
                   maxWidth={400}
                 />
-                <h3 className="youMayAlsoLike__productName">{el.name}</h3>
+                <h3 className="youMayAlsoLike__productTitle">
+                  <span>{el.name} - </span>
+                  <span className="youMayAlsoLike__productPrice">
+                    £{number_with_commas(el.price)}
+                  </span>
+                </h3>
               </a>
             </div>
           ))}
