@@ -257,7 +257,7 @@ const Div__filter = styled.div`
     }
 
     .filter_legend_amount {
-      margin: 8px 40px 0 5px;
+      margin: 8px 0 0 5px;
       font-size: 22px;
       font-family: "Arial, sans-serif";
       transition: all ease 0.3s;
@@ -276,7 +276,7 @@ const Div__filter = styled.div`
         top: 50%;
         left: 0;
         width: 100%;
-        height: 1px;
+        height: 2px;
         background-color: #e5e3de;
         z-index: -1;
       }

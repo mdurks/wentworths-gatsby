@@ -105,7 +105,7 @@ const Div__block_best_seller = styled.div`
     font-size: clamp(44px, 7vw, 90px);
     line-height: 69px;
     letter-spacing: -1px;
-    color: #ba9b7c;
+    color: #d8cfbc;
     opacity: 0;
 
     ${bp_min_desktop} {
@@ -202,6 +202,7 @@ const Div__flickity = styled.div`
     width: 210px;
     font-size: 16px;
     line-height: 25px;
+    text-transform: capitalize;
     color: #000;
     opacity: 0;
     transition: top ease-in-out 0.4s, opacity ease-in-out 0.65s;
@@ -255,7 +256,7 @@ const Block_best_seller = () => {
         trigger: Block_best_seller,
         // markers: true,
         id: "tl_gsap__entryHeading",
-        start: window.innerWidth < 768 ? "top 70%" : "top 60%",
+        start: window.innerWidth < 768 ? "top 70%" : "top 70%",
         // toggleActions: "play none none reset",
       },
     })

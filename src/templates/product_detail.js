@@ -5,6 +5,7 @@ import GraphImg from "graphcms-image"
 
 //import Layout from "../components/layout"
 
+import Block_may_also_like from "../components/block_may_also_like"
 import Block_bespoke_design_advert from "../components/block_bespoke_design_advert"
 import Form_Enquire from "../components/Form-Enquire"
 import Form_Viewing from "../components/Form-Viewing"
@@ -14,7 +15,7 @@ import Form_Viewing from "../components/Form-Viewing"
 import styled, { css } from "styled-components"
 import { Styled_SiteContainer } from "../styles/commonStyles"
 
-import { gsap, ScrollTrigger, Power3 } from "gsap/all"
+import { gsap, ScrollTrigger, Power3, Power2 } from "gsap/all"
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
@@ -628,6 +629,39 @@ const DetailsPage = ({
     })
     //
     //
+    // Hero elements
+    //
+    let tl_hero_els = gsap.timeline({
+      scrollTrigger: {
+        trigger: document.body,
+        // markers: true,
+        start: "60% top",
+        toggleActions: "play none none reverse",
+      },
+    })
+    tl_hero_els.to(document.querySelector(".hero_details").childNodes, {
+      opacity: 0,
+      duration: .7,
+      stagger: 0.1,
+      ease: Power2.out,
+      x: "+=50px",
+    })
+    //
+    //
+    // Hero parallax
+    //
+    gsap.to(".Styled_Img", {
+      scrollTrigger: {
+        trigger: document.body,
+        start: "top top",
+        toggleActions: "play none none none",
+        // markers: true,
+        scrub: true,
+      },
+      y: `+=${window.innerHeight / 5}`,
+    })
+    //
+    //
     // Hero block parallax
     //
     // let heroBlock__backGroundImg = document.getElementById("heroImg")
@@ -1109,6 +1143,7 @@ const DetailsPage = ({
   //
   //
   // Modal pagination
+  //
   let modal_pagination_goto_page = index => {
     let target_img = document.querySelector(
       ".modalContent  .graphcms-image-wrapper"
@@ -1173,6 +1208,7 @@ const DetailsPage = ({
   //
   //
   // Reset modal zoom state
+  //
   let reset_modal_zoom_state = () => {
     let product_detail_modal_content = document.querySelector(".modalContent")
     document
@@ -1242,6 +1278,7 @@ const DetailsPage = ({
               onClick={() => {
                 open_modal_animation(0)
               }}
+              className="Styled_Img"
             >
               <div className="productStage"></div>
               <GraphImg
@@ -1424,6 +1461,8 @@ const DetailsPage = ({
           </div>
         </div>
       </Div_modal>
+
+      <Block_may_also_like />
 
       <Block_bespoke_design_advert />
     </>

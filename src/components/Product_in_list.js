@@ -65,7 +65,7 @@ const Styled_ProductItem = styled(Link)`
       .productPrice {
         top: 25px;
         color: #ba9b7c;
-        opacity: 1;
+        // opacity: 1;
       }
     }
 
@@ -139,11 +139,11 @@ const Styled_ProductItem = styled(Link)`
     font-size: 24px;
     transition: all ease 0.5s;
 
-    ${bp_min_desktop} {
-      font-size: 30px;
-      top: -20px;
-      opacity: 0;
-    }
+    // ${bp_min_desktop} {
+    //   font-size: 30px;
+    //   top: -20px;
+    //   opacity: 0;
+    // }
   }
 `
 
