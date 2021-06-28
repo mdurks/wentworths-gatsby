@@ -635,16 +635,16 @@ const DetailsPage = ({
       scrollTrigger: {
         trigger: document.body,
         // markers: true,
-        start: "60% top",
+        start: "50% top",
         toggleActions: "play none none reverse",
       },
     })
     tl_hero_els.to(document.querySelector(".hero_details").childNodes, {
       opacity: 0,
-      duration: .7,
+      duration: 0.7,
       stagger: 0.1,
       ease: Power2.out,
-      x: "+=50px",
+      y: "-=50px",
     })
     //
     //
@@ -658,7 +658,7 @@ const DetailsPage = ({
         // markers: true,
         scrub: true,
       },
-      y: `+=${window.innerHeight / 5}`,
+      top: `+=${window.innerHeight / 6.5}`,
     })
     //
     //
