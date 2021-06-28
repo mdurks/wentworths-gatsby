@@ -649,7 +649,6 @@ const Li__mainNav__topLevelLink = styled.li`
 //   }
 // `
 
-
 const MainNav = () => {
   // class MainNav extends React.Component {
   // constructor(props) {
@@ -693,7 +692,6 @@ const MainNav = () => {
   //   }
   // })
   // }
-
 
   let click_mobile_burger_btn = () => {
     if (
@@ -905,8 +903,8 @@ const MainNav = () => {
           </Ul__mainNav__listContainer>
         </Div__mainNav__container>
       </Nav__mainNav>
-      <Form_contact />
-      <Form_viewing />
+      {/* <Form_contact />
+      <Form_viewing /> */}
     </>
   )
 }
