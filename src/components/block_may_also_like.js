@@ -114,7 +114,7 @@ const pageQuery = graphql`
   }
 `
 
-const Block_best_seller = () => {
+const Block_best_seller = props => {
   const {
     gcms: { products },
   } = useStaticQuery(pageQuery)
@@ -152,10 +152,10 @@ const Block_best_seller = () => {
           reloadOnUpdate // default false
           static // default false
         >
-          {products.map((el, index) => (
+          {products.map(el => (
             <div>
               <a
-                href={`/engagement/${el.productType}/${el.slug}/`}
+                href={`/${props.categoryType}/${props.productType}/${el.slug}/`}
                 className="youMayAlsoLike__itemLink"
               >
                 <GraphImg

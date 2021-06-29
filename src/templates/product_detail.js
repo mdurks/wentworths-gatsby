@@ -601,8 +601,7 @@ const DetailsPage = ({
   },
   pageContext,
 }) => {
-  // console.log("product: ", product)
-
+  console.log("product", product)
   let return_array_center_out = a => {
     var o = [],
       s = a.length,
@@ -1462,7 +1461,10 @@ const DetailsPage = ({
         </div>
       </Div_modal>
 
-      <Block_may_also_like />
+      <Block_may_also_like
+        categoryType={pageContext.thisCategory}
+        productType={pageContext.productType}
+      />
 
       <Block_bespoke_design_advert />
     </>
@@ -1477,6 +1479,7 @@ export const pageQuery = graphql`
         name
         price
         description
+        categoryType
         productType
         createdAt
         detailedDescription {
