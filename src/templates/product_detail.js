@@ -629,21 +629,21 @@ const DetailsPage = ({
     //
     // Hero elements
     //
-    let tl_hero_els = gsap.timeline({
-      scrollTrigger: {
-        trigger: document.body,
-        // markers: true,
-        start: "50% top",
-        toggleActions: "play none none reverse",
-      },
-    })
-    tl_hero_els.to(document.querySelector(".hero_details").childNodes, {
-      opacity: 0,
-      duration: 0.7,
-      stagger: 0.1,
-      ease: Power2.out,
-      y: "-=50px",
-    })
+    // let tl_hero_els = gsap.timeline({
+    //   scrollTrigger: {
+    //     trigger: document.body,
+    //     // markers: true,
+    //     start: "50% top",
+    //     toggleActions: "play none none reverse",
+    //   },
+    // })
+    // tl_hero_els.to(document.querySelector(".hero_details").childNodes, {
+    //   opacity: 0,
+    //   duration: 0.7,
+    //   stagger: 0.1,
+    //   ease: Power2.out,
+    //   y: "-=50px",
+    // })
     //
     //
     // Hero parallax
