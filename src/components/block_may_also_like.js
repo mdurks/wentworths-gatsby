@@ -1,7 +1,5 @@
 import React from "react"
-import { graphql, useStaticQuery } from "gatsby"
 import GraphImg from "graphcms-image"
-import { useEffect } from "react"
 import { gsap, ScrollTrigger } from "gsap/all"
 
 import styled from "styled-components"
@@ -86,39 +84,7 @@ const Div__block_may_also_like = styled.div`
   }
 `
 
-const pageQuery = graphql`
-  {
-    gcms {
-      products(
-        orderBy: updatedAt_DESC
-        where: { categoryType_contains_some: engagement }
-      ) {
-        id
-        slug
-        name
-        description
-        categoryType
-        productType
-        price
-        createdAt
-        updatedAt
-        image(first: 1) {
-          id
-          url
-          handle
-          width
-          height
-        }
-      }
-    }
-  }
-`
-
 const Block_best_seller = props => {
-  const {
-    gcms: { products },
-  } = useStaticQuery(pageQuery)
-
   function number_with_commas(x) {
     return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
   }
@@ -128,10 +94,10 @@ const Block_best_seller = props => {
     setGallerySize: false,
     pageDots: true,
     initialIndex: 1,
-    // freeScroll: true,
+    freeScroll: true,
     // wrapAround: true,
     // percentPosition: false,
-    // freeScrollFriction: 0.065,
+    freeScrollFriction: 0.065,
   }
 
   return (
@@ -152,7 +118,7 @@ const Block_best_seller = props => {
           reloadOnUpdate // default false
           static // default false
         >
-          {products.map(el => (
+          {props.products.map(el => (
             <div>
               <a
                 href={`/${props.categoryType}/${props.productType}/${el.slug}/`}

@@ -1467,6 +1467,7 @@ const DetailsPage = ({
       <Block_may_also_like
         categoryType={pageContext.thisCategory}
         productType={pageContext.productType}
+        products={products}
       />
 
       <Block_bespoke_design_advert />
@@ -1501,13 +1502,16 @@ export const pageQuery = graphql`
         }
       }
       products(
+        orderBy: updatedAt_DESC
         where: {
           categoryType_contains_some: $thisCategory
           AND: { productType: $productType }
+          NOT: { id: $id }
         }
       ) {
         id
         name
+        slug
         price
         image {
           id
