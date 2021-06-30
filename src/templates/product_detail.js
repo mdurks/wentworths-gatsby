@@ -597,11 +597,14 @@ const Div_modal = styled.div`
 
 const DetailsPage = ({
   data: {
-    gcms: { product },
+    gcms: { product, products },
   },
   pageContext,
 }) => {
+  console.log("pageContext", pageContext)
   console.log("product", product)
+  console.log("products", products)
+
   let return_array_center_out = a => {
     var o = [],
       s = a.length,
@@ -1472,7 +1475,11 @@ const DetailsPage = ({
 }
 
 export const pageQuery = graphql`
-  query ProductPageQuery($id: ID!) {
+  query ProductPageQuery(
+    $id: ID!
+    $thisCategory: [GCMS_CategoryType!]
+    $productType: GCMS_ProductType
+  ) {
     gcms {
       product(where: { id: $id }) {
         id
@@ -1485,6 +1492,23 @@ export const pageQuery = graphql`
         detailedDescription {
           html
         }
+        image {
+          id
+          url
+          handle
+          width
+          height
+        }
+      }
+      products(
+        where: {
+          categoryType_contains_some: $thisCategory
+          AND: { productType: $productType }
+        }
+      ) {
+        id
+        name
+        price
         image {
           id
           url
