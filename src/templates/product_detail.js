@@ -601,10 +601,6 @@ const DetailsPage = ({
   },
   pageContext,
 }) => {
-  console.log("pageContext", pageContext)
-  console.log("product", product)
-  console.log("products", products)
-
   let return_array_center_out = a => {
     var o = [],
       s = a.length,
@@ -1474,6 +1470,10 @@ const DetailsPage = ({
     </>
   )
 }
+
+// This pageQuery brings back 2 objects
+// The first is just this pages product information
+// The second brings back other products for this category and type for the 'You may also like' component
 
 export const pageQuery = graphql`
   query ProductPageQuery(

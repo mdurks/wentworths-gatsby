@@ -93,11 +93,12 @@ const Block_best_seller = props => {
     prevNextButtons: true,
     setGallerySize: false,
     pageDots: true,
-    initialIndex: 1,
-    freeScroll: true,
+    // initialIndex: window.innerWidth < 1024 ? 0 : 1,
+    groupCells: true,
+    // freeScroll: true,
     // wrapAround: true,
     // percentPosition: false,
-    freeScrollFriction: 0.065,
+    // freeScrollFriction: 0.065,
   }
 
   return (
