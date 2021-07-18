@@ -69,7 +69,7 @@ const IndexPage = () => {
 
       <Block_full_size_image />
 
-      <Block_bespoke_design_advert />
+      {/* <Block_bespoke_design_advert /> */}
     </>
   )
 }

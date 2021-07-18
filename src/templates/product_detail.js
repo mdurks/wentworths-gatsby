@@ -1466,7 +1466,7 @@ const DetailsPage = ({
         products={products}
       />
 
-      <Block_bespoke_design_advert />
+      {/* <Block_bespoke_design_advert /> */}
     </>
   )
 }

@@ -180,6 +180,26 @@ const Block_single_image_text = () => {
   useEffect(() => {
     //
     gsap__Div__SIT.style.minHeight = gsap__Div__SIT.offsetHeight + "px"
+    //
+    //
+    // Parallax effect for desktop img1 - causing warning about "GSAP target null not found"
+    //
+    let block_single_image_parallax = () => {
+      if (window.innerWidth > 600) {
+        gsap.to(".block_single_parallax_image", {
+          scrollTrigger: {
+            trigger: ".block_single_parallax_image",
+            // markers: true,
+            //start: "top 90%", // colorBox, viewport start location
+            start: "50% 50%",
+            // end: () => gsap__Div__SIT.offsetTop * 0.9,
+            scrub: 1.5,
+          },
+          y: `+=${window.innerHeight / 8}px`,
+          // y: "-=30%",
+        })
+      }
+    }
 
     let tl_gsap = gsap.timeline({
       scrollTrigger: {
@@ -192,6 +212,7 @@ const Block_single_image_text = () => {
         // pin: true,
         // anticipatePin: 1,
       },
+      onComplete: block_single_image_parallax,
     })
 
     tl_gsap.from(gsap__SIT__backgroundStrip, {
@@ -277,51 +298,7 @@ const Block_single_image_text = () => {
         },
         "-=2"
       )
-
-      // tl_gsap.from(
-      //   gsap__Img__SIT__img2,
-      //   {
-      //     duration: 3,
-      //     y: "+=75",
-      //     height: 0,
-      //     opacity: 0,
-      //     ease: "power3.out",
-      //   },
-      //   "-=1"
-      // )
     }
-    //
-    //
-    // Parallax effect for desktop img1
-    //
-    tl_gsap.call(() => {
-      if (window.innerWidth > 600) {
-        gsap.to(gsap__Img__SIT__img1, {
-          scrollTrigger: {
-            trigger: gsap__Img__SIT__img1,
-            // markers: true,
-            //start: "top 90%", // colorBox, viewport start location
-            start: "50% 50%",
-            // end: () => gsap__Div__SIT.offsetTop * 0.9,
-            scrub: 1.5,
-          },
-          y: `+=${window.innerHeight / 8}px`,
-          // y: "-=30%",
-        })
-        // gsap.to(gsap__Img__SIT__img2, {
-        //   scrollTrigger: {
-        //     trigger: gsap__Img__SIT__img2,
-        //     // markers: true,
-        //     start: "top 60%",
-        //     scrub: 0.75,
-        //   },
-        //   // y: "-=350%",
-        //   // opacity: 0,
-        //   height: 0,
-        //   y: "+=75px",
-        // })
-      }
-    }, null)
 
     // return function to kill timeline on dismount
     return () => tl_gsap.kill()
@@ -347,7 +324,10 @@ const Block_single_image_text = () => {
               ></div>
             </Div__SIT__textGroup>
 
-            <Img__SIT__img1 ref={e => (gsap__Img__SIT__img1 = e)}>
+            <Img__SIT__img1
+              className="block_single_parallax_image"
+              ref={e => (gsap__Img__SIT__img1 = e)}
+            >
               <GraphImg
                 image={welcomes[0].heroImage}
                 transforms={["quality=value:80"]}
