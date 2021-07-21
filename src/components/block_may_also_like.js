@@ -86,7 +86,8 @@ const Div__block_may_also_like = styled.div`
 
 const Block_best_seller = props => {
   function number_with_commas(x) {
-    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
+    // return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
+    return x
   }
 
   const flickityOptions = {
