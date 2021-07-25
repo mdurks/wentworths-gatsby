@@ -1,3 +1,8 @@
+//
+//
+//  This is an old component first used to experiment with a row of jewellery products
+//
+//
 import React from "react"
 import { useEffect } from "react"
 import { gsap, ScrollTrigger } from "gsap/all"

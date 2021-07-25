@@ -30,6 +30,7 @@ const Div__gradient_row_link = styled.div`
     );
     height: 110px;
     overflow: hidden;
+    // take the CMS colour value and apply background gradient
     background: linear-gradient(
       to ${props => props.img_alignment},
       #f9f6ee 49.99%,

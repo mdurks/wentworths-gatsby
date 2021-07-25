@@ -7,7 +7,7 @@ const GiftsPage = () => {
   return (
     <>
       <Styled_SiteContainer>
-        <h1>Gifts</h1>
+        <h1 style={{ marginTop: "150px" }}>Gifts</h1>
         <p>Content for the Gifts page coming soon</p>
       </Styled_SiteContainer>
     </>

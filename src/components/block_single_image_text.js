@@ -134,25 +134,6 @@ const Img__SIT__img1 = styled.div`
   }
 `
 
-// const Img__SIT__img2 = styled.div`
-//   ${bp_min_desktop} {
-//     position: absolute;
-//     /* left: calc(59% - (356px / 2));
-//     top: calc(95% - (211px / 2)); */
-//     overflow: hidden;
-//     left: 84%;
-//     bottom: -33%;
-//     width: 249px;
-//     height: 165px;
-//     z-index: 1;
-//   }
-
-//   div {
-//     width: 100%;
-//     height: 100%;
-//   }
-// `
-
 const Div__SIT__textGroup = styled.div`
   ${bp_min_desktop} {
     position: relative;
@@ -175,7 +156,6 @@ const Block_single_image_text = () => {
   let gsap__subTitle = null
   let gsap__introMessage = null
   let gsap__Img__SIT__img1 = null
-  // let gsap__Img__SIT__img2 = null
 
   useEffect(() => {
     //
@@ -216,11 +196,6 @@ const Block_single_image_text = () => {
     })
 
     tl_gsap.from(gsap__SIT__backgroundStrip, {
-      // scrollTrigger: {
-      //   trigger: gsap__SIT__backgroundStrip,
-      //   // markers: true,
-      //   start: "top 80%",
-      // },
       duration: 2,
       opacity: 0,
       ease: "power2.out",
@@ -229,11 +204,6 @@ const Block_single_image_text = () => {
     tl_gsap.from(
       gsap__title,
       {
-        // scrollTrigger: {
-        //   trigger: gsap__SIT__siteContainer,
-        //   // markers: true,
-        //   start: "top 60%",
-        // },
         duration: 2,
         opacity: 0,
         y: 40,
@@ -245,11 +215,6 @@ const Block_single_image_text = () => {
     tl_gsap.from(
       gsap__subTitle,
       {
-        // scrollTrigger: {
-        //   trigger: gsap__SIT__siteContainer,
-        //   // markers: true,
-        //   start: "top 60%",
-        // },
         duration: 1,
         opacity: 0,
         y: 40,
@@ -261,11 +226,6 @@ const Block_single_image_text = () => {
     tl_gsap.from(
       gsap__introMessage,
       {
-        // scrollTrigger: {
-        //   trigger: gsap__SIT__siteContainer,
-        //   // markers: true,
-        //   start: "top 60%",
-        // },
         duration: 1,
         opacity: 0,
         y: 40,
@@ -334,18 +294,6 @@ const Block_single_image_text = () => {
                 maxWidth={577}
               />
             </Img__SIT__img1>
-
-            {/* {typeof window !== "undefined" && window.innerWidth > 600 ? (
-              <Img__SIT__img2 ref={e => (gsap__Img__SIT__img2 = e)}>
-                <GraphImg
-                  image={welcomes[0].supportingImage}
-                  transforms={["quality=value:80"]}
-                  maxWidth={249}
-                />
-              </Img__SIT__img2>
-            ) : (
-              ""
-            )} */}
           </Styled_SiteContainer>
         </Div__SIT__backgroundStrip>
       </Div__SIT>

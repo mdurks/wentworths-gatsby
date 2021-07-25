@@ -8,40 +8,10 @@ import { Styled_SiteContainer } from "../styles/commonStyles"
 
 import Snipcart from "./snipcart"
 
-// import LogoSmall from "../images/wentworth_symbol_small.png"
-// import LogoBig from "../images/wentworth_symbol_large.png"
-
-// const Styled_HeaderLinks = styled.div`
-//   display: none;
-
-//   @media (min-width: 768px) {
-//     display: inline-block;
-//     text-align: center;
-//   }
-// `
-
 const StyledLink = styled(AniLink)`
   display: inline-block;
   text-align: center;
 `
-
-// const Styled_WentworthSymbolImg = styled.div`
-//   display: block;
-//   margin: 10px auto;
-//   width: 60px;
-//   height: 68px;
-//   background-image: url(${LogoSmall});
-//   background-repeat: no-repeat;
-//   background-position: center center;
-//   background-size: cover;
-
-//   @media only screen and (min-width: 767px) {
-//     background-image: url(${LogoBig});
-//     margin: 20px auto;
-//     width: 100px;
-//     height: 115px;
-//   }
-// `
 
 const Styled_WentworthTitle = styled.span`
   display: inline-block;

@@ -1,3 +1,10 @@
+//
+//
+//  This is an old component that I may be able to use in the future
+//  used to be the original homepage intro text and image design
+//
+//
+
 import React from "react"
 import { useRef, useEffect, useState, createRef } from "react"
 import { graphql, useStaticQuery } from "gatsby"

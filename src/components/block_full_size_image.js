@@ -4,11 +4,8 @@ import { graphql, useStaticQuery } from "gatsby"
 
 import GraphImg from "graphcms-image"
 import styled from "styled-components"
-import { Styled_SiteContainer } from "../styles/commonStyles"
 
 import { gsap, ScrollTrigger } from "gsap/all"
-
-import img_model_earring_couch from "../images/general-product/model-earring-couch.jpg"
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
@@ -50,12 +47,12 @@ const Div__block_full_size_image = styled.div`
   }
 
   .Section__hero__backgroundImg {
-    /* object-fit: cover; */
     position: absolute;
     /*
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    object-fit: cover;
     */
     width: 100%;
     height: 100%;
@@ -66,7 +63,6 @@ const Div__block_full_size_image = styled.div`
     }
 
     @media (min-width: 2500px) {
-      // width of image
       max-width: 2500px;
       // width: $section_content_max_width;
     }
@@ -119,17 +115,6 @@ const Block_one_row_jewellery = () => {
   return (
     <>
       <Div__block_full_size_image ref={e => (gsap__image = e)}>
-        {/* <img
-          className="Section__hero__backgroundImg"
-          src={img_model_earring_couch}
-          alt=""
-        /> */}
-        {/* <GraphImg
-          className="Section__hero__backgroundImg"
-          image={blockFullSizeImages[0].images[0]}
-          transforms={["quality=value:80"]}
-          maxWidth={2000}
-        /> */}
         {typeof window !== "undefined" && window.innerWidth < 600 ? (
           <GraphImg
             className="Section__hero__backgroundImg"

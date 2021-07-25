@@ -7,7 +7,7 @@ const TimePiecePage = () => {
   return (
     <>
       <Styled_SiteContainer>
-        <h1>Time Piece</h1>
+        <h1 style={{ marginTop: "150px" }}>Time Piece</h1>
         <p>Content for the Time Piece page coming soon</p>
       </Styled_SiteContainer>
     </>
