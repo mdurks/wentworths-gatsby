@@ -829,7 +829,7 @@ const DetailsPage = ({
     //
     // when this component unmounts:
     return () => {
-      ScrollTrigger.getById("detailed_description_block").kill(true)
+      // ScrollTrigger.getById("detailed_description_block").kill(true)
     }
     //
     //
