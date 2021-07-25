@@ -119,7 +119,9 @@ const Div__pageHeader = styled.div`
 const Div__filter = styled.div`
   position: relative;
   padding: 10px 0 0;
-  transition: all ease-in-out 0.5s;
+  // commented out below as it was interferring with initial page load aninmations and delaying this element.  Added this css property via GSAP after animation.
+  // this transition allows the filter height to grow once we've picked a filter and push the page down, without it, the page just jumps up/down
+  /* transition: all ease-in-out 0.5s; */
   overflow: hidden;
   opacity: 0;
 
@@ -576,7 +578,12 @@ const ProductPage = ({
         stagger: 0.15,
       }
     )
-
+    gsap.set(".filter", {
+      delay: 2,
+      css: {
+        transition: "all ease-in-out 0.5s",
+      },
+    })
     //
     //
     if (window.innerWidth < 768) {
@@ -795,8 +802,8 @@ const ProductPage = ({
         .sort()
     )
 
+    // reset any open filter fieldsets
     setTimeout(() => {
-      // reset any open filter fieldsets
       document.querySelectorAll(".filter fieldset").forEach(el => {
         el.classList.remove("item_checked")
       })
@@ -1251,41 +1258,5 @@ export const pageQuery = graphql`
     }
   }
 `
-
-// export const pageQuery = graphql`
-//   query ProductListingQuery(
-//     $category: [GCMS_CategoryType!]
-//     $product_type: GCMS_ProductType
-//   ) {
-//     gcms {
-//       products(
-//         orderBy: updatedAt_DESC
-//         where: {
-//           productType: $product_type
-//           AND: { categoryType_contains_some: $category }
-//         }
-//       ) {
-//         id
-//         slug
-//         name
-//         categoryType
-//         productType
-//         price
-//         description
-//         gemstone
-//         metal
-//         stoneCut
-//         createdAt
-//         image {
-//           id
-//           url
-//           handle
-//           width
-//           height
-//         }
-//       }
-//     }
-//   }
-// `
 
 export default ProductPage
