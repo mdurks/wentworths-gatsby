@@ -6,10 +6,9 @@ import Link from "gatsby-plugin-transition-link"
 
 import GraphImg from "graphcms-image"
 import styled from "styled-components"
+import css_breakpoints from "../common/css_breakpoints"
 
 import { gsap, Power2 } from "gsap/all"
-
-const bp_min_desktop = "@media (min-width: 1024px)"
 
 const Styled_ProductItem = styled(Link)`
   display: block;
@@ -20,7 +19,7 @@ const Styled_ProductItem = styled(Link)`
   color: #90836b;
   -webkit-tap-highlight-color: transparent;
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     flex: 0 0 20%;
     padding: 30px 0 100px;
 
@@ -42,7 +41,7 @@ const Styled_ProductItem = styled(Link)`
     }
   }
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     &:hover {
       .productImg {
         top: -33px;
@@ -139,7 +138,7 @@ const Styled_ProductItem = styled(Link)`
     font-size: 24px;
     transition: all ease 0.5s;
 
-    // ${bp_min_desktop} {
+    // ${css_breakpoints.min_desktop} {
     //   font-size: 30px;
     //   top: -20px;
     //   opacity: 0;

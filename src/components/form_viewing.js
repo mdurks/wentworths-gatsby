@@ -1,16 +1,10 @@
 import React from "react"
-import { useEffect } from "react"
 
 import styled from "styled-components"
 import { gsap, ScrollTrigger } from "gsap/all"
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
-
-const bp_min_tablet = "@media (min-width: 768px)"
-const bp_min_desktop = "@media (min-width: 1024px)"
-const bp_max_desktop = "@media (max-width: 1024px)"
-const bp_desktop_max = "1400px"
 
 const Section__contact_container = styled.section`
   //   position: fixed;

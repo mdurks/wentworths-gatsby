@@ -14,14 +14,13 @@ import Form_Viewing from "../components/Form-Viewing"
 
 import styled, { css } from "styled-components"
 import { Styled_SiteContainer } from "../styles/commonStyles"
+import css_breakpoints from "../common/css_breakpoints"
 
 import { gsap, ScrollTrigger, Power3, Power2 } from "gsap/all"
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
 
-const bp_min_tablet = "@media (min-width: 768px)"
-const bp_min_desktop = "@media (min-width: 1024px)"
 const section_vertical_height = "100vh"
 const section_vertical_padding = "5vh"
 
@@ -34,7 +33,7 @@ const Div__detail_hero_block = styled.div`
   align-items: center;
   /* background-color: #e5e3de; */
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     min-height: calc(${section_vertical_height} + ${section_vertical_padding});
     padding-top: 75px;
   }
@@ -42,7 +41,7 @@ const Div__detail_hero_block = styled.div`
   > section {
     position: relative;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -64,7 +63,7 @@ const Div__detail_hero_block = styled.div`
     color: #000;
     opacity: 0;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       margin: 10px 0 50px;
     }
   }
@@ -82,7 +81,7 @@ const Div__detail_hero_block = styled.div`
       inset 0px 0px 20px 10px rgba(0, 0, 0, 0.08);
     transition: all ease 0.5s;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       bottom: 0px;
       width: 433px;
       height: 176px;
@@ -101,7 +100,7 @@ const Div__detail_hero_block = styled.div`
 //   background-size: cover;
 //   z-index: -1;
 
-//   @media (min-width: 768px) {
+//   ${css_breakpoints.min_desktop} {
 //     top: 0;
 //   }
 
@@ -128,7 +127,7 @@ const Styled_Img = styled.div`
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     position: absolute;
     top: 50%;
     left: 30%;
@@ -166,7 +165,7 @@ const Styled_Img = styled.div`
     transform: translate(0px, -100px) scale(1);
     transition: none !important;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       transform: translate(0px, -100px) scale(0.9);
     } */
   }
@@ -175,7 +174,7 @@ const Styled_Img = styled.div`
 const Styled_CMScontent = styled.div`
   text-align: center;
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     position: absolute;
     top: 50%;
     left: 75%;
@@ -190,7 +189,7 @@ const Styled_Title = styled.h2`
   color: #776a54;
   opacity: 0;
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     margin-bottom: 50px;
   }
 `
@@ -211,7 +210,7 @@ const Styled_btn = styled.button`
   opacity: 0;
   /* box-shadow: inset 0px 7px 11px 0px rgba(0, 0, 0, 0.3); */
 
-  ${bp_min_tablet} {
+  ${css_breakpoints.min_tablet} {
     margin: 0 0 22px;
     padding: 7px 36px;
     width: auto;
@@ -242,7 +241,7 @@ const Div_detailed_description_block = styled.section`
   overflow: hidden;
   background-color: #f4f3f1;
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     min-height: calc(100vh + ${section_vertical_padding});
     padding: 0;
     padding-top: 75px;
@@ -264,20 +263,20 @@ const Div_detailed_description_block = styled.section`
     flex-direction: column;
     padding: 30px 0 0;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       flex-direction: row;
       padding: 0;
     }
 
     > div:first-of-type {
-      ${bp_min_desktop} {
+      ${css_breakpoints.min_desktop} {
         flex: 1 1 55%;
         padding: 0 0 50px;
       }
     }
 
     > div:last-of-type {
-      ${bp_min_desktop} {
+      ${css_breakpoints.min_desktop} {
         flex: 1 1 45%;
         padding: 50px;
       }
@@ -288,7 +287,7 @@ const Div_detailed_description_block = styled.section`
     opacity: 0;
     padding-top: 20px;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       height: 75vh;
       padding-top: 0;
       padding-right: 30px;
@@ -334,7 +333,7 @@ const Div_detailed_description_block = styled.section`
       transform: translate(0px, -100px) scale(1);
       transition: none !important;
 
-      ${bp_min_desktop} {
+      ${css_breakpoints.min_desktop} {
         transform: translate(0px, -100px) scale(0.9);
       }
     }
@@ -389,7 +388,7 @@ const Div_modal = styled.div`
     left: 0;
     top: 0;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       padding: 30px;
     }
 
@@ -401,7 +400,7 @@ const Div_modal = styled.div`
       width: 200%;
       height: auto;
 
-      ${bp_min_desktop} {
+      ${css_breakpoints.min_desktop} {
         width: 150%;
         padding: 100px;
 
@@ -444,7 +443,7 @@ const Div_modal = styled.div`
     z-index: 5;
     -webkit-tap-highlight-color: transparent;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       top: 40px;
       right: 45px;
     }
@@ -468,7 +467,7 @@ const Div_modal = styled.div`
   .modal_next_prev_btn {
     opacity: 0;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       position: fixed;
       top: 50%;
       left: 50px;

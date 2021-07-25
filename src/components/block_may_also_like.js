@@ -3,18 +3,15 @@ import GraphImg from "graphcms-image"
 import { gsap, ScrollTrigger } from "gsap/all"
 
 import styled from "styled-components"
+import css_breakpoints from "../common/css_breakpoints"
 import Flickity from "react-flickity-component"
 import { Styled_SiteContainer } from "../styles/commonStyles"
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
 
-const bp_min_desktop = "@media (min-width: 1024px)"
-const bp_max_desktop = "@media (max-width: 1024px)"
-const bp_desktop_max = "1400px"
-
 const Div__block_may_also_like = styled.div`
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
   }
   text-align: center;
 

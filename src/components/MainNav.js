@@ -5,6 +5,7 @@ import { Link } from "gatsby"
 // import Link from "gatsby-plugin-transition-link"
 
 import AniLink from "gatsby-plugin-transition-link/AniLink"
+import css_breakpoints from "../common/css_breakpoints"
 import styled, { css } from "styled-components"
 import { Styled_SiteContainer } from "../styles/commonStyles"
 import Form_contact from "./form_contact"
@@ -18,10 +19,6 @@ import nav_engagement_earrings from "../images/nav/nav-engagement-earrings.jpg"
 import nav_engagement_rings from "../images/nav/nav-engagement-rings.jpg"
 import nav_engagement_necklace from "../images/nav/nav-engagemet-necklace.jpg"
 import nav_engagement_bracelet from "../images/nav/nav-engagemn-bracelet.jpg"
-
-const bp_min_desktop = "@media (min-width: 1024px)"
-const bp_max_desktop = "@media (max-width: 1024px)"
-const bp_desktop_max = "1400px"
 
 const Button__burgerBtn = styled.button`
   position: absolute;
@@ -58,7 +55,7 @@ const Button__burgerBtn = styled.button`
     top: 3px;
   }
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     display: none;
   }
 `
@@ -73,7 +70,7 @@ const Nav__mainNav = styled.nav`
   background: linear-gradient(0deg, #6db2c300 0%, #6db2c3 100%);
   transition: all ease-out 0.7s;
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     z-index: 2;
     position: fixed;
     height: auto;
@@ -95,7 +92,7 @@ const Nav__mainNav = styled.nav`
 
   /* For when we scroll down the page, shrink the nav and make bg white */
   .mainNav--shrink & {
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       background: white;
       box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.1);
       padding: 0 50px;
@@ -131,11 +128,11 @@ const Nav__mainNav = styled.nav`
 const Div__mainNav__container = styled.div`
   height: 100%;
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    max-width: ${bp_desktop_max};
+    max-width: ${css_breakpoints.desktop_max};
     height: auto;
     margin: auto;
   }
@@ -158,7 +155,7 @@ const A__mainNav__logo = styled.a`
     color: black;
   }
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     margin: 0 auto 0 0;
     .mainNav--shrink & {
       color: rgb(109, 109, 109);
@@ -182,12 +179,12 @@ const Ul__mainNav__listContainer = styled.ul`
   .mainNav--brown & {
     background: linear-gradient(0deg, #b7a78f 0%, #857e6f 100%);
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       background: none;
     }
   }
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     display: flex;
     flex-direction: row;
     height: auto;
@@ -219,12 +216,12 @@ const Button__topLevelLink = styled.button`
   z-index: 10;
   -webkit-tap-highlight-color: transparent; /* for removing the highlight */
 
-  ${bp_max_desktop} {
+  ${css_breakpoints.max_desktop} {
     outline: none;
   }
 
   // white block behind button
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     &:before {
       z-index: -1;
       content: "";
@@ -254,7 +251,7 @@ const Button__topLevelLink = styled.button`
     }
   }
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     .mainNav--shrink & {
       color: #909090;
     }
@@ -270,7 +267,7 @@ const Div__mainNav__subNavGroupWrapper = styled.div`
     flex: 1 0 268px;
   } */
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     display: block;
     overflow: visible;
     position: absolute;
@@ -289,7 +286,7 @@ const Div__mainNav__subNavGroupWrapper = styled.div`
 const Div__mainNav__subNavGroup = styled.div`
   background-color: rgba(255, 255, 255, 0.3);
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     display: block;
     position: absolute;
     top: -510px;
@@ -316,10 +313,10 @@ const Div__mainNav__subNavGroup = styled.div`
 `
 
 const Div__mainNav__subNavGroup__container = styled.div`
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     display: flex;
     flex-direction: row;
-    max-width: ${bp_desktop_max};
+    max-width: ${css_breakpoints.desktop_max};
     margin: auto;
     background-color: white;
   }
@@ -328,7 +325,7 @@ const Div__mainNav__subNavGroup__container = styled.div`
 const Div__mainNav__subNavGroup__linkImg = styled.div`
   display: none;
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     position: relative;
     display: block;
     width: 400px;
@@ -359,7 +356,7 @@ const Ul__mainNav__subNavList = styled.ul`
     padding: 0 17.5% 20px;
   }
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     flex: 1 0 35%;
     display: block;
     padding: 20px 30px;
@@ -408,7 +405,7 @@ const Ul__mainNav__subNavList = styled.ul`
       transition-delay: 0.3s;
     }
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       &:nth-child(1) {
         transition-delay: 0.4s;
       }
@@ -449,7 +446,7 @@ const Ul__mainNav__subNavList = styled.ul`
     text-decoration: none;
     transition: all ease 0.3s;
 
-    ${bp_max_desktop} {
+    ${css_breakpoints.max_desktop} {
       position: relative;
     }
 
@@ -472,7 +469,7 @@ const Ul__mainNav__subNavList = styled.ul`
       }
     }
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       font-size: 20px;
       border-bottom: 1px solid rgb(223, 223, 223);
       color: grey;
@@ -512,7 +509,7 @@ const Ul__mainNav__subNavList = styled.ul`
 const Div__mainNav__subNavMessage = styled.div`
   display: none;
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     display: block;
     width: 400px;
     padding: 47px 30px 40px;
@@ -534,7 +531,7 @@ const Li__mainNav__topLevelLink = styled.li`
   flex-direction: column;
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     display: block;
     border: none;
   }
@@ -542,14 +539,14 @@ const Li__mainNav__topLevelLink = styled.li`
   &.open ${Button__topLevelLink} {
     background-color: rgba(255, 255, 255, 0.3);
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       background-color: transparent;
     }
   }
 
   &:hover {
     ${Button__topLevelLink} {
-      ${bp_min_desktop} {
+      ${css_breakpoints.min_desktop} {
         color: #6ea9b7;
 
         // white block behind button
@@ -583,7 +580,7 @@ const Li__mainNav__topLevelLink = styled.li`
       ${Button__topLevelLink} {
         position: relative;
 
-        ${bp_max_desktop} {
+        ${css_breakpoints.max_desktop} {
           &:before {
             content: ">";
             font-size: 28px;
@@ -596,7 +593,7 @@ const Li__mainNav__topLevelLink = styled.li`
         }
       }
 
-      ${bp_min_desktop} {
+      ${css_breakpoints.min_desktop} {
         &:hover {
           ${Button__topLevelLink}:before {
             transition: all ease 1s;
@@ -629,7 +626,7 @@ const Li__mainNav__topLevelLink = styled.li`
       }
     `};
 
-  ${bp_max_desktop} {
+  ${css_breakpoints.max_desktop} {
     // rotate mobile chevron if sub menu open
     &.open {
       ${Button__topLevelLink}:before {

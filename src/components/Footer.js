@@ -1,16 +1,13 @@
 import React from "react"
 import styled from "styled-components"
 import { Styled_SiteContainer } from "../styles/commonStyles"
-
-const bp_min_desktop = "@media (min-width: 1024px)"
-const bp_max_desktop = "@media (max-width: 1024px)"
-const bp_desktop_max = "1400px"
+import css_breakpoints from "../common/css_breakpoints"
 
 const Styled_footer = styled.footer`
   background-color: #fff;
 
   .footerContainer {
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       display: flex;
       flex-direction: row;
       padding: 70px 0 100px;

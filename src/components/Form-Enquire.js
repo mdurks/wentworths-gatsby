@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import css_breakpoints from "../common/css_breakpoints"
 
 const Styled_Sidebar = styled.div`
   position: fixed;
@@ -13,7 +14,7 @@ const Styled_Sidebar = styled.div`
   z-index: 20;
   overflow-y: auto;
 
-  @media (min-width: 768px) {
+  ${css_breakpoints.min_desktop} {
     box-shadow: -4px 0px 8px 0px rgba(0, 0, 0, 0.3);
     right: -460px;
     width: 450px;

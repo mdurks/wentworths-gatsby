@@ -8,8 +8,11 @@
 import React from "react"
 import { useRef, useEffect, useState, createRef } from "react"
 import { graphql, useStaticQuery } from "gatsby"
+
 import styled from "styled-components"
 import { Styled_SiteContainer } from "../styles/commonStyles"
+import css_breakpoints from "../common/css_breakpoints"
+
 import { gsap, ScrollTrigger } from "gsap/all"
 
 import white_bordered_two_ringss_pink_ribbon from "../images/general-product/white-bordered-two-ringss-pink-ribbon.jpg"
@@ -18,11 +21,6 @@ import sparkle_background_blue from "../images/sparkle-background-blue.png"
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
-
-const bp_min_tablet = "@media (min-width: 768px)"
-const bp_min_desktop = "@media (min-width: 1024px)"
-const bp_max_desktop = "@media (max-width: 1024px)"
-const bp_desktop_max = "1400px"
 
 const section_vertical_padding = "0vh"
 const section_horizontal_padding = "50px"
@@ -57,13 +55,13 @@ const Div__ITB = styled.div`
   padding: 15px 0 75px;
   overflow: hidden;
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     min-height: calc(100vh + ${section_vertical_padding});
     padding: 75px 0;
   }
 
   > section {
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       display: flex;
       flex-direction: row-reverse;
       justify-content: center;
@@ -71,7 +69,7 @@ const Div__ITB = styled.div`
     }
 
     > div {
-      ${bp_min_desktop} {
+      ${css_breakpoints.min_desktop} {
         flex: 1 0 50%;
       }
     }
@@ -81,7 +79,7 @@ const Div__ITB = styled.div`
     margin: 20px 0 30px;
     text-transform: uppercase;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       margin: 0 0 30px;
     }
   }
@@ -93,7 +91,7 @@ const Div__ITB = styled.div`
   img {
     width: 100%;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       width: auto;
     }
   }
@@ -104,7 +102,7 @@ const Div__ITB__imgGroup = styled.div`
 `
 
 const Div__ITB__colorBox01 = styled.div`
-  ${bp_min_tablet} {
+  ${css_breakpoints.min_tablet} {
     position: absolute;
     top: 0;
     left: calc(50% + 167px);
@@ -115,7 +113,7 @@ const Div__ITB__colorBox01 = styled.div`
 `
 
 const Div__ITB__colorBox02 = styled.div`
-  ${bp_min_tablet} {
+  ${css_breakpoints.min_tablet} {
     position: absolute;
     bottom: 2px;
     left: calc(50% - 177px);
@@ -128,7 +126,7 @@ const Div__ITB__colorBox02 = styled.div`
 const Img__ITB__imgSparkle = styled.img`
   display: none;
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     display: block;
     position: relative;
     right: auto;
@@ -140,7 +138,7 @@ const Img__ITB__imgSparkle = styled.img`
 
 const Img__ITB__layout1__img1 = styled.div`
   display: none;
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     display: block;
     position: absolute;
     left: calc(40% - (326px / 2));
@@ -153,7 +151,7 @@ const Img__ITB__layout1__img1 = styled.div`
 const Img__ITB__layout1__img2 = styled.div`
   margin: 20px 0 0 -5px;
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     margin: 0;
     position: absolute;
     left: calc(59% - (356px / 2));
@@ -165,7 +163,7 @@ const Img__ITB__layout1__img2 = styled.div`
 `
 
 const Div__ITB__textGroup = styled.div`
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     padding: 0 5%;
   }
 `

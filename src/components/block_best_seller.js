@@ -5,14 +5,11 @@ import { useEffect } from "react"
 import { gsap, ScrollTrigger } from "gsap/all"
 
 import styled from "styled-components"
+import css_breakpoints from "../common/css_breakpoints"
 import Flickity from "react-flickity-component"
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
-
-const bp_min_desktop = "@media (min-width: 1024px)"
-const bp_max_desktop = "@media (max-width: 1024px)"
-const bp_desktop_max = "1400px"
 
 const Div__block_best_seller = styled.div`
   position: relative;
@@ -20,7 +17,7 @@ const Div__block_best_seller = styled.div`
   text-align: center;
   background-color: #e5e3de;
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
   }
 
   .headingGroup {
@@ -51,7 +48,7 @@ const Div__block_best_seller = styled.div`
     font-family: "Playfair Display", serif;
     z-index: 1;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       top: 90px;
       padding: 0;
     }
@@ -67,7 +64,7 @@ const Div__block_best_seller = styled.div`
       opacity: 0;
       font-size: clamp(34px, 4vw, 47px);
 
-      ${bp_min_desktop} {
+      ${css_breakpoints.min_desktop} {
         display: inline-block;
         margin-top: 3px;
 
@@ -108,7 +105,7 @@ const Div__block_best_seller = styled.div`
     color: #d8cfbc;
     opacity: 0;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       top: 115px;
       left: 50%;
       line-height: 295px;
@@ -131,7 +128,7 @@ const Div__flickity = styled.div`
     height: 250px !important;
     width: 210px !important;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       width: 330px !important;
     }
   }
@@ -187,7 +184,7 @@ const Div__flickity = styled.div`
       inset 0px 0px 20px 10px rgba(0, 0, 0, 0.08);
     transition: all ease-in-out 0.4s;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       top: 151px;
       height: 85px;
       width: 213px;

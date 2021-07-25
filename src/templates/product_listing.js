@@ -4,6 +4,7 @@ import { graphql } from "gatsby"
 
 import { gsap, ScrollTrigger } from "gsap/all"
 import styled from "styled-components"
+import css_breakpoints from "../common/css_breakpoints"
 
 // import Layout from "../components/layout"
 import Product_in_list from "../components/Product_in_list"
@@ -15,8 +16,6 @@ import { Styled_SiteContainer } from "../styles/commonStyles"
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
 
-const bp_min_desktop = "@media (min-width: 1024px)"
-
 const Div__productsPage = styled.div``
 
 const Div__pageHeader = styled.div`
@@ -25,7 +24,7 @@ const Div__pageHeader = styled.div`
   text-align: center;
   min-height: 560px;
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     min-height: auto;
     padding: 250px 0 40px;
   }
@@ -35,7 +34,7 @@ const Div__pageHeader = styled.div`
     font-family: "Raleway", sans-serif;
     opacity: 0;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       width: 50%;
     }
   }
@@ -49,7 +48,7 @@ const Div__pageHeader = styled.div`
     opacity: 0;
     z-index: 1;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       margin: 0 0 0 -320px;
     }
   }
@@ -62,7 +61,7 @@ const Div__pageHeader = styled.div`
     color: #ba9b7c;
     opacity: 0;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       margin: 0 0 60px;
     }
   }
@@ -111,7 +110,7 @@ const Div__pageHeader = styled.div`
       }
     }
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       display: none;
     }
   }
@@ -124,7 +123,7 @@ const Div__filter = styled.div`
   overflow: hidden;
   opacity: 0;
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     display: flex;
     justify-content: space-evenly;
     padding: 0;
@@ -154,7 +153,7 @@ const Div__filter = styled.div`
     border: none;
     border-bottom: 1px solid #ada99f;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       border: none;
     }
 
@@ -166,7 +165,7 @@ const Div__filter = styled.div`
         margin: 5px 0 15px;
         overflow: visible;
 
-        ${bp_min_desktop} {
+        ${css_breakpoints.min_desktop} {
           height: calc((var(--number-of-menu-items) + 1) * 50px - 8px);
           max-height: 265px;
           margin: 0;
@@ -189,7 +188,7 @@ const Div__filter = styled.div`
           transform: rotate(270deg);
           right: 4px;
 
-          ${bp_min_desktop} {
+          ${css_breakpoints.min_desktop} {
             top: 32px;
             right: auto;
             transform: rotate(90deg);
@@ -213,7 +212,7 @@ const Div__filter = styled.div`
         margin: 0;
         padding: 0;
 
-        ${bp_min_desktop} {
+        ${css_breakpoints.min_desktop} {
           height: 88px;
           padding: 23px 11px 15px 10px;
         }
@@ -263,7 +262,7 @@ const Div__filter = styled.div`
       transition: all ease 0.3s;
     }
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       display: inline;
       width: auto;
       padding: 10px 30px;
@@ -306,7 +305,7 @@ const Div__filter = styled.div`
     overflow: hidden;
     z-index: 5;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       position: absolute;
       top: -30px;
       padding: 0 10px;
@@ -318,7 +317,7 @@ const Div__filter = styled.div`
     overflow-x: hidden;
     overflow-y: hidden;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       padding: 0 7px 0 0;
 
       /* ::-webkit-scrollbar {
@@ -346,7 +345,7 @@ const Div__filter = styled.div`
     -webkit-tap-highlight-color: transparent;
     cursor: pointer;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       display: block;
       margin: 0 5px 2px;
       border-radius: 5px;
@@ -403,7 +402,7 @@ const Div__filter_info = styled.div`
   text-align: center;
   opacity: 0;
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     margin-bottom: 110px;
   }
 
@@ -504,7 +503,7 @@ const Div__filter_info = styled.div`
 const Div__productRow = styled.div`
   text-align: center;
 
-  @media (max-width: 1024px) {
+  ${css_breakpoints.max_desktop} {
     margin: 0 -30px 75px;
     overflow: hidden;
 
@@ -520,7 +519,7 @@ const Div__productRow = styled.div`
     }
   }
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     display: flex;
     justify-content: center;
     align-items: center;

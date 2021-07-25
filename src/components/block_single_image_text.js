@@ -5,17 +5,13 @@ import { graphql, useStaticQuery } from "gatsby"
 import GraphImg from "graphcms-image"
 
 import styled from "styled-components"
+import css_breakpoints from "../common/css_breakpoints"
 import { Styled_SiteContainer } from "../styles/commonStyles"
 
 import { gsap, ScrollTrigger } from "gsap/all"
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
-
-const bp_min_tablet = "@media (min-width: 768px)"
-const bp_min_desktop = "@media (min-width: 1024px)"
-const bp_max_desktop = "@media (max-width: 1024px)"
-const bp_desktop_max = "1400px"
 
 const section_vertical_padding = "10vh"
 const section_horizontal_padding = "50px"
@@ -57,7 +53,7 @@ const Div__SIT = styled.div`
   align-items: center;
   overflow: hidden;
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     min-height: calc(100vh + ${section_vertical_padding});
     padding: 75px 0;
   }
@@ -74,7 +70,7 @@ const Div__SIT = styled.div`
     font-family: "Amalfi Coast", serif;
     color: #83674d;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       top: -54px;
       left: -20px;
       margin: 0 0 30px;
@@ -88,7 +84,7 @@ const Div__SIT = styled.div`
     font-family: "Playfair Display", serif;
     line-height: 36px;
     color: black;
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       line-height: normal;
     }
   }
@@ -108,7 +104,7 @@ const Div__SIT__backgroundStrip = styled.div`
   background-color: #f9f6ee;
   padding: 10px 0 20px;
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     padding: 10px 0 70px;
   }
 `
@@ -116,7 +112,7 @@ const Div__SIT__backgroundStrip = styled.div`
 const Img__SIT__img1 = styled.div`
   margin: 30px 0 0;
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     position: absolute;
     /* left: calc(40% - (326px / 2));
     top: calc(50% - (444px / 2)); */
@@ -135,7 +131,7 @@ const Img__SIT__img1 = styled.div`
 `
 
 const Div__SIT__textGroup = styled.div`
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     position: relative;
     width: 50%;
     left: 50%;

@@ -5,15 +5,12 @@ import { graphql, useStaticQuery } from "gatsby"
 import GraphImg from "graphcms-image"
 import styled from "styled-components"
 import { Styled_SiteContainer } from "../styles/commonStyles"
+import css_breakpoints from "../common/css_breakpoints"
 
 import { gsap, ScrollTrigger } from "gsap/all"
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
-
-const bp_min_desktop = "@media (min-width: 1024px)"
-const bp_max_desktop = "@media (max-width: 1024px)"
-const bp_desktop_max = "1400px"
 
 const section_vertical_padding = "0vh"
 const section_horizontal_padding = "50px"
@@ -50,7 +47,7 @@ const Styled_HeroImg = styled.div`
   width: 100%;
   min-height: 100vh;
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     min-height: auto;
   }
 
@@ -84,7 +81,7 @@ const Section__hero = styled.section`
     opacity: 0;
     z-index: 1;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       top: 26%;
       left: 27%;
     }
@@ -102,7 +99,7 @@ const Section__hero = styled.section`
     opacity: 0;
     z-index: -1;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       top: 252%;
       left: 27%;
       font-size: clamp(80px, 13vw, 200px);

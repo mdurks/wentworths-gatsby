@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import css_breakpoints from "../common/css_breakpoints"
 
 import ShoppingBagIcon from "../images/shopping-bag-icon.png"
 import ShoppingBagIcon_hover from "../images/shopping-bag-icon-hover.png"
@@ -28,7 +29,7 @@ const Styled_CartButton = styled.button`
     height: 16px;
   }
 
-  @media (min-width: 768px) {
+  ${css_breakpoints.min_desktop} {
     top: 11px;
     right: 10px;
     left: auto;

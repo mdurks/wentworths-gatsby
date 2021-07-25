@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components"
+import css_breakpoints from "../common/css_breakpoints"
 
 const bp_desktop_max = "1400px"
 
@@ -32,7 +33,7 @@ export const Styled_SiteContainer = styled.section`
   ${props =>
     props.productDetailFirstBlock &&
     css`
-      @media (min-width: 768px) {
+      ${css_breakpoints.min_desktop} {
         height: calc(100vh - 191px);
       }
     `};
@@ -47,7 +48,7 @@ export const Styled_SiteContainer = styled.section`
         text-decoration: none;
       }
 
-      @media (min-width: 768px) {
+      ${css_breakpoints.min_desktop} {
         > a {
           display: inline-block;
           width: calc(50% - 20px);

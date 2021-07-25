@@ -4,22 +4,19 @@ import GraphImg from "graphcms-image"
 
 import { Styled_SiteContainer } from "../styles/commonStyles"
 import styled from "styled-components"
+import css_breakpoints from "../common/css_breakpoints"
+
 import { gsap, ScrollTrigger } from "gsap/all"
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
-
-const bp_min_tablet = "@media (min-width: 768px)"
-const bp_min_desktop = "@media (min-width: 1024px)"
-const bp_max_desktop = "@media (max-width: 1024px)"
-const bp_desktop_max = "1400px"
 
 const Div__gradient_row_link = styled.div`
   position: relative;
   overflow: hidden;
   margin: 6px 0;
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     margin: 10px 0;
   }
 
@@ -37,7 +34,7 @@ const Div__gradient_row_link = styled.div`
       hsl(${props => props.tint_colour}deg 100% 94%) 50%
     );
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       height: 200px;
     }
   }
@@ -52,7 +49,7 @@ const Div__gradient_row_link = styled.div`
       hsl(${props => props.tint_colour}deg 100% 94%) 100%
     );
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       height: 200px;
     }
 
@@ -68,7 +65,7 @@ const Div__gradient_row_link = styled.div`
             left: 0;
           }
         }
-        ${bp_min_desktop} {
+        ${css_breakpoints.min_desktop} {
           .img > div {
             top: -20px;
             width: 75%;
@@ -92,7 +89,7 @@ const Div__gradient_row_link = styled.div`
     text-align: ${props =>
       props.img_alignment === "right" ? "right" : "left"};
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       width: 50%;
       left: ${props => (props.img_alignment === "right" ? "0" : "50%")};
     }
@@ -101,7 +98,7 @@ const Div__gradient_row_link = styled.div`
       width: 100%;
       line-height: 17px;
 
-      ${bp_min_desktop} {
+      ${css_breakpoints.min_desktop} {
         line-height: 30px;
       }
     }
@@ -112,7 +109,7 @@ const Div__gradient_row_link = styled.div`
       overflow: hidden;
       font-size: 13px;
 
-      ${bp_min_desktop} {
+      ${css_breakpoints.min_desktop} {
         height: 30px;
         font-size: 21px;
       }
@@ -121,7 +118,7 @@ const Div__gradient_row_link = styled.div`
         position: relative;
         top: 20px;
 
-        ${bp_min_desktop} {
+        ${css_breakpoints.min_desktop} {
           top: 35px;
         }
       }
@@ -139,7 +136,7 @@ const Div__gradient_row_link = styled.div`
       line-height: 20px;
       transition: all ease-in-out 0.4s;
 
-      ${bp_min_desktop} {
+      ${css_breakpoints.min_desktop} {
         height: 60px;
         line-height: 30px;
         font-size: 41px;
@@ -166,7 +163,7 @@ const Div__gradient_row_link = styled.div`
           transition: all ease-in-out 0.6s;
         }
 
-        ${bp_min_desktop} {
+        ${css_breakpoints.min_desktop} {
           top: -45px;
         }
       }
@@ -180,7 +177,7 @@ const Div__gradient_row_link = styled.div`
     left: ${props => (props.img_alignment === "right" ? "66.66%" : "0%")};
     opacity: 0;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       width: 50%;
       left: ${props => (props.img_alignment === "right" ? "50%" : "0%")};
     }
@@ -191,7 +188,7 @@ const Div__gradient_row_link = styled.div`
       transform: translateX(-50%);
       width: 130%;
 
-      ${bp_min_desktop} {
+      ${css_breakpoints.min_desktop} {
         top: 0;
         width: 60%;
         transition: all ease-in-out 0.4s;

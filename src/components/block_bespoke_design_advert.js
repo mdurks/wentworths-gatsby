@@ -2,6 +2,7 @@ import React from "react"
 import { useEffect } from "react"
 import styled from "styled-components"
 import { Styled_SiteContainer } from "../styles/commonStyles"
+import css_breakpoints from "../common/css_breakpoints"
 import { gsap, ScrollTrigger } from "gsap/all"
 
 import img_sketch_rings from "../images/misc/sketch-rings.jpg"
@@ -9,11 +10,6 @@ import img_sketch_book from "../images/misc/sketch-book.jpg"
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
-
-const bp_max_mobile = "@media (max-width: 767px)"
-const bp_min_desktop = "@media (min-width: 1024px)"
-const bp_max_desktop = "@media (max-width: 1024px)"
-const bp_desktop_max = "1400px"
 
 const section_vertical_padding = "0vh"
 const section_horizontal_padding = "50px"
@@ -37,7 +33,7 @@ const Div__block_bespoke_design_advert = styled.div`
     justify-content: center;
     align-items: center;
 
-    ${bp_max_mobile} {
+    ${css_breakpoints.max_mobile} {
       padding: 510px 15px 0;
     }
   }
@@ -53,7 +49,7 @@ const Div__block_bespoke_design_advert = styled.div`
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     transform: rotate(2.68deg);
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       position: absolute;
       top: -922%;
       left: 38%;
@@ -73,7 +69,7 @@ const Div__block_bespoke_design_advert = styled.div`
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     transform: rotate(-7.38deg);
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       position: absolute;
       top: -523%;
       left: 7%;
@@ -131,7 +127,7 @@ const Div__block_bespoke_design_advert = styled.div`
     text-transform: uppercase;
     font-family: "Playfair Display", serif;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       position: absolute;
       top: 170%;
       left: 46.5%;
@@ -151,7 +147,7 @@ const Div__block_bespoke_design_advert = styled.div`
     /* color: #b49372; */
     text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.35);
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       width: auto;
       position: absolute;
       top: 310%;
@@ -168,7 +164,7 @@ const Div__block_bespoke_design_advert = styled.div`
     text-transform: uppercase;
     font-family: "Playfair Display", serif;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       position: absolute;
       top: 530%;
       left: 68%;
@@ -189,7 +185,7 @@ const Div__block_bespoke_design_advert = styled.div`
     border: 2px solid #b49372;
     transition: all ease 0.4s;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       position: absolute;
       top: 760%;
       left: 64.5%;

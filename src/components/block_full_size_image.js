@@ -26,10 +26,6 @@ const pageQuery = graphql`
   }
 `
 
-const bp_min_desktop = "@media (min-width: 1024px)"
-const bp_max_desktop = "@media (max-width: 1024px)"
-const bp_desktop_max = "1400px"
-
 const section_vertical_padding = "12vh"
 const section_horizontal_padding = "50px"
 const section_content_max_width = "1800px"

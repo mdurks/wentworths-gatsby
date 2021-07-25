@@ -8,16 +8,13 @@ import { useEffect } from "react"
 import { gsap, ScrollTrigger } from "gsap/all"
 
 import styled from "styled-components"
+import css_breakpoints from "../common/css_breakpoints"
 import { Styled_SiteContainer } from "../styles/commonStyles"
 
 import img_product_ring_silver_round_blue_diamond from "../images/products/ring/product-ring-silver-round-blue-diamond.png"
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
-
-const bp_min_desktop = "@media (min-width: 1024px)"
-const bp_max_desktop = "@media (max-width: 1024px)"
-const bp_desktop_max = "1400px"
 
 const section_vertical_height = "100vh"
 const section_vertical_padding = "0vh"
@@ -34,7 +31,7 @@ const Div__block_one_row_jewellery = styled.div`
   text-align: center;
   background-color: #e5e3de;
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     min-height: calc(${section_vertical_height} + ${section_vertical_padding});
     padding: 75px 0;
   }
@@ -55,7 +52,7 @@ const Div__block_one_row_jewellery = styled.div`
     text-transform: uppercase;
     font-family: "Playfair Display", serif;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       top: 70px;
       margin-top: 0;
     }
@@ -70,7 +67,7 @@ const Div__block_one_row_jewellery = styled.div`
       opacity: 0;
       font-size: clamp(21px, 4vw, 50px);
 
-      ${bp_min_desktop} {
+      ${css_breakpoints.min_desktop} {
         top: auto;
         margin-top: 10px;
       }
@@ -89,7 +86,7 @@ const Div__block_one_row_jewellery = styled.div`
     color: #ba9b7c;
     opacity: 0;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       transform: translateX(0);
       left: -40px;
       top: -45px;
@@ -107,7 +104,7 @@ const Div__block_one_row_jewellery = styled.div`
     text-decoration: none;
     color: #90836b;
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       padding: 30px 0 100px;
 
       &:nth-child(even) {
@@ -124,7 +121,7 @@ const Div__block_one_row_jewellery = styled.div`
       }
     }
 
-    ${bp_min_desktop} {
+    ${css_breakpoints.min_desktop} {
       &:hover {
         .productImg {
           top: -33px;
@@ -191,7 +188,7 @@ const Div__block_one_row_jewellery = styled.div`
     color: #a59985;
     transition: all ease 0.5s;
 
-    /* ${bp_min_desktop} {
+    /* ${css_breakpoints.min_desktop} {
       opacity: 0;
     } */
   }
@@ -203,7 +200,7 @@ const Div__productRow = styled.div`
   align-items: center;
   flex-wrap: wrap;
 
-  ${bp_min_desktop} {
+  ${css_breakpoints.min_desktop} {
     margin: 40px 0 0;
   }
 `
