@@ -46,8 +46,13 @@ module.exports = {
         // The field you'll query against:
         fieldName: "gcms",
         // The API endpoint:
+        //
+        // OLD GraphCMS
+        // url:
+        //   "https://api-eu-central-1.graphcms.com/v2/ckcgmjdl73ds501xrercafl4c/master",
+        //
         url:
-          "https://api-eu-central-1.graphcms.com/v2/ckcgmjdl73ds501xrercafl4c/master",
+          "https://api-ap-southeast-2.graphcms.com/v2/ckx541fhr480v01xp8x4za7yr/master",
       },
     },
     // {
