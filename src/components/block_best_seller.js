@@ -41,9 +41,10 @@ const Div__block_best_seller = styled.div`
 
   .entryHeading {
     position: relative;
-    padding: 80px 0 0;
-    letter-spacing: -1px;
+    padding: 47px 0 0;
+    letter-spacing: 0px;
     font-size: clamp(18px, 4vw, 21px);
+    line-height: clamp(34px, 4vw, 37px);
     text-transform: uppercase;
     font-family: "Playfair Display", serif;
     z-index: 1;
@@ -51,41 +52,47 @@ const Div__block_best_seller = styled.div`
     ${css_breakpoints.min_desktop} {
       top: 90px;
       padding: 0;
+      letter-spacing: -1px;
     }
 
     > span {
-      display: block;
+      display: none;
       opacity: 0;
+
+      ${css_breakpoints.min_desktop} {
+        /* display: block; */
+      }
     }
 
     > div {
       position: relative;
       top: 0;
       opacity: 0;
-      font-size: clamp(34px, 4vw, 47px);
+      font-size: clamp(44px, 4vw, 47px);
 
       ${css_breakpoints.min_desktop} {
         display: inline-block;
         margin-top: 3px;
+        letter-spacing: 15px;
 
         &:before {
           content: "";
           position: absolute;
-          top: 16px;
-          left: -180px;
+          top: 21px;
+          left: -200px;
           width: 160px;
           height: 1px;
-          border-bottom: 1px dashed #ba9b7c;
+          border-bottom: 1px dashed #000;
         }
 
         &:after {
           content: "";
           position: absolute;
-          top: 16px;
-          left: 325px;
+          top: 21px;
+          left: 515px;
           width: 160px;
           height: 1px;
-          border-bottom: 1px dashed #ba9b7c;
+          border-bottom: 1px dashed #000;
         }
       }
     }
@@ -93,22 +100,23 @@ const Div__block_best_seller = styled.div`
 
   h2 {
     position: absolute;
-    top: 157px;
+    top: 124px;
     left: calc(50% - 10px);
     transform: translateX(-50%);
     width: 100%;
     text-align: center;
     font-family: "Amalfi Coast", serif;
-    font-size: clamp(44px, 7vw, 90px);
-    line-height: 69px;
+    font-size: clamp(40px, 7vw, 110px);
+    line-height: 64px;
     letter-spacing: -1px;
-    color: #d8cfbc;
+    color: #c78e16;
     opacity: 0;
 
     ${css_breakpoints.min_desktop} {
       top: 115px;
       left: 50%;
       line-height: 295px;
+      color: #c1a260;
     }
   }
 `
@@ -196,11 +204,13 @@ const Div__flickity = styled.div`
     top: 258px;
     left: 50%;
     transform: translateX(-50%);
-    width: 210px;
+    width: 100%;
     font-size: 16px;
     line-height: 25px;
-    text-transform: capitalize;
-    color: #000;
+    text-transform: uppercase;
+    color: #8f8571;
+    font-family: "Playfair Display", serif;
+    font-weight: bold;
     opacity: 0;
     transition: top ease-in-out 0.4s, opacity ease-in-out 0.65s;
   }
