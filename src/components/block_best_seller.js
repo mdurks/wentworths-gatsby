@@ -135,7 +135,7 @@ const Div__flickity = styled.div`
   }
 
   .flickity-viewport {
-    height: 305px;
+    height: 325px;
     top: -125px;
 
     ${css_breakpoints.min_desktop} {
@@ -373,7 +373,10 @@ const Block_best_seller = () => {
                       maxWidth={300}
                     />
                     <div className="productStage"></div>
-                    <p className="productDesc">{el.name}</p>
+                    <p className="productDesc">
+                      {el.name}
+                      <br />£{el.price}
+                    </p>
                   </a>
                 </div>
               </>
