@@ -46,7 +46,7 @@ const pageQuery = graphql`
 `
 
 const Div__SIT = styled.div`
-  min-height: 100vh;
+  /* min-height: 100vh; */
   position: relative;
   display: flex;
   justify-content: center;
@@ -54,7 +54,8 @@ const Div__SIT = styled.div`
   overflow: hidden;
 
   ${css_breakpoints.min_desktop} {
-    min-height: calc(100vh + ${section_vertical_padding});
+    /* min-height: calc(100vh + ${section_vertical_padding}); */
+    min-height: 1000px;
     padding: 75px 0;
   }
 
@@ -155,7 +156,7 @@ const Block_single_image_text = () => {
 
   useEffect(() => {
     //
-    gsap__Div__SIT.style.minHeight = gsap__Div__SIT.offsetHeight + "px"
+    // gsap__Div__SIT.style.minHeight = gsap__Div__SIT.offsetHeight + "px"
     //
     //
     // Parallax effect for desktop img1 - causing warning about "GSAP target null not found"
@@ -182,7 +183,7 @@ const Block_single_image_text = () => {
         trigger: gsap__SIT__backgroundStrip,
         start: "-5% 85%",
         // toggleActions: "play none none reset",
-        // markers: true,
+        markers: true,
         // end: `+=${viewportWidth}`,
         // scrub: 1,
         // pin: true,
