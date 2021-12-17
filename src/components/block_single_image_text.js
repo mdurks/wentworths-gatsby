@@ -183,7 +183,7 @@ const Block_single_image_text = () => {
         trigger: gsap__SIT__backgroundStrip,
         start: "-5% 85%",
         // toggleActions: "play none none reset",
-        markers: true,
+        // markers: true,
         // end: `+=${viewportWidth}`,
         // scrub: 1,
         // pin: true,
