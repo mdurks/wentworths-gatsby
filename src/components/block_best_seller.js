@@ -101,7 +101,7 @@ const Div__block_best_seller = styled.div`
   h2 {
     position: absolute;
     top: 124px;
-    left: calc(50% - 10px);
+    left: 50%;
     transform: translateX(-50%);
     width: 100%;
     text-align: center;
@@ -114,7 +114,6 @@ const Div__block_best_seller = styled.div`
 
     ${css_breakpoints.min_desktop} {
       top: 115px;
-      left: 50%;
       line-height: 295px;
       color: #c1a260;
     }
@@ -261,45 +260,45 @@ const Block_best_seller = () => {
       paused: true,
       scrollTrigger: {
         trigger: Block_best_seller,
-        // markers: true,
         id: "tl_gsap__entryHeading",
         start: window.innerWidth < 768 ? "top 70%" : "top 70%",
+        // markers: true,
         // toggleActions: "play none none reset",
       },
     })
-    tl_gsap__entryHeading.to(gsap__entryHeading, {
-      duration: 3,
-      opacity: 1,
-      ease: "back",
-    })
+    // tl_gsap__entryHeading.to(gsap__entryHeading, {
+    //   duration: 2,
+    //   opacity: 1,
+    //   ease: "back",
+    // })
     tl_gsap__entryHeading.to(
       gsap__entryHeading_wj,
       {
-        duration: 3,
+        duration: 2,
         opacity: 1,
         ease: "back",
-      },
-      "-=2.5"
+      }
+      // "-=1.75"
     )
     tl_gsap__entryHeading.to(
       gsap__entryHeading_category_title,
       {
-        duration: 3,
+        duration: 1.75,
         opacity: 1,
         ease: "back",
       },
-      "-=2.5"
+      "-=1.65"
     )
     tl_gsap__entryHeading.to(
       document.querySelectorAll(".bestSellerItem"),
       {
         opacity: 1,
-        duration: 0.8,
+        duration: 0.6,
         ease: "back",
-        x: -20,
-        stagger: 0.15,
+        x: -100,
+        stagger: 0.1,
       },
-      "-=3"
+      "-=1.75"
     )
 
     // return function to kill timeline on dismount
