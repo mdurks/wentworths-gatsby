@@ -214,7 +214,7 @@ const Block_gradient_row_link = props => {
         scrollTrigger: {
           trigger: this_component_el,
           start: window.innerHeight < 768 ? "top 50%" : "top 95%",
-          toggleActions: "play none none reset",
+          toggleActions: "play none none none",
           // markers: true,
           // end: `+=${viewportWidth}`,
           // scrub: 1,
