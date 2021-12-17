@@ -37,6 +37,10 @@ const Div__block_best_seller = styled.div`
       background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAANIilAAAAAPFBMVEUAAAD////////////////////////////////////////////////////////////////////////////YSWgTAAAAE3RSTlMA90v6fh+ZEw5WThpalJKMhXVoqNyq9wAAARdJREFUSMec1FEOhCAMBNAiqwgICNz/rgtxzWTTRKjzR5OX+aGlp+haNb3MUluW9xZabqHlVpeioYU2E2VokVWfnWj/KGihhRZacz2MTDv0otsJ7GkwMOe0tlVXlbqFTqoN7aSN/n/o45Q+ug23hQ5dHxN2W4ll3aCHVq4ts0zbsZVrB/uk3cBKNP5zaPZRh/ufcxs9DeLjpblN3HKdmF6wC6OYE5rt7yDYb3Y3xsFtYb3i7m41eue6ddc/m2HndL50bSkkTunuW3od0AAAwzAM48/aIAzg0vVvbVKH69rzYPNVMyQznrMYs5ITBhNDE4ATvRP6UzdTdFOxU+6DFQM0g1IDcYOPA66DzAnrrwkvKK9GL2WlgwB6HCGhU6TCrAAAAABJRU5ErkJggg==);
       opacity: 0.3;
     }
+
+    ${css_breakpoints.min_desktop} {
+      height: 490px;
+    }
   }
 
   .entryHeading {
@@ -50,7 +54,7 @@ const Div__block_best_seller = styled.div`
     z-index: 1;
 
     ${css_breakpoints.min_desktop} {
-      top: 90px;
+      top: 140px;
       padding: 0;
       letter-spacing: -1px;
     }
@@ -113,7 +117,7 @@ const Div__block_best_seller = styled.div`
     opacity: 0;
 
     ${css_breakpoints.min_desktop} {
-      top: 115px;
+      top: 165px;
       line-height: 295px;
       color: #c1a260;
     }
@@ -124,11 +128,19 @@ const Div__flickity = styled.div`
   .carousel {
     height: 180px;
     z-index: 456;
+
+    ${css_breakpoints.min_desktop} {
+      height: 280px;
+    }
   }
 
   .flickity-viewport {
     height: 305px;
     top: -125px;
+
+    ${css_breakpoints.min_desktop} {
+      top: -105px;
+    }
   }
 
   .flickity-slider > div {
@@ -172,6 +184,7 @@ const Div__flickity = styled.div`
         }
 
         .productDesc {
+          top: 270px;
           opacity: 1;
         }
       }
@@ -199,19 +212,24 @@ const Div__flickity = styled.div`
   }
 
   .productDesc {
-    position: absolute;
-    top: 258px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    font-size: 16px;
-    line-height: 25px;
-    text-transform: uppercase;
-    color: #8f8571;
-    font-family: "Playfair Display", serif;
-    font-weight: bold;
-    opacity: 0;
-    transition: top ease-in-out 0.4s, opacity ease-in-out 0.65s;
+    display: none;
+
+    ${css_breakpoints.min_tablet} {
+      display: block;
+      position: absolute;
+      top: 265px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      font-size: 16px;
+      line-height: 25px;
+      text-transform: uppercase;
+      color: #8f8571;
+      font-family: "Playfair Display", serif;
+      font-weight: bold;
+      opacity: 0.5;
+      transition: top ease-in-out 0.4s, opacity ease-in-out 0.65s;
+    }
   }
 `
 
