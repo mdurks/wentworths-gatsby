@@ -135,7 +135,7 @@ const Div__flickity = styled.div`
   }
 
   .flickity-viewport {
-    height: 325px;
+    height: 365px;
     top: -125px;
 
     ${css_breakpoints.min_desktop} {
@@ -164,7 +164,7 @@ const Div__flickity = styled.div`
     .graphcms-image-outer-wrapper {
       position: relative;
       z-index: 1 !important;
-      transition: all ease-in-out 0.4s;
+      transition: all ease 0.3s;
       top: 30px;
       width: 200px;
       margin: auto;
@@ -202,7 +202,7 @@ const Div__flickity = styled.div`
     border-radius: 100%;
     box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.2),
       inset 0px 0px 20px 10px rgba(0, 0, 0, 0.08);
-    transition: all ease-in-out 0.4s;
+    transition: all ease 0.3s;
 
     ${css_breakpoints.min_desktop} {
       top: 151px;
@@ -220,13 +220,11 @@ const Div__flickity = styled.div`
       top: 265px;
       left: 50%;
       transform: translateX(-50%);
-      width: 100%;
+      width: 55%;
       font-size: 16px;
       line-height: 25px;
       text-transform: uppercase;
       color: #8f8571;
-      font-family: "Playfair Display", serif;
-      font-weight: bold;
       opacity: 0.5;
       transition: top ease-in-out 0.4s, opacity ease-in-out 0.65s;
     }
@@ -374,8 +372,7 @@ const Block_best_seller = props => {
                     />
                     <div className="productStage"></div>
                     <p className="productDesc">
-                      {el.name}
-                      <br />£{el.price}
+                      {el.name} £{el.price}
                     </p>
                   </a>
                 </div>
