@@ -360,29 +360,27 @@ const Block_best_seller = props => {
             reloadOnUpdate // default false
             static // default false
           >
-            {props.products
-              .filter(el => el.bestSeller)
-              .map(el => (
-                <>
-                  <div>
-                    <a
-                      href={`/engagement/${el.productType}/${el.slug}/`}
-                      className="bestSellerItem bestSellerItem1"
-                    >
-                      <GraphImg
-                        image={el.image[0]}
-                        transforms={["quality=value:80"]}
-                        maxWidth={300}
-                      />
-                      <div className="productStage"></div>
-                      <p className="productDesc">
-                        {el.name}
-                        <br />£{el.price}
-                      </p>
-                    </a>
-                  </div>
-                </>
-              ))}
+            {props.products.map(el => (
+              <>
+                <div>
+                  <a
+                    href={`/engagement/${el.productType}/${el.slug}/`}
+                    className="bestSellerItem bestSellerItem1"
+                  >
+                    <GraphImg
+                      image={el.image[0]}
+                      transforms={["quality=value:80"]}
+                      maxWidth={300}
+                    />
+                    <div className="productStage"></div>
+                    <p className="productDesc">
+                      {el.name}
+                      <br />£{el.price}
+                    </p>
+                  </a>
+                </div>
+              </>
+            ))}
           </Flickity>
         </Div__flickity>
       </Div__block_best_seller>

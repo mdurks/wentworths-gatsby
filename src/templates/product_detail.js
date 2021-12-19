@@ -601,9 +601,6 @@ const DetailsPage = ({
   },
   pageContext,
 }) => {
-  console.log("product", product)
-  console.log("products", products)
-
   let return_array_center_out = a => {
     var o = [],
       s = a.length,
@@ -702,6 +699,7 @@ const DetailsPage = ({
     //
     if (window.innerWidth >= 1024) {
       let stick_detailed_description_text = () => {
+        // TODO: following line bugs when returning to homepage, maybe needs useEffect cleanup
         let el = document.querySelector(".detailed_description_text")
         el.style.position = ""
         el.style.top = ""
@@ -1300,6 +1298,24 @@ const DetailsPage = ({
             <p className="productPrice">£{number_with_commas(product.price)}</p>
             <p className="productVAT">Includes VAT + Delivery</p>
 
+            <div>
+              <p>
+                <small>gemstone: {product.filter_gemstone}</small>
+              </p>
+              <p>
+                <small>carat: {product.filter_carat}</small>
+              </p>
+              <p>
+                <small>metal: {product.filter_metal}</small>
+              </p>
+              <p>
+                <small>stoneColour: {product.filter_stoneColour}</small>
+              </p>
+              <p>
+                <small>stoneCut: {product.filter_stoneCut}</small>
+              </p>
+            </div>
+
             <Styled_btn
               btn_selected
               className="snipcart-add-item"
@@ -1476,7 +1492,7 @@ const DetailsPage = ({
         <Block_best_seller
           categoryTitle={`${pageContext.thisCategory} ${pageContext.productType}`}
           category={pageContext.thisCategory}
-          products={products}
+          products={products.filter(el => el.bestSeller)}
         />
       )}
     </>
@@ -1501,6 +1517,11 @@ export const pageQuery = graphql`
         description
         categoryType
         productType
+        filter_gemstone
+        filter_carat
+        filter_metal
+        filter_stoneColour
+        filter_stoneCut
         createdAt
         detailedDescription {
           html
@@ -1526,7 +1547,7 @@ export const pageQuery = graphql`
         slug
         productType
         price
-        image {
+        image(first: 1) {
           id
           url
           handle
