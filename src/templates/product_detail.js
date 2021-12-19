@@ -5,6 +5,7 @@ import GraphImg from "graphcms-image"
 
 //import Layout from "../components/layout"
 
+import Block_best_seller from "../components/block_best_seller"
 import Block_may_also_like from "../components/block_may_also_like"
 import Block_bespoke_design_advert from "../components/block_bespoke_design_advert"
 import Form_Enquire from "../components/Form-Enquire"
@@ -600,6 +601,9 @@ const DetailsPage = ({
   },
   pageContext,
 }) => {
+  console.log("product", product)
+  console.log("products", products)
+
   let return_array_center_out = a => {
     var o = [],
       s = a.length,
@@ -1226,7 +1230,6 @@ const DetailsPage = ({
   //
   //
   //
-
   return (
     <>
       <Div__detail_hero_block>
@@ -1468,6 +1471,14 @@ const DetailsPage = ({
       />
 
       {/* <Block_bespoke_design_advert /> */}
+
+      {products.find(el => el.bestSeller) && (
+        <Block_best_seller
+          categoryTitle={`${pageContext.thisCategory} ${pageContext.productType}`}
+          category={pageContext.thisCategory}
+          products={products}
+        />
+      )}
     </>
   )
 }
@@ -1513,6 +1524,7 @@ export const pageQuery = graphql`
         id
         name
         slug
+        productType
         price
         image {
           id
@@ -1521,6 +1533,7 @@ export const pageQuery = graphql`
           width
           height
         }
+        bestSeller
       }
     }
   }

@@ -233,40 +233,40 @@ const Div__flickity = styled.div`
   }
 `
 
-const pageQuery = graphql`
-  {
-    gcms {
-      products(
-        orderBy: updatedAt_DESC
-        where: {
-          categoryType_contains_some: engagement
-          AND: { bestSeller: true }
-        }
-      ) {
-        id
-        slug
-        name
-        categoryType
-        productType
-        price
-        createdAt
-        updatedAt
-        image(first: 1) {
-          id
-          url
-          handle
-          width
-          height
-        }
-      }
-    }
-  }
-`
+// const pageQuery = graphql`
+//   {
+//     gcms {
+//       products(
+//         orderBy: updatedAt_DESC
+//         where: {
+//           categoryType_contains_some: engagement
+//           AND: { bestSeller: true }
+//         }
+//       ) {
+//         id
+//         slug
+//         name
+//         categoryType
+//         productType
+//         price
+//         createdAt
+//         updatedAt
+//         image(first: 1) {
+//           id
+//           url
+//           handle
+//           width
+//           height
+//         }
+//       }
+//     }
+//   }
+// `
 
-const Block_best_seller = () => {
-  const {
-    gcms: { products },
-  } = useStaticQuery(pageQuery)
+const Block_best_seller = props => {
+  // const {
+  //   gcms: { products },
+  // } = useStaticQuery(pageQuery)
 
   let Block_best_seller = null
   let gsap__entryHeading = null // A Mutual Promise
@@ -327,7 +327,7 @@ const Block_best_seller = () => {
     prevNextButtons: false,
     setGallerySize: false,
     pageDots: false,
-    initialIndex: products.length / 2,
+    initialIndex: props.products.length / 2,
     freeScroll: true,
     wrapAround: true,
     percentPosition: false,
@@ -343,7 +343,7 @@ const Block_best_seller = () => {
             <div ref={e => (gsap__entryHeading_wj = e)}>Best selling</div>
           </p>
           <h2 ref={e => (gsap__entryHeading_category_title = e)}>
-            Engagement Rings
+            {props.categoryTitle}
           </h2>
         </div>
 
@@ -360,27 +360,29 @@ const Block_best_seller = () => {
             reloadOnUpdate // default false
             static // default false
           >
-            {products.map((el, index) => (
-              <>
-                <div>
-                  <a
-                    href={`/engagement/${el.productType}/${el.slug}/`}
-                    className="bestSellerItem bestSellerItem1"
-                  >
-                    <GraphImg
-                      image={el.image[0]}
-                      transforms={["quality=value:80"]}
-                      maxWidth={300}
-                    />
-                    <div className="productStage"></div>
-                    <p className="productDesc">
-                      {el.name}
-                      <br />£{el.price}
-                    </p>
-                  </a>
-                </div>
-              </>
-            ))}
+            {props.products
+              .filter(el => el.bestSeller)
+              .map(el => (
+                <>
+                  <div>
+                    <a
+                      href={`/engagement/${el.productType}/${el.slug}/`}
+                      className="bestSellerItem bestSellerItem1"
+                    >
+                      <GraphImg
+                        image={el.image[0]}
+                        transforms={["quality=value:80"]}
+                        maxWidth={300}
+                      />
+                      <div className="productStage"></div>
+                      <p className="productDesc">
+                        {el.name}
+                        <br />£{el.price}
+                      </p>
+                    </a>
+                  </div>
+                </>
+              ))}
           </Flickity>
         </Div__flickity>
       </Div__block_best_seller>

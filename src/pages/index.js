@@ -30,15 +30,36 @@ const pageQuery = graphql`
           width
         }
       }
+      products(
+        orderBy: updatedAt_DESC
+        where: {
+          categoryType_contains_some: engagement
+          AND: { productType: rings }
+        }
+      ) {
+        id
+        name
+        slug
+        productType
+        price
+        image {
+          id
+          url
+          handle
+          width
+          height
+        }
+        bestSeller
+      }
     }
   }
 `
 
 const IndexPage = () => {
   const {
-    gcms: { blockGradientRowLinks },
+    gcms: { blockGradientRowLinks, products },
   } = useStaticQuery(pageQuery)
-
+  console.log("products", products)
   useEffect(() => {
     document.body.style.backgroundColor = "#fff"
     document.body.classList = "mainNav--normal"
@@ -63,11 +84,13 @@ const IndexPage = () => {
 
       {/* <Image_text_box /> */}
 
-      <Block_best_seller />
-
       {/* <Block_one_row_jewellery /> */}
 
-      <Block_full_size_image />
+      <Block_best_seller
+        categoryTitle="Engagement Rings"
+        category="engagement"
+        products={products}
+      />
 
       {/* <Block_bespoke_design_advert /> */}
     </>
