@@ -1,15 +1,16 @@
-import React from "react"
-import { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { graphql } from "gatsby"
 import GraphImg from "graphcms-image"
+
+import { useAppContext } from "../components/AppContext"
 
 //import Layout from "../components/layout"
 
 import Block_best_seller from "../components/block_best_seller"
 import Block_may_also_like from "../components/block_may_also_like"
 import Block_bespoke_design_advert from "../components/block_bespoke_design_advert"
-import Form_Enquire from "../components/Form-Enquire"
-import Form_Viewing from "../components/Form-Viewing"
+// import Form_Enquire from "../components/Form-Enquire"
+// import Form_Viewing from "../components/Form-Viewing"
 
 // import Snipcart from "../components/snipcart"
 
@@ -601,6 +602,8 @@ const DetailsPage = ({
   },
   pageContext,
 }) => {
+  const appContextProduct = useAppContext()
+
   let return_array_center_out = a => {
     var o = [],
       s = a.length,
@@ -1334,6 +1337,8 @@ const DetailsPage = ({
                 document.documentElement.classList.remove("showEnquire")
                 document.documentElement.classList.toggle("showViewing")
                 // document.documentElement.classList.toggle("pageNoScrollY")
+                appContextProduct.updateProductName(product.name)
+                appContextProduct.updateProductUrl(pageContext.pageURL)
               }}
             >
               Book a viewing
@@ -1344,6 +1349,8 @@ const DetailsPage = ({
                 document.documentElement.classList.remove("showViewing")
                 document.documentElement.classList.toggle("showEnquire")
                 // document.documentElement.classList.toggle("pageNoScrollY")
+                appContextProduct.updateProductName(product.name)
+                appContextProduct.updateProductUrl(pageContext.pageURL)
               }}
             >
               Enquire
@@ -1354,8 +1361,8 @@ const DetailsPage = ({
             </Styled_btn> */}
           </Styled_CMScontent>
 
-          <Form_Enquire product={product.name} pageURL={pageContext.pageURL} />
-          <Form_Viewing product={product.name} pageURL={pageContext.pageURL} />
+          {/* <Form_Enquire product={product.name} pageURL={pageContext.pageURL} />
+          <Form_Viewing product={product.name} pageURL={pageContext.pageURL} /> */}
         </Styled_SiteContainer>
       </Div__detail_hero_block>
 

@@ -9,13 +9,18 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
+import { AppProvider } from "./AppContext"
+
 import SEO from "./seo"
 import Header from "./header"
 import MainNav from "./MainNav"
 import Footer from "./Footer"
+import Form_Enquire from "./Form-Enquire"
+import Form_Viewing from "./Form-Viewing"
 import "../styles/style.css"
 
 const Layout = ({ children }) => {
+  // const Layout = props => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -28,11 +33,16 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <SEO title="Home" />
-      {/* <Header siteTitle={data.site.siteMetadata.title} /> */}
-      <MainNav />
-      <main>{children}</main>
-      <Footer />
+      <AppProvider>
+        <SEO title="Home" />
+        {/* <Header siteTitle={data.site.siteMetadata.title} /> */}
+        <MainNav />
+        <main>{children}</main>
+        {/* <main>{props.children({ ...props })}</main> */}
+        <Footer />
+        <Form_Enquire />
+        <Form_Viewing />
+      </AppProvider>
     </>
   )
 }

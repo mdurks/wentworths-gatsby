@@ -2,6 +2,8 @@ import React from "react"
 import styled from "styled-components"
 import css_breakpoints from "../common/css_breakpoints"
 
+import { useAppContext } from "./AppContext"
+
 const Styled_Sidebar = styled.div`
   position: fixed;
   top: 0;
@@ -55,6 +57,8 @@ const Styled_submitBtn = styled.button`
 `
 
 const Form_Viewing = props => {
+  const appContextProduct = useAppContext()
+
   return (
     <>
       <Styled_Sidebar>
@@ -69,12 +73,17 @@ const Form_Viewing = props => {
         <h2>
           Book a Viewing:
           <br />
-          {props.product}
+          {appContextProduct.productName}
         </h2>
+        <small>{appContextProduct.productUrl}</small>
         <form name="Viewing" method="post">
           <input type="hidden" name="form-name" value="Viewing" />
           <input type="hidden" name="Product" value={props.product} />
-          <input type="hidden" name="product page" value={props.pageURL} />
+          <input
+            type="hidden"
+            name="product page"
+            value={appContextProduct.productUrl}
+          />
           <label>
             Name:
             <Styled_Input type="text" name="name" />
