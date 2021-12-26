@@ -50,7 +50,7 @@ const Block_bespoke_design_advert = () => {
         start: "top 66%",
         end: "33% top",
         toggleActions: "play none none reset",
-        markers: true,
+        // markers: true,
         // end: `+=${viewportWidth}`,
         scrub: true,
         // pin: true,
