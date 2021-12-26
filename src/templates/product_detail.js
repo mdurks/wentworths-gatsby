@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { graphql } from "gatsby"
 import GraphImg from "graphcms-image"
 
@@ -18,7 +18,7 @@ import styled, { css } from "styled-components"
 import { Styled_SiteContainer } from "../styles/commonStyles"
 import css_breakpoints from "../common/css_breakpoints"
 
-import { gsap, ScrollTrigger, Power3, Power2 } from "gsap/all"
+import { gsap, ScrollTrigger, Power3 } from "gsap/all"
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
@@ -1493,8 +1493,6 @@ const DetailsPage = ({
         products={products}
       />
 
-      {/* <Block_bespoke_design_advert /> */}
-
       {products.find(el => el.bestSeller) && (
         <Block_best_seller
           categoryTitle={`${pageContext.thisCategory} ${pageContext.productType}`}
@@ -1502,6 +1500,8 @@ const DetailsPage = ({
           products={products.filter(el => el.bestSeller)}
         />
       )}
+
+      <Block_bespoke_design_advert />
     </>
   )
 }
