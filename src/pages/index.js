@@ -8,7 +8,7 @@ import { graphql, useStaticQuery } from "gatsby"
 // import Block_one_row_jewellery from "../components/block_one_row_jewellery/block_one_row_jewellery"
 
 import Block_hero_images from "../components/block_hero_images/block_hero_images"
-import Block_single_image_text from "../components/block_single_image_text"
+import Block_single_image_text from "../components/block_single_image_text/block_single_image_text"
 import Block_gradient_row_link from "../components/block_gradient_row_link/block_gradient_row_link"
 import Block_best_seller from "../components/block_best_seller/block_best_seller"
 import Block_full_size_image from "../components/block_full_size_image/block_full_size_image"
