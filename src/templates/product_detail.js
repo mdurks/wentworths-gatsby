@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react"
 import { graphql } from "gatsby"
 import GraphImg from "graphcms-image"
 
-import { useAppContext } from "../components/AppContext"
+import { useAppContext } from "../store/AppContext"
 
 //import Layout from "../components/layout"
 

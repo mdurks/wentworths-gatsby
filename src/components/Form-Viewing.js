@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import css_breakpoints from "../common/css_breakpoints"
 
-import { useAppContext } from "./AppContext"
+import { useAppContext } from "../store/AppContext"
 
 const Styled_Sidebar = styled.div`
   position: fixed;

@@ -9,7 +9,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
-import { AppProvider } from "./AppContext"
+import { AppProvider } from "../store/AppContext"
 
 import SEO from "./seo"
 import Header from "./header"
