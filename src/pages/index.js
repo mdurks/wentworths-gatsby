@@ -5,7 +5,7 @@ import { graphql, useStaticQuery } from "gatsby"
 // import Layout from "../components/layout"
 // import Snipcart from "../components/snipcart"
 // import Image_text_box from "../components/image_text_box"
-// import Block_one_row_jewellery from "../components/block_one_row_jewellery"
+// import Block_one_row_jewellery from "../components/block_one_row_jewellery/block_one_row_jewellery"
 
 import Block_hero_images from "../components/block_hero_images/block_hero_images"
 import Block_single_image_text from "../components/block_single_image_text"
