@@ -11,7 +11,7 @@ import Block_gradient_row_link from "../components/block_gradient_row_link/block
 import Block_one_row_jewellery from "../components/block_one_row_jewellery"
 import Block_best_seller from "../components/block_best_seller"
 import Block_full_size_image from "../components/block_full_size_image"
-import Block_bespoke_design_advert from "../components/block_bespoke_design_advert"
+import Block_bespoke_design_advert from "../components/block_bespoke_design_advert/block_bespoke_design_advert"
 
 const pageQuery = graphql`
   {
@@ -92,7 +92,7 @@ const IndexPage = () => {
         products={products}
       />
 
-      {/* <Block_bespoke_design_advert /> */}
+      <Block_bespoke_design_advert />
     </>
   )
 }
