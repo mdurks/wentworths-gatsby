@@ -5,18 +5,18 @@ import { Link } from "gatsby"
 // import Link from "gatsby-plugin-transition-link"
 
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import css_breakpoints from "../common/css_breakpoints"
+import css_breakpoints from "../../common/css_breakpoints"
 import styled, { css } from "styled-components"
-import { Styled_SiteContainer } from "../styles/commonStyles"
+import { Styled_SiteContainer } from "../../styles/commonStyles"
 
 import { gsap } from "gsap/all"
 
-import nav_rockywall from "../images/nav/rockywall.png"
-import nav_engagement_default from "../images/nav/nav-engagement-default.jpg"
-import nav_engagement_earrings from "../images/nav/nav-engagement-earrings.jpg"
-import nav_engagement_rings from "../images/nav/nav-engagement-rings.jpg"
-import nav_engagement_necklace from "../images/nav/nav-engagemet-necklace.jpg"
-import nav_engagement_bracelet from "../images/nav/nav-engagemn-bracelet.jpg"
+import nav_rockywall from "../../images/nav/rockywall.png"
+import nav_engagement_default from "../../images/nav/nav-engagement-default.jpg"
+import nav_engagement_earrings from "../../images/nav/nav-engagement-earrings.jpg"
+import nav_engagement_rings from "../../images/nav/nav-engagement-rings.jpg"
+import nav_engagement_necklace from "../../images/nav/nav-engagemet-necklace.jpg"
+import nav_engagement_bracelet from "../../images/nav/nav-engagemn-bracelet.jpg"
 
 const Button__burgerBtn = styled.button`
   position: absolute;

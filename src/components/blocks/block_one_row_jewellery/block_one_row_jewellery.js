@@ -7,13 +7,13 @@ import React from "react"
 import { useEffect } from "react"
 import { gsap, ScrollTrigger } from "gsap/all"
 
-import { Styled_SiteContainer } from "../../styles/commonStyles"
+import { Styled_SiteContainer } from "../../../styles/commonStyles"
 import {
   Div__block_one_row_jewellery,
   Div__productRow,
 } from "./block_one_row_jewellery.styles"
 
-import img_product_ring_silver_round_blue_diamond from "../../images/products/ring/product-ring-silver-round-blue-diamond.png"
+import img_product_ring_silver_round_blue_diamond from "../../../images/products/ring/product-ring-silver-round-blue-diamond.png"
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)

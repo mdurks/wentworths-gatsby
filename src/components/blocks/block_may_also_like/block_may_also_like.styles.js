@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import css_breakpoints from "../../common/css_breakpoints"
+import css_breakpoints from "../../../common/css_breakpoints"
 
 export const Div__block_may_also_like = styled.div`
   ${css_breakpoints.min_desktop} {

@@ -4,9 +4,9 @@ import React from "react"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 import styled from "styled-components"
-import { Styled_SiteContainer } from "../styles/commonStyles"
+import { Styled_SiteContainer } from "../../styles/commonStyles"
 
-import Snipcart from "./snipcart"
+import Snipcart from "../snipcart"
 
 const StyledLink = styled(AniLink)`
   display: inline-block;

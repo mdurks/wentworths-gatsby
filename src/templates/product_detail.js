@@ -6,11 +6,11 @@ import { useAppContext } from "../store/AppContext"
 
 //import Layout from "../components/layout"
 
-import Block_best_seller from "../components/block_best_seller/block_best_seller"
-import Block_may_also_like from "../components/block_may_also_like/block_may_also_like"
-import Block_bespoke_design_advert from "../components/block_bespoke_design_advert/block_bespoke_design_advert"
-// import Form_Enquire from "../components/Form-Enquire"
-// import Form_Viewing from "../components/Form-Viewing"
+import Block_best_seller from "../components/blocks/block_best_seller/block_best_seller"
+import Block_may_also_like from "../components/blocks/block_may_also_like/block_may_also_like"
+import Block_bespoke_design_advert from "../components/blocks/block_bespoke_design_advert/block_bespoke_design_advert"
+// import Form_Enquire from "../components/forms/Form-Enquire"
+// import Form_Viewing from "../components/forms/Form-Viewing"
 
 // import Snipcart from "../components/snipcart"
 

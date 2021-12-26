@@ -6,7 +6,7 @@ import Link from "gatsby-plugin-transition-link"
 
 import GraphImg from "graphcms-image"
 import styled from "styled-components"
-import css_breakpoints from "../common/css_breakpoints"
+import css_breakpoints from "../../common/css_breakpoints"
 
 import { gsap, Power2 } from "gsap/all"
 

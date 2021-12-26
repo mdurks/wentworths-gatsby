@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import { Styled_SiteContainer } from "../styles/commonStyles"
-import css_breakpoints from "../common/css_breakpoints"
+import { Styled_SiteContainer } from "../../styles/commonStyles"
+import css_breakpoints from "../../common/css_breakpoints"
 
 const Styled_footer = styled.footer`
   background-color: #fff;

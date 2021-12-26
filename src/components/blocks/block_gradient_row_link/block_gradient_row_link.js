@@ -2,7 +2,7 @@ import React from "react"
 import { useEffect } from "react"
 import GraphImg from "graphcms-image"
 
-import { Styled_SiteContainer } from "../../styles/commonStyles"
+import { Styled_SiteContainer } from "../../../styles/commonStyles"
 import { Div__gradient_row_link } from "./block_gradient_row_link.styles"
 
 import { gsap, ScrollTrigger } from "gsap/all"

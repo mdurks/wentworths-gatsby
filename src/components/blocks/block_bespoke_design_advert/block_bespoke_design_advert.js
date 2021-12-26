@@ -1,11 +1,11 @@
 import React from "react"
 import { useEffect } from "react"
-import { Styled_SiteContainer } from "../../styles/commonStyles"
+import { Styled_SiteContainer } from "../../../styles/commonStyles"
 import { Div__block_bespoke_design_advert } from "./block_bespoke_design_advert.styles"
 import { gsap, ScrollTrigger } from "gsap/all"
 
-import img_sketch_rings from "../../images/misc/sketch-rings.jpg"
-import img_sketch_book from "../../images/misc/sketch-book.jpg"
+import img_sketch_rings from "../../../images/misc/sketch-rings.jpg"
+import img_sketch_book from "../../../images/misc/sketch-book.jpg"
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)

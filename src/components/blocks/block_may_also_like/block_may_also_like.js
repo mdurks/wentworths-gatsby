@@ -4,13 +4,13 @@ import { gsap, ScrollTrigger } from "gsap/all"
 
 import Flickity from "react-flickity-component"
 
-import { Styled_SiteContainer } from "../../styles/commonStyles"
+import { Styled_SiteContainer } from "../../../styles/commonStyles"
 import { Div__block_may_also_like } from "./block_may_also_like.styles"
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
 
-const Block_best_seller = props => {
+const Block_may_also_like = props => {
   function number_with_commas(x) {
     // TODO this is breaking on iOS, need to find compatible replacement
     // return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
@@ -73,4 +73,4 @@ const Block_best_seller = props => {
   )
 }
 
-export default Block_best_seller
+export default Block_may_also_like

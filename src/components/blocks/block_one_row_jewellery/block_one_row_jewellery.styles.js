@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import css_breakpoints from "../../common/css_breakpoints"
+import css_breakpoints from "../../../common/css_breakpoints"
 
 const section_vertical_height = "100vh"
 const section_vertical_padding = "0vh"

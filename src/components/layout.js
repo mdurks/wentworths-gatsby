@@ -11,16 +11,16 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import { AppProvider } from "../store/AppContext"
 
-import SEO from "./seo"
-import Header from "./header"
-import MainNav from "./MainNav"
-import Footer from "./Footer"
+import SEO from "./layout/seo"
+import Header from "./layout/header"
+import MainNav from "./layout/MainNav"
+import Footer from "./layout/Footer"
 
-import Form_Enquire from "./Form-Enquire"
-import Form_Viewing from "./Form-Viewing"
+import Form_Enquire from "./forms/Form-Enquire"
+import Form_Viewing from "./forms/Form-Viewing"
 
-import Form_contact from "./form_contact"
-import Form_viewing from "./form_viewing"
+import Form_contact from "./forms/form_contact"
+import Form_viewing from "./forms/form_viewing"
 
 import "../styles/style.css"
 

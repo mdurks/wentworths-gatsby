@@ -2,7 +2,7 @@ import React from "react"
 import { useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
-import { Styled_SiteContainer } from "../../styles/commonStyles"
+import { Styled_SiteContainer } from "../../../styles/commonStyles"
 import { Styled_HeroImg, Section__hero } from "./block_hero_images.styles"
 
 import GraphImg from "graphcms-image"
@@ -94,22 +94,16 @@ const Block_hero_images = () => {
     <>
       <Section__hero ref={e => (gsap_section_hero = e)}>
         <Styled_HeroImg ref={e => (gsap_section_hero_img = e)}>
-          {/* conditional rendering - check screen width and set background image */}
-          {typeof window !== "undefined" && window.innerWidth < 600 ? (
-            <GraphImg
-              className="Section__hero__backgroundImg"
-              image={blockHeroImages[0].imagesMobile[0]}
-              transforms={["quality=value:80"]}
-              maxWidth={2000}
-            />
-          ) : (
-            <GraphImg
-              className="Section__hero__backgroundImg"
-              image={blockHeroImages[0].images[0]}
-              transforms={["quality=value:80"]}
-              maxWidth={2000}
-            />
-          )}
+          <GraphImg
+            className="Section__hero__backgroundImg"
+            image={
+              typeof window !== "undefined" && window.innerWidth < 600
+                ? blockHeroImages[0].imagesMobile[0]
+                : blockHeroImages[0].images[0]
+            }
+            transforms={["quality=value:80"]}
+            maxWidth={2000}
+          />
         </Styled_HeroImg>
         <Styled_SiteContainer>
           <p class="Section__hero__heading">

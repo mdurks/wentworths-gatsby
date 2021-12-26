@@ -10,7 +10,7 @@ import {
   Img__SIT__img1,
   Div__SIT__textGroup,
 } from "./block_single_image_text.styles.js"
-import { Styled_SiteContainer } from "../../styles/commonStyles"
+import { Styled_SiteContainer } from "../../../styles/commonStyles"
 
 import { gsap, ScrollTrigger } from "gsap/all"
 
