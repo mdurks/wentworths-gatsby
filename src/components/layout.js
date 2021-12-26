@@ -15,8 +15,13 @@ import SEO from "./seo"
 import Header from "./header"
 import MainNav from "./MainNav"
 import Footer from "./Footer"
+
 import Form_Enquire from "./Form-Enquire"
 import Form_Viewing from "./Form-Viewing"
+
+import Form_contact from "./form_contact"
+import Form_viewing from "./form_viewing"
+
 import "../styles/style.css"
 
 const Layout = ({ children }) => {
@@ -42,6 +47,9 @@ const Layout = ({ children }) => {
         <Footer />
         <Form_Enquire />
         <Form_Viewing />
+
+        <Form_contact />
+        <Form_viewing />
       </AppProvider>
     </>
   )

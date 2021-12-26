@@ -8,8 +8,6 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 import css_breakpoints from "../common/css_breakpoints"
 import styled, { css } from "styled-components"
 import { Styled_SiteContainer } from "../styles/commonStyles"
-import Form_contact from "./form_contact"
-import Form_viewing from "./form_viewing"
 
 import { gsap } from "gsap/all"
 
@@ -900,8 +898,6 @@ const MainNav = () => {
           </Ul__mainNav__listContainer>
         </Div__mainNav__container>
       </Nav__mainNav>
-      {/* <Form_contact />
-      <Form_viewing /> */}
     </>
   )
 }

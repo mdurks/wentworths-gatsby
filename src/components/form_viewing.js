@@ -38,15 +38,13 @@ const Section__contact_container = styled.section`
 
     &__content {
       position: fixed;
-      top: 50%;
+      top: 0;
       right: -660px;
-      transform: translateY(-50%);
-      margin: 10px 0;
       width: 650px;
+      height: 100%;
       transition: all ease-in-out 0.4s;
       backdrop-filter: blur(5px);
       box-shadow: 0px 0px 8px 4px rgb(0 0 0 / 33%);
-      border-radius: 20px 0 0 20px;
       z-index: 5;
 
       &.open {
@@ -56,13 +54,12 @@ const Section__contact_container = styled.section`
 
     &__closeBtn {
       position: absolute;
-      top: 38px;
-      right: 24px;
+      top: 10px;
+      right: 10px;
       padding: 5px 15px;
-      border: 2px solid white;
       background: none;
       border-radius: 8px;
-      color: white;
+      color: #8e6600;
       font-size: 30px;
     }
 
@@ -72,8 +69,7 @@ const Section__contact_container = styled.section`
       font-family: "Playfair Display", serif;
       text-transform: none;
       color: #8e6600;
-      background-color: hsl(43deg 67% 68% / 63%);
-      border-radius: 20px 0 0 0;
+      background-color: hsl(43deg 67% 68% / 70%);
     }
 
     &__glitterBar {
@@ -82,10 +78,9 @@ const Section__contact_container = styled.section`
     }
 
     &__form {
-      height: calc(100vh - 330px);
+      height: 100%;
       padding: 40px 50px;
-      background: hsl(0deg 0% 100% / 82%);
-      border-radius: 0 0 0 20px;
+      background: hsl(0deg 0% 100% / 70%);
     }
 
     &__2col {
