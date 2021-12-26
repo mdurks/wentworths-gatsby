@@ -7,7 +7,7 @@ import { useAppContext } from "../components/AppContext"
 //import Layout from "../components/layout"
 
 import Block_best_seller from "../components/block_best_seller/block_best_seller"
-import Block_may_also_like from "../components/block_may_also_like"
+import Block_may_also_like from "../components/block_may_also_like/block_may_also_like"
 import Block_bespoke_design_advert from "../components/block_bespoke_design_advert/block_bespoke_design_advert"
 // import Form_Enquire from "../components/Form-Enquire"
 // import Form_Viewing from "../components/Form-Viewing"
