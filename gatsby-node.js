@@ -27,7 +27,9 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
       let product_type = category_product_types[i] // 'rings'
       createPage({
         path: `/${category}/${product_type}`, // '/engagement/rings'
-        component: require.resolve(`./src/templates/product_listing.js`),
+        component: require.resolve(
+          `./src/templates/product_listing/product_listing.js`
+        ),
         // use context to pass variables to the created page to use via 'pageContext':
         context: {
           category,
@@ -92,7 +94,9 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
       let pageURL = `/${thisCategory}/${productType}/${slug}`
       createPage({
         path: pageURL,
-        component: require.resolve(`./src/templates/product_detail.js`),
+        component: require.resolve(
+          `./src/templates/product_detail/product_detail.js`
+        ),
         // use context to pass variables to the created page to use via 'pageContext':
         context: {
           id, // used in the pagequery to find this product

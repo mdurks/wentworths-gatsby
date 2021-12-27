@@ -4,13 +4,13 @@ import { graphql } from "gatsby"
 
 import { gsap, ScrollTrigger } from "gsap/all"
 import styled from "styled-components"
-import css_breakpoints from "../common/css_breakpoints"
+import css_breakpoints from "../../common/css_breakpoints"
 
 // import Layout from "../components/layout"
-import Product_in_list from "../components/product/Product_in_list"
-import Product_filter_checkbox from "../components/product/Product_filter_checkbox"
+import Product_in_list from "../../components/product/Product_in_list"
+import Product_filter_checkbox from "../../components/product/Product_filter_checkbox"
 
-import { Styled_SiteContainer } from "../styles/commonStyles"
+import { Styled_SiteContainer } from "../../styles/commonStyles"
 // import Snipcart from "../components/snipcart"
 
 gsap.registerPlugin(ScrollTrigger)
