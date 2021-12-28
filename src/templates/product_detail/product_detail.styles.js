@@ -32,7 +32,7 @@ export const Div__detail_hero_block = styled.div`
   .productPrice {
     font-family: "Playfair Display", serif;
     font-size: 32px;
-    color: #776a54;
+    color: #a57c24;
     opacity: 0;
   }
 
@@ -66,6 +66,16 @@ export const Div__detail_hero_block = styled.div`
       width: 433px;
       height: 176px;
     }
+  }
+`
+
+export const Styled_Title = styled.h2`
+  font-size: 29px;
+  color: #a57c24;
+  opacity: 0;
+
+  ${css_breakpoints.min_desktop} {
+    margin-bottom: 10px;
   }
 `
 
@@ -166,38 +176,36 @@ export const Styled_CMScontent = styled.div`
 
   .heroDetailsWrapper {
     margin-bottom: 40px;
-    padding: 16px 20px;
+    padding: 18px 22px;
     border-radius: 5px;
     background: hsl(0deg 0% 100% / 20%);
-    font-size: 16px;
+    font-size: 15px;
+    opacity: 0;
 
     ${css_breakpoints.min_desktop} {
-      margin-left: -20px;
+      margin-left: -22px;
     }
 
     > div {
       display: flex;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
 
       &:last-of-type {
         margin-bottom: 0;
       }
 
       span {
-        flex: 1 1 50%;
         padding-right: 10px;
+
+        &:first-of-type {
+          flex: 1 1 40%;
+        }
+
+        &:last-of-type {
+          flex: 1 1 60%;
+        }
       }
     }
-  }
-`
-
-export const Styled_Title = styled.h2`
-  font-size: 29px;
-  color: #776a54;
-  opacity: 0;
-
-  ${css_breakpoints.min_desktop} {
-    margin-bottom: 10px;
   }
 `
 
@@ -218,7 +226,7 @@ export const Styled_btn = styled.button`
   /* box-shadow: inset 0px 7px 11px 0px rgba(0, 0, 0, 0.3); */
 
   ${css_breakpoints.min_tablet} {
-    margin: 0 0 22px;
+    margin: 0 0 15px;
     padding: 7px 36px;
     width: auto;
     font-size: 15px;
@@ -353,7 +361,7 @@ export const Div_detailed_description_block = styled.section`
     width: 100%;
 
     .productScrollingImg {
-      box-shadow: 1px 1px 7px 1px rgba(0, 0, 0, 0.1);
+      /* box-shadow: 1px 1px 7px 1px rgba(0, 0, 0, 0.1); */
       transition: all 0.4s ease;
     }
 

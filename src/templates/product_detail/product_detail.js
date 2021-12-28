@@ -53,12 +53,12 @@ const DetailsPage = ({
     //
     gsap.to(document.querySelector(".hero_details").childNodes, {
       delay: 1.5,
-      opacity: 1,
       duration: 1,
       stagger: 0.2,
       ease: Power3.inOut,
-      y: -30,
       // ease: Power3.out,
+      opacity: 1,
+      y: -30,
     })
     //
     //
