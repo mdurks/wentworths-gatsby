@@ -1,6 +1,6 @@
 import React from "react"
 import { useEffect } from "react"
-
+import { useAppContext } from "../../../store/AppContext"
 import { Link } from "gatsby"
 // import Link from "gatsby-plugin-transition-link"
 
@@ -24,6 +24,8 @@ import {
 // import { gsap } from "gsap/all"
 
 const MainNav = () => {
+  const appContext = useAppContext()
+
   // class MainNav extends React.Component {
   // constructor(props) {
   //   super(props)
@@ -270,7 +272,12 @@ const MainNav = () => {
             </Li__mainNav__topLevelLink>
 
             <Li__mainNav__topLevelLink>
-              <Button__topLevelLink as={Link} to="/time-piece/">
+              <Button__topLevelLink
+                onClick={() => {
+                  appContext.setContactModalTitle("Contact")
+                  appContext.setContactModalOpen(!appContext.contactModalOpen)
+                }}
+              >
                 Contact
               </Button__topLevelLink>
             </Li__mainNav__topLevelLink>

@@ -3,6 +3,7 @@ module.exports = {
     title: `Wentworth Jewels`,
     description: `Wentworth Jewels online website.`,
     author: `mdurks@gmail.com`,
+    url: `https://wentworths-gatsby.netlify.app`,
   },
   plugins: [
     `gatsby-plugin-preact`,

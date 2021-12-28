@@ -1,4 +1,4 @@
-import React, { useState, useContext, createContext } from "react"
+import React, { useState, useContext, createContext, useEffect } from "react"
 
 const AppContext = createContext()
 
@@ -7,20 +7,33 @@ export const useAppContext = () => {
 }
 
 export const AppProvider = ({ children }) => {
+  const [contactModalOpen, setContactModalOpen] = useState(false)
+  const [contactModalTitle, setContactModalTitle] = useState()
   const [productName, setProductName] = useState()
   const [productUrl, setProductUrl] = useState()
 
-  const updateProductName = name => {
-    setProductName(name)
-  }
+  useEffect(() => {
+    let contactModalEl = document.querySelector(".viewingContainer__content")
 
-  const updateProductUrl = url => {
-    setProductUrl(url)
-  }
+    if (contactModalOpen) {
+      contactModalEl.classList.add("open")
+    } else {
+      contactModalEl.classList.remove("open")
+    }
+  }, [contactModalOpen])
 
   return (
     <AppContext.Provider
-      value={{ productName, productUrl, updateProductName, updateProductUrl }}
+      value={{
+        contactModalOpen,
+        setContactModalOpen,
+        contactModalTitle,
+        setContactModalTitle,
+        productName,
+        setProductName,
+        productUrl,
+        setProductUrl,
+      }}
     >
       {children}
     </AppContext.Provider>

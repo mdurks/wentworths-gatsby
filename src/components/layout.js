@@ -20,7 +20,7 @@ import Form_Enquire from "./forms/Form-Enquire"
 import Form_Viewing from "./forms/Form-Viewing"
 
 import Form_contact from "./forms/form_contact"
-import Form_viewing from "./forms/form_viewing"
+import Form_viewing from "./forms/form_viewing/form_viewing"
 
 import "../styles/style.css"
 
@@ -45,10 +45,6 @@ const Layout = ({ children }) => {
         <main>{children}</main>
         {/* <main>{props.children({ ...props })}</main> */}
         <Footer />
-        <Form_Enquire />
-        <Form_Viewing />
-
-        <Form_contact />
         <Form_viewing />
       </AppProvider>
     </>

@@ -34,7 +34,7 @@ const DetailsPage = ({
   },
   pageContext,
 }) => {
-  const appContextProduct = useAppContext()
+  const appContext = useAppContext()
 
   let return_array_center_out = a => {
     var o = [],
@@ -775,11 +775,10 @@ const DetailsPage = ({
 
             <Styled_btn
               onClick={() => {
-                document.documentElement.classList.remove("showEnquire")
-                document.documentElement.classList.toggle("showViewing")
-                // document.documentElement.classList.toggle("pageNoScrollY")
-                appContextProduct.updateProductName(product.name)
-                appContextProduct.updateProductUrl(pageContext.pageURL)
+                appContext.setContactModalTitle("Book a viewing")
+                appContext.setProductName(product.name)
+                appContext.setProductUrl(pageContext.pageURL)
+                appContext.setContactModalOpen(!appContext.contactModalOpen)
               }}
             >
               Book a viewing
@@ -787,11 +786,10 @@ const DetailsPage = ({
 
             <Styled_btn
               onClick={() => {
-                document.documentElement.classList.remove("showViewing")
-                document.documentElement.classList.toggle("showEnquire")
-                // document.documentElement.classList.toggle("pageNoScrollY")
-                appContextProduct.updateProductName(product.name)
-                appContextProduct.updateProductUrl(pageContext.pageURL)
+                appContext.setContactModalTitle("Enquire")
+                appContext.setProductName(product.name)
+                appContext.setProductUrl(pageContext.pageURL)
+                appContext.setContactModalOpen(!appContext.contactModalOpen)
               }}
             >
               Enquire
