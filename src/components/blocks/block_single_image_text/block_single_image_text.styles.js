@@ -29,7 +29,7 @@ export const Div__SIT = styled.div`
     font-size: clamp(54px, 6vw, 98px);
     /* text-transform: uppercase; */
     font-family: "Amalfi Coast", serif;
-    color: #83674d;
+    color: #c1a260;
 
     ${css_breakpoints.min_desktop} {
       top: -54px;
@@ -52,7 +52,6 @@ export const Div__SIT = styled.div`
 
   p {
     margin-top: 25px;
-    color: #766f5d;
   }
 
   img {
