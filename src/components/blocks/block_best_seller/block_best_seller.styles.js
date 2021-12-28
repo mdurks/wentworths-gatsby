@@ -185,7 +185,6 @@ export const Div__flickity = styled.div`
 
         .productDesc {
           top: 270px;
-          opacity: 1;
         }
       }
     }
@@ -225,7 +224,6 @@ export const Div__flickity = styled.div`
       line-height: 25px;
       text-transform: uppercase;
       color: #8f8571;
-      opacity: 0.5;
       transition: top ease-in-out 0.4s, opacity ease-in-out 0.65s;
     }
   }
