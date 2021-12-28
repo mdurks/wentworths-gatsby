@@ -163,6 +163,7 @@ export const Styled_Img = styled.div`
 `
 
 export const Styled_CMScontent = styled.div`
+  position: relative;
   text-align: center;
 
   ${css_breakpoints.min_desktop} {
@@ -174,12 +175,27 @@ export const Styled_CMScontent = styled.div`
     text-align: left;
   }
 
+  &:before {
+    content: "";
+    position: absolute;
+    top: -30px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: hsl(43deg 12% 88% / 75%);
+
+    ${css_breakpoints.min_tablet} {
+      display: none;
+    }
+  }
+
   .heroDetailsWrapper {
     margin-bottom: 40px;
     padding: 18px 22px;
     border-radius: 5px;
     background: hsl(0deg 0% 100% / 20%);
     font-size: 15px;
+    text-align: left;
     opacity: 0;
 
     ${css_breakpoints.min_desktop} {
