@@ -1,24 +1,14 @@
-import React from "react"
-import { useEffect } from "react"
-
-import { Link } from "gatsby"
-// import Link from "gatsby-plugin-transition-link"
-
-import AniLink from "gatsby-plugin-transition-link/AniLink"
-import css_breakpoints from "../../common/css_breakpoints"
+import css_breakpoints from "../../../common/css_breakpoints"
 import styled, { css } from "styled-components"
-import { Styled_SiteContainer } from "../../styles/commonStyles"
 
-import { gsap } from "gsap/all"
+import nav_rockywall from "../../../images/nav/rockywall.png"
+import nav_engagement_default from "../../../images/nav/nav-engagement-default.jpg"
+import nav_engagement_earrings from "../../../images/nav/nav-engagement-earrings.jpg"
+import nav_engagement_rings from "../../../images/nav/nav-engagement-rings.jpg"
+import nav_engagement_necklace from "../../../images/nav/nav-engagemet-necklace.jpg"
+import nav_engagement_bracelet from "../../../images/nav/nav-engagemn-bracelet.jpg"
 
-import nav_rockywall from "../../images/nav/rockywall.png"
-import nav_engagement_default from "../../images/nav/nav-engagement-default.jpg"
-import nav_engagement_earrings from "../../images/nav/nav-engagement-earrings.jpg"
-import nav_engagement_rings from "../../images/nav/nav-engagement-rings.jpg"
-import nav_engagement_necklace from "../../images/nav/nav-engagemet-necklace.jpg"
-import nav_engagement_bracelet from "../../images/nav/nav-engagemn-bracelet.jpg"
-
-const Button__burgerBtn = styled.button`
+export const Button__burgerBtn = styled.button`
   position: absolute;
   top: 11px;
   right: 11px;
@@ -58,7 +48,7 @@ const Button__burgerBtn = styled.button`
   }
 `
 
-const Nav__mainNav = styled.nav`
+export const Nav__mainNav = styled.nav`
   position: absolute;
   height: 30%;
   top: 0;
@@ -92,7 +82,7 @@ const Nav__mainNav = styled.nav`
   .mainNav--shrink & {
     ${css_breakpoints.min_desktop} {
       background: white;
-      box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.1);
+      /* box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.1); */
       padding: 0 50px;
     }
   }
@@ -123,7 +113,7 @@ const Nav__mainNav = styled.nav`
   }
 `
 
-const Div__mainNav__container = styled.div`
+export const Div__mainNav__container = styled.div`
   height: 100%;
 
   ${css_breakpoints.min_desktop} {
@@ -136,7 +126,7 @@ const Div__mainNav__container = styled.div`
   }
 `
 
-const A__mainNav__logo = styled.a`
+export const A__mainNav__logo = styled.a`
   position: relative;
   display: block;
   margin: 0;
@@ -156,12 +146,12 @@ const A__mainNav__logo = styled.a`
   ${css_breakpoints.min_desktop} {
     margin: 0 auto 0 0;
     .mainNav--shrink & {
-      color: rgb(109, 109, 109);
+      color: black;
     }
   }
 `
 
-const Ul__mainNav__listContainer = styled.ul`
+export const Ul__mainNav__listContainer = styled.ul`
   display: none;
   flex-direction: column;
   margin: 0;
@@ -191,7 +181,7 @@ const Ul__mainNav__listContainer = styled.ul`
   }
 `
 
-const Button__topLevelLink = styled.button`
+export const Button__topLevelLink = styled.button`
   position: relative;
   display: flex;
   justify-content: center;
@@ -229,7 +219,7 @@ const Button__topLevelLink = styled.button`
       width: 100%;
       height: 110px;
       background-color: white;
-      box-shadow: 0px 1px 4px 5px rgba(0, 0, 0, 0.1);
+      /* box-shadow: 0px 1px 4px 5px rgba(0, 0, 0, 0.1); */
       opacity: 0;
       transition: all ease 0.5s;
     }
@@ -251,12 +241,12 @@ const Button__topLevelLink = styled.button`
 
   ${css_breakpoints.min_desktop} {
     .mainNav--shrink & {
-      color: #909090;
+      color: #5c5c5c;
     }
   }
 `
 
-const Div__mainNav__subNavGroupWrapper = styled.div`
+export const Div__mainNav__subNavGroupWrapper = styled.div`
   overflow: hidden;
   flex: 1 0 0px;
   transition: all ease 0.6s;
@@ -269,7 +259,7 @@ const Div__mainNav__subNavGroupWrapper = styled.div`
     display: block;
     overflow: visible;
     position: absolute;
-    top: 100px;
+    top: 120px;
     width: 100%;
     height: 0;
     left: 0;
@@ -281,7 +271,7 @@ const Div__mainNav__subNavGroupWrapper = styled.div`
   }
 `
 
-const Div__mainNav__subNavGroup = styled.div`
+export const Div__mainNav__subNavGroup = styled.div`
   background-color: rgba(255, 255, 255, 0.3);
 
   ${css_breakpoints.min_desktop} {
@@ -291,11 +281,11 @@ const Div__mainNav__subNavGroup = styled.div`
     left: 0;
     width: 100%;
     // background-color: white;
-    border-top: 11px solid #bedfe8;
+    /* border-top: 11px solid #bedfe8; */
     z-index: 5;
     opacity: 0;
     transition: all ease 0.65s;
-    box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.1); */
 
     &:before {
       content: "";
@@ -304,13 +294,14 @@ const Div__mainNav__subNavGroup = styled.div`
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url(${nav_rockywall});
+      /* background-image: url(${nav_rockywall}); */
+      background: white;
       z-index: -1;
     }
   }
 `
 
-const Div__mainNav__subNavGroup__container = styled.div`
+export const Div__mainNav__subNavGroup__container = styled.div`
   ${css_breakpoints.min_desktop} {
     display: flex;
     flex-direction: row;
@@ -320,7 +311,7 @@ const Div__mainNav__subNavGroup__container = styled.div`
   }
 `
 
-const Div__mainNav__subNavGroup__linkImg = styled.div`
+export const Div__mainNav__subNavGroup__linkImg = styled.div`
   display: none;
 
   ${css_breakpoints.min_desktop} {
@@ -328,6 +319,7 @@ const Div__mainNav__subNavGroup__linkImg = styled.div`
     display: block;
     width: 400px;
     height: 292px;
+    margin: 10px 0;
     border: 10px solid white;
     opacity: 0;
     transition: all ease 1s;
@@ -344,7 +336,7 @@ const Div__mainNav__subNavGroup__linkImg = styled.div`
   }
 `
 
-const Ul__mainNav__subNavList = styled.ul`
+export const Ul__mainNav__subNavList = styled.ul`
   position: relative;
   padding: 0 0 20px;
   text-align: center;
@@ -475,7 +467,7 @@ const Ul__mainNav__subNavList = styled.ul`
       &:before {
         content: "";
         position: absolute;
-        top: 0px;
+        top: 19px;
         left: -400px;
         width: 400px;
         height: 274px;
@@ -495,8 +487,8 @@ const Ul__mainNav__subNavList = styled.ul`
 
         &:before {
           opacity: 1;
-          top: 3px;
-          left: -395px;
+          top: 19px;
+          left: -407px;
           transform: rotate(-1deg);
         }
       }
@@ -504,7 +496,7 @@ const Ul__mainNav__subNavList = styled.ul`
   }
 `
 
-const Div__mainNav__subNavMessage = styled.div`
+export const Div__mainNav__subNavMessage = styled.div`
   display: none;
 
   ${css_breakpoints.min_desktop} {
@@ -523,7 +515,7 @@ const Div__mainNav__subNavMessage = styled.div`
   }
 `
 
-const Li__mainNav__topLevelLink = styled.li`
+export const Li__mainNav__topLevelLink = styled.li`
   flex: 1 0 auto;
   display: flex;
   flex-direction: column;
@@ -564,10 +556,10 @@ const Li__mainNav__topLevelLink = styled.li`
 
     ${Div__mainNav__subNavGroup} {
       opacity: 1;
-      top: 10px;
+      top: 1px;
 
       .mainNav--shrink & {
-        top: 10px;
+        top: 1px;
       }
     }
   }
@@ -595,7 +587,7 @@ const Li__mainNav__topLevelLink = styled.li`
         &:hover {
           ${Button__topLevelLink}:before {
             transition: all ease 1s;
-            box-shadow: 0px -8px 4px 5px rgba(0, 0, 0, 0.1);
+            /* box-shadow: 0px -8px 4px 5px rgba(0, 0, 0, 0.1); */
           }
 
           ${Div__mainNav__subNavGroupWrapper} {
@@ -614,7 +606,7 @@ const Li__mainNav__topLevelLink = styled.li`
           ${Div__mainNav__subNavGroup__linkImg} {
             opacity: 1;
             left: -7px;
-            top: -1px;
+            /* top: -1px; */
           }
 
           ${Div__mainNav__subNavMessage} {
@@ -635,7 +627,7 @@ const Li__mainNav__topLevelLink = styled.li`
   }
 `
 
-// const Styled_SubMenuContainer = styled.div`
+// export const Styled_SubMenuContainer = styled.div`
 
 //   @media (min-width: 768px) and (hover: hover) {
 //     ${Styled_ToplevelItem}:hover & {
@@ -643,263 +635,3 @@ const Li__mainNav__topLevelLink = styled.li`
 //     }
 //   }
 // `
-
-const MainNav = () => {
-  // class MainNav extends React.Component {
-  // constructor(props) {
-  //   super(props)
-  //   // init gsap timeline for this page
-  //   this.tl = gsap.timeline()
-
-  //   // reference to the animation
-  //   this.page_exit_animation = null
-  //   this.page_exit_animation_duration = 1
-  // }
-
-  // componentDidMount() {
-  //   this.page_exit_animation = (exit, node) => {
-  //     console.log(exit, node)
-  //     gsap.to("#gatsby-focus-wrapper", {
-  //       duration: this.page_exit_animation_duration,
-  //       opacity: 0,
-  //     })
-  //   }
-
-  // let mobileBurgerBtn = document.getElementById("mobileBurgerBtn")
-  // let htmlTag = document.documentElement
-  // let mainNav = document.getElementById("mainNav")
-
-  // // Toggle this in dev to keep menu open
-  // // htmlTag.classList.add("pageNoScrollY");
-
-  // mobileBurgerBtn.addEventListener("click", () => {
-  //   htmlTag.classList.toggle("pageNoScrollY")
-  // })
-
-  // mainNav.addEventListener("click", e => {
-  //   let el = e.target
-
-  //   if (el.matches("a")) {
-  //     htmlTag.classList.remove("pageNoScrollY")
-  //   }
-  //   if (el.matches(".hasSubMenu")) {
-  //     el.classList.toggle("openSubMenu")
-  //   }
-  // })
-  // }
-
-  let click_mobile_burger_btn = () => {
-    if (
-      String(document.documentElement.classList).indexOf("no_y_scroll") < 0 &&
-      window.innerWidth < 1024
-    ) {
-      document.documentElement.classList.add("no_y_scroll")
-      document.documentElement.classList.add("showMobileNav")
-    } else {
-      document.documentElement.classList.remove("no_y_scroll")
-      document.documentElement.classList.remove("showMobileNav")
-    }
-  }
-
-  let main_nav_toggle_sub_nav_open = e => {
-    if (
-      String(e.target.parentNode.classList).indexOf("open") < 0 &&
-      window.innerWidth < 1024
-    ) {
-      if (document.querySelector("nav .open > div") != null) {
-        document.querySelector("nav .open > div").removeAttribute("style")
-      }
-      document.querySelectorAll("nav .open").forEach(el => {
-        el.classList.remove("open")
-      })
-      e.target.parentNode.classList.toggle("open")
-      e.target.nextSibling.setAttribute(
-        "style",
-        "flex: 1 0 " +
-          (e.target.nextSibling.firstChild.offsetHeight + 19) +
-          "px"
-      )
-    } else {
-      e.target.parentNode.classList.remove("open")
-      e.target.nextSibling.removeAttribute("style")
-    }
-  }
-
-  useEffect(() => {
-    let body_observer_toggle_main_nav_class = (entries, observer) => {
-      for (let entry of entries) {
-        if (entry.isIntersecting) {
-          // In view
-          document.body.classList.add("mainNav--normal")
-          document.body.classList.remove("mainNav--shrink")
-        } else {
-          // Out of view
-          document.body.classList.remove("mainNav--normal")
-          document.body.classList.add("mainNav--shrink")
-        }
-      }
-    }
-    let body_observer_options = {
-      root: null, // relative to document viewport
-      rootMargin: "20%", // margin around root. Values are similar to css property. Unitless values not allowed
-      threshold: 1.0, // visible amount of item shown in relation to root
-    }
-    let bodyObserver = new IntersectionObserver(
-      body_observer_toggle_main_nav_class,
-      body_observer_options
-    )
-    bodyObserver.observe(document.getElementById("___gatsby"))
-  }, [])
-
-  return (
-    <>
-      <Button__burgerBtn
-        className="burgerBtn"
-        aria-label="mobile main navigation toggle"
-        onClick={click_mobile_burger_btn}
-      >
-        <div></div>
-      </Button__burgerBtn>
-      <Nav__mainNav className="mainNav">
-        <Div__mainNav__container>
-          <A__mainNav__logo as={Link} to="/">
-            Wentworth Jewels
-          </A__mainNav__logo>
-
-          <Ul__mainNav__listContainer>
-            <Li__mainNav__topLevelLink mainNav__topLevelLink__hasSubMenu>
-              <Button__topLevelLink onClick={main_nav_toggle_sub_nav_open}>
-                Engagement
-              </Button__topLevelLink>
-
-              <Div__mainNav__subNavGroupWrapper>
-                <Div__mainNav__subNavGroup>
-                  <Div__mainNav__subNavGroup__container>
-                    <Div__mainNav__subNavGroup__linkImg></Div__mainNav__subNavGroup__linkImg>
-
-                    <Ul__mainNav__subNavList>
-                      <li>
-                        <a href="/engagement/rings/">Rings</a>
-                      </li>
-                    </Ul__mainNav__subNavList>
-
-                    <Div__mainNav__subNavMessage>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit. Sit officia impedit atque aperiam ratione cum
-                        distinctio similique ipsam? Tempora magni quam nemo
-                        quasi architecto maxime neque nostrum obcaecati ut
-                        suscipit!
-                      </p>
-                    </Div__mainNav__subNavMessage>
-                  </Div__mainNav__subNavGroup__container>
-                </Div__mainNav__subNavGroup>
-              </Div__mainNav__subNavGroupWrapper>
-            </Li__mainNav__topLevelLink>
-
-            <Li__mainNav__topLevelLink mainNav__topLevelLink__hasSubMenu>
-              <Button__topLevelLink onClick={main_nav_toggle_sub_nav_open}>
-                Weddings
-              </Button__topLevelLink>
-
-              <Div__mainNav__subNavGroupWrapper>
-                <Div__mainNav__subNavGroup>
-                  <Div__mainNav__subNavGroup__container>
-                    <Div__mainNav__subNavGroup__linkImg></Div__mainNav__subNavGroup__linkImg>
-
-                    <Ul__mainNav__subNavList>
-                      <li>
-                        <a href="/weddings/rings/">Rings</a>
-                      </li>
-                      <li>
-                        <a href="/weddings/earrings/">Earrings</a>
-                      </li>
-                      <li>
-                        <a href="/weddings/necklaces/">Necklaces</a>
-                      </li>
-                    </Ul__mainNav__subNavList>
-
-                    <Div__mainNav__subNavMessage>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit. Sit officia impedit atque aperiam ratione cum
-                        distinctio similique ipsam? Tempora magni quam nemo
-                        quasi architecto maxime neque nostrum obcaecati ut
-                        suscipit!
-                      </p>
-                    </Div__mainNav__subNavMessage>
-                  </Div__mainNav__subNavGroup__container>
-                </Div__mainNav__subNavGroup>
-              </Div__mainNav__subNavGroupWrapper>
-            </Li__mainNav__topLevelLink>
-
-            <Li__mainNav__topLevelLink mainNav__topLevelLink__hasSubMenu>
-              <Button__topLevelLink onClick={main_nav_toggle_sub_nav_open}>
-                Jewellery
-              </Button__topLevelLink>
-
-              <Div__mainNav__subNavGroupWrapper>
-                <Div__mainNav__subNavGroup>
-                  <Div__mainNav__subNavGroup__container>
-                    <Div__mainNav__subNavGroup__linkImg></Div__mainNav__subNavGroup__linkImg>
-
-                    <Ul__mainNav__subNavList>
-                      <li>
-                        <a href="/jewellery/rings/">Rings</a>
-                      </li>
-                      <li>
-                        <a href="/jewellery/earrings/">Earrings</a>
-                      </li>
-                      <li>
-                        <a href="/jewellery/necklaces/">Necklaces</a>
-                      </li>
-                      <li>
-                        <a href="/jewellery/bracelets/">Bracelets</a>
-                      </li>
-                    </Ul__mainNav__subNavList>
-
-                    <Div__mainNav__subNavMessage>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit. Sit officia impedit atque aperiam ratione cum
-                        distinctio similique ipsam? Tempora magni quam nemo
-                        quasi architecto maxime neque nostrum obcaecati ut
-                        suscipit!
-                      </p>
-                    </Div__mainNav__subNavMessage>
-                  </Div__mainNav__subNavGroup__container>
-                </Div__mainNav__subNavGroup>
-              </Div__mainNav__subNavGroupWrapper>
-            </Li__mainNav__topLevelLink>
-
-            <Li__mainNav__topLevelLink>
-              <Button__topLevelLink as={Link} to="/collections/">
-                Collections
-              </Button__topLevelLink>
-            </Li__mainNav__topLevelLink>
-
-            <Li__mainNav__topLevelLink>
-              <Button__topLevelLink as={Link} to="/gifts/">
-                Gifts
-              </Button__topLevelLink>
-            </Li__mainNav__topLevelLink>
-
-            <Li__mainNav__topLevelLink>
-              <Button__topLevelLink as={Link} to="/time-piece/">
-                Time Piece
-              </Button__topLevelLink>
-            </Li__mainNav__topLevelLink>
-
-            <Li__mainNav__topLevelLink>
-              <Button__topLevelLink as={Link} to="/about/">
-                Heritage
-              </Button__topLevelLink>
-            </Li__mainNav__topLevelLink>
-          </Ul__mainNav__listContainer>
-        </Div__mainNav__container>
-      </Nav__mainNav>
-    </>
-  )
-}
-
-export default MainNav

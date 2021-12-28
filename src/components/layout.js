@@ -13,7 +13,7 @@ import { AppProvider } from "../store/AppContext"
 
 import SEO from "./layout/seo"
 // import Header from "./layout/header"
-import MainNav from "./layout/MainNav"
+import MainNav from "./layout/MainNav/MainNav"
 import Footer from "./layout/Footer"
 
 import Form_Enquire from "./forms/Form-Enquire"

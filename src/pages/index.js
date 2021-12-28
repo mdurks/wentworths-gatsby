@@ -60,7 +60,7 @@ const IndexPage = () => {
   const {
     gcms: { blockGradientRowLinks, products },
   } = useStaticQuery(pageQuery)
-  console.log("products", products)
+  // console.log("products", products)
   useEffect(() => {
     document.body.style.backgroundColor = "#fff"
     document.body.classList = "mainNav--normal"
