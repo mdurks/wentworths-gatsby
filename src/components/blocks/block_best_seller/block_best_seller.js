@@ -103,13 +103,17 @@ const Block_best_seller = props => {
     // return () => tl_gsap__entryHeading.kill()
   }, [])
 
+  const numberOfProducts = props.products.length
+  const isFlickityScrollable =
+    window.innerWidth < 600 ? true : numberOfProducts > 6
+
   const flickityOptions = {
     prevNextButtons: false,
     setGallerySize: false,
     pageDots: false,
-    initialIndex: props.products.length / 2,
-    freeScroll: true,
-    wrapAround: true,
+    initialIndex: isFlickityScrollable ? numberOfProducts / 2 : 1,
+    freeScroll: isFlickityScrollable,
+    wrapAround: isFlickityScrollable,
     percentPosition: false,
     freeScrollFriction: 0.065,
   }

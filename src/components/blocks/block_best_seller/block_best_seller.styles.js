@@ -3,9 +3,12 @@ import css_breakpoints from "../../../common/css_breakpoints"
 
 export const Div__block_best_seller = styled.div`
   position: relative;
-  margin-bottom: 14px;
+  /* margin-bottom: 14px; */
   text-align: center;
   background-color: #e5e3de;
+  border: 10px solid white;
+  border-left: none;
+  border-right: none;
 
   ${css_breakpoints.min_desktop} {
   }
@@ -14,7 +17,7 @@ export const Div__block_best_seller = styled.div`
     position: relative;
     height: 390px;
     background: linear-gradient(0deg, #ffffff 0%, #e5e3de 100%);
-    box-shadow: inset 0px 15px 75px -32px #00000050;
+    /* box-shadow: inset 0px 15px 75px -32px #00000050; */
 
     /* Tiling Diamond img */
     &:before {
@@ -115,6 +118,9 @@ export const Div__block_best_seller = styled.div`
 `
 
 export const Div__flickity = styled.div`
+  /* background-color: #e5e3de; */
+  background: linear-gradient(0deg, #e5e3de 0%, #f9f9f9 100%);
+
   .carousel {
     height: 180px;
     z-index: 456;
@@ -125,11 +131,11 @@ export const Div__flickity = styled.div`
   }
 
   .flickity-viewport {
-    height: 365px;
+    height: 405px;
     top: -125px;
 
     ${css_breakpoints.min_desktop} {
-      top: -105px;
+      top: -130px;
     }
   }
 
@@ -139,6 +145,10 @@ export const Div__flickity = styled.div`
 
     ${css_breakpoints.min_desktop} {
       width: 330px !important;
+
+      &:nth-child(odd) {
+        top: 50px;
+      }
     }
   }
 
