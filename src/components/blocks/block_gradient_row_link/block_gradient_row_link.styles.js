@@ -21,7 +21,7 @@ export const Div__gradient_row_link = styled.div`
     background: linear-gradient(
       to ${props => props.img_alignment},
       #f9f6ee 49.99%,
-      hsl(${props => props.tint_colour}deg 100% 94%) 50%
+      hsl(${props => props.tint_colour}deg 100% 88%) 50%
     );
 
     ${css_breakpoints.min_desktop} {
@@ -36,7 +36,7 @@ export const Div__gradient_row_link = styled.div`
     background: linear-gradient(
       to ${props => props.img_alignment},
       #f9f6ee 50%,
-      hsl(${props => props.tint_colour}deg 100% 94%) 100%
+      hsl(${props => props.tint_colour}deg 100% 88%) 100%
     );
 
     ${css_breakpoints.min_desktop} {
@@ -75,7 +75,6 @@ export const Div__gradient_row_link = styled.div`
     justify-content: center;
     height: 100%;
     width: 60%;
-    text-transform: uppercase;
     text-align: ${props =>
       props.img_alignment === "right" ? "right" : "left"};
 
@@ -98,6 +97,7 @@ export const Div__gradient_row_link = styled.div`
       height: 15px;
       overflow: hidden;
       font-size: 13px;
+      text-transform: capitalize;
 
       ${css_breakpoints.min_desktop} {
         height: 30px;
@@ -122,15 +122,16 @@ export const Div__gradient_row_link = styled.div`
       height: 20px;
       font-size: 20px;
       font-family: "Playfair Display", serif;
-      text-shadow: 0px 2px 3px rgb(0 0 0 / 30%);
+      /* text-shadow: 0px 2px 3px rgb(0 0 0 / 30%); */
+      text-transform: uppercase;
       line-height: 20px;
-      transition: all ease-in-out 0.4s;
+      transition: all ease-in-out 0.5s;
 
       ${css_breakpoints.min_desktop} {
         height: 60px;
         line-height: 30px;
-        font-size: 41px;
-        text-shadow: 0px 4px 4px rgb(0 0 0 / 40%);
+        font-size: 44px;
+        /* text-shadow: 0px 4px 4px rgb(0 0 0 / 40%); */
       }
 
       span {
