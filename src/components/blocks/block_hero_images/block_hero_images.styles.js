@@ -43,7 +43,7 @@ export const Section__hero = styled.section`
     font-family: "Playfair Display", serif;
     text-transform: uppercase;
     color: black;
-    text-shadow: 0px 4px 4px rgb(0 0 0 / 50%);
+    /* text-shadow: 0px 4px 4px rgb(0 0 0 / 50%); */
     opacity: 0;
     z-index: 1;
 
@@ -61,7 +61,7 @@ export const Section__hero = styled.section`
     font-family: "Amalfi Coast", serif;
     text-transform: none;
     color: white;
-    text-shadow: 0px 4px 4px rgb(0 0 0 / 50%);
+    /* text-shadow: 0px 4px 4px rgb(0 0 0 / 50%); */
     opacity: 0;
     z-index: -1;
 
