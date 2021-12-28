@@ -75,9 +75,9 @@ const Block_single_image_text = () => {
             //start: "top 90%", // colorBox, viewport start location
             start: "50% 50%",
             // end: () => gsap__Div__SIT.offsetTop * 0.9,
-            scrub: 1.5,
+            scrub: 1,
           },
-          y: `+=${window.innerHeight / 8}px`,
+          y: `+=${window.innerHeight / 5}px`,
           // y: "-=30%",
         })
       }
@@ -86,7 +86,7 @@ const Block_single_image_text = () => {
     let tl_gsap = gsap.timeline({
       scrollTrigger: {
         trigger: gsap__SIT__backgroundStrip,
-        start: "-5% 85%",
+        start: "-5% 90%",
         // toggleActions: "play none none reset",
         // markers: true,
         // end: `+=${viewportWidth}`,
@@ -108,18 +108,18 @@ const Block_single_image_text = () => {
       {
         duration: 2,
         opacity: 0,
-        y: 40,
+        y: 100,
         ease: "power2.out",
       },
-      "-=1.5"
+      "-=1.95"
     )
 
     tl_gsap.from(
       gsap__subTitle,
       {
-        duration: 1,
+        duration: 1.25,
         opacity: 0,
-        y: 40,
+        y: 50,
         ease: "power2.out",
       },
       "-=1.5"
@@ -128,12 +128,12 @@ const Block_single_image_text = () => {
     tl_gsap.from(
       gsap__introMessage,
       {
-        duration: 1,
+        duration: 1.15,
         opacity: 0,
-        y: 40,
+        y: 50,
         ease: "power2.out",
       },
-      "-=1"
+      "-=1.25"
     )
 
     if (window.innerWidth <= 600) {
