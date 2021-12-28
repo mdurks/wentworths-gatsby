@@ -53,12 +53,14 @@ const Form_viewing = () => {
         </h3>
         <div className="viewingContainer__glitterBar"></div>
         <form className="viewingContainer__form" action="">
-          <input
-            type="hidden"
-            id="Enquirey_URL"
-            name="Enquirey_URL"
-            value={`${siteMetadata.site.siteMetadata.url}${appContext.productUrl}`}
-          ></input>
+          {appContext.productUrl && (
+            <input
+              type="hidden"
+              id="Product_URL"
+              name="Product_URL"
+              value={`${siteMetadata.site.siteMetadata.url}${appContext.productUrl}`}
+            ></input>
+          )}
           {appContext.contactModalTitle === "Book a viewing" &&
             appContext.productName && (
               <p>
