@@ -8,7 +8,6 @@ export const Div__block_full_size_image = styled.div`
   position: relative;
   min-height: calc(100vh + ${section_vertical_padding});
   overflow: hidden;
-  margin-bottom: 14px;
   padding: (${section_vertical_padding} / 2) ${section_horizontal_padding};
 
   .graphcms-image-outer-wrapper {
