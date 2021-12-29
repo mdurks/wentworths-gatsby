@@ -1,8 +1,10 @@
-import React from "react"
-import { useEffect } from "react"
+import React, { useEffect } from "react"
+import { graphql, useStaticQuery } from "gatsby"
+import GraphImg from "graphcms-image"
+import { gsap, ScrollTrigger } from "gsap/all"
+
 import { Styled_SiteContainer } from "../../../styles/commonStyles"
 import { Div__block_bespoke_design_advert } from "./block_bespoke_design_advert.styles"
-import { gsap, ScrollTrigger } from "gsap/all"
 
 import img_sketch_rings from "../../../images/misc/sketch-rings.jpg"
 import img_sketch_book from "../../../images/misc/sketch-book.jpg"
@@ -10,7 +12,131 @@ import img_sketch_book from "../../../images/misc/sketch-book.jpg"
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
 
+const pageQuery = graphql`
+  {
+    gcms {
+      blockBespokeDesignAdverts {
+        backgroundDesktop {
+          id
+          url
+          handle
+          width
+          height
+        }
+        backgroundMobile {
+          id
+          url
+          handle
+          width
+          height
+        }
+        finishedProductImage {
+          id
+          url
+          handle
+          width
+          height
+        }
+        sketchFinal {
+          id
+          url
+          handle
+          width
+          height
+        }
+        sketchOne {
+          id
+          url
+          handle
+          width
+          height
+        }
+        sketchTwo {
+          id
+          url
+          handle
+          width
+          height
+        }
+        sketchThree {
+          id
+          url
+          handle
+          width
+          height
+        }
+        sketchFour {
+          id
+          url
+          handle
+          width
+          height
+        }
+        sketchFive {
+          id
+          url
+          handle
+          width
+          height
+        }
+        sketchSix {
+          id
+          url
+          handle
+          width
+          height
+        }
+        sketchSeven {
+          id
+          url
+          handle
+          width
+          height
+        }
+        sketchEight {
+          id
+          url
+          handle
+          width
+          height
+        }
+        sketchNine {
+          id
+          url
+          handle
+          width
+          height
+        }
+        sketchTen {
+          id
+          url
+          handle
+          width
+          height
+        }
+      }
+    }
+  }
+`
+
 const Block_bespoke_design_advert = () => {
+  const {
+    gcms: { blockBespokeDesignAdverts },
+  } = useStaticQuery(pageQuery)
+
+  let sketchImagesArray = []
+
+  const filteredSketches = Object.keys(blockBespokeDesignAdverts[0])
+    .filter(key => key.includes("sketch"))
+    .reduce((obj, key) => {
+      obj[key] = blockBespokeDesignAdverts[0][key]
+      return obj
+    }, {})
+
+  for (const [key, value] of Object.entries(filteredSketches)) {
+    sketchImagesArray.push(value)
+  }
+
   function getRndInteger(min, max) {
     return Math.random() * (max - min) + min
   }
@@ -27,22 +153,21 @@ const Block_bespoke_design_advert = () => {
   let gsap__sketch10 = null
   let gsap__block_bespoke_design_advert = null
 
+  let gsap__sketch_group = [
+    gsap__sketch1,
+    gsap__sketch2,
+    gsap__sketch3,
+    gsap__sketch4,
+    gsap__sketch5,
+    gsap__sketch6,
+    gsap__sketch7,
+    gsap__sketch8,
+    gsap__sketch9,
+    gsap__sketch10,
+  ]
+
   useEffect(() => {
-    let viewportWidth = window.innerWidth
     let viewportHeight = window.innerHeight
-    let gsap__sketch_group_yZone = viewportHeight
-    let gsap__sketch_group = [
-      gsap__sketch1,
-      gsap__sketch2,
-      gsap__sketch3,
-      gsap__sketch4,
-      gsap__sketch5,
-      gsap__sketch6,
-      gsap__sketch7,
-      gsap__sketch8,
-      gsap__sketch9,
-      gsap__sketch10,
-    ]
 
     let tl_gsap__sketch_playreel = gsap.timeline({
       scrollTrigger: {
@@ -52,7 +177,7 @@ const Block_bespoke_design_advert = () => {
         // toggleActions: "play none none reset",
         toggleActions: "play pause resume pause",
         // markers: true,
-        // end: `+=${viewportWidth}`,
+        // end: `+=${window.innerWidth}`,
         // scrub: true,
         // pin: true,
         // anticipatePin: 1,
@@ -69,7 +194,7 @@ const Block_bespoke_design_advert = () => {
         gsap__sketch_group[index],
         {
           left: "-300px",
-          duration: getRndInteger(6.75, 8.66),
+          duration: getRndInteger(7.5, 10),
           // ease: "ease",
           rotationY: 350,
           repeat: -1,
@@ -77,11 +202,6 @@ const Block_bespoke_design_advert = () => {
         "-=" + getRndInteger(5, 7)
       )
     })
-    // tl_gsap__sketch_playreel.to(gsap__sketch1, {
-    //   left: "-300px",
-    //   duration: 10,
-    //   ease: "ease",
-    // })
 
     // return function to kill timeline on dismount
     return () => tl_gsap__sketch_playreel.kill()
@@ -94,86 +214,20 @@ const Block_bespoke_design_advert = () => {
       >
         <Styled_SiteContainer>
           <div className="bespoke_design_gsap_scrolling_image_container">
-            <div className="offscreen_right" ref={e => (gsap__sketch1 = e)}>
-              <img
-                className="gsap_scrolling_img"
-                src={img_sketch_rings}
-                alt=""
-              />
-              <div></div>
-            </div>
-            <div className="offscreen_right" ref={e => (gsap__sketch2 = e)}>
-              <img
-                className="gsap_scrolling_img"
-                src={img_sketch_rings}
-                alt=""
-              />
-              <div></div>
-            </div>
-            <div className="offscreen_right" ref={e => (gsap__sketch3 = e)}>
-              <img
-                className="gsap_scrolling_img"
-                src={img_sketch_rings}
-                alt=""
-              />
-              <div></div>
-            </div>
-            <div className="offscreen_right" ref={e => (gsap__sketch4 = e)}>
-              <img
-                className="gsap_scrolling_img"
-                src={img_sketch_rings}
-                alt=""
-              />
-              <div></div>
-            </div>
-            <div className="offscreen_right" ref={e => (gsap__sketch5 = e)}>
-              <img
-                className="gsap_scrolling_img"
-                src={img_sketch_rings}
-                alt=""
-              />
-              <div></div>
-            </div>
-            <div className="offscreen_right" ref={e => (gsap__sketch6 = e)}>
-              <img
-                className="gsap_scrolling_img"
-                src={img_sketch_rings}
-                alt=""
-              />
-              <div></div>
-            </div>
-            <div className="offscreen_right" ref={e => (gsap__sketch7 = e)}>
-              <img
-                className="gsap_scrolling_img"
-                src={img_sketch_rings}
-                alt=""
-              />
-              <div></div>
-            </div>
-            <div className="offscreen_right" ref={e => (gsap__sketch8 = e)}>
-              <img
-                className="gsap_scrolling_img"
-                src={img_sketch_rings}
-                alt=""
-              />
-              <div></div>
-            </div>
-            <div className="offscreen_right" ref={e => (gsap__sketch9 = e)}>
-              <img
-                className="gsap_scrolling_img"
-                src={img_sketch_rings}
-                alt=""
-              />
-              <div></div>
-            </div>
-            <div className="offscreen_right" ref={e => (gsap__sketch10 = e)}>
-              <img
-                className="gsap_scrolling_img"
-                src={img_sketch_rings}
-                alt=""
-              />
-              <div></div>
-            </div>
+            {sketchImagesArray.map((el, index) => (
+              <div
+                className="offscreen_right"
+                ref={e => (gsap__sketch_group[index] = e)}
+              >
+                <GraphImg
+                  className="gsap_scrolling_img"
+                  image={el}
+                  transforms={["quality=value:80"]}
+                  maxWidth={1200}
+                />
+                <div className="gsap_scolling_img_backface"></div>
+              </div>
+            ))}
           </div>
           <img className="img_sketch_rings" src={img_sketch_rings} alt="" />
           <img className="img_sketch_book" src={img_sketch_book} alt="" />
