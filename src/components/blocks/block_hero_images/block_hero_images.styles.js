@@ -61,7 +61,7 @@ export const Section__hero = styled.section`
     font-family: "Amalfi Coast", serif;
     text-transform: none;
     color: white;
-    /* text-shadow: 0px 4px 4px rgb(0 0 0 / 50%); */
+    text-shadow: 0px 2px 3px rgb(0 0 0 / 30%);
     opacity: 0;
     z-index: -1;
 

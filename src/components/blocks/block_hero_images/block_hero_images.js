@@ -62,8 +62,8 @@ const Block_hero_images = () => {
     })
 
     gsap.to(".Section__hero__heading", {
-      duration: 3,
-      delay: 1,
+      duration: 1.25,
+      delay: 0.75,
       opacity: 1,
       x: "10%",
       ease: "power2.out",
@@ -82,8 +82,8 @@ const Block_hero_images = () => {
     let hero_heading_handwriting = viewportWidth < 768 ? "-7%" : "-7%"
 
     gsap.to(".Section__hero__heading--handwritten", {
-      duration: 3,
-      delay: 2,
+      duration: 1.25,
+      delay: 1.25,
       opacity: 1,
       x: hero_heading_handwriting,
       ease: "power2.out",
