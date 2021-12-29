@@ -4,6 +4,8 @@ import GraphImg from "graphcms-image"
 import { useEffect } from "react"
 import { gsap, ScrollTrigger } from "gsap/all"
 
+import { number_with_commas } from "../../../common/utility"
+
 import {
   Div__block_best_seller,
   Div__flickity,
@@ -158,7 +160,7 @@ const Block_best_seller = props => {
                     />
                     <div className="productStage"></div>
                     <p className="productDesc">
-                      {el.name} £{el.price}
+                      {el.name} £{number_with_commas(el.price)}
                     </p>
                   </a>
                 </div>
