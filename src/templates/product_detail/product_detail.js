@@ -4,6 +4,8 @@ import GraphImg from "graphcms-image"
 
 import { useAppContext } from "../../store/AppContext"
 
+import { number_with_commas } from "../../common/utility"
+
 //import Layout from "../components/layout"
 
 import Block_best_seller from "../../components/blocks/block_best_seller/block_best_seller"
@@ -655,11 +657,6 @@ const DetailsPage = ({
   //
   //
   //
-  function number_with_commas(x) {
-    // TODO this is breaking on iOS, need to find compatible replacement
-    // return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
-    return x
-  }
   //
   //
   //

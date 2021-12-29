@@ -4,6 +4,8 @@ import React from "react"
 // import AniLink from "gatsby-plugin-transition-link/AniLink"
 import Link from "gatsby-plugin-transition-link"
 
+import { number_with_commas } from "../../common/utility"
+
 import GraphImg from "graphcms-image"
 import styled from "styled-components"
 import css_breakpoints from "../../common/css_breakpoints"
@@ -159,11 +161,6 @@ const Styled_Img = styled.div`
 
 const Product = props => {
   //
-  function number_with_commas(x) {
-    // TODO this is breaking on iOS, need to find compatible replacement
-    // return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
-    return x
-  }
   //
   let tl = gsap.timeline()
   let tl_duration = 1.5

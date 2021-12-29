@@ -75,6 +75,8 @@ export const Styled_Title = styled.h2`
   opacity: 0;
 
   ${css_breakpoints.min_desktop} {
+    font-size: 49px;
+    line-height: 60px;
     margin-bottom: 10px;
   }
 `

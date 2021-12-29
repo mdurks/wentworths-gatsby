@@ -2,6 +2,8 @@ import React from "react"
 import GraphImg from "graphcms-image"
 import { gsap, ScrollTrigger } from "gsap/all"
 
+import { number_with_commas } from "../../../common/utility"
+
 import Flickity from "react-flickity-component"
 
 import { Styled_SiteContainer } from "../../../styles/commonStyles"
@@ -11,12 +13,6 @@ gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
 
 const Block_may_also_like = props => {
-  function number_with_commas(x) {
-    // TODO this is breaking on iOS, need to find compatible replacement
-    // return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
-    return x
-  }
-
   const flickityOptions = {
     prevNextButtons: true,
     setGallerySize: false,
