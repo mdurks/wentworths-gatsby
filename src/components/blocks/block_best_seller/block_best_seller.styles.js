@@ -126,7 +126,7 @@ export const Div__flickity = styled.div`
     z-index: 456;
 
     ${css_breakpoints.min_desktop} {
-      height: 280px;
+      height: 320px;
     }
   }
 
@@ -224,7 +224,7 @@ export const Div__flickity = styled.div`
       line-height: 25px;
       text-transform: uppercase;
       color: #8f8571;
-      transition: top ease-in-out 0.4s, opacity ease-in-out 0.65s;
+      transition: top ease-in-out 0.3s, opacity ease-in-out 0.65s;
     }
   }
 `
