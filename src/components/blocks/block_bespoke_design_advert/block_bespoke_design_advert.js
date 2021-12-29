@@ -120,7 +120,6 @@ const Block_bespoke_design_advert = () => {
   const {
     gcms: { blockBespokeDesignAdverts },
   } = useStaticQuery(pageQuery)
-  console.log("blockBespokeDesignAdverts", blockBespokeDesignAdverts[0])
 
   let sketchImagesArray = []
 
@@ -192,7 +191,7 @@ const Block_bespoke_design_advert = () => {
         gsap__sketch_group[index],
         {
           left: "-300px",
-          duration: getRndInteger(7.5, 10),
+          duration: getRndInteger(8, 10),
           // ease: "ease",
           rotationY: 350,
           repeat: -1,
@@ -200,6 +199,133 @@ const Block_bespoke_design_advert = () => {
         "-=" + getRndInteger(5, 7)
       )
     })
+
+    const tl_gsap_closing_message = gsap.timeline({
+      scrollTrigger: {
+        trigger: gsap__block_bespoke_design_advert,
+        start: "15% bottom",
+        end: "bottom top",
+        toggleActions: "play none none none",
+        // toggleActions: "play pause resume pause",
+        // markers: true,
+      },
+    })
+    gsap.set(".finalImageOne", {
+      top: "-2632%",
+      rotationX: 0,
+      rotationY: 260,
+      rotationZ: 363,
+    })
+    tl_gsap_closing_message.to(".finalImageOne", {
+      top: "-922%",
+      rotationX: 0,
+      rotationY: 0,
+      rotationZ: 363,
+      duration: 1.5,
+    })
+    gsap.set(".finalImageTwo", {
+      opacity: 0,
+      top: "-922%",
+      left: "38%",
+      width: "287px",
+      height: "287px",
+      transform: "rotate(2.68deg)",
+    })
+    tl_gsap_closing_message.to(
+      ".finalImageTwo",
+      {
+        opacity: 1,
+        top: "-523%",
+        left: "7%",
+        width: "507px",
+        height: "511px",
+        transform: "rotate(-7.38deg)",
+        duration: 1.25,
+      },
+      "-=0.25"
+    )
+    gsap.set(".finalImageTwo .graphcms-image-outer-wrapper", {
+      opacity: 0,
+    })
+    tl_gsap_closing_message.to(
+      ".finalImageTwo .graphcms-image-outer-wrapper",
+      {
+        opacity: 1,
+        duration: 1,
+        ease: "power3.in",
+      },
+      "-=1.25"
+    )
+    tl_gsap_closing_message.to(
+      ".finalImageTwo",
+      {
+        scale: 1.5,
+        duration: 0.3,
+      },
+      "-=1.24"
+    )
+    tl_gsap_closing_message.to(
+      ".finalImageTwo",
+      {
+        scale: 1,
+        duration: 0.6,
+      },
+      "-=0.9"
+    )
+    tl_gsap_closing_message.to(".finalImageTwo, .finalImageOne", {
+      boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+    })
+    gsap.set(".bespoke_design_heading1", {
+      x: 20,
+      clipPath: "inset(0% 100% -50% 0%)",
+    })
+    tl_gsap_closing_message.to(
+      ".bespoke_design_heading1",
+      {
+        x: 0,
+        clipPath: "inset(0% 0% -50% 0%)",
+        duration: 0.75,
+      },
+      "-=0.5"
+    )
+    gsap.set(".bespoke_design_heading2", {
+      x: 20,
+      clipPath: "inset(0% 100% -50% 0%)",
+    })
+    tl_gsap_closing_message.to(
+      ".bespoke_design_heading2",
+      {
+        x: 0,
+        clipPath: "inset(0% 0% -50% 0%)",
+        duration: 1.5,
+      },
+      "+=0.1"
+    )
+    gsap.set(".bespoke_design_heading3", {
+      x: 20,
+      clipPath: "inset(0% 100% -50% 0%)",
+    })
+    tl_gsap_closing_message.to(
+      ".bespoke_design_heading3",
+      {
+        x: 0,
+        clipPath: "inset(0% 0% -50% 0%)",
+        duration: 1.25,
+      },
+      "-=0.25"
+    )
+    gsap.set(".bespoke_design_link", {
+      opacity: 0,
+      y: 20,
+    })
+    tl_gsap_closing_message.to(
+      ".bespoke_design_link",
+      {
+        opacity: 1,
+        y: 0,
+      },
+      "-=0.5"
+    )
 
     // return function to kill timeline on dismount
     return () => tl_gsap__sketch_playreel.kill()
@@ -227,14 +353,15 @@ const Block_bespoke_design_advert = () => {
               </div>
             ))}
           </div>
-          <div className="img_sketch_rings">
+          <div className="finalImageOne">
             <GraphImg
               image={blockBespokeDesignAdverts[0].finalImageOne}
               transforms={["quality=value:80"]}
               maxWidth={600}
             />
+            <div class="finalImageOne_backface"></div>
           </div>
-          <div className="img_sketch_book">
+          <div className="finalImageTwo">
             <GraphImg
               image={blockBespokeDesignAdverts[0].finalImageTwo}
               transforms={["quality=value:80"]}

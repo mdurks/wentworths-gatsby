@@ -15,6 +15,7 @@ export const Div__block_bespoke_design_advert = styled.div`
   /* padding: 75px 0; */
   text-align: center;
   background-color: #e5e3de;
+  overflow: hidden;
 
   > section {
     position: relative;
@@ -28,16 +29,16 @@ export const Div__block_bespoke_design_advert = styled.div`
     }
   }
 
-  .img_sketch_rings {
+  .finalImageOne {
     position: absolute;
     top: -40px;
     right: 0;
     height: 187px;
     width: auto;
     background: white;
-    border: 10px solid white;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0);
     transform: rotate(2.68deg);
+    transform-style: preserve-3d;
 
     ${css_breakpoints.min_desktop} {
       position: absolute;
@@ -46,9 +47,27 @@ export const Div__block_bespoke_design_advert = styled.div`
       width: 287px;
       height: 287px;
     }
+
+    .graphcms-image-outer-wrapper {
+      z-index: 1 !important;
+    }
+
+    .graphcms-image-wrapper {
+      border: 10px solid white;
+    }
+
+    .finalImageOne_backface {
+      content: " ";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, #fdfbf7 0%, #cccac5 100%);
+    }
   }
 
-  .img_sketch_book {
+  .finalImageTwo {
     position: absolute;
     top: 150px;
     left: 0;
@@ -56,7 +75,7 @@ export const Div__block_bespoke_design_advert = styled.div`
     width: auto;
     background: white;
     border: 10px solid white;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0);
     transform: rotate(-7.38deg);
 
     ${css_breakpoints.min_desktop} {
@@ -173,15 +192,15 @@ export const Div__block_bespoke_design_advert = styled.div`
     text-transform: uppercase;
     color: #965f27;
     text-decoration: none;
-    background-color: #e5e3de;
+    background-color: hsl(43deg 12% 88% / 60%);
     border-radius: 100px;
     border: 2px solid #b49372;
-    transition: all ease 0.4s;
+    /* transition: all ease 0.4s; */
 
     ${css_breakpoints.min_desktop} {
       position: absolute;
-      top: 760%;
-      left: 64.5%;
+      top: 830%;
+      left: 66.5%;
       margin: 0;
 
       &:hover {
