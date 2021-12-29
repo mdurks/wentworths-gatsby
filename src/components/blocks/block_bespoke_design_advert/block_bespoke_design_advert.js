@@ -6,9 +6,6 @@ import { gsap, ScrollTrigger } from "gsap/all"
 import { Styled_SiteContainer } from "../../../styles/commonStyles"
 import { Div__block_bespoke_design_advert } from "./block_bespoke_design_advert.styles"
 
-import img_sketch_rings from "../../../images/misc/sketch-rings.jpg"
-import img_sketch_book from "../../../images/misc/sketch-book.jpg"
-
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
 
@@ -30,14 +27,14 @@ const pageQuery = graphql`
           width
           height
         }
-        finishedProductImage {
+        finalImageTwo {
           id
           url
           handle
           width
           height
         }
-        sketchFinal {
+        finalImageOne {
           id
           url
           handle
@@ -123,6 +120,7 @@ const Block_bespoke_design_advert = () => {
   const {
     gcms: { blockBespokeDesignAdverts },
   } = useStaticQuery(pageQuery)
+  console.log("blockBespokeDesignAdverts", blockBespokeDesignAdverts[0])
 
   let sketchImagesArray = []
 
@@ -229,8 +227,20 @@ const Block_bespoke_design_advert = () => {
               </div>
             ))}
           </div>
-          <img className="img_sketch_rings" src={img_sketch_rings} alt="" />
-          <img className="img_sketch_book" src={img_sketch_book} alt="" />
+          <div className="img_sketch_rings">
+            <GraphImg
+              image={blockBespokeDesignAdverts[0].finalImageOne}
+              transforms={["quality=value:80"]}
+              maxWidth={600}
+            />
+          </div>
+          <div className="img_sketch_book">
+            <GraphImg
+              image={blockBespokeDesignAdverts[0].finalImageTwo}
+              transforms={["quality=value:80"]}
+              maxWidth={1000}
+            />
+          </div>
           <p className="bespoke_design_heading1">Bespoke design</p>
           <p className="bespoke_design_heading2">bring your imagination</p>
           <p className="bespoke_design_heading3">in to reality</p>
