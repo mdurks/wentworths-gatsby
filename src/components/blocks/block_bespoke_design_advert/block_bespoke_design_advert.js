@@ -47,32 +47,34 @@ const Block_bespoke_design_advert = () => {
     let tl_gsap__sketch_playreel = gsap.timeline({
       scrollTrigger: {
         trigger: gsap__block_bespoke_design_advert,
-        start: "top 66%",
-        end: "33% top",
-        toggleActions: "play none none reset",
+        start: "-10% bottom",
+        end: "bottom top",
+        // toggleActions: "play none none reset",
+        toggleActions: "play pause resume pause",
         // markers: true,
         // end: `+=${viewportWidth}`,
-        scrub: true,
+        // scrub: true,
         // pin: true,
-        anticipatePin: 1,
+        // anticipatePin: 1,
       },
     })
     gsap__sketch_group.forEach((el, index) => {
       gsap.set(el, {
-        y: getRndInteger(viewportHeight * 0.1, (viewportHeight - 150) * 0.9),
+        y: getRndInteger(viewportHeight * 0.05, (viewportHeight - 150) * 0.9),
         rotationX: 10,
-        rotationY: getRndInteger(-350, 10),
+        rotationY: getRndInteger(-350, -110),
         rotationZ: 353,
       })
       tl_gsap__sketch_playreel.to(
         gsap__sketch_group[index],
         {
           left: "-300px",
-          duration: getRndInteger(2.75, 3.66),
-          ease: "ease",
+          duration: getRndInteger(6.75, 8.66),
+          // ease: "ease",
           rotationY: 350,
+          repeat: -1,
         },
-        "-=" + getRndInteger(2, 4)
+        "-=" + getRndInteger(5, 7)
       )
     })
     // tl_gsap__sketch_playreel.to(gsap__sketch1, {

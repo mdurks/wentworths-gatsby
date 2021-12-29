@@ -114,14 +114,15 @@ export const Div__block_bespoke_design_advert = styled.div`
     width: 100%;
     text-align: center;
     font-size: 26px;
-    text-transform: uppercase;
+    text-transform: capitalize;
     font-family: "Playfair Display", serif;
 
     ${css_breakpoints.min_desktop} {
       position: absolute;
-      top: 170%;
+      top: 140%;
       left: 46.5%;
       width: auto;
+      font-size: 36px;
     }
   }
 
@@ -134,14 +135,15 @@ export const Div__block_bespoke_design_advert = styled.div`
     line-height: clamp(50px, 4vw, 30px);
     font-family: "Playfair Display", serif;
     letter-spacing: -1px;
-    /* color: #b49372; */
-    text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.35);
+    text-transform: uppercase;
+    color: #a77711;
+    /* text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.35); */
 
     ${css_breakpoints.min_desktop} {
-      width: auto;
+      width: 68%;
       position: absolute;
       top: 310%;
-      left: 39%;
+      left: 33%;
       margin: 0;
     }
   }
@@ -159,6 +161,7 @@ export const Div__block_bespoke_design_advert = styled.div`
       top: 530%;
       left: 68%;
       width: auto;
+      font-size: 36px;
     }
   }
 
