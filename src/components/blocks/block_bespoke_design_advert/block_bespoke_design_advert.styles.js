@@ -200,7 +200,7 @@ export const Div__block_bespoke_design_advert = styled.div`
     ${css_breakpoints.min_desktop} {
       position: absolute;
       top: 830%;
-      left: 66.5%;
+      left: 62.5%;
       margin: 0;
 
       &:hover {

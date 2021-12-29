@@ -368,11 +368,11 @@ const Block_bespoke_design_advert = () => {
               maxWidth={1000}
             />
           </div>
-          <p className="bespoke_design_heading1">Bespoke design</p>
+          <p className="bespoke_design_heading1">Bespoke jewellery design</p>
           <p className="bespoke_design_heading2">bring your imagination</p>
           <p className="bespoke_design_heading3">in to reality</p>
           <a className="bespoke_design_link" href="/">
-            View Bespoke Design
+            View Bespoke Jewellery Designs
           </a>
         </Styled_SiteContainer>
       </Div__block_bespoke_design_advert>
