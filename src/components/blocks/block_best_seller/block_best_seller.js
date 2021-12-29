@@ -51,9 +51,8 @@ const Block_best_seller = props => {
   // } = useStaticQuery(pageQuery)
 
   let Block_best_seller = null
-  let gsap__entryHeading = null // A Mutual Promise
-  let gsap__entryHeading_wj = null // Wentworth Jewels
-  let gsap__entryHeading_category_title = null // Engagement
+  let gsap__entryHeading_bestSeller = null // Best Selling
+  let gsap__entryHeading_category_title = null // Engagement Rings
 
   useEffect(() => {
     let tl_gsap__entryHeading = gsap.timeline({
@@ -66,28 +65,22 @@ const Block_best_seller = props => {
         // toggleActions: "play none none reset",
       },
     })
-    // tl_gsap__entryHeading.to(gsap__entryHeading, {
-    //   duration: 2,
-    //   opacity: 1,
-    //   ease: "back",
-    // })
+    gsap.set(gsap__entryHeading_bestSeller, {
+      clipPath: "inset(0% 60% -50%)",
+    })
+    tl_gsap__entryHeading.to(gsap__entryHeading_bestSeller, {
+      duration: 4,
+      ease: "power3.out",
+      clipPath: "inset(0% -100% -50%)",
+    })
     tl_gsap__entryHeading.to(
-      gsap__entryHeading_wj,
+      gsap__entryHeading_category_title,
       {
         duration: 2,
         opacity: 1,
         ease: "back",
-      }
-      // "-=1.75"
-    )
-    tl_gsap__entryHeading.to(
-      gsap__entryHeading_category_title,
-      {
-        duration: 1.75,
-        opacity: 1,
-        ease: "back",
       },
-      "-=1.65"
+      "-=3.5"
     )
     tl_gsap__entryHeading.to(
       document.querySelectorAll(".bestSellerItem"),
@@ -98,7 +91,7 @@ const Block_best_seller = props => {
         x: -100,
         stagger: 0.1,
       },
-      "-=1.75"
+      "-=3.25"
     )
 
     // return function to kill timeline on dismount
@@ -125,8 +118,9 @@ const Block_best_seller = props => {
       <Div__block_best_seller ref={e => (Block_best_seller = e)}>
         <div className="headingGroup">
           <p className="entryHeading">
-            <span ref={e => (gsap__entryHeading = e)}>Wentworth Jewels</span>{" "}
-            <div ref={e => (gsap__entryHeading_wj = e)}>Best selling</div>
+            <div ref={e => (gsap__entryHeading_bestSeller = e)}>
+              Best selling
+            </div>
           </p>
           <h2 ref={e => (gsap__entryHeading_category_title = e)}>
             {props.categoryTitle}

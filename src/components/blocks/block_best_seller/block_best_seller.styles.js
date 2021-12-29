@@ -52,19 +52,10 @@ export const Div__block_best_seller = styled.div`
       letter-spacing: -1px;
     }
 
-    > span {
-      display: none;
-      opacity: 0;
-
-      ${css_breakpoints.min_desktop} {
-        /* display: block; */
-      }
-    }
-
     > div {
       position: relative;
       top: 0;
-      opacity: 0;
+      /* opacity: 0; */
       font-size: clamp(44px, 4vw, 47px);
 
       ${css_breakpoints.min_desktop} {
