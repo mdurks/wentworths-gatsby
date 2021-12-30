@@ -6,6 +6,7 @@
 import React from "react"
 import { useEffect } from "react"
 import { gsap, ScrollTrigger } from "gsap/all"
+import { return_array_center_out } from "../../../common/utility"
 
 import { Styled_SiteContainer } from "../../../styles/commonStyles"
 import {
@@ -23,16 +24,6 @@ const Block_one_row_jewellery = () => {
   let gsap__entryHeading = null // A Mutual Promise
   let gsap__entryHeading_wj = null // Wentworth Jewels
   let gsap__entryHeading_category_title = null // Engagement
-
-  let return_array_center_out = a => {
-    var o = [],
-      s = a.length,
-      l = Math.floor(s / 2),
-      c
-    for (c = 0; c < s; c++)
-      o.push(a[(l += s % 2 ? (c % 2 ? +c : -c) : c % 2 ? -c : +c)])
-    return o
-  }
 
   useEffect(() => {
     let tl_gsap__entryHeading = gsap.timeline({

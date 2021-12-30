@@ -4,7 +4,10 @@ import GraphImg from "graphcms-image"
 
 import { useAppContext } from "../../store/AppContext"
 
-import { number_with_commas } from "../../common/utility"
+import {
+  number_with_commas,
+  return_array_center_out,
+} from "../../common/utility"
 
 //import Layout from "../components/layout"
 
@@ -37,16 +40,6 @@ const DetailsPage = ({
   pageContext,
 }) => {
   const appContext = useAppContext()
-
-  let return_array_center_out = a => {
-    var o = [],
-      s = a.length,
-      l = Math.floor(s / 2),
-      c
-    for (c = 0; c < s; c++)
-      o.push(a[(l += s % 2 ? (c % 2 ? +c : -c) : c % 2 ? -c : +c)])
-    return o
-  }
 
   useEffect(() => {
     //
