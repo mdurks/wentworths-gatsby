@@ -216,6 +216,10 @@ export const Div__flickity = styled.div`
       text-transform: uppercase;
       color: #8f8571;
       transition: top ease-in-out 0.3s, opacity ease-in-out 0.65s;
+
+      span {
+        font-family: "Tahoma", "serif";
+      }
     }
   }
 `

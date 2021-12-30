@@ -154,7 +154,7 @@ const Block_best_seller = props => {
                     />
                     <div className="productStage"></div>
                     <p className="productDesc">
-                      {el.name} £{number_with_commas(el.price)}
+                      {el.name} <span>£{number_with_commas(el.price)}</span>
                     </p>
                   </a>
                 </div>

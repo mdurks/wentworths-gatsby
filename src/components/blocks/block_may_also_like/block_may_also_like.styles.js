@@ -73,14 +73,17 @@ export const Div__block_may_also_like = styled.div`
     &__productTitle {
       height: 85px;
       margin: 15px 0 0;
-      font-size: 22px;
-      line-height: 35px;
-      font-family: "Playfair Display", sans-serif;
-      text-transform: capitalize;
+      font-family: "Raleway", sans-serif;
+      font-size: 16px;
+      line-height: 25px;
+      text-transform: uppercase;
+      color: #8f8571;
     }
 
     &__productPrice {
+      display: block;
       font-family: "Times New Roman", serif;
+      font-family: "Tahoma", "serif";
       color: #a0703e;
     }
   }
