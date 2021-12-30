@@ -40,13 +40,16 @@ const ProductPage = ({
 }) => {
   // console.log("pageContext: ", pageContext)
   // console.log("products: ", products)
-  console.log("productListingTexts", productListingTexts)
-  //
-  //
+
+  let subTitleText = productListingTexts.filter(
+    item =>
+      item.productType === pageContext.product_type &&
+      item.categoryType === pageContext.category
+  )
+  subTitleText = subTitleText[0].text.html
+
   // 'Page load' animations and such
   useEffect(() => {
-    //
-    //
     gsap.to(
       ".subTitle, .pageTitle, .productsPageHeaeder p:last-of-type, .filter, .filter_info",
       {
@@ -515,14 +518,14 @@ const ProductPage = ({
         <Styled_SiteContainer>
           <Div__pageHeader className="productsPageHeaeder">
             {/* <p className="subTitle">A mutual promise</p> */}
-            {/* <h1 className="pageTitle">Engagement Rings</h1> */}
             <h1 className="pageTitle">
               {pageContext.category} {pageContext.product_type}
             </h1>
-            <p>
-              Perfectly made diamond engagement rings for your special day. Each
-              diamond, chosen by our experts, for brilliance and shine.
-            </p>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: subTitleText,
+              }}
+            ></div>
             <button className="show_filters_btn" onClick={show_filters_btn}>
               <span className="show_filters_btn_text_show">Show</span>
               <span className="show_filters_btn_text_hide">Hide</span> Filters
