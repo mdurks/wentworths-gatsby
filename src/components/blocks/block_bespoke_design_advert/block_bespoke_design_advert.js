@@ -1,9 +1,9 @@
 import React, { useEffect } from "react"
-import { graphql, useStaticQuery } from "gatsby"
+import { Link, graphql, useStaticQuery } from "gatsby"
 import GraphImg from "graphcms-image"
 import { gsap, ScrollTrigger } from "gsap/all"
 
-import { Styled_SiteContainer } from "../../../styles/commonStyles"
+import { Styled_SiteContainer, Styled_btn } from "../../../styles/commonStyles"
 import { Div__block_bespoke_design_advert } from "./block_bespoke_design_advert.styles"
 
 gsap.registerPlugin(ScrollTrigger)
@@ -371,9 +371,9 @@ const Block_bespoke_design_advert = () => {
           <p className="bespoke_design_heading1">Bespoke jewellery design</p>
           <p className="bespoke_design_heading2">bring your imagination</p>
           <p className="bespoke_design_heading3">in to reality</p>
-          <a className="bespoke_design_link" href="/">
+          <Styled_btn as={Link} className="bespoke_design_link" to="/">
             View Bespoke Jewellery Designs
-          </a>
+          </Styled_btn>
         </Styled_SiteContainer>
       </Div__block_bespoke_design_advert>
     </>

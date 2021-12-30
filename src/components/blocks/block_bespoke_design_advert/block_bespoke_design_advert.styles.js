@@ -190,23 +190,15 @@ export const Div__block_bespoke_design_advert = styled.div`
     padding: 10px 30px 13px;
     font-size: 19px;
     text-transform: uppercase;
-    color: #965f27;
     text-decoration: none;
     background-color: hsl(43deg 12% 88% / 60%);
-    border-radius: 100px;
     border: 2px solid #b49372;
-    /* transition: all ease 0.4s; */
 
     ${css_breakpoints.min_desktop} {
       position: absolute;
       top: 830%;
       left: 62.5%;
       margin: 0;
-
-      &:hover {
-        background-color: #b49372;
-        color: white;
-      }
     }
   }
 `

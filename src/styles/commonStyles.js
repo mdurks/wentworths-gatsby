@@ -84,7 +84,7 @@ export const Styled_btn = styled.button`
   font-family: "Playfair Display", serif;
   font-family: "Raleway", sans-serif;
   font-size: 18px;
-  transition: all ease 0.4s;
+  transition: all ease-in-out 0.4s;
   opacity: 0;
   /* box-shadow: inset 0px 7px 11px 0px rgba(0, 0, 0, 0.3); */
 
@@ -106,7 +106,7 @@ export const Styled_btn = styled.button`
         border-radius: 100px 0 0 100px;
       }
       &:after {
-        width: 52%;
+        width: 51%;
         opacity: 1;
         clip-path: inset(0% 0% 0% 0%);
         border-radius: 0 100px 100px 0;
@@ -119,18 +119,18 @@ export const Styled_btn = styled.button`
     content: " ";
     position: absolute;
     top: -1px;
-    left: -1%;
-    width: 51%;
-    height: calc(100% + 1px);
+    left: -0.5%;
+    width: 50.5%;
+    height: calc(100% + 2px);
     background: #b6926d;
     clip-path: inset(0% 0% 0% 100%);
     border-radius: 0 0 0 0;
     opacity: 0;
     z-index: -1;
-    transition: all ease 0.3s;
+    transition: all ease-in-out 0.45s;
   }
   &:after {
-    left: 49%;
+    left: 49.75%;
     clip-path: inset(0% 100% 0% 0%);
   }
 
