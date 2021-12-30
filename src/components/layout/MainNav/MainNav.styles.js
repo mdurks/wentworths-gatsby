@@ -228,12 +228,12 @@ export const Button__topLevelLink = styled.button`
     &:after {
       content: "";
       position: absolute;
-      top: 49px;
+      top: 54px;
       left: 50%;
       transform: translateX(-50%);
       width: 0%;
       height: 6px;
-      background-color: #62a3b4;
+      background-color: #a57c24;
       opacity: 0;
       transition: all ease 0.5s;
     }
@@ -483,7 +483,7 @@ export const Ul__mainNav__subNavList = styled.ul`
 
       &:hover {
         padding-left: 25px;
-        color: #6ea9b7;
+        color: #a57c24;
 
         &:before {
           opacity: 1;
@@ -537,7 +537,7 @@ export const Li__mainNav__topLevelLink = styled.li`
   &:hover {
     ${Button__topLevelLink} {
       ${css_breakpoints.min_desktop} {
-        color: #6ea9b7;
+        color: #a57c24;
 
         // white block behind button
         &:before {
@@ -548,7 +548,7 @@ export const Li__mainNav__topLevelLink = styled.li`
         // coloured underline of link
         &:after {
           width: 74%;
-          background-color: #c8e5ec;
+          background-color: #c1a260;
           opacity: 1;
         }
       }
