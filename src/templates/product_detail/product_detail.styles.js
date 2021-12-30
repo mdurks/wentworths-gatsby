@@ -279,7 +279,7 @@ export const Div_detailed_description_block = styled.section`
     min-height: calc(100vh + ${section_vertical_padding});
     padding: 0;
     padding-top: 75px;
-    padding-bottom: 75px;
+    /* padding-bottom: 75px; */
   }
 
   p {
