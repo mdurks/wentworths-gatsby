@@ -30,7 +30,8 @@ export const Div__detail_hero_block = styled.div`
   }
 
   .productPrice {
-    font-family: "Playfair Display", serif;
+    /* font-family: "Playfair Display", serif; */
+    font-family: "Times New Roman", serif;
     font-size: 32px;
     color: #a57c24;
     opacity: 0;
