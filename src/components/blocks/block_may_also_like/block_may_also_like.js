@@ -55,7 +55,7 @@ const Block_may_also_like = props => {
                   maxWidth={400}
                 />
                 <h3 className="youMayAlsoLike__productTitle">
-                  <span>{el.name} - </span>
+                  <span>{el.name} </span>
                   <span className="youMayAlsoLike__productPrice">
                     £{number_with_commas(el.price)}
                   </span>
