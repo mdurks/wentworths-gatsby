@@ -1,7 +1,7 @@
 import React from "react"
 import { useEffect } from "react"
 import { useAppContext } from "../../../store/AppContext"
-import { Link } from "gatsby"
+import { graphql, useStaticQuery, Link } from "gatsby"
 // import Link from "gatsby-plugin-transition-link"
 
 import {
@@ -23,7 +23,29 @@ import {
 // import AniLink from "gatsby-plugin-transition-link/AniLink"
 // import { gsap } from "gsap/all"
 
+const pageQuery = graphql`
+  {
+    gcms {
+      mainNavigationContents {
+        engagementMenu {
+          html
+        }
+        weddingsMenu {
+          html
+        }
+        jewelleryMenu {
+          html
+        }
+      }
+    }
+  }
+`
+
 const MainNav = () => {
+  const {
+    gcms: { mainNavigationContents },
+  } = useStaticQuery(pageQuery)
+
   const appContext = useAppContext()
 
   // class MainNav extends React.Component {
@@ -164,15 +186,11 @@ const MainNav = () => {
                       </li>
                     </Ul__mainNav__subNavList>
 
-                    <Div__mainNav__subNavMessage>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit. Sit officia impedit atque aperiam ratione cum
-                        distinctio similique ipsam? Tempora magni quam nemo
-                        quasi architecto maxime neque nostrum obcaecati ut
-                        suscipit!
-                      </p>
-                    </Div__mainNav__subNavMessage>
+                    <Div__mainNav__subNavMessage
+                      dangerouslySetInnerHTML={{
+                        __html: mainNavigationContents[0].engagementMenu.html,
+                      }}
+                    ></Div__mainNav__subNavMessage>
                   </Div__mainNav__subNavGroup__container>
                 </Div__mainNav__subNavGroup>
               </Div__mainNav__subNavGroupWrapper>
@@ -200,15 +218,11 @@ const MainNav = () => {
                       </li>
                     </Ul__mainNav__subNavList>
 
-                    <Div__mainNav__subNavMessage>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit. Sit officia impedit atque aperiam ratione cum
-                        distinctio similique ipsam? Tempora magni quam nemo
-                        quasi architecto maxime neque nostrum obcaecati ut
-                        suscipit!
-                      </p>
-                    </Div__mainNav__subNavMessage>
+                    <Div__mainNav__subNavMessage
+                      dangerouslySetInnerHTML={{
+                        __html: mainNavigationContents[0].weddingsMenu.html,
+                      }}
+                    ></Div__mainNav__subNavMessage>
                   </Div__mainNav__subNavGroup__container>
                 </Div__mainNav__subNavGroup>
               </Div__mainNav__subNavGroupWrapper>
@@ -239,15 +253,11 @@ const MainNav = () => {
                       </li>
                     </Ul__mainNav__subNavList>
 
-                    <Div__mainNav__subNavMessage>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit. Sit officia impedit atque aperiam ratione cum
-                        distinctio similique ipsam? Tempora magni quam nemo
-                        quasi architecto maxime neque nostrum obcaecati ut
-                        suscipit!
-                      </p>
-                    </Div__mainNav__subNavMessage>
+                    <Div__mainNav__subNavMessage
+                      dangerouslySetInnerHTML={{
+                        __html: mainNavigationContents[0].jewelleryMenu.html,
+                      }}
+                    ></Div__mainNav__subNavMessage>
                   </Div__mainNav__subNavGroup__container>
                 </Div__mainNav__subNavGroup>
               </Div__mainNav__subNavGroupWrapper>
