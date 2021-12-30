@@ -658,10 +658,12 @@ const ProductPage = ({
             </fieldset>
           </Div__filter>
           <Div__filter_info className="filter_info">
-            Showing &nbsp;{productList.length} of
-            {" " + products.length}
-            &nbsp;&nbsp;
-            {pageContext.category} {pageContext.product_type}.
+            <p className="filter_info__showingNumber">
+              Showing &nbsp;{productList.length} of
+              {" " + products.length}
+              &nbsp;&nbsp;
+              {pageContext.category} {pageContext.product_type}.
+            </p>
             <div className="sortProducts">
               <span className="sortProducts__container">
                 <span className="sortProducts__label">Sort by:</span>

@@ -43,7 +43,7 @@ export const Div__pageHeader = styled.div`
     font-family: "Amalfi Coast", serif;
     font-size: clamp(41px, 7vw, 100px);
     line-height: clamp(61px, 7vw, 120px);
-    color: #ba9b7c;
+    color: #c1a260;
     opacity: 0;
 
     ${css_breakpoints.min_desktop} {
@@ -229,7 +229,7 @@ export const Div__filter = styled.div`
     font-family: "Playfair Display", serif;
     font-size: 25px;
     text-transform: uppercase;
-    color: #ac832f;
+    color: #b7903d;
     transition: all ease-in-out 0.3s;
 
     &:after {
@@ -385,12 +385,27 @@ export const Div__filter = styled.div`
 `
 
 export const Div__filter_info = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   margin: 30px 0 90px;
   text-align: center;
   opacity: 0;
 
   ${css_breakpoints.min_desktop} {
-    margin-bottom: 110px;
+    flex-direction: row;
+    margin-bottom: 60px;
+  }
+
+  .filter_info__showingNumber {
+    text-align: center;
+
+    ${css_breakpoints.min_desktop} {
+      flex: 1;
+      // left padding is the width of the sort by group
+      padding: 11px 0 0 275px;
+    }
   }
 
   .sortProducts {
