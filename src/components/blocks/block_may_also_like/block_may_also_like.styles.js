@@ -41,7 +41,7 @@ export const Div__block_may_also_like = styled.div`
       color: #c1a260;
 
       ${css_breakpoints.min_desktop} {
-        margin: 165px 0 10px;
+        margin: 125px 0 -20px;
       }
     }
 
@@ -49,7 +49,7 @@ export const Div__block_may_also_like = styled.div`
       height: 520px;
 
       ${css_breakpoints.min_desktop} {
-        height: 640px;
+        height: 540px;
       }
     }
 
