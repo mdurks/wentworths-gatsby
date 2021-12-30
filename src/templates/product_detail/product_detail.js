@@ -23,11 +23,10 @@ import {
   Styled_Img,
   Styled_CMScontent,
   Styled_Title,
-  Styled_btn,
   Div_detailed_description_block,
   Div_modal,
 } from "./product_detail.styles"
-import { Styled_SiteContainer } from "../../styles/commonStyles"
+import { Styled_SiteContainer, Styled_btn } from "../../styles/commonStyles"
 import { gsap, ScrollTrigger, Power3 } from "gsap/all"
 
 gsap.registerPlugin(ScrollTrigger)
