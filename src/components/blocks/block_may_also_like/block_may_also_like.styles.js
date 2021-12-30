@@ -38,7 +38,7 @@ export const Div__block_may_also_like = styled.div`
       font-size: clamp(40px, 7vw, 100px);
       line-height: clamp(80px, 8vw, 170px);
       text-transform: none;
-      color: #a57c24;
+      color: #c1a260;
 
       ${css_breakpoints.min_desktop} {
         margin: 165px 0 10px;
@@ -82,9 +82,7 @@ export const Div__block_may_also_like = styled.div`
 
     &__productPrice {
       display: block;
-      font-family: "Times New Roman", serif;
       font-family: "Tahoma", "serif";
-      color: #a0703e;
     }
   }
 `
