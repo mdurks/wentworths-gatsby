@@ -48,12 +48,12 @@ export const Section__contact_container = styled.section`
 
     &__closeBtn {
       position: absolute;
-      top: 10px;
+      top: 38px;
       right: 10px;
       padding: 5px 15px;
       background: none;
       border-radius: 8px;
-      color: #8e6600;
+      color: #fff;
       font-size: 30px;
     }
 
@@ -62,8 +62,8 @@ export const Section__contact_container = styled.section`
       font-size: 45px;
       font-family: "Playfair Display", serif;
       text-transform: none;
-      color: #8e6600;
-      background-color: hsl(43deg 67% 68% / 70%);
+      color: #ffffff;
+      background-color: #996f159e;
     }
 
     &__glitterBar {
