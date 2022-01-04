@@ -84,7 +84,7 @@ export const Styled_btn = styled.button`
   font-family: "Playfair Display", serif;
   font-family: "Raleway", sans-serif;
   font-size: 18px;
-  transition: all ease-in-out 0.4s;
+  transition: all ease-in-out 0.3s;
   opacity: 0;
   /* box-shadow: inset 0px 7px 11px 0px rgba(0, 0, 0, 0.3); */
 
@@ -99,6 +99,7 @@ export const Styled_btn = styled.button`
       color: #fff;
       /* background-color: #b6926d;
       box-shadow: none; */
+      /* transform: scale(1.05) !important; */
 
       &:before {
         opacity: 1;
