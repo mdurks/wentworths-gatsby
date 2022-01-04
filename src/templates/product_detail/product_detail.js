@@ -128,7 +128,6 @@ const DetailsPage = ({
     //
     if (window.innerWidth >= 1024) {
       let stick_detailed_description_text = () => {
-        // TODO: following line bugs when returning to homepage, maybe needs useEffect cleanup
         let el = document.querySelector(".detailed_description_text")
         el.style.position = ""
         el.style.top = ""
@@ -260,7 +259,7 @@ const DetailsPage = ({
     //
     // when this component unmounts:
     return () => {
-      // ScrollTrigger.getById("detailed_description_block").kill(true)
+      ScrollTrigger.getById("detailed_description_block").kill(true)
     }
     //
     //
