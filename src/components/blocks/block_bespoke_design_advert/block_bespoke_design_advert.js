@@ -165,14 +165,15 @@ const Block_bespoke_design_advert = () => {
 
   useEffect(() => {
     let viewportHeight = window.innerHeight
+    let isMobile = window.innerWidth < 768
 
     let tl_gsap__sketch_playreel = gsap.timeline({
       scrollTrigger: {
         trigger: gsap__block_bespoke_design_advert,
         start: "-10% bottom",
         end: "bottom top",
-        // toggleActions: "play none none reset",
-        toggleActions: "play pause resume pause",
+        toggleActions: "play none none reset",
+        // toggleActions: "play pause resume pause",
         // markers: true,
         // end: `+=${window.innerWidth}`,
         // scrub: true,
@@ -190,8 +191,8 @@ const Block_bespoke_design_advert = () => {
       tl_gsap__sketch_playreel.to(
         gsap__sketch_group[index],
         {
-          left: "-300px",
-          duration: getRndInteger(8, 10),
+          left: isMobile ? "-160px" : "-300px",
+          duration: isMobile ? getRndInteger(6, 8) : getRndInteger(8, 10),
           // ease: "ease",
           rotationY: 350,
           repeat: -1,

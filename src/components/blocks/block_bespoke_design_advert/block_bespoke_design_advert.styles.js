@@ -25,7 +25,7 @@ export const Div__block_bespoke_design_advert = styled.div`
     align-items: center;
 
     ${css_breakpoints.max_mobile} {
-      padding: 510px 15px 0;
+      padding: 10px 15px 0;
     }
   }
 
@@ -93,12 +93,17 @@ export const Div__block_bespoke_design_advert = styled.div`
 
   .bespoke_design_gsap_scrolling_image_container {
     position: absolute;
-    width: calc(100vw - 20px);
+    width: calc(100% + 30px);
     height: 100vh;
     /* outline: 1px solid blue; */
     overflow: hidden;
     perspective: 1400px;
+
+    ${css_breakpoints.min_desktop} {
+      width: calc(100vw - 20px);
+    }
   }
+
   .offscreen_right {
     position: absolute;
     left: 105%;
@@ -108,21 +113,32 @@ export const Div__block_bespoke_design_advert = styled.div`
     transform-style: preserve-3d;
 
     .gsap_scrolling_img {
-      height: 287px;
-      width: 287px;
-      border: 10px solid white;
+      height: 150px;
+      width: 150px;
+      border: 5px solid white;
       /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+
+      ${css_breakpoints.min_desktop} {
+        height: 287px;
+        width: 287px;
+        border: 10px solid white;
+      }
     }
 
     > div {
       content: " ";
       position: absolute;
       top: 0;
-      width: 287px;
-      height: 287px;
+      width: 150px;
+      height: 150px;
       /* background-color: white; */
       background: linear-gradient(to bottom, #fdfbf7 0%, #cccac5 100%);
       transform: rotateY(180deg);
+
+      ${css_breakpoints.min_desktop} {
+        height: 287px;
+        width: 287px;
+      }
     }
   }
 
@@ -191,14 +207,19 @@ export const Div__block_bespoke_design_advert = styled.div`
     font-size: 19px;
     text-transform: uppercase;
     text-decoration: none;
-    background-color: hsl(43deg 12% 88% / 60%);
+    background-color: #b6926d;
     border: 2px solid #b49372;
+
+    ${css_breakpoints.max_mobile} {
+      color: white;
+    }
 
     ${css_breakpoints.min_desktop} {
       position: absolute;
       top: 830%;
       left: 62.5%;
       margin: 0;
+      background-color: hsl(43deg 12% 88% / 60%);
     }
   }
 `
