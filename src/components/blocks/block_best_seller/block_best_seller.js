@@ -99,8 +99,11 @@ const Block_best_seller = props => {
   }, [])
 
   const numberOfProducts = props.products.length
-  const isFlickityScrollable =
-    window.innerWidth < 600 ? true : numberOfProducts > 6
+
+  let isFlickityScrollable
+  if (typeof window !== `undefined`) {
+    isFlickityScrollable = window.innerWidth < 600 ? true : numberOfProducts > 6
+  }
 
   const flickityOptions = {
     prevNextButtons: false,
