@@ -73,7 +73,7 @@ export const Section__hero = styled.section`
 
     svg {
       display: block;
-      width: auto;``
+      width: auto;
       height: clamp(215px, 58vw, 733px);
       filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.3));
     }
