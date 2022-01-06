@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-const section_vertical_padding = "12vh"
+const section_vertical_padding = "12vh" // add this value in the scrolltrigger start point
 const section_horizontal_padding = "50px"
 const section_content_max_width = "1800px"
 

@@ -38,7 +38,7 @@ const Block_one_row_jewellery = () => {
       scrollTrigger: {
         trigger: gsap__image,
         // markers: true,
-        start: "top 80%",
+        start: "top 112%",
         scrub: 1,
       },
       // duration: 2,
