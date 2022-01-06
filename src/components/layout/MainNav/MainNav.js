@@ -144,7 +144,7 @@ const MainNav = () => {
     }
     let body_observer_options = {
       root: null, // relative to document viewport
-      rootMargin: "20%", // margin around root. Values are similar to css property. Unitless values not allowed
+      rootMargin: "0%", // margin around root. Values are similar to css property. Unitless values not allowed
       threshold: 1.0, // visible amount of item shown in relation to root
     }
     let bodyObserver = new IntersectionObserver(
