@@ -55,20 +55,27 @@ export const Section__hero = styled.section`
 
   .Section__hero__heading--handwritten {
     position: absolute;
-    top: 127%;
-    left: 30%;
-    font-size: clamp(60px, 13vw, 200px);
-    font-family: "Amalfi Coast", serif;
-    text-transform: none;
-    color: white;
-    text-shadow: 0px 2px 3px rgb(0 0 0 / 30%);
-    opacity: 0;
+    top: -54%;
+    left: 23%;
+    /* font-size: clamp(60px, 13vw, 200px); */
+    /* font-family: "Amalfi Coast", serif; */
+    /* text-transform: none; */
+    /* color: white; */
+    /* text-shadow: 0px 2px 3px rgb(0 0 0 / 30%); */
+    /* opacity: 0; */
     z-index: -1;
 
     ${css_breakpoints.min_desktop} {
-      top: 252%;
-      left: 27%;
+      top: -341%;
+      left: 22%;
       font-size: clamp(80px, 13vw, 200px);
+    }
+
+    svg {
+      display: block;
+      width: auto;``
+      height: clamp(215px, 58vw, 733px);
+      filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.3));
     }
   }
 `
