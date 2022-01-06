@@ -9,8 +9,8 @@ export const Styled_HeroImg = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
+  height: 103%;
+  width: 103%;
   min-height: 100vh;
 
   ${css_breakpoints.min_desktop} {

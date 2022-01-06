@@ -50,7 +50,8 @@ const Block_hero_images = () => {
 
     tl.from(".Section__hero__backgroundImg", {
       duration: 3,
-      scale: 1.1,
+      scale: 1.5,
+      opacity: 0,
       ease: "power2.out",
     })
     gsap.to(gsap_section_hero_img, {
@@ -63,6 +64,20 @@ const Block_hero_images = () => {
       },
       y: `+=${window.innerHeight / 4}`,
     })
+
+    // Mouse move hero image parallax
+    let heroImage = document.querySelector(".Section__hero__backgroundImg")
+    let heroImage_xratio =
+      (heroImage.offsetWidth - window.innerWidth) / window.innerWidth
+    let heroImage_yratio =
+      (heroImage.offsetHeight - window.innerHeight) / window.innerHeight
+
+    document.body.onmousemove = function (e) {
+      // console.log(e.pageX, e.pageY - window.scrollY)
+      heroImage.style.left = e.pageX * heroImage_xratio * -1 + "px"
+      heroImage.style.top =
+        (e.pageY - window.scrollY) * heroImage_yratio * -1 + "px"
+    }
 
     tl.to(
       ".Section__hero__heading",
