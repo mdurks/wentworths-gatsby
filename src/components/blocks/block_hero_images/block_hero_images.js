@@ -66,18 +66,19 @@ const Block_hero_images = () => {
     })
 
     // Mouse move hero image parallax
-    let heroImage = document.querySelector(".Section__hero__backgroundImg")
-    let heroImage_xratio =
+    const heroImage = document.querySelector(".Section__hero__backgroundImg")
+    const heroImage_xratio =
       (heroImage.offsetWidth - window.innerWidth) / window.innerWidth
-    let heroImage_yratio =
+    const heroImage_yratio =
       (heroImage.offsetHeight - window.innerHeight) / window.innerHeight
 
-    document.body.onmousemove = function (e) {
-      // console.log(e.pageX, e.pageY - window.scrollY)
+    const heroImageFunc = e => {
+      // console.log("heroImageFunc", e.pageX, e.pageY - window.scrollY)
       heroImage.style.left = e.pageX * heroImage_xratio * -1 + "px"
       heroImage.style.top =
         (e.pageY - window.scrollY) * heroImage_yratio * -1 + "px"
     }
+    heroImage.addEventListener("mousemove", heroImageFunc)
 
     tl.to(
       ".Section__hero__heading",

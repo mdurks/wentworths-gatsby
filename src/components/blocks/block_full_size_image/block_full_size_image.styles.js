@@ -24,8 +24,8 @@ export const Div__block_full_size_image = styled.div`
     transform: translate(-50%, -50%);
     object-fit: cover;
     */
-    width: 100%;
-    height: 100%;
+    width: 105%;
+    height: 105%;
 
     div {
       width: 100%;

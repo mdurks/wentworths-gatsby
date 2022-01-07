@@ -34,6 +34,7 @@ const Block_one_row_jewellery = () => {
   let gsap__image = null
 
   useEffect(() => {
+    // scrolling zoom effect on image
     gsap.from(".Section__hero__backgroundImg", {
       scrollTrigger: {
         trigger: gsap__image,
@@ -44,8 +45,29 @@ const Block_one_row_jewellery = () => {
       // duration: 2,
       scale: 1.3,
     })
-    //
-    //
+
+    // Mouse move hero image parallax
+    const mouseMoveParallaxTarget = document.querySelector(
+      ".block_full_size_image"
+    )
+    const mouseMoveParallaxTarget_xratio =
+      (mouseMoveParallaxTarget.offsetWidth - window.innerWidth) /
+      window.innerWidth
+    const mouseMoveParallaxTarget_yratio =
+      (window.innerHeight * 1.05 - window.innerHeight) / window.innerHeight
+
+    const mouseMoveParallaxTargetFunc = e => {
+      // console.log(e.pageX, e.pageY - window.scrollY)
+      mouseMoveParallaxTarget.style.left =
+        e.pageX * mouseMoveParallaxTarget_xratio * -1 + "px"
+      mouseMoveParallaxTarget.style.top =
+        (e.pageY - window.scrollY) * mouseMoveParallaxTarget_yratio * -1 + "px"
+    }
+    mouseMoveParallaxTarget.addEventListener(
+      "mousemove",
+      mouseMoveParallaxTargetFunc
+    )
+
     // Show/Hide main nav when this component in central view
     gsap.from(".Section__hero__backgroundImg", {
       scrollTrigger: {
@@ -74,14 +96,14 @@ const Block_one_row_jewellery = () => {
       <Div__block_full_size_image ref={e => (gsap__image = e)}>
         {typeof window !== "undefined" && window.innerWidth < 600 ? (
           <GraphImg
-            className="Section__hero__backgroundImg"
+            className="Section__hero__backgroundImg block_full_size_image"
             image={blockFullSizeImages[0].images[1]}
             transforms={["quality=value:80"]}
             maxWidth={2000}
           />
         ) : (
           <GraphImg
-            className="Section__hero__backgroundImg"
+            className="Section__hero__backgroundImg block_full_size_image"
             image={blockFullSizeImages[0].images[0]}
             transforms={["quality=value:80"]}
             maxWidth={2000}
