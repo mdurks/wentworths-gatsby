@@ -83,8 +83,6 @@ const IndexPage = () => {
         />
       ))}
 
-      <Block_full_size_image />
-
       {/* <Block_one_row_jewellery /> */}
 
       <Block_best_seller
@@ -92,6 +90,8 @@ const IndexPage = () => {
         category="engagement"
         products={products}
       />
+
+      <Block_full_size_image />
 
       <Block_bespoke_design_advert />
     </>
