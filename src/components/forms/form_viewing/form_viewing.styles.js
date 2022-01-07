@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import css_breakpoints from "../../../common/css_breakpoints"
 
 export const Section__contact_container = styled.section`
   //   position: fixed;
@@ -8,7 +9,7 @@ export const Section__contact_container = styled.section`
   //   height: calc(100% - 160px);
   //   font-size: 18px;
   //   overflow: hidden;
-  //   z-index: 10;
+  z-index: 20;
 
   .viewingContainer {
     &__openBtn {
@@ -33,13 +34,20 @@ export const Section__contact_container = styled.section`
     &__content {
       position: fixed;
       top: 0;
-      right: -660px;
-      width: 650px;
+      right: -100vw;
+      width: 100%;
       height: 100%;
       transition: all ease-in-out 0.4s;
-      backdrop-filter: blur(5px);
       /* box-shadow: 0px 0px 8px 4px rgb(0 0 0 / 33%); */
       z-index: 5;
+      overflow-y: scroll;
+
+      ${css_breakpoints.min_tablet} {
+        right: -660px;
+        width: 650px;
+        backdrop-filter: blur(5px);
+        overflow-y: visible;
+      }
 
       &.open {
         right: 0px;
@@ -48,33 +56,52 @@ export const Section__contact_container = styled.section`
 
     &__closeBtn {
       position: absolute;
-      top: 38px;
+      top: 12px;
       right: 10px;
       padding: 5px 15px;
       background: none;
       border-radius: 8px;
       color: #fff;
       font-size: 30px;
+
+      ${css_breakpoints.min_tablet} {
+        top: 38px;
+      }
     }
 
     &__title {
-      padding: 35px 100px 25px 50px;
-      font-size: 45px;
+      padding: 15px 60px 15px 20px;
+      font-size: 30px;
       font-family: "Playfair Display", serif;
       text-transform: none;
       color: #ffffff;
-      background-color: #996f159e;
+      background-color: hsl(41deg 32% 50%);
+
+      ${css_breakpoints.min_tablet} {
+        padding: 35px 100px 25px 50px;
+        font-size: 45px;
+        background-color: hsl(41deg 76% 34% / 62%);
+      }
     }
 
     &__glitterBar {
-      height: 20px;
+      height: 10px;
       background: hsl(43deg 67% 68%);
+
+      ${css_breakpoints.min_tablet} {
+        height: 20px;
+      }
     }
 
     &__form {
-      height: 100%;
-      padding: 40px 50px;
-      background: hsl(0deg 0% 100% / 70%);
+      padding: 20px 23px;
+      background: white;
+
+      ${css_breakpoints.min_tablet} {
+        height: 100%;
+        padding: 40px 50px;
+        background: hsl(0deg 0% 100% / 70%);
+      }
 
       p {
         margin-bottom: 20px;
@@ -83,27 +110,43 @@ export const Section__contact_container = styled.section`
 
     &__2col {
       display: flex;
-      margin: 0 -10px 30px;
+      flex-direction: column;
+      margin: 0 -10px 0;
+
+      ${css_breakpoints.min_tablet} {
+        flex-direction: row;
+        margin: 0 -10px 30px;
+      }
     }
 
     &__col {
-      flex: 1 0 50%;
+      flex: 1 0 100%;
       padding: 0 10px;
+      margin-bottom: 20px;
+
+      ${css_breakpoints.min_tablet} {
+        flex: 1 0 50%;
+        margin: 0;
+      }
     }
 
     &__label {
       display: block;
-      padding: 0 0 20px;
+      padding: 0 0 10px;
       color: hsl(43deg 100% 35%);
-      font-size: 20px;
-      /* font-weight: bold; */
+      font-size: 16px;
+
+      ${css_breakpoints.min_tablet} {
+        padding: 0 0 20px;
+        font-size: 20px;
+      }
     }
 
     &__input {
       display: block;
       width: 100%;
       padding: 15px 20px;
-      font-size: 18px;
+      font-size: 16px;
       color: grey;
       font-family: "Raleway", sans-serif;
       background: white;
@@ -115,6 +158,10 @@ export const Section__contact_container = styled.section`
       border-bottom-color: #adadad;
       border-radius: 5px;
       box-shadow: inset 3px 3px 10px 1px rgb(0 0 0 / 20%);
+
+      ${css_breakpoints.min_tablet} {
+        font-size: 18px;
+      }
 
       &:focus {
         outline: none;

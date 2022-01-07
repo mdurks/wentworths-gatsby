@@ -284,6 +284,9 @@ const MainNav = () => {
             <Li__mainNav__topLevelLink>
               <Button__topLevelLink
                 onClick={() => {
+                  // disable the webpage beneath the model from scrolling
+                  if (window.innerWidth < 768)
+                    document.body.classList.add("no_y_scroll")
                   appContext.setContactModalTitle("Contact")
                   appContext.setContactModalOpen(!appContext.contactModalOpen)
                 }}

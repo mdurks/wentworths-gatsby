@@ -767,6 +767,9 @@ const DetailsPage = ({
                 appContext.setProductName(product.name)
                 appContext.setProductUrl(pageContext.pageURL)
                 appContext.setContactModalOpen(!appContext.contactModalOpen)
+                // disable the webpage beneath the model from scrolling
+                if (window.innerWidth < 768)
+                  document.body.classList.add("no_y_scroll")
               }}
             >
               Book a viewing
@@ -778,6 +781,9 @@ const DetailsPage = ({
                 appContext.setProductName(product.name)
                 appContext.setProductUrl(pageContext.pageURL)
                 appContext.setContactModalOpen(!appContext.contactModalOpen)
+                // disable the webpage beneath the model from scrolling
+                if (window.innerWidth < 768)
+                  document.body.classList.add("no_y_scroll")
               }}
             >
               Enquire

@@ -35,6 +35,7 @@ const Form_viewing = () => {
         <button
           className="viewingContainer__closeBtn"
           onClick={() => {
+            document.body.classList.remove("no_y_scroll")
             appContext.setContactModalOpen(false)
 
             // setTimeout to allow modal close animation to finish
@@ -60,6 +61,9 @@ const Form_viewing = () => {
               name="Product_URL"
               value={`${siteMetadata.site.siteMetadata.url}${appContext.productUrl}`}
             ></input>
+          )}
+          {appContext.contactModalTitle === "Contact" && (
+            <p>Please fill in your contact details and message below.</p>
           )}
           {appContext.contactModalTitle === "Book a viewing" &&
             appContext.productName && (
