@@ -81,7 +81,7 @@ export const Nav__mainNav = styled.nav`
   /* For when we scroll down the page, shrink the nav and make bg white */
   .mainNav--shrink & {
     ${css_breakpoints.min_desktop} {
-      background: white;
+      background: #b3924c;
       /* box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.1); */
       padding: 0 50px;
     }
@@ -146,7 +146,7 @@ export const A__mainNav__logo = styled.a`
   ${css_breakpoints.min_desktop} {
     margin: 0 auto 0 0;
     .mainNav--shrink & {
-      color: black;
+      color: white;
     }
   }
 `
@@ -241,7 +241,7 @@ export const Button__topLevelLink = styled.button`
 
   ${css_breakpoints.min_desktop} {
     .mainNav--shrink & {
-      color: #5c5c5c;
+      color: white;
     }
   }
 `
@@ -266,7 +266,7 @@ export const Div__mainNav__subNavGroupWrapper = styled.div`
     overflow: hidden;
 
     .mainNav--shrink & {
-      top: 49px;
+      top: 78px;
     }
   }
 `
@@ -542,7 +542,7 @@ export const Li__mainNav__topLevelLink = styled.li`
         // white block behind button
         &:before {
           opacity: 1;
-          height: 125px;
+          height: 130px;
         }
 
         // coloured underline of link
