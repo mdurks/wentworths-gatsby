@@ -27,7 +27,7 @@ export const A_productItem = styled(Link)`
   position: relative;
   display: block;
   flex: 1 1 calc(50% - 10px);
-  /* height: 680px; */
+  /* height: 300px; */
   margin-bottom: 15px;
   overflow: hidden;
 
@@ -43,40 +43,39 @@ export const A_productItem = styled(Link)`
     }
   }
 
-  .graphcms-image-outer-wrapper,
+  .graphcms-image-outer-wrapper {
+    left: -0.75%;
+    top: -1%;
+    width: 101.5%;
+    height: 102%;
+  }
+
   .graphcms-image-wrapper {
-    height: 300px;
-    ${css_breakpoints.min_tablet} {
-      height: 100%;
-    }
+    height: 100%;
   }
 
   &:hover img {
-    left: -2.5% !important;
-    top: -2.5% !important;
-    width: 105% !important;
-    height: 105% !important;
+    left: -3% !important;
+    top: -3% !important;
+    width: 106% !important;
+    height: 106% !important;
   }
 
   img {
     /* object-fit: contain !important; */
-    transition: all ease-in-out 0.66s !important;
+    transition: all ease-in-out 0.55s !important;
   }
 `
 
 export const Div_product_name = styled.div`
   padding: 10px 20px 16px;
-  background: hsl(0deg 0% 100% / 75%);
+  background: hsl(0deg 0% 100% / 55%);
   backdrop-filter: blur(5px);
+  font-family: "Playfair Display", serif;
   text-align: center;
   text-transform: capitalize;
   line-height: 37px;
   transition: all ease-in-out 0.5s;
-
-  span {
-    padding-bottom: 5px;
-    border-bottom: 1px dashed #a1a1a1;
-  }
 
   ${css_breakpoints.min_tablet} {
     position: absolute;
@@ -84,6 +83,43 @@ export const Div_product_name = styled.div`
     width: 100%;
     padding: 20px;
     z-index: 1;
+  }
+
+  &:before,
+  &:after {
+    content: " ";
+    position: absolute;
+    top: -1px;
+    left: -0.5%;
+    width: 50.5%;
+    height: calc(100% + 2px);
+    background-color: hsl(0deg 0% 100% / 100%);
+    clip-path: inset(0% 0% 0% 100%);
+    opacity: 0;
+    z-index: -1;
+    transition: all ease-in-out 0.45s;
+  }
+  &:after {
+    left: 49.99%;
+    clip-path: inset(0% 100% 0% 0%);
+  }
+
+  :hover {
+    /* background: hsl(0deg 0% 100% / 80%); */
+    color: #977121;
+
+    &:before,
+    &:after {
+      opacity: 1;
+      background-color: hsl(0deg 0% 100% / 55%);
+    }
+    &:before {
+      clip-path: inset(0% 0% 0% 0%);
+    }
+    &:after {
+      width: 51%;
+      clip-path: inset(0% 0% 0% 0%);
+    }
   }
 
   ${A_productItem}:hover & {
