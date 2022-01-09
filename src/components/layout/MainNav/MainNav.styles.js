@@ -89,12 +89,14 @@ export const Nav__mainNav = styled.nav`
 
   /* Style nav bar for when we want to hide the nav bar e.g block_full_size_image component */
   .mainNav--shrink--transparent & {
-    /* background: #7b7262; */
+    background: transparent;
     /* opacity: 0; */
     top: -22px;
 
     > div > a {
-      padding-bottom: 0;
+      /* padding-bottom: 0; */
+      padding: 30px 20px 10px 20px;
+      background: #b3924c;
     }
     > div > ul {
       opacity: 0;
@@ -102,9 +104,11 @@ export const Nav__mainNav = styled.nav`
 
     &:hover {
       top: 0px;
+      background: #b3924c;
 
       > div > a {
-        padding-bottom: 20px;
+        /* padding-bottom: 20px; */
+        padding: 20px 60px 20px 20px;
       }
       > div > ul {
         opacity: 1;
