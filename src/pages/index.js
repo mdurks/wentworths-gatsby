@@ -60,7 +60,7 @@ const pageQuery = graphql`
           productType
           slug
           id
-          image {
+          productWindowImage {
             id
             url
             handle

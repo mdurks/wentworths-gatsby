@@ -17,7 +17,7 @@ export const Section_product_windows = styled.section`
 
 export const Div_productWrapper = styled.div`
   ${css_breakpoints.min_tablet} {
-    padding: 70px 0 60px;
+    padding: 90px 0 80px;
     display: flex;
     flex-wrap: wrap;
   }
@@ -26,20 +26,20 @@ export const Div_productWrapper = styled.div`
 export const A_productItem = styled(Link)`
   position: relative;
   display: block;
-  flex: 1 1 calc(50% - 5px);
+  flex: 1 1 calc(50% - 10px);
   /* height: 680px; */
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   overflow: hidden;
 
   ${css_breakpoints.min_tablet} {
     height: 40vh;
 
     &:nth-child(odd) {
-      margin-right: 5px;
+      margin-right: 10px;
     }
 
     &:nth-child(even) {
-      margin-left: 5px;
+      margin-left: 10px;
     }
   }
 

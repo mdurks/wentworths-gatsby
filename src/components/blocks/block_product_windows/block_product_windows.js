@@ -17,7 +17,7 @@ gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
 
 const Block_product_windows = props => {
-  console.log("products", props.products)
+  // console.log("products", props.products)
 
   useEffect(() => {
     // let tl_gsap = gsap.timeline({
@@ -51,7 +51,7 @@ const Block_product_windows = props => {
                 to={`/${item.categoryType[0]}/${item.productType}/${item.slug}/`}
               >
                 <GraphImg
-                  image={item.image[0]}
+                  image={item.productWindowImage}
                   transforms={["quality=value:80"]}
                   maxWidth={700}
                 />
