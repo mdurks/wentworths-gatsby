@@ -26,7 +26,8 @@ const Block_gradient_row_link = props => {
       let tl_gsap = gsap.timeline({
         scrollTrigger: {
           trigger: this_component_el,
-          start: window.innerHeight < 768 ? "top 50%" : "top 95%",
+          start: window.innerHeight < 768 ? "top 95%" : "top 95%",
+          // toggleActions: "play none none reset",
           toggleActions: "play none none none",
           // markers: true,
           // end: `+=${viewportWidth}`,
