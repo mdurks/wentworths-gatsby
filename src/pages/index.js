@@ -8,6 +8,7 @@ import { graphql, useStaticQuery } from "gatsby"
 // import Block_one_row_jewellery from "../components/blocks/block_one_row_jewellery/block_one_row_jewellery"
 
 import Block_hero_images from "../components/blocks/block_hero_images/block_hero_images"
+import Block_product_windows from "../components/blocks/block_product_windows/block_product_windows"
 import Block_single_image_text from "../components/blocks/block_single_image_text/block_single_image_text"
 import Block_gradient_row_link from "../components/blocks/block_gradient_row_link/block_gradient_row_link"
 import Block_best_seller from "../components/blocks/block_best_seller/block_best_seller"
@@ -52,15 +53,32 @@ const pageQuery = graphql`
         }
         bestSeller
       }
+      welcomes {
+        products {
+          name
+          categoryType
+          productType
+          slug
+          id
+          image {
+            id
+            url
+            handle
+            width
+            height
+          }
+        }
+      }
     }
   }
 `
 
 const IndexPage = () => {
   const {
-    gcms: { blockGradientRowLinks, products },
+    gcms: { blockGradientRowLinks, products, welcomes },
   } = useStaticQuery(pageQuery)
   // console.log("products", products)
+  // console.log("welcomes", welcomes[0].products)
   useEffect(() => {
     document.body.style.backgroundColor = "#fff"
     document.body.classList = "mainNav--normal"
@@ -71,6 +89,8 @@ const IndexPage = () => {
       <Block_hero_images />
 
       <Block_single_image_text />
+
+      <Block_product_windows products={welcomes[0].products} />
 
       {blockGradientRowLinks.map(el => (
         <Block_gradient_row_link
