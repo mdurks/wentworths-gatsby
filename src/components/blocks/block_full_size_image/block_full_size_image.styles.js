@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 const section_vertical_padding = "12vh" // add this value in the scrolltrigger start point
 const section_horizontal_padding = "50px"
@@ -8,7 +8,8 @@ export const Div__block_full_size_image = styled.div`
   position: relative;
   min-height: calc(100vh + ${section_vertical_padding});
   overflow: hidden;
-  padding: (${section_vertical_padding} / 2) ${section_horizontal_padding};
+  /* padding: calc(${section_vertical_padding} / 2) ${section_horizontal_padding}; */
+  border-bottom: 10px solid white;
 
   .graphcms-image-outer-wrapper {
     position: absolute !important;
