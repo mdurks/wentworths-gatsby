@@ -2,7 +2,7 @@ import styled from "styled-components"
 import css_breakpoints from "../../../common/css_breakpoints"
 
 export const Div__block_may_also_like = styled.div`
-  border-top: 10px solid white;
+  border-bottom: 10px solid white;
   background: #f4f3f1;
   text-align: center;
 
