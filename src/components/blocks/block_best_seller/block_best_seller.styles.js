@@ -6,9 +6,7 @@ export const Div__block_best_seller = styled.div`
   /* margin-bottom: 14px; */
   text-align: center;
   background-color: #e5e3de;
-  border: 10px solid white;
-  border-left: none;
-  border-right: none;
+  border-bottom: 10px solid white;
 
   ${css_breakpoints.min_desktop} {
   }
