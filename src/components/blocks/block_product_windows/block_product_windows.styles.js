@@ -3,7 +3,10 @@ import css_breakpoints from "../../../common/css_breakpoints"
 import Link from "gatsby-plugin-transition-link"
 
 export const Section_product_windows = styled.section`
+  padding: 20px 0 0;
+
   ${css_breakpoints.min_desktop} {
+    padding: 0;
   }
 
   h1 {
@@ -74,7 +77,6 @@ export const Div_product_name = styled.div`
   font-family: "Playfair Display", serif;
   text-align: center;
   text-transform: capitalize;
-  line-height: 37px;
   transition: all ease-in-out 0.5s;
 
   ${css_breakpoints.min_tablet} {
