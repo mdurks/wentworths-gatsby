@@ -86,7 +86,7 @@ export const Section__hero = styled.section`
     width: 100%;
 
     ${css_breakpoints.min_desktop} {
-      filter: hue-rotate(274deg);
+      /* filter: hue-rotate(274deg); */
       max-height: fit-content;
     }
   }
