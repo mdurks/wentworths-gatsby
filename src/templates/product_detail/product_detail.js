@@ -79,6 +79,7 @@ const DetailsPage = ({
     //
     gsap.to(".Styled_Img", {
       scrollTrigger: {
+        id: "Styled_Img",
         trigger: document.body,
         start: "top top",
         toggleActions: "play none none none",
@@ -126,21 +127,20 @@ const DetailsPage = ({
     //
     // Sticky descriptive text
     //
-    if (window.innerWidth >= 1024) {
+    let el = document.querySelector(".detailed_description_text")
+    let elParent = document.querySelector(".detailed_description_text")
+      .parentNode
+
+    if (window.innerWidth >= 1024 && el && elParent) {
       let stick_detailed_description_text = () => {
-        let el = document.querySelector(".detailed_description_text")
         el.style.position = ""
         el.style.top = ""
         el.style.top = el.offsetTop + "px"
-        el.style.width =
-          document.querySelector(".detailed_description_text").parentNode
-            .offsetWidth -
-          100 +
-          "px"
+        el.style.width = elParent.offsetWidth - 100 + "px"
         el.style.position = "fixed"
       }
       let un_stick_detailed_description_text = () => {
-        let el = document.querySelector(".detailed_description_text")
+        // let el = document.querySelector(".detailed_description_text")
         el.style.position = ""
         el.style.top = ""
         el.style.width = ""
@@ -150,7 +150,7 @@ const DetailsPage = ({
         null
       )
       let stick_to_bottom_detailed_description_text = () => {
-        let el = document.querySelector(".detailed_description_text")
+        // let el = document.querySelector(".detailed_description_text")
         el.style.position = "relative"
         el.style.top =
           window.scrollY -
@@ -260,11 +260,10 @@ const DetailsPage = ({
     // when this component unmounts:
     return () => {
       // ScrollTrigger.getById("detailed_description_block").kill(true)
-
-      let Alltrigger = ScrollTrigger.getAll()
-      for (let i = 0; i < Alltrigger.length; i++) {
-        Alltrigger[i].kill(false)
-      }
+      // let Alltrigger = ScrollTrigger.getAll()
+      // for (let i = 0; i < Alltrigger.length; i++) {
+      //   Alltrigger[i].kill(false)
+      // }
     }
     //
     //
