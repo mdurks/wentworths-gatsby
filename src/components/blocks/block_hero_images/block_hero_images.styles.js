@@ -80,4 +80,14 @@ export const Section__hero = styled.section`
       filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.3));
     }
   }
+
+  video {
+    max-height: 100%;
+    width: 100%;
+
+    ${css_breakpoints.min_desktop} {
+      filter: hue-rotate(274deg);
+      max-height: fit-content;
+    }
+  }
 `

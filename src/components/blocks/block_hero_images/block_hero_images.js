@@ -29,6 +29,12 @@ const pageQuery = graphql`
           width
           height
         }
+        videoDesktop {
+          url
+        }
+        videoMobile {
+          url
+        }
       }
     }
   }
@@ -38,6 +44,8 @@ const Block_hero_images = () => {
   const {
     gcms: { blockHeroImages },
   } = useStaticQuery(pageQuery)
+
+  console.log("blockHeroImages", blockHeroImages[0].videoDesktop.url)
 
   let gsap_section_hero = null
   let gsap_section_hero_img = null
@@ -181,6 +189,23 @@ const Block_hero_images = () => {
     )
   }, [])
 
+  const supports_video = () => {
+    return !!document.createElement("video").canPlayType
+  }
+
+  const supports_h264_baseline_video = () => {
+    if (!supports_video()) {
+      return false
+    }
+    var v = document.createElement("video")
+    return v.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"')
+  }
+
+  const videoSrc =
+    window.innerWidth < 768
+      ? blockHeroImages[0].videoMobile.url
+      : blockHeroImages[0].videoDesktop.url
+
   return (
     <>
       <Section__hero
@@ -191,16 +216,22 @@ const Block_hero_images = () => {
         }}
       >
         <Styled_HeroImg ref={e => (gsap_section_hero_img = e)}>
-          <GraphImg
-            className="Section__hero__backgroundImg"
-            image={
-              typeof window !== "undefined" && window.innerWidth < 600
-                ? blockHeroImages[0].imagesMobile[0]
-                : blockHeroImages[0].images[0]
-            }
-            transforms={["quality=value:80"]}
-            maxWidth={2000}
-          />
+          {supports_h264_baseline_video ? (
+            <video loop autoplay muted className="Section__hero__backgroundImg">
+              <source src={videoSrc} type="video/mp4" />
+            </video>
+          ) : (
+            <GraphImg
+              className="Section__hero__backgroundImg"
+              image={
+                typeof window !== "undefined" && window.innerWidth < 600
+                  ? blockHeroImages[0].imagesMobile[0]
+                  : blockHeroImages[0].images[0]
+              }
+              transforms={["quality=value:80"]}
+              maxWidth={2000}
+            />
+          )}
         </Styled_HeroImg>
         <Styled_SiteContainer>
           <p class="Section__hero__heading">
