@@ -45,13 +45,23 @@ const Block_hero_images = () => {
     gcms: { blockHeroImages },
   } = useStaticQuery(pageQuery)
 
+  console.log("videoMobile", blockHeroImages[0].videoMobile.url)
+  console.log("videoDesktop", blockHeroImages[0].videoDesktop.url)
+
+  console.log("innerWidth", typeof window !== "undefined" && window.innerWidth)
+
+  const videoSrc =
+    typeof window !== "undefined" && window.innerWidth < 768
+      ? blockHeroImages[0].videoMobile.url
+      : blockHeroImages[0].videoDesktop.url
+
+  console.log("videoSrc", videoSrc)
+
   let gsap_section_hero = null
   let gsap_section_hero_img = null
 
   const tl = gsap.timeline()
   const tl_handwriting = gsap.timeline()
-
-  let videoSrc
 
   useEffect(() => {
     let viewportWidth = window.innerWidth
@@ -187,13 +197,6 @@ const Block_hero_images = () => {
       { duration: 0.8, strokeDashoffset: 0, scale: 1 },
       "-=0.6"
     )
-
-    videoSrc =
-      typeof window !== "undefined" && window.innerWidth < 768
-        ? blockHeroImages[0].videoMobile.url
-        : blockHeroImages[0].videoDesktop.url
-
-    console.log("heroblock images remount")
   }, [])
 
   const supports_video = () => {
@@ -207,8 +210,6 @@ const Block_hero_images = () => {
     var v = document.createElement("video")
     return v.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"')
   }
-
-  console.log("videoSrc", videoSrc)
 
   return (
     <>
@@ -228,7 +229,8 @@ const Block_hero_images = () => {
                 //     ? blockHeroImages[0].videoMobile.url
                 //     : blockHeroImages[0].videoDesktop.url
                 // }
-                src={blockHeroImages[0].videoMobile.url}
+                // src={blockHeroImages[0].videoMobile.url}
+                src={videoSrc}
                 type="video/mp4"
               />
             </video>
