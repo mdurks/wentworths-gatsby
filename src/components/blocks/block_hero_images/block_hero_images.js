@@ -51,6 +51,8 @@ const Block_hero_images = () => {
   const tl = gsap.timeline()
   const tl_handwriting = gsap.timeline()
 
+  let videoSrc
+
   useEffect(() => {
     let viewportWidth = window.innerWidth
 
@@ -186,6 +188,11 @@ const Block_hero_images = () => {
       "-=0.6"
     )
 
+    videoSrc =
+      typeof window !== "undefined" && window.innerWidth < 768
+        ? blockHeroImages[0].videoMobile.url
+        : blockHeroImages[0].videoDesktop.url
+
     console.log("heroblock images remount")
   }, [])
 
@@ -201,11 +208,6 @@ const Block_hero_images = () => {
     return v.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"')
   }
 
-  const videoSrc =
-    typeof window !== "undefined" && window.innerWidth < 768
-      ? blockHeroImages[0].videoMobile.url
-      : blockHeroImages[0].videoDesktop.url
-
   console.log("videoSrc", videoSrc)
 
   return (
@@ -220,7 +222,14 @@ const Block_hero_images = () => {
         <Styled_HeroImg ref={e => (gsap_section_hero_img = e)}>
           {supports_h264_baseline_video ? (
             <video loop autoplay muted className="Section__hero__backgroundImg">
-              <source src={videoSrc} type="video/mp4" />
+              <source
+                src={
+                  typeof window !== "undefined" && window.innerWidth < 768
+                    ? blockHeroImages[0].videoMobile.url
+                    : blockHeroImages[0].videoDesktop.url
+                }
+                type="video/mp4"
+              />
             </video>
           ) : (
             <GraphImg
