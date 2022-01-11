@@ -209,76 +209,79 @@ const Block_bespoke_design_advert = () => {
         id: "message",
         trigger: gsap__block_bespoke_design_advert,
         start: isMobile ? "top bottom" : "15% bottom",
-        toggleActions: "play none none none",
-        // toggleActions: "play none none reset",
+        // toggleActions: "play none none none",
+        toggleActions: "play none none reset",
         // markers: true,
       },
     })
-    gsap.set(".finalImageOne", {
-      top: "-2632%",
-      rotationX: 0,
-      rotationY: 260,
-      rotationZ: 363,
-    })
-    tl_gsap_closing_message.to(".finalImageOne", {
-      top: "-922%",
-      rotationX: 0,
-      rotationY: 0,
-      rotationZ: 363,
-      duration: 1.5,
-    })
-    gsap.set(".finalImageTwo", {
-      opacity: 0,
-      top: "-922%",
-      left: "38%",
-      width: "287px",
-      height: "287px",
-      transform: "rotate(2.68deg)",
-    })
-    tl_gsap_closing_message.to(
-      ".finalImageTwo",
-      {
-        opacity: 1,
-        top: "-523%",
-        left: "7%",
-        width: "507px",
-        height: "511px",
-        transform: "rotate(-7.38deg)",
-        duration: 1.25,
-      },
-      "-=0.25"
-    )
-    gsap.set(".finalImageTwo .graphcms-image-outer-wrapper", {
-      opacity: 0,
-    })
-    tl_gsap_closing_message.to(
-      ".finalImageTwo .graphcms-image-outer-wrapper",
-      {
-        opacity: 1,
-        duration: 1,
-        ease: "power3.in",
-      },
-      "-=1.25"
-    )
-    tl_gsap_closing_message.to(
-      ".finalImageTwo",
-      {
-        scale: 1.5,
-        duration: 0.3,
-      },
-      "-=1.24"
-    )
-    tl_gsap_closing_message.to(
-      ".finalImageTwo",
-      {
-        scale: 1,
-        duration: 0.6,
-      },
-      "-=0.9"
-    )
-    tl_gsap_closing_message.to(".finalImageTwo, .finalImageOne", {
-      boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-    })
+    if (!isMobile) {
+      gsap.set(".finalImageOne", {
+        top: "-2632%",
+        rotationX: 0,
+        rotationY: 260,
+        rotationZ: 363,
+      })
+      tl_gsap_closing_message.to(".finalImageOne", {
+        top: "-922%",
+        rotationX: 0,
+        rotationY: 0,
+        rotationZ: 363,
+        duration: 1.5,
+      })
+      gsap.set(".finalImageTwo", {
+        opacity: 0,
+        top: "-922%",
+        left: "38%",
+        width: "287px",
+        height: "287px",
+        transform: "rotate(2.68deg)",
+      })
+      tl_gsap_closing_message.to(
+        ".finalImageTwo",
+        {
+          opacity: 1,
+          top: "-523%",
+          left: "7%",
+          width: "507px",
+          height: "511px",
+          transform: "rotate(-7.38deg)",
+          duration: 1.25,
+        },
+        "-=0.25"
+      )
+      gsap.set(".finalImageTwo .graphcms-image-outer-wrapper", {
+        opacity: 0,
+      })
+      tl_gsap_closing_message.to(
+        ".finalImageTwo .graphcms-image-outer-wrapper",
+        {
+          opacity: 1,
+          duration: 1,
+          ease: "power3.in",
+        },
+        "-=1.25"
+      )
+      tl_gsap_closing_message.to(
+        ".finalImageTwo",
+        {
+          scale: 1.5,
+          duration: 0.3,
+        },
+        "-=1.24"
+      )
+      tl_gsap_closing_message.to(
+        ".finalImageTwo",
+        {
+          scale: 1,
+          duration: 0.6,
+        },
+        "-=0.9"
+      )
+      tl_gsap_closing_message.to(".finalImageTwo, .finalImageOne", {
+        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+      })
+    }
+
     gsap.set(".bespoke_design_heading1", {
       x: 20,
       clipPath: "inset(0% 100% -50% 0%)",
@@ -290,7 +293,7 @@ const Block_bespoke_design_advert = () => {
         clipPath: "inset(0% 0% -50% 0%)",
         duration: 0.75,
       },
-      isMobile ? "-=2" : "-=0.5"
+      "-=0.5"
     )
     gsap.set(".bespoke_design_heading2", {
       x: 20,
@@ -303,7 +306,7 @@ const Block_bespoke_design_advert = () => {
         clipPath: "inset(0% 0% -50% 0%)",
         duration: 1.5,
       },
-      isMobile ? "-=1.5" : "+=0.1"
+      "+=0.1"
     )
     gsap.set(".bespoke_design_heading3", {
       x: 20,
@@ -316,7 +319,7 @@ const Block_bespoke_design_advert = () => {
         clipPath: "inset(0% 0% -50% 0%)",
         duration: 1.25,
       },
-      isMobile ? "-=0.75" : "-=0.25"
+      "-=0.25"
     )
     gsap.set(".bespoke_design_link", {
       opacity: 0,
@@ -328,7 +331,7 @@ const Block_bespoke_design_advert = () => {
         opacity: 1,
         y: 0,
       },
-      isMobile ? "-=0.75" : "-=0.5"
+      "-=0.5"
     )
 
     // return function to kill timeline on dismount

@@ -30,15 +30,19 @@ export const Div__block_bespoke_design_advert = styled.div`
   }
 
   .finalImageOne {
-    position: absolute;
-    top: -40px;
-    right: 0;
-    height: 187px;
-    width: auto;
-    background: white;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0);
-    transform: rotate(2.68deg);
-    transform-style: preserve-3d;
+    display: none;
+
+    ${css_breakpoints.min_tablet} {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      height: 187px;
+      width: auto;
+      background: white;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0);
+      transform: rotate(2.68deg);
+      transform-style: preserve-3d;
+    }
 
     ${css_breakpoints.min_desktop} {
       position: absolute;
@@ -57,27 +61,33 @@ export const Div__block_bespoke_design_advert = styled.div`
     }
 
     .finalImageOne_backface {
-      content: " ";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, #fdfbf7 0%, #cccac5 100%);
+      display: none;
+      ${css_breakpoints.min_tablet} {
+        content: " ";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, #fdfbf7 0%, #cccac5 100%);
+      }
     }
   }
 
   .finalImageTwo {
-    position: absolute;
-    top: 150px;
-    left: 0;
-    height: 316px;
-    width: auto;
-    background: white;
-    border: 10px solid white;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0);
-    transform: rotate(-7.38deg);
+    display: none;
 
+    ${css_breakpoints.min_tablet} {
+      position: absolute;
+      top: 150px;
+      left: 0;
+      height: 316px;
+      width: auto;
+      background: white;
+      border: 10px solid white;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0);
+      transform: rotate(-7.38deg);
+    }
     ${css_breakpoints.min_desktop} {
       position: absolute;
       top: -523%;
