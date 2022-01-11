@@ -169,11 +169,12 @@ const Block_bespoke_design_advert = () => {
 
     let tl_gsap__sketch_playreel = gsap.timeline({
       scrollTrigger: {
+        id: "sketches",
         trigger: gsap__block_bespoke_design_advert,
-        start: "-10% bottom",
+        start: window.innerWidth < 768 ? "-100px bottom" : "-10% bottom",
         end: "bottom top",
-        toggleActions: "play none none reset",
-        // toggleActions: "play pause resume pause",
+        // toggleActions: "play none none reset",
+        toggleActions: "play pause resume none",
         // markers: true,
         // end: `+=${window.innerWidth}`,
         // scrub: true,
@@ -192,7 +193,7 @@ const Block_bespoke_design_advert = () => {
         gsap__sketch_group[index],
         {
           left: isMobile ? "-160px" : "-300px",
-          duration: isMobile ? getRndInteger(6, 8) : getRndInteger(8, 10),
+          duration: isMobile ? getRndInteger(6, 8) : getRndInteger(10, 12),
           // ease: "ease",
           rotationY: 350,
           repeat: -1,
@@ -201,12 +202,14 @@ const Block_bespoke_design_advert = () => {
       )
     })
 
+    tl_gsap__sketch_playreel.progress(0.25)
+
     const tl_gsap_closing_message = gsap.timeline({
       scrollTrigger: {
+        id: "message",
         trigger: gsap__block_bespoke_design_advert,
         start: "15% bottom",
-        end: "bottom top",
-        toggleActions: "play none none none",
+        toggleActions: "play none none restart",
         // toggleActions: "play pause resume pause",
         // markers: true,
       },
@@ -287,7 +290,7 @@ const Block_bespoke_design_advert = () => {
         clipPath: "inset(0% 0% -50% 0%)",
         duration: 0.75,
       },
-      "-=0.5"
+      window.innerWidth < 768 ? "-=2" : "-=0.5"
     )
     gsap.set(".bespoke_design_heading2", {
       x: 20,
