@@ -223,11 +223,12 @@ const Block_hero_images = () => {
           {supports_h264_baseline_video ? (
             <video loop autoplay muted className="Section__hero__backgroundImg">
               <source
-                src={
-                  typeof window !== "undefined" && window.innerWidth < 768
-                    ? blockHeroImages[0].videoMobile.url
-                    : blockHeroImages[0].videoDesktop.url
-                }
+                // src={
+                //   typeof window !== "undefined" && window.innerWidth < 768
+                //     ? blockHeroImages[0].videoMobile.url
+                //     : blockHeroImages[0].videoDesktop.url
+                // }
+                src={blockHeroImages[0].videoMobile.url}
                 type="video/mp4"
               />
             </video>
