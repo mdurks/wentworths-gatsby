@@ -82,7 +82,7 @@ export const Section__hero = styled.section`
   }
 
   video {
-    max-height: 100%;
+    /* max-height: 100%; */
     width: 100%;
 
     ${css_breakpoints.min_desktop} {
