@@ -292,8 +292,9 @@ const Block_bespoke_design_advert = () => {
         x: 0,
         clipPath: "inset(0% 0% -50% 0%)",
         duration: 0.75,
+        delay: isMobile ? 0.75 : 0,
       },
-      "-=0.5"
+      isMobile ? "-=0" : "-=0.5"
     )
     gsap.set(".bespoke_design_heading2", {
       x: 20,
