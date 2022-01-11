@@ -171,7 +171,7 @@ const Block_bespoke_design_advert = () => {
       scrollTrigger: {
         id: "sketches",
         trigger: gsap__block_bespoke_design_advert,
-        start: window.innerWidth < 768 ? "-100px bottom" : "-10% bottom",
+        start: isMobile ? "-100px bottom" : "-10% bottom",
         end: "bottom top",
         // toggleActions: "play none none reset",
         toggleActions: "play pause resume none",
@@ -208,7 +208,7 @@ const Block_bespoke_design_advert = () => {
       scrollTrigger: {
         id: "message",
         trigger: gsap__block_bespoke_design_advert,
-        start: "15% bottom",
+        start: isMobile ? "top bottom" : "15% bottom",
         toggleActions: "play none none restart",
         // toggleActions: "play pause resume pause",
         // markers: true,
@@ -290,7 +290,7 @@ const Block_bespoke_design_advert = () => {
         clipPath: "inset(0% 0% -50% 0%)",
         duration: 0.75,
       },
-      window.innerWidth < 768 ? "-=2" : "-=0.5"
+      isMobile ? "-=2" : "-=0.5"
     )
     gsap.set(".bespoke_design_heading2", {
       x: 20,
