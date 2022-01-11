@@ -259,7 +259,12 @@ const DetailsPage = ({
     //
     // when this component unmounts:
     return () => {
-      ScrollTrigger.getById("detailed_description_block").kill(true)
+      // ScrollTrigger.getById("detailed_description_block").kill(true)
+
+      let Alltrigger = ScrollTrigger.getAll()
+      for (let i = 0; i < Alltrigger.length; i++) {
+        Alltrigger[i].kill(false)
+      }
     }
     //
     //
