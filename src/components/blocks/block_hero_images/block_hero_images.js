@@ -202,7 +202,7 @@ const Block_hero_images = () => {
   }
 
   const videoSrc =
-    window.innerWidth < 768
+    typeof window !== "undefined" && window.innerWidth < 768
       ? blockHeroImages[0].videoMobile.url
       : blockHeroImages[0].videoDesktop.url
 
