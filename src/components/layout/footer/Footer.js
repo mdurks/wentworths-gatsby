@@ -29,8 +29,8 @@ const Footer = () => {
       // tablet / desktop:
       //
     } else {
-      const footer_timeline = gsap.timeline({
-        paused: true,
+      let footer_timeline = gsap.timeline({
+        // paused: true,
         scrollTrigger: {
           trigger: ".footerContainer",
           // markers: true,
@@ -46,6 +46,7 @@ const Footer = () => {
           y: "25px",
         })
       }
+
       footer_timeline.to(".animate_footer_items_1", {
         duration: 0.6,
         stagger: 0.15,

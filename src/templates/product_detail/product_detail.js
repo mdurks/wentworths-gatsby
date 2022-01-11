@@ -40,6 +40,8 @@ const DetailsPage = ({
 }) => {
   const appContext = useAppContext()
 
+  ScrollTrigger.refresh()
+
   useEffect(() => {
     //
     //
