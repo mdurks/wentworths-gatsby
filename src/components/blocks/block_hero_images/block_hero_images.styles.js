@@ -36,7 +36,7 @@ export const Section__hero = styled.section`
 
   .Section__hero__heading {
     position: absolute;
-    top: 29%;
+    top: 23%;
     left: 0;
     margin: 0;
     font-size: clamp(26px, 5vw, 52px);
@@ -49,8 +49,8 @@ export const Section__hero = styled.section`
     pointer-events: none;
 
     ${css_breakpoints.min_desktop} {
-      top: 26%;
-      left: 27%;
+      top: 51%;
+      left: 25%;
     }
   }
 
@@ -77,7 +77,7 @@ export const Section__hero = styled.section`
       display: block;
       width: auto;
       height: clamp(215px, 58vw, 733px);
-      filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.3));
+      /* filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.3)); */
     }
   }
 
