@@ -55,27 +55,31 @@ export const Nav__mainNav = styled.nav`
   left: 0;
   width: 100%;
   padding: 0;
-  background: linear-gradient(0deg, #6db2c300 0%, #6db2c3 100%);
+  /* background: linear-gradient(0deg, #6db2c300 0%, #6db2c3 100%); */
   transition: all ease-out 0.7s;
 
   ${css_breakpoints.min_desktop} {
     z-index: 2;
     position: fixed;
     height: auto;
-    background: linear-gradient(0deg, #6db2c300 0%, #6db2c3 100%);
-    padding: 50px 50px 80px;
+    /* background: linear-gradient(0deg, #6db2c300 0%, #6db2c3 100%); */
+    padding: 50px 50px 0;
+  }
+
+  &:hover {
+    background: #b3924c;
   }
 
   .showMobileNav & {
     z-index: 5;
     background: #3d8799;
     height: 100%;
-    background: linear-gradient(0deg, #3d8799 99.9%, #6db2c3 100%);
+    /* background: linear-gradient(0deg, #3d8799 99.9%, #6db2c3 100%); */
   }
 
   /* Style nav bar when on the product pages */
   .mainNav--brown & {
-    background: linear-gradient(0deg, #6db2c300 0%, #7b7262 100%);
+    /* background: linear-gradient(0deg, #6db2c300 0%, #7b7262 100%); */
   }
 
   /* For when we scroll down the page, shrink the nav and make bg white */
@@ -139,12 +143,16 @@ export const A__mainNav__logo = styled.a`
   font-size: 22px;
   text-transform: uppercase;
   text-decoration: none !important;
-  color: white;
+  color: #a57c24;
   transition: all ease 0.5s;
   z-index: 5;
 
   &:hover {
     color: black;
+  }
+
+  .mainNav:hover & {
+    color: white;
   }
 
   ${css_breakpoints.min_desktop} {
@@ -195,7 +203,7 @@ export const Button__topLevelLink = styled.button`
   padding: 20px 20px;
   border: none;
   background-color: transparent;
-  color: white;
+  color: #a57c24;
   font-family: "Raleway", sans-serif;
   font-size: 16px;
   font-weight: 500;
@@ -210,6 +218,10 @@ export const Button__topLevelLink = styled.button`
 
   ${css_breakpoints.max_desktop} {
     outline: none;
+  }
+
+  .mainNav:hover & {
+    color: white;
   }
 
   // white block behind button
