@@ -33,6 +33,7 @@ export const Div__block_bespoke_design_advert = styled.div`
     display: none;
 
     ${css_breakpoints.min_tablet} {
+      display: block;
       position: absolute;
       top: -40px;
       right: 0;
@@ -62,7 +63,9 @@ export const Div__block_bespoke_design_advert = styled.div`
 
     .finalImageOne_backface {
       display: none;
+
       ${css_breakpoints.min_tablet} {
+        display: block;
         content: " ";
         position: absolute;
         top: 0;
@@ -78,6 +81,7 @@ export const Div__block_bespoke_design_advert = styled.div`
     display: none;
 
     ${css_breakpoints.min_tablet} {
+      display: block;
       position: absolute;
       top: 150px;
       left: 0;

@@ -209,8 +209,8 @@ const Block_bespoke_design_advert = () => {
         id: "message",
         trigger: gsap__block_bespoke_design_advert,
         start: isMobile ? "top bottom" : "15% bottom",
-        // toggleActions: "play none none none",
-        toggleActions: "play none none reset",
+        toggleActions: "play none none none",
+        // toggleActions: "play none none reset",
         // markers: true,
       },
     })
