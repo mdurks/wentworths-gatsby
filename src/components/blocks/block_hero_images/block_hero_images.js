@@ -45,8 +45,6 @@ const Block_hero_images = () => {
     gcms: { blockHeroImages },
   } = useStaticQuery(pageQuery)
 
-  console.log("blockHeroImages", blockHeroImages[0].videoDesktop.url)
-
   let gsap_section_hero = null
   let gsap_section_hero_img = null
 
@@ -187,6 +185,8 @@ const Block_hero_images = () => {
       { duration: 0.8, strokeDashoffset: 0, scale: 1 },
       "-=0.6"
     )
+
+    console.log("heroblock images remount")
   }, [])
 
   const supports_video = () => {
@@ -205,6 +205,8 @@ const Block_hero_images = () => {
     typeof window !== "undefined" && window.innerWidth < 768
       ? blockHeroImages[0].videoMobile.url
       : blockHeroImages[0].videoDesktop.url
+
+  console.log("videoSrc", videoSrc)
 
   return (
     <>

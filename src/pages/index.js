@@ -2,6 +2,8 @@ import React from "react"
 import { useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
+import { gsap, ScrollTrigger } from "gsap/all"
+
 // import Layout from "../components/layout"
 // import Snipcart from "../components/snipcart"
 // import Image_text_box from "../components/image_text_box"
@@ -14,6 +16,9 @@ import Block_gradient_row_link from "../components/blocks/block_gradient_row_lin
 import Block_best_seller from "../components/blocks/block_best_seller/block_best_seller"
 import Block_full_size_image from "../components/blocks/block_full_size_image/block_full_size_image"
 import Block_bespoke_design_advert from "../components/blocks/block_bespoke_design_advert/block_bespoke_design_advert"
+
+gsap.registerPlugin(ScrollTrigger)
+gsap.core.globals("ScrollTrigger", ScrollTrigger)
 
 const pageQuery = graphql`
   {
@@ -82,6 +87,8 @@ const IndexPage = () => {
   useEffect(() => {
     document.body.style.backgroundColor = "#fff"
     document.body.classList = "mainNav--normal"
+
+    ScrollTrigger.refresh()
   }, [])
 
   return (
