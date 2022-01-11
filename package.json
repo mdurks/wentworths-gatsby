@@ -20,7 +20,7 @@
     "gatsby-source-filesystem": "^2.11.1",
     "gatsby-source-graphql": "^2.11.0",
     "gatsby-transformer-sharp": "^2.12.1",
-    "gsap": "^3.6.1",
+    "gsap": "^3.9.1",
     "preact": "^10.5.13",
     "preact-render-to-string": "^5.1.18",
     "prop-types": "^15.7.2",

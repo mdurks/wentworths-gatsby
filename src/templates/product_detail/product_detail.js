@@ -656,7 +656,6 @@ const DetailsPage = ({
   //
   //
   //
-  //
   return (
     <>
       <Div__detail_hero_block>
