@@ -37,6 +37,7 @@ export const Styled_footer = styled.footer`
   }
 
   .heading {
+    position: relative;
     margin: 0 0 20px;
     padding: 0 0 10px 20px;
     font-size: 25px;
