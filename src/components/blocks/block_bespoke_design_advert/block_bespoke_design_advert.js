@@ -211,7 +211,7 @@ const Block_bespoke_design_advert = () => {
         start: isMobile ? "top bottom" : "15% bottom",
         toggleActions: "play none none restart",
         // toggleActions: "play pause resume pause",
-        // markers: true,
+        markers: true,
       },
     })
     gsap.set(".finalImageOne", {
