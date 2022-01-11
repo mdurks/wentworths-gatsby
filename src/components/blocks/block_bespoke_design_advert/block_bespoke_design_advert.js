@@ -209,9 +209,9 @@ const Block_bespoke_design_advert = () => {
         id: "message",
         trigger: gsap__block_bespoke_design_advert,
         start: isMobile ? "top bottom" : "15% bottom",
-        toggleActions: "play none none restart",
-        // toggleActions: "play pause resume pause",
-        markers: true,
+        toggleActions: "play none none none",
+        // toggleActions: "play none none reset",
+        // markers: true,
       },
     })
     gsap.set(".finalImageOne", {
@@ -303,7 +303,7 @@ const Block_bespoke_design_advert = () => {
         clipPath: "inset(0% 0% -50% 0%)",
         duration: 1.5,
       },
-      "+=0.1"
+      isMobile ? "-=1.5" : "+=0.1"
     )
     gsap.set(".bespoke_design_heading3", {
       x: 20,
@@ -316,7 +316,7 @@ const Block_bespoke_design_advert = () => {
         clipPath: "inset(0% 0% -50% 0%)",
         duration: 1.25,
       },
-      "-=0.25"
+      isMobile ? "-=0.75" : "-=0.25"
     )
     gsap.set(".bespoke_design_link", {
       opacity: 0,
@@ -328,7 +328,7 @@ const Block_bespoke_design_advert = () => {
         opacity: 1,
         y: 0,
       },
-      "-=0.5"
+      isMobile ? "-=0.75" : "-=0.5"
     )
 
     // return function to kill timeline on dismount
