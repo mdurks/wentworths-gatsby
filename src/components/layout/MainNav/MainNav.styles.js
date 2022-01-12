@@ -19,22 +19,33 @@ export const Button__burgerBtn = styled.button`
   height: 42px;
   padding: 0 10px;
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid #a57c24;
   border-radius: 100%;
   outline: none;
   -webkit-tap-highlight-color: transparent; /* for removing the highlight */
   z-index: 15;
+  transition: all ease 0.3s;
+
+  .showMobileNav & {
+    border: 1px solid white;
+  }
 
   div:before,
   div:after,
   div {
+    content: "";
     position: relative;
+    display: block;
     width: 100%;
     height: 2px;
-    background: rgba(255, 255, 255, 0.75);
+    /* background: rgba(255, 255, 255, 0.75); */
+    background: #a57c24;
     border-radius: 100px;
-    content: "";
-    display: block;
+    transition: all ease 0.3s;
+
+    .showMobileNav & {
+      background-color: white;
+    }
   }
   div:before {
     top: -5px;
@@ -151,6 +162,7 @@ export const A__mainNav__logo = styled.a`
     color: black;
   }
 
+  .showMobileNav &,
   .mainNav:hover & {
     color: white;
   }
@@ -220,6 +232,7 @@ export const Button__topLevelLink = styled.button`
     outline: none;
   }
 
+  .showMobileNav &,
   .mainNav:hover & {
     color: white;
   }
