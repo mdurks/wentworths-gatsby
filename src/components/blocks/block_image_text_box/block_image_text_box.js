@@ -23,9 +23,9 @@ import {
 
 import { gsap, ScrollTrigger } from "gsap/all"
 
-import white_bordered_two_ringss_pink_ribbon from "../images/general-product/white-bordered-two-ringss-pink-ribbon.jpg"
-import white_bordered_pink_diamon_ring from "../images/general-product/white-bordered-pink-diamon-ring.jpg"
-import sparkle_background_blue from "../images/sparkle-background-blue.png"
+import white_bordered_two_ringss_pink_ribbon from "../../../images/general-product/white-bordered-two-ringss-pink-ribbon.jpg"
+import white_bordered_pink_diamon_ring from "../../../images/general-product/white-bordered-pink-diamon-ring.jpg"
+import sparkle_background_blue from "../../../images/sparkle-background-blue.png"
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
