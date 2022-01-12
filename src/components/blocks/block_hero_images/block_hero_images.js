@@ -63,9 +63,12 @@ const Block_hero_images = () => {
 
   const [windowWidth, setWindowWidth] = useState("one")
   console.log("windowWidth", windowWidth)
-  window.addEventListener("resize", () => {
-    setWindowWidth(window.innerWidth)
-  })
+
+  if (typeof window !== "undefined") {
+    window.addEventListener("resize", () => {
+      setWindowWidth(window.innerWidth)
+    })
+  }
 
   useEffect(() => {
     setWindowWidth(window.innerWidth)
