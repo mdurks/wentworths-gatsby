@@ -44,17 +44,6 @@ const Block_hero_images = () => {
     gcms: { blockHeroImages },
   } = useStaticQuery(pageQuery)
 
-  // console.log("videoMobile", blockHeroImages[0].videoMobile.url)
-  // console.log("videoDesktop", blockHeroImages[0].videoDesktop.url)
-  // console.log("innerWidth", typeof window !== "undefined" && window.innerWidth)
-
-  const videoSrc =
-    typeof window !== "undefined" && window.innerWidth < 768
-      ? blockHeroImages[0].videoMobile.url
-      : blockHeroImages[0].videoDesktop.url
-
-  // console.log("videoSrc", videoSrc)
-
   let gsap_section_hero = null
   let gsap_section_hero_img = null
 
@@ -62,7 +51,6 @@ const Block_hero_images = () => {
   const tl_handwriting = gsap.timeline()
 
   const [windowWidth, setWindowWidth] = useState("one")
-  console.log("windowWidth", windowWidth)
 
   if (typeof window !== "undefined") {
     window.addEventListener("resize", () => {
@@ -72,7 +60,6 @@ const Block_hero_images = () => {
 
   useEffect(() => {
     setWindowWidth(window.innerWidth)
-    console.log("windowWidth", windowWidth)
   }, [windowWidth])
 
   useEffect(() => {
@@ -231,7 +218,9 @@ const Block_hero_images = () => {
         // }}
       >
         <Styled_HeroImg ref={e => (gsap_section_hero_img = e)}>
-          {windowWidth < 768 && (
+          {/* Check if supports video format */}
+
+          {windowWidth < 768 && supports_h264_baseline_video !== "probably" && (
             <video loop autoplay muted className="Section__hero__backgroundImg">
               <source
                 src={blockHeroImages[0].videoMobile.url}
@@ -239,7 +228,8 @@ const Block_hero_images = () => {
               />
             </video>
           )}
-          {windowWidth >= 768 && (
+
+          {windowWidth >= 768 && supports_h264_baseline_video !== "probably" && (
             <video loop autoplay muted className="Section__hero__backgroundImg">
               <source
                 src={blockHeroImages[0].videoDesktop.url}
@@ -247,25 +237,34 @@ const Block_hero_images = () => {
               />
             </video>
           )}
-          {/* {supports_h264_baseline_video ? (
-          ) : (
-            <GraphImg
-              className="Section__hero__backgroundImg"
-              image={
-                typeof window !== "undefined" && window.innerWidth < 600
-                  ? blockHeroImages[0].imagesMobile[0]
-                  : blockHeroImages[0].images[0]
-              }
-              transforms={["quality=value:80"]}
-              maxWidth={2000}
-            />
-          )} */}
+
+          {/* Doesnt support video format, fallback to images */}
+
+          {windowWidth < 768 &&
+            (supports_h264_baseline_video === "" ||
+              supports_h264_baseline_video === "") && (
+              <GraphImg
+                className="Section__hero__backgroundImg"
+                image={blockHeroImages[0].imagesMobile[0]}
+                transforms={["quality=value:80"]}
+                maxWidth={2000}
+              />
+            )}
+
+          {windowWidth >= 768 &&
+            (supports_h264_baseline_video === "" ||
+              supports_h264_baseline_video === "") && (
+              <GraphImg
+                className="Section__hero__backgroundImg"
+                image={blockHeroImages[0].images[0]}
+                transforms={["quality=value:80"]}
+                maxWidth={2000}
+              />
+            )}
         </Styled_HeroImg>
         <Styled_SiteContainer>
           <p class="Section__hero__heading">
-            <span class="Section__hero__headingText">
-              We are the memory {windowWidth}
-            </span>
+            <span class="Section__hero__headingText">We are the memory </span>
             <span class="Section__hero__heading--handwritten">
               <svg id="signature" viewBox="0 0 812 616">
                 <defs>
