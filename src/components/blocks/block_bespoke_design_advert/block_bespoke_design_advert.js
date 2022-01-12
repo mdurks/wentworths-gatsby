@@ -112,37 +112,14 @@ const pageQuery = graphql`
           height
         }
       }
-      blockHeroImages {
-        images {
-          id
-          url
-          handle
-          width
-          height
-        }
-        imagesMobile {
-          id
-          url
-          handle
-          width
-          height
-        }
-        videoDesktop {
-          url
-        }
-        videoMobile {
-          url
-        }
-      }
     }
   }
 `
 
 const Block_bespoke_design_advert = () => {
   const {
-    gcms: { blockBespokeDesignAdverts, blockHeroImages },
+    gcms: { blockBespokeDesignAdverts },
   } = useStaticQuery(pageQuery)
-  console.log("blockHeroImages", blockHeroImages)
 
   let sketchImagesArray = []
 
@@ -364,16 +341,6 @@ const Block_bespoke_design_advert = () => {
 
   return (
     <>
-      <video loop autoplay muted className="Section__hero__backgroundImg">
-        <source
-          src={
-            typeof window !== "undefined" && window.innerWidth < 768
-              ? blockHeroImages[0].videoMobile.url
-              : blockHeroImages[0].videoDesktop.url
-          }
-          type="video/mp4"
-        />
-      </video>
       <Div__block_bespoke_design_advert
         ref={e => (gsap__block_bespoke_design_advert = e)}
       >

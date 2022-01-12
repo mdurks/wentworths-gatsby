@@ -1,5 +1,4 @@
-import React from "react"
-import { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
 import { Styled_SiteContainer } from "../../../styles/commonStyles"
@@ -45,17 +44,16 @@ const Block_hero_images = () => {
     gcms: { blockHeroImages },
   } = useStaticQuery(pageQuery)
 
-  console.log("videoMobile", blockHeroImages[0].videoMobile.url)
-  console.log("videoDesktop", blockHeroImages[0].videoDesktop.url)
-
-  console.log("innerWidth", typeof window !== "undefined" && window.innerWidth)
+  // console.log("videoMobile", blockHeroImages[0].videoMobile.url)
+  // console.log("videoDesktop", blockHeroImages[0].videoDesktop.url)
+  // console.log("innerWidth", typeof window !== "undefined" && window.innerWidth)
 
   const videoSrc =
     typeof window !== "undefined" && window.innerWidth < 768
       ? blockHeroImages[0].videoMobile.url
       : blockHeroImages[0].videoDesktop.url
 
-  console.log("videoSrc", videoSrc)
+  // console.log("videoSrc", videoSrc)
 
   let gsap_section_hero = null
   let gsap_section_hero_img = null
@@ -63,9 +61,18 @@ const Block_hero_images = () => {
   const tl = gsap.timeline()
   const tl_handwriting = gsap.timeline()
 
-  useEffect(() => {
-    let viewportWidth = window.innerWidth
+  const [windowWidth, setWindowWidth] = useState("one")
+  console.log("windowWidth", windowWidth)
+  window.addEventListener("resize", () => {
+    setWindowWidth(window.innerWidth)
+  })
 
+  useEffect(() => {
+    setWindowWidth(window.innerWidth)
+    console.log("windowWidth", windowWidth)
+  }, [windowWidth])
+
+  useEffect(() => {
     tl.from(".Section__hero__backgroundImg", {
       duration: 3,
       scale: 1.5,
@@ -139,7 +146,7 @@ const Block_hero_images = () => {
       delay: 1,
       duration: 1.25,
       opacity: 1,
-      x: viewportWidth < 768 ? "-7%" : "-7%",
+      x: setWindowWidth < 768 ? "-7%" : "-7%",
       ease: "power2.out",
     })
 
@@ -221,19 +228,23 @@ const Block_hero_images = () => {
         // }}
       >
         <Styled_HeroImg ref={e => (gsap_section_hero_img = e)}>
-          {supports_h264_baseline_video ? (
+          {windowWidth < 768 && (
             <video loop autoplay muted className="Section__hero__backgroundImg">
               <source
-                // src={
-                //   typeof window !== "undefined" && window.innerWidth < 768
-                //     ? blockHeroImages[0].videoMobile.url
-                //     : blockHeroImages[0].videoDesktop.url
-                // }
-                // src={blockHeroImages[0].videoMobile.url}
-                src={videoSrc}
+                src={blockHeroImages[0].videoMobile.url}
                 type="video/mp4"
               />
             </video>
+          )}
+          {windowWidth >= 768 && (
+            <video loop autoplay muted className="Section__hero__backgroundImg">
+              <source
+                src={blockHeroImages[0].videoDesktop.url}
+                type="video/mp4"
+              />
+            </video>
+          )}
+          {/* {supports_h264_baseline_video ? (
           ) : (
             <GraphImg
               className="Section__hero__backgroundImg"
@@ -245,11 +256,13 @@ const Block_hero_images = () => {
               transforms={["quality=value:80"]}
               maxWidth={2000}
             />
-          )}
+          )} */}
         </Styled_HeroImg>
         <Styled_SiteContainer>
           <p class="Section__hero__heading">
-            <span class="Section__hero__headingText">We are the memory </span>
+            <span class="Section__hero__headingText">
+              We are the memory {windowWidth}
+            </span>
             <span class="Section__hero__heading--handwritten">
               <svg id="signature" viewBox="0 0 812 616">
                 <defs>
