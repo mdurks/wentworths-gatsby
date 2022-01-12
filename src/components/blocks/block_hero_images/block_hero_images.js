@@ -215,10 +215,10 @@ const Block_hero_images = () => {
     <>
       <Section__hero
         ref={e => (gsap_section_hero = e)}
-        onClick={() => {
-          tl.progress(0).restart()
-          tl_handwriting.progress(0).restart()
-        }}
+        // onClick={() => {
+        //   tl.progress(0).restart()
+        //   tl_handwriting.progress(0).restart()
+        // }}
       >
         <Styled_HeroImg ref={e => (gsap_section_hero_img = e)}>
           {supports_h264_baseline_video ? (
