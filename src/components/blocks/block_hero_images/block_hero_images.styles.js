@@ -36,7 +36,7 @@ export const Section__hero = styled.section`
 
   .Section__hero__heading {
     position: absolute;
-    top: 23%;
+    top: 27%;
     left: 0;
     margin: 0;
     font-size: clamp(26px, 5vw, 52px);
