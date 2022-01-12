@@ -215,7 +215,6 @@ const Block_single_image_text = () => {
               ? blockHeroImages[0].videoMobile.url
               : blockHeroImages[0].videoDesktop.url
           }
-          src={blockHeroImages[0].videoMobile.url}
           type="video/mp4"
         />
       </video>
