@@ -41,14 +41,23 @@ const pageQuery = graphql`
           height
         }
       }
+      blockHeroImages {
+        videoDesktop {
+          url
+        }
+        videoMobile {
+          url
+        }
+      }
     }
   }
 `
 
 const Block_single_image_text = () => {
   const {
-    gcms: { welcomes },
+    gcms: { welcomes, blockHeroImages },
   } = useStaticQuery(pageQuery)
+  console.log("(Block_single_image_text) blockHeroImages", blockHeroImages)
 
   let tl_gsap = gsap.timeline()
   let gsap__Div__SIT = null
@@ -199,6 +208,17 @@ const Block_single_image_text = () => {
           </Styled_SiteContainer>
         </Div__SIT__backgroundStrip>
       </Div__SIT>
+      <video loop autoplay muted className="Section__hero__backgroundImg">
+        <source
+          src={
+            typeof window !== "undefined" && window.innerWidth < 768
+              ? blockHeroImages[0].videoMobile.url
+              : blockHeroImages[0].videoDesktop.url
+          }
+          src={blockHeroImages[0].videoMobile.url}
+          type="video/mp4"
+        />
+      </video>
     </>
   )
 }
