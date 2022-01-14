@@ -16,14 +16,13 @@ import SEO from "./layout/seo"
 import MainNav from "./layout/MainNav/MainNav"
 import Footer from "./layout/footer/Footer"
 
-import Form_Enquire from "./forms/Form-Enquire"
-import Form_Viewing from "./forms/Form-Viewing"
+// import Form_Enquire from "./forms/Form-Enquire"
+// import Form_Viewing from "./forms/Form-Viewing"
+// import Form_contact from "./forms/form_contact"
 
-import Form_contact from "./forms/form_contact"
 import Form_viewing from "./forms/form_viewing/form_viewing"
 
 import "../styles/style.css"
-import { Helmet } from "react-helmet"
 
 const Layout = ({ children }) => {
   // const Layout = props => {
