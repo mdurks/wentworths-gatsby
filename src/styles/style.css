@@ -280,22 +280,22 @@ button {
 /* --------------------------------------------- */
 
 .mc-banner {
-  top: auto;
-  bottom: 0;
-  background: cadetblue;
+  top: auto !important;
+  bottom: 0 !important;
+  background: cadetblue !important;
 }
 
-.mc-banner .bannerContent__description {
-  margin: 6px 0 17px;
-  text-align: center;
-  font-family: "Times New Roman";
-  font-size: 25px;
-  color: black;
+.bannerContent__description {
+  margin: 6px 0 17px !important;
+  text-align: center !important;
+  font-family: "Times New Roman" !important;
+  font-size: 25px !important;
+  color: black !important;
 }
 
-.mc-banner .bannerContent__closeButton:before,
-.mc-banner .bannerContent__closeButton:after {
-  background-color: black;
+.bannerContent__closeButton:before,
+.bannerContent__closeButton:after {
+  background-color: black !important;
 }
 
 /* End: Mailchimp */
