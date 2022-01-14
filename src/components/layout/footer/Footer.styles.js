@@ -138,4 +138,27 @@ export const Styled_footer = styled.footer`
       text-align: left;
     }
   }
+
+  /* Mailchimp newsletter signup */
+
+  .mailChimpWrapper {
+    .email {
+      width: 100%;
+      margin: 12px 0;
+      padding: 10px;
+    }
+    .button {
+      padding: 10px;
+      cursor: pointer;
+    }
+    .optionalParent {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brandingLogo {
+      width: 150px;
+      margin: 15px 0 0;
+    }
+  }
 `

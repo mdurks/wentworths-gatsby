@@ -161,11 +161,71 @@ const Footer = () => {
               <p className="animate_footer_items_4">
                 Keep up to date with news, events and special offers.
               </p>
-              <form className="animate_footer_items_4" action="">
+              {/* <form className="animate_footer_items_4" action="">
                 <label htmlFor="newsletterInput">Newsletter sign-up:</label>
                 <input id="newsletterInput" type="text" />
                 <button>Submit</button>
-              </form>
+              </form> */}
+
+              {/* Begin Mailchimp Signup Form */}
+              {/* <link
+                href="//cdn-images.mailchimp.com/embedcode/slim-10_7_dtp.css"
+                rel="stylesheet"
+                type="text/css"
+              /> */}
+              <div id="mc_embed_signup" className="mailChimpWrapper">
+                <form
+                  action="https://wentworthjewels.us20.list-manage.com/subscribe/post?u=d5846f86c03e5c2c5a3e185f8&amp;id=a98250718c"
+                  method="post"
+                  id="mc-embedded-subscribe-form"
+                  name="mc-embedded-subscribe-form"
+                  class="validate"
+                  target="_blank"
+                  novalidate
+                >
+                  <input
+                    type="email"
+                    value=""
+                    name="EMAIL"
+                    class="email animate_footer_items_4"
+                    id="mce-EMAIL"
+                    placeholder="email address"
+                    required
+                  />
+                  {/* real people should not fill this in and expect good things - do not remove this or risk form bot signups */}
+                  <div
+                    style={{ position: "absolute", left: "-5000px" }}
+                    aria-hidden="true"
+                  >
+                    <input
+                      type="text"
+                      name="b_d5846f86c03e5c2c5a3e185f8_a98250718c"
+                      tabindex="-1"
+                      value=""
+                    />
+                  </div>
+                  <div class="optionalParent animate_footer_items_4">
+                    <input
+                      type="submit"
+                      value="Subscribe"
+                      name="subscribe"
+                      id="mc-embedded-subscribe"
+                      class="button"
+                    />
+                    <p class="brandingLogo">
+                      <a
+                        href="http://eepurl.com/hSezpL"
+                        title="Mailchimp - email marketing made easy and fun"
+                      >
+                        <img
+                          src="https://eep.io/mc-cdn-images/template_images/branding_logo_text_dark_dtp.svg"
+                          alt="mailchimp logo"
+                        />
+                      </a>
+                    </p>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
