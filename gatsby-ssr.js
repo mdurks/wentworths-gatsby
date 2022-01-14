@@ -70,5 +70,9 @@ export const onRenderBody = (
     //   "https://cdn.snipcart.com/themes/v3.0.17/default/snipcart.js";
     //   document.body.appendChild(snipcartScript);
     // </script>,
+    <script
+      src="https://chimpstatic.com/mcjs-connected/js/users/d5846f86c03e5c2c5a3e185f8/02028c8b0af713f275541bbbb.js"
+      defer
+    ></script>,
   ])
 }

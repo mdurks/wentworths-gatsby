@@ -40,12 +40,6 @@ const Layout = ({ children }) => {
   return (
     <>
       <AppProvider>
-        <Helmet>
-          <script
-            src="https://chimpstatic.com/mcjs-connected/js/users/d5846f86c03e5c2c5a3e185f8/02028c8b0af713f275541bbbb.js"
-            defer
-          ></script>
-        </Helmet>
         <SEO title="Home" />
         {/* <Header siteTitle={data.site.siteMetadata.title} /> */}
         <MainNav />

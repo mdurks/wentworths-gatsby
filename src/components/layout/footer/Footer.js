@@ -158,9 +158,10 @@ const Footer = () => {
               Newsletter
             </h3>
             <div className="accordionContentWrapper">
-              <p className="animate_footer_items_4">
-                Keep up to date with news, events and special offers.
-              </p>
+              <small className="animate_footer_items_4">
+                Enter your email below to keep up to date with news, events and
+                special offers:
+              </small>
               {/* <form className="animate_footer_items_4" action="">
                 <label htmlFor="newsletterInput">Newsletter sign-up:</label>
                 <input id="newsletterInput" type="text" />
@@ -220,6 +221,8 @@ const Footer = () => {
                         <img
                           src="https://eep.io/mc-cdn-images/template_images/branding_logo_text_dark_dtp.svg"
                           alt="mailchimp logo"
+                          width="150"
+                          height="28"
                         />
                       </a>
                     </p>
