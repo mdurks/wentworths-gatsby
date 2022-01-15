@@ -60,9 +60,7 @@ const Block_hero_images = () => {
 
   useEffect(() => {
     setWindowWidth(window.innerWidth)
-  }, [windowWidth])
 
-  useEffect(() => {
     tl.from(".Section__hero__backgroundImg", {
       duration: 3,
       scale: 1.5,
@@ -195,7 +193,7 @@ const Block_hero_images = () => {
       { duration: 0.8, strokeDashoffset: 0, scale: 1 },
       "-=0.6"
     )
-  }, [])
+  }, [windowWidth])
 
   const supports_video = () => {
     return !!document.createElement("video").canPlayType
