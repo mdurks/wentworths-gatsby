@@ -17,7 +17,7 @@ export const Div__block_full_size_image = styled.div`
     width: 100%;
   }
 
-  .Section__hero__backgroundImg {
+  .block_full_size_image {
     position: absolute;
     /*
     top: 50%;

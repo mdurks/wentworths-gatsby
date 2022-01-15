@@ -81,19 +81,20 @@ const Block_hero_images = () => {
     })
 
     // Mouse move hero image parallax
-    const heroImage = document.querySelector(".Section__hero__backgroundImg")
-    const heroImage_xratio =
-      (heroImage.offsetWidth - window.innerWidth) / window.innerWidth
-    const heroImage_yratio =
-      (heroImage.offsetHeight - window.innerHeight) / window.innerHeight
+    // const heroImage = document.querySelector(".Section__hero__backgroundImg")
+    // console.log("heroImage", heroImage)
+    // const heroImage_xratio =
+    //   (heroImage.offsetWidth - window.innerWidth) / window.innerWidth
+    // const heroImage_yratio =
+    //   (heroImage.offsetHeight - window.innerHeight) / window.innerHeight
 
-    const heroImageFunc = e => {
-      // console.log("heroImageFunc", e.pageX, e.pageY - window.scrollY)
-      heroImage.style.left = e.pageX * heroImage_xratio * -1 + "px"
-      heroImage.style.top =
-        (e.pageY - window.scrollY) * heroImage_yratio * -1 + "px"
-    }
-    heroImage.addEventListener("mousemove", heroImageFunc)
+    // const heroImageFunc = e => {
+    //   // console.log("heroImageFunc", e.pageX, e.pageY - window.scrollY)
+    //   heroImage.style.left = e.pageX * heroImage_xratio * -1 + "px"
+    //   heroImage.style.top =
+    //     (e.pageY - window.scrollY) * heroImage_yratio * -1 + "px"
+    // }
+    // heroImage.addEventListener("mousemove", heroImageFunc)
 
     tl.to(
       ".Section__hero__heading",

@@ -35,7 +35,7 @@ const Block_one_row_jewellery = () => {
 
   useEffect(() => {
     // scrolling zoom effect on image
-    gsap.from(".Section__hero__backgroundImg", {
+    gsap.from(".block_full_size_image", {
       scrollTrigger: {
         trigger: gsap__image,
         // markers: true,
@@ -69,7 +69,7 @@ const Block_one_row_jewellery = () => {
     )
 
     // Show/Hide main nav when this component in central view
-    gsap.from(".Section__hero__backgroundImg", {
+    gsap.from(".block_full_size_image", {
       scrollTrigger: {
         trigger: gsap__image,
         // markers: true,
@@ -96,14 +96,14 @@ const Block_one_row_jewellery = () => {
       <Div__block_full_size_image ref={e => (gsap__image = e)}>
         {typeof window !== "undefined" && window.innerWidth < 600 ? (
           <GraphImg
-            className="Section__hero__backgroundImg block_full_size_image"
+            className="block_full_size_image"
             image={blockFullSizeImages[0].images[1]}
             transforms={["quality=value:80"]}
             maxWidth={2000}
           />
         ) : (
           <GraphImg
-            className="Section__hero__backgroundImg block_full_size_image"
+            className="block_full_size_image"
             image={blockFullSizeImages[0].images[0]}
             transforms={["quality=value:80"]}
             maxWidth={2000}
