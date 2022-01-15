@@ -61,22 +61,22 @@ const Block_hero_images = () => {
   useEffect(() => {
     setWindowWidth(window.innerWidth)
 
-    tl.from(".Section__hero__backgroundImg", {
-      duration: 3,
-      scale: 1.5,
-      opacity: 0,
-      ease: "power2.out",
-    })
-    gsap.to(gsap_section_hero_img, {
-      scrollTrigger: {
-        trigger: document.body,
-        start: "top top",
-        toggleActions: "play none none none",
-        // markers: true,
-        scrub: true,
-      },
-      y: `+=${window.innerHeight / 4}`,
-    })
+    // tl.from(".Section__hero__backgroundImg", {
+    //   duration: 3,
+    //   scale: 1.5,
+    //   opacity: 0,
+    //   ease: "power2.out",
+    // })
+    // gsap.to(gsap_section_hero_img, {
+    //   scrollTrigger: {
+    //     trigger: document.body,
+    //     start: "top top",
+    //     toggleActions: "play none none none",
+    //     // markers: true,
+    //     scrub: true,
+    //   },
+    //   y: `+=${window.innerHeight / 4}`,
+    // })
 
     // Mouse move hero image parallax
     // const heroImage = document.querySelector(".Section__hero__backgroundImg")
@@ -128,7 +128,7 @@ const Block_hero_images = () => {
         // markers: true,
         scrub: true,
       },
-      y: `+=${window.innerHeight / 3}`,
+      y: `+=${window.innerHeight / 7}`,
     })
 
     tl_handwriting.to(".Section__hero__heading--handwritten", {
@@ -161,7 +161,7 @@ const Block_hero_images = () => {
     tl_handwriting.to(
       paths[0],
       { duration: 1.1, strokeDashoffset: 0, scale: 1 },
-      "-=0.3"
+      "-=1.3"
     )
     // A
     tl_handwriting.to(
