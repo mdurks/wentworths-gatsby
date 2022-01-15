@@ -24,6 +24,21 @@ export const Div__gradient_row_link = styled.div`
       hsl(${props => props.tint_colour}deg 100% 88%) 50%
     );
 
+    ${css_breakpoints.min_tablet} {
+      &:before {
+        content: " ";
+        position: absolute;
+        top: 0;
+        left: 0;
+        left: ${props => (props.img_alignment === "right" ? "50%" : "0")};
+        height: 100%;
+        width: 50%;
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAANIilAAAAAPFBMVEUAAAD////////////////////////////////////////////////////////////////////////////YSWgTAAAAE3RSTlMA90v6fh+ZEw5WThpalJKMhXVoqNyq9wAAARdJREFUSMec1FEOhCAMBNAiqwgICNz/rgtxzWTTRKjzR5OX+aGlp+haNb3MUluW9xZabqHlVpeioYU2E2VokVWfnWj/KGihhRZacz2MTDv0otsJ7GkwMOe0tlVXlbqFTqoN7aSN/n/o45Q+ug23hQ5dHxN2W4ll3aCHVq4ts0zbsZVrB/uk3cBKNP5zaPZRh/ufcxs9DeLjpblN3HKdmF6wC6OYE5rt7yDYb3Y3xsFtYb3i7m41eue6ddc/m2HndL50bSkkTunuW3od0AAAwzAM48/aIAzg0vVvbVKH69rzYPNVMyQznrMYs5ITBhNDE4ATvRP6UzdTdFOxU+6DFQM0g1IDcYOPA66DzAnrrwkvKK9GL2WlgwB6HCGhU6TCrAAAAABJRU5ErkJggg==);
+        opacity: 0.3;
+        z-index: 1;
+      }
+    }
+
     ${css_breakpoints.min_desktop} {
       height: 200px;
     }
@@ -77,6 +92,7 @@ export const Div__gradient_row_link = styled.div`
     width: 60%;
     text-align: ${props =>
       props.img_alignment === "right" ? "right" : "left"};
+    z-index: 2;
 
     ${css_breakpoints.min_desktop} {
       width: 50%;
@@ -167,6 +183,7 @@ export const Div__gradient_row_link = styled.div`
     top: 20px;
     left: ${props => (props.img_alignment === "right" ? "66.66%" : "0%")};
     opacity: 0;
+    z-index: 2;
 
     ${css_breakpoints.min_desktop} {
       width: 50%;
