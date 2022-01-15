@@ -30,9 +30,13 @@ const Block_product_windows = props => {
     //   e.pageY - window.scrollY
     // )
     window.currentProductWindow.style.left =
-      e.pageX * productWindowImage_xratio * -1 + "px"
+      e.pageX * productWindowImage_xratio * -1 +
+      window.currentProductXDiff / 2 +
+      "px"
     window.currentProductWindow.style.top =
-      (e.pageY - window.scrollY) * productWindowImage_yratio * -1 + "px"
+      (e.pageY - window.scrollY) * productWindowImage_yratio * -1 +
+      window.currentProductYDiff / 2 +
+      "px"
   }
 
   const productWindow_addParallax = target => {
@@ -40,17 +44,20 @@ const Block_product_windows = props => {
     const elParent = el.parentNode
 
     window.currentProductWindow = el
+    window.currentProductXDiff = el.offsetWidth - elParent.offsetWidth - 20
+    window.currentProductYDiff = el.offsetHeight - elParent.offsetHeight - 10
 
     productWindowImage_xratio =
-      (el.offsetWidth - (elParent.offsetWidth + 5)) / elParent.offsetWidth
+      window.currentProductXDiff / elParent.offsetWidth
     productWindowImage_yratio =
-      (el.offsetHeight - (elParent.offsetHeight + 5)) / elParent.offsetHeight
+      window.currentProductYDiff / elParent.offsetHeight
 
     el.addEventListener("mousemove", productWindowMouseParallaxFunc)
   }
 
   const productWindow_removeParallax = target => {
     const el = document.querySelector(`.productWindowImg_${target}`).parentNode
+      .parentNode
     el.removeEventListener("mousemove", productWindowMouseParallaxFunc)
   }
 
@@ -151,7 +158,9 @@ const Block_product_windows = props => {
                   maxWidth={700}
                   className={`productWindowImg_${index}`}
                 />
-                <Div_product_name>{item.name}</Div_product_name>
+                <Div_product_name>
+                  <span>{item.name}</span>
+                </Div_product_name>
               </A_productItem>
             ))}
           </Div_productWrapper>
