@@ -114,7 +114,7 @@ export const Div_product_name = styled.div`
   }
 
   ${A_productItem}:hover & {
-    color: #c1a260;
+    color: #a57c27;
     background: hsl(0deg 0% 100% / 80%);
   }
 `
