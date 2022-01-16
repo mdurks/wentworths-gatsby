@@ -729,7 +729,7 @@ const DetailsPage = ({
             <div className="heroDetailsWrapper">
               <div>
                 <span>Stone: </span>
-                <span>{product.filter_gemstone}</span>
+                <span>{product.filter_gemstone.replace(/_/g, " ")}</span>
               </div>
               <div>
                 <span>Cut: </span>
@@ -749,7 +749,12 @@ const DetailsPage = ({
               </div>
               <div>
                 <span>Metal: </span>
-                <span>{product.filter_metal}</span>
+                <span>{product.filter_metal.replace(/_/g, " ")}</span>
+              </div>
+
+              <div className="selectRingSize">
+                <p>You can shoose your ring size at the checkout stage.</p>
+                <a href="/">What's my ring size?</a>
               </div>
             </div>
 
@@ -762,6 +767,9 @@ const DetailsPage = ({
               data-item-description={product.description}
               data-item-image={product.image[0].url}
               data-item-name={product.name}
+              data-item-custom1-name="Ring size:"
+              data-item-custom1-options="G|H|I|J|K|L|M|N|O|P|Q|R|S"
+              data-item-custom1-required="true"
             >
               Add to cart
             </Styled_btn>

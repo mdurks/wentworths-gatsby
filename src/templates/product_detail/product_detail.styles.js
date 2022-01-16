@@ -193,7 +193,7 @@ export const Styled_CMScontent = styled.div`
   }
 
   .heroDetailsWrapper {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     padding: 18px 22px;
     border-radius: 5px;
     background: hsl(0deg 0% 100% / 20%);
@@ -224,6 +224,28 @@ export const Styled_CMScontent = styled.div`
           flex: 1 1 60%;
         }
       }
+    }
+
+    .selectRingSize {
+      display: block;
+      margin: 15px 0 0;
+
+      a {
+        display: inline-block;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .selectRingSizeWrapper {
+    margin: 0 0 30px;
+    padding: 18px 22px;
+    border-radius: 5px;
+    background: hsl(0deg 0% 100% / 20%);
+    font-size: 15px;
+
+    ${css_breakpoints.min_desktop} {
+      margin-left: -22px;
     }
   }
 `
