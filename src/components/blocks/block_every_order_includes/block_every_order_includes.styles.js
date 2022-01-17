@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import css_breakpoints from "../../../common/css_breakpoints"
 
 const section_vertical_padding = "10vh"
@@ -7,6 +7,7 @@ const section_content_max_width = "1800px"
 
 export const Block_every_order_includesWrapper = styled.div`
   margin: 5px 0 -50px;
+  background: #fff;
 
   ${css_breakpoints.min_desktop} {
     margin: 0;

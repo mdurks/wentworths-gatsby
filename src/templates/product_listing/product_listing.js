@@ -20,6 +20,9 @@ import {
   Div__productRow,
 } from "./product_listing.styles"
 import { Styled_SiteContainer } from "../../styles/commonStyles"
+import Block_every_order_includes from "../../components/blocks/block_every_order_includes/block_every_order_includes"
+import Block_bespoke_design_advert from "../../components/blocks/block_bespoke_design_advert/block_bespoke_design_advert"
+
 // import Snipcart from "../components/snipcart"
 
 gsap.registerPlugin(ScrollTrigger)
@@ -696,6 +699,10 @@ const ProductPage = ({
           </Div__productRow>
         </Styled_SiteContainer>
       </Div__productsPage>
+
+      <Block_every_order_includes />
+
+      <Block_bespoke_design_advert />
     </>
   )
 }

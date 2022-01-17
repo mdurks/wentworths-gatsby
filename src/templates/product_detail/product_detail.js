@@ -14,6 +14,7 @@ import {
 import Block_best_seller from "../../components/blocks/block_best_seller/block_best_seller"
 import Block_may_also_like from "../../components/blocks/block_may_also_like/block_may_also_like"
 import Block_bespoke_design_advert from "../../components/blocks/block_bespoke_design_advert/block_bespoke_design_advert"
+import Block_every_order_includes from "../../components/blocks/block_every_order_includes/block_every_order_includes"
 // import Form_Enquire from "../components/forms/Form-Enquire"
 // import Form_Viewing from "../components/forms/Form-Viewing"
 
@@ -932,6 +933,8 @@ const DetailsPage = ({
           </div>
         </div>
       </Div_modal>
+
+      <Block_every_order_includes />
 
       <Block_may_also_like
         categoryType={pageContext.thisCategory}
