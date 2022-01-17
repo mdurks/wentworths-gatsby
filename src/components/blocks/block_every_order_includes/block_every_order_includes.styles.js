@@ -6,7 +6,8 @@ const section_horizontal_padding = "50px"
 const section_content_max_width = "1800px"
 
 export const Block_every_order_includesWrapper = styled.div`
-  margin: 5px 0 -50px;
+  margin: 0 0 -50px;
+  padding: 15px 0 0;
   background: #fff;
 
   ${css_breakpoints.min_desktop} {
