@@ -38,7 +38,8 @@ const Block_one_row_jewellery = () => {
     gcms: { blockFullSizeImages },
   } = useStaticQuery(pageQuery)
 
-  console.log("blockFullSizeImages", blockFullSizeImages)
+  // console.log("blockFullSizeImages", blockFullSizeImages)
+
   let gsap__image = null
 
   useEffect(() => {
@@ -57,6 +58,7 @@ const Block_one_row_jewellery = () => {
     gsap.to(".block_full_size_image__descriptionWrapper", {
       scrollTrigger: {
         // markers: true,
+        id: "sc_block_full_size_image__descriptionWrapper",
         trigger: gsap__image,
         start: `top ${window.innerHeight - 150}`,
         end: "bottom bottom",
@@ -133,6 +135,12 @@ const Block_one_row_jewellery = () => {
         },
       },
     })
+
+    // return function to kill timeline on dismount
+    return () =>
+      ScrollTrigger.getById(
+        "sc_block_full_size_image__descriptionWrapper"
+      ).kill(true)
   }, [])
 
   return (
