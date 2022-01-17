@@ -16,6 +16,7 @@ import Block_gradient_row_link from "../components/blocks/block_gradient_row_lin
 import Block_best_seller from "../components/blocks/block_best_seller/block_best_seller"
 import Block_full_size_image from "../components/blocks/block_full_size_image/block_full_size_image"
 import Block_bespoke_design_advert from "../components/blocks/block_bespoke_design_advert/block_bespoke_design_advert"
+import Block_every_order_includes from "../components/blocks/block_every_order_includes/block_every_order_includes"
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
@@ -110,6 +111,8 @@ const IndexPage = () => {
         />
       ))}
 
+      <Block_full_size_image />
+
       {/* <Block_one_row_jewellery /> */}
 
       <Block_best_seller
@@ -118,7 +121,7 @@ const IndexPage = () => {
         products={products}
       />
 
-      <Block_full_size_image />
+      <Block_every_order_includes />
 
       <Block_bespoke_design_advert />
     </>

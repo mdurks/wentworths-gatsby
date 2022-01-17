@@ -4,7 +4,7 @@ import css_breakpoints from "../common/css_breakpoints"
 const bp_desktop_max = "1400px"
 
 export const Styled_SiteContainer = styled.section`
-  /* position: relative; */
+  position: relative;
   display: block;
   width: calc(100% - 30px);
   max-width: ${bp_desktop_max};
