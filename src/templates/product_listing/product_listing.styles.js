@@ -5,9 +5,9 @@ export const Div__productsPage = styled.div``
 
 export const Div__pageHeader = styled.div`
   position: relative;
-  padding: 130px 0;
+  padding: 80px 0;
   text-align: center;
-  min-height: 560px;
+  /* min-height: 560px; */
 
   ${css_breakpoints.min_desktop} {
     min-height: auto;
@@ -389,7 +389,7 @@ export const Div__filter_info = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 30px 0 90px;
+  margin: 30px 0;
   text-align: center;
   opacity: 0;
 
