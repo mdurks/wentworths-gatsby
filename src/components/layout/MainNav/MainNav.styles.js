@@ -77,8 +77,10 @@ export const Nav__mainNav = styled.nav`
     padding: 50px 50px 0;
   }
 
-  &:hover {
-    background: #b3924c;
+  @media (hover: hover) {
+    &:hover {
+      background: #b3924c;
+    }
   }
 
   .showMobileNav & {
@@ -117,16 +119,18 @@ export const Nav__mainNav = styled.nav`
       opacity: 0;
     }
 
-    &:hover {
-      top: 0px;
-      background: #b3924c;
+    @media (hover: hover) {
+      &:hover {
+        top: 0px;
+        background: #b3924c;
 
-      > div > a {
-        /* padding-bottom: 20px; */
-        padding: 20px 60px 20px 20px;
-      }
-      > div > ul {
-        opacity: 1;
+        > div > a {
+          /* padding-bottom: 20px; */
+          padding: 20px 60px 20px 20px;
+        }
+        > div > ul {
+          opacity: 1;
+        }
       }
     }
   }
@@ -158,13 +162,20 @@ export const A__mainNav__logo = styled.a`
   transition: all ease 0.5s;
   z-index: 5;
 
-  &:hover {
-    color: black;
+  @media (hover: hover) {
+    &:hover {
+      color: black;
+    }
   }
 
-  .showMobileNav &,
-  .mainNav:hover & {
+  .showMobileNav & {
     color: white;
+  }
+
+  @media (hover: hover) {
+    .mainNav:hover & {
+      color: white;
+    }
   }
 
   ${css_breakpoints.min_desktop} {
@@ -232,9 +243,14 @@ export const Button__topLevelLink = styled.button`
     outline: none;
   }
 
-  .showMobileNav &,
-  .mainNav:hover & {
+  .showMobileNav & {
     color: white;
+  }
+
+  @media (hover: hover) {
+    .mainNav:hover & {
+      color: white;
+    }
   }
 
   // white block behind button
@@ -510,15 +526,17 @@ export const Ul__mainNav__subNavList = styled.ul`
         transform: rotate(-4deg);
       }
 
-      &:hover {
-        padding-left: 25px;
-        color: #a57c24;
+      @media (hover: hover) {
+        &:hover {
+          padding-left: 25px;
+          color: #a57c24;
 
-        &:before {
-          opacity: 1;
-          top: 19px;
-          left: -407px;
-          transform: rotate(-1deg);
+          &:before {
+            opacity: 1;
+            top: 19px;
+            left: -407px;
+            transform: rotate(-1deg);
+          }
         }
       }
     }
@@ -563,32 +581,34 @@ export const Li__mainNav__topLevelLink = styled.li`
     }
   }
 
-  &:hover {
-    ${Button__topLevelLink} {
-      ${css_breakpoints.min_desktop} {
-        color: #a57c24;
+  @media (hover: hover) {
+    &:hover {
+      ${Button__topLevelLink} {
+        ${css_breakpoints.min_desktop} {
+          color: #a57c24;
 
-        // white block behind button
-        &:before {
-          opacity: 1;
-          height: 130px;
-        }
+          // white block behind button
+          &:before {
+            opacity: 1;
+            height: 130px;
+          }
 
-        // coloured underline of link
-        &:after {
-          width: 74%;
-          background-color: #c1a260;
-          opacity: 1;
+          // coloured underline of link
+          &:after {
+            width: 74%;
+            background-color: #c1a260;
+            opacity: 1;
+          }
         }
       }
-    }
 
-    ${Div__mainNav__subNavGroup} {
-      opacity: 1;
-      top: 1px;
-
-      .mainNav--shrink & {
+      ${Div__mainNav__subNavGroup} {
+        opacity: 1;
         top: 1px;
+
+        .mainNav--shrink & {
+          top: 1px;
+        }
       }
     }
   }
@@ -613,33 +633,35 @@ export const Li__mainNav__topLevelLink = styled.li`
       }
 
       ${css_breakpoints.min_desktop} {
-        &:hover {
-          ${Button__topLevelLink}:before {
-            transition: all ease 1s;
-            /* box-shadow: 0px -8px 4px 5px rgba(0, 0, 0, 0.1); */
-          }
-
-          ${Div__mainNav__subNavGroupWrapper} {
-            height: 335px;
-
-            .mainNav--shrink & {
-              height: 335px;
+        @media (hover: hover) {
+          &:hover {
+            ${Button__topLevelLink}:before {
+              transition: all ease 1s;
+              /* box-shadow: 0px -8px 4px 5px rgba(0, 0, 0, 0.1); */
             }
-          }
 
-          ${Ul__mainNav__subNavList} li {
-            bottom: 0;
-            opacity: 1;
-          }
+            ${Div__mainNav__subNavGroupWrapper} {
+              height: 335px;
 
-          ${Div__mainNav__subNavGroup__linkImg} {
-            opacity: 1;
-            left: -7px;
-            /* top: -1px; */
-          }
+              .mainNav--shrink & {
+                height: 335px;
+              }
+            }
 
-          ${Div__mainNav__subNavMessage} {
-            opacity: 1;
+            ${Ul__mainNav__subNavList} li {
+              bottom: 0;
+              opacity: 1;
+            }
+
+            ${Div__mainNav__subNavGroup__linkImg} {
+              opacity: 1;
+              left: -7px;
+              /* top: -1px; */
+            }
+
+            ${Div__mainNav__subNavMessage} {
+              opacity: 1;
+            }
           }
         }
       }
