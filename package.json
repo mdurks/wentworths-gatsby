@@ -33,7 +33,7 @@
   "devDependencies": {
     "eslint-config-react-app": "^6.0.0",
     "gatsby-plugin-snipcartv3": "^2.3.2",
-    "gatsby-plugin-webfonts": "^2.1.0",
+    "gatsby-plugin-webfonts": "^2.2.1",
     "graphcms-image": "^1.1.0-beta4",
     "prettier": "2.0.5"
   },
