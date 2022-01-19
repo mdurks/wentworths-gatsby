@@ -93,7 +93,7 @@ const Block_newsletter_signup = () => {
             </h2>
             <div className="Block_newsletter_signup__formWrapper">
               <p>
-                Sign up to the Wentworth Jewels Mailing list to get special
+                Sign up to the Wentworth Jewels mailing list to get special
                 offers, giveaways, discounts and news directly to your inbox.
               </p>
 

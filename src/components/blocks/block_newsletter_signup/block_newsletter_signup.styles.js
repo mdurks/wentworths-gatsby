@@ -7,6 +7,10 @@ const section_content_max_width = "1800px"
 
 export const Block_newsletter_signupWrapper = styled.div`
   position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  padding: 100px 0;
   background: #588d8d;
   overflow: hidden;
 
@@ -29,7 +33,7 @@ export const Block_newsletter_signupWrapper = styled.div`
 
   .Block_newsletter_signup__contentWrapper {
     position: relative;
-    margin: 100px 0;
+    flex: 0 0 100%;
     background: hsl(0deg 0% 100% / 33%);
     z-index: 1;
 
