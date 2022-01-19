@@ -15,6 +15,7 @@ import Block_best_seller from "../../components/blocks/block_best_seller/block_b
 import Block_may_also_like from "../../components/blocks/block_may_also_like/block_may_also_like"
 import Block_bespoke_design_advert from "../../components/blocks/block_bespoke_design_advert/block_bespoke_design_advert"
 import Block_every_order_includes from "../../components/blocks/block_every_order_includes/block_every_order_includes"
+import Block_newsletter_signup from "../../components/blocks/block_newsletter_signup/block_newsletter_signup"
 // import Form_Enquire from "../components/forms/Form-Enquire"
 // import Form_Viewing from "../components/forms/Form-Viewing"
 
@@ -949,6 +950,8 @@ const DetailsPage = ({
           products={products.filter(el => el.bestSeller)}
         />
       )}
+
+      <Block_newsletter_signup />
 
       <Block_bespoke_design_advert />
     </>

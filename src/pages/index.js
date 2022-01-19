@@ -17,6 +17,7 @@ import Block_best_seller from "../components/blocks/block_best_seller/block_best
 import Block_full_size_image from "../components/blocks/block_full_size_image/block_full_size_image"
 import Block_bespoke_design_advert from "../components/blocks/block_bespoke_design_advert/block_bespoke_design_advert"
 import Block_every_order_includes from "../components/blocks/block_every_order_includes/block_every_order_includes"
+import Block_newsletter_signup from "../components/blocks/block_newsletter_signup/block_newsletter_signup"
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
@@ -120,6 +121,8 @@ const IndexPage = () => {
         category="engagement"
         products={products}
       />
+
+      <Block_newsletter_signup />
 
       <Block_every_order_includes />
 

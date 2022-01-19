@@ -11,6 +11,7 @@ import {
 // import Layout from "../components/layout"
 import Product_in_list from "../../components/product/Product_in_list"
 import Product_filter_checkbox from "../../components/product/Product_filter_checkbox"
+import Block_newsletter_signup from "../../components/blocks/block_newsletter_signup/block_newsletter_signup"
 
 import {
   Div__productsPage,
@@ -701,6 +702,8 @@ const ProductPage = ({
       </Div__productsPage>
 
       <Block_every_order_includes />
+
+      <Block_newsletter_signup />
 
       <Block_bespoke_design_advert />
     </>
