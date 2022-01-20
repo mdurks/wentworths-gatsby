@@ -15,6 +15,9 @@ export const Styled_HeroImg = styled.div`
 
   ${css_breakpoints.min_desktop} {
     min-height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   div {
@@ -36,7 +39,7 @@ export const Section__hero = styled.section`
 
   .Section__hero__heading {
     position: absolute;
-    top: 27%;
+    top: -433%;
     left: 0;
     margin: 0;
     font-size: clamp(26px, 5vw, 52px);
@@ -82,12 +85,12 @@ export const Section__hero = styled.section`
   }
 
   video {
-    /* max-height: 100%; */
-    width: 100%;
-
-    ${css_breakpoints.min_desktop} {
-      /* filter: hue-rotate(274deg); */
-      max-height: fit-content;
-    }
+    position absolute;
+    top 0;
+    left 0;
+    display block;
+    width 100%;
+    height 100%;
+    object-fit cover;
   }
 `
