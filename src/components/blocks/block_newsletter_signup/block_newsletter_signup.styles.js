@@ -34,7 +34,7 @@ export const Block_newsletter_signupWrapper = styled.div`
   .Block_newsletter_signup__contentWrapper {
     position: relative;
     flex: 0 0 100%;
-    background: hsl(0deg 0% 100% / 33%);
+    background: hsl(0deg 0% 100% / 45%);
     z-index: 1;
 
     h2 {
@@ -105,10 +105,10 @@ export const Block_newsletter_signupWrapper = styled.div`
         border: 3px solid #588d8d;
         border-radius: 5px;
         font-family: "Raleway", sans-serif;
+        font-size: 19px;
 
         ${css_breakpoints.min_tablet} {
           padding: 10px 15px;
-          font-size: 19px;
         }
       }
 
@@ -120,6 +120,8 @@ export const Block_newsletter_signupWrapper = styled.div`
         background: #588d8d;
         border-radius: 5px;
         font-size: 18px;
+        color: white;
+        text-transform: uppercase;
         cursor: pointer;
 
         ${css_breakpoints.min_tablet} {
