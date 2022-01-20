@@ -24,7 +24,7 @@ export const Div__gradient_row_link = styled.div`
       hsl(${props => props.tint_colour}deg 100% 88%) 50%
     );
 
-    ${css_breakpoints.min_tablet} {
+    /* ${css_breakpoints.min_tablet} {
       &:before {
         content: " ";
         position: absolute;
@@ -37,7 +37,7 @@ export const Div__gradient_row_link = styled.div`
         opacity: 0.3;
         z-index: 1;
       }
-    }
+    } */
 
     ${css_breakpoints.min_desktop} {
       height: 200px;
