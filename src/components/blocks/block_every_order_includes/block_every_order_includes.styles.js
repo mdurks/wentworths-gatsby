@@ -56,7 +56,7 @@ export const Block_every_order_includesWrapper = styled.div`
 
     h2 {
       margin: 0 0 25px;
-      font-size: 34px;
+      font-size: 32px;
       line-height: 36px;
       text-transform: uppercase;
       text-align: center;
@@ -86,12 +86,15 @@ export const Block_every_order_includesWrapper = styled.div`
       }
 
       &:before {
-        content: "✔";
+        content: "";
         display: block;
         position: absolute;
-        top: 2px;
-        left: -25px;
+        top: 5px;
+        left: -30px;
         color: #b3924c;
+        width: 20px;
+        height: 20px;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path fill='%23b3924c' d='M27 55 6 33l3-4 17 12 29-29 4 4z'/></svg>");
       }
     }
 
