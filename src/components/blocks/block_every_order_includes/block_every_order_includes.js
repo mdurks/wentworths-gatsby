@@ -134,7 +134,7 @@ const Block_every_order_includes = () => {
             />
           </div>
           <div className="Block_every_order_includes__text">
-            <h2>Every order includes</h2>
+            <h2>Every order includes:</h2>
             <div
               dangerouslySetInnerHTML={{
                 __html: welcomes[0].everyOrderIncludesText.html,

@@ -50,33 +50,48 @@ export const Block_every_order_includesWrapper = styled.div`
       top: 50%;
       right: 0;
       transform: translate(0, -50%);
-      width: 100%;
-      padding: 60px 50px 50px;
+      padding: 50px;
+      border: 20px solid #ddd8ce;
     }
 
     h2 {
       margin: 0 0 25px;
       font-size: 34px;
-      text-transform: uppercase;
       line-height: 36px;
+      text-transform: uppercase;
+      text-align: center;
 
       ${css_breakpoints.min_desktop} {
-        margin: 10px 0 35px;
+        margin: 0 0 35px;
       }
     }
 
     ul {
-      list-style-type: circle;
-      list-style-type: disc;
-      margin-left: 22px;
+      margin: auto;
+      padding: 0 0 0 25px;
+
+      ${css_breakpoints.min_desktop} {
+        padding: 0;
+        width: max-content;
+      }
     }
 
     li {
-      margin: 0 0 3px 0;
+      position: relative;
+      margin: 0 0 5px 0;
       padding: 0 0 0 3px;
 
       &:last-of-type {
         margin: 0;
+      }
+
+      &:before {
+        content: "✔";
+        display: block;
+        position: absolute;
+        top: 2px;
+        left: -25px;
+        color: #b3924c;
       }
     }
 
