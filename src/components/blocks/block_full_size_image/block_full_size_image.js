@@ -49,10 +49,12 @@ const Block_one_row_jewellery = () => {
         // markers: true,
         trigger: gsap__image,
         start: "top 112%",
+        end: "110% bottom",
         scrub: true,
       },
       // duration: 2,
-      scale: 1.3,
+      scaleY: 1.3,
+      scaleX: 1.6,
     })
 
     gsap.to(".block_full_size_image__descriptionWrapper", {
