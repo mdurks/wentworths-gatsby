@@ -24,17 +24,16 @@ export const Div__SIT = styled.div`
   }
 
   h1 {
-    position: relative;
-    margin: 50px 0 50px;
-    font-size: clamp(54px, 6vw, 98px);
-    /* text-transform: uppercase; */
-    font-family: "Amalfi Coast", serif;
-    color: #c1a260;
+    margin: 0 0 10px;
+    font-size: 39px;
+    line-height: 50px;
+    font-family: "Playfair Display",serif;
+    color: #a77711;
 
     ${css_breakpoints.min_desktop} {
-      top: -54px;
-      left: -20px;
       margin: 0 0 30px;
+      font-size: 65px;
+      line-height: 80px;
     }
   }
 
@@ -45,6 +44,7 @@ export const Div__SIT = styled.div`
     font-family: "Playfair Display", serif;
     line-height: 36px;
     color: black;
+
     ${css_breakpoints.min_desktop} {
       line-height: normal;
     }
@@ -65,7 +65,7 @@ export const Div__SIT__backgroundStrip = styled.div`
   padding: 10px 0 20px;
 
   ${css_breakpoints.min_desktop} {
-    padding: 10px 0 70px;
+    padding: 50px 0 70px;
   }
 `
 

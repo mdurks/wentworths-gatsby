@@ -50,7 +50,6 @@ const Block_single_image_text = () => {
     gcms: { welcomes },
   } = useStaticQuery(pageQuery)
 
-  let tl_gsap = gsap.timeline()
   let gsap__Div__SIT = null
   let gsap__SIT__backgroundStrip = null
   let gsap__SIT__siteContainer = null
@@ -114,16 +113,16 @@ const Block_single_image_text = () => {
       "-=1.95"
     )
 
-    tl_gsap.from(
-      gsap__subTitle,
-      {
-        duration: 1.25,
-        opacity: 0,
-        y: 50,
-        ease: "power2.out",
-      },
-      "-=1.5"
-    )
+    // tl_gsap.from(
+    //   gsap__subTitle,
+    //   {
+    //     duration: 1.25,
+    //     opacity: 0,
+    //     y: 50,
+    //     ease: "power2.out",
+    //   },
+    //   "-=1.5"
+    // )
 
     tl_gsap.from(
       gsap__introMessage,
@@ -173,11 +172,11 @@ const Block_single_image_text = () => {
           <Styled_SiteContainer ref={e => (gsap__SIT__siteContainer = e)}>
             <Div__SIT__textGroup>
               <h1 className="gsap__title" ref={e => (gsap__title = e)}>
-                {welcomes[0].heroHeading}
-              </h1>
-              <p className="gsap__subTitle" ref={e => (gsap__subTitle = e)}>
                 {welcomes[0].heroSubheading}
-              </p>
+              </h1>
+              {/* <p className="gsap__subTitle" ref={e => (gsap__subTitle = e)}>
+                {welcomes[0].heroSubheading}
+              </p> */}
               <div
                 dangerouslySetInnerHTML={{
                   __html: welcomes[0].firstIntroMessage.html,
