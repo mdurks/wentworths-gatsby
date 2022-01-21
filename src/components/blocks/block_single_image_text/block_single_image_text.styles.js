@@ -29,6 +29,7 @@ export const Div__SIT = styled.div`
     line-height: 50px;
     font-family: "Playfair Display",serif;
     color: #a77711;
+    letter-spacing: -2px;
 
     ${css_breakpoints.min_desktop} {
       margin: 0 0 30px;
