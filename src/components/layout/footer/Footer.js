@@ -49,7 +49,7 @@ const Footer = () => {
 
       footer_timeline.to(".animate_footer_items_1", {
         duration: 0.6,
-        stagger: 0.15,
+        stagger: 0.13,
         opacity: 1,
         y: "0",
         ease: "back",
@@ -58,7 +58,7 @@ const Footer = () => {
         ".animate_footer_items_2",
         {
           duration: 0.55,
-          stagger: 0.15,
+          stagger: 0.13,
           opacity: 1,
           y: "0",
           ease: "back",
@@ -69,7 +69,7 @@ const Footer = () => {
         ".animate_footer_items_3",
         {
           duration: 0.4,
-          stagger: 0.15,
+          stagger: 0.13,
           opacity: 1,
           y: "0",
           ease: "back",
@@ -80,7 +80,7 @@ const Footer = () => {
         ".animate_footer_items_4",
         {
           duration: 0.35,
-          stagger: 0.15,
+          stagger: 0.13,
           opacity: 1,
           y: "0",
           ease: "back",
