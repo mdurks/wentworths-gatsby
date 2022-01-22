@@ -79,9 +79,9 @@ export const Img__SIT__img1 = styled.div`
     /* left: calc(40% - (326px / 2));
     top: calc(50% - (444px / 2)); */
     width: calc(50% - 40px);
-    top: calc(50% + 30px);
+    top: calc(50% + 20px);
     transform: translateY(-50%);
-    max-height: 80vh;
+    max-height: 75vh;
     margin: 0;
     overflow: hidden;
   }
