@@ -4,8 +4,8 @@ import GraphImg from "graphcms-image"
 import { gsap, ScrollTrigger } from "gsap/all"
 
 import Block_bespoke_design_advert from "../../components/blocks/block_bespoke_design_advert/block_bespoke_design_advert"
-import Block_every_order_includes from "../../components/blocks/block_every_order_includes/block_every_order_includes"
 import Block_newsletter_signup from "../../components/blocks/block_newsletter_signup/block_newsletter_signup"
+import Block_blog_latest_articles from "../../components/blocks/block_blog_latest_articles/block_blog_latest_articles"
 
 import {
   Div__detail_hero_block,
@@ -145,7 +145,7 @@ const BlogArticlePage = ({
         </Styled_BlogContent>
       </Styled_SiteContainer>
 
-      <Block_every_order_includes />
+      <Block_blog_latest_articles />
 
       <Block_newsletter_signup />
 

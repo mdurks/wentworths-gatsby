@@ -6,7 +6,7 @@ import GraphImg from "graphcms-image"
 import {
   Styled_BlogLatestArticles,
   Styled_BlogLatestArticlesWrapper,
-} from "./block_blog_latest_articles.styles.js"
+} from "./Block_blog_latest_articles.styles.js"
 import { Styled_SiteContainer } from "../../../styles/commonStyles"
 
 import { gsap, ScrollTrigger } from "gsap/all"
@@ -34,7 +34,7 @@ const pageQuery = graphql`
   }
 `
 
-const Block_product_windows = () => {
+const Block_blog_latest_articles = () => {
   const {
     gcms: { blogs },
   } = useStaticQuery(pageQuery)
@@ -69,4 +69,4 @@ const Block_product_windows = () => {
   )
 }
 
-export default Block_product_windows
+export default Block_blog_latest_articles
