@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { graphql } from "gatsby"
 import GraphImg from "graphcms-image"
+import { gsap, ScrollTrigger } from "gsap/all"
 
 import Block_bespoke_design_advert from "../../components/blocks/block_bespoke_design_advert/block_bespoke_design_advert"
 import Block_every_order_includes from "../../components/blocks/block_every_order_includes/block_every_order_includes"
@@ -12,6 +13,9 @@ import {
   Styled_BlogContent,
 } from "./blog_article.styles"
 import { Styled_SiteContainer } from "../../styles/commonStyles"
+
+gsap.registerPlugin(ScrollTrigger)
+gsap.core.globals("ScrollTrigger", ScrollTrigger)
 
 const BlogArticlePage = ({
   data: {
@@ -28,6 +32,19 @@ const BlogArticlePage = ({
         break
     }
   }
+
+  useEffect(() => {
+    gsap.to(".Styled_Img", {
+      scrollTrigger: {
+        trigger: ".Styled_Img",
+        start: "top top",
+        toggleActions: "play none none none",
+        // markers: true,
+        scrub: true,
+      },
+      y: `+=100`,
+    })
+  })
 
   return (
     <>
@@ -60,7 +77,7 @@ const BlogArticlePage = ({
             <p>Share on social media: </p>
             <div>
               <a
-                href={`https://www.facebook.com/sharer/sharer.php?u=https://wentworths-gatsby.netlify.app/${blog.slug}`}
+                href={`https://www.facebook.com/sharer/sharer.php?u=https://wentworths-gatsby.netlify.app/blog/${blog.slug}`}
                 style={{ backgroundColor: "#5a32ae" }}
               >
                 <svg
@@ -76,7 +93,7 @@ const BlogArticlePage = ({
                 </svg>
               </a>
               <a
-                href={`https://twitter.com/intent/tweet?url=https://wentworths-gatsby.netlify.app/${blog.slug}`}
+                href={`https://twitter.com/intent/tweet?url=https://wentworths-gatsby.netlify.app/blog/${blog.slug}`}
                 style={{ backgroundColor: "#0098F4" }}
               >
                 <svg
@@ -92,7 +109,7 @@ const BlogArticlePage = ({
                 </svg>
               </a>
               <a
-                href={`https://pinterest.com/pin/create/button/?url=https://wentworths-gatsby.netlify.app/${blog.slug}`}
+                href={`https://pinterest.com/pin/create/button/?url=https://wentworths-gatsby.netlify.app/blog/${blog.slug}`}
                 style={{ backgroundColor: "#DC0000" }}
               >
                 <svg
@@ -108,7 +125,7 @@ const BlogArticlePage = ({
                 </svg>
               </a>
               <a
-                href={`https://www.linkedin.com/shareArticle?mini=true&url=https://wentworths-gatsby.netlify.app/${blog.slug}`}
+                href={`https://www.linkedin.com/shareArticle?mini=true&url=https://wentworths-gatsby.netlify.app/blog/${blog.slug}`}
                 style={{ backgroundColor: "#0067B1" }}
               >
                 <svg

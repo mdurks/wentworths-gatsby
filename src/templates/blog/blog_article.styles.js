@@ -6,6 +6,7 @@ const section_vertical_padding = "5vh"
 
 export const Div__detail_hero_block = styled.div`
   position: relative;
+  overflow: hidden;
 
   ${css_breakpoints.min_desktop} {
     height: 450px;
