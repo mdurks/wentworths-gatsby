@@ -7,8 +7,10 @@
 exports.createPages = async ({ graphql, actions: { createPage } }) => {
   //
   //
-  // Product LISTING:
-  // Define categories and their product types, could maybe do this dynamicaly by querying gcms first
+  // Static method to create Product LISTING:
+  //
+  // Manualy define categories and their product types myself
+  // Could maybe do this dynamicaly and query graph cms
   //
   const categories = [
     { engagement: "rings" },
@@ -39,12 +41,11 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     }
   }
   //
-  // Product DETAIL:
-  // Get all products that are published
+  // Dynamic Query to generate pages
   //
   const {
     data: {
-      gcms: { products },
+      gcms: { products, blogs },
     },
   } = await graphql(`
     {
@@ -55,9 +56,28 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
           categoryType
           productType
         }
+        blogs(stage: PUBLISHED) {
+          id
+          articleTitle
+          slug
+          createdAt
+          articleImage {
+            id
+            url
+            width
+            height
+          }
+          content {
+            html
+          }
+        }
       }
     }
   `)
+
+  // Product DETAIL:
+  //
+  // Get all products that are published
 
   /*
   A single product would look like:
@@ -107,4 +127,22 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
       })
     }
   }
+
+  //
+  // Blogs:
+  //
+  // Dynamicaly create all the blog pages from query above
+  // Pass the ID to find that blog article when doing the gcms query on that page for its content
+
+  blogs.forEach(blog => {
+    const id = blog.id
+
+    createPage({
+      path: `/blog/${blog.slug}`,
+      component: require.resolve(`./src/templates/blog/blog_article.js`),
+      context: {
+        id,
+      },
+    })
+  })
 }
