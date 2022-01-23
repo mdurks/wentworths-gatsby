@@ -48,16 +48,13 @@ export const Styled_BlogLatestArticlesWrapper = styled.div`
     margin: 30px 0;
     text-align: center;
     transition: all ease 0.3s;
-    border: 2px solid #dbdbdb;
     background: white;
 
     ${css_breakpoints.min_desktop} {
       /* margin: 10px; */
       flex: 0 0 calc(33.3% - 40px);
       margin: 20px;
-      border: 1px solid #dbdbdb;
       border-bottom: 8px solid #b3924c;
-      border-radius: 3px;
 
       &:hover {
         top: -5px;
