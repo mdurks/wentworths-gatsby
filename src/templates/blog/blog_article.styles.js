@@ -124,7 +124,8 @@ export const Styled_BlogContent = styled.div`
     img {
       height: auto;
       max-height: 600px;
-      width: 100%;
+      max-width: 100%;
+      width: auto;
       margin: 20px 0 35px;
     }
   }
