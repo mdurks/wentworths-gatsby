@@ -1,6 +1,4 @@
 import React from "react"
-import { useEffect } from "react"
-import { graphql, useStaticQuery } from "gatsby"
 import GraphImg from "graphcms-image"
 
 import {

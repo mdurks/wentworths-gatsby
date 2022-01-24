@@ -34,6 +34,8 @@ const BlogArticlePage = ({
   }
 
   useEffect(() => {
+    window.scrollTo(0, 0)
+
     gsap.to(".Styled_Img", {
       scrollTrigger: {
         trigger: ".Styled_Img",
