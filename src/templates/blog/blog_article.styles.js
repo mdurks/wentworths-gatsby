@@ -122,9 +122,10 @@ export const Styled_BlogContent = styled.div`
     }
 
     img {
-      margin: 20px 0 35px;
+      height: auto;
       max-height: 600px;
-      width: auto;
+      width: 100%;
+      margin: 20px 0 35px;
     }
   }
 
