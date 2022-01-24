@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import GraphImg from "graphcms-image"
 
@@ -36,7 +36,10 @@ const Blog = () => {
     gcms: { blogs },
   } = useStaticQuery(pageQuery)
 
-  console.log("blogs", blogs)
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  })
+
   return (
     <BlogPageWrapper>
       <Styled_SiteContainer>

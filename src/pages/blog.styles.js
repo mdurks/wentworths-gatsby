@@ -70,6 +70,10 @@ export const Styled_BlogLatestArticlesWrapper = styled.div`
         top: -5px;
         border-bottom: 8px solid #b3924c;
 
+        .blogLatestArticleImg > div {
+          transform: scale(1.035) translate(-50%, -50%);
+        }
+
         h3 {
           color: #a98029;
         }
@@ -78,6 +82,7 @@ export const Styled_BlogLatestArticlesWrapper = styled.div`
   }
 
   .blogLatestArticleImg {
+    position: relative;
     height: 200px;
     margin: 0 0 10px;
     overflow: hidden;
@@ -89,8 +94,16 @@ export const Styled_BlogLatestArticlesWrapper = styled.div`
     div {
       width: 100%;
       height: 100%;
+      /* top: 50%;
+      transform: translateY(-50%); */
+    }
+
+    > div {
+      overflow: hidden;
       top: 50%;
-      transform: translateY(-50%);
+      left: 50%;
+      transform: scale(1) translate(-50%, -50%);
+      transition: all ease 0.75s;
     }
   }
 
