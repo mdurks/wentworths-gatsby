@@ -70,7 +70,7 @@ export const Block_newsletter_signupWrapper = styled.div`
     position: relative;
     top: -5px;
     width: 100%;
-    max-width: 575px;
+    max-width: 650px;
     margin: auto;
     padding: 0 10px 40px;
 
@@ -106,7 +106,8 @@ export const Block_newsletter_signupWrapper = styled.div`
         border-radius: 5px;
         font-family: "Raleway", sans-serif;
         font-size: 19px;
-
+        font-weight: bold;
+        letter-spacing: 1px;
         ${css_breakpoints.min_tablet} {
           padding: 10px 15px;
         }
@@ -132,6 +133,9 @@ export const Block_newsletter_signupWrapper = styled.div`
     }
 
     p {
+      font-weight: bold;
+      letter-spacing: 0.66px;
+
       ${css_breakpoints.min_tablet} {
         font-size: 20px;
       }

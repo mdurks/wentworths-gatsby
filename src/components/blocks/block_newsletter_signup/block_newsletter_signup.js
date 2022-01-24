@@ -154,7 +154,7 @@ const Block_newsletter_signup = () => {
               </div>
 
               <p>
-                We won't share your info and you can unsubscribe at any time.
+                We won't share your email and you can unsubscribe at any time.
               </p>
             </div>
           </Styled_SiteContainer>
