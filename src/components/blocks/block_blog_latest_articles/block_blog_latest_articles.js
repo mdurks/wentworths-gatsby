@@ -14,35 +14,9 @@ import { gsap, ScrollTrigger } from "gsap/all"
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
 
-const pageQuery = graphql`
-  {
-    gcms {
-      blogs(orderBy: createdAt_DESC, stage: PUBLISHED, first: 3) {
-        id
-        articleTitle
-        slug
-        createdAt
-        articleImage {
-          id
-          url
-          width
-          height
-          handle
-        }
-      }
-    }
-  }
-`
+// this component is expecting blogs to be passed (from graphcms) as props to this component
 
-const Block_blog_latest_articles = () => {
-  const {
-    gcms: { blogs },
-  } = useStaticQuery(pageQuery)
-
-  // console.log("blogs", blogs)
-
-  useEffect(() => {}, [])
-
+const Block_blog_latest_articles = ({ blogs }) => {
   return (
     <Styled_BlogLatestArticles>
       <Styled_SiteContainer>

@@ -19,7 +19,7 @@ gsap.core.globals("ScrollTrigger", ScrollTrigger)
 
 const BlogArticlePage = ({
   data: {
-    gcms: { blog },
+    gcms: { blog, blogs },
   },
 }) => {
   const returnDateMonth = value => {
@@ -145,7 +145,7 @@ const BlogArticlePage = ({
         </Styled_BlogContent>
       </Styled_SiteContainer>
 
-      <Block_blog_latest_articles />
+      <Block_blog_latest_articles blogs={blogs} />
 
       <Block_newsletter_signup />
 
@@ -153,6 +153,10 @@ const BlogArticlePage = ({
     </>
   )
 }
+
+// query for this blog based off ID
+// query for other newest blogs, minus this blog by ID
+// so not to give user a link to a blog they're already viewing
 
 export const pageQuery = graphql`
   query BlogPageQuery($id: ID!) {
@@ -171,6 +175,24 @@ export const pageQuery = graphql`
         }
         content {
           html
+        }
+      }
+      blogs(
+        orderBy: createdAt_DESC
+        stage: PUBLISHED
+        first: 3
+        where: { NOT: { id: $id } }
+      ) {
+        id
+        articleTitle
+        slug
+        createdAt
+        articleImage {
+          id
+          url
+          width
+          height
+          handle
         }
       }
     }

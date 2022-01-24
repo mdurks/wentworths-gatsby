@@ -77,13 +77,26 @@ const pageQuery = graphql`
           }
         }
       }
+      blogs(orderBy: createdAt_DESC, stage: PUBLISHED, first: 3) {
+        id
+        articleTitle
+        slug
+        createdAt
+        articleImage {
+          id
+          url
+          width
+          height
+          handle
+        }
+      }
     }
   }
 `
 
 const IndexPage = () => {
   const {
-    gcms: { blockGradientRowLinks, products, welcomes },
+    gcms: { blockGradientRowLinks, products, welcomes, blogs },
   } = useStaticQuery(pageQuery)
   // console.log("products", products)
   // console.log("welcomes", welcomes[0].products)
@@ -129,7 +142,7 @@ const IndexPage = () => {
 
       <Block_newsletter_signup />
 
-      <Block_blog_latest_articles />
+      <Block_blog_latest_articles blogs={blogs} />
     </>
   )
 }

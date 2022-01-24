@@ -111,6 +111,12 @@ export const Styled_BlogContent = styled.div`
     ${css_breakpoints.min_desktop} {
       padding: 40px 0 0;
     }
+
+    img {
+      margin: 20px 0 35px;
+      max-height: 600px;
+      width: auto;
+    }
   }
 
   h2 {

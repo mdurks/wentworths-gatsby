@@ -32,7 +32,7 @@ export const Styled_BlogLatestArticlesWrapper = styled.div`
 
   h3 {
     padding: 0 20px 10px;
-    color: #a98029;
+    color: black;
     line-height: 31px;
     transition: all ease 0.3s;
 
@@ -54,13 +54,14 @@ export const Styled_BlogLatestArticlesWrapper = styled.div`
       /* margin: 10px; */
       flex: 0 0 calc(33.3% - 40px);
       margin: 20px;
-      border-bottom: 8px solid #b3924c;
+      border-bottom: 8px solid #fff;
 
       &:hover {
         top: -5px;
+        border-bottom: 8px solid #b3924c;
 
         h3 {
-          color: black;
+          color: #a98029;
         }
       }
     }
@@ -88,21 +89,23 @@ export const Styled_BlogLatestArticlesWrapper = styled.div`
     flex: 1 0 100%;
     margin: 50px 0 40px;
     text-align: center;
-    color: #836830;
+    color: black;
 
     ${css_breakpoints.min_desktop} {
       margin: 50px 0 5px;
-
-      &:hover {
-        color: black;
-      }
     }
 
     span {
       margin: 0 0 6px;
       padding: 0 0 6px;
-      border-bottom: 2px dotted #b3924c;
+      border-bottom: 2px solid #e5e3de;
       transition: all ease 0.3s;
+
+      &:hover {
+        color: #836830;
+
+        border-bottom: 2px solid #b3924c;
+      }
     }
   }
 `
