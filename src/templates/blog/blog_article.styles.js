@@ -87,15 +87,24 @@ export const Styled_BlogContent = styled.div`
     }
 
     a {
+      position: relative;
+      top: 0;
       display: inline-block;
+      margin: 5px;
+      padding: 12px;
       width: 50px;
       height: 50px;
-      margin: 0 4px;
       border-radius: 3px;
-      padding: 12px;
+      transition: all ease 0.3s;
 
       &:last-of-type {
         margin-right: 0;
+      }
+
+      ${css_breakpoints.min_desktop} {
+        &:hover {
+          top: -4px;
+        }
       }
     }
 
