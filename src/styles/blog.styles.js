@@ -18,7 +18,8 @@ export const Styled_BlogLatestArticlesWrapper = styled.div`
 
   ${css_breakpoints.min_desktop} {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    flex-wrap: nowrap;
     padding: 0 0 100px;
   }
 
@@ -46,7 +47,7 @@ export const Styled_BlogLatestArticlesWrapper = styled.div`
     transition: all ease 0.3s;
 
     ${css_breakpoints.min_desktop} {
-      padding: 0 20px 20px;
+      padding: 40px 20px 7px 340px;
     }
   }
 
@@ -61,10 +62,9 @@ export const Styled_BlogLatestArticlesWrapper = styled.div`
 
     ${css_breakpoints.min_desktop} {
       flex: 0 0 calc(33.3% - 40px);
-      display: flex;
-      flex-direction: column;
-      margin: 20px;
-      border-bottom: 8px solid #fff;
+      margin: 20px 20px 10px;
+      text-align: left;
+      border-bottom: 8px solid #e5e3de;
 
       &:hover {
         top: -5px;
@@ -88,14 +88,15 @@ export const Styled_BlogLatestArticlesWrapper = styled.div`
     overflow: hidden;
 
     ${css_breakpoints.min_desktop} {
-      margin: 0 0 20px;
+      height: 152px;
+      width: 274px;
+      margin: 0;
+      float: left;
     }
 
     div {
       width: 100%;
       height: 100%;
-      /* top: 50%;
-      transform: translateY(-50%); */
     }
 
     > div {
@@ -134,5 +135,10 @@ export const Styled_BlogLatestArticlesWrapper = styled.div`
 
   .articlePublishDate {
     margin: auto 0 10px;
+    padding: 0 0 15px;
+
+    ${css_breakpoints.min_desktop} {
+      padding: 0px 20px 0 340px;
+    }
   }
 `

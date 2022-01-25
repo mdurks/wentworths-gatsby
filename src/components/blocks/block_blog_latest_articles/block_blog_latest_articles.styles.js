@@ -108,14 +108,14 @@ export const Styled_BlogLatestArticlesWrapper = styled.div`
     }
 
     span {
-      margin: 0 0 6px;
-      padding: 0 0 6px;
-      border-bottom: 2px solid #e5e3de;
+      margin: 0 0 4px;
+      padding: 0 0 4px;
+      border-bottom: 1px solid #000;
       transition: all ease 0.3s;
 
       &:hover {
         color: #836830;
-        border-bottom: 2px solid #b3924c;
+        border-bottom: 1px solid #b3924c;
       }
     }
   }
