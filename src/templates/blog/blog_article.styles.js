@@ -72,6 +72,7 @@ export const Styled_BlogContent = styled.div`
     margin: 50px 0 35px;
     padding: 10px 0 10px;
     border-top: 1px dotted grey;
+    text-align: center;
 
     ${css_breakpoints.min_desktop} {
       flex-direction: row;
