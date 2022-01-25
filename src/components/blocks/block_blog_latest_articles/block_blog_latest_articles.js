@@ -1,10 +1,10 @@
 import React from "react"
 import GraphImg from "graphcms-image"
 
-import {
-  Styled_BlogLatestArticles,
-  Styled_BlogLatestArticlesWrapper,
-} from "./Block_blog_latest_articles.styles.js"
+// import {
+//   Styled_BlogLatestArticles,
+//   Styled_BlogLatestArticlesWrapper,
+// } from "./Block_blog_latest_articles.styles.js"
 import { Styled_SiteContainer } from "../../../styles/commonStyles"
 
 import { gsap, ScrollTrigger } from "gsap/all"
@@ -16,9 +16,9 @@ gsap.core.globals("ScrollTrigger", ScrollTrigger)
 
 const Block_blog_latest_articles = ({ blogs }) => {
   return (
-    <Styled_BlogLatestArticles>
+    <div>
       <Styled_SiteContainer>
-        <Styled_BlogLatestArticlesWrapper>
+        <div>
           <h2>Latest Blog Articles</h2>
           {blogs.map(blog => (
             <a href={`/blog/${blog.slug}`} className="blogLatestArticleItem">
@@ -35,9 +35,9 @@ const Block_blog_latest_articles = ({ blogs }) => {
           <a href="/blog/" className="blogLatestArticleReadMore">
             <span>Read more of our blog articles</span>
           </a>
-        </Styled_BlogLatestArticlesWrapper>
+        </div>
       </Styled_SiteContainer>
-    </Styled_BlogLatestArticles>
+    </div>
   )
 }
 
