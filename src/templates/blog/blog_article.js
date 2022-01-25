@@ -134,7 +134,7 @@ const BlogArticlePage = ({
                 </svg>
               </a>
               <a
-                href={`https://api.whatsapp.com/send?text=https%3A%2F%2Fwentworths-gatsby.netlify.app%2Fblog%2F${blog.slug}`}
+                href={`https://api.whatsapp.com/send?text=https://wentworths-gatsby.netlify.app/blog/${blog.slug}`}
                 style={{ backgroundColor: "#2CB742" }}
               >
                 <svg
@@ -143,12 +143,12 @@ const BlogArticlePage = ({
                   // xml:space="preserve"
                 >
                   <path
-                    style="fill:#ffffff;"
+                    fill="#ffffff"
                     d="M0,58l4.988-14.963C2.457,38.78,1,33.812,1,28.5C1,12.76,13.76,0,29.5,0S58,12.76,58,28.5
 		S45.24,57,29.5,57c-4.789,0-9.299-1.187-13.26-3.273L0,58z"
                   />
                   <path
-                    style="fill:#2CB742;"
+                    fill="#2CB742"
                     d="M47.683,37.985c-1.316-2.487-6.169-5.331-6.169-5.331c-1.098-0.626-2.423-0.696-3.049,0.42
 		c0,0-1.577,1.891-1.978,2.163c-1.832,1.241-3.529,1.193-5.242-0.52l-3.981-3.981l-3.981-3.981c-1.713-1.713-1.761-3.41-0.52-5.242
 		c0.272-0.401,2.163-1.978,2.163-1.978c1.116-0.627,1.046-1.951,0.42-3.049c0,0-2.844-4.853-5.331-6.169
