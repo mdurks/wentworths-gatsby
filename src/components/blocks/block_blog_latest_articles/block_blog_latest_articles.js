@@ -4,7 +4,7 @@ import GraphImg from "graphcms-image"
 import {
   Styled_BlogLatestArticles,
   Styled_BlogLatestArticlesWrapper,
-} from "./Block_blog_latest_articles.styles.js"
+} from "./block_blog_latest_articles.styles.js"
 import { Styled_SiteContainer } from "../../../styles/commonStyles"
 
 import { gsap, ScrollTrigger } from "gsap/all"
