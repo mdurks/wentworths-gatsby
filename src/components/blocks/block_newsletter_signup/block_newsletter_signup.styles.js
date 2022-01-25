@@ -55,10 +55,12 @@ export const Block_newsletter_signupWrapper = styled.div`
       span {
         display: block;
         font-size: 27px;
+        font-weight: bold;
 
         ${css_breakpoints.min_tablet} {
           display: inline;
           font-size: clamp(40px, 7vw, 72px);
+          font-weight: normal;
         }
       }
     }
@@ -105,11 +107,12 @@ export const Block_newsletter_signupWrapper = styled.div`
         border: 3px solid #588d8d;
         border-radius: 5px;
         font-family: "Raleway", sans-serif;
-        font-size: 19px;
-        font-weight: bold;
+        font-size: 17px;
         letter-spacing: 1px;
+
         ${css_breakpoints.min_tablet} {
           padding: 10px 15px;
+          font-size: 19px;
         }
       }
 
