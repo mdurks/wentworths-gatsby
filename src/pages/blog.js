@@ -8,7 +8,7 @@ import { returnDateMonth } from "../common/utility"
 import {
   BlogPageWrapper,
   Styled_BlogLatestArticlesWrapper,
-} from "./blog.styles"
+} from "../styles/blog.styles"
 import { Styled_SiteContainer } from "../styles/commonStyles"
 
 const pageQuery = graphql`
