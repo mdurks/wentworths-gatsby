@@ -764,7 +764,7 @@ const DetailsPage = ({
               btn_selected
               className="snipcart-add-item"
               data-item-id={product.id}
-              data-item-price={number_with_commas(product.price)}
+              data-item-price={product.price}
               data-item-url={pageContext.pageURL}
               data-item-description={product.description}
               data-item-image={product.image[0].url}
