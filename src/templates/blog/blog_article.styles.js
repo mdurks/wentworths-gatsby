@@ -132,6 +132,7 @@ export const Styled_BlogContent = styled.div`
 
       ${css_breakpoints.min_desktop} {
         margin: 12px 0 27px;
+        max-width: 100%;
       }
     }
   }
