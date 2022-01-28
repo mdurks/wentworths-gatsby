@@ -113,8 +113,6 @@ const IndexPage = () => {
 
       <Block_single_image_text />
 
-      <Block_product_windows products={welcomes[0].products} />
-
       {blockGradientRowLinks.map(el => (
         <Block_gradient_row_link
           pre_title={el.preTitle}
@@ -125,6 +123,8 @@ const IndexPage = () => {
           image={el.image}
         />
       ))}
+
+      <Block_product_windows products={welcomes[0].products} />
 
       <Block_full_size_image />
 
