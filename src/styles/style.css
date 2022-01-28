@@ -160,10 +160,71 @@ main {
 #snipcart {
   position: relative;
   z-index: 50;
+  font-family: "Raleway", sans-serif !important;
+  font-size: 16px;
 }
+
+.snipcart-cart__secondary-header h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  /* font-weight: bold; */
+  color: white;
+}
+#snipcart h2 {
+  font-family: "Raleway", sans-serif;
+  font-weight: normal;
+  color: #000;
+}
+
+.snipcart-cart__secondary-header {
+  background-color: #a77711 !important;
+  color: white;
+}
+
+.snipcart-cart__secondary-header svg {
+  color: white;
+  width: 50px;
+  height: 50px;
+}
+
 .snipcart-cart-header__close-button .snipcart__icon {
   width: 40px;
   height: 40px;
+}
+
+.snipcart-modal__close-title {
+  font-weight: bold !important;
+}
+
+#snipcart legend,
+#snipcart label,
+#snipcart p,
+.snipcart__font--subtitle-small,
+.snipcart__font--tiny {
+  font-size: 16px !important;
+}
+
+:root {
+  --bgColor-buttonPrimary: #a77711;
+  --bgColor-buttonPrimary-hover: #a77711;
+
+  --color-link: #000;
+  --color-link-hover: #a77711;
+  --color-icon: #a77711;
+  --color-badge: #a77711;
+  --color-badge-active: #fff;
+  --borderColor-badge-active: #a77711;
+  --bgColor-badge-active: #a77711;
+
+  --color-input-hover: #a77711;
+  --borderColor-input-hover: #a77711;
+  --borderColor-input-focus: #a77711;
+  --shadow-input-focus: #a77711;
+
+  --color-buttonSecondary: #000;
+  --color-buttonSecondary-hover: #fff;
+  --bgColor-buttonSecondary: #d8c7a3;
+  --bgColor-buttonSecondary-hover: #a77711;
 }
 
 /* End Snipcart ------------------- */
