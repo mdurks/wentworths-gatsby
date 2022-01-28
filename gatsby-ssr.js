@@ -13,8 +13,8 @@ export const onRenderBody = (
 ) => {
   setHeadComponents([
     // <link rel="preconnect" href="https://fonts.gstatic.com/" />,
-    // <link rel="preconnect" href="https://app.snipcart.com" />,
-    // <link rel="preconnect" href="https://cdn.snipcart.com" />,
+    <link rel="preconnect" href="https://app.snipcart.com" />,
+    <link rel="preconnect" href="https://cdn.snipcart.com" />,
     // <link
     //   href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Raleway:wght@400;500&display=swap"
     //   rel="stylesheet"
@@ -43,12 +43,17 @@ export const onRenderBody = (
   ])
 
   setPostBodyComponents([
-    // <div
-    //   hidden
-    //   id="snipcart"
-    //   data-api-key="YmJkMDViNmYtYjg2MC00YTc0LTkwNDMtNGUzZGYwYTkyN2JjNjM3MzAzMTM2MDgxMjQzNzc0"
-    //   data-currency="gbp"
-    // ></div>,
+    <script
+      async
+      src="https://cdn.snipcart.com/themes/v3.3.1/default/snipcart.js"
+    ></script>,
+    <div
+      hidden
+      id="snipcart"
+      data-api-key="YmJkMDViNmYtYjg2MC00YTc0LTkwNDMtNGUzZGYwYTkyN2JjNjM3MzAzMTM2MDgxMjQzNzc0"
+      data-currency="gbp"
+      data-config-modal-style="side"
+    ></div>,
     // <link
     //   rel="stylesheet"
     //   href="https://cdn.snipcart.com/themes/v3.0.17/default/snipcart.css"
@@ -70,6 +75,10 @@ export const onRenderBody = (
     //   "https://cdn.snipcart.com/themes/v3.0.17/default/snipcart.js";
     //   document.body.appendChild(snipcartScript);
     // </script>,
+    <link
+      rel="stylesheet"
+      href="https://cdn.snipcart.com/themes/v3.3.1/default/snipcart.css"
+    />,
     <script
       src="https://chimpstatic.com/mcjs-connected/js/users/d5846f86c03e5c2c5a3e185f8/02028c8b0af713f275541bbbb.js"
       defer

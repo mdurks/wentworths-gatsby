@@ -7,21 +7,17 @@ import ShoppingBagIcon_hover from "../images/shopping-bag-icon-hover.png"
 import LoadingSpinner from "../images/loading-spinner-sml.gif"
 
 const Styled_CartButton = styled.button`
-  position: absolute;
-  top: 11px;
-  left: -7px;
-  width: 45px;
-  height: 40px;
-  padding: 12px 0 0;
+  position: relative;
+  top: calc(50% - 5px);
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
   text-align: center;
   font-weight: bold;
-  background-image: url(${ShoppingBagIcon});
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: contain;
   background-color: transparent;
   border: none;
-  z-index: 5;
+  z-index: 15;
 
   img {
     margin: 4px 0 0;
@@ -30,27 +26,34 @@ const Styled_CartButton = styled.button`
   }
 
   ${css_breakpoints.min_desktop} {
-    top: 11px;
-    right: 10px;
-    left: auto;
-
-    &:hover {
+    &:hover .cartIcon {
       background-image: url(${ShoppingBagIcon_hover});
       color: #fff;
     }
   }
-`
 
-const Styled_CartDesc = styled.div`
-  display: none;
-  position: absolute;
-  top: 57px;
-  right: -8px;
-  width: 80px;
-  text-align: center;
+  .snipcart-items-count {
+    margin: 2px 0 0;
+    display: block;
+  }
 
-  ${Styled_CartButton}:hover & {
-    display: block !important;
+  .cartIcon {
+    width: 45px;
+    height: 40px;
+    padding: 12px 0 0;
+    background-image: url(${ShoppingBagIcon});
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+  }
+
+  .cartDesc {
+    margin: 6px 0 0 5px;
+    width: 55px;
+    text-align: left;
+    font-size: 16px;
+    line-height: 15px;
+    color: black;
   }
 `
 
@@ -79,11 +82,13 @@ class Snipcart extends React.Component {
           data-currency="gbp"
         ></div> */}
         <Styled_CartButton className="snipcart-checkout">
-          <span className="snipcart-items-count">
-            <img src={LoadingSpinner} alt="Loading cart" />
-          </span>
+          <div className="cartIcon">
+            <span className="snipcart-items-count">
+              {/* <img src={LoadingSpinner} alt="Loading cart" /> */}
+            </span>
+          </div>
+          <div className="cartDesc">My Basket</div>
         </Styled_CartButton>
-        <Styled_CartDesc>View Cart</Styled_CartDesc>
       </>
     )
   }

@@ -235,12 +235,12 @@ const DetailsPage = ({
     //
     // intercept browser action to go back and stop it
     // call function to do exit animation, then redirect url to previous page
-    history.pushState(null, document.title, location.href)
-    window.addEventListener("popstate", function (event) {
-      history.pushState(null, document.title, location.href)
-      document.body.classList.add("no_x_scroll")
-      exit_animation()
-    })
+    // history.pushState(null, document.title, location.href)
+    // window.addEventListener("popstate", function (event) {
+    //   history.pushState(null, document.title, location.href)
+    //   document.body.classList.add("no_x_scroll")
+    //   exit_animation()
+    // })
     //
     let exit_animation = () => {
       //

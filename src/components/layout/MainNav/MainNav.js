@@ -4,6 +4,8 @@ import { useAppContext } from "../../../store/AppContext"
 import { graphql, useStaticQuery, Link } from "gatsby"
 // import Link from "gatsby-plugin-transition-link"
 
+import Snipcart from "../../snipcart"
+
 import {
   Button__burgerBtn,
   Nav__mainNav,
@@ -166,7 +168,7 @@ const MainNav = () => {
       <Nav__mainNav className="mainNav">
         <Div__mainNav__container>
           <A__mainNav__logo as={Link} to="/">
-            Wentworth Jewels
+            Wentworths
           </A__mainNav__logo>
 
           <Ul__mainNav__listContainer>
@@ -293,6 +295,10 @@ const MainNav = () => {
               >
                 Contact
               </Button__topLevelLink>
+            </Li__mainNav__topLevelLink>
+
+            <Li__mainNav__topLevelLink>
+              <Snipcart />
             </Li__mainNav__topLevelLink>
           </Ul__mainNav__listContainer>
         </Div__mainNav__container>
