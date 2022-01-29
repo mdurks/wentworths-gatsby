@@ -46,21 +46,26 @@ const ProductsPage = () => {
   return (
     <>
       <Styled_SiteContainer>
-        <h2 style={{ margin: "150px 0 50px" }}>
-          All Products ({totalProducts}):
-        </h2>
-        <p style={{ margin: "0 0 20px" }}>
-          This page is creatd for snipcart so that it can register every product
-          and it's URL. Click the links if you want to view that product page.
-          Updated, Created and Published are there for any kind of audit.
-        </p>
+        <h2 style={{ margin: "150px 0 0" }}>All Products:</h2>
         <p style={{ margin: "0 0 50px" }}>
-          Any time products are added or removed, re-submit this page in the
-          snipcart admin to update it's list of products.
+          {products.length} Unique products, {totalProducts} Occurances
         </p>
-        <p>orderBy: updatedAt_DESC</p>
+        <p style={{ margin: "0 0 30px" }}>
+          This page is created for snipcart so that it can register every
+          product and it's URL. Any time products are added or removed, this
+          page MUST be re-submited in the snipcart admin to update it's list of
+          products. Otherwise snipcart won't recognise that product and no one
+          will be able to buy it.
+        </p>
+        <p>Ordered by: 'Updated' (descending)</p>
         {products.map(product => (
-          <ul style={{ margin: "30px 0" }}>
+          <ul
+            style={{
+              margin: "30px 0",
+              background: "#efede8",
+              padding: "5px 15px",
+            }}
+          >
             {product.categoryType.map(category => {
               productCount++
               return (
@@ -68,7 +73,7 @@ const ProductsPage = () => {
                   {productCount}.
                   <a
                     style={{
-                      margin: "0 10px 0 10px",
+                      margin: "0 15px 0 10px",
                       textDecoration: "underline",
                     }}
                     href={`/${category}/${product.productType}/${product.slug}`}
@@ -84,6 +89,7 @@ const ProductsPage = () => {
                     data-item-description={product.description}
                     data-item-image={product.image[0].url}
                     data-item-name={product.name}
+                    style={{ border: "1px solid grey", margin: "0 10px 0 0" }}
                   >
                     {`£${product.price} ${product.name}`}
                   </button>
