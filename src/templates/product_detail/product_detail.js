@@ -11,6 +11,8 @@ import {
 
 //import Layout from "../components/layout"
 
+import SEO from "../../components/layout/seo"
+
 import Block_best_seller from "../../components/blocks/block_best_seller/block_best_seller"
 import Block_may_also_like from "../../components/blocks/block_may_also_like/block_may_also_like"
 import Block_bespoke_design_advert from "../../components/blocks/block_bespoke_design_advert/block_bespoke_design_advert"
@@ -660,6 +662,13 @@ const DetailsPage = ({
   //
   return (
     <>
+      <SEO
+        title={`${product.name} - ${String(product.categoryType)
+          .slice(0, 1)
+          .toUpperCase()}${String(product.categoryType).slice(1)}`}
+        description={product.description}
+      />
+
       <Div__detail_hero_block>
         <Styled_SiteContainer>
           {/* Overide css wrapper classes to change backround colour */}
@@ -756,7 +765,7 @@ const DetailsPage = ({
 
               <div className="selectRingSize">
                 <p>You can shoose your ring size at the checkout stage.</p>
-                <a href="/">What's my ring size?</a>
+                {/* <a href="/">What's my ring size?</a> */}
               </div>
             </div>
 

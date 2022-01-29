@@ -9,6 +9,7 @@ import {
 } from "../../common/utility"
 
 // import Layout from "../components/layout"
+import SEO from "../../components/layout/seo"
 import Product_in_list from "../../components/product/Product_in_list"
 import Product_filter_checkbox from "../../components/product/Product_filter_checkbox"
 import Block_newsletter_signup from "../../components/blocks/block_newsletter_signup/block_newsletter_signup"
@@ -55,7 +56,7 @@ const ProductPage = ({
   // 'Page load' animations and such
   useEffect(() => {
     gsap.to(
-      ".subTitle, .pageTitle, .productsPageHeaeder p:last-of-type, .filter, .filter_info",
+      ".subTitle, .pageTitle, .productsPageHeaeder p, .filter, .filter_info",
       {
         delay: 0.35,
         opacity: 1,
@@ -518,6 +519,21 @@ const ProductPage = ({
 
   return (
     <>
+      <SEO
+        // title={`${pageContext.category} - ${pageContext.product_type}`}
+        title={`${String(pageContext.category)
+          .slice(0, 1)
+          .toUpperCase()}${String(pageContext.category).slice(1)} ${String(
+          pageContext.product_type
+        )
+          .slice(0, 1)
+          .toUpperCase()}${String(pageContext.product_type).slice(1)} Category`}
+        description={String(subTitleText).slice(
+          String(subTitleText).indexOf(">") + 1,
+          String(subTitleText).indexOf("</")
+        )}
+      />
+
       <Div__productsPage className="productsPageContainer">
         <Styled_SiteContainer>
           <Div__pageHeader className="productsPageHeaeder">

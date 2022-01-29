@@ -5,6 +5,7 @@ import GraphImg from "graphcms-image"
 import { returnDateMonth } from "../common/utility"
 
 // import Layout from "../components/layout"
+import SEO from "../components/layout/seo"
 import {
   BlogPageWrapper,
   Styled_BlogLatestArticlesWrapper,
@@ -41,30 +42,37 @@ const Blog = () => {
   })
 
   return (
-    <BlogPageWrapper>
-      <Styled_SiteContainer>
-        <h1>News & Articles</h1>
-        <Styled_BlogLatestArticlesWrapper>
-          {blogs.map(blog => (
-            <a href={`/blog/${blog.slug}`} className="blogLatestArticleItem">
-              <div className="blogLatestArticleImg">
-                <GraphImg
-                  image={blog.articleImage}
-                  transforms={["quality=value:80"]}
-                  maxWidth={300}
-                />
-              </div>
-              <h3>{blog.articleTitle}</h3>
-              <p className="articlePublishDate">
-                {`${blog.createdAt.slice(8, 10)} ${returnDateMonth(
-                  blog.createdAt.slice(5, 7)
-                )} ${blog.createdAt.slice(0, 4)}`}
-              </p>
-            </a>
-          ))}
-        </Styled_BlogLatestArticlesWrapper>
-      </Styled_SiteContainer>
-    </BlogPageWrapper>
+    <>
+      <SEO
+        title="News & Articles"
+        description="The latest news and articles from Wentworths."
+      />
+
+      <BlogPageWrapper>
+        <Styled_SiteContainer>
+          <h1>News & Articles</h1>
+          <Styled_BlogLatestArticlesWrapper>
+            {blogs.map(blog => (
+              <a href={`/blog/${blog.slug}`} className="blogLatestArticleItem">
+                <div className="blogLatestArticleImg">
+                  <GraphImg
+                    image={blog.articleImage}
+                    transforms={["quality=value:80"]}
+                    maxWidth={300}
+                  />
+                </div>
+                <h3>{blog.articleTitle}</h3>
+                <p className="articlePublishDate">
+                  {`${blog.createdAt.slice(8, 10)} ${returnDateMonth(
+                    blog.createdAt.slice(5, 7)
+                  )} ${blog.createdAt.slice(0, 4)}`}
+                </p>
+              </a>
+            ))}
+          </Styled_BlogLatestArticlesWrapper>
+        </Styled_SiteContainer>
+      </BlogPageWrapper>
+    </>
   )
 }
 export default Blog

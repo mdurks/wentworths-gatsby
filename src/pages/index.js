@@ -9,6 +9,8 @@ import { gsap, ScrollTrigger } from "gsap/all"
 // import Image_text_box from "../components/image_text_box"
 // import Block_one_row_jewellery from "../components/blocks/block_one_row_jewellery/block_one_row_jewellery"
 
+import SEO from "../components/layout/seo"
+
 import Block_hero_images from "../components/blocks/block_hero_images/block_hero_images"
 import Block_product_windows from "../components/blocks/block_product_windows/block_product_windows"
 import Block_single_image_text from "../components/blocks/block_single_image_text/block_single_image_text"
@@ -109,6 +111,8 @@ const IndexPage = () => {
 
   return (
     <>
+      <SEO title="Homepage" />
+
       <Block_hero_images />
 
       <Block_single_image_text />

@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Wentworth Jewels`,
-    description: `Wentworth Jewels online website.`,
+    title: `Wentworths`,
+    description: `Wentworths online website.`,
     author: `mdurks@gmail.com`,
     url: `https://wentworths-gatsby.netlify.app`,
   },
@@ -27,8 +27,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Wentworth Jewels`,
-        short_name: `Wentworth Jewels`,
+        name: `Wentworths`,
+        short_name: `Wentworths`,
         start_url: `/`,
         background_color: `#000`,
         theme_color: `#000`,
