@@ -382,6 +382,63 @@ export const Div_detailed_description_block = styled.section`
   }
 `
 
+export const Div_social_share_group = styled.div`
+  background: #f4f3f1;
+
+  .socialShareContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0 0 35px;
+    padding: 10px 0 10px;
+    border-top: 1px dotted grey;
+    text-align: center;
+
+    ${css_breakpoints.min_desktop} {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 40px;
+    }
+  }
+
+  p {
+    margin: 5px 0 0;
+
+    ${css_breakpoints.min_desktop} {
+      margin: 0 10px 0 0;
+    }
+  }
+
+  a {
+    position: relative;
+    top: 0;
+    display: inline-block;
+    margin: 5px;
+    padding: 12px;
+    width: 50px;
+    height: 50px;
+    border-radius: 3px;
+    transition: all ease 0.3s;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    ${css_breakpoints.min_desktop} {
+      &:hover {
+        top: -4px;
+      }
+    }
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+`
+
 export const Div_modal = styled.div`
   position: fixed;
   top: 0;
