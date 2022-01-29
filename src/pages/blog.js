@@ -43,7 +43,7 @@ const Blog = () => {
   return (
     <BlogPageWrapper>
       <Styled_SiteContainer>
-        <h1>Blog Articles</h1>
+        <h1>News & Articles</h1>
         <Styled_BlogLatestArticlesWrapper>
           {blogs.map(blog => (
             <a href={`/blog/${blog.slug}`} className="blogLatestArticleItem">

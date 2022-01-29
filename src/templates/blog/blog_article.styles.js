@@ -77,6 +77,7 @@ export const Styled_BlogContent = styled.div`
     ${css_breakpoints.min_desktop} {
       flex-direction: row;
       align-items: center;
+      justify-content: space-between;
       margin-top: 75px;
     }
 

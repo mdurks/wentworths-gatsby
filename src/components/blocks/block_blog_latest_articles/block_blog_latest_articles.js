@@ -19,7 +19,7 @@ const Block_blog_latest_articles = ({ blogs }) => {
     <Styled_BlogLatestArticles>
       <Styled_SiteContainer>
         <Styled_BlogLatestArticlesWrapper>
-          <h2>Latest Blog Articles</h2>
+          <h2>Latest News & Articles</h2>
           {blogs.map(blog => (
             <a href={`/blog/${blog.slug}`} className="blogLatestArticleItem">
               <div className="blogLatestArticleImg">
@@ -33,7 +33,7 @@ const Block_blog_latest_articles = ({ blogs }) => {
             </a>
           ))}
           <a href="/blog/" className="blogLatestArticleReadMore">
-            <span>Read more of our blog articles</span>
+            <span>Read more of our News & Articles</span>
           </a>
         </Styled_BlogLatestArticlesWrapper>
       </Styled_SiteContainer>
