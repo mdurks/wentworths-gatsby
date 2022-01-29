@@ -764,7 +764,7 @@ const DetailsPage = ({
               </div>
 
               <div className="selectRingSize">
-                <p>You can shoose your ring size at the checkout stage.</p>
+                <p>You can select your ring size at the checkout stage.</p>
                 {/* <a href="/">What's my ring size?</a> */}
               </div>
             </div>
