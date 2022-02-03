@@ -142,7 +142,7 @@ const DetailsPage = ({
       let stick_detailed_description_text = () => {
         el.style.position = ""
         el.style.top = ""
-        el.style.top = el.offsetTop + "px"
+        el.style.top = el.offsetTop + 79 + "px"
         el.style.width = elParent.offsetWidth - 100 + "px"
         el.style.position = "fixed"
       }
