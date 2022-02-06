@@ -127,12 +127,14 @@ export const Styled_BlogContent = styled.div`
     img {
       height: auto;
       max-height: 600px;
+      min-width: calc(100% + 50px);
       max-width: calc(100% + 50px);
       width: auto;
       margin: 10px -25px 25px;
 
       ${css_breakpoints.min_desktop} {
         margin: 12px 0 27px;
+        min-width: auto;
         max-width: 100%;
       }
     }
