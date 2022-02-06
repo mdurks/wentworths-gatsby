@@ -30,8 +30,8 @@ module.exports = {
         name: `Wentworths`,
         short_name: `Wentworths`,
         start_url: `/`,
-        background_color: `#f9f6ee`,
-        theme_color: `#f9f6ee`,
+        background_color: `#ede9e0`,
+        theme_color: `#ede9e0`,
         display: `minimal-ui`,
         icon: `src/images/wentworth_symbol_large.png`, // This path is relative to the root of the site.
         icon_options: {
