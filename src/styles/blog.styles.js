@@ -6,9 +6,13 @@ export const BlogPageWrapper = styled.div`
 
   h1 {
     margin: 80px 0 0px;
+    text-align: center;
+    color: #a98029;
+    font-size: 48px;
 
     ${css_breakpoints.min_desktop} {
-      margin: 200px 0 40px 15px;
+      margin: 200px 0 60px 15px;
+      font-size: 60px;
     }
   }
 `

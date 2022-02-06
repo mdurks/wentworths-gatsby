@@ -53,6 +53,7 @@ const BlogArticlePage = ({
             String(blogContentHTML).indexOf("</")
           )
           .slice(0, 160)}
+        image={blog.articleImage.url}
       />
 
       <Div__detail_hero_block>

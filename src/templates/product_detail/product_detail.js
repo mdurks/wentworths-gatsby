@@ -668,6 +668,7 @@ const DetailsPage = ({
           .slice(0, 1)
           .toUpperCase()}${String(product.categoryType).slice(1)}`}
         description={product.description}
+        image={product.image[0].url}
       />
 
       <Div__detail_hero_block>
