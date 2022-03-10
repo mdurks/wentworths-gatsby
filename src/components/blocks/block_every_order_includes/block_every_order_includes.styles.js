@@ -6,6 +6,7 @@ const section_horizontal_padding = "50px"
 const section_content_max_width = "1800px"
 
 export const Block_every_order_includesWrapper = styled.div`
+  overflow: hidden;
   margin: 0 0 -50px;
   padding: 15px 0 0;
   background: #fff;
