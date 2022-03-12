@@ -153,6 +153,7 @@ export const Button__primary = styled.button`
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -349,7 +350,7 @@ export const A__secondaryCategoryLink = styled.a`
   font-family: "Playfair Display", serif;
   font-size: 24px;
   text-transform: uppercase;
-  text-align: left;
+  text-align: center;
   color: #b3924c;
 
   ${css_breakpoints.min_desktop} {
@@ -357,7 +358,6 @@ export const A__secondaryCategoryLink = styled.a`
     font-family: Raleway, sans-serif;
     font-size: 18px;
     text-transform: none;
-    text-align: center;
     color: black;
   }
 `
