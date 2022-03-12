@@ -22,7 +22,7 @@ export const Div__mainNav__container = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
-  padding: 0 0 ${stickyMobileMenuHeight + 20}px 0;
+  padding: 0 0 ${stickyMobileMenuHeight + 5}px 0;
 
   ${css_breakpoints.min_desktop} {
     flex-direction: row;
@@ -71,7 +71,7 @@ export const A__mainNav__logo = styled.a`
 `
 
 export const UL__primaryLinks = styled.ul`
-  margin: auto 0 0;
+  margin: auto 0;
   overflow-y: scroll;
   overflow-x: hidden;
 
@@ -134,9 +134,9 @@ export const Div__secondaryLinkBackground = styled.div`
 
 export const Div__primaryLinkTitle = styled.div`
   position: relative;
-  margin: 60px 30px 20px;
+  margin: 30px 30px 20px;
   padding: 0 0 15px;
-  border-bottom: 1px solid grey;
+  /* border-bottom: 1px solid grey; */
   text-transform: uppercase;
   text-align: center;
   font-family: "Playfair Display", serif;
@@ -229,9 +229,9 @@ export const Div__secondaryLinkWrapper = styled.div`
 export const P__secondaryLinksTitle = styled.p`
   position: relative;
   left: 100%;
-  margin: 60px 30px 20px;
+  margin: 30px 30px 20px;
   padding: 0 0 15px;
-  border-bottom: 1px solid grey;
+  /* border-bottom: 1px solid grey; */
   text-transform: uppercase;
   text-align: center;
   font-family: "Playfair Display", serif;
@@ -247,7 +247,7 @@ export const Button__secondaryListBack = styled.button`
   position: relative;
   left: 100%;
   width: 100%;
-  margin: 20px 0 0;
+  margin: 5px 0 0;
   padding: 13px 0;
   border: none;
   background: #e8dcc5;
@@ -268,6 +268,8 @@ export const LI__primaryLink = styled.li`
 
   ${css_breakpoints.max_desktop} {
     position: relative;
+    background: #f3eddd;
+    margin: 0 5px 3px;
   }
 
   // show sub items
@@ -299,7 +301,7 @@ export const LI__primaryLink = styled.li`
 `
 
 export const UL__secondaryLinkList = styled.ul`
-  margin: auto 0 0;
+  margin: auto 0;
   width: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -325,9 +327,13 @@ export const Li__secondaryLink = styled.li`
   flex: 1 1 auto;
   position: relative;
   left: 100%;
+  background: #f3eddd;
+  margin: 0 5px 3px;
 
   ${css_breakpoints.min_desktop} {
     left: 0;
+    margin: 0;
+    background: none;
   }
 `
 
