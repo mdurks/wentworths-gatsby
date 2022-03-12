@@ -180,19 +180,20 @@ const MainNav = () => {
       )
     } else if (mobileMenuState === "viewSecondary") {
       gsap.to(".mainNav", {
-        delay: 0.3,
+        delay: 0.35,
         duration: 0.75,
         height: 0,
         ease: "power1.inOut",
       })
       gsap.to(".SecondaryMenuOpen p", {
+        delay: 0.15,
         duration: 0.75,
         top: "50%",
         opacity: 0,
         ease: "back.inOut",
       })
       gsap.to(".SecondaryMenuOpen button", {
-        duration: 0.75,
+        duration: 0.6,
         top: "50%",
         opacity: 0,
         ease: "power1.inOut",
@@ -319,17 +320,20 @@ const MainNav = () => {
 
     gsap.set(menu, { left: 0 })
     gsap.to(menu.getElementsByTagName("p"), {
+      delay: 0.25,
       duration: 0.6,
       left: 0,
       ease: "ease",
     })
     gsap.to(menu.getElementsByTagName("li"), {
+      delay: 0.25,
       duration: 0.6,
       left: 0,
       stagger: 0.05,
       ease: "ease.inOut",
     })
     gsap.to(menu.getElementsByTagName("button"), {
+      delay: 0.25,
       duration: 0.6,
       left: 0,
       ease: "ease",
@@ -361,7 +365,9 @@ const MainNav = () => {
       left: "100%",
       ease: "ease",
     })
-    slideCenterMainNavAnimation()
+    setTimeout(() => {
+      slideCenterMainNavAnimation()
+    }, 250)
   }
 
   let click_mobile_burger_btn = () => {

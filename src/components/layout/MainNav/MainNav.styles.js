@@ -71,7 +71,7 @@ export const A__mainNav__logo = styled.a`
 `
 
 export const UL__primaryLinks = styled.ul`
-  margin: 0 0 auto;
+  height: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
 
@@ -82,6 +82,7 @@ export const UL__primaryLinks = styled.ul`
   ${css_breakpoints.min_desktop} {
     display: flex;
     flex-direction: row;
+    height: auto;
     margin: 0;
     overflow-y: auto;
     overflow-x: auto;
@@ -166,6 +167,7 @@ export const Button__primary = styled.button`
   text-transform: uppercase;
   transition: all ease 0.5s;
   color: #b3924c;
+  -webkit-tap-highlight-color: transparent;
 
   ${css_breakpoints.min_desktop} {
     padding: 0 20px;
@@ -192,6 +194,8 @@ export const Button__primary = styled.button`
       transform: translateY(-50%);
       font-family: Raleway, sans-serif;
       font-weight: bold;
+      /* font-size: 40px;
+      line-height: 58px; */
 
       ${css_breakpoints.min_desktop} {
         display: none;
@@ -257,6 +261,7 @@ export const Button__secondaryListBack = styled.button`
   text-transform: uppercase;
   letter-spacing: 2px;
   color: #b3924c;
+  -webkit-tap-highlight-color: transparent;
 
   ${css_breakpoints.min_desktop} {
     display: none;
@@ -301,7 +306,7 @@ export const LI__primaryLink = styled.li`
 `
 
 export const UL__secondaryLinkList = styled.ul`
-  margin: 0 0 auto;
+  height: 100%;
   width: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -315,6 +320,7 @@ export const UL__secondaryLinkList = styled.ul`
     flex-direction: row;
     justify-content: center;
     max-width: ${css_breakpoints.desktop_max};
+    height: auto;
     margin: auto;
     padding: 0 15%;
     overflow-y: auto;
@@ -433,6 +439,7 @@ export const StickyMobileMenu = styled.div`
     width: 80px;
     border: none;
     background: transparent;
+    -webkit-tap-highlight-color: transparent;
 
     svg {
       margin: auto;
