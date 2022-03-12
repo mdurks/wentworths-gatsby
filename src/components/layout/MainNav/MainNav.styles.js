@@ -71,7 +71,7 @@ export const A__mainNav__logo = styled.a`
 `
 
 export const UL__primaryLinks = styled.ul`
-  margin: auto 0;
+  margin: 0 0 auto;
   overflow-y: scroll;
   overflow-x: hidden;
 
@@ -301,7 +301,7 @@ export const LI__primaryLink = styled.li`
 `
 
 export const UL__secondaryLinkList = styled.ul`
-  margin: auto 0;
+  margin: 0 0 auto;
   width: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
