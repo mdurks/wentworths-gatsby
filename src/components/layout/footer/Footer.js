@@ -96,9 +96,9 @@ const Footer = () => {
         <div className="footerContainer">
           <div className="footerEssentialDetails">
             <h3 className="heading animate_footer_items_1">Wentworth Jewels</h3>
-            <p className="animate_footer_items_1">
+            {/* <p className="animate_footer_items_1">
               Wentworth Jewels are based in Perth Australia
-            </p>
+            </p> */}
             <p className="animate_footer_items_1">
               <strong>TEL:</strong> 01234 567 8910
             </p>
