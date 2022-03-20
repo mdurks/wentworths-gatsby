@@ -468,22 +468,22 @@ const MainNav = () => {
                 <P__secondaryLinksTitle>Wedding</P__secondaryLinksTitle>
                 <UL__secondaryLinkList>
                   <Li__secondaryLink>
-                    <A__secondaryCategoryLink href="/wedding/rings">
+                    <A__secondaryCategoryLink href="/weddings/rings">
                       Rings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
                   <Li__secondaryLink>
-                    <A__secondaryCategoryLink href="/wedding/necklaces">
+                    <A__secondaryCategoryLink href="/weddings/necklaces">
                       Necklaces
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
                   <Li__secondaryLink>
-                    <A__secondaryCategoryLink href="/wedding/earrings">
+                    <A__secondaryCategoryLink href="/weddings/earrings">
                       Earrings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
                   {/* <Li__secondaryLink>
-                    <A__secondaryCategoryLink href="/wedding/bracelets">
+                    <A__secondaryCategoryLink href="/weddings/bracelets">
                       Bracelets
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink> */}

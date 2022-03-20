@@ -157,6 +157,12 @@ main {
 
 /* Snipcart ------------------- */
 
+@media (hover: hover) {
+  .snipcart-sidecart--opened body {
+    padding-right: 18px;
+  }
+}
+
 #snipcart {
   position: relative;
   z-index: 50;
