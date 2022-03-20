@@ -16,7 +16,7 @@ import styled, { css } from "styled-components"
 //   css`
 //   `};
 
-const stickyMobileMenuHeight = 75
+const stickyMobileMenuHeight = 80
 
 export const Div__mainNav__container = styled.div`
   display: flex;
