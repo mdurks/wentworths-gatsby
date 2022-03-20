@@ -46,7 +46,6 @@ const ProductsPage = () => {
 
   return (
     <>
-      <meta name="robots" content="noindex, nofollow" />,
       <Helmet
         meta={[
           {
