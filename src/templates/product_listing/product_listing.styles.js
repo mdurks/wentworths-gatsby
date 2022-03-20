@@ -1,7 +1,9 @@
 import styled from "styled-components"
 import css_breakpoints from "../../common/css_breakpoints"
 
-export const Div__productsPage = styled.div``
+export const Div__productsPage = styled.div`
+  /* background: #e5e3de; */
+`
 
 export const Div__pageHeader = styled.div`
   position: relative;
