@@ -92,16 +92,17 @@ main {
   min-height: 100vh;
 }
 
-.tl-wrapper--unmount {
-  /* overflow-y: hidden !important; */
-  /* background-color: white; */
+/* .tl-wrapper--unmount { */
+/* overflow-y: hidden !important; */
+/* background-color: white; */
 
-  /*
+/*
     Just make sure animation time is same that transition duration in <AniLink />
     as well add some delay (e.g. 0.2s as in example) to avoid weird blinking at the end
   */
-  /* animation: 1s ease normal fadeout; */
-}
+/* animation: 1s ease normal fadeout; */
+/* } */
+
 @keyframes fadeout {
   0% {
     opacity: 1;
