@@ -12,6 +12,7 @@ export const onRenderBody = (
   pluginOptions
 ) => {
   setHeadComponents([
+    <meta name="robots" content="noindex, nofollow" />,
     // <link rel="preconnect" href="https://fonts.gstatic.com/" />,
     <link rel="preconnect" href="https://app.snipcart.com" />,
     <link rel="preconnect" href="https://cdn.snipcart.com" />,

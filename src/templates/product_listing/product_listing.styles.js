@@ -7,13 +7,13 @@ export const Div__productsPage = styled.div`
 
 export const Div__pageHeader = styled.div`
   position: relative;
-  padding: 80px 0;
+  padding: 30px 0 80px;
   text-align: center;
   /* min-height: 560px; */
 
   ${css_breakpoints.min_desktop} {
     min-height: auto;
-    padding: 250px 0 40px;
+    padding: 180px 0 40px;
   }
 
   p {
@@ -41,7 +41,7 @@ export const Div__pageHeader = styled.div`
   }
 
   .pageTitle {
-    margin: 10px 0 30px -30px;
+    margin: 10px 0 50px -30px;
     font-family: "Amalfi Coast", serif;
     font-size: clamp(41px, 7vw, 100px);
     line-height: clamp(61px, 7vw, 120px);
