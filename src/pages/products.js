@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql, useStaticQuery, Link } from "gatsby"
+import { Helmet } from "react-helmet"
 
 // import Layout from "../components/layout"
 // import Snipcart from "../components/snipcart"
@@ -45,6 +46,15 @@ const ProductsPage = () => {
 
   return (
     <>
+      <meta name="robots" content="noindex, nofollow" />,
+      <Helmet
+        meta={[
+          {
+            name: "robots",
+            content: "noindex, nofollow",
+          },
+        ]}
+      />
       <Styled_SiteContainer>
         <h2 style={{ margin: "150px 0 0" }}>All Products:</h2>
         <p style={{ margin: "0 0 50px" }}>
@@ -69,41 +79,46 @@ const ProductsPage = () => {
             {product.categoryType.map(category => {
               productCount++
               return (
-                <li key={category + product.slug} style={{ padding: "5px" }}>
-                  {productCount}.
-                  <a
-                    style={{
-                      margin: "0 15px 0 10px",
-                      textDecoration: "underline",
-                    }}
-                    href={`/${category}/${product.productType}/${product.slug}`}
-                  >
-                    View
-                  </a>
-                  <button
-                    type="button"
-                    className="snipcart-add-item"
-                    data-item-id={product.id}
-                    data-item-price={product.price}
-                    data-item-url={product.slug}
-                    data-item-description={product.description}
-                    data-item-image={product.image[0].url}
-                    data-item-name={product.name}
-                    style={{ border: "1px solid grey", margin: "0 10px 0 0" }}
-                  >
-                    {`£${product.price} ${product.name}`}
-                  </button>
-                  <small>
-                    {` ( ${category}/${
-                      product.productType
-                    } ), Updated: ${product.updatedAt.slice(
-                      0,
-                      19
-                    )}, Created: ${product.createdAt.slice(
-                      0,
-                      19
-                    )},  Published: ${product.publishedAt.slice(0, 19)}`}
-                  </small>
+                <li
+                  key={category + product.slug}
+                  style={{ padding: "5px", display: "flex" }}
+                >
+                  <div>{productCount}.</div>
+                  <div>
+                    <a
+                      style={{
+                        margin: "0 15px 0 10px",
+                        textDecoration: "underline",
+                      }}
+                      href={`/${category}/${product.productType}/${product.slug}`}
+                    >
+                      {product.name} £{product.price}
+                    </a>
+                    <small>{` ( ${category} > ${product.productType} )`}</small>
+                    <br />
+                    <button
+                      type="button"
+                      className="snipcart-add-item"
+                      data-item-id={product.id}
+                      data-item-price={product.price}
+                      data-item-url={product.slug}
+                      data-item-description={product.description}
+                      data-item-image={product.image[0].url}
+                      data-item-name={product.name}
+                      style={{
+                        border: "1px solid grey",
+                        margin: "0 10px 0 10px",
+                      }}
+                    >
+                      Add to basket
+                    </button>
+                    <small>
+                      {` Created: ${product.createdAt.slice(
+                        0,
+                        19
+                      )},  Published: ${product.publishedAt.slice(0, 19)}`}
+                    </small>
+                  </div>
                 </li>
               )
             })}
