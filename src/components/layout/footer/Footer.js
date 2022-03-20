@@ -95,7 +95,7 @@ const Footer = () => {
       <Styled_SiteContainer>
         <div className="footerContainer">
           <div className="footerEssentialDetails">
-            <h3 className="heading animate_footer_items_1">Wentworth Jewels</h3>
+            <h3 className="heading animate_footer_items_1">Wentworths</h3>
             {/* <p className="animate_footer_items_1">
               Wentworth Jewels are based in Perth Australia
             </p> */}
@@ -233,7 +233,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="footerCopyrightMsg">
-          <small>© Wentworth Jewels {new Date().getFullYear()}</small>
+          <small>© Wentworths {new Date().getFullYear()}</small>
         </div>
       </Styled_SiteContainer>
     </Styled_footer>

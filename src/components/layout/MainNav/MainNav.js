@@ -557,16 +557,59 @@ const MainNav = () => {
                 Collections
               </Button__primary>
             </LI__primaryLink>
+
+            {/* Services */}
             <LI__primaryLink>
               <Button__primary
-                as="a"
-                href="/"
                 onMouseOver={e => primaryLinkMouseOver(e)}
                 onMouseOut={e => primaryLinkMouseOut(e)}
+                type="button"
+                onClick={e => {
+                  openSecondaryMenuAnimation(e)
+                }}
               >
-                About
+                Services
               </Button__primary>
+              <Div__secondaryLinkWrapper>
+                <P__secondaryLinksTitle>Services</P__secondaryLinksTitle>
+                <UL__secondaryLinkList>
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink href="/">
+                      About Wentworths
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink href="/">
+                      Valuations
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink href="/">
+                      Cleaning & Repairs
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink href="/">
+                      Gift Cards
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink href="/">
+                      Price Match & Guarantee
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                </UL__secondaryLinkList>
+                <Button__secondaryListBack
+                  type="button"
+                  onClick={e => {
+                    closeSecondaryMenuAnimation(e)
+                  }}
+                >
+                  &lt; Back
+                </Button__secondaryListBack>
+              </Div__secondaryLinkWrapper>
             </LI__primaryLink>
+
             <LI__primaryLink hiddenOnMobile>
               <Button__primary
                 as="a"
