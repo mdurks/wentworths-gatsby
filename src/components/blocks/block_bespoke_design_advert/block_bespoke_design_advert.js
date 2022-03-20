@@ -120,6 +120,7 @@ const Block_bespoke_design_advert = () => {
   const {
     gcms: { blockBespokeDesignAdverts },
   } = useStaticQuery(pageQuery)
+  console.log("blockBespokeDesignAdverts", blockBespokeDesignAdverts)
 
   let sketchImagesArray = []
 
@@ -163,11 +164,13 @@ const Block_bespoke_design_advert = () => {
     gsap__sketch10,
   ]
 
+  let tl_gsap__sketch_playreel
+
   useEffect(() => {
     let viewportHeight = window.innerHeight
     let isMobile = window.innerWidth < 768
 
-    let tl_gsap__sketch_playreel = gsap.timeline({
+    tl_gsap__sketch_playreel = gsap.timeline({
       scrollTrigger: {
         id: "sketches",
         trigger: gsap__block_bespoke_design_advert,
@@ -357,7 +360,7 @@ const Block_bespoke_design_advert = () => {
                   transforms={["quality=value:80"]}
                   maxWidth={1200}
                 />
-                <div className="gsap_scolling_img_backface"></div>
+                {/* <div className="gsap_scolling_img_backface"></div> */}
               </div>
             ))}
           </div>
