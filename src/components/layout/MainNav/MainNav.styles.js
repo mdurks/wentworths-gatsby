@@ -306,6 +306,15 @@ export const LI__primaryLink = styled.li`
         display: block;
       }
     `};
+
+  ${props =>
+    props.hiddenOnDesktop &&
+    css`
+      display: block;
+      ${css_breakpoints.min_desktop} {
+        display: none;
+      }
+    `};
 `
 
 export const UL__secondaryLinkList = styled.ul`

@@ -61,12 +61,12 @@ const Block_hero_images = () => {
   useEffect(() => {
     setWindowWidth(window.innerWidth)
 
-    // tl.from(".Section__hero__backgroundImg", {
-    //   duration: 3,
-    //   scale: 1.5,
-    //   opacity: 0,
-    //   ease: "power2.out",
-    // })
+    tl.from(".Section__hero__backgroundImg", {
+      duration: 5,
+      scale: 1.5,
+      opacity: 0,
+      ease: "power2.out",
+    })
     // gsap.to(gsap_section_hero_img, {
     //   scrollTrigger: {
     //     trigger: document.body,
@@ -103,7 +103,7 @@ const Block_hero_images = () => {
 
         ease: "power2.out",
       },
-      "-=2"
+      "-=4.95"
     )
     gsap.set(".Section__hero__headingText", {
       clipPath: "inset(0% 100% -50% 0%)",
@@ -114,7 +114,7 @@ const Block_hero_images = () => {
         duration: 1.25,
         clipPath: "inset(0% 0% -50% 0%)",
       },
-      "-=2"
+      "-=4"
     )
     tl.set(".Section__hero__headingText", {
       clipPath: "none",
@@ -132,7 +132,7 @@ const Block_hero_images = () => {
     })
 
     tl_handwriting.to(".Section__hero__heading--handwritten", {
-      delay: 1,
+      delay: 2,
       duration: 1.25,
       opacity: 1,
       x: setWindowWidth < 768 ? "-7%" : "-7%",

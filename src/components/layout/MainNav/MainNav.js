@@ -404,6 +404,12 @@ const MainNav = () => {
               <div onMouseOver={() => closeSecondaryLinkBackground()}></div>
             </Div__secondaryLinkBackground>
 
+            <LI__primaryLink hiddenOnDesktop>
+              <Button__primary as="a" href="/">
+                Home
+              </Button__primary>
+            </LI__primaryLink>
+
             {/* Engagement */}
             <LI__primaryLink>
               <Button__primary
