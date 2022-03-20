@@ -100,7 +100,7 @@ export const Section__contact_container = styled.section`
       ${css_breakpoints.min_tablet} {
         height: 100%;
         padding: 40px 50px;
-        background: hsl(0deg 0% 100% / 70%);
+        background: hsl(0deg 0% 100% / 80%);
       }
 
       p {

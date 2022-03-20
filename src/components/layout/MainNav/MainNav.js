@@ -219,12 +219,12 @@ const MainNav = () => {
     mobileMenuState = "closed"
   }
 
-  useEffect(() => {
-    // setimeout used for dev purposes below since this useeffect fires before chrome device simulator kicks in and doesn't recognise window.innerwidth yet, probably not needed for real mobile devices
-    setTimeout(() => {
-      if (window.innerWidth < 1024) closeMainNavAnimation()
-    }, 50)
-  })
+  // useEffect(() => {
+  // setimeout used for dev purposes below since this useeffect fires before chrome device simulator kicks in and doesn't recognise window.innerwidth yet, probably not needed for real mobile devices
+  // setTimeout(() => {
+  //   if (window.innerWidth < 1024) closeMainNavAnimation()
+  // }, 50)
+  // })
 
   const openMainNavOpenAnimation = () => {
     mobileMenuState = "viewPrimary"
@@ -612,10 +612,15 @@ const MainNav = () => {
 
             <LI__primaryLink hiddenOnMobile>
               <Button__primary
-                as="a"
-                href="/"
                 onMouseOver={e => primaryLinkMouseOver(e)}
                 onMouseOut={e => primaryLinkMouseOut(e)}
+                onClick={() => {
+                  // disable the webpage beneath the model from scrolling
+                  if (window.innerWidth < 768)
+                    document.body.classList.add("no_y_scroll")
+                  appContext.setContactModalTitle("Contact")
+                  appContext.setContactModalOpen(!appContext.contactModalOpen)
+                }}
               >
                 Contact
               </Button__primary>
@@ -636,7 +641,16 @@ const MainNav = () => {
       </Nav__mainNav>
 
       <StickyMobileMenu>
-        <button type="button">
+        <button
+          type="button"
+          onClick={() => {
+            // disable the webpage beneath the model from scrolling
+            if (window.innerWidth < 768)
+              document.body.classList.add("no_y_scroll")
+            appContext.setContactModalTitle("Contact")
+            appContext.setContactModalOpen(!appContext.contactModalOpen)
+          }}
+        >
           <svg
             width="32"
             height="24"
