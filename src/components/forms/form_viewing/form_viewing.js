@@ -82,6 +82,13 @@ const Form_viewing = () => {
                 I would like to book a viewing of the {appContext.productName}.
               </p>
             )}
+          {appContext.contactModalTitle === "Book a viewing" &&
+            !appContext.productName && (
+              <p>
+                We look forward to meeting you and discussing exactly what you
+                are looking for.
+              </p>
+            )}
           {appContext.contactModalTitle === "Enquire" &&
             appContext.productName && (
               <p>I would like to enquire about the {appContext.productName}.</p>

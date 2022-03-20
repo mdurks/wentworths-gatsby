@@ -120,7 +120,6 @@ const Block_bespoke_design_advert = () => {
   const {
     gcms: { blockBespokeDesignAdverts },
   } = useStaticQuery(pageQuery)
-  console.log("blockBespokeDesignAdverts", blockBespokeDesignAdverts)
 
   let sketchImagesArray = []
 

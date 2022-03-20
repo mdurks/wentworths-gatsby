@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import { gsap, ScrollTrigger } from "gsap/all"
+import { useAppContext } from "../../../store/AppContext"
 import { Styled_footer } from "./Footer.styles"
 import { Styled_SiteContainer } from "../../../styles/commonStyles"
 
@@ -7,6 +8,8 @@ gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
 
 const Footer = () => {
+  const appContext = useAppContext()
+
   const clickAccordionButton = e => {
     const clickedAccordionButton = e.target
     const accordionContentEl = clickedAccordionButton.nextSibling
@@ -137,16 +140,40 @@ const Footer = () => {
             </h3>
             <ul className="accordionContentWrapper">
               <li className="animate_footer_items_3">
-                <a href="/">Book an Appointment</a>
+                <button
+                  type="button"
+                  onClick={() => {
+                    appContext.setContactModalTitle("Book a viewing")
+                    appContext.setProductName()
+                    appContext.setProductUrl(window.location)
+                    appContext.setContactModalOpen(!appContext.contactModalOpen)
+                    // disable the webpage beneath the model from scrolling
+                    if (window.innerWidth < 768)
+                      document.body.classList.add("no_y_scroll")
+                  }}
+                >
+                  Book an Appointment
+                </button>
               </li>
               <li className="animate_footer_items_3">
                 <a href="/">Visit Our Shop</a>
               </li>
               <li className="animate_footer_items_3">
-                <a href="/">About Us</a>
+                <a href="/about/">About Us</a>
               </li>
               <li className="animate_footer_items_3">
-                <a href="/">Contact Us</a>
+                <button
+                  type="button"
+                  onClick={() => {
+                    // disable the webpage beneath the model from scrolling
+                    if (window.innerWidth < 768)
+                      document.body.classList.add("no_y_scroll")
+                    appContext.setContactModalTitle("Contact")
+                    appContext.setContactModalOpen(!appContext.contactModalOpen)
+                  }}
+                >
+                  Contact Us
+                </button>
               </li>
             </ul>
           </div>

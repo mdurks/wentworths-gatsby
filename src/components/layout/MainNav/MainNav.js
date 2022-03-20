@@ -574,7 +574,7 @@ const MainNav = () => {
                 <P__secondaryLinksTitle>Services</P__secondaryLinksTitle>
                 <UL__secondaryLinkList>
                   <Li__secondaryLink>
-                    <A__secondaryCategoryLink href="/">
+                    <A__secondaryCategoryLink href="/about/">
                       About Wentworths
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>

@@ -60,6 +60,18 @@ export const Styled_footer = styled.footer`
     }
   }
 
+  ul button {
+    display: block;
+    padding: 6px 0;
+    border: none;
+    background: transparent;
+    font-size: inherit;
+
+    ${css_breakpoints.min_tablet} {
+      padding: 8px 0;
+    }
+  }
+
   .accordionContentWrapper {
     ${css_breakpoints.max_mobile} {
       overflow: hidden;
