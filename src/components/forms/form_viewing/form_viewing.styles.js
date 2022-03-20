@@ -75,7 +75,7 @@ export const Section__contact_container = styled.section`
       font-family: "Playfair Display", serif;
       text-transform: none;
       color: #ffffff;
-      background-color: hsl(41deg 32% 50%);
+      background-color: #b3924c;
 
       ${css_breakpoints.min_tablet} {
         padding: 35px 100px 25px 50px;
