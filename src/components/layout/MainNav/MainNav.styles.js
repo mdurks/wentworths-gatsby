@@ -136,7 +136,7 @@ export const Div__secondaryLinkBackground = styled.div`
 export const Div__primaryLinkTitle = styled.div`
   position: relative;
   margin: 30px 30px 20px;
-  padding: 0 0 15px;
+  padding: 0;
   /* border-bottom: 1px solid grey; */
   text-transform: uppercase;
   text-align: center;
@@ -146,6 +146,7 @@ export const Div__primaryLinkTitle = styled.div`
 
   ${css_breakpoints.min_desktop} {
     display: none;
+    padding: 0 0 15px;
   }
 `
 
@@ -235,7 +236,7 @@ export const P__secondaryLinksTitle = styled.p`
   position: relative;
   left: 100%;
   margin: 30px 30px 20px;
-  padding: 0 0 15px;
+  padding: 0;
   /* border-bottom: 1px solid grey; */
   text-transform: uppercase;
   text-align: center;
@@ -245,6 +246,7 @@ export const P__secondaryLinksTitle = styled.p`
 
   ${css_breakpoints.min_desktop} {
     display: none;
+    padding: 0 0 15px;
   }
 `
 
@@ -312,6 +314,14 @@ export const UL__secondaryLinkList = styled.ul`
   overflow-y: scroll;
   overflow-x: hidden;
 
+  ${props =>
+    props.centredText &&
+    css`
+      li > a {
+        text-align: center;
+      }
+    `}
+
   .animating & {
     overflow-y: hidden;
   }
@@ -348,9 +358,8 @@ export const A__secondaryCategoryLink = styled.a`
   display: block;
   padding: 8px 30px;
   font-family: "Playfair Display", serif;
-  font-size: 24px;
-  text-transform: uppercase;
-  text-align: center;
+  font-size: 22px;
+  /* text-transform: uppercase; */
   color: #b3924c;
 
   ${css_breakpoints.min_desktop} {
