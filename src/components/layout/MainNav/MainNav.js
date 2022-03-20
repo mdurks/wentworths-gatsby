@@ -626,6 +626,7 @@ const MainNav = () => {
                 href="/"
                 onMouseOver={e => primaryLinkMouseOver(e)}
                 onMouseOut={e => primaryLinkMouseOut(e)}
+                className="snipcart-checkout"
               >
                 Basket
               </Button__primary>
@@ -666,7 +667,7 @@ const MainNav = () => {
 
           <span>Menu</span>
         </button>
-        <button type="button">
+        <button type="button" className="snipcart-checkout">
           <svg
             width="27"
             height="25"
