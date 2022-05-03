@@ -76,7 +76,7 @@ const Block_single_image_text = () => {
             // end: () => gsap__Div__SIT.offsetTop * 0.9,
             scrub: 1,
           },
-          y: `+=${window.innerHeight / 5}px`,
+          y: `+=${window.innerHeight / 8}px`,
           // y: "-=30%",
         })
       }
