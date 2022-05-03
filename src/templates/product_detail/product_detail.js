@@ -296,7 +296,6 @@ const DetailsPage = ({
       document.getElementsByTagName("nav")[0].style.top = "-200px"
     } else {
       // mobile - hide the burger btn and nav so it doesn't overlap the modal
-      document.querySelector(".burgerBtn").style.display = "none"
       document.querySelector(".mainNav").style.display = "none"
     }
     //
@@ -986,7 +985,6 @@ const DetailsPage = ({
             document.body.classList.remove("no_y_scroll")
             document.getElementsByTagName("nav")[0].style.top = ""
             document.querySelector(".productStage").style.opacity = ""
-            document.querySelector(".burgerBtn").style = ""
             document.querySelector(".mainNav").style = ""
             document.querySelector(".hero_details").style = ""
             modal_close_animation()
