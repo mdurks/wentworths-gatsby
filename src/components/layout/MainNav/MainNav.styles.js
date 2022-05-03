@@ -43,7 +43,8 @@ export const A__mainNav__logo = styled.a`
   font-size: 22px;
   text-transform: uppercase;
   text-decoration: none !important;
-  color: #a57c24;
+  /* color: #a57c24; */
+  color: white;
   transition: all ease 0.5s;
   z-index: 5;
 
@@ -51,9 +52,9 @@ export const A__mainNav__logo = styled.a`
     display: block;
     margin: 0 auto 0 0;
 
-    .mainNav--shrink & {
+    /* .mainNav--shrink & {
       color: white;
-    }
+    } */
   }
 
   ${css_breakpoints.min_desktop} {
@@ -168,7 +169,8 @@ export const Button__primary = styled.button`
   text-align: left;
   text-transform: uppercase;
   transition: all ease 0.5s;
-  color: #b3924c;
+  /* color: #b3924c; */
+  color: white;
   -webkit-tap-highlight-color: transparent;
 
   ${css_breakpoints.min_desktop} {
@@ -182,9 +184,9 @@ export const Button__primary = styled.button`
       }
     }
 
-    .mainNav--shrink & {
+    /* .mainNav--shrink & {
       color: white;
-    }
+    } */
   }
 
   &[type="button"] {
@@ -405,7 +407,8 @@ export const Nav__mainNav = styled.nav`
     top: 0;
     bottom: auto;
     height: auto;
-    background: transparent;
+    /* background: transparent; */
+    background: #b3924c;
     transition: all ease 0.5s;
 
     @media (hover: hover) {
@@ -419,11 +422,11 @@ export const Nav__mainNav = styled.nav`
     }
 
     /* For when we scroll down the page, shrink the nav and change background */
-    .mainNav--shrink & {
+    /* .mainNav--shrink & {
       ${css_breakpoints.min_desktop} {
         background: #b3924c;
       }
-    }
+    } */
 
     /* Style nav bar for when we want to hide the nav bar e.g block_full_size_image component */
     .mainNav--shrink--transparent & {
