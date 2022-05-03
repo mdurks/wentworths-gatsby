@@ -74,7 +74,7 @@ export const Div_product_name = styled.div`
   position: relative;
   width: 100%;
   padding: 10px 20px 16px;
-  background: hsl(0deg 0% 100% / 55%);
+  background: hsl(0deg 0% 100% / 25%);
   backdrop-filter: blur(5px);
   font-family: "Playfair Display", serif;
   text-align: center;
@@ -115,6 +115,6 @@ export const Div_product_name = styled.div`
 
   ${A_productItem}:hover & {
     color: #a57c27;
-    background: hsl(0deg 0% 100% / 80%);
+    background: hsl(0deg 0% 100% / 40%);
   }
 `
