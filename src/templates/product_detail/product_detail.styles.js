@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 import css_breakpoints from "../../common/css_breakpoints"
 
 const section_vertical_height = "100vh"
@@ -14,8 +14,10 @@ export const Div__detail_hero_block = styled.div`
   /* background-color: #e5e3de; */
 
   ${css_breakpoints.min_desktop} {
-    min-height: calc(${section_vertical_height} + ${section_vertical_padding});
-    padding-top: 75px;
+    min-height: calc(
+      ${section_vertical_height} - 80px
+    ); /* 80px is the main nav */
+    padding-top: 0;
   }
 
   > section {

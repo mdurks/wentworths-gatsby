@@ -282,7 +282,7 @@ const Product = props => {
       5
     let parent_offset_top = window.innerHeight / 2 - destination_height / 2
     //
-    let destination_y_refine = window.innerWidth >= 1024 ? 62 : -62
+    let destination_y_refine = window.innerWidth >= 1024 ? 40.5 : -62
     let destination_x_refine = window.innerWidth >= 1024 ? 0.3 : 0.5
     //
     let destination_x =
