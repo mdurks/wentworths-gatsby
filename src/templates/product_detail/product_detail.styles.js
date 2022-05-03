@@ -11,7 +11,7 @@ export const Div__detail_hero_block = styled.div`
   justify-content: center;
   padding: 25px 0 0;
   align-items: center;
-  /* background-color: #e5e3de; */
+  background-color: #e5e3de;
 
   ${css_breakpoints.min_desktop} {
     min-height: calc(

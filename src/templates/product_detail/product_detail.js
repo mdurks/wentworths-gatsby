@@ -229,8 +229,8 @@ const DetailsPage = ({
     //
     // Set page colours
     //
-    document.body.style.backgroundColor = "#e5e3de"
-    document.body.classList.add("mainNav--brown")
+    // document.body.style.backgroundColor = "#e5e3de"
+    // document.body.classList.add("mainNav--brown")
     //
     //
     //

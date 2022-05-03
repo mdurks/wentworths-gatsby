@@ -165,7 +165,7 @@ const ProductPage = ({
     //
     //
     // Style page and nav
-    document.body.style.backgroundColor = "#e5e3de"
+    // document.body.style.backgroundColor = "#e5e3de"
     document.body.classList.remove("no_x_scroll")
     //
     //

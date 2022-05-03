@@ -103,7 +103,7 @@ const IndexPage = () => {
   // console.log("products", products)
   // console.log("welcomes", welcomes[0].products)
   useEffect(() => {
-    document.body.style.backgroundColor = "#fff"
+    // document.body.style.backgroundColor = "#fff"
     document.body.classList = "mainNav--normal"
 
     ScrollTrigger.refresh()
