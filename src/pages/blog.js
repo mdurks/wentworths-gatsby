@@ -1,6 +1,7 @@
 import React, { useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import GraphImg from "graphcms-image"
+import Link from "gatsby-plugin-transition-link"
 
 import { returnDateMonth } from "../common/utility"
 
@@ -53,7 +54,10 @@ const Blog = () => {
           <h1>News & Articles</h1>
           <Styled_BlogLatestArticlesWrapper>
             {blogs.map(blog => (
-              <a href={`/blog/${blog.slug}`} className="blogLatestArticleItem">
+              <Link
+                to={`/blog/${blog.slug}/`}
+                className="blogLatestArticleItem"
+              >
                 <div className="blogLatestArticleImg">
                   <GraphImg
                     image={blog.articleImage}
@@ -67,7 +71,7 @@ const Blog = () => {
                     blog.createdAt.slice(5, 7)
                   )} ${blog.createdAt.slice(0, 4)}`}
                 </p>
-              </a>
+              </Link>
             ))}
           </Styled_BlogLatestArticlesWrapper>
         </Styled_SiteContainer>
