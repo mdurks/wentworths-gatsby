@@ -16,7 +16,7 @@ import styled, { css } from "styled-components"
 //   css`
 //   `};
 
-const stickyMobileMenuHeight = 80
+const stickyMobileMenuHeight = 60
 
 export const Div__mainNav__container = styled.div`
   display: flex;
@@ -443,6 +443,7 @@ export const StickyMobileMenu = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  padding: 4px 0 0;
   width: 100%;
   height: ${stickyMobileMenuHeight}px;
   background: #b3924c;
@@ -463,7 +464,7 @@ export const StickyMobileMenu = styled.div`
     -webkit-tap-highlight-color: transparent;
 
     svg {
-      margin: auto;
+      /* margin: auto; */
     }
 
     span {

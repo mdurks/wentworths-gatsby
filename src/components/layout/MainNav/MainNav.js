@@ -767,8 +767,8 @@ const MainNav = () => {
           }}
         >
           <svg
-            width="32"
-            height="24"
+            width="24"
+            height="18"
             viewBox="0 0 32 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -783,7 +783,7 @@ const MainNav = () => {
         </button>
         <button type="button" onClick={click_mobile_burger_btn}>
           <svg
-            width="29"
+            width="24"
             height="18"
             viewBox="0 0 29 18"
             fill="none"
@@ -798,8 +798,8 @@ const MainNav = () => {
         </button>
         <button type="button" className="snipcart-checkout">
           <svg
-            width="27"
-            height="25"
+            width="22"
+            height="22"
             viewBox="0 0 27 25"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
