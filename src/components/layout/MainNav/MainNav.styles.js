@@ -169,14 +169,14 @@ export const Button__primary = styled.button`
   text-align: left;
   text-transform: uppercase;
   transition: all ease 0.5s;
-  /* color: #b3924c; */
-  color: white;
+  color: #b3924c;
   -webkit-tap-highlight-color: transparent;
 
   ${css_breakpoints.min_desktop} {
     padding: 0 20px;
     font-family: Raleway, sans-serif;
     font-size: 16px;
+    color: white;
 
     @media (hover: hover) {
       &:hover {
