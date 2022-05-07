@@ -1,6 +1,7 @@
 import React from "react"
 import { useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
+import Link from "gatsby-plugin-transition-link"
 
 import GraphImg from "graphcms-image"
 import { Div__block_full_size_image } from "./block_full_size_image.styles"
@@ -177,8 +178,8 @@ const Block_one_row_jewellery = () => {
         )}
         <div className="block_full_size_image__descriptionWrapper">
           {/* <span className="block_full_size_image__questionButon">?</span> */}
-          <a
-            href={`/${blockFullSizeImages[0].products[0].categoryType[0]}/${blockFullSizeImages[0].products[0].productType}/${blockFullSizeImages[0].products[0].slug}/`}
+          <Link
+            to={`/${blockFullSizeImages[0].products[0].categoryType[0]}/${blockFullSizeImages[0].products[0].productType}/${blockFullSizeImages[0].products[0].slug}/`}
             className="block_full_size_image__link"
             onMouseOver={() => {
               document.querySelector(
@@ -201,7 +202,7 @@ const Block_one_row_jewellery = () => {
                 {blockFullSizeImages[0].products[0].name}
               </span>
             </span>
-          </a>
+          </Link>
         </div>
       </Div__block_full_size_image>
     </>
