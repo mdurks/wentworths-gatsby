@@ -1,5 +1,6 @@
 import React from "react"
 import GraphImg from "graphcms-image"
+import Link from "gatsby-plugin-transition-link"
 
 import {
   Styled_BlogLatestArticles,
@@ -21,7 +22,7 @@ const Block_blog_latest_articles = ({ blogs }) => {
         <Styled_BlogLatestArticlesWrapper>
           <h2>Latest News & Articles</h2>
           {blogs.map(blog => (
-            <a href={`/blog/${blog.slug}`} className="blogLatestArticleItem">
+            <Link to={`/blog/${blog.slug}`} className="blogLatestArticleItem">
               <div className="blogLatestArticleImg">
                 <GraphImg
                   image={blog.articleImage}
@@ -30,7 +31,7 @@ const Block_blog_latest_articles = ({ blogs }) => {
                 />
               </div>
               <h3>{blog.articleTitle}</h3>
-            </a>
+            </Link>
           ))}
           <a href="/blog/" className="blogLatestArticleReadMore">
             <span>Read more of our News & Articles</span>
