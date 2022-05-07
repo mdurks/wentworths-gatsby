@@ -4,7 +4,7 @@ import css_breakpoints from "../../../common/css_breakpoints"
 export const Div__gradient_row_link = styled.div`
   position: relative;
   overflow: hidden;
-  margin: 6px 0;
+  margin: 6px 0 0;
 
   ${css_breakpoints.min_desktop} {
     margin: 10px 0;
