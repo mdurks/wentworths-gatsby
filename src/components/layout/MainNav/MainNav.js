@@ -1,8 +1,8 @@
 import React from "react"
 import { useEffect } from "react"
 import { useAppContext } from "../../../store/AppContext"
-import { graphql, useStaticQuery, Link } from "gatsby"
-// import Link from "gatsby-plugin-transition-link"
+import { graphql, useStaticQuery } from "gatsby"
+import Link from "gatsby-plugin-transition-link"
 import Snipcart from "../../snipcart"
 import { gsap } from "gsap/all"
 
@@ -371,6 +371,7 @@ const MainNav = () => {
   }
 
   let click_mobile_burger_btn = () => {
+    if (window.innerWidth >= 1024) return
     if (
       String(document.documentElement.classList).indexOf("no_y_scroll") < 0 &&
       window.innerWidth < 1024
@@ -405,7 +406,13 @@ const MainNav = () => {
             </Div__secondaryLinkBackground>
 
             <LI__primaryLink hiddenOnDesktop>
-              <Button__primary as="a" href="/">
+              <Button__primary
+                as={Link}
+                to="/"
+                exit={{
+                  trigger: () => click_mobile_burger_btn(),
+                }}
+              >
                 Home
               </Button__primary>
             </LI__primaryLink>
@@ -427,22 +434,46 @@ const MainNav = () => {
                 <UL__secondaryLinkList centredText>
                   {/* <UL__secondaryLinkList style={{ flexDirection: "column" }}> */}
                   <Li__secondaryLink>
-                    <A__secondaryCategoryLink href="/engagement/rings/">
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/engagement/rings/"
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
                       Rings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
                   {/* <Li__secondaryLink>
-                    <A__secondaryCategoryLink href="/engagement/necklaces">
+                    <A__secondaryCategoryLink
+                    as={Link}
+                      to="/engagement/necklaces/"
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
                       Necklaces
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
                   <Li__secondaryLink>
-                    <A__secondaryCategoryLink href="/engagement/bracelets">
+                    <A__secondaryCategoryLink
+                    as={Link}
+                      to="/engagement/bracelets/"
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
                       Bracelets
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
                   <Li__secondaryLink>
-                    <A__secondaryCategoryLink href="/engagement/earrings">
+                    <A__secondaryCategoryLink
+                    as={Link}
+                      to="/engagement/earrings/"
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
                       Earrings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink> */}
@@ -474,22 +505,45 @@ const MainNav = () => {
                 <P__secondaryLinksTitle>Wedding</P__secondaryLinksTitle>
                 <UL__secondaryLinkList centredText>
                   <Li__secondaryLink>
-                    <A__secondaryCategoryLink href="/weddings/rings">
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/weddings/rings/"
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
                       Rings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
                   <Li__secondaryLink>
-                    <A__secondaryCategoryLink href="/weddings/necklaces">
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/weddings/necklaces/"
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
                       Necklaces
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
                   <Li__secondaryLink>
-                    <A__secondaryCategoryLink href="/weddings/earrings">
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/weddings/earrings/"
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
                       Earrings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
                   {/* <Li__secondaryLink>
-                    <A__secondaryCategoryLink href="/weddings/bracelets">
+                    <A__secondaryCategoryLink
+                    as={Link}
+                      to="/weddings/bracelets/"
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}>
                       Bracelets
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink> */}
@@ -521,22 +575,46 @@ const MainNav = () => {
                 <P__secondaryLinksTitle>Jewellery</P__secondaryLinksTitle>
                 <UL__secondaryLinkList centredText>
                   <Li__secondaryLink>
-                    <A__secondaryCategoryLink href="/jewellery/rings">
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/jewellery/rings/"
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
                       Rings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
                   <Li__secondaryLink>
-                    <A__secondaryCategoryLink href="/jewellery/necklaces">
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/jewellery/necklaces/"
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
                       Necklaces
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
                   <Li__secondaryLink>
-                    <A__secondaryCategoryLink href="/jewellery/bracelets">
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/jewellery/bracelets/"
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
                       Bracelets
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
                   <Li__secondaryLink>
-                    <A__secondaryCategoryLink href="/jewellery/earrings">
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/jewellery/earrings/"
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
                       Earrings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
@@ -555,8 +633,11 @@ const MainNav = () => {
             {/* Other links */}
             <LI__primaryLink>
               <Button__primary
-                as="a"
-                href="/"
+                as={Link}
+                to="/"
+                exit={{
+                  trigger: () => click_mobile_burger_btn(),
+                }}
                 onMouseOver={e => primaryLinkMouseOver(e)}
                 onMouseOut={e => primaryLinkMouseOut(e)}
               >
@@ -580,27 +661,57 @@ const MainNav = () => {
                 <P__secondaryLinksTitle>Services</P__secondaryLinksTitle>
                 <UL__secondaryLinkList>
                   <Li__secondaryLink>
-                    <A__secondaryCategoryLink href="/about/">
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/about/"
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
                       About Wentworths
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
                   <Li__secondaryLink>
-                    <A__secondaryCategoryLink href="/">
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/"
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
                       Valuations
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
                   <Li__secondaryLink>
-                    <A__secondaryCategoryLink href="/">
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/"
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
                       Cleaning & Repairs
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
                   <Li__secondaryLink>
-                    <A__secondaryCategoryLink href="/">
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/"
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
                       Gift Cards
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
                   <Li__secondaryLink>
-                    <A__secondaryCategoryLink href="/">
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/"
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
                       Price Match & Guarantee
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
@@ -633,8 +744,6 @@ const MainNav = () => {
             </LI__primaryLink>
             <LI__primaryLink hiddenOnMobile>
               <Button__primary
-                as="a"
-                href="/"
                 onMouseOver={e => primaryLinkMouseOver(e)}
                 onMouseOut={e => primaryLinkMouseOut(e)}
                 className="snipcart-checkout"
