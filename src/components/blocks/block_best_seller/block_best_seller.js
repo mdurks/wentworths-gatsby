@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import GraphImg from "graphcms-image"
+import Link from "gatsby-plugin-transition-link"
 import { useEffect } from "react"
 import { gsap, ScrollTrigger } from "gsap/all"
 
@@ -146,8 +147,8 @@ const Block_best_seller = props => {
             {props.products.map(el => (
               <>
                 <div>
-                  <a
-                    href={`/engagement/${el.productType}/${el.slug}/`}
+                  <Link
+                    to={`/engagement/${el.productType}/${el.slug}/`}
                     className="bestSellerItem bestSellerItem1"
                   >
                     <GraphImg
@@ -159,7 +160,7 @@ const Block_best_seller = props => {
                     <p className="productDesc">
                       {el.name} <span>£{number_with_commas(el.price)}</span>
                     </p>
-                  </a>
+                  </Link>
                 </div>
               </>
             ))}
