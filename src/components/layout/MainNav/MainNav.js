@@ -408,7 +408,7 @@ const MainNav = () => {
 
             <LI__primaryLink hiddenOnDesktop>
               <A__primary as={Link} to="/" onClick={click_mobile_burger_btn}>
-                Home anchor
+                Home
               </A__primary>
             </LI__primaryLink>
 
