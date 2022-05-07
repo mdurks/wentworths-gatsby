@@ -3,12 +3,6 @@ import css_breakpoints from "../../../common/css_breakpoints"
 import Link from "gatsby-plugin-transition-link"
 
 export const Section_product_windows = styled.section`
-  padding: 20px 0 0;
-
-  ${css_breakpoints.min_desktop} {
-    padding: 0;
-  }
-
   h1 {
     position: relative;
     margin: 50px 0 50px;
@@ -19,7 +13,10 @@ export const Section_product_windows = styled.section`
 `
 
 export const Div_productWrapper = styled.div`
+  margin: 0 -15px -15px;
+
   ${css_breakpoints.min_tablet} {
+    margin: 0;
     padding: 90px 0 80px;
     display: flex;
     flex-wrap: wrap;
@@ -31,11 +28,11 @@ export const A_productItem = styled(Link)`
   display: block;
   flex: 1 1 calc(50% - 10px);
   /* height: 300px; */
-  margin-bottom: 15px;
   overflow: hidden;
 
   ${css_breakpoints.min_tablet} {
     height: 40vh;
+    margin-bottom: 15px;
 
     &:nth-child(odd) {
       margin-right: 10px;
