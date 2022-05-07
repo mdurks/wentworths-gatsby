@@ -1,6 +1,7 @@
 import React from "react"
 import { useEffect } from "react"
 import GraphImg from "graphcms-image"
+import Link from "gatsby-plugin-transition-link"
 
 import { Styled_SiteContainer } from "../../../styles/commonStyles"
 import { Div__gradient_row_link } from "./block_gradient_row_link.styles"
@@ -84,7 +85,7 @@ const Block_gradient_row_link = props => {
     >
       <div className="wrapper">
         <Styled_SiteContainer noPadding>
-          <a className="link_block" href={props.hyperlink}>
+          <Link className="link_block" to={props.hyperlink}>
             <div className="text">
               <p className="text-pre-title">
                 <span>{props.pre_title}</span>
@@ -100,7 +101,7 @@ const Block_gradient_row_link = props => {
                 maxWidth={600}
               />
             </div>
-          </a>
+          </Link>
         </Styled_SiteContainer>
       </div>
     </Div__gradient_row_link>
