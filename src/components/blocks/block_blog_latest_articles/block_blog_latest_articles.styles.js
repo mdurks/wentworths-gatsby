@@ -5,11 +5,13 @@ export const Styled_BlogLatestArticles = styled.div`
   background: #e5e3de;
 `
 export const Styled_BlogLatestArticlesWrapper = styled.div`
+  margin: 0 -15px;
   padding: 20px 0;
 
   ${css_breakpoints.min_desktop} {
     display: flex;
     flex-wrap: wrap;
+    margin: 0;
     padding: 75px 0 100px;
   }
 
