@@ -20,6 +20,7 @@ import {
   P__secondaryLinksTitle,
   Button__secondaryListBack,
   Button__primary,
+  A__primary,
   Div__secondaryLinkWrapper,
   A__secondaryCategoryLink,
   StickyMobileMenu,
@@ -406,15 +407,9 @@ const MainNav = () => {
             </Div__secondaryLinkBackground>
 
             <LI__primaryLink hiddenOnDesktop>
-              <Button__primary
-                as={Link}
-                to="/"
-                exit={{
-                  trigger: () => click_mobile_burger_btn(),
-                }}
-              >
-                Home
-              </Button__primary>
+              <A__primary as={Link} to="/" onClick={click_mobile_burger_btn}>
+                Home anchor
+              </A__primary>
             </LI__primaryLink>
 
             {/* Engagement */}
@@ -632,17 +627,14 @@ const MainNav = () => {
 
             {/* Other links */}
             <LI__primaryLink>
-              <Button__primary
-                as={Link}
-                to="/"
-                exit={{
-                  trigger: () => click_mobile_burger_btn(),
-                }}
+              <A__primary
+                href="/"
+                onClick={click_mobile_burger_btn}
                 onMouseOver={e => primaryLinkMouseOver(e)}
                 onMouseOut={e => primaryLinkMouseOut(e)}
               >
                 Collections
-              </Button__primary>
+              </A__primary>
             </LI__primaryLink>
 
             {/* Services */}

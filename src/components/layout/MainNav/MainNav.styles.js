@@ -17,6 +17,7 @@ import styled, { css } from "styled-components"
 //   `};
 
 const stickyMobileMenuHeight = 60
+const stickyDesktopMenuHeight = 80
 
 export const Div__mainNav__container = styled.div`
   display: flex;
@@ -113,7 +114,7 @@ export const Div__secondaryLinkBackground = styled.div`
   ${css_breakpoints.min_desktop} {
     display: block;
     position: absolute;
-    top: ${stickyMobileMenuHeight}px;
+    top: ${stickyDesktopMenuHeight}px;
     left: 0;
     width: 100%;
     height: 0;
@@ -208,6 +209,45 @@ export const Button__primary = styled.button`
   }
 `
 
+export const A__primary = styled.a`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 8px 30px;
+  border: 0;
+  background: transparent;
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-align: left;
+  text-transform: uppercase;
+  transition: all ease 0.5s;
+  color: #b3924c;
+  -webkit-tap-highlight-color: transparent;
+
+  ${css_breakpoints.min_desktop} {
+    padding: 0 20px;
+    font-family: Raleway, sans-serif;
+    font-size: 16px;
+    color: white;
+
+    @media (hover: hover) {
+      &:hover {
+        color: #b3924c !important;
+      }
+    }
+
+    /* .mainNav--shrink & {
+      color: white;
+    } */
+  }
+`
+
 export const Div__secondaryLinkWrapper = styled.div`
   position: fixed;
   bottom: 0;
@@ -224,7 +264,7 @@ export const Div__secondaryLinkWrapper = styled.div`
 
   ${css_breakpoints.min_desktop} {
     position: absolute;
-    top: ${stickyMobileMenuHeight}px;
+    top: ${stickyDesktopMenuHeight}px;
     bottom: auto;
     left: 0;
     padding: 0;
