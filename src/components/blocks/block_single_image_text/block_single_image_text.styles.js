@@ -72,7 +72,7 @@ export const Div__SIT__backgroundStrip = styled.div`
 `
 
 export const Img__SIT__img1 = styled.div`
-  margin: 30px 0 0;
+  margin: 30px -15px -25px;
 
   ${css_breakpoints.min_desktop} {
     position: absolute;
