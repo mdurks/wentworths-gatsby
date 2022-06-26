@@ -18,6 +18,12 @@ export const Styled_SiteContainer = styled.section`
     `};
 
   ${props =>
+    props.height100 &&
+    css`
+      height: 100%;
+    `};
+
+  ${props =>
     props.textCenter &&
     css`
       text-align: center;
@@ -85,7 +91,7 @@ export const Styled_btn = styled.button`
   font-family: "Raleway", sans-serif;
   font-size: 18px;
   transition: all ease-in-out 0.3s;
-  opacity: 0;
+  /* opacity: 0; */
   /* box-shadow: inset 0px 7px 11px 0px rgba(0, 0, 0, 0.3); */
 
   ${css_breakpoints.min_tablet} {

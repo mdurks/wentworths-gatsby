@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import { graphql } from "gatsby"
 import GraphImg from "graphcms-image"
 
@@ -13,23 +13,24 @@ import {
 
 import SEO from "../../components/layout/seo"
 
+import Flickity from "react-flickity-component"
+
 import Block_best_seller from "../../components/blocks/block_best_seller/block_best_seller"
 import Block_may_also_like from "../../components/blocks/block_may_also_like/block_may_also_like"
 import Block_bespoke_design_advert from "../../components/blocks/block_bespoke_design_advert/block_bespoke_design_advert"
 import Block_every_order_includes from "../../components/blocks/block_every_order_includes/block_every_order_includes"
 import Block_newsletter_signup from "../../components/blocks/block_newsletter_signup/block_newsletter_signup"
-// import Form_Enquire from "../components/forms/Form-Enquire"
-// import Form_Viewing from "../components/forms/Form-Viewing"
 
-// import Snipcart from "../components/snipcart"
 import {
   Div__detail_hero_block,
   Styled_Img,
+  HeroProductContentWrapper,
   Styled_CMScontent,
   Styled_Title,
   Div_detailed_description_block,
   Div_modal,
   Div_social_share_group,
+  HeroCarouselThumbnails,
 } from "./product_detail.styles"
 import { Styled_SiteContainer, Styled_btn } from "../../styles/commonStyles"
 import { gsap, ScrollTrigger, Power3 } from "gsap/all"
@@ -48,70 +49,6 @@ const DetailsPage = ({
   ScrollTrigger.refresh()
 
   useEffect(() => {
-    //
-    //
-    // Fade in hero elements
-    //
-    gsap.to(document.querySelector(".hero_details").childNodes, {
-      delay: 1.5,
-      duration: 1,
-      stagger: 0.2,
-      ease: Power3.inOut,
-      // ease: Power3.out,
-      opacity: 1,
-      y: -30,
-    })
-    //
-    //
-    // Hero elements
-    //
-    // let tl_hero_els = gsap.timeline({
-    //   scrollTrigger: {
-    //     trigger: document.body,
-    //     // markers: true,
-    //     start: "50% top",
-    //     toggleActions: "play none none reverse",
-    //   },
-    // })
-    // tl_hero_els.to(document.querySelector(".hero_details").childNodes, {
-    //   opacity: 0,
-    //   duration: 0.7,
-    //   stagger: 0.1,
-    //   ease: Power2.out,
-    //   y: "-=50px",
-    // })
-    //
-    //
-    // Hero parallax
-    //
-    gsap.to(".Styled_Img", {
-      scrollTrigger: {
-        id: "Styled_Img",
-        trigger: document.body,
-        start: "top top",
-        toggleActions: "play none none none",
-        // markers: true,
-        scrub: true,
-      },
-      top: `+=${window.innerHeight / 6.5}`,
-    })
-    //
-    //
-    // Hero block parallax
-    //
-    // let heroBlock__backGroundImg = document.getElementById("heroImg")
-    //
-    // function manage_parallax() {
-    //   // let scrollPos = document.documentElement.scrollTop
-    //   requestAnimationFrame(function () {
-    //     heroBlock__backGroundImg.style.transform = String(
-    //       "translateY(" +
-    //         document.documentElement.scrollTop / 4 +
-    //         "px) translateZ(0)"
-    //     )
-    //   })
-    // }
-    // document.addEventListener("scroll", manage_parallax, false)
     //
     //
     // Fade in descriptive text
@@ -225,26 +162,7 @@ const DetailsPage = ({
       touchendX = e.changedTouches[0].screenX
       handle_gesture()
     })
-    //
-    //
-    // Set page colours
-    //
-    // document.body.style.backgroundColor = "#e5e3de"
-    // document.body.classList.add("mainNav--brown")
-    //
-    //
-    //
-    // JS to go back
-    //
-    // intercept browser action to go back and stop it
-    // call function to do exit animation, then redirect url to previous page
-    // history.pushState(null, document.title, location.href)
-    // window.addEventListener("popstate", function (event) {
-    //   history.pushState(null, document.title, location.href)
-    //   document.body.classList.add("no_x_scroll")
-    //   exit_animation()
-    // })
-    //
+
     let exit_animation = () => {
       //
       let pathArray = window.location.href.split("/")
@@ -659,6 +577,46 @@ const DetailsPage = ({
   //
   //
   //
+  let refHeroCarousel = useRef(null)
+
+  const heroCarouselGotoSlide = slideToGoTo => {
+    // refHeroCarousel.current.next()
+    refHeroCarousel.current.select(slideToGoTo)
+    const heroCarouselThumbnails = document.querySelectorAll(
+      ".heroCarouselThumbnail"
+    )
+    heroCarouselThumbnails.forEach(el => el.classList.remove("active"))
+    heroCarouselThumbnails[slideToGoTo].classList.add("active")
+
+    const hero_details = document.querySelector(".hero_details")
+    hero_details.slideNumber = `slide${slideToGoTo}`
+    hero_details.setAttribute("data-slideNumber", `slide${slideToGoTo}`)
+    if (slideToGoTo > 0) hero_details.classList.add("closed_hero_details")
+    else hero_details.classList.remove("closed_hero_details")
+  }
+
+  const setHeroDetailsHoveredClass = () => {
+    document
+      .querySelector(".hero_details")
+      .classList.add("hero_details_hovered")
+  }
+
+  const removeHeroDetailsHoveredClass = () => {
+    document
+      .querySelector(".hero_details")
+      .classList.remove("hero_details_hovered")
+  }
+
+  const heroFlickityOptions = {
+    prevNextButtons: false,
+    pageDots: true,
+    setGallerySize: false,
+    resize: true,
+    draggable: true,
+    selectedAttraction: 0.009,
+    friction: 0.16,
+  }
+  //
   //
   return (
     <>
@@ -671,157 +629,163 @@ const DetailsPage = ({
       />
 
       <Div__detail_hero_block>
-        <Styled_SiteContainer>
-          {/* Overide css wrapper classes to change backround colour */}
-          <style
-            dangerouslySetInnerHTML={{
-              __html:
-                `
-                  /*
-                  #gatsby-focus-wrapper,
-                  .tl-wrapper--unmount,
-                  .tl-wrapper--mount {
-                    background-color: hsl(` +
-                Math.floor(Math.random() * 360) +
-                `deg 30% 90%);
-                  }
-
-                  .tl-wrapper {
-                    top: -191px;
-                    margin-bottom: -191px;
-                    padding-top: 191px;
-                    overflow-x: hidden;
-                    overflow-y: hidden;
-                    height: calc(100vh - 51px);
-                  }
-
-                  #gatsby-focus-wrapper {
-                    background-image: url('/static/rings-on-necklace-large-2cc6c33b94b8a444bd171bbc1fd8047e.jpg');
-                  }
-                  */
-              `,
-            }}
-          ></style>
-
-          {/* <Styled_BackgroundImg id="heroImg">
-          <GraphImg
-            image={product.image[0]}
-            transforms={["quality=value:80"]}
-            maxWidth={1920}
-            fadeIn={false}
-            blurryPlaceholder={false}
-          />
-        </Styled_BackgroundImg> */}
-
-          <div>
-            <Styled_Img
-              onClick={() => {
-                open_modal_animation(0)
-              }}
-              className="Styled_Img"
+        <link
+          rel="stylesheet"
+          href="https://unpkg.com/flickity@2/dist/flickity.min.css"
+        ></link>
+        <Flickity
+          flickityRef={carouselRef => {
+            refHeroCarousel.current = carouselRef
+          }}
+          className={"heroCarousel"} // default ''
+          options={heroFlickityOptions} // takes flickity options {}
+        >
+          {typeof window !== "undefined" && window.innerWidth < 600
+            ? product.imageMobile.map(imageMobile => {
+                return (
+                  <GraphImg
+                    image={imageMobile}
+                    transforms={["quality=value:80"]}
+                    maxWidth={500}
+                    className="graphImg"
+                  />
+                )
+              })
+            : product.image.slice(1).map(image => {
+                return (
+                  <GraphImg
+                    image={image}
+                    transforms={["quality=value:80"]}
+                    maxWidth={3000}
+                    className="graphImg"
+                  />
+                )
+              })}
+        </Flickity>
+        <HeroProductContentWrapper>
+          <Styled_SiteContainer height100>
+            <HeroCarouselThumbnails>
+              {product.image.slice(1).map((image, index) => {
+                return (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      heroCarouselGotoSlide(index)
+                    }}
+                    className={`heroCarouselThumbnail ${
+                      index === 0 && "active"
+                    }`}
+                  >
+                    <GraphImg
+                      image={image}
+                      transforms={["quality=value:80"]}
+                      maxWidth={120}
+                    />
+                  </button>
+                )
+              })}
+            </HeroCarouselThumbnails>
+            <Styled_CMScontent
+              className="hero_details"
+              data-slideNumber="slide0"
+              onMouseOver={setHeroDetailsHoveredClass}
+              onMouseLeave={removeHeroDetailsHoveredClass}
             >
-              <div className="productStage"></div>
-              <GraphImg
-                image={product.image[0]}
-                transforms={["quality=value:80"]}
-                maxWidth={1920}
-                fadeIn={false}
-                blurryPlaceholder={false}
-                className="productScrollingImg_0"
-              />
-            </Styled_Img>
-          </div>
+              <Styled_Title>{product.name}</Styled_Title>
 
-          <Styled_CMScontent className="hero_details">
-            <Styled_Title>{product.name}</Styled_Title>
+              <p className="heroProductPrice">
+                <span>£{number_with_commas(product.price)}</span>
+                <span className="productVAT">( includes VAT + Delivery )</span>
+              </p>
 
-            <p className="productPrice">£{number_with_commas(product.price)}</p>
-            <p className="productVAT">Includes VAT + Delivery</p>
+              <div className="heroDetailsWrapper">
+                <div>
+                  <span>Stone: </span>
+                  <span>{product.filter_gemstone.replace(/_/g, " ")}</span>
+                </div>
+                <div>
+                  <span>Cut: </span>
+                  <span>{product.filter_stoneCut}</span>
+                </div>
+                <div>
+                  <span>Colour: </span>
+                  <span>{product.filter_stoneColour}</span>
+                </div>
+                <div>
+                  <span>Carat: </span>
+                  <span>{product.filter_carat}</span>
+                </div>
+                <div>
+                  <span>Clarity: </span>
+                  <span>{product.filter_carat}</span>
+                </div>
+                <div>
+                  <span>Metal: </span>
+                  <span>{product.filter_metal.replace(/_/g, " ")}</span>
+                </div>
 
-            <div className="heroDetailsWrapper">
-              <div>
-                <span>Stone: </span>
-                <span>{product.filter_gemstone.replace(/_/g, " ")}</span>
-              </div>
-              <div>
-                <span>Cut: </span>
-                <span>{product.filter_stoneCut}</span>
-              </div>
-              <div>
-                <span>Colour: </span>
-                <span>{product.filter_stoneColour}</span>
-              </div>
-              <div>
-                <span>Carat: </span>
-                <span>{product.filter_carat}</span>
-              </div>
-              <div>
-                <span>Clarity: </span>
-                <span>{product.filter_carat}</span>
-              </div>
-              <div>
-                <span>Metal: </span>
-                <span>{product.filter_metal.replace(/_/g, " ")}</span>
-              </div>
-
-              <div className="selectRingSize">
+                {/* <div className="selectRingSize">
                 <p>You can select your ring size at the checkout stage.</p>
-                {/* <a href="/">What's my ring size?</a> */}
+                <a href="/">What's my ring size?</a>
+              </div> */}
               </div>
-            </div>
 
-            <Styled_btn
-              btn_selected
-              className="snipcart-add-item"
-              data-item-id={product.id}
-              data-item-price={product.price}
-              data-item-url={pageContext.pageURL}
-              data-item-description={product.description}
-              data-item-image={product.image[0].url}
-              data-item-name={product.name}
-              data-item-custom1-name="Ring size:"
-              data-item-custom1-options="G|H|I|J|K|L|M|N|O|P|Q|R|S"
-              data-item-custom1-required="true"
-            >
-              Add to cart
-            </Styled_btn>
+              <button
+                btn_selected
+                className="addToCartBtn snipcart-add-item"
+                data-item-id={product.id}
+                data-item-price={product.price}
+                data-item-url={pageContext.pageURL}
+                data-item-description={product.description}
+                data-item-image={product.image[0].url}
+                data-item-name={product.name}
+                data-item-custom1-name="Ring size:"
+                data-item-custom1-options="G|H|I|J|K|L|M|N|O|P|Q|R|S"
+                data-item-custom1-required="true"
+              >
+                Add to cart
+              </button>
 
-            <Styled_btn
-              onClick={() => {
-                appContext.setContactModalTitle("Book a viewing")
-                appContext.setProductName(product.name)
-                appContext.setProductUrl(pageContext.pageURL)
-                appContext.setContactModalOpen(!appContext.contactModalOpen)
-                // disable the webpage beneath the model from scrolling
-                if (window.innerWidth < 768)
-                  document.body.classList.add("no_y_scroll")
-              }}
-            >
-              Book a viewing
-            </Styled_btn>
+              <div className="secondaryCTAWrapper">
+                <button
+                  className="secondaryCTABtn"
+                  onClick={() => {
+                    appContext.setContactModalTitle("Book a viewing")
+                    appContext.setProductName(product.name)
+                    appContext.setProductUrl(pageContext.pageURL)
+                    appContext.setContactModalOpen(!appContext.contactModalOpen)
+                    // disable the webpage beneath the model from scrolling
+                    if (window.innerWidth < 768)
+                      document.body.classList.add("no_y_scroll")
+                  }}
+                >
+                  Book a viewing
+                </button>
 
-            <Styled_btn
-              onClick={() => {
-                appContext.setContactModalTitle("Enquire")
-                appContext.setProductName(product.name)
-                appContext.setProductUrl(pageContext.pageURL)
-                appContext.setContactModalOpen(!appContext.contactModalOpen)
-                // disable the webpage beneath the model from scrolling
-                if (window.innerWidth < 768)
-                  document.body.classList.add("no_y_scroll")
-              }}
-            >
-              Enquire
-            </Styled_btn>
+                <button
+                  className="secondaryCTABtn"
+                  onClick={() => {
+                    appContext.setContactModalTitle("Enquire")
+                    appContext.setProductName(product.name)
+                    appContext.setProductUrl(pageContext.pageURL)
+                    appContext.setContactModalOpen(!appContext.contactModalOpen)
+                    // disable the webpage beneath the model from scrolling
+                    if (window.innerWidth < 768)
+                      document.body.classList.add("no_y_scroll")
+                  }}
+                >
+                  Enquire
+                </button>
+              </div>
 
-            {/* <Styled_btn printBtn onClick={window.print}>
+              <div className="backgroundColour"></div>
+
+              {/* <Styled_btn printBtn onClick={window.print}>
               Print
             </Styled_btn> */}
-          </Styled_CMScontent>
-
-          {/* <Form_Enquire product={product.name} pageURL={pageContext.pageURL} />
-          <Form_Viewing product={product.name} pageURL={pageContext.pageURL} /> */}
-        </Styled_SiteContainer>
+            </Styled_CMScontent>
+          </Styled_SiteContainer>
+        </HeroProductContentWrapper>
       </Div__detail_hero_block>
 
       <Div_detailed_description_block className="detailed_description_block">
@@ -1099,6 +1063,13 @@ export const pageQuery = graphql`
           html
         }
         image {
+          id
+          url
+          handle
+          width
+          height
+        }
+        imageMobile {
           id
           url
           handle
