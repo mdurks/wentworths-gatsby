@@ -634,7 +634,7 @@ const DetailsPage = ({
           href="https://unpkg.com/flickity@2/dist/flickity.min.css"
         ></link>
         <Flickity
-          className={"heroCarousel"} // default ''
+          className={"heroCarousel fullheight"} // default ''
           options={heroFlickityOptions} // takes flickity options {}
           flickityRef={carouselRef => {
             refHeroCarousel.current = carouselRef

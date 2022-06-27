@@ -384,3 +384,10 @@ ul {
 .no_x_scroll {
   overflow-x: hidden;
 }
+
+@media only screen and (max-width: 767px) {
+  .fullheight {
+    /* 60px = mobile sticky nav */
+    height: calc((var(--vh, 1vh) * 100) - 60px);
+  }
+}

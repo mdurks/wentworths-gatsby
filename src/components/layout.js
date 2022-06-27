@@ -5,7 +5,7 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
+import React, { useEffect } from "react"
 import PropTypes from "prop-types"
 // import { useStaticQuery, graphql } from "gatsby"
 
@@ -35,6 +35,24 @@ const Layout = ({ children }) => {
   //     }
   //   }
   // `)
+
+  const setDocHeight = () => {
+    console.log("setDocHeight")
+    document.documentElement.style.setProperty(
+      "--vh",
+      `${window.innerHeight / 100}px`
+    )
+  }
+  setDocHeight()
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setDocHeight()
+    })
+    window.addEventListener("orientationchange", () => {
+      setDocHeight()
+    })
+  })
 
   return (
     <>

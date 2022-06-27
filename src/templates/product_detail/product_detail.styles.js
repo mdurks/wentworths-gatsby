@@ -6,15 +6,15 @@ const section_vertical_padding = "5vh"
 
 export const Div__detail_hero_block = styled.div`
   position: relative;
-  height: calc(100vh - 60px);
   background-color: #e5e3de;
 
   ${css_breakpoints.min_tablet} {
+    height: calc(100vh - 60px);
     max-height: 925px;
   }
 
   .heroCarousel {
-    height: calc(100vh - 60px);
+    /* height: calc(100vh - 60px); */
 
     ${css_breakpoints.min_tablet} {
       width: 100%;
