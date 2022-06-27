@@ -634,11 +634,11 @@ const DetailsPage = ({
           href="https://unpkg.com/flickity@2/dist/flickity.min.css"
         ></link>
         <Flickity
+          className={"heroCarousel"} // default ''
+          options={heroFlickityOptions} // takes flickity options {}
           flickityRef={carouselRef => {
             refHeroCarousel.current = carouselRef
           }}
-          className={"heroCarousel"} // default ''
-          options={heroFlickityOptions} // takes flickity options {}
         >
           {typeof window !== "undefined" && window.innerWidth < 600
             ? product.imageMobile.map(imageMobile => {

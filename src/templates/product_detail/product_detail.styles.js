@@ -6,10 +6,10 @@ const section_vertical_padding = "5vh"
 
 export const Div__detail_hero_block = styled.div`
   position: relative;
+  height: calc(100vh - 60px);
   background-color: #e5e3de;
 
   ${css_breakpoints.min_tablet} {
-    height: calc(100vh - 80px);
     max-height: 925px;
   }
 
