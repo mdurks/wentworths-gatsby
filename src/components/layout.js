@@ -43,9 +43,10 @@ const Layout = ({ children }) => {
       `${window.innerHeight / 100}px`
     )
   }
-  setDocHeight()
 
   useEffect(() => {
+    setDocHeight()
+
     window.addEventListener("resize", () => {
       setDocHeight()
     })
