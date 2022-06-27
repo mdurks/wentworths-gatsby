@@ -37,7 +37,6 @@ const Layout = ({ children }) => {
   // `)
 
   const setDocHeight = () => {
-    console.log("setDocHeight")
     document.documentElement.style.setProperty(
       "--vh",
       `${window.innerHeight / 100}px`
@@ -47,12 +46,8 @@ const Layout = ({ children }) => {
   useEffect(() => {
     setDocHeight()
 
-    window.addEventListener("resize", () => {
-      setDocHeight()
-    })
-    window.addEventListener("orientationchange", () => {
-      setDocHeight()
-    })
+    window.addEventListener("resize", setDocHeight())
+    window.addEventListener("orientationchange", setDocHeight())
   })
 
   return (
