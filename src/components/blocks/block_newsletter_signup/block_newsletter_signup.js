@@ -72,8 +72,8 @@ const Block_newsletter_signup = () => {
     // )
 
     // return function to kill timeline on dismount
-    return () =>
-      ScrollTrigger.getById("st_Block_newsletter_signup__img").kill(true)
+    // return () =>
+    //   ScrollTrigger.getById("st_Block_newsletter_signup__img").kill(true)
   }, [])
 
   return (
