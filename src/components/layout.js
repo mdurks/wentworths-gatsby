@@ -39,7 +39,7 @@ const Layout = ({ children }) => {
   const setDocHeight = () => {
     document.documentElement.style.setProperty(
       "--vh",
-      `${window.innerHeight / 100}px`
+      `${window.innerHeight}px`
     )
   }
 

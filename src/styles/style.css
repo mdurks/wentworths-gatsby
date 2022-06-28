@@ -390,6 +390,7 @@ ul {
     height: 100%;
     height: 100vh;
     /* 60px = mobile sticky nav */
-    height: calc((var(--vh, 1vh) * 100) - 60px);
+    height: calc(var(--vh) - 60px);
+    /* height: calc((var(--vh, 1vh) * 100) - 60px); */
   }
 }
