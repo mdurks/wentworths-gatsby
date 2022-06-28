@@ -394,3 +394,13 @@ ul {
     /* height: calc((var(--vh, 1vh) * 100) - 60px); */
   }
 }
+
+.heightCheck {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background-color: red;
+  z-index: 999;
+}
