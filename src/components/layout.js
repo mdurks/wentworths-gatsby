@@ -39,7 +39,7 @@ const Layout = ({ children }) => {
   const setDocHeight = () => {
     document.documentElement.style.setProperty(
       "--vh",
-      `${window.innerHeight}px`
+      document.querySelector(".heightCheck").offsetHeight + "px"
     )
   }
 
@@ -60,6 +60,7 @@ const Layout = ({ children }) => {
         {/* <main>{props.children({ ...props })}</main> */}
         <Footer />
         <Form_viewing />
+        <div className="heightCheck"></div>
       </AppProvider>
     </>
   )
