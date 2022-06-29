@@ -358,7 +358,7 @@ export const Styled_CMScontent = styled.div`
     position: relative;
     top: 0;
     margin: 35px 0 40px;
-    font-size: 16px;
+    font-size: 15px;
     /* opacity: 0; */
     transition: all ease 0.25s;
 
@@ -369,7 +369,13 @@ export const Styled_CMScontent = styled.div`
 
     > div {
       display: flex;
-      margin-bottom: 5px;
+      margin-bottom: 2px;
+      background: hsl(43deg 12% 92%);
+      padding: 5px 11px;
+
+      ${css_breakpoints.min_desktop} {
+        background: hsl(0deg 0% 100% / 15%);
+      }
 
       &:last-of-type {
         margin-bottom: 0;
