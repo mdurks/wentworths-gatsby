@@ -59,18 +59,31 @@ export const Div__detail_hero_block = styled.div`
     font-family: "Tahoma ", "serif";
     font-size: 32px;
     color: #a57c24;
+    text-align: center;
     /* opacity: 0; */
     transition: all ease 0.25s;
+
+    ${css_breakpoints.min_desktop} {
+      text-align: left;
+    }
   }
 
   .productVAT {
-    position: relative;
-    top: -4px;
-    padding: 0 0 0 12px;
+    display: block;
+    margin: 3px 0 0;
     font-family: "Playfair Display", serif;
-    font-size: 14px;
+    font-size: 13px;
     color: #000;
     /* opacity: 0; */
+
+    ${css_breakpoints.min_desktop} {
+      position: relative;
+      top: -4px;
+      display: inline;
+      margin: 0;
+      padding: 0 0 0 12px;
+      font-size: 14px;
+    }
   }
 
   .productStage {
@@ -95,16 +108,19 @@ export const Div__detail_hero_block = styled.div`
 `
 
 export const Styled_Title = styled.h2`
-  font-size: 29px;
-  color: #a57c24;
+  font-size: 32px;
+  color: black;
+  text-align: center;
+  line-height: 40px;
+  margin: 15px 0 25px;
   /* opacity: 0; */
 
   ${css_breakpoints.min_desktop} {
     position: relative;
     top: 0;
+    text-align: left;
     font-size: 38px;
     line-height: 48px;
-    margin-bottom: 25px;
     transition: all ease 0.25s;
   }
 
@@ -341,10 +357,15 @@ export const Styled_CMScontent = styled.div`
   .heroDetailsWrapper {
     position: relative;
     top: 0;
-    margin: 50px 0;
-    font-size: 15px;
+    margin: 35px 0 40px;
+    font-size: 16px;
     /* opacity: 0; */
     transition: all ease 0.25s;
+
+    ${css_breakpoints.min_desktop} {
+      margin: 50px 0;
+      font-size: 15px;
+    }
 
     > div {
       display: flex;
@@ -408,19 +429,19 @@ export const Styled_CMScontent = styled.div`
   }
 
   .secondaryCTAWrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin: 0 -8px;
-
     ${css_breakpoints.min_tablet} {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       flex-direction: row;
+      margin: 0 -8px;
     }
   }
 
   .secondaryCTABtn {
-    flex: 1;
-    margin: 0 8px 20px;
+    display: block;
+    width: 100%;
+    margin: 0 0 20px;
     padding: 7px 20px;
     border-radius: 100px;
     border: 1px solid #a57c24;
@@ -429,6 +450,7 @@ export const Styled_CMScontent = styled.div`
     font-size: 16px;
 
     ${css_breakpoints.min_tablet} {
+      flex: 1;
       margin: 0 8px;
     }
   }
