@@ -36,19 +36,19 @@ const Layout = ({ children }) => {
   //   }
   // `)
 
-  const setDocHeight = () => {
-    document.documentElement.style.setProperty(
-      "--vh",
-      document.querySelector(".heightCheck").offsetHeight + "px"
-    )
-  }
+  // const setDocHeight = () => {
+  //   document.documentElement.style.setProperty(
+  //     "--vh",
+  //     document.querySelector(".heightCheck").offsetHeight + "px"
+  //   )
+  // }
 
-  useEffect(() => {
-    setDocHeight()
+  // useEffect(() => {
+  //   setDocHeight()
 
-    window.addEventListener("resize", setDocHeight())
-    window.addEventListener("orientationchange", setDocHeight())
-  })
+  //   window.addEventListener("resize", setDocHeight())
+  //   window.addEventListener("orientationchange", setDocHeight())
+  // })
 
   return (
     <>

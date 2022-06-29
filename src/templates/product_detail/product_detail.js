@@ -616,8 +616,21 @@ const DetailsPage = ({
     selectedAttraction: 0.009,
     friction: 0.16,
   }
-  //
-  //
+
+  const setDocHeight = () => {
+    document.documentElement.style.setProperty(
+      "--vh",
+      document.querySelector(".heightCheck").offsetHeight + "px"
+    )
+  }
+
+  useEffect(() => {
+    setDocHeight()
+
+    window.addEventListener("resize", setDocHeight())
+    window.addEventListener("orientationchange", setDocHeight())
+  })
+
   return (
     <>
       <SEO
