@@ -20,6 +20,7 @@ import Block_may_also_like from "../../components/blocks/block_may_also_like/blo
 import Block_bespoke_design_advert from "../../components/blocks/block_bespoke_design_advert/block_bespoke_design_advert"
 import Block_every_order_includes from "../../components/blocks/block_every_order_includes/block_every_order_includes"
 import Block_newsletter_signup from "../../components/blocks/block_newsletter_signup/block_newsletter_signup"
+import Block_3D_product from "../../components/blocks/block_3D_product/block_3D_product"
 
 import {
   Div__detail_hero_block,
@@ -580,6 +581,14 @@ const DetailsPage = ({
   let refHeroCarousel = useRef(null)
 
   const heroCarouselGotoSlide = slideToGoTo => {
+    // in case the 3D product was visible, hide it and reset back to the carousel
+    document.querySelector(".block3DProduct").classList.remove("active")
+    document.querySelector(".heroCarousel").classList.remove("hide")
+    document
+      .querySelector(".hero_details")
+      .classList.remove("closed_hero_details")
+    document.querySelector(".heroCarousel3DButton").classList.remove("active")
+
     // refHeroCarousel.current.next()
     refHeroCarousel.current.select(slideToGoTo)
     const heroCarouselThumbnails = document.querySelectorAll(
@@ -593,6 +602,17 @@ const DetailsPage = ({
     hero_details.setAttribute("data-slideNumber", `slide${slideToGoTo}`)
     if (slideToGoTo > 0) hero_details.classList.add("closed_hero_details")
     else hero_details.classList.remove("closed_hero_details")
+  }
+
+  const click3DCarouselButton = () => {
+    document.querySelector(".block3DProduct").classList.add("active")
+    document.querySelector(".heroCarousel").classList.add("hide")
+    document.querySelector(".hero_details").classList.add("closed_hero_details")
+    document.querySelector(".heroCarousel3DButton").classList.add("active")
+
+    document
+      .querySelectorAll(".heroCarouselThumbnail")
+      .forEach(el => el.classList.remove("active"))
   }
 
   const setHeroDetailsHoveredClass = () => {
@@ -675,8 +695,11 @@ const DetailsPage = ({
                 )
               })}
         </Flickity>
+
         <HeroProductContentWrapper>
           <Styled_SiteContainer height100>
+            <Block_3D_product />
+
             <HeroCarouselThumbnails>
               {product.image.slice(1).map((image, index) => {
                 return (
@@ -697,6 +720,13 @@ const DetailsPage = ({
                   </button>
                 )
               })}
+              <button
+                type="button"
+                onClick={click3DCarouselButton}
+                className="heroCarousel3DButton"
+              >
+                <div>3D</div>
+              </button>
             </HeroCarouselThumbnails>
             <Styled_CMScontent
               className="hero_details"

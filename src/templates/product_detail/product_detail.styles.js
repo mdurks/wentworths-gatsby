@@ -105,6 +105,27 @@ export const Div__detail_hero_block = styled.div`
       height: 176px;
     }
   }
+
+  .block3DProduct {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+      0deg,
+      rgb(209, 198, 170) 0%,
+      rgb(240, 233, 218) 100%
+    );
+    opacity: 0;
+    z-index: -1;
+    transition: opacity ease 0.3s;
+
+    &.active {
+      opacity: 1;
+      z-index: 10;
+    }
+  }
 `
 
 export const Styled_Title = styled.h2`
@@ -230,21 +251,26 @@ export const Styled_Img = styled.div`
 `
 
 export const HeroCarouselThumbnails = styled.div`
+  display: none;
   position: absolute;
   top: 47%;
   left: 50px;
   transform: translateY(-50%);
-  display: none;
   flex-direction: column;
   /* height: 300px; */
-  z-index: 5;
+  z-index: 15;
 
   ${css_breakpoints.min_tablet} {
     display: flex;
   }
 
+  .hide {
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+  }
+
   button {
-    padding: 0;
     padding: 5px 0;
     background: transparent;
     border: 2px solid transparent;
@@ -270,6 +296,33 @@ export const HeroCarouselThumbnails = styled.div`
       height: 50px;
     }
   }
+
+  .heroCarousel3DButton {
+    padding: 5px 0;
+
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      background: #b3924c;
+      color: white;
+      font-family: sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-radius: 6px;
+    }
+
+    &.active {
+      margin: 17px 0;
+      transform: scale(1.35);
+
+      > div {
+        border: 2px solid white;
+      }
+    }
+  }
 `
 
 export const Styled_CMScontent = styled.div`
@@ -286,6 +339,7 @@ export const Styled_CMScontent = styled.div`
     padding: 25px 45px 30px;
     text-align: left;
     transition: all ease 0.5s;
+    z-index: 15;
   }
 
   &[data-slideNumber="slide0"] {
