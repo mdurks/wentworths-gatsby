@@ -725,7 +725,11 @@ const DetailsPage = ({
                 onClick={click3DCarouselButton}
                 className="heroCarousel3DButton"
               >
-                <div>3D</div>
+                <div>
+                  3D
+                  <br />
+                  Model
+                </div>
               </button>
             </HeroCarouselThumbnails>
             <Styled_CMScontent

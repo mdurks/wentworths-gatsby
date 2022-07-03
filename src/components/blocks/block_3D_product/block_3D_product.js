@@ -28,18 +28,13 @@ const Block_3D_product = () => {
   // } = useStaticQuery(pageQuery)
 
   useEffect(() => {
-    /**
-     * Loaders
-     */
+    // Loaders
     const gltfLoader = new GLTFLoader()
     const cubeTextureLoader = new THREE.CubeTextureLoader()
     const dracoLoader = new DRACOLoader()
     dracoLoader.setDecoderPath("/static/draco/")
     gltfLoader.setDRACOLoader(dracoLoader)
 
-    /**
-     * Base
-     */
     // Debug
     // // const gui = new dat.GUI()
     const debugObject = {}
@@ -50,9 +45,7 @@ const Block_3D_product = () => {
     // Scene
     const scene = new THREE.Scene()
 
-    /**
-     * Update all materials
-     */
+    // Update all materials
     const updateAllMaterials = () => {
       scene.traverse(child => {
         if (
@@ -67,9 +60,7 @@ const Block_3D_product = () => {
       })
     }
 
-    /**
-     * Environment map
-     */
+    // Environment map
     const environmentMap = cubeTextureLoader.load([
       "/static/textures/environmentMaps/0/px.jpg",
       "/static/textures/environmentMaps/0/nx.jpg",
@@ -88,9 +79,7 @@ const Block_3D_product = () => {
     debugObject.envMapIntensity = 2.5
     // gui.add(debugObject, 'envMapIntensity').min(0).max(10).step(0.001).onChange(updateAllMaterials)
 
-    /**
-     * Models
-     */
+    // Models
     gltfLoader.load("/static/models/Ring-with-halo/DiamondRing01.glb", gltf => {
       gltf.scene.scale.set(1.2, 1.2, 1.2)
       gltf.scene.position.set(0, -1.4, 0)
@@ -117,9 +106,7 @@ const Block_3D_product = () => {
     //     }
     // )
 
-    /**
-     * Lights
-     */
+    // Lights
     const directionalLight = new THREE.DirectionalLight("#ffffff", 3)
     directionalLight.castShadow = true
     directionalLight.shadow.camera.far = 15
@@ -133,9 +120,7 @@ const Block_3D_product = () => {
     // gui.add(directionalLight.position, 'y').min(- 5).max(5).step(0.001).name('lightY')
     // gui.add(directionalLight.position, 'z').min(- 5).max(5).step(0.001).name('lightZ')
 
-    /**
-     * Sizes
-     */
+    // Sizes
     const sizes = {
       width: window.innerWidth - 18,
       height: window.innerHeight,
@@ -155,9 +140,7 @@ const Block_3D_product = () => {
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     })
 
-    /**
-     * Camera
-     */
+    // Camera
     // Base camera
     const camera = new THREE.PerspectiveCamera(
       75,
@@ -175,10 +158,9 @@ const Block_3D_product = () => {
     // Controls
     const controls = new OrbitControls(camera, canvas)
     controls.enableDamping = true
+    controls.enableZoom = false
 
-    /**
-     * Renderer
-     */
+    // Renderer
     const renderer = new THREE.WebGLRenderer({
       canvas: canvas,
       antialias: true,
@@ -203,9 +185,7 @@ const Block_3D_product = () => {
     // })
     // gui.add(renderer, 'toneMappingExposure').min(0).max(10).step(0.001)
 
-    /**
-     * Animate
-     */
+    // Animate
     const tick = () => {
       // Update controls
       controls.update()

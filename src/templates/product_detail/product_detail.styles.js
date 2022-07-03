@@ -308,10 +308,11 @@ export const HeroCarouselThumbnails = styled.div`
       background: #b3924c;
       color: white;
       font-family: sans-serif;
-      font-size: 18px;
+      font-size: 13px;
       font-weight: bold;
-      text-transform: uppercase;
-      border-radius: 6px;
+      letter-spacing: 1px;
+      /* text-transform: uppercase; */
+      /* border-radius: 6px; */
     }
 
     &.active {
@@ -319,6 +320,7 @@ export const HeroCarouselThumbnails = styled.div`
       transform: scale(1.35);
 
       > div {
+        font-size: 12px;
         border: 2px solid white;
       }
     }
