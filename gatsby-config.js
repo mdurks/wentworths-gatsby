@@ -22,6 +22,41 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `models`,
+        path: `${__dirname}/src/models`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `draco`,
+        path: `${__dirname}/src/draco`,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-copy-files",
+      options: {
+        source: `${__dirname}/src/public`,
+        destination: "",
+      },
+    },
+    {
+      resolve: "gatsby-plugin-copy-files",
+      options: {
+        source: `${__dirname}/src/models`,
+        destination: "/static",
+      },
+    },
+    {
+      resolve: "gatsby-plugin-copy-files",
+      options: {
+        source: `${__dirname}/src/draco`,
+        destination: "/static",
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

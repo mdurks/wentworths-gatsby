@@ -22,6 +22,13 @@ import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js"
 //   }
 // `
 
+import px from "../../../images/textures/environmentMaps/0/px.jpg"
+import nx from "../../../images/textures/environmentMaps/0/nx.jpg"
+import py from "../../../images/textures/environmentMaps/0/py.jpg"
+import ny from "../../../images/textures/environmentMaps/0/ny.jpg"
+import pz from "../../../images/textures/environmentMaps/0/pz.jpg"
+import nz from "../../../images/textures/environmentMaps/0/nz.jpg"
+
 const Block_3D_product = () => {
   // const {
   //   gcms: { blockBespokeDesignAdverts },
@@ -32,7 +39,7 @@ const Block_3D_product = () => {
     const gltfLoader = new GLTFLoader()
     const cubeTextureLoader = new THREE.CubeTextureLoader()
     const dracoLoader = new DRACOLoader()
-    dracoLoader.setDecoderPath("/static/draco/")
+    dracoLoader.setDecoderPath("/static/")
     gltfLoader.setDRACOLoader(dracoLoader)
 
     // Debug
@@ -61,14 +68,7 @@ const Block_3D_product = () => {
     }
 
     // Environment map
-    const environmentMap = cubeTextureLoader.load([
-      "/static/textures/environmentMaps/0/px.jpg",
-      "/static/textures/environmentMaps/0/nx.jpg",
-      "/static/textures/environmentMaps/0/py.jpg",
-      "/static/textures/environmentMaps/0/ny.jpg",
-      "/static/textures/environmentMaps/0/pz.jpg",
-      "/static/textures/environmentMaps/0/nz.jpg",
-    ])
+    const environmentMap = cubeTextureLoader.load([px, nx, py, ny, pz, nz])
 
     environmentMap.encoding = THREE.sRGBEncoding
 
@@ -80,7 +80,7 @@ const Block_3D_product = () => {
     // gui.add(debugObject, 'envMapIntensity').min(0).max(10).step(0.001).onChange(updateAllMaterials)
 
     // Models
-    gltfLoader.load("/static/models/Ring-with-halo/DiamondRing01.glb", gltf => {
+    gltfLoader.load("/static/DiamondRing01.glb", gltf => {
       gltf.scene.scale.set(1.2, 1.2, 1.2)
       gltf.scene.position.set(0, -1.4, 0)
       gltf.scene.rotation.y = Math.PI * 0.5
@@ -93,18 +93,6 @@ const Block_3D_product = () => {
 
       updateAllMaterials()
     })
-
-    // gltfLoader.load(
-    //     '/models/hamburger.glb',
-    //     (gltf) =>
-    //     {
-    //         gltf.scene.scale.set(0.3, 0.3, 0.3)
-    //         gltf.scene.position.set(0, - 1, 0)
-    //         scene.add(gltf.scene)
-
-    //         updateAllMaterials()
-    //     }
-    // )
 
     // Lights
     const directionalLight = new THREE.DirectionalLight("#ffffff", 3)
