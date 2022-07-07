@@ -196,6 +196,8 @@ const DetailsPage = ({
     //
   }, [])
 
+  const threeDFileURL = product?.threeDModelFile?.url
+
   const [modal_open, setModal_open] = useState("none")
   const [
     modal_img_from_product_array,
@@ -581,16 +583,28 @@ const DetailsPage = ({
   let refHeroCarousel = useRef(null)
 
   const heroCarouselGotoSlide = slideToGoTo => {
-    // in case the 3D product was visible, hide it and reset back to the carousel
-    document.querySelector(".block3DProduct").classList.remove("active")
+    if (threeDFileURL)
+      if (
+        document
+          .querySelector(".heroCarousel3DButton")
+          .className.includes("active")
+      ) {
+        refHeroCarousel.current.select(slideToGoTo, false, true)
+      } else {
+        // refHeroCarousel.current.next()
+        refHeroCarousel.current.select(slideToGoTo)
+      }
+
+    if (threeDFileURL) {
+      // in case the 3D product was visible, hide it and reset back to the carousel
+      document.querySelector(".block3DProduct").classList.remove("active")
+      document.querySelector(".heroCarousel3DButton").classList.remove("active")
+    }
     document.querySelector(".heroCarousel").classList.remove("hide")
     document
       .querySelector(".hero_details")
       .classList.remove("closed_hero_details")
-    document.querySelector(".heroCarousel3DButton").classList.remove("active")
 
-    // refHeroCarousel.current.next()
-    refHeroCarousel.current.select(slideToGoTo)
     const heroCarouselThumbnails = document.querySelectorAll(
       ".heroCarouselThumbnail"
     )
@@ -605,10 +619,12 @@ const DetailsPage = ({
   }
 
   const click3DCarouselButton = () => {
-    document.querySelector(".block3DProduct").classList.add("active")
+    if (threeDFileURL) {
+      document.querySelector(".block3DProduct").classList.add("active")
+      document.querySelector(".heroCarousel3DButton").classList.add("active")
+    }
     document.querySelector(".heroCarousel").classList.add("hide")
     document.querySelector(".hero_details").classList.add("closed_hero_details")
-    document.querySelector(".heroCarousel3DButton").classList.add("active")
 
     document
       .querySelectorAll(".heroCarouselThumbnail")
@@ -698,7 +714,9 @@ const DetailsPage = ({
 
         <HeroProductContentWrapper>
           <Styled_SiteContainer height100>
-            <Block_3D_product />
+            {threeDFileURL && (
+              <Block_3D_product threeDFileURL={threeDFileURL} />
+            )}
 
             <HeroCarouselThumbnails>
               {product.image.slice(1).map((image, index) => {
@@ -720,17 +738,19 @@ const DetailsPage = ({
                   </button>
                 )
               })}
-              <button
-                type="button"
-                onClick={click3DCarouselButton}
-                className="heroCarousel3DButton"
-              >
-                <div>
-                  3D
-                  <br />
-                  Model
-                </div>
-              </button>
+              {threeDFileURL && (
+                <button
+                  type="button"
+                  onClick={click3DCarouselButton}
+                  className="heroCarousel3DButton"
+                >
+                  <div>
+                    3D
+                    <br />
+                    Model
+                  </div>
+                </button>
+              )}
             </HeroCarouselThumbnails>
             <Styled_CMScontent
               className="hero_details"
@@ -1122,6 +1142,9 @@ export const pageQuery = graphql`
           handle
           width
           height
+        }
+        threeDModelFile {
+          url
         }
       }
       products(

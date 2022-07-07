@@ -6,22 +6,6 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js"
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js"
 
-// const pageQuery = graphql`
-//   {
-//     gcms {
-//       blockBespokeDesignAdverts {
-//         backgroundDesktop {
-//           id
-//           url
-//           handle
-//           width
-//           height
-//         }
-//       }
-//     }
-//   }
-// `
-
 import px from "../../../images/textures/environmentMaps/0/px.jpg"
 import nx from "../../../images/textures/environmentMaps/0/nx.jpg"
 import py from "../../../images/textures/environmentMaps/0/py.jpg"
@@ -29,11 +13,7 @@ import ny from "../../../images/textures/environmentMaps/0/ny.jpg"
 import pz from "../../../images/textures/environmentMaps/0/pz.jpg"
 import nz from "../../../images/textures/environmentMaps/0/nz.jpg"
 
-const Block_3D_product = () => {
-  // const {
-  //   gcms: { blockBespokeDesignAdverts },
-  // } = useStaticQuery(pageQuery)
-
+const Block_3D_product = ({ threeDFileURL }) => {
   useEffect(() => {
     // Loaders
     const gltfLoader = new GLTFLoader()
@@ -50,7 +30,7 @@ const Block_3D_product = () => {
     const canvas = document.querySelector(".webgl")
 
     // Scene
-    const scene = new THREE.Scene()
+    let scene = new THREE.Scene()
 
     // Update all materials
     const updateAllMaterials = () => {
@@ -80,7 +60,8 @@ const Block_3D_product = () => {
     // gui.add(debugObject, 'envMapIntensity').min(0).max(10).step(0.001).onChange(updateAllMaterials)
 
     // Models
-    gltfLoader.load("/static/DiamondRing01.glb", gltf => {
+    // gltfLoader.load("/static/DiamondRing01.glb", gltf => {
+    gltfLoader.load(threeDFileURL, gltf => {
       gltf.scene.scale.set(1.2, 1.2, 1.2)
       gltf.scene.position.set(0, -1.4, 0)
       gltf.scene.rotation.y = Math.PI * 0.5
@@ -111,13 +92,15 @@ const Block_3D_product = () => {
     // Sizes
     const sizes = {
       width: window.innerWidth - 18,
-      height: window.innerHeight,
+      // height: window.innerHeight,
+      height: document.querySelector(".heroCarousel").offsetHeight,
     }
 
     window.addEventListener("resize", () => {
       // Update sizes
       sizes.width = window.innerWidth - 18
-      sizes.height = window.innerHeight
+      // sizes.height = window.innerHeight
+      sizes.height = document.querySelector(".heroCarousel").offsetHeight
 
       // Update camera
       camera.aspect = sizes.width / sizes.height
@@ -186,12 +169,23 @@ const Block_3D_product = () => {
     }
 
     tick()
+
+    // setTimeout(() => {
+    //   console.log("setTimeout")
+    //   renderer.resetState()
+    // }, 250)
+
+    return () => {
+      // console.log("dispose renderer")
+      // renderer.dispose()
+      scene = new THREE.Scene()
+    }
   })
 
   return (
     <>
       <Canvas_3D_product className="webgl block3DProduct">
-        3D product
+        Loading 3D Model...
       </Canvas_3D_product>
     </>
   )
