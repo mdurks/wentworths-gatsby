@@ -7,6 +7,7 @@ import { useAppContext } from "../../store/AppContext"
 import {
   number_with_commas,
   return_array_center_out,
+  calculatedViewportHeight,
 } from "../../common/utility"
 
 //import Layout from "../components/layout"
@@ -32,9 +33,12 @@ import {
   Div_modal,
   Div_social_share_group,
   HeroCarouselThumbnails,
+  ThreeDControls,
 } from "./product_detail.styles"
 import { Styled_SiteContainer, Styled_btn } from "../../styles/commonStyles"
 import { gsap, ScrollTrigger, Power3 } from "gsap/all"
+import { breakpoints } from "../../common/globalVars"
+import { navHeight } from "../../common/globalVars"
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
@@ -57,7 +61,7 @@ const DetailsPage = ({
     gsap.to(".detailed_description_text", {
       scrollTrigger: {
         trigger:
-          window.innerWidth < 768
+          window.innerWidth < breakpoints.tablet
             ? ".detailed_description_text"
             : ".detailed_description_block",
         // markers: true,
@@ -134,14 +138,15 @@ const DetailsPage = ({
         scrollTrigger: {
           trigger: product_scrolling_images[i],
           // markers: true,
-          start: window.innerWidth < 768 ? "-120% 50%" : "-80% 50%",
+          start:
+            window.innerWidth < breakpoints.tablet ? "-120% 50%" : "-80% 50%",
           toggleActions: "play none none none",
         },
         duration: 0.5,
         ease: Power3.inOut,
         y: -100,
         opacity: 1,
-        scale: window.innerWidth < 768 ? "1" : "0.9",
+        scale: window.innerWidth < breakpoints.tablet ? "1" : "0.9",
       })
     }
     //
@@ -213,7 +218,7 @@ const DetailsPage = ({
     // disable the webpage beneath the model from scrolling
     document.body.classList.add("no_y_scroll")
     // hide the nav by animating it off-screen
-    if (window.innerWidth >= 768) {
+    if (window.innerWidth >= breakpoints.tablet) {
       document.getElementsByTagName("nav")[0].style.top = "-200px"
     } else {
       // mobile - hide the burger btn and nav so it doesn't overlap the modal
@@ -618,7 +623,12 @@ const DetailsPage = ({
     else hero_details.classList.remove("closed_hero_details")
   }
 
-  const click3DCarouselButton = () => {
+  const clickMobile3DCarouselButton = () => {
+    document.querySelector(".block3DProduct").classList.toggle("active")
+    document.querySelector(".threeDControls").classList.toggle("active")
+  }
+
+  const clickDesktop3DCarouselButton = () => {
     if (threeDFileURL) {
       document.querySelector(".block3DProduct").classList.add("active")
       document.querySelector(".heroCarousel3DButton").classList.add("active")
@@ -632,15 +642,17 @@ const DetailsPage = ({
   }
 
   const setHeroDetailsHoveredClass = () => {
-    document
-      .querySelector(".hero_details")
-      .classList.add("hero_details_hovered")
+    if (window.innerWidth >= breakpoints.tablet)
+      document
+        .querySelector(".hero_details")
+        .classList.add("hero_details_hovered")
   }
 
   const removeHeroDetailsHoveredClass = () => {
-    document
-      .querySelector(".hero_details")
-      .classList.remove("hero_details_hovered")
+    if (window.innerWidth >= breakpoints.tablet)
+      document
+        .querySelector(".hero_details")
+        .classList.remove("hero_details_hovered")
   }
 
   const heroFlickityOptions = {
@@ -656,13 +668,21 @@ const DetailsPage = ({
   const setDocHeight = () => {
     document.documentElement.style.setProperty(
       "--vh",
-      document.querySelector(".heightCheck").offsetHeight + "px"
+      calculatedViewportHeight() + "px"
     )
+    if (window.innerWidth < breakpoints.tablet) {
+      document.querySelector(".block3DProduct").style.top =
+        "-" + document.querySelector(".heroCarousel").offsetHeight + "px"
+
+      document.querySelector(".threeDControls").style.top =
+        document.querySelector(".heroCarousel").offsetHeight -
+        navHeight.mobile +
+        "px"
+    }
   }
 
   useEffect(() => {
     setDocHeight()
-
     window.addEventListener("resize", setDocHeight())
     window.addEventListener("orientationchange", setDocHeight())
   })
@@ -712,6 +732,22 @@ const DetailsPage = ({
               })}
         </Flickity>
 
+        {threeDFileURL && (
+          <ThreeDControls className="threeDControls">
+            <button
+              onClick={clickMobile3DCarouselButton}
+              className="mobileToggleBtn"
+            >
+              <span className="showText">
+                3D <span>View</span>
+              </span>
+              <span className="hideText">
+                Hide <span>3D</span>
+              </span>
+            </button>
+          </ThreeDControls>
+        )}
+
         <HeroProductContentWrapper>
           <Styled_SiteContainer height100>
             {threeDFileURL && (
@@ -741,13 +777,12 @@ const DetailsPage = ({
               {threeDFileURL && (
                 <button
                   type="button"
-                  onClick={click3DCarouselButton}
+                  onClick={clickDesktop3DCarouselButton}
                   className="heroCarousel3DButton"
                 >
                   <div>
                     3D
-                    <br />
-                    Model
+                    <span>View</span>
                   </div>
                 </button>
               )}
@@ -822,7 +857,7 @@ const DetailsPage = ({
                     appContext.setProductUrl(pageContext.pageURL)
                     appContext.setContactModalOpen(!appContext.contactModalOpen)
                     // disable the webpage beneath the model from scrolling
-                    if (window.innerWidth < 768)
+                    if (window.innerWidth < breakpoints.tablet)
                       document.body.classList.add("no_y_scroll")
                   }}
                 >
@@ -837,7 +872,7 @@ const DetailsPage = ({
                     appContext.setProductUrl(pageContext.pageURL)
                     appContext.setContactModalOpen(!appContext.contactModalOpen)
                     // disable the webpage beneath the model from scrolling
-                    if (window.innerWidth < 768)
+                    if (window.innerWidth < breakpoints.tablet)
                       document.body.classList.add("no_y_scroll")
                   }}
                 >

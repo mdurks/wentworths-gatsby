@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import css_breakpoints from "../../common/css_breakpoints"
-
+import { navHeight } from "../../common/globalVars"
 const section_vertical_height = "100vh"
 const section_vertical_padding = "5vh"
 
@@ -9,13 +9,11 @@ export const Div__detail_hero_block = styled.div`
   background-color: #e5e3de;
 
   ${css_breakpoints.min_tablet} {
-    height: calc(100vh - 60px);
+    height: calc(100vh - ${navHeight.desktop}px);
     max-height: 925px;
   }
 
   .heroCarousel {
-    /* height: calc(100vh - 60px); */
-
     ${css_breakpoints.min_tablet} {
       width: 100%;
       height: 100%;
@@ -107,11 +105,13 @@ export const Div__detail_hero_block = styled.div`
   }
 
   .block3DProduct {
-    position: fixed;
+    position: absolute;
+    // the top value below gets over-ridden by the useEffect in product_detail.js, setting it to (minus) the height of the heroCarousel
+    // this is to move the 3D image up the page over the heroCarousel
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    left: -15px;
+    width: calc(100% - 30px);
+    /* height: calc(var(--vh) - 60px); */
     background-image: linear-gradient(
       0deg,
       rgb(209, 198, 170) 0%,
@@ -120,6 +120,14 @@ export const Div__detail_hero_block = styled.div`
     opacity: 0;
     z-index: -1;
     transition: opacity ease 0.3s;
+
+    ${css_breakpoints.min_tablet} {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
 
     &.active {
       opacity: 1;
@@ -302,6 +310,7 @@ export const HeroCarouselThumbnails = styled.div`
 
     div {
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 50px;
@@ -320,9 +329,60 @@ export const HeroCarouselThumbnails = styled.div`
       transform: scale(1.35);
 
       > div {
+        height: 48px;
         font-size: 12px;
+        letter-spacing: 0;
         border: 2px solid white;
       }
+    }
+  }
+`
+
+export const ThreeDControls = styled.div`
+  position: absolute;
+  top: 0;
+  right: 20px;
+  margin: -15px 0 0;
+  z-index: 15;
+
+  ${css_breakpoints.min_tablet} {
+    display: none;
+  }
+
+  .mobileToggleBtn {
+    width: 65px;
+    height: 50px;
+    background: #b3924c;
+    color: white;
+    border-radius: 5px;
+
+    .hideText {
+      display: none;
+    }
+
+    .hideText,
+    .showText {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      font-family: sans-serif;
+
+      span {
+        position: relative;
+        top: -4px;
+        display: block;
+        font-size: 15px;
+        font-weight: normal;
+      }
+    }
+  }
+
+  &.active {
+    .showText {
+      display: none;
+    }
+    .hideText {
+      display: block;
     }
   }
 `

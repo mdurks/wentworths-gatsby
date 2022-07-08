@@ -46,3 +46,7 @@ export const returnDateMonth = value => {
       break
   }
 }
+
+export const calculatedViewportHeight = () => {
+  return document.querySelector(".heightCheck").offsetHeight
+}

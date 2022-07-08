@@ -6,6 +6,9 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js"
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js"
 
+import { navHeight, breakpoints } from "../../../common/globalVars"
+import { calculatedViewportHeight } from "../../../common/utility"
+
 import px from "../../../images/textures/environmentMaps/0/px.jpg"
 import nx from "../../../images/textures/environmentMaps/0/nx.jpg"
 import py from "../../../images/textures/environmentMaps/0/py.jpg"
@@ -90,17 +93,25 @@ const Block_3D_product = ({ threeDFileURL }) => {
     // gui.add(directionalLight.position, 'z').min(- 5).max(5).step(0.001).name('lightZ')
 
     // Sizes
+    const getWidth = () => {
+      const windowWidth = window.innerWidth
+      return windowWidth < breakpoints.tablet ? windowWidth : windowWidth - 18
+    }
+    const getHeight = () => {
+      return window.innerWidth < breakpoints.tablet
+        ? calculatedViewportHeight() - navHeight.mobile
+        : document.querySelector(".heroCarousel").offsetHeight
+    }
+
     const sizes = {
-      width: window.innerWidth - 18,
-      // height: window.innerHeight,
-      height: document.querySelector(".heroCarousel").offsetHeight,
+      width: getWidth(),
+      height: getHeight(),
     }
 
     window.addEventListener("resize", () => {
       // Update sizes
-      sizes.width = window.innerWidth - 18
-      // sizes.height = window.innerHeight
-      sizes.height = document.querySelector(".heroCarousel").offsetHeight
+      sizes.width = getWidth()
+      sizes.height = getHeight()
 
       // Update camera
       camera.aspect = sizes.width / sizes.height
