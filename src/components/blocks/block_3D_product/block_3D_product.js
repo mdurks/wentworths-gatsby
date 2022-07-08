@@ -189,7 +189,7 @@ const Block_3D_product = ({ threeDFileURL }) => {
     return () => {
       // console.log("dispose renderer")
       // renderer.dispose()
-      scene = new THREE.Scene()
+      //scene = new THREE.Scene()
     }
   })
 
