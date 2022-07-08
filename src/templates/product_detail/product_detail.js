@@ -670,7 +670,7 @@ const DetailsPage = ({
       "--vh",
       calculatedViewportHeight() + "px"
     )
-    if (window.innerWidth < breakpoints.tablet) {
+    if (threeDFileURL && window.innerWidth < breakpoints.tablet) {
       document.querySelector(".block3DProduct").style.top =
         "-" + document.querySelector(".heroCarousel").offsetHeight + "px"
 
