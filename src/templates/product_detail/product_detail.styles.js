@@ -14,7 +14,10 @@ export const Div__detail_hero_block = styled.div`
   }
 
   .heroCarousel {
+    z-index: 10;
+
     ${css_breakpoints.min_tablet} {
+      z-index: 0;
       width: 100%;
       height: 100%;
     }
@@ -120,6 +123,7 @@ export const Div__detail_hero_block = styled.div`
     opacity: 0;
     z-index: -1;
     transition: opacity ease 0.3s;
+    pointer-events: none;
 
     ${css_breakpoints.min_tablet} {
       position: fixed;
@@ -132,6 +136,7 @@ export const Div__detail_hero_block = styled.div`
     &.active {
       opacity: 1;
       z-index: 10;
+      pointer-events: all;
     }
   }
 `
