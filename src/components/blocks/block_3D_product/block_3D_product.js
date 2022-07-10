@@ -168,15 +168,21 @@ const Block_3D_product = ({ threeDFileURL }) => {
     // gui.add(renderer, 'toneMappingExposure').min(0).max(10).step(0.001)
 
     // Animate
-    const tick = () => {
-      // Update controls
-      controls.update()
+    let reqAnim
+    const block3DProductEl = document.querySelector(".block3DProduct")
 
-      // Render
-      renderer.render(scene, camera)
+    let tick = () => {
+      console.log("tick", block3DProductEl.classList.contains("active"))
+      if (block3DProductEl.classList.contains("active")) {
+        // Update controls
+        controls.update()
 
-      // Call tick again on the next frame
-      window.requestAnimationFrame(tick)
+        // Render
+        renderer.render(scene, camera)
+
+        // Call tick again on the next frame
+      }
+      reqAnim = window.requestAnimationFrame(tick)
     }
 
     tick()
@@ -187,7 +193,9 @@ const Block_3D_product = ({ threeDFileURL }) => {
     // }, 250)
 
     return () => {
-      // console.log("dispose renderer")
+      console.log("unmount: block_3D")
+      window.cancelAnimationFrame(reqAnim)
+      tick = "empty"
       // renderer.dispose()
       //scene = new THREE.Scene()
     }
