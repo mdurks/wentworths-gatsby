@@ -115,6 +115,7 @@ export const Div__detail_hero_block = styled.div`
     left: -15px;
     width: calc(100% - 30px);
     /* height: calc(var(--vh) - 60px); */
+    height: calc(100vh - 60px);
     background-image: linear-gradient(
       0deg,
       rgb(209, 198, 170) 0%,

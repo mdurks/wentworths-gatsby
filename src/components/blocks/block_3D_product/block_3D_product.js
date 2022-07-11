@@ -103,15 +103,27 @@ const Block_3D_product = ({ threeDFileURL }) => {
         : document.querySelector(".heroCarousel").offsetHeight
     }
 
+    // const sizes = {
+    //   width: getWidth(),
+    //   height: getHeight(),
+    // }
+
+    console.log("window.innerWidth", window.innerWidth)
     const sizes = {
-      width: getWidth(),
-      height: getHeight(),
+      width: window.innerWidth - 18,
+      height: window.innerHeight - navHeight.mobile,
+      // height: document.querySelector(".heroCarousel").offsetHeight,
     }
 
     window.addEventListener("resize", () => {
       // Update sizes
-      sizes.width = getWidth()
-      sizes.height = getHeight()
+      // sizes.width = getWidth()
+      // sizes.height = getHeight()
+
+      // Update sizes
+      sizes.width = window.innerWidth - 18
+      // sizes.height = window.innerHeight
+      sizes.height = document.querySelector(".heroCarousel").offsetHeight
 
       // Update camera
       camera.aspect = sizes.width / sizes.height
