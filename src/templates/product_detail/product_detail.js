@@ -666,18 +666,20 @@ const DetailsPage = ({
   }
 
   const setDocHeight = () => {
+    const screenWidth = document.documentElement.clientWidth
+    const screenHeight = document.documentElement.clientHeight
+
     document.documentElement.style.setProperty(
       "--vh",
       calculatedViewportHeight() + "px"
     )
-    if (threeDFileURL && window.innerWidth < breakpoints.tablet) {
-      document.querySelector(".block3DProduct").style.top =
-        "-" + document.querySelector(".heroCarousel").offsetHeight + "px"
+    if (threeDFileURL && screenWidth < breakpoints.tablet) {
+      document.querySelector(".block3DProduct").style.top = `-${
+        screenHeight - navHeight.mobile
+      }px`
 
       document.querySelector(".threeDControls").style.top =
-        document.querySelector(".heroCarousel").offsetHeight -
-        navHeight.mobile +
-        "px"
+        screenHeight - navHeight.mobile - 74 + "px"
     }
   }
 

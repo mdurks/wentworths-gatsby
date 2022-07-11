@@ -94,36 +94,47 @@ const Block_3D_product = ({ threeDFileURL }) => {
 
     // Sizes
     const getWidth = () => {
-      const windowWidth = window.innerWidth
-      return windowWidth < breakpoints.tablet ? windowWidth : windowWidth - 18
+      const windowWidth = document.documentElement.clientWidth
+      // return windowWidth < breakpoints.tablet ? windowWidth : windowWidth - 18
+      return windowWidth
     }
     const getHeight = () => {
-      return window.innerWidth < breakpoints.tablet
-        ? calculatedViewportHeight() - navHeight.mobile
+      return document.documentElement.clientWidth < breakpoints.tablet
+        ? document.documentElement.clientHeight - navHeight.mobile
         : document.querySelector(".heroCarousel").offsetHeight
     }
 
-    // const sizes = {
-    //   width: getWidth(),
-    //   height: getHeight(),
-    // }
+    const sizes = {
+      width: getWidth(),
+      height: getHeight(),
+    }
 
     console.log("window.innerWidth", window.innerWidth)
-    const sizes = {
-      width: window.innerWidth - 18,
-      height: window.innerHeight - navHeight.mobile,
-      // height: document.querySelector(".heroCarousel").offsetHeight,
-    }
+    console.log("document.body.offsetWidth", document.body.offsetWidth)
+    console.log(
+      "document.documentElement.clientWidth",
+      document.documentElement.clientWidth
+    )
+    console.log("window.innerHeight", window.innerHeight)
+    console.log(
+      "document.documentElement.clientHeight",
+      document.documentElement.clientHeight
+    )
+    // const sizes = {
+    //   width: document.body.offsetWidth,
+    //   height: document.documentElement.clientHeight,
+    // height: document.querySelector(".heroCarousel").offsetHeight,
+    // }
 
     window.addEventListener("resize", () => {
       // Update sizes
-      // sizes.width = getWidth()
-      // sizes.height = getHeight()
+      sizes.width = getWidth()
+      sizes.height = getHeight()
 
       // Update sizes
-      sizes.width = window.innerWidth - 18
+      // sizes.width = document.body.offsetWidth
       // sizes.height = window.innerHeight
-      sizes.height = document.querySelector(".heroCarousel").offsetHeight
+      // sizes.height = document.querySelector(".heroCarousel").offsetHeight
 
       // Update camera
       camera.aspect = sizes.width / sizes.height

@@ -348,7 +348,6 @@ export const ThreeDControls = styled.div`
   position: absolute;
   top: 0;
   right: 20px;
-  margin: -15px 0 0;
   z-index: 15;
 
   ${css_breakpoints.min_tablet} {
