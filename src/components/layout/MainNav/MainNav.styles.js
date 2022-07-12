@@ -156,27 +156,27 @@ export const Button__primary = styled.button`
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
   height: 100%;
   margin: 0;
-  padding: 8px 30px;
+  padding: 8px 0;
   border: 0;
   background: transparent;
-  font-family: "Playfair Display", serif;
+  /* font-family: "Playfair Display", serif; */
   font-size: 24px;
   font-weight: 500;
-  letter-spacing: 1px;
   text-align: left;
-  text-transform: uppercase;
   transition: all ease 0.5s;
-  color: #b3924c;
+  color: #76591b;
   -webkit-tap-highlight-color: transparent;
 
   ${css_breakpoints.min_desktop} {
     padding: 0 20px;
-    font-family: Raleway, sans-serif;
+    /* font-family: Raleway, sans-serif; */
+    text-transform: uppercase;
     font-size: 16px;
+    letter-spacing: 1px;
     color: white;
 
     @media (hover: hover) {
@@ -195,12 +195,13 @@ export const Button__primary = styled.button`
       content: ">";
       position: absolute;
       top: 50%;
-      right: 30px;
+      right: 10px;
       transform: translateY(-50%);
       font-family: Raleway, sans-serif;
       font-weight: bold;
       /* font-size: 40px;
       line-height: 58px; */
+      color: #d59919;
 
       ${css_breakpoints.min_desktop} {
         display: none;
@@ -213,27 +214,27 @@ export const A__primary = styled.a`
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
   height: 100%;
   margin: 0;
-  padding: 8px 30px;
+  padding: 8px 0;
   border: 0;
   background: transparent;
-  font-family: "Playfair Display", serif;
+  /* font-family: "Playfair Display", serif; */
   font-size: 24px;
   font-weight: 500;
-  letter-spacing: 1px;
   text-align: left;
-  text-transform: uppercase;
   transition: all ease 0.5s;
-  color: #b3924c;
+  color: #76591b;
   -webkit-tap-highlight-color: transparent;
 
   ${css_breakpoints.min_desktop} {
     padding: 0 20px;
-    font-family: Raleway, sans-serif;
+    /* font-family: Raleway, sans-serif; */
     font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     color: white;
 
     @media (hover: hover) {
@@ -299,13 +300,13 @@ export const Button__secondaryListBack = styled.button`
   margin: 5px 0 0;
   padding: 13px 0;
   border: none;
-  background: #e8dcc5;
+  background: #876d37;
   font-size: 19px;
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #b3924c;
+  letter-spacing: 1px;
+  color: white;
   -webkit-tap-highlight-color: transparent;
 
   ${css_breakpoints.min_desktop} {
@@ -318,8 +319,8 @@ export const LI__primaryLink = styled.li`
 
   ${css_breakpoints.max_desktop} {
     position: relative;
-    background: #f3eddd;
-    margin: 0 5px 3px;
+    margin: 0 25px 3px;
+    border-bottom: 1px dashed #b3924c;
   }
 
   // show sub items
@@ -366,10 +367,12 @@ export const UL__secondaryLinkList = styled.ul`
   overflow-x: hidden;
 
   ${props =>
-    props.centredText &&
+    props.centredTextDesktop &&
     css`
-      li > a {
-        text-align: center;
+      ${css_breakpoints.min_desktop} {
+        li > a {
+          text-align: center;
+        }
       }
     `}
 
@@ -395,27 +398,24 @@ export const Li__secondaryLink = styled.li`
   flex: 1 1 auto;
   position: relative;
   left: 100%;
-  background: #f3eddd;
-  margin: 0 5px 3px;
+  margin: 0 25px 3px;
+  border-bottom: 1px dashed #b3924c;
 
   ${css_breakpoints.min_desktop} {
     left: 0;
     margin: 0;
-    background: none;
+    border: none;
   }
 `
 
 export const A__secondaryCategoryLink = styled.a`
   display: block;
-  padding: 8px 30px;
-  font-family: "Playfair Display", serif;
+  padding: 8px 0;
   font-size: 22px;
-  /* text-transform: uppercase; */
-  color: #b3924c;
+  color: #76591b;
 
   ${css_breakpoints.min_desktop} {
     padding: 20px;
-    font-family: Raleway, sans-serif;
     font-size: 18px;
     text-transform: none;
     color: black;
@@ -435,7 +435,7 @@ export const Nav__mainNav = styled.nav`
   width: 100vw;
   height: 100%;
   height: 0;
-  background: #f9f6ee;
+  background: #f3eddd;
 
   // this toggles the visibility of the mobile menu
   .showMobileNav & {

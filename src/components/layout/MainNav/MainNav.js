@@ -426,7 +426,7 @@ const MainNav = () => {
               </Button__primary>
               <Div__secondaryLinkWrapper>
                 <P__secondaryLinksTitle>Engagement</P__secondaryLinksTitle>
-                <UL__secondaryLinkList centredText>
+                <UL__secondaryLinkList centredTextDesktop>
                   {/* <UL__secondaryLinkList style={{ flexDirection: "column" }}> */}
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
@@ -498,7 +498,7 @@ const MainNav = () => {
               </Button__primary>
               <Div__secondaryLinkWrapper>
                 <P__secondaryLinksTitle>Wedding</P__secondaryLinksTitle>
-                <UL__secondaryLinkList centredText>
+                <UL__secondaryLinkList centredTextDesktop>
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
@@ -568,7 +568,7 @@ const MainNav = () => {
               </Button__primary>
               <Div__secondaryLinkWrapper>
                 <P__secondaryLinksTitle>Jewellery</P__secondaryLinksTitle>
-                <UL__secondaryLinkList centredText>
+                <UL__secondaryLinkList centredTextDesktop>
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
