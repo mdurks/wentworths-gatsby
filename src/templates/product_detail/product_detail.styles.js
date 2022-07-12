@@ -113,7 +113,8 @@ export const Div__detail_hero_block = styled.div`
     // this is to move the 3D image up the page over the heroCarousel
     top: 0;
     left: -15px;
-    width: calc(100% - 30px);
+    /* width: calc(100% - 30px); */
+    width: 100vw;
     /* height: calc(var(--vh) - 60px); */
     height: calc(100vh - 60px);
     background-image: linear-gradient(
