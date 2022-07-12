@@ -608,6 +608,10 @@ export const Div_detailed_description_block = styled.section`
     &:last-of-type {
       margin-bottom: 40px;
     }
+
+    &:empty {
+      margin: 0 0 -20px;
+    }
   }
 
   .detailed_description_colWrapper {
@@ -630,14 +634,14 @@ export const Div_detailed_description_block = styled.section`
     > div:last-of-type {
       ${css_breakpoints.min_desktop} {
         flex: 1 1 45%;
-        padding: 50px;
+        padding: 10px 50px 50px;
       }
     }
   }
 
   .detailed_description_text {
     opacity: 0;
-    padding-top: 20px;
+    padding-top: 10px;
 
     ${css_breakpoints.min_desktop} {
       height: 75vh;
