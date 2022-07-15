@@ -26,9 +26,9 @@ export const Div__SIT = styled.div`
   }
 
   h1 {
-    margin: 0 0 10px;
+    margin: 5px 0 10px;
     font-size: 39px;
-    line-height: 50px;
+    line-height: 55px;
     font-family: "Playfair Display",serif;
     color: #a77711;
     letter-spacing: -1px;
