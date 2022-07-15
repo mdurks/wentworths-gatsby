@@ -221,19 +221,15 @@ export const Div__block_bespoke_design_advert = styled.div`
     font-size: 19px;
     text-transform: uppercase;
     text-decoration: none;
-    background-color: #b6926d;
-    border: 2px solid #b49372;
-
-    ${css_breakpoints.max_mobile} {
-      color: white;
-    }
+    background-color: #b3924c;
+    border: 2px solid #b3924c;
+    color: white;
 
     ${css_breakpoints.min_desktop} {
       position: absolute;
       top: 830%;
       left: 62.5%;
       margin: 0;
-      background-color: hsl(43deg 12% 88% / 60%);
     }
   }
 `

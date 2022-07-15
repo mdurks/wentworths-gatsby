@@ -82,9 +82,9 @@ export const Styled_btn = styled.button`
   margin: 25px auto;
   padding: 15px 20px;
   width: 100%;
-  color: #9c7043;
+  color: #a77711;
   background-color: transparent;
-  border: 1px solid #b6926d;
+  border: 1px solid #b3924c;
   border-radius: 200px;
   font-family: "Playfair Display", serif;
   font-family: "Raleway", sans-serif;
@@ -128,7 +128,7 @@ export const Styled_btn = styled.button`
     left: -0.5%;
     width: 50.5%;
     height: calc(100% + 2px);
-    background: #b6926d;
+    background: #b3924c;
     clip-path: inset(0% 0% 0% 100%);
     border-radius: 0 0 0 0;
     opacity: 0;
@@ -144,6 +144,6 @@ export const Styled_btn = styled.button`
     props.btn_selected &&
     css`
       color: #fff;
-      background-color: #b6926d;
+      background-color: #b3924c;
     `};
 `
