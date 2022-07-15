@@ -116,18 +116,49 @@ const Footer = () => {
             >
               Services
             </h3>
-            <ul className="accordionContentWrapper">
-              <li className="animate_footer_items_2">
-                <a href="/">Valutions</a>
+            <ul class="accordionContentWrapper">
+              <li class="animate_footer_items_2">
+                <a href="/about/">About Wentworths</a>
               </li>
-              <li className="animate_footer_items_2">
-                <a href="/">Cleaning & Repairs</a>
+              <li class="animate_footer_items_2">
+                <a href="/services/bespoke-jewellery-design">
+                  Bespoke Jewellery Design
+                </a>
               </li>
-              <li className="animate_footer_items_2">
-                <a href="/">Gift Cards</a>
+              <li class="animate_footer_items_2">
+                <a href="/services/hand-crafted-jewellery">
+                  Hand Crafted Jewellery
+                </a>
               </li>
-              <li className="animate_footer_items_2">
-                <a href="/">Price Match & Guarantee</a>
+              <li class="animate_footer_items_2">
+                <a href="/services/jewellery-remodelling">
+                  Jewellery Remodelling
+                </a>
+              </li>
+              <li class="animate_footer_items_2">
+                <a href="/services/jewellery-repairs">Jewellery Repairs</a>
+              </li>
+              <li class="animate_footer_items_2">
+                <a href="/services/fair-trade-gold">Fair Trade Gold</a>
+              </li>
+              <li class="animate_footer_items_2">
+                <a href="/services/buy-silver-and-gold">
+                  We Buy Silver and Gold
+                </a>
+              </li>
+              <li class="animate_footer_items_2">
+                <a href="/services/ring-resizing">Ring Resizing</a>
+              </li>
+              <li class="animate_footer_items_2">
+                <a href="/services/jewellery-valuations">
+                  Jewellery Valuations
+                </a>
+              </li>
+              <li class="animate_footer_items_2">
+                <a href="/services/pearl-stringing">Pearl Stringing</a>
+              </li>
+              <li class="animate_footer_items_2">
+                <a href="/services/watch-repairs">Watch Repairs</a>
               </li>
             </ul>
           </div>

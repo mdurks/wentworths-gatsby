@@ -54,9 +54,14 @@ export const Styled_footer = styled.footer`
   ul a {
     display: block;
     padding: 6px 0;
+    transition: all ease 0.3s;
+
+    &:hover {
+      padding-left: 5px;
+    }
 
     ${css_breakpoints.min_tablet} {
-      padding: 8px 0;
+      padding: 4px 0;
     }
   }
 
@@ -66,9 +71,14 @@ export const Styled_footer = styled.footer`
     border: none;
     background: transparent;
     font-size: inherit;
+    transition: all ease 0.3s;
+
+    &:hover {
+      padding-left: 5px;
+    }
 
     ${css_breakpoints.min_tablet} {
-      padding: 8px 0;
+      padding: 4px 0;
     }
   }
 
