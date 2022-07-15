@@ -12,10 +12,12 @@ export const Div__SIT = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  margin: 6px 0 0;
 
   ${css_breakpoints.min_desktop} {
     /* min-height: calc(100vh + ${section_vertical_padding}); */
     min-height: 1000px;
+    margin: 0;
     padding: 75px 0;
   }
 
@@ -64,7 +66,7 @@ export const Div__SIT = styled.div`
 export const Div__SIT__backgroundStrip = styled.div`
   width: 100%;
   background-color: #f9f6ee;
-  padding: 10px 0 20px;
+  padding: 10px 0 26px;
 
   ${css_breakpoints.min_desktop} {
     padding: 50px 0 70px;
