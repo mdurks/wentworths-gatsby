@@ -6,64 +6,69 @@
 //
 import styled from "styled-components"
 import css_breakpoints from "../../../common/css_breakpoints"
+import { navHeight } from "../../../common/globalVars"
 
 const section_vertical_padding = "0vh"
 const section_horizontal_padding = "50px"
 const section_content_max_width = "1800px"
 
 export const Div__ITB = styled.div`
-  min-height: 100vh;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 15px 0 75px;
-  overflow: hidden;
+         /* min-height: 100vh; */
+         position: relative;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         padding: 15px 0 75px;
+         overflow: hidden;
 
-  ${css_breakpoints.min_desktop} {
-    min-height: calc(100vh + ${section_vertical_padding});
-    padding: 75px 0;
-  }
+         ${css_breakpoints.min_desktop} {
+           /* min-height: calc(100vh - ${navHeight.desktop}px - 30px);
+           max-height: 900px; */
+           padding: 80px 0;
+         }
 
-  > section {
-    ${css_breakpoints.min_desktop} {
-      display: flex;
-      flex-direction: row-reverse;
-      justify-content: center;
-      align-items: center;
-    }
+         > section {
+           ${css_breakpoints.min_desktop} {
+             display: flex;
+             flex-direction: row-reverse;
+             justify-content: center;
+             align-items: flex-start;
+           }
 
-    > div {
-      ${css_breakpoints.min_desktop} {
-        flex: 1 0 50%;
-      }
-    }
-  }
+           > div {
+             ${css_breakpoints.min_desktop} {
+               flex: 1 0 50%;
+             }
+           }
+         }
 
-  h1 {
-    margin: 20px 0 30px;
-    text-transform: uppercase;
+         h1 {
+           margin: 20px 0 30px;
+           text-transform: uppercase;
 
-    ${css_breakpoints.min_desktop} {
-      margin: 0 0 30px;
-    }
-  }
+           ${css_breakpoints.min_desktop} {
+             margin: 0 0 30px;
+           }
+         }
 
-  p + p {
-    margin-top: 25px;
-  }
+         p + p {
+           margin-top: 25px;
+         }
 
-  img {
-    width: 100%;
+         img {
+           width: 100%;
 
-    ${css_breakpoints.min_desktop} {
-      width: auto;
-    }
-  }
-`
+           ${css_breakpoints.min_desktop} {
+             width: auto;
+           }
+         }
+       `
 
 export const Div__ITB__imgGroup = styled.div`
-  position: relative;
+  ${css_breakpoints.min_desktop} {
+    position: relative;
+    margin: 0 0 110px;
+  }
 `
 
 export const Div__ITB__colorBox01 = styled.div`
@@ -98,6 +103,7 @@ export const Img__ITB__imgSparkle = styled.img`
     bottom: auto;
     left: calc(50% - (310px / 2));
     top: calc(50% - (607px / 2));
+    filter: grayscale(1);
   }
 `
 
@@ -129,6 +135,6 @@ export const Img__ITB__layout1__img2 = styled.div`
 
 export const Div__ITB__textGroup = styled.div`
   ${css_breakpoints.min_desktop} {
-    padding: 0 5%;
+    padding: 50px 5%;
   }
 `

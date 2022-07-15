@@ -666,45 +666,111 @@ const MainNav = () => {
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
-                      to="/"
+                      to="/services/bespoke-jewellery-design"
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
                       }}
                     >
-                      Valuations
+                      Bespoke Jewellery Design
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
-                      to="/"
+                      to="/services/hand-crafted-jewellery"
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
                       }}
                     >
-                      Cleaning & Repairs
+                      Hand Crafted Jewellery
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
-                      to="/"
+                      to="/services/jewellery-remodelling"
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
                       }}
                     >
-                      Gift Cards
+                      Jewellery Remodelling
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
-                      to="/"
+                      to="/services/jewellery-repairs"
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
                       }}
                     >
-                      Price Match & Guarantee
+                      Jewellery Repairs
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/services/fair-trade-gold"
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
+                      Fair Trade Gold
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/services/buy-silver-and-gold"
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
+                      We Buy Silver and Gold
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/services/ring-resizing"
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
+                      Ring Resizing
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/services/jewellery-valuations"
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
+                      Jewellery Valuations
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/services/pearl-stringing"
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
+                      Pearl Stringing
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/services/watch-repairs"
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
+                      Watch Repairs
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
                 </UL__secondaryLinkList>

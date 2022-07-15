@@ -1,13 +1,12 @@
 import styled, { css } from "styled-components"
 import css_breakpoints from "../common/css_breakpoints"
-
-const bp_desktop_max = "1400px"
+import { breakpoints } from "../common/globalVars"
 
 export const Styled_SiteContainer = styled.section`
   position: relative;
   display: block;
   width: calc(100% - 30px);
-  max-width: ${bp_desktop_max};
+  max-width: ${breakpoints.maxDesktop}px;
   margin: auto;
   padding: 15px;
 
