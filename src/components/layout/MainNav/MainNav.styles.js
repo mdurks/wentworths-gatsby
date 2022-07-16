@@ -1,4 +1,5 @@
 import css_breakpoints from "../../../common/css_breakpoints"
+import { navHeight } from "../../../common/globalVars"
 import styled, { css } from "styled-components"
 
 // ${css_breakpoints.min_desktop} {
@@ -16,14 +17,11 @@ import styled, { css } from "styled-components"
 //   css`
 //   `};
 
-const stickyMobileMenuHeight = 60
-const stickyDesktopMenuHeight = 80
-
 export const Div__mainNav__container = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
-  padding: 0 0 ${stickyMobileMenuHeight + 5}px 0;
+  padding: 0 0 ${navHeight.mobile + 5}px 0;
 
   ${css_breakpoints.min_desktop} {
     flex-direction: row;
@@ -39,7 +37,8 @@ export const A__mainNav__logo = styled.a`
   position: relative;
   display: none;
   margin: 0;
-  padding: 20px 60px 21px 20px;
+  /* padding: 20px 60px 21px 20px; */
+  padding: 15px 60px 16px 20px;
   font-family: "Playfair Display", serif;
   font-size: 22px;
   text-transform: uppercase;
@@ -114,7 +113,7 @@ export const Div__secondaryLinkBackground = styled.div`
   ${css_breakpoints.min_desktop} {
     display: block;
     position: absolute;
-    top: ${stickyDesktopMenuHeight}px;
+    top: ${navHeight.desktop}px;
     left: 0;
     width: 100%;
     height: 0;
@@ -258,14 +257,14 @@ export const Div__secondaryLinkWrapper = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100%;
-  padding: 0 0 ${stickyMobileMenuHeight}px;
+  padding: 0 0 ${navHeight.mobile}px;
   /* background: aliceblue; */
   /* background: #f9f6ee; */
   z-index: 1;
 
   ${css_breakpoints.min_desktop} {
     position: absolute;
-    top: ${stickyDesktopMenuHeight}px;
+    top: ${navHeight.desktop}px;
     bottom: auto;
     left: 0;
     flex-direction: row;
@@ -409,6 +408,7 @@ export const Li__secondaryLink = styled.li`
   border-bottom: 1px dashed #b3924c;
 
   ${css_breakpoints.min_desktop} {
+    flex: none;
     left: 0;
     margin: 0;
     border: none;
@@ -422,6 +422,7 @@ export const A__secondaryCategoryLink = styled.a`
   color: #76591b;
 
   ${css_breakpoints.min_desktop} {
+    position: relative;
     height: 100%;
     margin: 0 5px 0 0;
     padding: 5px 0 5px 5px;
@@ -430,9 +431,26 @@ export const A__secondaryCategoryLink = styled.a`
     color: black;
     transition: all ease 0.3s;
 
+    &:before {
+      content: "";
+      position: absolute;
+      bottom: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: #c1a260;
+      transition: all ease 0.5s;
+    }
+
     &:hover {
       margin-right: 0;
       padding-left: 10px;
+      color: #936400;
+
+      &:before {
+        width: calc(100% + 10px);
+      }
     }
   }
 `
@@ -500,7 +518,7 @@ export const StickyMobileMenu = styled.div`
   justify-content: space-evenly;
   padding: 4px 0 0;
   width: 100%;
-  height: ${stickyMobileMenuHeight}px;
+  height: ${navHeight.mobile}px;
   background: #b3924c;
 
   ${css_breakpoints.min_desktop} {

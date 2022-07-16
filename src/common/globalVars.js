@@ -1,6 +1,6 @@
 export const navHeight = {
   mobile: 60,
-  desktop: 80,
+  desktop: 70,
 }
 
 export const breakpoints = {
