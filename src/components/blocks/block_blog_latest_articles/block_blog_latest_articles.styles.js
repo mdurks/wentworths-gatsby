@@ -17,7 +17,7 @@ export const Styled_BlogLatestArticlesWrapper = styled.div`
 
   h2 {
     flex: 1 0 100%;
-    margin: 0 0 25px;
+    margin: 25px 0 65px;
     text-align: center;
     color: #a98029;
 
@@ -28,7 +28,7 @@ export const Styled_BlogLatestArticlesWrapper = styled.div`
 
     ${css_breakpoints.min_desktop} {
       margin: 0 0 50px;
-      font-size: 60px;
+      font-size: 65px;
     }
   }
 
@@ -110,14 +110,14 @@ export const Styled_BlogLatestArticlesWrapper = styled.div`
     }
 
     span {
-      margin: 0 0 4px;
-      padding: 0 0 4px;
+      margin: 0 0 2px;
+      padding: 0 0 2px;
       border-bottom: 1px solid #000;
       transition: all ease 0.3s;
 
       &:hover {
-        color: #836830;
-        border-bottom: 1px solid #b3924c;
+        color: #936400;
+        border-bottom: 1px solid #936400;
       }
     }
   }
