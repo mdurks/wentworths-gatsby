@@ -268,10 +268,13 @@ export const Div__secondaryLinkWrapper = styled.div`
     top: ${stickyDesktopMenuHeight}px;
     bottom: auto;
     left: 0;
+    flex-direction: row;
     padding: 0;
     height: auto;
     visibility: hidden;
+    opacity: 0;
     background: transparent;
+    transition: all ease 0.3s;
   }
 `
 
@@ -333,6 +336,7 @@ export const LI__primaryLink = styled.li`
 
       ${Div__secondaryLinkWrapper} {
         visibility: visible;
+        opacity: 1;
       }
 
       ${Button__primary} {
@@ -382,12 +386,15 @@ export const UL__secondaryLinkList = styled.ul`
 
   ${css_breakpoints.min_desktop} {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    max-width: ${css_breakpoints.desktop_max};
-    height: auto;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: stretch;
+    align-content: space-around;
+    /* max-width: ${css_breakpoints.desktop_max}; */
+    height: 300px;
     margin: auto;
-    padding: 0 15%;
+    padding: 50px 15%;
     overflow-y: auto;
     overflow-x: auto;
   }
@@ -415,10 +422,18 @@ export const A__secondaryCategoryLink = styled.a`
   color: #76591b;
 
   ${css_breakpoints.min_desktop} {
-    padding: 20px;
+    height: 100%;
+    margin: 0 5px 0 0;
+    padding: 5px 0 5px 5px;
     font-size: 18px;
     text-transform: none;
     color: black;
+    transition: all ease 0.3s;
+
+    &:hover {
+      margin-right: 0;
+      padding-left: 10px;
+    }
   }
 `
 
