@@ -101,7 +101,7 @@ const Block_3D_product = ({ threeDFileURL }) => {
     const getHeight = () => {
       return document.documentElement.clientWidth < breakpoints.tablet
         ? document.documentElement.clientHeight - navHeight.mobile
-        : document.querySelector(".heroCarousel").offsetHeight
+        : document.querySelector(".heroCarousel")?.offsetHeight
     }
 
     const sizes = {
@@ -109,17 +109,6 @@ const Block_3D_product = ({ threeDFileURL }) => {
       height: getHeight(),
     }
 
-    console.log("window.innerWidth", window.innerWidth)
-    console.log("document.body.offsetWidth", document.body.offsetWidth)
-    console.log(
-      "document.documentElement.clientWidth",
-      document.documentElement.clientWidth
-    )
-    console.log("window.innerHeight", window.innerHeight)
-    console.log(
-      "document.documentElement.clientHeight",
-      document.documentElement.clientHeight
-    )
     // const sizes = {
     //   width: document.body.offsetWidth,
     //   height: document.documentElement.clientHeight,
@@ -195,28 +184,16 @@ const Block_3D_product = ({ threeDFileURL }) => {
     const block3DProductEl = document.querySelector(".block3DProduct")
 
     let tick = () => {
-      console.log("tick", block3DProductEl.classList.contains("active"))
-      if (block3DProductEl.classList.contains("active")) {
-        // Update controls
+      if (block3DProductEl?.classList?.contains("active")) {
         controls.update()
-
-        // Render
         renderer.render(scene, camera)
-
-        // Call tick again on the next frame
       }
       reqAnim = window.requestAnimationFrame(tick)
     }
 
     tick()
 
-    // setTimeout(() => {
-    //   console.log("setTimeout")
-    //   renderer.resetState()
-    // }, 250)
-
     return () => {
-      console.log("unmount: block_3D")
       window.cancelAnimationFrame(reqAnim)
       tick = "empty"
       // renderer.dispose()
