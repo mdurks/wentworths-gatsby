@@ -53,19 +53,17 @@ const Styled_ProductItem = styled(Link)`
       }
 
       .productStage {
-        bottom: -12px;
-        width: 194px;
-        height: 93px;
+        bottom: -11px;
+        width: 119%;
+        height: 48%;
       }
 
       .productDesc {
-        top: 20px;
-        color: #000;
+        top: 16px;
       }
 
       .productPrice {
-        top: 25px;
-        color: #ba9b7c;
+        top: 16px;
         // opacity: 1;
       }
     }
@@ -128,16 +126,17 @@ const Styled_ProductItem = styled(Link)`
     top: 0;
     width: 60%;
     margin: 200px auto 0;
-    line-height: 25px;
-    color: #a59985;
+    line-height: 20px;
+    color: black;
     transition: all ease 0.5s;
   }
 
   .productPrice {
     position: relative;
     top: 0;
-    color: #a59985;
-    font-size: 24px;
+    font-family: sans-serif;
+    font-size: 18px;
+    color: rgb(167, 119, 17);
     transition: all ease 0.5s;
 
     // ${css_breakpoints.min_desktop} {

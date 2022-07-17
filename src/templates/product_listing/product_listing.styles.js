@@ -13,7 +13,7 @@ export const Div__pageHeader = styled.div`
 
   ${css_breakpoints.min_desktop} {
     min-height: auto;
-    padding: 180px 0 40px;
+    padding: 130px 0 40px;
   }
 
   p {
@@ -231,7 +231,7 @@ export const Div__filter = styled.div`
     font-family: "Playfair Display", serif;
     font-size: 25px;
     text-transform: uppercase;
-    color: #b7903d;
+    color: #a77711;
     transition: all ease-in-out 0.3s;
 
     &:after {
@@ -397,7 +397,7 @@ export const Div__filter_info = styled.div`
 
   ${css_breakpoints.min_desktop} {
     flex-direction: row;
-    margin-bottom: 60px;
+    margin: 0;
   }
 
   .filter_info__showingNumber {
