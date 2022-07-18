@@ -152,7 +152,8 @@ const Block_3D_product = ({ threeDFileURL }) => {
     // Controls
     const controls = new OrbitControls(camera, canvas)
     controls.enableDamping = true
-    controls.enableZoom = false
+    controls.enableZoom =
+      document.documentElement.clientWidth < breakpoints.tablet ? true : false
 
     // Renderer
     const renderer = new THREE.WebGLRenderer({
