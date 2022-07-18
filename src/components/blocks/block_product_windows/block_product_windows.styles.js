@@ -32,7 +32,7 @@ export const A_productItem = styled(Link)`
   overflow: hidden;
 
   ${css_breakpoints.min_tablet} {
-    height: 40vh;
+    /* height: 40vh; */
     margin: 0 5px 10px;
 
     /* &:nth-child(odd) {
@@ -53,6 +53,7 @@ export const A_productItem = styled(Link)`
 
   .graphcms-image-wrapper {
     height: 100%;
+    padding: 50px 0;
   }
 
   &:hover img {
@@ -84,7 +85,7 @@ export const Div_product_name = styled.div`
   ${css_breakpoints.min_tablet} {
     position: absolute;
     top: 100%;
-    padding: 20px;
+    padding: 15px 20px;
     z-index: 1;
   }
 
@@ -92,7 +93,7 @@ export const Div_product_name = styled.div`
     position: relative;
     display: inline-block;
     font-family: "Raleway", sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
 
     :before {
@@ -113,7 +114,7 @@ export const Div_product_name = styled.div`
   }
 
   ${A_productItem}:hover & {
-    top: 75%;
+    top: 71%;
     color: #a57c27;
     background: white;
   }

@@ -2,6 +2,7 @@ import React from "react"
 import { useEffect } from "react"
 
 import GraphImg from "graphcms-image"
+import { breakpoints } from "../../../common/globalVars"
 
 import {
   Section_product_windows,
@@ -138,12 +139,17 @@ const Block_product_windows = props => {
     }
   }, [])
 
+  const listOfProducts =
+    document.documentElement.clientWidth < breakpoints.tablet
+      ? props.products.slice(0, 5)
+      : props.products
+
   return (
     <>
       <Section_product_windows>
         <Styled_SiteContainer>
           <Div_productWrapper>
-            {props.products.map((item, index) => (
+            {listOfProducts.map((item, index) => (
               <A_productItem
                 className="productWindowItem"
                 to={`/${item.categoryType[0]}/${item.productType}/${item.slug}/`}
