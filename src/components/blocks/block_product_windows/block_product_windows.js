@@ -93,7 +93,7 @@ const Block_product_windows = props => {
       )
 
       // how many rows?
-      const numberOfProductWindowsPerRow = 2
+      const numberOfProductWindowsPerRow = 4
       const numberOfProductWindowRows = Math.ceil(
         allProductWindows.length / numberOfProductWindowsPerRow
       )
@@ -109,6 +109,8 @@ const Block_product_windows = props => {
         rowOfProductWindows.push([
           allProductWindows[rowOfCount],
           allProductWindows[rowOfCount + 1],
+          allProductWindows[rowOfCount + 2],
+          allProductWindows[rowOfCount + 3],
         ])
         rowOfCount = rowOfCount + numberOfProductWindowsPerRow
       }
@@ -145,12 +147,12 @@ const Block_product_windows = props => {
               <A_productItem
                 className="productWindowItem"
                 to={`/${item.categoryType[0]}/${item.productType}/${item.slug}/`}
-                onMouseOver={() => {
-                  productWindow_addParallax(index)
-                }}
-                onMouseLeave={() => {
-                  productWindow_removeParallax(index)
-                }}
+                // onMouseOver={() => {
+                //   productWindow_addParallax(index)
+                // }}
+                // onMouseLeave={() => {
+                //   productWindow_removeParallax(index)
+                // }}
               >
                 <GraphImg
                   image={item.productWindowImage}

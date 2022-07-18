@@ -26,21 +26,22 @@ export const Div_productWrapper = styled.div`
 export const A_productItem = styled(Link)`
   position: relative;
   display: block;
-  flex: 1 1 calc(50% - 10px);
+  /* flex: 1 1 calc(50% - 10px); */
+  flex: 0 1 calc(25% - 10px);
   /* height: 300px; */
   overflow: hidden;
 
   ${css_breakpoints.min_tablet} {
     height: 40vh;
-    margin-bottom: 15px;
+    margin: 0 5px 10px;
 
-    &:nth-child(odd) {
+    /* &:nth-child(odd) {
       margin-right: 10px;
-    }
+    } */
 
-    &:nth-child(even) {
+    /* &:nth-child(even) {
       margin-left: 10px;
-    }
+    } */
   }
 
   .graphcms-image-outer-wrapper {
@@ -70,9 +71,10 @@ export const A_productItem = styled(Link)`
 export const Div_product_name = styled.div`
   position: relative;
   width: 100%;
+  height: 75%;
   padding: 10px 20px 16px;
-  background: hsl(0deg 0% 100% / 25%);
-  backdrop-filter: blur(5px);
+  background: hsl(0deg 0% 100% / 50%);
+  /* backdrop-filter: blur(5px); */
   font-family: "Playfair Display", serif;
   text-align: center;
   text-transform: capitalize;
@@ -81,7 +83,7 @@ export const Div_product_name = styled.div`
 
   ${css_breakpoints.min_tablet} {
     position: absolute;
-    bottom: 0;
+    top: 100%;
     padding: 20px;
     z-index: 1;
   }
@@ -111,7 +113,8 @@ export const Div_product_name = styled.div`
   }
 
   ${A_productItem}:hover & {
+    top: 75%;
     color: #a57c27;
-    background: hsl(0deg 0% 100% / 40%);
+    background: white;
   }
 `
