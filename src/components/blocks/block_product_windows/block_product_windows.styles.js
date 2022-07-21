@@ -14,10 +14,11 @@ export const Section_product_windows = styled.section`
 
 export const Div_productWrapper = styled.div`
   margin: 0 -15px -15px;
+  padding: 150px 0 0;
 
   ${css_breakpoints.min_tablet} {
     margin: 0;
-    padding: 90px 0 80px;
+    padding: 340px 0 80px;
     display: flex;
     flex-wrap: wrap;
   }
