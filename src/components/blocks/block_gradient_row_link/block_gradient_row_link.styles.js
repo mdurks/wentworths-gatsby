@@ -12,9 +12,11 @@ export const Div__gradient_row_link = styled.div`
 
   .wrapper {
     position: relative;
-    transform: translateX(
+    // below positioning for when animating left to right
+    /* transform: translateY(
       ${props => (props.img_alignment === "right" ? "-100%" : "100%")}
-    );
+    ); */
+    transform: translateY(100%);
     height: 110px;
     overflow: hidden;
     // take the CMS colour value and apply background gradient

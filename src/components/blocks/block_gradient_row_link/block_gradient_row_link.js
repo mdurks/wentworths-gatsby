@@ -24,10 +24,10 @@ const Block_gradient_row_link = props => {
         `.${this_component_name} .wrapper`
       )
       //
-      let tl_gsap = gsap.timeline({
+      let tl_block_gradient_row_link = gsap.timeline({
         scrollTrigger: {
           trigger: this_component_el,
-          start: window.innerHeight < 768 ? "top 95%" : "top 95%",
+          start: window.innerHeight < 768 ? "top 95%" : "-70% 95%",
           // toggleActions: "play none none reset",
           toggleActions: "play none none none",
           // markers: true,
@@ -37,12 +37,12 @@ const Block_gradient_row_link = props => {
           // anticipatePin: 1,
         },
       })
-      tl_gsap.to(this_component_el, {
+      tl_block_gradient_row_link.to(this_component_el, {
         duration: 0.75,
-        x: 0,
+        y: 0,
         ease: "power2.out",
       })
-      tl_gsap.to(
+      tl_block_gradient_row_link.to(
         document.querySelector(`.${this_component_name} .text-pre-title span`),
         {
           duration: 1,
@@ -51,7 +51,7 @@ const Block_gradient_row_link = props => {
         },
         "-=.75"
       )
-      tl_gsap.to(
+      tl_block_gradient_row_link.to(
         document.querySelector(`.${this_component_name} .text-title span`),
         {
           duration: 1,
@@ -60,7 +60,7 @@ const Block_gradient_row_link = props => {
         },
         "-=1"
       )
-      tl_gsap.to(
+      tl_block_gradient_row_link.to(
         document.querySelector(`.${this_component_name} .img`),
         {
           duration: 1.25,
@@ -73,7 +73,7 @@ const Block_gradient_row_link = props => {
       //
       //
       // return function to kill timeline on dismount
-      return () => tl_gsap.kill()
+      return () => tl_block_gradient_row_link.kill()
     }, 750)
   }, [])
 
