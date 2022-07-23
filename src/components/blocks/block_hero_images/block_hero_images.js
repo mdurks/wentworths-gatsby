@@ -66,6 +66,8 @@ const Block_hero_images = () => {
   useEffect(() => {
     setWindowWidth(window.innerWidth)
 
+    // Fade/Scale in background image
+
     tl.from(".Section__hero__backgroundImg", {
       duration: 5,
       scale: 1.5,
@@ -99,6 +101,8 @@ const Block_hero_images = () => {
     // }
     // heroImage.addEventListener("mousemove", heroImageFunc)
 
+    // Slide R-L, fade in Texts
+
     tl.to(
       ".Section__hero__heading",
       {
@@ -121,6 +125,9 @@ const Block_hero_images = () => {
       },
       "-=4.95"
     )
+
+    // Reveal R-L text
+
     gsap.set(".Section__hero__headingText", {
       clipPath: "inset(0% 100% -50% 0%)",
     })
@@ -136,32 +143,92 @@ const Block_hero_images = () => {
       clipPath: "none",
     })
 
+    // console.log("window.innerHeight", window.innerHeight)
+    // console.log(
+    //   "window.innerHeight - percentage",
+    //   window.innerHeight * 0.57 + 190
+    // )
+    // console.log(
+    //   "window.innerHeight - getBoundingClientRect",
+    //   window.innerHeight -
+    //     document
+    //       .querySelector(".Section__hero__heading")
+    //       .getBoundingClientRect().y
+    // )
+
+    const letters = document.querySelectorAll(
+      ".Section__hero__headingText span"
+    )
+    const lettersAnimationFor_Section__hero__headingText = direction => {
+      letters.forEach((letter, index) => {
+        gsap.fromTo(
+          letter,
+          { top: "0px" },
+          {
+            top: direction === "down" ? "-40px" : "40px",
+            yoyo: true,
+            repeat: 1,
+            delay: index * 0.025,
+            duration: 0.15,
+          }
+        )
+      })
+    }
+
+    document
+      .querySelector(".Section__hero__headingText")
+      .addEventListener("click", lettersAnimationFor_Section__hero__headingText)
+
+    // calculate Y position of heading when its over the video
+    // then add the amount of pixels it needs to move down above the product windows
+    // the 0.XXX value is a percentage manually tinkered with (see commented codebelow)
+    // to find the location
     const section__hero__heading_destination =
       window.innerWidth < 768
-        ? window.innerHeight -
-          document
-            .querySelector(".Section__hero__heading")
-            .getBoundingClientRect().y +
-          50
-        : window.innerHeight -
-          document
-            .querySelector(".Section__hero__heading")
-            .getBoundingClientRect().y +
-          190
+        ? window.innerHeight * 0.684 + 50
+        : window.innerHeight * 0.43 + 190
 
-    const hero_svg_element = document.querySelectorAll("#signature [clip-path]")
+    // Below is the brittle way of getting the position of the text, but if you reload
+    // the page further down, this breaks all the positioning
+    // I have kept this because the getBoundingClientRect code tells me the location
+    // required to calculate the percentage for the destination value above
+    // const section__hero__heading_destination =
+    //   window.innerWidth < 768
+    //     ? window.innerHeight -
+    //       document
+    //         .querySelector(".Section__hero__heading")
+    //         .getBoundingClientRect().y +
+    //       50
+    //     : window.innerHeight -
+    //       document
+    //         .querySelector(".Section__hero__heading")
+    //         .getBoundingClientRect().y +
+    //       190
+
+    const progressLocation = window.innerWidth < 768 ? 0.67 : 0.5
+    let canFlipAnimation = true
+    const hero_svg_letters = document.querySelectorAll("#signature [clip-path]")
     const flip_section_hero_svg_colour_onScroll = progress => {
-      if (progress > 0.4) {
-        console.log("change to orange")
-        hero_svg_element.forEach(el => (el.style.stroke = "#a77711"))
+      if (progress > progressLocation) {
+        if (canFlipAnimation) {
+          canFlipAnimation = false
+          console.log("DOWN animation")
+          hero_svg_letters.forEach(el => (el.style.stroke = "#a77711"))
+          lettersAnimationFor_Section__hero__headingText("down")
+        }
       } else {
-        console.log("change to white")
-        hero_svg_element.forEach(el => (el.style.stroke = "white"))
+        if (canFlipAnimation === false) {
+          canFlipAnimation = true
+          console.log("UP animation")
+          hero_svg_letters.forEach(el => (el.style.stroke = "white"))
+          lettersAnimationFor_Section__hero__headingText("up")
+        }
       }
     }
 
     gsap.to(".Section__hero__heading", {
       scrollTrigger: {
+        id: "Section__hero__heading",
         trigger: document.body,
         start: "10% top",
         end: "80%",
@@ -174,6 +241,7 @@ const Block_hero_images = () => {
     })
     gsap.to(".Section__hero__headingSVG", {
       scrollTrigger: {
+        id: "Section__hero__headingSVG",
         trigger: document.body,
         start: "10% top",
         end: "80%",
@@ -256,6 +324,17 @@ const Block_hero_images = () => {
       },
       "-=0.6"
     )
+
+    // cleanup on unmount
+    return () => {
+      ScrollTrigger.getById("Section__hero__heading").kill()
+      ScrollTrigger.getById("Section__hero__headingSVG").kill()
+
+      gsap.set(".Section__hero__heading", { clearProps: true })
+      gsap.set(".Section__hero__headingSVG", { clearProps: true })
+      tl.pause(0).kill(true)
+      tl.kill()
+    }
   }, [windowWidth])
 
   const supports_video = () => {
@@ -344,7 +423,25 @@ const Block_hero_images = () => {
         <HeroText_Wrapper>
           <Styled_SiteContainer>
             <p class="Section__hero__heading">
-              <span class="Section__hero__headingText">We are the memory </span>
+              <span class="Section__hero__headingText">
+                <span>W</span>
+                <span>e</span>
+                <span> </span>
+                <span>a</span>
+                <span>r</span>
+                <span>e</span>
+                <span> </span>
+                <span>t</span>
+                <span>h</span>
+                <span>e</span>
+                <span> </span>
+                <span>m</span>
+                <span>e</span>
+                <span>m</span>
+                <span>o</span>
+                <span>r</span>
+                <span>y</span>
+              </span>
             </p>
             <p class="Section__hero__headingSVG">
               <span class="Section__hero__heading--handwritten">
