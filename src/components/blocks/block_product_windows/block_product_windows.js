@@ -139,15 +139,6 @@ const Block_product_windows = props => {
     }
   }, [])
 
-  // let listOfProducts
-
-  // if (typeof window !== "undefined") {
-  //   listOfProducts =
-  //     document.documentElement.clientWidth < breakpoints.tablet
-  //       ? props.products.slice(0, 5)
-  //       : props.products
-  // }
-
   const listOfProducts =
     typeof window !== "undefined" && window.innerWidth < 768
       ? props.products.slice(0, 5)
