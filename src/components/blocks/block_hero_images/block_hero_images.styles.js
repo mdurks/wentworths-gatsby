@@ -55,7 +55,7 @@ export const Section__hero = styled.section`
     /* text-shadow: 0px 4px 4px rgb(0 0 0 / 50%); */
     opacity: 0;
     z-index: 2;
-    /* pointer-events: none; */
+    pointer-events: none;
 
     ${css_breakpoints.min_desktop} {
       top: 1%;

@@ -50,6 +50,8 @@ const Block_hero_images = () => {
   } = useStaticQuery(pageQuery)
 
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768
+  console.log("window.innerWidth", window.innerWidth)
+  console.log("isMobile", isMobile)
 
   let gsap_section_hero = null
   let gsap_section_hero_img = null
@@ -207,6 +209,7 @@ const Block_hero_images = () => {
     let canFlipAnimation = true
     const hero_svg_letters = document.querySelectorAll("#signature [clip-path]")
     const flip_section_hero_svg_colour_onScroll = progress => {
+      console.log("flip_section_hero_svg_colour_onScroll")
       if (progress > progressLocation) {
         if (canFlipAnimation) {
           canFlipAnimation = false
@@ -329,8 +332,8 @@ const Block_hero_images = () => {
 
       gsap.set(".Section__hero__heading", { clearProps: true })
       gsap.set(".Section__hero__headingSVG", { clearProps: true })
-      tl.pause(0).kill(true)
-      tl.kill()
+      // tl.pause(0).kill(true)
+      // tl.kill()
     }
   }, [windowWidth])
 
