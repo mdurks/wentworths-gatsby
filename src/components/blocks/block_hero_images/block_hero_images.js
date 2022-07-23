@@ -50,8 +50,6 @@ const Block_hero_images = () => {
   } = useStaticQuery(pageQuery)
 
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768
-  console.log("window.innerWidth", window.innerWidth)
-  console.log("isMobile", isMobile)
 
   let gsap_section_hero = null
   let gsap_section_hero_img = null
@@ -68,6 +66,8 @@ const Block_hero_images = () => {
   }
 
   useEffect(() => {
+    console.log("window.innerWidth", window.innerWidth)
+    console.log("isMobile", isMobile)
     setWindowWidth(window.innerWidth)
 
     // Fade/Scale in background image
