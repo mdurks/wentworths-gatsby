@@ -49,6 +49,8 @@ const Block_hero_images = () => {
     gcms: { blockHeroImages },
   } = useStaticQuery(pageQuery)
 
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768
+
   let gsap_section_hero = null
   let gsap_section_hero_img = null
 
@@ -175,10 +177,6 @@ const Block_hero_images = () => {
       })
     }
 
-    document
-      .querySelector(".Section__hero__headingText")
-      .addEventListener("click", lettersAnimationFor_Section__hero__headingText)
-
     // calculate Y position of heading when its over the video
     // then add the amount of pixels it needs to move down above the product windows
     // the 0.XXX value is a percentage manually tinkered with (see commented codebelow)
@@ -212,15 +210,14 @@ const Block_hero_images = () => {
       if (progress > progressLocation) {
         if (canFlipAnimation) {
           canFlipAnimation = false
-          console.log("DOWN animation")
           hero_svg_letters.forEach(el => (el.style.stroke = "#a77711"))
           lettersAnimationFor_Section__hero__headingText("down")
         }
       } else {
         if (canFlipAnimation === false) {
           canFlipAnimation = true
-          console.log("UP animation")
-          hero_svg_letters.forEach(el => (el.style.stroke = "white"))
+          if (!isMobile)
+            hero_svg_letters.forEach(el => (el.style.stroke = "white"))
           lettersAnimationFor_Section__hero__headingText("up")
         }
       }
@@ -258,7 +255,7 @@ const Block_hero_images = () => {
       delay: 2,
       duration: 1.25,
       opacity: 1,
-      x: setWindowWidth < 768 ? "-7%" : "-7%",
+      x: windowWidth < 768 ? "-7%" : "-7%",
       ease: "power2.out",
     })
 
@@ -349,10 +346,7 @@ const Block_hero_images = () => {
     return v.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"')
   }
 
-  const svgColour =
-    typeof window !== "undefined" && window.innerWidth < 768
-      ? "#a57c24"
-      : "#ffffff"
+  const svgColour = isMobile ? "#a57c24" : "#ffffff"
 
   return (
     <>
