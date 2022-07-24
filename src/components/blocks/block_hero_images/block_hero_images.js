@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
 import { Styled_SiteContainer } from "../../../styles/commonStyles"
@@ -45,9 +45,6 @@ const pageQuery = graphql`
 `
 
 const Block_hero_images = () => {
-  console.log("-------------------------")
-  console.log("mount")
-
   const {
     gcms: { blockHeroImages },
   } = useStaticQuery(pageQuery)
@@ -60,7 +57,7 @@ const Block_hero_images = () => {
   const tl_block_hero_images_ = gsap.timeline()
   const tl_block_hero_images_handwriting = gsap.timeline()
 
-  const [windowWidth, setWindowWidth] = useState("one")
+  // const [windowWidth, setWindowWidth] = useState("one")
 
   // if (typeof window !== "undefined") {
   //   window.addEventListener("resize", () => {
@@ -72,16 +69,16 @@ const Block_hero_images = () => {
     console.log("useEffect")
     console.log("window.innerWidth", window.innerWidth)
     console.log("isMobile", isMobile)
-    setWindowWidth(window.innerWidth)
+    // setWindowWidth(window.innerWidth)
 
     // Fade/Scale in background image
 
-    // tl_block_hero_images_.from(".Section__hero__backgroundImg", {
-    //   duration: 5,
-    //   scale: 1.5,
-    //   opacity: 0,
-    //   ease: "power2.out",
-    // })
+    tl_block_hero_images_.from(".Section__hero__backgroundImg", {
+      duration: 5,
+      scale: 1.5,
+      opacity: 0,
+      ease: "power2.out",
+    })
     // gsap.to(gsap_section_hero_img, {
     //   scrollTrigger: {
     //     trigger: document.body,
@@ -187,10 +184,9 @@ const Block_hero_images = () => {
     // then add the amount of pixels it needs to move down above the product windows
     // the 0.XXX value is a percentage manually tinkered with (see commented codebelow)
     // to find the location
-    const section__hero__heading_destination =
-      window.innerWidth < 768
-        ? window.innerHeight * 0.684 + 50
-        : window.innerHeight * 0.43 + 190
+    const section__hero__heading_destination = isMobile
+      ? window.innerHeight * 0.684 + 65
+      : window.innerHeight * 0.43 + 190
 
     // Below is the brittle way of getting the position of the text, but if you reload
     // the page further down, this breaks all the positioning
@@ -209,21 +205,19 @@ const Block_hero_images = () => {
     //         .getBoundingClientRect().y +
     //       190
 
-    const progressLocation = window.innerWidth < 768 ? 0.67 : 0.5
+    const progressLocation = isMobile ? 0.67 : 0.5
     let canFlipAnimation = true
     const hero_svg_letters = document.querySelectorAll("#signature [clip-path]")
     const flip_section_hero_svg_colour_onScroll = progress => {
-      console.log("flip onScroll")
+      console.log("progress", progress)
       if (progress > progressLocation) {
         if (canFlipAnimation) {
-          console.log("flip text down")
           canFlipAnimation = false
           hero_svg_letters.forEach(el => (el.style.stroke = "#a77711"))
           lettersAnimationFor_Section__hero__headingText("down")
         }
       } else {
         if (canFlipAnimation === false) {
-          console.log("flip text up")
           canFlipAnimation = true
           if (!isMobile)
             hero_svg_letters.forEach(el => (el.style.stroke = "white"))
@@ -240,10 +234,10 @@ const Block_hero_images = () => {
         end: "80%",
         toggleActions: "play none none none",
         // markers: true,
-        scrub: isMobile ? true : 1.35,
+        scrub: 1.35,
       },
       y: `+=${section__hero__heading_destination}`,
-      left: window.innerWidth > 768 && "-=10%",
+      left: isMobile && "-=10%",
     })
     gsap.to(".Section__hero__headingSVG", {
       scrollTrigger: {
@@ -253,11 +247,11 @@ const Block_hero_images = () => {
         end: "80%",
         toggleActions: "play none none none",
         // markers: true,
-        scrub: isMobile ? true : 1.1,
+        scrub: 1.1,
         onUpdate: self => flip_section_hero_svg_colour_onScroll(self.progress),
       },
       y: `+=${section__hero__heading_destination}`,
-      left: window.innerWidth > 768 && "-=10%",
+      left: !isMobile && "-=10%",
     })
 
     tl_block_hero_images_handwriting.to(
@@ -266,7 +260,7 @@ const Block_hero_images = () => {
         delay: 2,
         duration: 1.25,
         opacity: 1,
-        x: windowWidth < 768 ? "-7%" : "-7%",
+        x: isMobile ? "-7%" : "-7%",
         ease: "power2.out",
       }
     )
@@ -337,20 +331,15 @@ const Block_hero_images = () => {
     // cleanup on unmount
     return () => {
       console.log("unmount")
-      // ScrollTrigger.getById("Section__hero__heading").kill()
-      // ScrollTrigger.getById("Section__hero__headingSVG").kill()
+      ScrollTrigger.getById("Section__hero__heading").kill()
+      ScrollTrigger.getById("Section__hero__headingSVG").kill()
 
       gsap.set(".Section__hero__heading", { clearProps: true })
       gsap.set(".Section__hero__headingSVG", { clearProps: true })
       // tl.pause(0).kill(true)
       // tl.kill()
     }
-  }, [
-    isMobile,
-    tl_block_hero_images_,
-    tl_block_hero_images_handwriting,
-    windowWidth,
-  ])
+  }, [isMobile, tl_block_hero_images_, tl_block_hero_images_handwriting])
 
   const supports_video = () => {
     return !!document.createElement("video").canPlayType
@@ -379,7 +368,7 @@ const Block_hero_images = () => {
           <Styled_HeroImg ref={e => (gsap_section_hero_img = e)}>
             {/* Check if supports video format */}
 
-            {windowWidth < 768 && supports_h264_baseline_video !== "probably" && (
+            {isMobile && supports_h264_baseline_video !== "probably" && (
               <video loop autoplay muted class="Section__hero__backgroundImg">
                 <source
                   src={blockHeroImages[0].videoMobile.url}
@@ -388,7 +377,7 @@ const Block_hero_images = () => {
               </video>
             )}
 
-            {windowWidth >= 768 && supports_h264_baseline_video !== "probably" && (
+            {!isMobile && supports_h264_baseline_video !== "probably" && (
               <video loop autoplay muted class="Section__hero__backgroundImg">
                 <source
                   src={blockHeroImages[0].videoDesktop.url}
@@ -399,7 +388,7 @@ const Block_hero_images = () => {
 
             {/* Doesnt support video format, fallback to images */}
 
-            {windowWidth < 768 &&
+            {isMobile &&
               (supports_h264_baseline_video === "" ||
                 supports_h264_baseline_video === "") && (
                 <GraphImg
@@ -410,7 +399,7 @@ const Block_hero_images = () => {
                 />
               )}
 
-            {windowWidth >= 768 &&
+            {!isMobile &&
               (supports_h264_baseline_video === "" ||
                 supports_h264_baseline_video === "") && (
                 <GraphImg
