@@ -337,8 +337,8 @@ const Block_hero_images = () => {
     // cleanup on unmount
     return () => {
       console.log("unmount")
-      ScrollTrigger.getById("Section__hero__heading").kill()
-      ScrollTrigger.getById("Section__hero__headingSVG").kill()
+      // ScrollTrigger.getById("Section__hero__heading").kill()
+      // ScrollTrigger.getById("Section__hero__headingSVG").kill()
 
       gsap.set(".Section__hero__heading", { clearProps: true })
       gsap.set(".Section__hero__headingSVG", { clearProps: true })
