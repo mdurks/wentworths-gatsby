@@ -45,6 +45,8 @@ const pageQuery = graphql`
 `
 
 const Block_hero_images = () => {
+  console.log("mount")
+
   const {
     gcms: { blockHeroImages },
   } = useStaticQuery(pageQuery)
