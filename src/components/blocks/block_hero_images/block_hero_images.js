@@ -45,6 +45,7 @@ const pageQuery = graphql`
 `
 
 const Block_hero_images = () => {
+  console.log("-------------------------")
   console.log("mount")
 
   const {
@@ -56,8 +57,8 @@ const Block_hero_images = () => {
   let gsap_section_hero = null
   let gsap_section_hero_img = null
 
-  const tl = gsap.timeline()
-  const tl_handwriting = gsap.timeline()
+  const tl_block_hero_images_ = gsap.timeline()
+  const tl_block_hero_images_handwriting = gsap.timeline()
 
   const [windowWidth, setWindowWidth] = useState("one")
 
@@ -68,18 +69,19 @@ const Block_hero_images = () => {
   }
 
   useEffect(() => {
+    console.log("useEffect")
     console.log("window.innerWidth", window.innerWidth)
     console.log("isMobile", isMobile)
     setWindowWidth(window.innerWidth)
 
     // Fade/Scale in background image
 
-    tl.from(".Section__hero__backgroundImg", {
-      duration: 5,
-      scale: 1.5,
-      opacity: 0,
-      ease: "power2.out",
-    })
+    // tl_block_hero_images_.from(".Section__hero__backgroundImg", {
+    //   duration: 5,
+    //   scale: 1.5,
+    //   opacity: 0,
+    //   ease: "power2.out",
+    // })
     // gsap.to(gsap_section_hero_img, {
     //   scrollTrigger: {
     //     trigger: document.body,
@@ -109,7 +111,7 @@ const Block_hero_images = () => {
 
     // Slide R-L, fade in Texts
 
-    tl.to(
+    tl_block_hero_images_.to(
       ".Section__hero__heading",
       {
         duration: 1.25,
@@ -120,7 +122,7 @@ const Block_hero_images = () => {
       },
       "-=4.95"
     )
-    tl.to(
+    tl_block_hero_images_.to(
       ".Section__hero__headingSVG",
       {
         duration: 1.25,
@@ -137,7 +139,7 @@ const Block_hero_images = () => {
     gsap.set(".Section__hero__headingText", {
       clipPath: "inset(0% 100% -50% 0%)",
     })
-    tl.to(
+    tl_block_hero_images_.to(
       ".Section__hero__headingText",
       {
         duration: 1.25,
@@ -145,7 +147,7 @@ const Block_hero_images = () => {
       },
       "-=4"
     )
-    tl.set(".Section__hero__headingText", {
+    tl_block_hero_images_.set(".Section__hero__headingText", {
       clipPath: "none",
     })
 
@@ -211,15 +213,17 @@ const Block_hero_images = () => {
     let canFlipAnimation = true
     const hero_svg_letters = document.querySelectorAll("#signature [clip-path]")
     const flip_section_hero_svg_colour_onScroll = progress => {
-      console.log("flip_section_hero_svg_colour_onScroll")
+      console.log("flip onScroll")
       if (progress > progressLocation) {
         if (canFlipAnimation) {
+          console.log("flip text down")
           canFlipAnimation = false
           hero_svg_letters.forEach(el => (el.style.stroke = "#a77711"))
           lettersAnimationFor_Section__hero__headingText("down")
         }
       } else {
         if (canFlipAnimation === false) {
+          console.log("flip text up")
           canFlipAnimation = true
           if (!isMobile)
             hero_svg_letters.forEach(el => (el.style.stroke = "white"))
@@ -236,7 +240,7 @@ const Block_hero_images = () => {
         end: "80%",
         toggleActions: "play none none none",
         // markers: true,
-        scrub: 1.35,
+        scrub: isMobile ? true : 1.35,
       },
       y: `+=${section__hero__heading_destination}`,
       left: window.innerWidth > 768 && "-=10%",
@@ -249,20 +253,23 @@ const Block_hero_images = () => {
         end: "80%",
         toggleActions: "play none none none",
         // markers: true,
-        scrub: 1.1,
+        scrub: isMobile ? true : 1.1,
         onUpdate: self => flip_section_hero_svg_colour_onScroll(self.progress),
       },
       y: `+=${section__hero__heading_destination}`,
       left: window.innerWidth > 768 && "-=10%",
     })
 
-    tl_handwriting.to(".Section__hero__heading--handwritten", {
-      delay: 2,
-      duration: 1.25,
-      opacity: 1,
-      x: windowWidth < 768 ? "-7%" : "-7%",
-      ease: "power2.out",
-    })
+    tl_block_hero_images_handwriting.to(
+      ".Section__hero__heading--handwritten",
+      {
+        delay: 2,
+        duration: 1.25,
+        opacity: 1,
+        x: windowWidth < 768 ? "-7%" : "-7%",
+        ease: "power2.out",
+      }
+    )
 
     const paths = document
       .getElementById("signature")
@@ -283,37 +290,37 @@ const Block_hero_images = () => {
     gsap.set(paths[5], { scale: 1.75 })
 
     // M
-    tl_handwriting.to(
+    tl_block_hero_images_handwriting.to(
       paths[0],
       { duration: 1.1, strokeDashoffset: 0, scale: 1 },
       "-=1.3"
     )
     // A
-    tl_handwriting.to(
+    tl_block_hero_images_handwriting.to(
       paths[1],
       { duration: 1, strokeDashoffset: 0, scale: 1 },
       "-=0.5"
     )
     // K
-    tl_handwriting.to(
+    tl_block_hero_images_handwriting.to(
       paths[2],
       { duration: 0.8, strokeDashoffset: 0, scale: 1 },
       "-=0.8"
     )
     // E
-    tl_handwriting.to(
+    tl_block_hero_images_handwriting.to(
       paths[3],
       { duration: 0.9, strokeDashoffset: 0, scale: 1 },
       "-=0.6"
     )
     // R
-    tl_handwriting.to(
+    tl_block_hero_images_handwriting.to(
       paths[4],
       { duration: 0.8, strokeDashoffset: 0, scale: 1 },
       "-=0.6"
     )
     // S
-    tl_handwriting.to(
+    tl_block_hero_images_handwriting.to(
       paths[5],
       {
         duration: 0.8,
@@ -338,7 +345,12 @@ const Block_hero_images = () => {
       // tl.pause(0).kill(true)
       // tl.kill()
     }
-  }, [windowWidth])
+  }, [
+    isMobile,
+    tl_block_hero_images_,
+    tl_block_hero_images_handwriting,
+    windowWidth,
+  ])
 
   const supports_video = () => {
     return !!document.createElement("video").canPlayType
@@ -368,12 +380,7 @@ const Block_hero_images = () => {
             {/* Check if supports video format */}
 
             {windowWidth < 768 && supports_h264_baseline_video !== "probably" && (
-              <video
-                loop
-                autoplay
-                muted
-                className="Section__hero__backgroundImg"
-              >
+              <video loop autoplay muted class="Section__hero__backgroundImg">
                 <source
                   src={blockHeroImages[0].videoMobile.url}
                   type="video/mp4"
@@ -382,12 +389,7 @@ const Block_hero_images = () => {
             )}
 
             {windowWidth >= 768 && supports_h264_baseline_video !== "probably" && (
-              <video
-                loop
-                autoplay
-                muted
-                className="Section__hero__backgroundImg"
-              >
+              <video loop autoplay muted class="Section__hero__backgroundImg">
                 <source
                   src={blockHeroImages[0].videoDesktop.url}
                   type="video/mp4"
@@ -401,7 +403,7 @@ const Block_hero_images = () => {
               (supports_h264_baseline_video === "" ||
                 supports_h264_baseline_video === "") && (
                 <GraphImg
-                  className="Section__hero__backgroundImg"
+                  class="Section__hero__backgroundImg"
                   image={blockHeroImages[0].imagesMobile[0]}
                   transforms={["quality=value:80"]}
                   maxWidth={2000}
@@ -412,7 +414,7 @@ const Block_hero_images = () => {
               (supports_h264_baseline_video === "" ||
                 supports_h264_baseline_video === "") && (
                 <GraphImg
-                  className="Section__hero__backgroundImg"
+                  class="Section__hero__backgroundImg"
                   image={blockHeroImages[0].images[0]}
                   transforms={["quality=value:80"]}
                   maxWidth={2000}
