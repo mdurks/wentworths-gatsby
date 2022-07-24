@@ -205,11 +205,10 @@ const Block_hero_images = () => {
     //         .getBoundingClientRect().y +
     //       190
 
-    const progressLocation = isMobile ? 0.67 : 0.5
+    const progressLocation = isMobile ? 0.71 : 0.5
     let canFlipAnimation = true
     const hero_svg_letters = document.querySelectorAll("#signature [clip-path]")
     const flip_section_hero_svg_colour_onScroll = progress => {
-      console.log("progress", progress)
       if (progress > progressLocation) {
         if (canFlipAnimation) {
           canFlipAnimation = false
@@ -234,10 +233,10 @@ const Block_hero_images = () => {
         end: "80%",
         toggleActions: "play none none none",
         // markers: true,
-        scrub: 1.35,
+        scrub: isMobile ? 0.5 : 1.35,
       },
       y: `+=${section__hero__heading_destination}`,
-      left: isMobile && "-=10%",
+      left: !isMobile && "-=10%",
     })
     gsap.to(".Section__hero__headingSVG", {
       scrollTrigger: {
@@ -247,7 +246,7 @@ const Block_hero_images = () => {
         end: "80%",
         toggleActions: "play none none none",
         // markers: true,
-        scrub: 1.1,
+        scrub: isMobile ? 0.3 : 1.1,
         onUpdate: self => flip_section_hero_svg_colour_onScroll(self.progress),
       },
       y: `+=${section__hero__heading_destination}`,
