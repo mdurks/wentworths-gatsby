@@ -64,6 +64,7 @@ const Block_hero_images = () => {
 
   if (typeof window !== "undefined") {
     window.addEventListener("resize", () => {
+      console.log("indow.addEventListener:resize")
       setWindowWidth(window.innerWidth)
     })
   }
