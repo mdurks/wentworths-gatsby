@@ -183,7 +183,7 @@ const Block_hero_images = () => {
     // to find the location
     const section__hero__heading_destination =
       window.innerWidth < 768
-        ? window.innerHeight * 0.684 + 75
+        ? window.innerHeight * 0.684 + 100
         : window.innerHeight * 0.43 + 190
 
     // Below is the brittle way of getting the position of the text, but if you reload
