@@ -117,7 +117,7 @@ const IndexPage = () => {
 
       <Block_product_windows products={welcomes[0].products} />
 
-      {/* {blockGradientRowLinks.map(el => (
+      {blockGradientRowLinks.map(el => (
         <Block_gradient_row_link
           pre_title={el.preTitle}
           title={el.title}
@@ -130,10 +130,10 @@ const IndexPage = () => {
 
       <Block_single_image_text />
 
-      <Block_full_size_image /> */}
+      <Block_full_size_image />
 
       {/* <Block_one_row_jewellery /> */}
-      {/* 
+
       <Block_best_seller
         categoryTitle="Engagement Rings"
         category="engagement"
@@ -146,7 +146,7 @@ const IndexPage = () => {
 
       <Block_newsletter_signup />
 
-      <Block_blog_latest_articles blogs={blogs} /> */}
+      <Block_blog_latest_articles blogs={blogs} />
     </>
   )
 }

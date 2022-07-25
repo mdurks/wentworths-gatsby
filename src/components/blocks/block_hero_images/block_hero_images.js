@@ -204,8 +204,32 @@ const Block_hero_images = () => {
     //       190
 
     const progressLocation = window.innerWidth < 768 ? 0.67 : 0.5
+
+    const setHero_texts_onScrollDown_complete = () => {
+      if (!isMobile) return
+      console.log("setHero_texts_onScrollDown_complete")
+    }
+
+    const setHero_texts_onScrollUp_complete = () => {
+      if (!isMobile) return
+      ScrollTrigger.refresh()
+      console.log("ScrollTrigger.refresh() ")
+      // console.log("setHero_texts_onScrollUp_complete ", `${progressLocation}px`)
+      // setTimeout(() => {
+      //   console.log("setTimeout")
+      //   document.querySelector(
+      //     ".Section__hero__heading"
+      //   ).style.top = `${progressLocation}px`
+      //   // gsap.set(".Section__hero__heading", {
+      //   //   // y: `${progressLocation}px`,
+      //   //   y: "50px",
+      //   // })
+      // }, 100)
+    }
+
     let canFlipAnimation = true
     const hero_svg_letters = document.querySelectorAll("#signature [clip-path]")
+
     const flip_section_hero_svg_colour_onScroll = progress => {
       if (progress > progressLocation) {
         if (canFlipAnimation) {
@@ -232,6 +256,9 @@ const Block_hero_images = () => {
         toggleActions: "play none none none",
         // markers: true,
         scrub: isMobile ? 0.5 : 1.35,
+        // onLeaveBack: () => setHero_texts_onScrollUp_complete(),
+        // onLeave: () => setHero_texts_onScrollDown_complete(),
+        onScrubComplete: () => ScrollTrigger.refresh(),
       },
       y: `+=${section__hero__heading_destination}`,
       left: window.innerWidth > 768 && "-=10%",
