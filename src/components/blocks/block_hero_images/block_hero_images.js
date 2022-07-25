@@ -234,7 +234,7 @@ const Block_hero_images = () => {
         toggleActions: "play none none none",
         // markers: true,
         scrub: isMobile ? 0.5 : 1.35,
-        onScrubComplete: () => ScrollTrigger.refresh(),
+        onScrubComplete: () => ScrollTrigger.refresh(true),
       },
       y: `+=${section__hero__heading_destination}`,
       left: window.innerWidth > 768 && "-=10%",
