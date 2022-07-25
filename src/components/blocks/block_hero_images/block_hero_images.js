@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
 import { Styled_SiteContainer } from "../../../styles/commonStyles"
@@ -54,10 +54,10 @@ const Block_hero_images = () => {
   let gsap_section_hero = null
   let gsap_section_hero_img = null
 
-  const tl_block_hero_images_ = gsap.timeline()
-  const tl_block_hero_images_handwriting = gsap.timeline()
+  const tl = gsap.timeline()
+  const tl_handwriting = gsap.timeline()
 
-  // const [windowWidth, setWindowWidth] = useState("one")
+  const [windowWidth, setWindowWidth] = useState("one")
 
   // if (typeof window !== "undefined") {
   //   window.addEventListener("resize", () => {
@@ -66,14 +66,11 @@ const Block_hero_images = () => {
   // }
 
   useEffect(() => {
-    console.log("useEffect")
-    console.log("window.innerWidth", window.innerWidth)
-    console.log("isMobile", isMobile)
-    // setWindowWidth(window.innerWidth)
+    setWindowWidth(window.innerWidth)
 
     // Fade/Scale in background image
 
-    tl_block_hero_images_.from(".Section__hero__backgroundImg", {
+    tl.from(".Section__hero__backgroundImg", {
       duration: 5,
       scale: 1.5,
       opacity: 0,
@@ -108,7 +105,7 @@ const Block_hero_images = () => {
 
     // Slide R-L, fade in Texts
 
-    tl_block_hero_images_.to(
+    tl.to(
       ".Section__hero__heading",
       {
         duration: 1.25,
@@ -119,7 +116,7 @@ const Block_hero_images = () => {
       },
       "-=4.95"
     )
-    tl_block_hero_images_.to(
+    tl.to(
       ".Section__hero__headingSVG",
       {
         duration: 1.25,
@@ -136,7 +133,7 @@ const Block_hero_images = () => {
     gsap.set(".Section__hero__headingText", {
       clipPath: "inset(0% 100% -50% 0%)",
     })
-    tl_block_hero_images_.to(
+    tl.to(
       ".Section__hero__headingText",
       {
         duration: 1.25,
@@ -144,7 +141,7 @@ const Block_hero_images = () => {
       },
       "-=4"
     )
-    tl_block_hero_images_.set(".Section__hero__headingText", {
+    tl.set(".Section__hero__headingText", {
       clipPath: "none",
     })
 
@@ -184,9 +181,10 @@ const Block_hero_images = () => {
     // then add the amount of pixels it needs to move down above the product windows
     // the 0.XXX value is a percentage manually tinkered with (see commented codebelow)
     // to find the location
-    const section__hero__heading_destination = isMobile
-      ? window.innerHeight * 0.684 + 65
-      : window.innerHeight * 0.43 + 190
+    const section__hero__heading_destination =
+      window.innerWidth < 768
+        ? window.innerHeight * 0.684 + 50
+        : window.innerHeight * 0.43 + 190
 
     // Below is the brittle way of getting the position of the text, but if you reload
     // the page further down, this breaks all the positioning
@@ -205,7 +203,7 @@ const Block_hero_images = () => {
     //         .getBoundingClientRect().y +
     //       190
 
-    const progressLocation = isMobile ? 0.71 : 0.5
+    const progressLocation = window.innerWidth < 768 ? 0.67 : 0.5
     let canFlipAnimation = true
     const hero_svg_letters = document.querySelectorAll("#signature [clip-path]")
     const flip_section_hero_svg_colour_onScroll = progress => {
@@ -236,7 +234,7 @@ const Block_hero_images = () => {
         scrub: isMobile ? 0.5 : 1.35,
       },
       y: `+=${section__hero__heading_destination}`,
-      left: !isMobile && "-=10%",
+      left: window.innerWidth > 768 && "-=10%",
     })
     gsap.to(".Section__hero__headingSVG", {
       scrollTrigger: {
@@ -246,23 +244,20 @@ const Block_hero_images = () => {
         end: "80%",
         toggleActions: "play none none none",
         // markers: true,
-        scrub: isMobile ? 0.3 : 1.1,
+        scrub: isMobile ? 0.25 : 1.1,
         onUpdate: self => flip_section_hero_svg_colour_onScroll(self.progress),
       },
       y: `+=${section__hero__heading_destination}`,
-      left: !isMobile && "-=10%",
+      left: window.innerWidth > 768 && "-=10%",
     })
 
-    tl_block_hero_images_handwriting.to(
-      ".Section__hero__heading--handwritten",
-      {
-        delay: 2,
-        duration: 1.25,
-        opacity: 1,
-        x: isMobile ? "-7%" : "-7%",
-        ease: "power2.out",
-      }
-    )
+    tl_handwriting.to(".Section__hero__heading--handwritten", {
+      delay: 2,
+      duration: 1.25,
+      opacity: 1,
+      x: windowWidth < 768 ? "-7%" : "-7%",
+      ease: "power2.out",
+    })
 
     const paths = document
       .getElementById("signature")
@@ -283,37 +278,37 @@ const Block_hero_images = () => {
     gsap.set(paths[5], { scale: 1.75 })
 
     // M
-    tl_block_hero_images_handwriting.to(
+    tl_handwriting.to(
       paths[0],
       { duration: 1.1, strokeDashoffset: 0, scale: 1 },
       "-=1.3"
     )
     // A
-    tl_block_hero_images_handwriting.to(
+    tl_handwriting.to(
       paths[1],
       { duration: 1, strokeDashoffset: 0, scale: 1 },
       "-=0.5"
     )
     // K
-    tl_block_hero_images_handwriting.to(
+    tl_handwriting.to(
       paths[2],
       { duration: 0.8, strokeDashoffset: 0, scale: 1 },
       "-=0.8"
     )
     // E
-    tl_block_hero_images_handwriting.to(
+    tl_handwriting.to(
       paths[3],
       { duration: 0.9, strokeDashoffset: 0, scale: 1 },
       "-=0.6"
     )
     // R
-    tl_block_hero_images_handwriting.to(
+    tl_handwriting.to(
       paths[4],
       { duration: 0.8, strokeDashoffset: 0, scale: 1 },
       "-=0.6"
     )
     // S
-    tl_block_hero_images_handwriting.to(
+    tl_handwriting.to(
       paths[5],
       {
         duration: 0.8,
@@ -329,7 +324,6 @@ const Block_hero_images = () => {
 
     // cleanup on unmount
     return () => {
-      console.log("unmount")
       ScrollTrigger.getById("Section__hero__heading").kill()
       ScrollTrigger.getById("Section__hero__headingSVG").kill()
 
@@ -338,7 +332,7 @@ const Block_hero_images = () => {
       // tl.pause(0).kill(true)
       // tl.kill()
     }
-  }, [isMobile, tl_block_hero_images_, tl_block_hero_images_handwriting])
+  }, [windowWidth])
 
   const supports_video = () => {
     return !!document.createElement("video").canPlayType
@@ -367,8 +361,13 @@ const Block_hero_images = () => {
           <Styled_HeroImg ref={e => (gsap_section_hero_img = e)}>
             {/* Check if supports video format */}
 
-            {isMobile && supports_h264_baseline_video !== "probably" && (
-              <video loop autoplay muted class="Section__hero__backgroundImg">
+            {windowWidth < 768 && supports_h264_baseline_video !== "probably" && (
+              <video
+                loop
+                autoplay
+                muted
+                className="Section__hero__backgroundImg"
+              >
                 <source
                   src={blockHeroImages[0].videoMobile.url}
                   type="video/mp4"
@@ -376,8 +375,13 @@ const Block_hero_images = () => {
               </video>
             )}
 
-            {!isMobile && supports_h264_baseline_video !== "probably" && (
-              <video loop autoplay muted class="Section__hero__backgroundImg">
+            {windowWidth >= 768 && supports_h264_baseline_video !== "probably" && (
+              <video
+                loop
+                autoplay
+                muted
+                className="Section__hero__backgroundImg"
+              >
                 <source
                   src={blockHeroImages[0].videoDesktop.url}
                   type="video/mp4"
@@ -387,22 +391,22 @@ const Block_hero_images = () => {
 
             {/* Doesnt support video format, fallback to images */}
 
-            {isMobile &&
+            {windowWidth < 768 &&
               (supports_h264_baseline_video === "" ||
                 supports_h264_baseline_video === "") && (
                 <GraphImg
-                  class="Section__hero__backgroundImg"
+                  className="Section__hero__backgroundImg"
                   image={blockHeroImages[0].imagesMobile[0]}
                   transforms={["quality=value:80"]}
                   maxWidth={2000}
                 />
               )}
 
-            {!isMobile &&
+            {windowWidth >= 768 &&
               (supports_h264_baseline_video === "" ||
                 supports_h264_baseline_video === "") && (
                 <GraphImg
-                  class="Section__hero__backgroundImg"
+                  className="Section__hero__backgroundImg"
                   image={blockHeroImages[0].images[0]}
                   transforms={["quality=value:80"]}
                   maxWidth={2000}
