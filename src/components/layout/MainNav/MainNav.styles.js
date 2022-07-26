@@ -118,12 +118,12 @@ export const Div__secondaryLinkBackground = styled.div`
     width: 100%;
     height: 0;
     background: white;
-    transition: all ease 0.5s;
+    transition: all ease-in-out 0.5s;
     z-index: -1;
 
     // this catches mouse over event for when user leaves drop down menu
     // covers all of the page below the menu so user can't not mouseover it
-    .subNav--open & div {
+    .subNav--openForAPrimaryLink & div {
       position: absolute;
       bottom: -100vh;
       left: 0;
@@ -273,7 +273,12 @@ export const Div__secondaryLinkWrapper = styled.div`
     visibility: hidden;
     opacity: 0;
     background: transparent;
-    transition: all ease 0.3s;
+    transition: all ease-in-out 0.3s;
+
+    .subNav--open & {
+      visibility: visible;
+      opacity: 1;
+    }
   }
 `
 
@@ -333,10 +338,10 @@ export const LI__primaryLink = styled.li`
       transition-delay: 0.25s;
       background: white;
 
-      ${Div__secondaryLinkWrapper} {
+      /* ${Div__secondaryLinkWrapper} {
         visibility: visible;
         opacity: 1;
-      }
+      } */
 
       ${Button__primary} {
         color: #b3924c !important;
@@ -420,6 +425,47 @@ export const A__secondaryCategoryLink = styled.a`
   padding: 8px 0;
   font-size: 22px;
   color: #76591b;
+
+  ${css_breakpoints.min_desktop} {
+    position: relative;
+    height: 100%;
+    margin: 0 5px 0 0;
+    padding: 5px 0 5px 5px;
+    font-size: 18px;
+    text-transform: none;
+    color: black;
+    transition: all ease 0.3s;
+
+    &:before {
+      content: "";
+      position: absolute;
+      bottom: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: #c1a260;
+      transition: all ease 0.5s;
+    }
+
+    &:hover {
+      margin-right: 0;
+      padding-left: 10px;
+      color: #936400;
+
+      &:before {
+        width: calc(100% + 10px);
+      }
+    }
+  }
+`
+
+export const Btn__secondaryCategoryLink = styled.button`
+  display: block;
+  padding: 8px 0;
+  font-size: 22px;
+  color: #76591b;
+  background: none;
 
   ${css_breakpoints.min_desktop} {
     position: relative;

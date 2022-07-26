@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
 // import Layout from "../components/layout"
-import { Styled_SiteContainer } from "../styles/commonStyles"
+import { Styled_SiteContainer } from "../../styles/commonStyles"
 
 import { gsap } from "gsap/all"
 // import { render } from "preact"

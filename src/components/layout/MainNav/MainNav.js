@@ -23,6 +23,7 @@ import {
   A__primary,
   Div__secondaryLinkWrapper,
   A__secondaryCategoryLink,
+  Btn__secondaryCategoryLink,
   StickyMobileMenu,
 } from "./MainNav.styles"
 
@@ -103,14 +104,24 @@ const MainNav = () => {
   }, [])
 
   const closeSecondaryLinkBackground = () => {
-    document.body.classList.remove("subNav--open")
+    if (window.innerWidth < 1200) return
+    document.body.classList.remove("subNav--openForAPrimaryLink")
     document.querySelector(".secondaryLinkBackground").style.height = "0"
+    document
+      .querySelectorAll(".subNav--open")
+      .forEach(primaryLink => primaryLink.classList.remove("subNav--open"))
   }
 
   const primaryLinkMouseOver = e => {
     if (window.innerWidth < 1200) return
     // to enable 'Div__secondaryLinkBackground' mouse over area beneath drop down menu to catch mouse out
-    document.body.classList.add("subNav--open")
+    document.body.classList.add("subNav--openForAPrimaryLink")
+    // clean up and remove any previously active sub menus
+    document
+      .querySelectorAll(".subNav--open")
+      .forEach(primaryLink => primaryLink.classList.remove("subNav--open"))
+    // now all sub menus are clear, apply this sub nav menu open class
+    e.target.parentNode.classList.add("subNav--open")
 
     // Primary link highlighter:
     document.querySelector(".primaryLinkHighlighter").style.opacity = "1"
@@ -403,7 +414,10 @@ const MainNav = () => {
           <UL__primaryLinks className="UL__primaryLinks">
             <Div__primaryLinkHighlighter className="primaryLinkHighlighter"></Div__primaryLinkHighlighter>
             <Div__secondaryLinkBackground className="secondaryLinkBackground">
-              <div onMouseOver={() => closeSecondaryLinkBackground()}></div>
+              <div
+                className="secondaryLinkBackgroundMouseOutCatcher"
+                onMouseOver={closeSecondaryLinkBackground}
+              ></div>
             </Div__secondaryLinkBackground>
 
             <LI__primaryLink hiddenOnDesktop>
@@ -432,6 +446,7 @@ const MainNav = () => {
                     <A__secondaryCategoryLink
                       as={Link}
                       to="/engagement/rings/"
+                      onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
                       }}
@@ -443,6 +458,7 @@ const MainNav = () => {
                     <A__secondaryCategoryLink
                     as={Link}
                       to="/engagement/necklaces/"
+                      onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
                       }}
@@ -454,6 +470,7 @@ const MainNav = () => {
                     <A__secondaryCategoryLink
                     as={Link}
                       to="/engagement/bracelets/"
+                      onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
                       }}
@@ -465,6 +482,7 @@ const MainNav = () => {
                     <A__secondaryCategoryLink
                     as={Link}
                       to="/engagement/earrings/"
+                      onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
                       }}
@@ -503,6 +521,7 @@ const MainNav = () => {
                     <A__secondaryCategoryLink
                       as={Link}
                       to="/weddings/rings/"
+                      onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
                       }}
@@ -514,6 +533,7 @@ const MainNav = () => {
                     <A__secondaryCategoryLink
                       as={Link}
                       to="/weddings/necklaces/"
+                      onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
                       }}
@@ -525,6 +545,7 @@ const MainNav = () => {
                     <A__secondaryCategoryLink
                       as={Link}
                       to="/weddings/earrings/"
+                      onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
                       }}
@@ -536,6 +557,7 @@ const MainNav = () => {
                     <A__secondaryCategoryLink
                     as={Link}
                       to="/weddings/bracelets/"
+                      onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
                       }}>
@@ -573,6 +595,7 @@ const MainNav = () => {
                     <A__secondaryCategoryLink
                       as={Link}
                       to="/jewellery/rings/"
+                      onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
                       }}
@@ -584,6 +607,7 @@ const MainNav = () => {
                     <A__secondaryCategoryLink
                       as={Link}
                       to="/jewellery/necklaces/"
+                      onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
                       }}
@@ -595,6 +619,7 @@ const MainNav = () => {
                     <A__secondaryCategoryLink
                       as={Link}
                       to="/jewellery/bracelets/"
+                      onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
                       }}
@@ -606,6 +631,7 @@ const MainNav = () => {
                     <A__secondaryCategoryLink
                       as={Link}
                       to="/jewellery/earrings/"
+                      onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
                       }}
@@ -626,7 +652,7 @@ const MainNav = () => {
             </LI__primaryLink>
 
             {/* Other links */}
-            <LI__primaryLink>
+            {/* <LI__primaryLink>
               <A__primary
                 href="/"
                 onClick={click_mobile_burger_btn}
@@ -635,7 +661,7 @@ const MainNav = () => {
               >
                 Collections
               </A__primary>
-            </LI__primaryLink>
+            </LI__primaryLink> */}
 
             {/* Services */}
             <LI__primaryLink>
@@ -646,6 +672,7 @@ const MainNav = () => {
                 onClick={e => {
                   openSecondaryMenuAnimation(e)
                 }}
+                className="servicesBtnPrimary"
               >
                 Services
               </Button__primary>
@@ -655,18 +682,8 @@ const MainNav = () => {
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
-                      to="/about/"
-                      exit={{
-                        trigger: () => click_mobile_burger_btn(),
-                      }}
-                    >
-                      About Wentworths
-                    </A__secondaryCategoryLink>
-                  </Li__secondaryLink>
-                  <Li__secondaryLink>
-                    <A__secondaryCategoryLink
-                      as={Link}
                       to="/services/bespoke-jewellery-design"
+                      onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
                       }}
@@ -678,6 +695,7 @@ const MainNav = () => {
                     <A__secondaryCategoryLink
                       as={Link}
                       to="/services/hand-crafted-jewellery"
+                      onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
                       }}
@@ -689,6 +707,7 @@ const MainNav = () => {
                     <A__secondaryCategoryLink
                       as={Link}
                       to="/services/jewellery-remodelling"
+                      onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
                       }}
@@ -700,6 +719,7 @@ const MainNav = () => {
                     <A__secondaryCategoryLink
                       as={Link}
                       to="/services/jewellery-repairs"
+                      onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
                       }}
@@ -710,18 +730,8 @@ const MainNav = () => {
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
-                      to="/services/fair-trade-gold"
-                      exit={{
-                        trigger: () => click_mobile_burger_btn(),
-                      }}
-                    >
-                      Fair Trade Gold
-                    </A__secondaryCategoryLink>
-                  </Li__secondaryLink>
-                  <Li__secondaryLink>
-                    <A__secondaryCategoryLink
-                      as={Link}
                       to="/services/buy-silver-and-gold"
+                      onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
                       }}
@@ -733,6 +743,7 @@ const MainNav = () => {
                     <A__secondaryCategoryLink
                       as={Link}
                       to="/services/ring-resizing"
+                      onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
                       }}
@@ -744,6 +755,7 @@ const MainNav = () => {
                     <A__secondaryCategoryLink
                       as={Link}
                       to="/services/jewellery-valuations"
+                      onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
                       }}
@@ -755,6 +767,7 @@ const MainNav = () => {
                     <A__secondaryCategoryLink
                       as={Link}
                       to="/services/pearl-stringing"
+                      onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
                       }}
@@ -766,6 +779,7 @@ const MainNav = () => {
                     <A__secondaryCategoryLink
                       as={Link}
                       to="/services/watch-repairs"
+                      onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
                       }}
@@ -785,7 +799,73 @@ const MainNav = () => {
               </Div__secondaryLinkWrapper>
             </LI__primaryLink>
 
-            <LI__primaryLink hiddenOnMobile>
+            {/* About */}
+            <LI__primaryLink>
+              <Button__primary
+                onMouseOver={e => primaryLinkMouseOver(e)}
+                onMouseOut={e => primaryLinkMouseOut(e)}
+                type="button"
+                onClick={e => {
+                  openSecondaryMenuAnimation(e)
+                }}
+              >
+                About
+              </Button__primary>
+              <Div__secondaryLinkWrapper>
+                <P__secondaryLinksTitle>About</P__secondaryLinksTitle>
+                <UL__secondaryLinkList>
+                  <Li__secondaryLink>
+                    <Btn__secondaryCategoryLink
+                      onClick={() => {
+                        // disable the webpage beneath the model from scrolling
+                        if (window.innerWidth < 768)
+                          document.body.classList.add("no_y_scroll")
+                        appContext.setContactModalTitle("Contact")
+                        appContext.setContactModalOpen(
+                          !appContext.contactModalOpen
+                        )
+                      }}
+                    >
+                      Contact
+                    </Btn__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/about/about"
+                      onClick={closeSecondaryLinkBackground}
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
+                      About Wentworths
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/about/fair-trade-gold"
+                      onClick={closeSecondaryLinkBackground}
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
+                      Fair Trade Gold
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                </UL__secondaryLinkList>
+                <Button__secondaryListBack
+                  type="button"
+                  onClick={e => {
+                    closeSecondaryMenuAnimation(e)
+                  }}
+                >
+                  &lt; Back
+                </Button__secondaryListBack>
+              </Div__secondaryLinkWrapper>
+            </LI__primaryLink>
+
+            {/* <LI__primaryLink hiddenOnMobile>
               <Button__primary
                 onMouseOver={e => primaryLinkMouseOver(e)}
                 onMouseOut={e => primaryLinkMouseOut(e)}
@@ -799,7 +879,8 @@ const MainNav = () => {
               >
                 Contact
               </Button__primary>
-            </LI__primaryLink>
+            </LI__primaryLink> */}
+
             <LI__primaryLink hiddenOnMobile>
               <Button__primary
                 onMouseOver={e => primaryLinkMouseOver(e)}
