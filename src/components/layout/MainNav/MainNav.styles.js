@@ -620,4 +620,30 @@ export const StickyMobileMenu = styled.div`
       color: white;
     }
   }
+
+  .snipcart-checkout {
+    position: relative;
+
+    .snipcart-items-count {
+      position: absolute;
+      top: 7px;
+      right: 25px;
+      width: 30px;
+      text-align: center;
+      font-family: "Tahoma", "serif";
+      font-size: 15px;
+      color: white;
+      z-index: 2;
+    }
+
+    svg {
+      position: relative;
+      top: -7px;
+      margin: 0 0 -12px;
+
+      * {
+        transition: all ease 0.3s;
+      }
+    }
+  }
 `

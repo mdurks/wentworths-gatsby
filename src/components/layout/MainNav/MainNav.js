@@ -949,8 +949,8 @@ const MainNav = () => {
           <span>Menu</span>
         </button>
         <button type="button" className="snipcart-checkout">
-          <Svg_basket />
-
+          <span className="snipcart-items-count"></span>
+          <Svg_basket width="35" height="35" strokeWidth="1.5" />
           <span>Basket</span>
         </button>
       </StickyMobileMenu>
