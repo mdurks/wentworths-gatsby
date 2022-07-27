@@ -187,6 +187,32 @@ export const Button__primary = styled.button`
     /* .mainNav--shrink & {
       color: white;
     } */
+
+    &.snipcart-checkout {
+      .snipcart-items-count {
+        position: absolute;
+        top: 24px;
+        right: 27px;
+        width: 30px;
+        text-align: center;
+        font-family: "Tahoma", "serif";
+        font-size: 16px;
+        color: white;
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      svg {
+        position: relative;
+        top: -5px;
+        margin: 0 0 0 10px;
+        pointer-events: none;
+
+        * {
+          transition: all ease 0.3s;
+        }
+      }
+    }
   }
 
   &[type="button"] {
@@ -344,7 +370,7 @@ export const LI__primaryLink = styled.li`
       } */
 
       ${Button__primary} {
-        color: #b3924c !important;
+        color: #a77711 !important;
       }
     }
   }

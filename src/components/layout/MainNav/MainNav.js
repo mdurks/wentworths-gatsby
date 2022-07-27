@@ -6,6 +6,8 @@ import Link from "gatsby-plugin-transition-link"
 import Snipcart from "../../snipcart"
 import { gsap } from "gsap/all"
 
+import Svg_basket from "../../../images/svg/basket"
+
 import {
   Nav__mainNav,
   Div__mainNav__container,
@@ -883,11 +885,22 @@ const MainNav = () => {
 
             <LI__primaryLink hiddenOnMobile>
               <Button__primary
-                onMouseOver={e => primaryLinkMouseOver(e)}
-                onMouseOut={e => primaryLinkMouseOut(e)}
+                onMouseOver={e => {
+                  primaryLinkMouseOver(e)
+                }}
+                onMouseOut={e => {
+                  primaryLinkMouseOut(e)
+                }}
                 className="snipcart-checkout"
               >
-                Basket
+                Basket <span className="snipcart-items-count"></span>
+                <Svg_basket
+                  width="45"
+                  height="45"
+                  fill="#483a1e"
+                  stroke="#483a1e"
+                  strokeWidth="1.6"
+                />
               </Button__primary>
             </LI__primaryLink>
           </UL__primaryLinks>
@@ -936,24 +949,7 @@ const MainNav = () => {
           <span>Menu</span>
         </button>
         <button type="button" className="snipcart-checkout">
-          <svg
-            width="22"
-            height="22"
-            viewBox="0 0 27 25"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M24.9021 23.5208H2L4.08201 6.24512H22.5599L24.9021 23.5208Z"
-              stroke="white"
-              stroke-width="1.96304"
-            />
-            <path
-              d="M8.18921 7.18926C8.18921 4.42038 9.33184 1 13.9024 1C18.4729 1 18.7994 4.42038 18.7994 7.18926"
-              stroke="white"
-              stroke-width="1.96304"
-            />
-          </svg>
+          <Svg_basket />
 
           <span>Basket</span>
         </button>
