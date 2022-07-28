@@ -69,7 +69,7 @@ export const Styled_BlogContent = styled.div`
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    margin: 50px 0 35px;
+    margin: 30px 0 10px;
     padding: 10px 0 10px;
     border-top: 1px dotted grey;
     text-align: center;
@@ -118,10 +118,15 @@ export const Styled_BlogContent = styled.div`
   }
 
   .blogContent {
-    padding: 20px 0 0;
+    padding: 0;
 
     ${css_breakpoints.min_desktop} {
-      padding: 40px 0 0;
+      padding: 20px 0 0;
+    }
+
+    p:empty {
+      margin: 0;
+      padding: 0;
     }
 
     img {
@@ -130,7 +135,7 @@ export const Styled_BlogContent = styled.div`
       min-width: calc(100% + 50px);
       max-width: calc(100% + 50px);
       width: auto;
-      margin: 10px -25px 25px;
+      margin: 10px -25px 15px;
 
       ${css_breakpoints.min_desktop} {
         margin: 12px 0 27px;

@@ -47,7 +47,7 @@ export const Styled_BlogLatestArticlesWrapper = styled.div`
     display: block;
     position: relative;
     top: 0;
-    margin: 30px 0;
+    margin: 15px 0;
     text-align: center;
     transition: all ease 0.3s;
     background: white;
