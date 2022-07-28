@@ -2,16 +2,17 @@ import styled from "styled-components"
 import css_breakpoints from "../common/css_breakpoints"
 
 export const BlogPageWrapper = styled.div`
+  margin: 0 -15px;
   background: #e5e3de;
 
   h1 {
-    margin: 80px 0 0px;
+    margin: 50px 0 10px;
     text-align: center;
     color: #a98029;
     font-size: 38px;
 
     ${css_breakpoints.min_desktop} {
-      margin: 200px 0 60px 15px;
+      margin: 100px 0 60px 15px;
       font-size: 60px;
     }
   }
@@ -45,7 +46,7 @@ export const Styled_BlogLatestArticlesWrapper = styled.div`
   }
 
   h3 {
-    padding: 0 20px 10px;
+    padding: 0 20px 2px;
     color: black;
     line-height: 31px;
     transition: all ease 0.3s;
@@ -59,7 +60,7 @@ export const Styled_BlogLatestArticlesWrapper = styled.div`
     display: block;
     position: relative;
     top: 0;
-    margin: 30px 0;
+    margin: 15px 0;
     text-align: center;
     transition: all ease 0.3s;
     background: white;
@@ -88,7 +89,7 @@ export const Styled_BlogLatestArticlesWrapper = styled.div`
   .blogLatestArticleImg {
     position: relative;
     height: 200px;
-    margin: 0 0 10px;
+    margin: 0 0 15px;
     overflow: hidden;
 
     ${css_breakpoints.min_desktop} {
@@ -139,7 +140,7 @@ export const Styled_BlogLatestArticlesWrapper = styled.div`
 
   .articlePublishDate {
     margin: auto 0 10px;
-    padding: 0 0 15px;
+    padding: 0 0 18px;
 
     ${css_breakpoints.min_desktop} {
       padding: 0px 20px 0 340px;
