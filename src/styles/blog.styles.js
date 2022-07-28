@@ -2,7 +2,6 @@ import styled from "styled-components"
 import css_breakpoints from "../common/css_breakpoints"
 
 export const BlogPageWrapper = styled.div`
-  margin: 0 -15px;
   background: #e5e3de;
 
   h1 {

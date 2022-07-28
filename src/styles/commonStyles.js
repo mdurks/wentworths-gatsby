@@ -17,6 +17,13 @@ export const Styled_SiteContainer = styled.section`
     `};
 
   ${props =>
+    props.noPaddingX &&
+    css`
+      padding-left: 0;
+      padding-right: 0;
+    `};
+
+  ${props =>
     props.height100 &&
     css`
       height: 100%;

@@ -50,7 +50,7 @@ const Blog = () => {
       />
 
       <BlogPageWrapper>
-        <Styled_SiteContainer>
+        <Styled_SiteContainer noPaddingX>
           <h1>News & Articles</h1>
           <Styled_BlogLatestArticlesWrapper>
             {blogs.map(blog => (
