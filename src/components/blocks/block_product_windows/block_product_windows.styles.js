@@ -80,7 +80,6 @@ export const Div_product_name = styled.div`
   font-family: "Playfair Display", serif;
   text-align: center;
   text-transform: capitalize;
-  text-transform: uppercase;
   transition: all ease-in-out 0.4s;
 
   ${css_breakpoints.min_tablet} {
@@ -94,15 +93,14 @@ export const Div_product_name = styled.div`
     position: relative;
     display: inline-block;
     font-family: "Raleway", sans-serif;
-    font-size: 15px;
-    font-weight: 500;
+    font-size: 16px;
 
     :before {
       content: " ";
       position: absolute;
       bottom: -4px;
       left: 50%;
-      height: 3px;
+      height: 2px;
       width: 0;
       transform: translateX(-50%);
       background: #c1a260;
