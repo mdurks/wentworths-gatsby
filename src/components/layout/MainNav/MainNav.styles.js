@@ -626,7 +626,7 @@ export const StickyMobileMenu = styled.div`
 
     .snipcart-items-count {
       position: absolute;
-      top: 7px;
+      top: 8px;
       right: 25px;
       width: 30px;
       text-align: center;
