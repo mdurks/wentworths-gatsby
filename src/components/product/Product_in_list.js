@@ -128,6 +128,7 @@ const Styled_ProductItem = styled(Link)`
     margin: 200px auto 0;
     line-height: 20px;
     color: black;
+    text-transform: capitalize;
     transition: all ease 0.5s;
   }
 
