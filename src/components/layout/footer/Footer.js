@@ -118,9 +118,6 @@ const Footer = () => {
             </h3>
             <ul class="accordionContentWrapper">
               <li class="animate_footer_items_2">
-                <a href="/about/">About Wentworths</a>
-              </li>
-              <li class="animate_footer_items_2">
                 <a href="/services/bespoke-jewellery-design">
                   Bespoke Jewellery Design
                 </a>
@@ -137,9 +134,6 @@ const Footer = () => {
               </li>
               <li class="animate_footer_items_2">
                 <a href="/services/jewellery-repairs">Jewellery Repairs</a>
-              </li>
-              <li class="animate_footer_items_2">
-                <a href="/services/fair-trade-gold">Fair Trade Gold</a>
               </li>
               <li class="animate_footer_items_2">
                 <a href="/services/buy-silver-and-gold">
@@ -174,6 +168,20 @@ const Footer = () => {
                 <button
                   type="button"
                   onClick={() => {
+                    // disable the webpage beneath the model from scrolling
+                    if (window.innerWidth < 768)
+                      document.body.classList.add("no_y_scroll")
+                    appContext.setContactModalTitle("Contact")
+                    appContext.setContactModalOpen(!appContext.contactModalOpen)
+                  }}
+                >
+                  Contact Us
+                </button>
+              </li>
+              <li className="animate_footer_items_3">
+                <button
+                  type="button"
+                  onClick={() => {
                     appContext.setContactModalTitle("Book a viewing")
                     appContext.setProductName()
                     appContext.setProductUrl(window.location)
@@ -187,24 +195,10 @@ const Footer = () => {
                 </button>
               </li>
               <li className="animate_footer_items_3">
-                <a href="/">Visit Our Shop</a>
+                <a href="/about/about">About Wentworths</a>
               </li>
-              <li className="animate_footer_items_3">
-                <a href="/about/">About Us</a>
-              </li>
-              <li className="animate_footer_items_3">
-                <button
-                  type="button"
-                  onClick={() => {
-                    // disable the webpage beneath the model from scrolling
-                    if (window.innerWidth < 768)
-                      document.body.classList.add("no_y_scroll")
-                    appContext.setContactModalTitle("Contact")
-                    appContext.setContactModalOpen(!appContext.contactModalOpen)
-                  }}
-                >
-                  Contact Us
-                </button>
+              <li class="animate_footer_items_3">
+                <a href="/services/fair-trade-gold">Fair Trade Gold</a>
               </li>
             </ul>
           </div>

@@ -846,6 +846,18 @@ const MainNav = () => {
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
+                      to="/blog"
+                      onClick={closeSecondaryLinkBackground}
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
+                      News &amp; Articles
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink
+                      as={Link}
                       to="/about/fair-trade-gold"
                       onClick={closeSecondaryLinkBackground}
                       exit={{
