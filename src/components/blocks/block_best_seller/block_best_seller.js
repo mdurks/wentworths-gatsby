@@ -107,9 +107,9 @@ const Block_best_seller = props => {
   }
 
   const flickityOptions = {
-    prevNextButtons: false,
+    prevNextButtons: true,
     setGallerySize: false,
-    pageDots: false,
+    pageDots: true,
     initialIndex: isFlickityScrollable ? numberOfProducts / 2 : 1,
     freeScroll: isFlickityScrollable,
     wrapAround: isFlickityScrollable,

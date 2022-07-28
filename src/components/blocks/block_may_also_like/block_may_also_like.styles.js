@@ -74,15 +74,38 @@ export const Div__block_may_also_like = styled.div`
       height: 85px;
       margin: 15px 0 0;
       font-family: "Raleway", sans-serif;
-      font-size: 16px;
+      font-size: 18px;
       line-height: 25px;
-      text-transform: uppercase;
-      color: #8f8571;
+      text-transform: capitalize;
+      color: black;
     }
 
     &__productPrice {
       display: block;
       font-family: "Tahoma", "serif";
+      color: #a77711;
     }
   }
 `
+// ${css_breakpoints.min_tablet} {
+//       display: block;
+//       position: absolute;
+//       top: 265px;
+//       left: 50%;
+//       transform: translateX(-50%);
+//       width: 60%;
+//       font-size: 18px;
+//       line-height: 25px;
+//       text-transform: capitalize;
+//       font-family: "Raleway", sans-serif;
+//       color: black;
+//       /* transition: top ease-in-out 0.3s, opacity ease-in-out 0.65s; */
+//       transition: top ease-in-out 0.3s;
+//       opacity: 1 !important;
+
+//       span {
+//         display: block;
+//         font-family: "Tahoma", "serif";
+//         color: #a77711;
+//       }
+//     }

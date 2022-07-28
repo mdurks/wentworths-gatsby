@@ -111,11 +111,11 @@ export const Div__flickity = styled.div`
   background: linear-gradient(0deg, #e5e3de 0%, #f9f9f9 100%);
 
   .carousel {
-    height: 180px;
+    height: 240px;
     z-index: 456;
 
     ${css_breakpoints.min_desktop} {
-      height: 320px;
+      height: 350px;
     }
   }
 
@@ -136,9 +136,27 @@ export const Div__flickity = styled.div`
       width: 330px !important;
 
       &:nth-child(odd) {
-        top: 50px;
+        top: 30px;
+      }
+
+      &:nth-child(even) {
+        .productDesc {
+          top: 315px;
+        }
+
+        &:hover .productDesc {
+          top: 320px;
+        }
       }
     }
+  }
+
+  .flickity-prev-next-button {
+    top: 28%;
+  }
+
+  .flickity-page-dots {
+    bottom: 50px;
   }
 
   .bestSellerItem {
@@ -162,18 +180,31 @@ export const Div__flickity = styled.div`
     @media (hover: hover) {
       &:hover {
         .graphcms-image-outer-wrapper {
-          top: -15px;
-          width: 250px;
+          top: 5px;
+          left: -10px;
+          width: 230px;
+
+          ${css_breakpoints.min_desktop} {
+            top: -15px;
+            left: auto;
+            width: 250px;
+          }
         }
 
         .productStage {
-          top: 145px;
-          height: 94px;
-          width: 263px;
+          top: 154px;
+          height: 84px;
+          width: 203px;
+
+          ${css_breakpoints.min_desktop} {
+            top: 145px;
+            height: 94px;
+            width: 263px;
+          }
         }
 
         .productDesc {
-          top: 270px;
+          top: 295px;
         }
       }
     }
@@ -205,20 +236,23 @@ export const Div__flickity = styled.div`
     ${css_breakpoints.min_tablet} {
       display: block;
       position: absolute;
-      top: 265px;
+      top: 285px;
       left: 50%;
       transform: translateX(-50%);
-      width: 55%;
-      font-size: 16px;
+      width: 72%;
+      font-size: 18px;
       line-height: 25px;
-      text-transform: uppercase;
-      color: #8f8571;
+      text-transform: capitalize;
+      font-family: "Raleway", sans-serif;
+      color: black;
       /* transition: top ease-in-out 0.3s, opacity ease-in-out 0.65s; */
       transition: top ease-in-out 0.3s;
       opacity: 1 !important;
 
       span {
+        display: block;
         font-family: "Tahoma", "serif";
+        color: #a77711;
       }
     }
   }
