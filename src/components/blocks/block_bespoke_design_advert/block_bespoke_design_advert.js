@@ -134,6 +134,8 @@ const Block_bespoke_design_advert = () => {
     sketchImagesArray.push(value)
   }
 
+  sketchImagesArray = sketchImagesArray.slice(0, 6)
+
   function getRndInteger(min, max) {
     return Math.random() * (max - min) + min
   }
