@@ -175,11 +175,11 @@ const Block_bespoke_design_advert = () => {
       scrollTrigger: {
         id: "sketches",
         trigger: gsap__block_bespoke_design_advert,
-        start: isMobile ? "-100px bottom" : "-10% bottom",
+        start: isMobile ? "-200px bottom" : "-10% bottom",
         end: "bottom top",
         // toggleActions: "play none none reset",
         toggleActions: "play pause resume none",
-        // markers: true,
+        markers: true,
         // end: `+=${window.innerWidth}`,
         // scrub: true,
         // pin: true,
