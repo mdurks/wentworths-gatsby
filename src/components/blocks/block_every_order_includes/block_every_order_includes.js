@@ -76,21 +76,21 @@ const Block_every_order_includes = () => {
         clipPath: "inset(0% 100% 0% -100%",
       },
       {
-        clipPath: "inset(0% 0% 0% 75%)",
+        clipPath: "inset(0% 0% 0% 0%)",
         duration: 1.15,
         ease: "power1.inOut",
       },
       "-=2"
     )
-    tl_gsap_Block_every_order_includes.to(
-      ".Block_every_order_includes__img > div",
-      {
-        clipPath: "inset(0% 0% 0% 0%)",
-        duration: 0.9,
-        ease: "power1.inOut",
-      },
-      "-=0.75"
-    )
+    // tl_gsap_Block_every_order_includes.to(
+    //   ".Block_every_order_includes__img > div",
+    //   {
+    //     clipPath: "inset(0% 0% 0% 0%)",
+    //     duration: 0.9,
+    //     ease: "power1.inOut",
+    //   },
+    //   "-=0.75"
+    // )
     tl_gsap_Block_every_order_includes.fromTo(
       ".Block_every_order_includes__text",
       {
@@ -105,7 +105,7 @@ const Block_every_order_includes = () => {
         duration: 1.2,
         ease: "power1.inOut",
       },
-      "-=1.2"
+      "-=1.8"
     )
     tl_gsap_Block_every_order_includes.to(
       ".Block_every_order_includes__text h2, .Block_every_order_includes__text li",
