@@ -601,12 +601,21 @@ export const Div_detailed_description_block = styled.section`
   }
 
   p {
+
     + p {
-      margin-top: 40px;
+      margin-top: 20px;
+
+      ${css_breakpoints.min_desktop} {
+        margin-top: 40px;
+      }
     }
 
     &:last-of-type {
-      margin-bottom: 40px;
+      margin-bottom: 10px;
+
+      ${css_breakpoints.min_desktop} {
+        margin-bottom: 40px;
+      }
     }
 
     &:empty {
@@ -641,7 +650,6 @@ export const Div_detailed_description_block = styled.section`
 
   .detailed_description_text {
     opacity: 0;
-    padding-top: 10px;
 
     ${css_breakpoints.min_desktop} {
       height: 75vh;
@@ -728,7 +736,6 @@ export const Div_social_share_group = styled.div`
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    margin: 0 0 35px;
     padding: 10px 0 10px;
     border-top: 1px dotted grey;
     text-align: center;
@@ -737,7 +744,7 @@ export const Div_social_share_group = styled.div`
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      margin-top: 40px;
+      margin: 40px 0 35px;
     }
   }
 

@@ -139,7 +139,7 @@ const DetailsPage = ({
           trigger: product_scrolling_images[i],
           // markers: true,
           start:
-            window.innerWidth < breakpoints.tablet ? "-120% 50%" : "-80% 50%",
+            window.innerWidth < breakpoints.tablet ? "-250% 50%" : "-200% 50%",
           toggleActions: "play none none none",
         },
         duration: 0.5,
