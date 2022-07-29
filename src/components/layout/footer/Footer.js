@@ -161,7 +161,7 @@ const Footer = () => {
               className="heading animate_footer_items_3 accordionButton"
               onClick={e => clickAccordionButton(e)}
             >
-              Customer Care
+              About
             </h3>
             <ul className="accordionContentWrapper">
               <li className="animate_footer_items_3">
@@ -198,7 +198,22 @@ const Footer = () => {
                 <a href="/about/about">About Wentworths</a>
               </li>
               <li class="animate_footer_items_3">
+                <a href="/blog">News & Articles</a>
+              </li>
+              <li class="animate_footer_items_3">
                 <a href="/services/fair-trade-gold">Fair Trade Gold</a>
+              </li>
+              <li class="animate_footer_items_3">
+                <a href="/">Returns Policy</a>
+              </li>
+              <li class="animate_footer_items_3">
+                <a href="/">Terms & Conditions</a>
+              </li>
+              <li class="animate_footer_items_3">
+                <a href="/">FAQ</a>
+              </li>
+              <li class="animate_footer_items_3">
+                <a href="/">Free Shipping</a>
               </li>
             </ul>
           </div>
@@ -284,10 +299,13 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="footerCopyrightMsg">
-          <small>© Wentworths {new Date().getFullYear()}</small>
-        </div>
       </Styled_SiteContainer>
+      <div className="footerCopyrightMsg">
+        <Styled_SiteContainer>
+          Copyright © {new Date().getFullYear()} - Wentworths - All rights
+          reserved.
+        </Styled_SiteContainer>
+      </div>
     </Styled_footer>
   )
 }

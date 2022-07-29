@@ -2,7 +2,12 @@ import styled from "styled-components"
 import css_breakpoints from "../../../common/css_breakpoints"
 
 export const Styled_footer = styled.footer`
+  padding-bottom: 80px;
   background-color: #fff;
+
+  ${css_breakpoints.min_tablet} {
+    padding-bottom: 0;
+  }
 
   .footerContainer {
     ${css_breakpoints.min_desktop} {
@@ -154,8 +159,10 @@ export const Styled_footer = styled.footer`
   .footerCopyrightMsg {
     margin-top: 30px;
     text-align: center;
+    font-size: 14px;
 
     ${css_breakpoints.min_tablet} {
+      background: #e3e3e3;
       margin-top: 0;
       text-align: left;
     }
