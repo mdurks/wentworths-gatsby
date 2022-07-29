@@ -146,10 +146,10 @@ const Block_bespoke_design_advert = () => {
   let gsap__sketch4 = null
   let gsap__sketch5 = null
   let gsap__sketch6 = null
-  let gsap__sketch7 = null
-  let gsap__sketch8 = null
-  let gsap__sketch9 = null
-  let gsap__sketch10 = null
+  // let gsap__sketch7 = null
+  // let gsap__sketch8 = null
+  // let gsap__sketch9 = null
+  // let gsap__sketch10 = null
   let gsap__block_bespoke_design_advert = null
 
   let gsap__sketch_group = [
@@ -159,13 +159,22 @@ const Block_bespoke_design_advert = () => {
     gsap__sketch4,
     gsap__sketch5,
     gsap__sketch6,
-    gsap__sketch7,
-    gsap__sketch8,
-    gsap__sketch9,
-    gsap__sketch10,
+    // gsap__sketch7,
+    // gsap__sketch8,
+    // gsap__sketch9,
+    // gsap__sketch10,
   ]
 
   let tl_gsap__sketch_playreel
+  const sketch_group_y_positions = [
+    "5%", // min Y
+    "155%",
+    "250%", // max Y
+    "65%",
+    "85%",
+    "210%",
+    "120%",
+  ]
 
   useEffect(() => {
     let viewportHeight = window.innerHeight
@@ -179,7 +188,7 @@ const Block_bespoke_design_advert = () => {
         end: "bottom top",
         // toggleActions: "play none none reset",
         toggleActions: "play pause resume none",
-        markers: true,
+        // markers: true,
         // end: `+=${window.innerWidth}`,
         // scrub: true,
         // pin: true,
@@ -188,7 +197,8 @@ const Block_bespoke_design_advert = () => {
     })
     gsap__sketch_group.forEach((el, index) => {
       gsap.set(el, {
-        y: getRndInteger(viewportHeight * 0.05, (viewportHeight - 150) * 0.9),
+        // y: getRndInteger(viewportHeight * 0.05, (viewportHeight - 150) * 0.9),
+        y: sketch_group_y_positions[index],
         rotationX: 10,
         rotationY: getRndInteger(-350, -110),
         rotationZ: 353,
@@ -212,7 +222,8 @@ const Block_bespoke_design_advert = () => {
       scrollTrigger: {
         id: "message",
         trigger: gsap__block_bespoke_design_advert,
-        start: isMobile ? "top bottom" : "15% bottom",
+        start: isMobile ? "-100px bottom" : "-10% bottom",
+        // start: isMobile ? "top bottom" : "15% bottom",
         toggleActions: "play none none none",
         // toggleActions: "play none none reset",
         // markers: true,
