@@ -837,15 +837,30 @@ const DetailsPage = ({
               <button
                 btn_selected
                 className="addToCartBtn snipcart-add-item"
+                // Snipcart:
                 data-item-id={product.id}
                 data-item-price={product.price}
                 data-item-url={pageContext.pageURL}
                 data-item-description={product.description}
                 data-item-image={product.image[0].url}
                 data-item-name={product.name}
+                data-item-stackable="never"
+                // Size:
                 data-item-custom1-name="Ring size:"
                 data-item-custom1-options="G|H|I|J|K|L|M|N|O|P|Q|R|S"
                 data-item-custom1-required="true"
+                // Carat:
+                data-item-custom2-name="Carat"
+                data-item-custom2-options="1ct|1.25ct (+£300.00)[+300.00]|1.5ct (+£600.00)[+600.00]|1.75ct (+£900.00)[+900.00]|2ct (+£1,200.00)[+1200.00]"
+                data-item-custom2-required="true"
+                // Colour:
+                data-item-custom3-name="Colour"
+                data-item-custom3-options="Clear|Yellow (+£300.00)[+300.00]|Blue (+£600.00)[+600.00]|Pink (+£900.00)[+900.00]|Red (+£1,200.00)[+1200.00]"
+                data-item-custom3-required="true"
+                // Clarity:
+                data-item-custom4-name="Clarity"
+                data-item-custom4-options="SI1|VS2 (+£600.00)[+600.00]|VS1 (+£900.00)[+900.00]|VVS2 (+£1,200.00)[+1200.00]|VVS1 (+£1,500.00)[+1500.00]|IF (+£1,800.00)[+1800.00]|FL (+£2,100.00)[+2100.00]"
+                data-item-custom4-required="true"
               >
                 Add to cart
               </button>

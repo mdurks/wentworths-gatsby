@@ -204,6 +204,12 @@ main {
   font-weight: bold !important;
 }
 
+#snipcart .snipcart-form__select {
+  height: auto;
+  padding: 10px 50px 10px 14px;
+  margin: 0 0 10px;
+}
+
 #snipcart legend,
 #snipcart label,
 #snipcart p,
@@ -325,6 +331,10 @@ button {
   cursor: pointer;
   font-family: inherit;
   border: 0;
+}
+
+select {
+  cursor: pointer;
 }
 
 /* CMS Rules */
