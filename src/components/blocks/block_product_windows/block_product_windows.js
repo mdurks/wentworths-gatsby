@@ -18,8 +18,6 @@ gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
 
 const Block_product_windows = props => {
-  // console.log("products", props.products)
-
   // Mouse move product image parallax
   let productWindowImage_xratio
   let productWindowImage_yratio

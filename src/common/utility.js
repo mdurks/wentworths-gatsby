@@ -50,3 +50,7 @@ export const returnDateMonth = value => {
 export const calculatedViewportHeight = () => {
   return document.querySelector(".heightCheck").offsetHeight
 }
+
+export const replaceAll = (string, findValue, replaceValue) => {
+  return string.split(findValue).join(replaceValue)
+}

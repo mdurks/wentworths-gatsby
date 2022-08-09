@@ -218,6 +218,26 @@ main {
   font-size: 16px !important;
 }
 
+.snipcart-item-line__quantity {
+  padding: 10px 0 0;
+}
+
+.snipcart-item-quantity__quantity-price-container {
+  justify-content: flex-start;
+}
+
+.snipcart-item-quantity__quantity-price-container:before {
+  content: 'Price:';
+  position: relative;
+  margin: 0 10px 0 0;
+  font-weight: bold;
+}
+
+.snipcart-item-quantity__quantity,
+.snipcart-item-quantity__label {
+  display: none !important;
+}
+
 :root {
   --bgColor-buttonPrimary: #a77711;
   --bgColor-buttonPrimary-hover: #a77711;

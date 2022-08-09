@@ -155,8 +155,8 @@ export const Styled_Title = styled.h2`
     position: relative;
     top: 0;
     text-align: left;
-    font-size: 38px;
-    line-height: 48px;
+    font-size: 34px;
+    line-height: 38px;
     transition: all ease 0.25s;
   }
 
@@ -479,13 +479,13 @@ export const Styled_CMScontent = styled.div`
   .heroDetailsWrapper {
     position: relative;
     top: 0;
-    margin: 35px 0 40px;
+    margin: 35px 0 20px;
     font-size: 15px;
     /* opacity: 0; */
     transition: all ease 0.25s;
 
     ${css_breakpoints.min_desktop} {
-      margin: 50px 0;
+      margin: 25px 0 15px;
       font-size: 15px;
     }
 
@@ -512,6 +512,40 @@ export const Styled_CMScontent = styled.div`
 
         &:last-of-type {
           flex: 1 1 60%;
+        }
+      }
+
+      .availableCaratSize {
+        margin: 5px 0 10px;
+
+        p {
+          margin: 12px 0 10px;
+          line-height: 17px;
+          font-size: 14px;
+        }
+
+        span {
+          display: inline-block;
+          margin: 2px 7px 0 0;
+          padding: 4px 8px 5px;
+          background-color: hsl(0deg 0% 100% / 35%);
+          font-family: sans-serif;
+        }
+      }
+    }
+
+    .caratSizeText {
+      font-family: sans-serif;
+    }
+
+    .additionalInfoContainer {
+      margin: 15px 0 0;
+      background: none;
+      p {
+        line-height: 19px;
+
+        &:last-of-type {
+          margin: 0;
         }
       }
     }
@@ -543,7 +577,7 @@ export const Styled_CMScontent = styled.div`
     display: block;
     width: 100%;
     margin: 0 0 20px;
-    padding: 17px 20px;
+    padding: 12px 20px;
     border-radius: 100px;
     border: none;
     background: #b3924c;
@@ -570,7 +604,7 @@ export const Styled_CMScontent = styled.div`
     display: block;
     width: 100%;
     margin: 0 0 20px;
-    padding: 7px 20px;
+    padding: 9px 20px;
     border-radius: 100px;
     border: 1px solid #a57c24;
     background: transparent;
@@ -580,6 +614,7 @@ export const Styled_CMScontent = styled.div`
     ${css_breakpoints.min_tablet} {
       flex: 1;
       margin: 0 8px;
+      padding: 8px 20px;
     }
   }
 `

@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import GraphImg from "graphcms-image"
 
 import { useAppContext } from "../../store/AppContext"
+import { replaceAll } from "../../common/utility"
 
 import {
   number_with_commas,
@@ -45,11 +46,58 @@ gsap.core.globals("ScrollTrigger", ScrollTrigger)
 
 const DetailsPage = ({
   data: {
-    gcms: { product, products },
+    gcms: { globalSettings, product, products },
   },
   pageContext,
 }) => {
+  console.log("product", product)
+  console.log("globalSettings", globalSettings)
   const appContext = useAppContext()
+
+  let productPrice = product.price
+  let formattedSnipcartCarratPrices
+  let productCaratSizesArray
+  let firstCaratValue
+
+  // const isDiamondRing =
+  //   product.productType === "rings" && product.filter_gemstone === "Diamond"
+
+  if (product?.filter_carat) {
+    firstCaratValue = product?.filter_carat.split(",")[0]
+    const formattedCaratValue = String(firstCaratValue).replace(".", "_")
+    const typeOfGemstoneLookup = `price_${product?.filter_gemstone.toLowerCase()}_${
+      product?.filter_stoneColour
+    }_Carat_${formattedCaratValue}`
+    const globalSettingsStonePrice = globalSettings?.[0][typeOfGemstoneLookup]
+    productPrice = productPrice + globalSettingsStonePrice
+
+    // Create a string that looks like this for snipcart:
+    // The | separates them, the brackets denotes the price, the parens are for display
+    // 1ct|1.25ct (+£300.00)[+300.00]|1.5ct (+£600.00)[+600.00]|1.75ct (+£900.00)[+900.00]|2ct (+£1,200.00)[+1200.00]
+
+    // Ring carat sizes should be comma separated values: "1,1.25,1.5"
+    productCaratSizesArray = product?.filter_carat.split(",")
+    const formattedCarratSizes = replaceAll(
+      product?.filter_carat,
+      ".",
+      "_"
+    ).split(",")
+    // "1,1.25,1.5" turns into: ['1', '1_25', '1_5]
+
+    formattedSnipcartCarratPrices = formattedCarratSizes.map(
+      (carrat, index) => {
+        const typeOfGemstoneLookup = `price_${product?.filter_gemstone.toLowerCase()}_${
+          product?.filter_stoneColour
+        }_Carat_${carrat}`
+        const globalSettingsStonePrice =
+          globalSettings?.[0][typeOfGemstoneLookup]
+
+        if (index === 0) return `${productCaratSizesArray[index]}ct`
+        return `|${productCaratSizesArray[index]}ct (+£${globalSettingsStonePrice}) [+${globalSettingsStonePrice}]`
+      }
+    )
+    formattedSnipcartCarratPrices = formattedSnipcartCarratPrices.join("")
+  }
 
   ScrollTrigger.refresh()
 
@@ -798,38 +846,70 @@ const DetailsPage = ({
               <Styled_Title>{product.name}</Styled_Title>
 
               <p className="heroProductPrice">
-                <span>£{number_with_commas(product.price)}</span>
+                <span>£{number_with_commas(productPrice)}</span>
                 <span className="productVAT">( includes VAT + Delivery )</span>
               </p>
 
               <div className="heroDetailsWrapper">
-                <div>
-                  <span>Stone: </span>
-                  <span>{product.filter_gemstone.replace(/_/g, " ")}</span>
-                </div>
-                <div>
-                  <span>Cut: </span>
-                  <span>{product.filter_stoneCut}</span>
-                </div>
-                <div>
-                  <span>Colour: </span>
-                  <span>{product.filter_stoneColour}</span>
-                </div>
-                <div>
-                  <span>Carat: </span>
-                  <span>{product.filter_carat}</span>
-                </div>
-                <div>
-                  <span>Clarity: </span>
-                  <span>{product.filter_carat}</span>
-                </div>
-                <div>
-                  <span>Metal: </span>
-                  <span>{product.filter_metal.replace(/_/g, " ")}</span>
-                </div>
+                {product.filter_gemstone && (
+                  <div>
+                    <span>Stone: </span>
+                    <span>{product.filter_gemstone.replace(/_/g, " ")}</span>
+                  </div>
+                )}
+                {product.filter_stoneCut && (
+                  <div>
+                    <span>Cut: </span>
+                    <span>{product.filter_stoneCut}</span>
+                  </div>
+                )}
+                {product.filter_carat && (
+                  <div>
+                    <span>Carat: </span>
+                    <span>
+                      <span className="caratSizeText">{firstCaratValue}ct</span>
+                      <div className="availableCaratSize">
+                        {/* <div>Available in sizes:</div> */}
+                        {/* <p>Available carat sizes:</p> */}
+                        <p>Available carat sizes once added to basket:</p>
+                        {productCaratSizesArray?.map(carat => {
+                          return <span>{carat}</span>
+                        })}
+                        {/* <p>
+                          You can pick a different carat size once added to the
+                          basket.
+                        </p> */}
+                      </div>
+                    </span>
+                  </div>
+                )}
+                {product.filter_stoneColour &&
+                  product.filter_stoneColour !== "Default" && (
+                    <div>
+                      <span>Colour: </span>
+                      <span>{product.filter_stoneColour}</span>
+                    </div>
+                  )}
+                {product.filter_clarity && (
+                  <div>
+                    <span>Clarity: </span>
+                    <span>{product.filter_clarity}</span>
+                  </div>
+                )}
+                {product.filter_metal && (
+                  <div>
+                    <span>Metal: </span>
+                    <span>{replaceAll(product?.filter_metal, "_", " ")}</span>
+                  </div>
+                )}
 
+                <div className="additionalInfoContainer">
+                  <p>
+                    Please enquire below if there is something you wish to
+                    change about this peice.
+                  </p>
+                </div>
                 {/* <div className="selectRingSize">
-                <p>You can select your ring size at the checkout stage.</p>
                 <a href="/">What's my ring size?</a>
               </div> */}
               </div>
@@ -839,30 +919,32 @@ const DetailsPage = ({
                 className="addToCartBtn snipcart-add-item"
                 // Snipcart:
                 data-item-id={product.id}
-                data-item-price={product.price}
+                data-item-price={productPrice}
                 data-item-url={pageContext.pageURL}
                 data-item-description={product.description}
                 data-item-image={product.image[0].url}
                 data-item-name={product.name}
                 data-item-stackable="never"
                 // Size:
-                data-item-custom1-name="Ring size:"
-                data-item-custom1-options="G|H|I|J|K|L|M|N|O|P|Q|R|S"
-                data-item-custom1-required="true"
+                data-item-custom1-name={
+                  product.productType === "rings" && "Ring size:"
+                }
+                data-item-custom1-options={
+                  product.productType === "rings" &&
+                  product.size &&
+                  product.size
+                }
+                data-item-custom1-required={
+                  product.productType === "rings" && "true"
+                }
                 // Carat:
-                data-item-custom2-name="Carat"
-                data-item-custom2-options="1ct|1.25ct (+£300.00)[+300.00]|1.5ct (+£600.00)[+600.00]|1.75ct (+£900.00)[+900.00]|2ct (+£1,200.00)[+1200.00]"
-                data-item-custom2-required="true"
-                // Colour:
-                data-item-custom3-name="Colour"
-                data-item-custom3-options="Clear|Yellow (+£300.00)[+300.00]|Blue (+£600.00)[+600.00]|Pink (+£900.00)[+900.00]|Red (+£1,200.00)[+1200.00]"
-                data-item-custom3-required="true"
-                // Clarity:
-                data-item-custom4-name="Clarity"
-                data-item-custom4-options="SI1|VS2 (+£600.00)[+600.00]|VS1 (+£900.00)[+900.00]|VVS2 (+£1,200.00)[+1200.00]|VVS1 (+£1,500.00)[+1500.00]|IF (+£1,800.00)[+1800.00]|FL (+£2,100.00)[+2100.00]"
-                data-item-custom4-required="true"
+                data-item-custom2-name={product.filter_carat && "Carat"}
+                data-item-custom2-options={
+                  product.filter_carat && formattedSnipcartCarratPrices
+                }
+                data-item-custom2-required={product.filter_carat && "true"}
               >
-                Add to cart
+                Add to basket
               </button>
 
               <div className="secondaryCTAWrapper">
@@ -1164,6 +1246,20 @@ export const pageQuery = graphql`
     $productType: GCMS_ProductType
   ) {
     gcms {
+      globalSettings {
+        price_diamond_Clear_Carat_1
+        price_diamond_Clear_Carat_1_25
+        price_diamond_Clear_Carat_1_5
+        price_diamond_Pink_Carat_1
+        price_diamond_Pink_Carat_1_25
+        price_diamond_Pink_Carat_1_5
+        price_diamond_Yellow_Carat_1
+        price_diamond_Yellow_Carat_1_25
+        price_diamond_Yellow_Carat_1_5
+        price_aquamarine_Default_Carat_1
+        price_aquamarine_Default_Carat_1_25
+        price_aquamarine_Default_Carat_1_5
+      }
       product(where: { id: $id }) {
         id
         name
@@ -1174,9 +1270,11 @@ export const pageQuery = graphql`
         productType
         filter_gemstone
         filter_carat
+        filter_clarity
         filter_metal
         filter_stoneColour
         filter_stoneCut
+        size
         createdAt
         detailedDescription {
           html

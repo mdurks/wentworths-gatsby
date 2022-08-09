@@ -64,7 +64,7 @@ const pageQuery = graphql`
         bestSeller
       }
       welcomes {
-        products {
+        products(where: { NOT: { productWindowImage: null } }) {
           name
           categoryType
           productType
