@@ -4,17 +4,21 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
+const replaceAll = (string, findValue, replaceValue) => {
+  return string.split(findValue).join(replaceValue)
+}
+
 exports.createPages = async ({ graphql, actions: { createPage } }) => {
   //
   //
-  // Static method to create Product LISTING:
+  // Static method to create "Product Listing" pages:
   //
   // Manualy define categories and their product types myself
   // Could maybe do this dynamicaly and query graph cms
   //
   const categories = [
     { engagement: "rings" },
-    { weddings: "rings,earrings,necklaces" },
+    { weddings: "rings" },
     { jewellery: "rings,earrings,necklaces,bracelets" },
   ]
 
@@ -40,8 +44,72 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
       })
     }
   }
+
+  // Static method to create "Product Listing by Attribute" pages:
+
+  const productListingByAttributeCategories = [
+    { engagement: "rings" },
+    { weddings: "rings" },
+  ]
+
+  const productAttributes = [
+    { filter_metal: "Platinum,Silver,Gold,White_Gold,Rose_Gold" },
+    { filter_stoneColour: "White,Clear,Yellow,Blue,Pink,Amber,Default" },
+    {
+      filter_gemstone:
+        "Morganite,Diamond,Sapphire,Ruby,Emerald,Pearl,Coloured_Diamond,Aquamarine",
+    },
+    {
+      filter_stoneCut:
+        "Princess,Emerald,Round,Ashoka,Cushion,Oval,Radiant,Heart,Assher,Pear,Natural",
+    },
+  ]
+
+  // loop over each category: 'engagement'
+  for (let i = 0; i < productListingByAttributeCategories.length; i++) {
+    //
+    let category = String(Object.keys(productListingByAttributeCategories[i])) // 'engagement'
+    let category_product_types = String(
+      Object.values(productListingByAttributeCategories[i])
+    ).split(",") // 'rings'
+    //
+    // loop over product types: 'rings'
+    for (let i = 0; i < category_product_types.length; i++) {
+      const product_type = category_product_types[i] // 'rings'
+
+      // loop over attributes: 'filter_metal'
+      for (let i = 0; i < productAttributes.length; i++) {
+        const product_attribute = String(Object.keys(productAttributes[i])) // 'filter_metal'
+        const product_attributeValues = String(
+          Object.values(productAttributes[i])
+        ).split(",") // 'Platinum', etc
+
+        // Loop over attribute values: 'Platinum', etc
+        for (let i = 0; i < product_attributeValues.length; i++) {
+          const product_attributeValue = product_attributeValues[i] // 'Platinum'
+          const path = `/${category}/${product_attributeValue}-${category}-${product_type}`
+          // '/engagement/Silver-engagement-rings'
+
+          createPage({
+            path: replaceAll(path.toLowerCase(), "_", "-"),
+            component: require.resolve(
+              `./src/templates/product_listing/by_attribute/${product_attribute}.js`
+            ),
+            // use context to pass variables to the created page to use via 'pageContext':
+            context: {
+              category, // engagement
+              product_type, // rings
+              // product_attribute, // filter_metal
+              product_attributeValue, // Silver
+            },
+          }) // end createPage
+        } // end attribute value for loop
+      } // end attribute for loop
+    } // end product for loop
+  } // end category for loop
+
   //
-  // Dynamic Query to generate pages
+  // Dynamic Query to generate pages and blogs
   //
   const {
     data: {

@@ -453,7 +453,187 @@ const MainNav = () => {
                         trigger: () => click_mobile_burger_btn(),
                       }}
                     >
-                      Rings
+                      All Engagement Rings
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                </UL__secondaryLinkList>
+                <UL__secondaryLinkList>
+                  {/* <UL__secondaryLinkList style={{ flexDirection: "column" }}> */}
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/engagement/princess-engagement-rings/"
+                      onClick={closeSecondaryLinkBackground}
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
+                      Princess Cut engagement rings
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/engagement/round-engagement-rings/"
+                      onClick={closeSecondaryLinkBackground}
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
+                      Round Cut engagement rings
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                </UL__secondaryLinkList>
+                <UL__secondaryLinkList>
+                  {/* <UL__secondaryLinkList style={{ flexDirection: "column" }}> */}
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/engagement/amber-engagement-rings/"
+                      onClick={closeSecondaryLinkBackground}
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
+                      Amber engagement rings
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/engagement/clear-engagement-rings/"
+                      onClick={closeSecondaryLinkBackground}
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
+                      Clear engagement rings
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/engagement/default-engagement-rings/"
+                      onClick={closeSecondaryLinkBackground}
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
+                      Default engagement rings
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/engagement/pink-engagement-rings/"
+                      onClick={closeSecondaryLinkBackground}
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
+                      Pink engagement rings
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                </UL__secondaryLinkList>
+                <UL__secondaryLinkList>
+                  {/* <UL__secondaryLinkList style={{ flexDirection: "column" }}> */}
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/engagement/aquamarine-engagement-rings/"
+                      onClick={closeSecondaryLinkBackground}
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
+                      Aquamarine engagement rings
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/engagement/diamond-engagement-rings/"
+                      onClick={closeSecondaryLinkBackground}
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
+                      Diamond engagement rings
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/engagement/morganite-engagement-rings/"
+                      onClick={closeSecondaryLinkBackground}
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
+                      Morganite engagement rings
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                </UL__secondaryLinkList>
+                <UL__secondaryLinkList>
+                  {/* <UL__secondaryLinkList style={{ flexDirection: "column" }}> */}
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/engagement/silver-engagement-rings"
+                      onClick={closeSecondaryLinkBackground}
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
+                      Silver engagement rings
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/engagement/gold-engagement-rings"
+                      onClick={closeSecondaryLinkBackground}
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
+                      Gold engagement rings
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/engagement/platinum-engagement-rings"
+                      onClick={closeSecondaryLinkBackground}
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
+                      Platinum engagement rings
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/engagement/white-gold-engagement-rings"
+                      onClick={closeSecondaryLinkBackground}
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
+                      White Gold engagement rings
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/engagement/rose-gold-engagement-rings"
+                      onClick={closeSecondaryLinkBackground}
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
+                      Rose Gold engagement rings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
                   {/* <Li__secondaryLink>
@@ -531,7 +711,7 @@ const MainNav = () => {
                       Rings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
-                  <Li__secondaryLink>
+                  {/* <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
                       to="/weddings/necklaces/"
@@ -554,7 +734,7 @@ const MainNav = () => {
                     >
                       Earrings
                     </A__secondaryCategoryLink>
-                  </Li__secondaryLink>
+                  </Li__secondaryLink> */}
                   {/* <Li__secondaryLink>
                     <A__secondaryCategoryLink
                     as={Link}

@@ -163,7 +163,7 @@ export const Button__primary = styled.button`
   border: 0;
   background: transparent;
   /* font-family: "Playfair Display", serif; */
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
   text-align: left;
   transition: all ease 0.5s;
@@ -247,7 +247,7 @@ export const A__primary = styled.a`
   border: 0;
   background: transparent;
   /* font-family: "Playfair Display", serif; */
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
   text-align: left;
   transition: all ease 0.5s;
@@ -395,9 +395,9 @@ export const LI__primaryLink = styled.li`
 `
 
 export const UL__secondaryLinkList = styled.ul`
-  height: 100%;
+  /* height: 100%; */
   width: 100%;
-  overflow-y: scroll;
+  overflow-y: hidden;
   overflow-x: hidden;
 
   ${props =>
@@ -424,7 +424,7 @@ export const UL__secondaryLinkList = styled.ul`
     /* max-width: ${css_breakpoints.desktop_max}; */
     height: 300px;
     margin: auto;
-    padding: 50px 15%;
+    padding: 50px 15px;
     overflow-y: auto;
     overflow-x: auto;
   }
@@ -449,7 +449,7 @@ export const Li__secondaryLink = styled.li`
 export const A__secondaryCategoryLink = styled.a`
   display: block;
   padding: 8px 0;
-  font-size: 22px;
+  font-size: 20px;
   color: #76591b;
 
   ${css_breakpoints.min_desktop} {
@@ -457,7 +457,7 @@ export const A__secondaryCategoryLink = styled.a`
     height: 100%;
     margin: 0 5px 0 0;
     padding: 5px 0 5px 5px;
-    font-size: 18px;
+    font-size: 14px;
     text-transform: none;
     color: black;
     transition: all ease 0.3s;
@@ -469,8 +469,8 @@ export const A__secondaryCategoryLink = styled.a`
       left: 50%;
       transform: translateX(-50%);
       width: 0;
-      height: 2px;
-      background: #c1a260;
+      height: 1px;
+      background: #fff;
       transition: all ease 0.5s;
     }
 
@@ -481,6 +481,7 @@ export const A__secondaryCategoryLink = styled.a`
 
       &:before {
         width: calc(100% + 10px);
+        background: #c1a260;
       }
     }
   }
