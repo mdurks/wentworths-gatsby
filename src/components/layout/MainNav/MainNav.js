@@ -168,7 +168,6 @@ const MainNav = () => {
       if (index + 1 === subMenuElementsLength) subMenuElementStagger += 250
 
       setTimeout(() => {
-        console.log("element", element)
         gsap.to(element.childNodes, {
           opacity: 1,
           y: "0px",

@@ -6,6 +6,8 @@ import { gsap, ScrollTrigger } from "gsap/all"
 import {
   return_array_center_out,
   return_unique_values_in_araray,
+  replaceAll,
+  capitalizeWords,
 } from "../../../common/utility"
 
 // import Layout from "../components/layout"
@@ -43,7 +45,7 @@ const ProductListingByAttribute = ({
   },
   pageContext,
 }) => {
-  console.log("pageContext: ", pageContext)
+  // console.log("pageContext: ", pageContext)
   // console.log("products: ", products)
 
   let subTitleText = productListingTexts.filter(
@@ -538,7 +540,12 @@ const ProductListingByAttribute = ({
           <Div__pageHeader className="productsPageHeaeder">
             {/* <p className="subTitle">A mutual promise</p> */}
             <h1 className="pageTitle">
-              {pageContext.category} {pageContext.product_type}
+              <span className="pageTitleAttributeValue">
+                {replaceAll(pageContext.product_attributeValue, "_", " ")}
+              </span>
+              {capitalizeWords(
+                `${pageContext.category} ${pageContext.product_type}`
+              )}
             </h1>
             <div
               dangerouslySetInnerHTML={{
@@ -678,10 +685,10 @@ const ProductListingByAttribute = ({
           </Div__filter>
           <Div__filter_info className="filter_info">
             <p className="filter_info__showingNumber">
-              Showing &nbsp;{productList.length} of
-              {" " + products.length}
-              &nbsp;&nbsp;
-              {pageContext.category} {pageContext.product_type}.
+              Showing &nbsp;{productList.length} <span>of</span>{" "}
+              {products.length}&nbsp; &nbsp;
+              {pageContext.product_attributeValue} {pageContext.category}{" "}
+              {pageContext.product_type}.
             </p>
             <div className="sortProducts">
               <span className="sortProducts__container">

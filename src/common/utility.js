@@ -54,3 +54,12 @@ export const calculatedViewportHeight = () => {
 export const replaceAll = (string, findValue, replaceValue) => {
   return string.split(findValue).join(replaceValue)
 }
+
+export const capitalizeWords = string => {
+  const words = string.split(" ")
+  let capitalisedWords = words.map(word => {
+    return word.charAt(0).toUpperCase() + word.slice(1)
+  })
+  const joinedBackUp = capitalisedWords.join(" ")
+  return joinedBackUp
+}

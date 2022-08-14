@@ -7,13 +7,13 @@ export const Div__productsPage = styled.div`
 
 export const Div__pageHeader = styled.div`
   position: relative;
-  padding: 30px 0 80px;
+  padding: 60px 0 80px;
   text-align: center;
   /* min-height: 560px; */
 
   ${css_breakpoints.min_desktop} {
     min-height: auto;
-    padding: 80px 0 40px;
+    padding: 105px 0 40px;
   }
 
   p {
@@ -41,15 +41,33 @@ export const Div__pageHeader = styled.div`
   }
 
   .pageTitle {
+    position: relative;
     margin: 10px 0 50px -30px;
     font-family: "Amalfi Coast", serif;
     font-size: clamp(41px, 7vw, 80px);
     line-height: clamp(61px, 7vw, 120px);
+    text-transform: capitalize;
     color: #c1a260;
     opacity: 0;
 
     ${css_breakpoints.min_desktop} {
       margin: 0 0 60px;
+    }
+
+    .pageTitleAttributeValue {
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: "Playfair Display", serif;
+      text-transform: uppercase;
+      color: black;
+      font-size: clamp(30px, 3vw, 40px);
+      line-height: normal;
+
+      ${css_breakpoints.min_desktop} {
+        top: -70px;
+      }
     }
   }
 
@@ -402,6 +420,11 @@ export const Div__filter_info = styled.div`
 
   .filter_info__showingNumber {
     text-align: center;
+    text-transform: capitalize;
+
+    span {
+      text-transform: lowercase;
+    }
 
     ${css_breakpoints.min_desktop} {
       flex: 1;
