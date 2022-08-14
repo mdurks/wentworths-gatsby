@@ -7,6 +7,10 @@ import Snipcart from "../../snipcart"
 import { gsap } from "gsap/all"
 
 import Svg_basket from "../../../images/svg/basket"
+import Svg_gemstoneSide from "../../../images/svg/gemstoneSide"
+import { Svg_donut } from "../../../images/svg/donut"
+import { Svg_curPrincess } from "../../../images/svg/cutPrincess"
+import { Svg_curRoundBrilliant } from "../../../images/svg/cutRoundBrilliant"
 
 import {
   Nav__mainNav,
@@ -19,6 +23,7 @@ import {
   LI__primaryLink,
   Li__secondaryLink,
   UL__secondaryLinkList,
+  Li__secondaryLinkListHeading,
   P__secondaryLinksTitle,
   Button__secondaryListBack,
   Button__primary,
@@ -138,6 +143,41 @@ const MainNav = () => {
       document.querySelector(".secondaryLinkBackground").style.height =
         nextSiblingHeight + "px"
     else document.querySelector(".secondaryLinkBackground").style.height = "0"
+
+    // Submenu Animations:
+    gsap.set(document.querySelectorAll(".subNav--open ul > *"), {
+      opacity: 0,
+      y: "-15px",
+    })
+    // get all main submenu groups of link containers
+    const subMenuElements = Array.from(
+      document.querySelectorAll(".subNav--open ul")
+    )
+    const subMenuElementsLength = subMenuElements.length
+    // Push 'View all...' button to end of array to animate last
+    subMenuElements.push(subMenuElements.splice(0, 1)[0])
+    // reset 'View all...' button location so it only fades in
+    gsap.set(subMenuElements[subMenuElementsLength - 1].firstChild, {
+      y: "0px",
+    })
+
+    let subMenuElementStagger = -150
+
+    subMenuElements.forEach((element, index) => {
+      subMenuElementStagger += 150
+      if (index + 1 === subMenuElementsLength) subMenuElementStagger += 250
+
+      setTimeout(() => {
+        console.log("element", element)
+        gsap.to(element.childNodes, {
+          opacity: 1,
+          y: "0px",
+          stagger: 0.05,
+          duration: 0.32,
+          ease: "power1.inOut",
+        })
+      }, subMenuElementStagger)
+    })
   }
 
   const primaryLinkMouseOut = e => {
@@ -442,7 +482,8 @@ const MainNav = () => {
               </Button__primary>
               <Div__secondaryLinkWrapper>
                 <P__secondaryLinksTitle>Engagement</P__secondaryLinksTitle>
-                <UL__secondaryLinkList>
+
+                <UL__secondaryLinkList viewAllLink>
                   {/* <UL__secondaryLinkList style={{ flexDirection: "column" }}> */}
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
@@ -453,11 +494,15 @@ const MainNav = () => {
                         trigger: () => click_mobile_burger_btn(),
                       }}
                     >
-                      All Engagement Rings
+                      View All Engagement Rings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
                 </UL__secondaryLinkList>
+
                 <UL__secondaryLinkList>
+                  <Li__secondaryLinkListHeading>
+                    Shape
+                  </Li__secondaryLinkListHeading>
                   {/* <UL__secondaryLinkList style={{ flexDirection: "column" }}> */}
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
@@ -468,6 +513,12 @@ const MainNav = () => {
                         trigger: () => click_mobile_burger_btn(),
                       }}
                     >
+                      <Svg_curPrincess
+                        width="21"
+                        height="21"
+                        stroke="black"
+                        strokeWidth="2.5"
+                      />
                       Princess Cut engagement rings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
@@ -480,12 +531,22 @@ const MainNav = () => {
                         trigger: () => click_mobile_burger_btn(),
                       }}
                     >
+                      <Svg_curRoundBrilliant
+                        width="21"
+                        height="21"
+                        stroke="black"
+                        strokeWidth="2.5"
+                      />
                       Round Cut engagement rings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
                 </UL__secondaryLinkList>
+
                 <UL__secondaryLinkList>
                   {/* <UL__secondaryLinkList style={{ flexDirection: "column" }}> */}
+                  <Li__secondaryLinkListHeading>
+                    Colour
+                  </Li__secondaryLinkListHeading>
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
@@ -495,6 +556,12 @@ const MainNav = () => {
                         trigger: () => click_mobile_burger_btn(),
                       }}
                     >
+                      <Svg_gemstoneSide
+                        width="23"
+                        height="17"
+                        strokeWidth="4"
+                        stroke="#dfa700"
+                      />
                       Amber engagement rings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
@@ -507,6 +574,11 @@ const MainNav = () => {
                         trigger: () => click_mobile_burger_btn(),
                       }}
                     >
+                      <Svg_gemstoneSide
+                        width="23"
+                        height="17"
+                        strokeWidth="4"
+                      />
                       Clear engagement rings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
@@ -519,6 +591,11 @@ const MainNav = () => {
                         trigger: () => click_mobile_burger_btn(),
                       }}
                     >
+                      <Svg_gemstoneSide
+                        width="23"
+                        height="17"
+                        strokeWidth="4"
+                      />
                       Default engagement rings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
@@ -531,12 +608,22 @@ const MainNav = () => {
                         trigger: () => click_mobile_burger_btn(),
                       }}
                     >
+                      <Svg_gemstoneSide
+                        width="23"
+                        height="17"
+                        strokeWidth="4"
+                        stroke="#ff5c74"
+                      />
                       Pink engagement rings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
                 </UL__secondaryLinkList>
+
                 <UL__secondaryLinkList>
                   {/* <UL__secondaryLinkList style={{ flexDirection: "column" }}> */}
+                  <Li__secondaryLinkListHeading>
+                    GemStone
+                  </Li__secondaryLinkListHeading>
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
@@ -546,6 +633,12 @@ const MainNav = () => {
                         trigger: () => click_mobile_burger_btn(),
                       }}
                     >
+                      <Svg_gemstoneSide
+                        width="23"
+                        height="17"
+                        strokeWidth="4"
+                        stroke="#00ab8f"
+                      />
                       Aquamarine engagement rings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
@@ -558,6 +651,11 @@ const MainNav = () => {
                         trigger: () => click_mobile_burger_btn(),
                       }}
                     >
+                      <Svg_gemstoneSide
+                        width="23"
+                        height="17"
+                        strokeWidth="4"
+                      />
                       Diamond engagement rings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
@@ -570,12 +668,22 @@ const MainNav = () => {
                         trigger: () => click_mobile_burger_btn(),
                       }}
                     >
+                      <Svg_gemstoneSide
+                        width="23"
+                        height="17"
+                        strokeWidth="4"
+                        stroke="#d38d72"
+                      />
                       Morganite engagement rings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
                 </UL__secondaryLinkList>
+
                 <UL__secondaryLinkList>
                   {/* <UL__secondaryLinkList style={{ flexDirection: "column" }}> */}
+                  <Li__secondaryLinkListHeading>
+                    Metal
+                  </Li__secondaryLinkListHeading>
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
@@ -585,6 +693,7 @@ const MainNav = () => {
                         trigger: () => click_mobile_burger_btn(),
                       }}
                     >
+                      <Svg_donut width="17" height="17" fill="silver" />
                       Silver engagement rings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
@@ -597,6 +706,7 @@ const MainNav = () => {
                         trigger: () => click_mobile_burger_btn(),
                       }}
                     >
+                      <Svg_donut width="17" height="17" fill="gold" />
                       Gold engagement rings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
@@ -609,6 +719,7 @@ const MainNav = () => {
                         trigger: () => click_mobile_burger_btn(),
                       }}
                     >
+                      <Svg_donut width="17" height="17" fill="grey" />
                       Platinum engagement rings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
@@ -621,6 +732,7 @@ const MainNav = () => {
                         trigger: () => click_mobile_burger_btn(),
                       }}
                     >
+                      <Svg_donut width="17" height="17" fill="silver" />
                       White Gold engagement rings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
@@ -633,46 +745,12 @@ const MainNav = () => {
                         trigger: () => click_mobile_burger_btn(),
                       }}
                     >
+                      <Svg_donut width="17" height="17" fill="#E0BFB8" />
                       Rose Gold engagement rings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
-                  {/* <Li__secondaryLink>
-                    <A__secondaryCategoryLink
-                    as={Link}
-                      to="/engagement/necklaces/"
-                      onClick={closeSecondaryLinkBackground}
-                      exit={{
-                        trigger: () => click_mobile_burger_btn(),
-                      }}
-                    >
-                      Necklaces
-                    </A__secondaryCategoryLink>
-                  </Li__secondaryLink>
-                  <Li__secondaryLink>
-                    <A__secondaryCategoryLink
-                    as={Link}
-                      to="/engagement/bracelets/"
-                      onClick={closeSecondaryLinkBackground}
-                      exit={{
-                        trigger: () => click_mobile_burger_btn(),
-                      }}
-                    >
-                      Bracelets
-                    </A__secondaryCategoryLink>
-                  </Li__secondaryLink>
-                  <Li__secondaryLink>
-                    <A__secondaryCategoryLink
-                    as={Link}
-                      to="/engagement/earrings/"
-                      onClick={closeSecondaryLinkBackground}
-                      exit={{
-                        trigger: () => click_mobile_burger_btn(),
-                      }}
-                    >
-                      Earrings
-                    </A__secondaryCategoryLink>
-                  </Li__secondaryLink> */}
                 </UL__secondaryLinkList>
+
                 <Button__secondaryListBack
                   type="button"
                   onClick={e => {
@@ -711,41 +789,6 @@ const MainNav = () => {
                       Rings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
-                  {/* <Li__secondaryLink>
-                    <A__secondaryCategoryLink
-                      as={Link}
-                      to="/weddings/necklaces/"
-                      onClick={closeSecondaryLinkBackground}
-                      exit={{
-                        trigger: () => click_mobile_burger_btn(),
-                      }}
-                    >
-                      Necklaces
-                    </A__secondaryCategoryLink>
-                  </Li__secondaryLink>
-                  <Li__secondaryLink>
-                    <A__secondaryCategoryLink
-                      as={Link}
-                      to="/weddings/earrings/"
-                      onClick={closeSecondaryLinkBackground}
-                      exit={{
-                        trigger: () => click_mobile_burger_btn(),
-                      }}
-                    >
-                      Earrings
-                    </A__secondaryCategoryLink>
-                  </Li__secondaryLink> */}
-                  {/* <Li__secondaryLink>
-                    <A__secondaryCategoryLink
-                    as={Link}
-                      to="/weddings/bracelets/"
-                      onClick={closeSecondaryLinkBackground}
-                      exit={{
-                        trigger: () => click_mobile_burger_btn(),
-                      }}>
-                      Bracelets
-                    </A__secondaryCategoryLink>
-                  </Li__secondaryLink> */}
                 </UL__secondaryLinkList>
                 <Button__secondaryListBack
                   type="button"

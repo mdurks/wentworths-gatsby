@@ -50,8 +50,8 @@ const DetailsPage = ({
   },
   pageContext,
 }) => {
-  console.log("product", product)
-  console.log("globalSettings", globalSettings)
+  // console.log("product", product)
+  // console.log("globalSettings", globalSettings)
   const appContext = useAppContext()
 
   let productPrice = product.price

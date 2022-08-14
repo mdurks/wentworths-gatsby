@@ -1,6 +1,7 @@
 import css_breakpoints from "../../../common/css_breakpoints"
 import { navHeight } from "../../../common/globalVars"
 import styled, { css } from "styled-components"
+import { breakpoints } from "../../../common/globalVars"
 
 // ${css_breakpoints.min_desktop} {
 // }
@@ -277,29 +278,32 @@ export const A__primary = styled.a`
 export const Div__secondaryLinkWrapper = styled.div`
   position: fixed;
   bottom: 0;
-  /* left: 0; */
   left: 100%;
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
-  padding: 0 0 ${navHeight.mobile}px;
-  /* background: aliceblue; */
-  /* background: #f9f6ee; */
+  overflow-y: auto;
+  padding: 120px 0px 170px;
   z-index: 1;
 
   ${css_breakpoints.min_desktop} {
     position: absolute;
     top: ${navHeight.desktop}px;
     bottom: auto;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     flex-direction: row;
     padding: 0;
     height: auto;
+    max-width: ${breakpoints.maxDesktop}px;
     visibility: hidden;
+    overflow: hidden;
     opacity: 0;
     background: transparent;
     transition: all ease-in-out 0.3s;
+    flex-direction: row;
+    flex-wrap: wrap;
 
     .subNav--open & {
       visibility: visible;
@@ -308,12 +312,22 @@ export const Div__secondaryLinkWrapper = styled.div`
   }
 `
 
+export const Div__secondaryLinkItemWrapper = styled.div`
+  ${css_breakpoints.min_desktop} {
+    flex: 1 1 auto;
+  }
+`
+
 export const P__secondaryLinksTitle = styled.p`
-  position: relative;
+  position: fixed;
+  top: 0;
   left: 100%;
-  margin: 30px 30px 20px;
-  padding: 0;
-  /* border-bottom: 1px solid grey; */
+  width: 100%;
+  margin: 0;
+  padding: 30px 30px 20px;
+  background: #f3eddd;
+  z-index: 1;
+
   text-transform: uppercase;
   text-align: center;
   font-family: "Playfair Display", serif;
@@ -322,13 +336,13 @@ export const P__secondaryLinksTitle = styled.p`
 
   ${css_breakpoints.min_desktop} {
     display: none;
-    padding: 0 0 15px;
   }
 `
 
 export const Button__secondaryListBack = styled.button`
-  position: relative;
+  position: fixed;
   left: 100%;
+  bottom: 60px;
   width: 100%;
   margin: 5px 0 0;
   padding: 13px 0;
@@ -397,8 +411,8 @@ export const LI__primaryLink = styled.li`
 export const UL__secondaryLinkList = styled.ul`
   /* height: 100%; */
   width: 100%;
-  overflow-y: hidden;
-  overflow-x: hidden;
+  /* overflow-y: hidden;
+  overflow-x: hidden; */
 
   ${props =>
     props.centredTextDesktop &&
@@ -422,11 +436,70 @@ export const UL__secondaryLinkList = styled.ul`
     align-items: stretch;
     align-content: space-around;
     /* max-width: ${css_breakpoints.desktop_max}; */
-    height: 300px;
-    margin: auto;
-    padding: 50px 15px;
+    /* height: 300px; */
+    /* margin: auto; */
+    padding: 50px 15px 15px;
     overflow-y: auto;
     overflow-x: auto;
+    flex: 1 1;
+  }
+
+    ${props =>
+      props.viewAllLink &&
+      css`
+      a {
+            font-size: 20px;
+      }
+
+      ${css_breakpoints.min_desktop} {
+          flex: 1 0 100%;
+          height: auto;
+          padding: 15px 0 40px;
+          order: 1;
+
+          a {
+            margin: 0;
+            padding: 10px 25px;
+            border-radius: 100px;
+            background: #b3924c;
+            color: white;
+            font-size: 16px;
+
+            &:before {
+              bottom: 13px;
+            }
+
+            &:hover {
+              margin: 0;
+              padding: 10px 25px;
+              color: white;
+
+              &:before {
+                width: calc(100% - 47px);
+                background: #ffffff;
+              }
+            }
+          }
+    `}
+`
+
+export const Li__secondaryLinkListHeading = styled.li`
+  position: relative;
+  left: 100%;
+  margin: 30px 25px 10px;
+  font-family: "Playfair Display", serif;
+  font-size: 26px;
+
+  ${css_breakpoints.min_desktop} {
+    left: auto;
+    margin: 0;
+    padding: 10px 5px 25px 4px;
+    color: #a77711;
+    font-weight: bold;
+    font-family: "Raleway", sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
 `
 
@@ -443,20 +516,22 @@ export const Li__secondaryLink = styled.li`
     left: 0;
     margin: 0;
     border: none;
+    opacity: 0;
   }
 `
 
 export const A__secondaryCategoryLink = styled.a`
-  display: block;
+  display: flex;
+  align-items: center;
   padding: 8px 0;
-  font-size: 20px;
+  font-size: 16px;
   color: #76591b;
 
   ${css_breakpoints.min_desktop} {
     position: relative;
     height: 100%;
     margin: 0 5px 0 0;
-    padding: 5px 0 5px 5px;
+    padding: 4px 0 4px 5px;
     font-size: 14px;
     text-transform: none;
     color: black;
@@ -483,7 +558,18 @@ export const A__secondaryCategoryLink = styled.a`
         width: calc(100% + 10px);
         background: #c1a260;
       }
+
+      svg {
+        left: -5px;
+      }
     }
+  }
+
+  svg {
+    position: relative;
+    left: 0;
+    margin: 0 14px 0 0;
+    transition: all ease 0.3s;
   }
 `
 

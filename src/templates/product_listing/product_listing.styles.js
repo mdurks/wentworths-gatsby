@@ -13,7 +13,7 @@ export const Div__pageHeader = styled.div`
 
   ${css_breakpoints.min_desktop} {
     min-height: auto;
-    padding: 130px 0 40px;
+    padding: 80px 0 40px;
   }
 
   p {
@@ -43,7 +43,7 @@ export const Div__pageHeader = styled.div`
   .pageTitle {
     margin: 10px 0 50px -30px;
     font-family: "Amalfi Coast", serif;
-    font-size: clamp(41px, 7vw, 100px);
+    font-size: clamp(41px, 7vw, 80px);
     line-height: clamp(61px, 7vw, 120px);
     color: #c1a260;
     opacity: 0;
