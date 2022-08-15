@@ -296,6 +296,7 @@ export const Div__secondaryLinkWrapper = styled.div`
     flex-direction: row;
     padding: 0;
     height: auto;
+    min-height: 290px;
     max-width: ${breakpoints.maxDesktop}px;
     visibility: hidden;
     overflow: hidden;
@@ -439,7 +440,7 @@ export const UL__secondaryLinkList = styled.ul`
     /* max-width: ${css_breakpoints.desktop_max}; */
     /* height: 300px; */
     /* margin: auto; */
-    padding: 50px 15px 15px;
+    padding: 50px 15px 35px;
     overflow-y: auto;
     overflow-x: auto;
     flex: 1 1;
