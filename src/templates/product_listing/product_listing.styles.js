@@ -42,7 +42,7 @@ export const Div__pageHeader = styled.div`
 
   .pageTitle {
     position: relative;
-    margin: 10px 0 50px -30px;
+    margin: 10px 0 50px;
     font-family: "Amalfi Coast", serif;
     font-size: clamp(41px, 7vw, 80px);
     line-height: clamp(61px, 7vw, 120px);
