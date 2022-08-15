@@ -1,5 +1,5 @@
 import React from "react"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useAppContext } from "../../../store/AppContext"
 import { graphql, useStaticQuery } from "gatsby"
 import Link from "gatsby-plugin-transition-link"
@@ -187,10 +187,9 @@ const MainNav = () => {
       closeSecondaryLinkBackground()
   }
 
-  let mobileMenuState = "closed"
+  const [mobileMenuState, setMobileMenuState] = useState("closed")
 
   const closeMainNavAnimation = () => {
-    console.log("closeMainNavAnimation - mobileMenuState:", mobileMenuState)
     document.querySelector(".mainNav").classList.add("animating")
 
     if (mobileMenuState === "viewPrimary" || mobileMenuState === "closed") {
@@ -216,7 +215,7 @@ const MainNav = () => {
           ease: "back.inOut",
           // ease: "ease",
         },
-        "-=0.25"
+        "-=0.4"
       )
       tl_mainNavClose.to(
         ".mainNav",
@@ -229,47 +228,51 @@ const MainNav = () => {
             resetCentreMainNav()
           },
         },
-        "-=0.5"
+        "-=0.6"
       )
     } else if (mobileMenuState === "viewSecondary") {
       gsap.to(".mainNav", {
-        delay: 0.35,
+        delay: 0.6,
         duration: 0.75,
         height: 0,
         ease: "power1.inOut",
+        onComplete: () => {
+          resetSecondaryMenu()
+          document.querySelector(".mainNav").classList.remove("animating")
+          resetCentreMainNav()
+        },
       })
+      // Secondary title: 'Engagement
       gsap.to(".SecondaryMenuOpen p", {
-        delay: 0.15,
-        duration: 0.75,
+        duration: 1,
         top: "50%",
         opacity: 0,
         ease: "back.inOut",
       })
+      // Secondary 'Back' button
       gsap.to(".SecondaryMenuOpen button", {
         duration: 0.6,
-        top: "50%",
+        // top: "50%",
         opacity: 0,
         ease: "power1.inOut",
       })
+      // All secondary li items
       gsap.to(
-        Array.from(
-          document.querySelectorAll(".SecondaryMenuOpen li")
-        ).reverse(),
+        // using Array.from seems to break this
+        // Array.from(
+        //   document.querySelectorAll(".SecondaryMenuOpen li")
+        // ).reverse(),
+        document.querySelectorAll(".SecondaryMenuOpen li"),
         {
-          duration: 0.75,
+          duration: 0.6,
           top: "50%",
           opacity: 0,
-          stagger: 0.05,
+          stagger: 0.025,
           ease: "back.inOut",
-          onComplete: () => {
-            resetSecondaryMenu()
-            document.querySelector(".mainNav").classList.remove("animating")
-            resetCentreMainNav()
-          },
         }
       )
     }
-    mobileMenuState = "closed"
+    setMobileMenuState("closed")
   }
 
   // useEffect(() => {
@@ -280,9 +283,13 @@ const MainNav = () => {
   // })
 
   const openMainNavOpenAnimation = () => {
-    mobileMenuState = "viewPrimary"
+    setMobileMenuState("viewPrimary")
     document.querySelector(".mainNav").classList.add("animating")
     document.querySelector(".UL__primaryLinks").scrollTo(0, 0)
+
+    gsap.set(document.querySelectorAll(".UL__primaryLinks > li"), {
+      top: "50%",
+    })
 
     const tl_mainNavOpen = gsap.timeline()
     tl_mainNavOpen.to(".mainNav", {
@@ -350,8 +357,8 @@ const MainNav = () => {
   }
 
   const resetSecondaryMenu = () => {
-    console.log("resetSecondaryMenu")
     document.querySelector(".SecondaryMenuOpen").style = ""
+    document.querySelector(".SecondaryMenuOpen").scrollTop = 0
     document
       .querySelectorAll(".SecondaryMenuOpen p")
       .forEach(el => (el.style = ""))
@@ -367,7 +374,7 @@ const MainNav = () => {
   }
 
   const openSecondaryMenuAnimation = e => {
-    mobileMenuState = "viewSecondary"
+    setMobileMenuState("viewSecondary")
     const menu = e.target.nextElementSibling
     menu.classList.add("SecondaryMenuOpen")
 
@@ -394,8 +401,10 @@ const MainNav = () => {
     slideLeftMainNavAnimation()
   }
 
+  // When clicking the 'Back' button from secondary nav
   const closeSecondaryMenuAnimation = e => {
-    mobileMenuState = "viewPrimary"
+    document.querySelector(".SecondaryMenuOpen").scrollTop = 0
+    setMobileMenuState("viewPrimary")
     const menu = e.target.parentNode
     menu.classList.remove("SecondaryMenuOpen")
 
@@ -429,12 +438,14 @@ const MainNav = () => {
       String(document.documentElement.classList).indexOf("no_y_scroll") < 0 &&
       window.innerWidth < 1024
     ) {
+      // if nav is not open, show nav:
       document.documentElement.classList.add("no_y_scroll")
-      document.documentElement.classList.add("showMobileNav")
+      // document.documentElement.classList.add("showMobileNav") // not needed anymore
       openMainNavOpenAnimation()
     } else {
+      // if nav is open, hide nav:
       document.documentElement.classList.remove("no_y_scroll")
-      document.documentElement.classList.remove("showMobileNav")
+      // document.documentElement.classList.remove("showMobileNav")  // not needed anymore
       closeMainNavAnimation()
     }
   }

@@ -344,6 +344,7 @@ export const Button__secondaryListBack = styled.button`
   left: 100%;
   bottom: 60px;
   width: 100%;
+  height: 55px;
   margin: 5px 0 0;
   padding: 13px 0;
   border: none;
@@ -411,8 +412,8 @@ export const LI__primaryLink = styled.li`
 export const UL__secondaryLinkList = styled.ul`
   /* height: 100%; */
   width: 100%;
-  /* overflow-y: hidden;
-  overflow-x: hidden; */
+  /* overflow-y: hidden; */
+  /* overflow-x: hidden; */
 
   ${props =>
     props.centredTextDesktop &&
@@ -425,7 +426,7 @@ export const UL__secondaryLinkList = styled.ul`
     `}
 
   .animating & {
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
   }
 
   ${css_breakpoints.min_desktop} {
