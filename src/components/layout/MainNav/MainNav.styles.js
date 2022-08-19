@@ -530,9 +530,13 @@ export const Li__secondaryLink = styled.li`
 export const A__secondaryCategoryLink = styled.a`
   display: flex;
   align-items: center;
-  padding: 8px 0;
+  padding: 8px 0 8px 35px;
   font-size: 16px;
   color: #76591b;
+
+  .viewAllLink & {
+    padding: 8px 0;
+  }
 
   ${css_breakpoints.min_desktop} {
     position: relative;
@@ -574,6 +578,8 @@ export const A__secondaryCategoryLink = styled.a`
     }
 
     .viewAllLink & {
+      padding: 10px 25px;
+
       &:before {
         left: 50%;
         transform: translateX(-50%);
