@@ -112,6 +112,7 @@ const MainNav = () => {
 
   const closeSecondaryLinkBackground = () => {
     if (window.innerWidth < 1200) return
+    document.querySelector(".primaryLinkHighlighter").style.opacity = "0"
     document.body.classList.remove("subNav--openForAPrimaryLink")
     document.querySelector(".secondaryLinkBackground").style.height = "0"
     document
@@ -153,19 +154,34 @@ const MainNav = () => {
     const subMenuElements = Array.from(
       document.querySelectorAll(".subNav--open ul")
     )
+
     const subMenuElementsLength = subMenuElements.length
-    // Push 'View all...' button to end of array to animate last
-    subMenuElements.push(subMenuElements.splice(0, 1)[0])
-    // reset 'View all...' button location so it only fades in
-    gsap.set(subMenuElements[subMenuElementsLength - 1].firstChild, {
-      y: "0px",
-    })
+
+    // Check if view all... link exists and it's location
+    const subMenuElementsLocationOfViewAllLink = subMenuElements.findIndex(
+      el => {
+        return el.classList.contains("viewAllLink")
+      }
+    )
+    // If view all... link exists first, push it to end of array to animate last
+    if (subMenuElementsLocationOfViewAllLink === 0) {
+      subMenuElements.push(subMenuElements.splice(0, 1)[0])
+      // reset 'View all...' button location so it only fades in
+      gsap.set(subMenuElements[subMenuElementsLength - 1].firstChild, {
+        y: "0px",
+      })
+    }
 
     let subMenuElementStagger = -150
 
     subMenuElements.forEach((element, index) => {
       subMenuElementStagger += 150
-      if (index + 1 === subMenuElementsLength) subMenuElementStagger += 250
+      // if view all... link exists, then delay animating in to draw attention to it
+      if (
+        index + 1 === subMenuElementsLength &&
+        subMenuElementsLocationOfViewAllLink === 0
+      )
+        subMenuElementStagger += 250
 
       setTimeout(() => {
         gsap.to(element.childNodes, {
@@ -181,9 +197,12 @@ const MainNav = () => {
 
   const primaryLinkMouseOut = e => {
     if (window.innerWidth < 1200) return
-    document.querySelector(".primaryLinkHighlighter").style.opacity = "0"
     const toElement = e.toElement?.classList?.[0]
-    if (toElement?.indexOf("Div__mainNav__container") >= 0)
+    if (
+      toElement?.indexOf("Div__mainNav__container") >= 0 ||
+      toElement?.indexOf("MainNavstyles__Nav__mainNav") >= 0 ||
+      toElement?.indexOf("MainNavstyles__A__mainNav__logo") >= 0
+    )
       closeSecondaryLinkBackground()
   }
 
@@ -490,11 +509,12 @@ const MainNav = () => {
               >
                 Engagement
               </Button__primary>
-              <Div__secondaryLinkWrapper>
+              <Div__secondaryLinkWrapper
+                onMouseOut={e => primaryLinkMouseOut(e)}
+              >
                 <P__secondaryLinksTitle>Engagement</P__secondaryLinksTitle>
 
-                <UL__secondaryLinkList viewAllLink>
-                  {/* <UL__secondaryLinkList style={{ flexDirection: "column" }}> */}
+                <UL__secondaryLinkList viewAllLink className="viewAllLink">
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
@@ -513,7 +533,6 @@ const MainNav = () => {
                   <Li__secondaryLinkListHeading>
                     Shape
                   </Li__secondaryLinkListHeading>
-                  {/* <UL__secondaryLinkList style={{ flexDirection: "column" }}> */}
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
@@ -553,7 +572,6 @@ const MainNav = () => {
                 </UL__secondaryLinkList>
 
                 <UL__secondaryLinkList>
-                  {/* <UL__secondaryLinkList style={{ flexDirection: "column" }}> */}
                   <Li__secondaryLinkListHeading>
                     Colour
                   </Li__secondaryLinkListHeading>
@@ -630,7 +648,6 @@ const MainNav = () => {
                 </UL__secondaryLinkList>
 
                 <UL__secondaryLinkList>
-                  {/* <UL__secondaryLinkList style={{ flexDirection: "column" }}> */}
                   <Li__secondaryLinkListHeading>
                     GemStone
                   </Li__secondaryLinkListHeading>
@@ -690,7 +707,6 @@ const MainNav = () => {
                 </UL__secondaryLinkList>
 
                 <UL__secondaryLinkList>
-                  {/* <UL__secondaryLinkList style={{ flexDirection: "column" }}> */}
                   <Li__secondaryLinkListHeading>
                     Metal
                   </Li__secondaryLinkListHeading>

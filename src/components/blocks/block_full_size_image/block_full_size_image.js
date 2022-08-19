@@ -122,7 +122,7 @@ const Block_one_row_jewellery = () => {
       scrollTrigger: {
         trigger: gsap__image,
         // markers: true,
-        start: "-25% top",
+        start: "-60px top",
         end: "75% top",
         onEnter: () => {
           document.body.classList.add("mainNav--shrink--transparent")

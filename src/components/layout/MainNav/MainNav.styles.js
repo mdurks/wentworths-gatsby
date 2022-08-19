@@ -179,10 +179,14 @@ export const Button__primary = styled.button`
     letter-spacing: 1px;
     color: white;
 
-    @media (hover: hover) {
+    /* @media (hover: hover) {
       &:hover {
         color: #b3924c !important;
       }
+    } */
+
+    .subNav--open & {
+      color: #b3924c !important;
     }
 
     /* .mainNav--shrink & {
@@ -446,42 +450,43 @@ export const UL__secondaryLinkList = styled.ul`
     flex: 1 1;
   }
 
-    ${props =>
-      props.viewAllLink &&
-      css`
+  ${props =>
+    props.viewAllLink &&
+    css`
       a {
-            font-size: 20px;
+        font-size: 20px;
       }
 
       ${css_breakpoints.min_desktop} {
-          flex: 1 0 100%;
-          height: auto;
-          padding: 15px 0 40px;
-          order: 1;
+        flex: 1 0 100%;
+        height: auto;
+        padding: 15px 0 40px;
+        order: 1;
 
-          a {
+        a {
+          margin: 0;
+          padding: 10px 25px;
+          border-radius: 100px;
+          background: #b3924c;
+          color: white;
+          font-size: 16px;
+
+          &:before {
+            bottom: 13px;
+          }
+
+          &:hover {
             margin: 0;
             padding: 10px 25px;
-            border-radius: 100px;
-            background: #b3924c;
             color: white;
-            font-size: 16px;
 
             &:before {
-              bottom: 13px;
-            }
-
-            &:hover {
-              margin: 0;
-              padding: 10px 25px;
-              color: white;
-
-              &:before {
-                width: calc(100% - 47px);
-                background: #ffffff;
-              }
+              width: calc(100% - 47px);
+              background: #ffffff;
             }
           }
+        }
+      }
     `}
 `
 
@@ -533,7 +538,7 @@ export const A__secondaryCategoryLink = styled.a`
     position: relative;
     height: 100%;
     margin: 0 5px 0 0;
-    padding: 4px 0 4px 5px;
+    padding: 4px 0 4px 35px;
     font-size: 14px;
     text-transform: none;
     color: black;
@@ -544,7 +549,6 @@ export const A__secondaryCategoryLink = styled.a`
       position: absolute;
       bottom: 2px;
       left: 50%;
-      transform: translateX(-50%);
       width: 0;
       height: 1px;
       background: #fff;
@@ -553,25 +557,43 @@ export const A__secondaryCategoryLink = styled.a`
 
     &:hover {
       margin-right: 0;
-      padding-left: 10px;
+      padding-left: 40px;
       color: #936400;
 
       &:before {
-        width: calc(100% + 10px);
+        width: calc(100% - 32px);
         background: #c1a260;
+        left: 37px;
       }
 
       svg {
-        left: -5px;
+        left: -3px;
+        width: 29px;
+        height: 21px;
+      }
+    }
+
+    .viewAllLink & {
+      &:before {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      &:hover {
+        &:before {
+          width: calc(100% - 45px);
+        }
       }
     }
   }
 
   svg {
-    position: relative;
+    position: absolute;
     left: 0;
-    margin: 0 14px 0 0;
     transition: all ease 0.3s;
+    width: 23px;
+    height: 17px;
+    /* transform: scale(1); */
   }
 `
 
@@ -662,9 +684,16 @@ export const Nav__mainNav = styled.nav`
       }
     } */
 
-    /* Style nav bar for when we want to hide the nav bar e.g block_full_size_image component */
+    /* Style nav bar for when we want to "fade out" the nav bar e.g block_full_size_image component */
     .mainNav--shrink--transparent & {
       background: transparent;
+
+      &:hover {
+        background: #b3924c;
+      }
+    }
+    .subNav--openForAPrimaryLink & {
+      background: #b3924c;
     }
   }
 `
