@@ -56,7 +56,7 @@ export const Styled_footer = styled.footer`
     }
   }
 
-  ul a {
+  /* ul a {
     display: block;
     padding: 6px 0;
     transition: all ease 0.3s;
@@ -68,7 +68,7 @@ export const Styled_footer = styled.footer`
     ${css_breakpoints.min_tablet} {
       padding: 4px 0;
     }
-  }
+  } */
 
   ul button {
     display: block;
@@ -189,5 +189,18 @@ export const Styled_footer = styled.footer`
       width: 150px;
       margin: 15px 0 0;
     }
+  }
+`
+export const FooterLink = styled.a`
+  display: block;
+  padding: 6px 0;
+  transition: all ease 0.3s;
+
+  &:hover {
+    padding-left: 5px;
+  }
+
+  ${css_breakpoints.min_tablet} {
+    padding: 4px 0;
   }
 `

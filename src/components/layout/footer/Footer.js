@@ -1,7 +1,8 @@
 import React, { useEffect } from "react"
 import { gsap, ScrollTrigger } from "gsap/all"
 import { useAppContext } from "../../../store/AppContext"
-import { Styled_footer } from "./Footer.styles"
+import Link from "gatsby-plugin-transition-link"
+import { Styled_footer, FooterLink } from "./Footer.styles"
 import { Styled_SiteContainer } from "../../../styles/commonStyles"
 
 gsap.registerPlugin(ScrollTrigger)
@@ -118,41 +119,49 @@ const Footer = () => {
             </h3>
             <ul class="accordionContentWrapper">
               <li class="animate_footer_items_2">
-                <a href="/services/bespoke-jewellery-design">
+                <FooterLink as={Link} to="/services/bespoke-jewellery-design/">
                   Bespoke Jewellery Design
-                </a>
+                </FooterLink>
               </li>
               <li class="animate_footer_items_2">
-                <a href="/services/hand-crafted-jewellery">
+                <FooterLink as={Link} to="/services/hand-crafted-jewellery/">
                   Hand Crafted Jewellery
-                </a>
+                </FooterLink>
               </li>
               <li class="animate_footer_items_2">
-                <a href="/services/jewellery-remodelling">
+                <FooterLink as={Link} to="/services/jewellery-remodelling/">
                   Jewellery Remodelling
-                </a>
+                </FooterLink>
               </li>
               <li class="animate_footer_items_2">
-                <a href="/services/jewellery-repairs">Jewellery Repairs</a>
+                <FooterLink as={Link} to="/services/jewellery-repairs/">
+                  Jewellery Repairs
+                </FooterLink>
               </li>
               <li class="animate_footer_items_2">
-                <a href="/services/buy-silver-and-gold">
+                <FooterLink as={Link} to="/services/buy-silver-and-gold/">
                   We Buy Silver and Gold
-                </a>
+                </FooterLink>
               </li>
               <li class="animate_footer_items_2">
-                <a href="/services/ring-resizing">Ring Resizing</a>
+                <FooterLink as={Link} to="/services/ring-resizing/">
+                  Ring Resizing
+                </FooterLink>
               </li>
               <li class="animate_footer_items_2">
-                <a href="/services/jewellery-valuations">
+                <FooterLink as={Link} to="/services/jewellery-valuations/">
                   Jewellery Valuations
-                </a>
+                </FooterLink>
               </li>
               <li class="animate_footer_items_2">
-                <a href="/services/pearl-stringing">Pearl Stringing</a>
+                <FooterLink as={Link} to="/services/pearl-stringing/">
+                  Pearl Stringing
+                </FooterLink>
               </li>
               <li class="animate_footer_items_2">
-                <a href="/services/watch-repairs">Watch Repairs</a>
+                <FooterLink as={Link} to="/services/watch-repairs/">
+                  Watch Repairs
+                </FooterLink>
               </li>
             </ul>
           </div>
@@ -195,25 +204,39 @@ const Footer = () => {
                 </button>
               </li>
               <li className="animate_footer_items_3">
-                <a href="/about/about">About Wentworths</a>
+                <FooterLink as={Link} to="/about/about/">
+                  About Wentworths
+                </FooterLink>
               </li>
               <li class="animate_footer_items_3">
-                <a href="/blog">News & Articles</a>
+                <FooterLink as={Link} to="/blog/">
+                  News & Articles
+                </FooterLink>
               </li>
               <li class="animate_footer_items_3">
-                <a href="/services/fair-trade-gold">Fair Trade Gold</a>
+                <FooterLink as={Link} to="/about/fair-trade-gold/">
+                  Fair Trade Gold
+                </FooterLink>
               </li>
               <li class="animate_footer_items_3">
-                <a href="/">Returns Policy</a>
+                <FooterLink as={Link} to="/">
+                  Returns Policy
+                </FooterLink>
               </li>
               <li class="animate_footer_items_3">
-                <a href="/">Terms & Conditions</a>
+                <FooterLink as={Link} to="/">
+                  Terms & Conditions
+                </FooterLink>
               </li>
               <li class="animate_footer_items_3">
-                <a href="/">FAQ</a>
+                <FooterLink as={Link} to="/">
+                  FAQ
+                </FooterLink>
               </li>
               <li class="animate_footer_items_3">
-                <a href="/">Free Shipping</a>
+                <FooterLink as={Link} to="/">
+                  Free Shipping
+                </FooterLink>
               </li>
             </ul>
           </div>
