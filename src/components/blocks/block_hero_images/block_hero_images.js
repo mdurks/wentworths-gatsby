@@ -70,12 +70,13 @@ const Block_hero_images = () => {
 
     // Fade/Scale in background image
 
-    tl.from(".Section__hero__backgroundImg", {
-      duration: 5,
-      scale: 1.5,
-      opacity: 0,
-      ease: "power2.out",
-    })
+    if (document.querySelector(".Section__hero__backgroundImg"))
+      tl.from(".Section__hero__backgroundImg", {
+        duration: 5,
+        scale: 1.5,
+        opacity: 0,
+        ease: "power2.out",
+      })
     // gsap.to(gsap_section_hero_img, {
     //   scrollTrigger: {
     //     trigger: document.body,
