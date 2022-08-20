@@ -124,8 +124,9 @@ const Styled_ProductItem = styled(Link)`
   .productDesc {
     position: relative;
     top: 0;
-    width: 60%;
+    width: 75%;
     margin: 200px auto 0;
+    font-size: 16px;
     line-height: 20px;
     color: black;
     text-transform: capitalize;
