@@ -145,6 +145,12 @@ const MainNav = () => {
         nextSiblingHeight + "px"
     else document.querySelector(".secondaryLinkBackground").style.height = "0"
 
+    //
+    // BREAK FUNCTION if no sub elements - e.g. basket button
+    // ------------------------------------------------------------------------------------
+    if (!document.querySelectorAll(".subNav--open ul > *").length) return
+    //
+
     // Submenu Animations:
     gsap.set(document.querySelectorAll(".subNav--open ul > *"), {
       opacity: 0,
