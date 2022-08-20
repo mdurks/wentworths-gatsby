@@ -134,56 +134,32 @@ const Block_bespoke_design_advert = () => {
     sketchImagesArray.push(value)
   }
 
+  // TODO Reduce the number of sketches shown from 10 to 6, need to update CMS with this
   sketchImagesArray = sketchImagesArray.slice(0, 6)
 
   function getRndInteger(min, max) {
     return Math.random() * (max - min) + min
   }
 
-  let gsap__sketch1 = null
-  let gsap__sketch2 = null
-  let gsap__sketch3 = null
-  let gsap__sketch4 = null
-  let gsap__sketch5 = null
-  let gsap__sketch6 = null
-  // let gsap__sketch7 = null
-  // let gsap__sketch8 = null
-  // let gsap__sketch9 = null
-  // let gsap__sketch10 = null
-  let gsap__block_bespoke_design_advert = null
-
-  let gsap__sketch_group = [
-    gsap__sketch1,
-    gsap__sketch2,
-    gsap__sketch3,
-    gsap__sketch4,
-    gsap__sketch5,
-    gsap__sketch6,
-    // gsap__sketch7,
-    // gsap__sketch8,
-    // gsap__sketch9,
-    // gsap__sketch10,
-  ]
-
-  let tl_gsap__sketch_playreel
-  const sketch_group_y_positions = [
-    "5%", // min Y
-    "155%",
-    "250%", // max Y
-    "65%",
-    "85%",
-    "210%",
-    "120%",
-  ]
-
   useEffect(() => {
-    let viewportHeight = window.innerHeight
+    // let tl_gsap__sketch_playreel
+    const sketch_group_y_positions = [
+      "5%", // min Y
+      "155%",
+      "250%", // max Y
+      "65%",
+      "85%",
+      "210%",
+      "120%",
+    ]
+
+    // let viewportHeight = window.innerHeight
     let isMobile = window.innerWidth < 768
 
-    tl_gsap__sketch_playreel = gsap.timeline({
+    const tl_gsap__sketch_playreel = gsap.timeline({
       scrollTrigger: {
         id: "sketches",
-        trigger: gsap__block_bespoke_design_advert,
+        trigger: ".gsap__block_bespoke_design_advert",
         start: isMobile ? "-200px bottom" : "-10% bottom",
         end: "bottom top",
         // toggleActions: "play none none reset",
@@ -195,6 +171,8 @@ const Block_bespoke_design_advert = () => {
         // anticipatePin: 1,
       },
     })
+    const gsap__sketch_group = document.querySelectorAll(".offscreen_right")
+
     gsap__sketch_group.forEach((el, index) => {
       gsap.set(el, {
         // y: getRndInteger(viewportHeight * 0.05, (viewportHeight - 150) * 0.9),
@@ -221,7 +199,7 @@ const Block_bespoke_design_advert = () => {
     const tl_gsap_closing_message = gsap.timeline({
       scrollTrigger: {
         id: "message",
-        trigger: gsap__block_bespoke_design_advert,
+        trigger: ".gsap__block_bespoke_design_advert",
         start: isMobile ? "-100px bottom" : "-10% bottom",
         // start: isMobile ? "top bottom" : "15% bottom",
         toggleActions: "play none none none",
@@ -356,16 +334,11 @@ const Block_bespoke_design_advert = () => {
 
   return (
     <>
-      <Div__block_bespoke_design_advert
-        ref={e => (gsap__block_bespoke_design_advert = e)}
-      >
+      <Div__block_bespoke_design_advert className="gsap__block_bespoke_design_advert">
         <Styled_SiteContainer>
           <div className="bespoke_design_gsap_scrolling_image_container">
             {sketchImagesArray.map((el, index) => (
-              <div
-                className="offscreen_right"
-                ref={e => (gsap__sketch_group[index] = e)}
-              >
+              <div className="offscreen_right">
                 <GraphImg
                   className="gsap_scrolling_img"
                   image={el}
