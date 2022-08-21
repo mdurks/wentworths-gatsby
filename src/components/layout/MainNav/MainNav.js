@@ -1170,6 +1170,18 @@ const MainNav = () => {
                       Free Shipping
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/about/ethical-and-sustainable-practices/"
+                      onClick={closeSecondaryLinkBackground}
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
+                      Ethical And Sustainable Practices
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
                 </UL__secondaryLinkList>
                 <Button__secondaryListBack
                   type="button"

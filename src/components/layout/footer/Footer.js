@@ -238,6 +238,14 @@ const Footer = () => {
                   Free Shipping
                 </FooterLink>
               </li>
+              <li class="animate_footer_items_3">
+                <FooterLink
+                  as={Link}
+                  to="/about/ethical-and-sustainable-practices/"
+                >
+                  Ethical And Sustainable Practices
+                </FooterLink>
+              </li>
             </ul>
           </div>
           <div className="lastAccordionGroup">
