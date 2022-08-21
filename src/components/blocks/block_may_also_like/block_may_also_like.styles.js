@@ -38,7 +38,11 @@ export const Div__block_may_also_like = styled.div`
       font-size: clamp(40px, 7vw, 100px);
       line-height: clamp(80px, 8vw, 170px);
       text-transform: none;
-      color: #c1a260;
+      color: black;
+
+      ${css_breakpoints.min_tablet} {
+        color: #c1a260;
+      }
 
       ${css_breakpoints.min_desktop} {
         margin: 125px 0 -20px;

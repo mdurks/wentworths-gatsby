@@ -64,9 +64,11 @@ export const Div__pageHeader = styled.div`
       color: black;
       font-size: clamp(30px, 3vw, 40px);
       line-height: normal;
+      letter-spacing: 6px;
 
       ${css_breakpoints.min_desktop} {
         top: -70px;
+        letter-spacing: 10px;
       }
     }
   }
