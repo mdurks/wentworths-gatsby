@@ -41,14 +41,14 @@ const Block_one_row_jewellery = () => {
 
   // console.log("blockFullSizeImages", blockFullSizeImages)
 
-  let gsap__image = null
+  const linkURL = `/${blockFullSizeImages[0].products[0].categoryType[0]}/${blockFullSizeImages[0].products[0].productType}/${blockFullSizeImages[0].products[0].slug}/`
 
   useEffect(() => {
     // scrolling zoom effect on image
     gsap.from(".block_full_size_image", {
       scrollTrigger: {
         // markers: true,
-        trigger: gsap__image,
+        trigger: ".block_full_size_imageWrapper",
         start: "top 112%",
         end: "110% bottom",
         scrub: true,
@@ -62,11 +62,11 @@ const Block_one_row_jewellery = () => {
       scrollTrigger: {
         // markers: true,
         id: "sc_block_full_size_image__descriptionWrapper",
-        trigger: gsap__image,
+        trigger: ".block_full_size_imageWrapper",
         start: `top ${window.innerHeight - 150}`,
         end: "bottom bottom",
         scrub: 1,
-        // toggleClass: { targets: gsap__image, className: "fixDescription" },
+        // toggleClass: { targets: ".block_full_size_imageWrapper", className: "fixDescription" },
 
         onEnter: () => {
           document
@@ -120,7 +120,7 @@ const Block_one_row_jewellery = () => {
     // Show/Hide main nav when this component in central view
     gsap.from(".block_full_size_image", {
       scrollTrigger: {
-        trigger: gsap__image,
+        trigger: ".block_full_size_imageWrapper",
         // markers: true,
         start: "-60px top",
         end: "75% top",
@@ -148,62 +148,56 @@ const Block_one_row_jewellery = () => {
 
   return (
     <>
-      <Div__block_full_size_image
-        className="block_full_size_imageWrapper"
-        ref={e => (gsap__image = e)}
-        onClick={() => {
-          if (typeof window !== "undefined" && window.innerWidth < 1024) {
-            location.href = `/${blockFullSizeImages[0].products[0].categoryType[0]}/${blockFullSizeImages[0].products[0].productType}/${blockFullSizeImages[0].products[0].slug}/`
-          }
-        }}
-      >
-        {typeof window !== "undefined" && window.innerWidth < 600 ? (
-          <GraphImg
-            className="block_full_size_image"
-            image={
-              blockFullSizeImages[0].products[0].blockFullImageComponent[1]
-            }
-            transforms={["quality=value:80"]}
-            maxWidth={2000}
-          />
-        ) : (
-          <GraphImg
-            className="block_full_size_image"
-            image={
-              blockFullSizeImages[0].products[0].blockFullImageComponent[0]
-            }
-            transforms={["quality=value:80"]}
-            maxWidth={2000}
-          />
-        )}
-        <div className="block_full_size_image__descriptionWrapper">
-          {/* <span className="block_full_size_image__questionButon">?</span> */}
-          <Link
-            to={`/${blockFullSizeImages[0].products[0].categoryType[0]}/${blockFullSizeImages[0].products[0].productType}/${blockFullSizeImages[0].products[0].slug}/`}
-            className="block_full_size_image__link"
-            onMouseOver={() => {
-              document.querySelector(
-                ".block_full_size_image__link"
-              ).style.width =
+      <Div__block_full_size_image className="block_full_size_imageWrapper">
+        <Link to={linkURL}>
+          {typeof window !== "undefined" && window.innerWidth < 600 ? (
+            <GraphImg
+              className="block_full_size_image"
+              image={
+                blockFullSizeImages[0].products[0].blockFullImageComponent[1]
+              }
+              transforms={["quality=value:80"]}
+              maxWidth={2000}
+            />
+          ) : (
+            <GraphImg
+              className="block_full_size_image"
+              image={
+                blockFullSizeImages[0].products[0].blockFullImageComponent[0]
+              }
+              transforms={["quality=value:80"]}
+              maxWidth={2000}
+            />
+          )}
+          <div className="block_full_size_image__descriptionWrapper">
+            {/* <span className="block_full_size_image__questionButon">?</span> */}
+            <Link
+              to={linkURL}
+              className="block_full_size_image__link"
+              onMouseOver={() => {
                 document.querySelector(
-                  ".block_full_size_image__questionTextInner"
-                ).offsetWidth +
-                40 +
-                "px"
-            }}
-            onMouseOut={() => {
-              document.querySelector(
-                ".block_full_size_image__link"
-              ).style.width = "44px"
-            }}
-          >
-            <span className="block_full_size_image__questionText">
-              <span className="block_full_size_image__questionTextInner">
-                {blockFullSizeImages[0].products[0].name}
+                  ".block_full_size_image__link"
+                ).style.width =
+                  document.querySelector(
+                    ".block_full_size_image__questionTextInner"
+                  ).offsetWidth +
+                  40 +
+                  "px"
+              }}
+              onMouseOut={() => {
+                document.querySelector(
+                  ".block_full_size_image__link"
+                ).style.width = "44px"
+              }}
+            >
+              <span className="block_full_size_image__questionText">
+                <span className="block_full_size_image__questionTextInner">
+                  {blockFullSizeImages[0].products[0].name}
+                </span>
               </span>
-            </span>
-          </Link>
-        </div>
+            </Link>
+          </div>
+        </Link>
       </Div__block_full_size_image>
     </>
   )

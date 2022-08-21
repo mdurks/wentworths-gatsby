@@ -7,10 +7,15 @@ const section_content_max_width = "1800px"
 
 export const Div__block_full_size_image = styled.div`
   position: relative;
+  display: block;
   min-height: calc(100vh + ${section_vertical_padding});
   overflow: hidden;
   /* padding: calc(${section_vertical_padding} / 2) ${section_horizontal_padding}; */
   border-bottom: 10px solid white;
+
+  > a {
+    display: block;
+  }
 
   .graphcms-image-outer-wrapper {
     position: absolute !important;
