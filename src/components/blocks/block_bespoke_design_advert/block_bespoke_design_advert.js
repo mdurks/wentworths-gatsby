@@ -367,7 +367,11 @@ const Block_bespoke_design_advert = () => {
           <p className="bespoke_design_heading1">Bespoke jewellery design</p>
           <p className="bespoke_design_heading2">bring your imagination</p>
           <p className="bespoke_design_heading3">in to reality</p>
-          <Styled_btn as={Link} className="bespoke_design_link" to="/">
+          <Styled_btn
+            as={Link}
+            className="bespoke_design_link"
+            to="/services/bespoke-jewellery-design/"
+          >
             View Bespoke Jewellery Designs
           </Styled_btn>
         </Styled_SiteContainer>
