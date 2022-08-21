@@ -99,25 +99,34 @@ export const Styled_BlogLatestArticlesWrapper = styled.div`
   }
 
   .blogLatestArticleReadMore {
-    display: block;
-    flex: 1 0 100%;
-    margin: 50px 0 40px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-block;
+    width: auto;
+    margin: 30px auto;
+    padding: 11px 40px 12px;
+    font-size: 19px;
+    /* text-transform: uppercase; */
+    text-decoration: none;
     text-align: center;
-    color: black;
+    background-color: #b3924c;
+    border: 2px solid #b3924c;
+    color: white;
 
     ${css_breakpoints.min_desktop} {
-      margin: 50px 0 5px;
-    }
-
-    span {
-      margin: 0 0 2px;
-      padding: 0 0 2px;
-      border-bottom: 1px solid #000;
-      transition: all ease 0.3s;
+      left: auto;
+      transform: none;
+      margin: 50px auto 40px;
 
       &:hover {
-        color: #936400;
-        border-bottom: 1px solid #936400;
+        text-decoration: underline;
+      }
+    }
+
+    ${css_breakpoints.max_mobile} {
+      span {
+        display: block;
       }
     }
   }

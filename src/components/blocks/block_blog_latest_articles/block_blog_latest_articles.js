@@ -6,7 +6,7 @@ import {
   Styled_BlogLatestArticles,
   Styled_BlogLatestArticlesWrapper,
 } from "./block_blog_latest_articles.styles.js"
-import { Styled_SiteContainer } from "../../../styles/commonStyles"
+import { Styled_SiteContainer, Styled_btn } from "../../../styles/commonStyles"
 
 import { gsap, ScrollTrigger } from "gsap/all"
 
@@ -33,9 +33,17 @@ const Block_blog_latest_articles = ({ blogs }) => {
               <h3>{blog.articleTitle}</h3>
             </Link>
           ))}
-          <Link to="/blog/" className="blogLatestArticleReadMore">
+          <Styled_btn
+            btn_selected
+            as={Link}
+            to="/blog/"
+            className="blogLatestArticleReadMore"
+          >
+            Read more of our <span>News & Articles</span>
+          </Styled_btn>
+          {/* <Link to="/blog/" >
             <span>Read more of our News & Articles</span>
-          </Link>
+          </Link> */}
         </Styled_BlogLatestArticlesWrapper>
       </Styled_SiteContainer>
     </Styled_BlogLatestArticles>
