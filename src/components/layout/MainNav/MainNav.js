@@ -719,7 +719,7 @@ const MainNav = () => {
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
-                      to="/engagement/silver-engagement-rings"
+                      to="/engagement/silver-engagement-rings/"
                       onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
@@ -732,7 +732,7 @@ const MainNav = () => {
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
-                      to="/engagement/gold-engagement-rings"
+                      to="/engagement/gold-engagement-rings/"
                       onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
@@ -745,7 +745,7 @@ const MainNav = () => {
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
-                      to="/engagement/platinum-engagement-rings"
+                      to="/engagement/platinum-engagement-rings/"
                       onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
@@ -758,7 +758,7 @@ const MainNav = () => {
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
-                      to="/engagement/white-gold-engagement-rings"
+                      to="/engagement/white-gold-engagement-rings/"
                       onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
@@ -771,7 +771,7 @@ const MainNav = () => {
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
-                      to="/engagement/rose-gold-engagement-rings"
+                      to="/engagement/rose-gold-engagement-rings/"
                       onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
@@ -939,7 +939,7 @@ const MainNav = () => {
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
-                      to="/services/bespoke-jewellery-design"
+                      to="/services/bespoke-jewellery-design/"
                       onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
@@ -951,7 +951,7 @@ const MainNav = () => {
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
-                      to="/services/hand-crafted-jewellery"
+                      to="/services/hand-crafted-jewellery/"
                       onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
@@ -963,7 +963,7 @@ const MainNav = () => {
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
-                      to="/services/jewellery-remodelling"
+                      to="/services/jewellery-remodelling/"
                       onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
@@ -975,7 +975,7 @@ const MainNav = () => {
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
-                      to="/services/jewellery-repairs"
+                      to="/services/jewellery-repairs/"
                       onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
@@ -987,7 +987,7 @@ const MainNav = () => {
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
-                      to="/services/buy-silver-and-gold"
+                      to="/services/buy-silver-and-gold/"
                       onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
@@ -999,7 +999,7 @@ const MainNav = () => {
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
-                      to="/services/ring-resizing"
+                      to="/services/ring-resizing/"
                       onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
@@ -1011,7 +1011,7 @@ const MainNav = () => {
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
-                      to="/services/jewellery-valuations"
+                      to="/services/jewellery-valuations/"
                       onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
@@ -1023,7 +1023,7 @@ const MainNav = () => {
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
-                      to="/services/pearl-stringing"
+                      to="/services/pearl-stringing/"
                       onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
@@ -1035,7 +1035,7 @@ const MainNav = () => {
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
-                      to="/services/watch-repairs"
+                      to="/services/watch-repairs/"
                       onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
@@ -1089,7 +1089,7 @@ const MainNav = () => {
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
-                      to="/about/about"
+                      to="/about/about/"
                       onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
@@ -1101,7 +1101,7 @@ const MainNav = () => {
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
-                      to="/blog"
+                      to="/blog/"
                       onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
@@ -1113,7 +1113,7 @@ const MainNav = () => {
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
-                      to="/about/fair-trade-gold"
+                      to="/about/fair-trade-gold/"
                       onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
@@ -1125,7 +1125,7 @@ const MainNav = () => {
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
-                      to="/"
+                      to="/about/returns-policy/"
                       onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
@@ -1137,19 +1137,19 @@ const MainNav = () => {
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
-                      to="/"
+                      to="/about/terms-and-conditions/"
                       onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
                       }}
                     >
-                      Terms & Conditions
+                      Terms And Conditions
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
-                      to="/"
+                      to="/about/faq/"
                       onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
@@ -1161,7 +1161,7 @@ const MainNav = () => {
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
-                      to="/"
+                      to="/about/free-shipping/"
                       onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),

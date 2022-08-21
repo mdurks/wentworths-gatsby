@@ -219,22 +219,22 @@ const Footer = () => {
                 </FooterLink>
               </li>
               <li class="animate_footer_items_3">
-                <FooterLink as={Link} to="/">
+                <FooterLink as={Link} to="/about/returns-policy/">
                   Returns Policy
                 </FooterLink>
               </li>
               <li class="animate_footer_items_3">
-                <FooterLink as={Link} to="/">
+                <FooterLink as={Link} to="/about/terms-and-conditions/">
                   Terms & Conditions
                 </FooterLink>
               </li>
               <li class="animate_footer_items_3">
-                <FooterLink as={Link} to="/">
+                <FooterLink as={Link} to="/about/faq/">
                   FAQ
                 </FooterLink>
               </li>
               <li class="animate_footer_items_3">
-                <FooterLink as={Link} to="/">
+                <FooterLink as={Link} to="/about/free-shipping/">
                   Free Shipping
                 </FooterLink>
               </li>
