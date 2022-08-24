@@ -162,6 +162,7 @@ const MainNav = () => {
     )
 
     const subMenuElementsLength = subMenuElements.length
+    console.log("subMenuElementsLength", subMenuElementsLength)
 
     // Check if view all... link exists and it's location
     const subMenuElementsLocationOfViewAllLink = subMenuElements.findIndex(
@@ -178,10 +179,13 @@ const MainNav = () => {
       })
     }
 
-    let subMenuElementStagger = -150
+    let staggerAmmount
+    if (subMenuElementsLength > 6) staggerAmmount = 65
+    else staggerAmmount = 150
+    let subMenuElementStagger = -staggerAmmount
 
     subMenuElements.forEach((element, index) => {
-      subMenuElementStagger += 150
+      subMenuElementStagger += staggerAmmount
       // if view all... link exists, then delay animating in to draw attention to it
       if (
         index + 1 === subMenuElementsLength &&
@@ -845,9 +849,579 @@ const MainNav = () => {
               >
                 Jewellery
               </Button__primary>
+
               <Div__secondaryLinkWrapper>
                 <P__secondaryLinksTitle>Jewellery</P__secondaryLinksTitle>
-                <UL__secondaryLinkList>
+
+                <UL__secondaryLinkList viewAllLink className="viewAllLink">
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/jewellery/rings/"
+                      onClick={closeSecondaryLinkBackground}
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
+                      View All Jewellery Rings
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                </UL__secondaryLinkList>
+
+                {/* Rings */}
+
+                <div style={{ display: "flex", flex: "1 0 100%" }}>
+                  <UL__secondaryLinkList>
+                    <Li__secondaryLinkListHeading>
+                      Shape
+                    </Li__secondaryLinkListHeading>
+                    <Li__secondaryLink>
+                      <A__secondaryCategoryLink
+                        as={Link}
+                        to="/jewellery/princess-jewellery-rings/"
+                        onClick={closeSecondaryLinkBackground}
+                        exit={{
+                          trigger: () => click_mobile_burger_btn(),
+                        }}
+                      >
+                        <Svg_curPrincess
+                          width="21"
+                          height="21"
+                          stroke="black"
+                          strokeWidth="2.5"
+                        />
+                        Princess Cut jewellery rings
+                      </A__secondaryCategoryLink>
+                    </Li__secondaryLink>
+                    <Li__secondaryLink>
+                      <A__secondaryCategoryLink
+                        as={Link}
+                        to="/jewellery/round-jewellery-rings/"
+                        onClick={closeSecondaryLinkBackground}
+                        exit={{
+                          trigger: () => click_mobile_burger_btn(),
+                        }}
+                      >
+                        <Svg_curRoundBrilliant
+                          width="21"
+                          height="21"
+                          stroke="black"
+                          strokeWidth="2.5"
+                        />
+                        Round Cut jewellery rings
+                      </A__secondaryCategoryLink>
+                    </Li__secondaryLink>
+                  </UL__secondaryLinkList>
+
+                  <UL__secondaryLinkList>
+                    <Li__secondaryLinkListHeading>
+                      Colour
+                    </Li__secondaryLinkListHeading>
+                    <Li__secondaryLink>
+                      <A__secondaryCategoryLink
+                        as={Link}
+                        to="/jewellery/amber-jewellery-rings/"
+                        onClick={closeSecondaryLinkBackground}
+                        exit={{
+                          trigger: () => click_mobile_burger_btn(),
+                        }}
+                      >
+                        <Svg_gemstoneSide
+                          width="23"
+                          height="17"
+                          strokeWidth="4"
+                          stroke="#dfa700"
+                        />
+                        Amber jewellery rings
+                      </A__secondaryCategoryLink>
+                    </Li__secondaryLink>
+                    <Li__secondaryLink>
+                      <A__secondaryCategoryLink
+                        as={Link}
+                        to="/jewellery/clear-jewellery-rings/"
+                        onClick={closeSecondaryLinkBackground}
+                        exit={{
+                          trigger: () => click_mobile_burger_btn(),
+                        }}
+                      >
+                        <Svg_gemstoneSide
+                          width="23"
+                          height="17"
+                          strokeWidth="4"
+                        />
+                        Clear jewellery rings
+                      </A__secondaryCategoryLink>
+                    </Li__secondaryLink>
+                    <Li__secondaryLink>
+                      <A__secondaryCategoryLink
+                        as={Link}
+                        to="/jewellery/default-jewellery-rings/"
+                        onClick={closeSecondaryLinkBackground}
+                        exit={{
+                          trigger: () => click_mobile_burger_btn(),
+                        }}
+                      >
+                        <Svg_gemstoneSide
+                          width="23"
+                          height="17"
+                          strokeWidth="4"
+                        />
+                        Default jewellery rings
+                      </A__secondaryCategoryLink>
+                    </Li__secondaryLink>
+                    <Li__secondaryLink>
+                      <A__secondaryCategoryLink
+                        as={Link}
+                        to="/jewellery/pink-jewellery-rings/"
+                        onClick={closeSecondaryLinkBackground}
+                        exit={{
+                          trigger: () => click_mobile_burger_btn(),
+                        }}
+                      >
+                        <Svg_gemstoneSide
+                          width="23"
+                          height="17"
+                          strokeWidth="4"
+                          stroke="#ff5c74"
+                        />
+                        Pink jewellery rings
+                      </A__secondaryCategoryLink>
+                    </Li__secondaryLink>
+                  </UL__secondaryLinkList>
+
+                  <UL__secondaryLinkList>
+                    <Li__secondaryLinkListHeading>
+                      GemStone
+                    </Li__secondaryLinkListHeading>
+                    <Li__secondaryLink>
+                      <A__secondaryCategoryLink
+                        as={Link}
+                        to="/jewellery/aquamarine-jewellery-rings/"
+                        onClick={closeSecondaryLinkBackground}
+                        exit={{
+                          trigger: () => click_mobile_burger_btn(),
+                        }}
+                      >
+                        <Svg_gemstoneSide
+                          width="23"
+                          height="17"
+                          strokeWidth="4"
+                          stroke="#00ab8f"
+                        />
+                        Aquamarine jewellery rings
+                      </A__secondaryCategoryLink>
+                    </Li__secondaryLink>
+                    <Li__secondaryLink>
+                      <A__secondaryCategoryLink
+                        as={Link}
+                        to="/jewellery/diamond-jewellery-rings/"
+                        onClick={closeSecondaryLinkBackground}
+                        exit={{
+                          trigger: () => click_mobile_burger_btn(),
+                        }}
+                      >
+                        <Svg_gemstoneSide
+                          width="23"
+                          height="17"
+                          strokeWidth="4"
+                        />
+                        Diamond jewellery rings
+                      </A__secondaryCategoryLink>
+                    </Li__secondaryLink>
+                    <Li__secondaryLink>
+                      <A__secondaryCategoryLink
+                        as={Link}
+                        to="/jewellery/morganite-jewellery-rings/"
+                        onClick={closeSecondaryLinkBackground}
+                        exit={{
+                          trigger: () => click_mobile_burger_btn(),
+                        }}
+                      >
+                        <Svg_gemstoneSide
+                          width="23"
+                          height="17"
+                          strokeWidth="4"
+                          stroke="#d38d72"
+                        />
+                        Morganite jewellery rings
+                      </A__secondaryCategoryLink>
+                    </Li__secondaryLink>
+                  </UL__secondaryLinkList>
+
+                  <UL__secondaryLinkList>
+                    <Li__secondaryLinkListHeading>
+                      Metal
+                    </Li__secondaryLinkListHeading>
+                    <Li__secondaryLink>
+                      <A__secondaryCategoryLink
+                        as={Link}
+                        to="/jewellery/silver-jewellery-rings/"
+                        onClick={closeSecondaryLinkBackground}
+                        exit={{
+                          trigger: () => click_mobile_burger_btn(),
+                        }}
+                      >
+                        <Svg_donut width="17" height="17" fill="silver" />
+                        Silver jewellery rings
+                      </A__secondaryCategoryLink>
+                    </Li__secondaryLink>
+                    <Li__secondaryLink>
+                      <A__secondaryCategoryLink
+                        as={Link}
+                        to="/jewellery/gold-jewellery-rings/"
+                        onClick={closeSecondaryLinkBackground}
+                        exit={{
+                          trigger: () => click_mobile_burger_btn(),
+                        }}
+                      >
+                        <Svg_donut width="17" height="17" fill="gold" />
+                        Gold jewellery rings
+                      </A__secondaryCategoryLink>
+                    </Li__secondaryLink>
+                    <Li__secondaryLink>
+                      <A__secondaryCategoryLink
+                        as={Link}
+                        to="/jewellery/platinum-jewellery-rings/"
+                        onClick={closeSecondaryLinkBackground}
+                        exit={{
+                          trigger: () => click_mobile_burger_btn(),
+                        }}
+                      >
+                        <Svg_donut width="17" height="17" fill="grey" />
+                        Platinum jewellery rings
+                      </A__secondaryCategoryLink>
+                    </Li__secondaryLink>
+                    <Li__secondaryLink>
+                      <A__secondaryCategoryLink
+                        as={Link}
+                        to="/jewellery/white-gold-jewellery-rings/"
+                        onClick={closeSecondaryLinkBackground}
+                        exit={{
+                          trigger: () => click_mobile_burger_btn(),
+                        }}
+                      >
+                        <Svg_donut width="17" height="17" fill="silver" />
+                        White Gold jewellery rings
+                      </A__secondaryCategoryLink>
+                    </Li__secondaryLink>
+                    <Li__secondaryLink>
+                      <A__secondaryCategoryLink
+                        as={Link}
+                        to="/jewellery/rose-gold-jewellery-rings/"
+                        onClick={closeSecondaryLinkBackground}
+                        exit={{
+                          trigger: () => click_mobile_burger_btn(),
+                        }}
+                      >
+                        <Svg_donut width="17" height="17" fill="#E0BFB8" />
+                        Rose Gold jewellery rings
+                      </A__secondaryCategoryLink>
+                    </Li__secondaryLink>
+                  </UL__secondaryLinkList>
+                </div>
+
+                {/* Earrings */}
+
+                <div style={{ display: "flex", flex: "1 0 100%" }}>
+                  <UL__secondaryLinkList>
+                    <Li__secondaryLinkListHeading>
+                      Shape
+                    </Li__secondaryLinkListHeading>
+                    <Li__secondaryLink>
+                      <A__secondaryCategoryLink
+                        as={Link}
+                        to="/jewellery/oval-jewellery-earrings/"
+                        onClick={closeSecondaryLinkBackground}
+                        exit={{
+                          trigger: () => click_mobile_burger_btn(),
+                        }}
+                      >
+                        <Svg_curRoundBrilliant
+                          width="21"
+                          height="21"
+                          stroke="black"
+                          strokeWidth="2.5"
+                        />
+                        Oval Cut jewellery earrings
+                      </A__secondaryCategoryLink>
+                    </Li__secondaryLink>
+                  </UL__secondaryLinkList>
+
+                  <UL__secondaryLinkList>
+                    <Li__secondaryLinkListHeading>
+                      Colour
+                    </Li__secondaryLinkListHeading>
+                    <Li__secondaryLink>
+                      <A__secondaryCategoryLink
+                        as={Link}
+                        to="/jewellery/pink-jewellery-earrings/"
+                        onClick={closeSecondaryLinkBackground}
+                        exit={{
+                          trigger: () => click_mobile_burger_btn(),
+                        }}
+                      >
+                        <Svg_gemstoneSide
+                          width="23"
+                          height="17"
+                          strokeWidth="4"
+                          stroke="#ff5c74"
+                        />
+                        Pink jewellery earrings
+                      </A__secondaryCategoryLink>
+                    </Li__secondaryLink>
+                  </UL__secondaryLinkList>
+
+                  <UL__secondaryLinkList>
+                    <Li__secondaryLinkListHeading>
+                      GemStone
+                    </Li__secondaryLinkListHeading>
+                    <Li__secondaryLink>
+                      <A__secondaryCategoryLink
+                        as={Link}
+                        to="/jewellery/diamond-jewellery-earrings/"
+                        onClick={closeSecondaryLinkBackground}
+                        exit={{
+                          trigger: () => click_mobile_burger_btn(),
+                        }}
+                      >
+                        <Svg_gemstoneSide
+                          width="23"
+                          height="17"
+                          strokeWidth="4"
+                        />
+                        Diamond jewellery earrings
+                      </A__secondaryCategoryLink>
+                    </Li__secondaryLink>
+                    <Li__secondaryLink>
+                      <A__secondaryCategoryLink
+                        as={Link}
+                        to="/jewellery/morganite-jewellery-earrings/"
+                        onClick={closeSecondaryLinkBackground}
+                        exit={{
+                          trigger: () => click_mobile_burger_btn(),
+                        }}
+                      >
+                        <Svg_gemstoneSide
+                          width="23"
+                          height="17"
+                          strokeWidth="4"
+                          stroke="blue"
+                        />
+                        Sapphire jewellery earrings
+                      </A__secondaryCategoryLink>
+                    </Li__secondaryLink>
+                  </UL__secondaryLinkList>
+
+                  <UL__secondaryLinkList>
+                    <Li__secondaryLinkListHeading>
+                      Metal
+                    </Li__secondaryLinkListHeading>
+                    <Li__secondaryLink>
+                      <A__secondaryCategoryLink
+                        as={Link}
+                        to="/jewellery/gold-jewellery-earrings/"
+                        onClick={closeSecondaryLinkBackground}
+                        exit={{
+                          trigger: () => click_mobile_burger_btn(),
+                        }}
+                      >
+                        <Svg_donut width="17" height="17" fill="gold" />
+                        Gold jewellery earrings
+                      </A__secondaryCategoryLink>
+                    </Li__secondaryLink>
+                  </UL__secondaryLinkList>
+                </div>
+
+                {/* Necklaces */}
+
+                <div style={{ display: "flex", flex: "1 0 100%" }}>
+                  <UL__secondaryLinkList>
+                    <Li__secondaryLinkListHeading>
+                      Shape
+                    </Li__secondaryLinkListHeading>
+                    <Li__secondaryLink>
+                      <A__secondaryCategoryLink
+                        as={Link}
+                        to="/jewellery/natural-jewellery-necklaces/"
+                        onClick={closeSecondaryLinkBackground}
+                        exit={{
+                          trigger: () => click_mobile_burger_btn(),
+                        }}
+                      >
+                        <Svg_curRoundBrilliant
+                          width="21"
+                          height="21"
+                          stroke="black"
+                          strokeWidth="2.5"
+                        />
+                        Natural jewellery necklaces
+                      </A__secondaryCategoryLink>
+                    </Li__secondaryLink>
+                  </UL__secondaryLinkList>
+
+                  <UL__secondaryLinkList>
+                    <Li__secondaryLinkListHeading>
+                      Colour
+                    </Li__secondaryLinkListHeading>
+                    <Li__secondaryLink>
+                      <A__secondaryCategoryLink
+                        as={Link}
+                        to="/jewellery/white-jewellery-necklaces/"
+                        onClick={closeSecondaryLinkBackground}
+                        exit={{
+                          trigger: () => click_mobile_burger_btn(),
+                        }}
+                      >
+                        <Svg_gemstoneSide
+                          width="23"
+                          height="17"
+                          strokeWidth="4"
+                          // stroke="#ff5c74"
+                        />
+                        White jewellery necklaces
+                      </A__secondaryCategoryLink>
+                    </Li__secondaryLink>
+                  </UL__secondaryLinkList>
+
+                  <UL__secondaryLinkList>
+                    <Li__secondaryLinkListHeading>
+                      GemStone
+                    </Li__secondaryLinkListHeading>
+                    <Li__secondaryLink>
+                      <A__secondaryCategoryLink
+                        as={Link}
+                        to="/jewellery/pearl-jewellery-necklaces/"
+                        onClick={closeSecondaryLinkBackground}
+                        exit={{
+                          trigger: () => click_mobile_burger_btn(),
+                        }}
+                      >
+                        <Svg_gemstoneSide
+                          width="23"
+                          height="17"
+                          strokeWidth="4"
+                        />
+                        Pearl jewellery necklaces
+                      </A__secondaryCategoryLink>
+                    </Li__secondaryLink>
+                  </UL__secondaryLinkList>
+
+                  <UL__secondaryLinkList>
+                    <Li__secondaryLinkListHeading>
+                      Metal
+                    </Li__secondaryLinkListHeading>
+                    <Li__secondaryLink>
+                      <A__secondaryCategoryLink
+                        as={Link}
+                        to="/jewellery/white-gold-jewellery-necklaces/"
+                        onClick={closeSecondaryLinkBackground}
+                        exit={{
+                          trigger: () => click_mobile_burger_btn(),
+                        }}
+                      >
+                        <Svg_donut width="17" height="17" fill="gold" />
+                        White Gold jewellery necklaces
+                      </A__secondaryCategoryLink>
+                    </Li__secondaryLink>
+                  </UL__secondaryLinkList>
+                </div>
+
+                {/* Bracelets */}
+
+                <div style={{ display: "flex", flex: "1 0 100%" }}>
+                  <UL__secondaryLinkList>
+                    <Li__secondaryLinkListHeading>
+                      Shape
+                    </Li__secondaryLinkListHeading>
+                    <Li__secondaryLink>
+                      <A__secondaryCategoryLink
+                        as={Link}
+                        to="/jewellery/oval-jewellery-bracelets/"
+                        onClick={closeSecondaryLinkBackground}
+                        exit={{
+                          trigger: () => click_mobile_burger_btn(),
+                        }}
+                      >
+                        <Svg_curRoundBrilliant
+                          width="21"
+                          height="21"
+                          stroke="black"
+                          strokeWidth="2.5"
+                        />
+                        Oval Cut jewellery bracelets
+                      </A__secondaryCategoryLink>
+                    </Li__secondaryLink>
+                  </UL__secondaryLinkList>
+
+                  <UL__secondaryLinkList>
+                    <Li__secondaryLinkListHeading>
+                      Colour
+                    </Li__secondaryLinkListHeading>
+                    <Li__secondaryLink>
+                      <A__secondaryCategoryLink
+                        as={Link}
+                        to="/jewellery/blue-jewellery-bracelets/"
+                        onClick={closeSecondaryLinkBackground}
+                        exit={{
+                          trigger: () => click_mobile_burger_btn(),
+                        }}
+                      >
+                        <Svg_gemstoneSide
+                          width="23"
+                          height="17"
+                          strokeWidth="4"
+                          stroke="blue"
+                        />
+                        Blue jewellery bracelets
+                      </A__secondaryCategoryLink>
+                    </Li__secondaryLink>
+                  </UL__secondaryLinkList>
+
+                  <UL__secondaryLinkList>
+                    <Li__secondaryLinkListHeading>
+                      GemStone
+                    </Li__secondaryLinkListHeading>
+                    <Li__secondaryLink>
+                      <A__secondaryCategoryLink
+                        as={Link}
+                        to="/jewellery/aquamarine-jewellery-bracelets/"
+                        onClick={closeSecondaryLinkBackground}
+                        exit={{
+                          trigger: () => click_mobile_burger_btn(),
+                        }}
+                      >
+                        <Svg_gemstoneSide
+                          width="23"
+                          height="17"
+                          strokeWidth="4"
+                          stroke="#00ab8f"
+                        />
+                        Aquamarine jewellery bracelets
+                      </A__secondaryCategoryLink>
+                    </Li__secondaryLink>
+                  </UL__secondaryLinkList>
+
+                  <UL__secondaryLinkList>
+                    <Li__secondaryLinkListHeading>
+                      Metal
+                    </Li__secondaryLinkListHeading>
+                    <Li__secondaryLink>
+                      <A__secondaryCategoryLink
+                        as={Link}
+                        to="/jewellery/silver-jewellery-bracelets/"
+                        onClick={closeSecondaryLinkBackground}
+                        exit={{
+                          trigger: () => click_mobile_burger_btn(),
+                        }}
+                      >
+                        <Svg_donut width="17" height="17" fill="silver" />
+                        Silver jewellery bracelets
+                      </A__secondaryCategoryLink>
+                    </Li__secondaryLink>
+                  </UL__secondaryLinkList>
+                </div>
+
+                {/* <UL__secondaryLinkList>
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
@@ -896,7 +1470,7 @@ const MainNav = () => {
                       Earrings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
-                </UL__secondaryLinkList>
+                </UL__secondaryLinkList> */}
                 <Button__secondaryListBack
                   type="button"
                   onClick={e => {

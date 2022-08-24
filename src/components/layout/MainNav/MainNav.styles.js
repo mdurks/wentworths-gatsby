@@ -444,7 +444,8 @@ export const UL__secondaryLinkList = styled.ul`
     /* max-width: ${css_breakpoints.desktop_max}; */
     /* height: 300px; */
     /* margin: auto; */
-    padding: 50px 15px 35px;
+    /* padding: 50px 15px 35px; */
+    padding: 30px 15px 5px;
     overflow-y: auto;
     overflow-x: auto;
     flex: 1 1;
@@ -500,7 +501,8 @@ export const Li__secondaryLinkListHeading = styled.li`
   ${css_breakpoints.min_desktop} {
     left: auto;
     margin: 0;
-    padding: 10px 5px 25px 4px;
+    /* padding: 10px 5px 25px 4px; */
+    padding: 10px 5px 15px 4px;
     color: #a77711;
     font-weight: bold;
     font-family: "Raleway", sans-serif;
