@@ -11,15 +11,23 @@ const replaceAll = (string, findValue, replaceValue) => {
 exports.createPages = async ({ graphql, actions: { createPage } }) => {
   //
   //
+  //
   // Static method to create "Product Listing" pages:
+  // ------------------------------------------------------------------------------------
   //
   // Manualy define categories and their product types myself
   // Could maybe do this dynamicaly and query graph cms
   //
   const categories = [
-    { engagement: "rings" },
-    { weddings: "rings" },
-    { jewellery: "rings,earrings,necklaces,bracelets" },
+    {
+      engagement: "rings",
+    },
+    {
+      weddings: "rings",
+    },
+    {
+      jewellery: "rings,earrings,necklaces,bracelets",
+    },
   ]
 
   // loop over each category: 'engagement, weddings, jewellery'
@@ -45,55 +53,110 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     }
   }
 
+  //
+  //
+  //
   // Static method to create "Product Listing by Attribute" pages:
+  // ------------------------------------------------------------------------------------
 
-  const productListingByAttributeCategories = [
-    { engagement: "rings" },
-    { weddings: "rings" },
-  ]
-
-  const productAttributes = [
-    { filter_metal: "Platinum,Silver,Gold,White_Gold,Rose_Gold" },
-    { filter_stoneColour: "White,Clear,Yellow,Blue,Pink,Amber,Default" },
-    {
-      filter_gemstone:
-        "Morganite,Diamond,Sapphire,Ruby,Emerald,Pearl,Coloured_Diamond,Aquamarine",
+  const catalogue = {
+    engagement: {
+      rings: {
+        filter_stoneCut:
+          "Princess,Emerald,Round,Ashoka,Cushion,Oval,Radiant,Heart,Assher,Pear,Natural",
+        filter_stoneColour: "White,Clear,Yellow,Blue,Pink,Amber,Default",
+        filter_gemstone:
+          "Morganite,Diamond,Sapphire,Ruby,Emerald,Pearl,Coloured_Diamond,Aquamarine",
+        filter_metal: "Platinum,Silver,Gold,White_Gold,Rose_Gold",
+      },
     },
-    {
-      filter_stoneCut:
-        "Princess,Emerald,Round,Ashoka,Cushion,Oval,Radiant,Heart,Assher,Pear,Natural",
+    weddings: {
+      rings: {
+        filter_stoneCut:
+          "Princess,Emerald,Round,Ashoka,Cushion,Oval,Radiant,Heart,Assher,Pear,Natural",
+        filter_stoneColour: "White,Clear,Yellow,Blue,Pink,Amber,Default",
+        filter_gemstone:
+          "Morganite,Diamond,Sapphire,Ruby,Emerald,Pearl,Coloured_Diamond,Aquamarine",
+        filter_metal: "Platinum,Silver,Gold,White_Gold,Rose_Gold",
+      },
     },
-  ]
+    jewellery: {
+      rings: {
+        filter_stoneCut:
+          "Princess,Emerald,Round,Ashoka,Cushion,Oval,Radiant,Heart,Assher,Pear,Natural",
+        filter_stoneColour: "White,Clear,Yellow,Blue,Pink,Amber,Default",
+        filter_gemstone:
+          "Morganite,Diamond,Sapphire,Ruby,Emerald,Pearl,Coloured_Diamond,Aquamarine",
+        filter_metal: "Platinum,Silver,Gold,White_Gold,Rose_Gold",
+      },
+      earrings: {
+        filter_stoneCut: "Oval",
+        filter_stoneColour: "Pink",
+        filter_gemstone: "Diamond,Sapphire",
+        filter_metal: "Gold",
+      },
+      necklaces: {
+        filter_stoneCut: "Natural",
+        filter_stoneColour: "White",
+        filter_gemstone: "Pearl",
+        filter_metal: "White_Gold",
+      },
+      bracelets: {
+        filter_stoneCut: "Oval",
+        filter_stoneColour: "Blue",
+        filter_gemstone: "Aquamarine",
+        filter_metal: "Silver",
+      },
+    },
+  }
 
-  // loop over each category: 'engagement'
-  for (let i = 0; i < productListingByAttributeCategories.length; i++) {
-    //
-    let category = String(Object.keys(productListingByAttributeCategories[i])) // 'engagement'
-    let category_product_types = String(
-      Object.values(productListingByAttributeCategories[i])
-    ).split(",") // 'rings'
-    //
-    // loop over product types: 'rings'
-    for (let i = 0; i < category_product_types.length; i++) {
-      const product_type = category_product_types[i] // 'rings'
+  const filterCategories = Object.keys(catalogue) // engagement, jewellery
+  const values = Object.values(catalogue) // {engagement values}, {jewellery values}
 
-      // loop over attributes: 'filter_metal'
-      for (let i = 0; i < productAttributes.length; i++) {
-        const product_attribute = String(Object.keys(productAttributes[i])) // 'filter_metal'
-        const product_attributeValues = String(
-          Object.values(productAttributes[i])
-        ).split(",") // 'Platinum', etc
+  for (let i = 0; i < filterCategories.length; i++) {
+    const currentCategory = filterCategories[i]
+    //console.log(`\n\n--- ${currentCategory.toUpperCase()} -----------------\n`)
+    const products = Object.keys(values[i]) // [ 'rings', 'necklaces' ]
+    const productValues = Object.values(values[i])
+    //console.log(productValues)
 
-        // Loop over attribute values: 'Platinum', etc
-        for (let i = 0; i < product_attributeValues.length; i++) {
-          const product_attributeValue = product_attributeValues[i] // 'Platinum'
-          const path = `/${category}/${product_attributeValue}-${category}-${product_type}`
+    for (let i = 0; i < products.length; i++) {
+      const currentProduct = products[i]
+      //console.log(`		--- ${currentProduct.toUpperCase()} ---------`)
+      const productKeys = Object.keys(productValues[i])
+      //console.log('productKeys:', productKeys)
+
+      for (let i = 0; i < productKeys.length; i++) {
+        const currentProductKey = productKeys[i]
+        //console.log(`\n				--- ${currentProductKey.toUpperCase()} ---\n`)
+
+        const filterValues =
+          catalogue[currentCategory][currentProduct][currentProductKey]
+        //console.log(`						${filterValues}`)
+
+        const filterArray = filterValues.split(",")
+        //console.log(`${filterArray}`)
+
+        for (let i = 0; i < filterArray.length; i++) {
+          const currentFilter = filterArray[i]
+          //console.log(`						${currentCategory} ${currentProduct} ${currentFilter}`)
+          const path = replaceAll(
+            `/${currentCategory}/${currentFilter}-${currentCategory}-${currentProduct}`.toLowerCase(),
+            "_",
+            "-"
+          )
+          console.log("path", path)
           // '/engagement/Silver-engagement-rings'
 
+          // too lazy just now to update the names passed in context to the templates
+          let category = currentCategory
+          let product_type = currentProduct
+          let product_attributeValue = currentFilter
+
           createPage({
-            path: replaceAll(path.toLowerCase(), "_", "-"),
+            path: path,
             component: require.resolve(
-              `./src/templates/product_listing/by_attribute/${product_attribute}.js`
+              `./src/templates/product_listing/by_attribute/${currentProductKey}.js`
             ),
             // use context to pass variables to the created page to use via 'pageContext':
             context: {
@@ -103,13 +166,17 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
               product_attributeValue, // Silver
             },
           }) // end createPage
-        } // end attribute value for loop
-      } // end attribute for loop
-    } // end product for loop
-  } // end category for loop
+        } // end for filterArray
+      } // end for productKeys
+    } // end for products
+  } // end for filterCategories
 
   //
-  // Dynamic Query to generate pages and blogs
+  //
+  //
+  //
+  // Dynamic Query for pages and blogs
+  // ------------------------------------------------------------------------------------
   //
   const {
     data: {
@@ -143,7 +210,12 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     }
   `)
 
-  // Product DETAIL:
+  //
+  //
+  //
+  // Dynamic Query to generate Product DETAIL
+  // ------------------------------------------------------------------------------------
+  //
   //
   // Get all products that are published
 
@@ -197,7 +269,12 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
   }
 
   //
-  // Blogs:
+  //
+  //
+  //
+  // Dynamic Query to generate Blogs
+  // ------------------------------------------------------------------------------------
+  //
   //
   // Dynamicaly create all the blog pages from query above
   // Pass the ID to find that blog article when doing the gcms query on that page for its content
