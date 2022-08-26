@@ -875,7 +875,7 @@ const MainNav = () => {
 
                 <UL__secondaryLinkList>
                   <Li__secondaryLinkListHeading>
-                    Anniverary
+                    Anniversary
                   </Li__secondaryLinkListHeading>
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
