@@ -687,8 +687,7 @@ const ProductListingByAttribute = ({
             <p className="filter_info__showingNumber">
               Showing &nbsp;{productList.length} <span>of</span>{" "}
               {products.length}&nbsp; &nbsp;
-              {replaceAll(pageContext.product_attributeValue, "_", " ")}{" "}
-              {pageContext.category} {pageContext.product_type}.
+              {pageContext.product_attributeValue} {pageContext.product_type}.
             </p>
             <div className="sortProducts">
               <span className="sortProducts__container">
@@ -737,10 +736,10 @@ const ProductListingByAttribute = ({
 // Use these variables to filter by category and product type e.g. jewellery & rings
 
 export const pageQuery = graphql`
-  query ProductListingByMetalQuery(
+  query ProductListingByItemStyleQuery(
     $category: [GCMS_CategoryType!]
     $product_type: GCMS_ProductType
-    $product_attributeValue: GCMS_Metal
+    $product_attributeValue: GCMS_ItemStyle
   ) {
     gcms {
       products(
@@ -748,7 +747,7 @@ export const pageQuery = graphql`
         where: {
           categoryType_contains_some: $category
           productType: $product_type
-          filter_metal: $product_attributeValue
+          filter_itemStyle: $product_attributeValue
         }
       ) {
         id

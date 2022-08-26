@@ -72,40 +72,29 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     },
     weddings: {
       rings: {
-        filter_stoneCut:
-          "Princess,Emerald,Round,Ashoka,Cushion,Oval,Radiant,Heart,Assher,Pear,Natural",
-        filter_stoneColour: "White,Clear,Yellow,Blue,Pink,Amber,Default",
-        filter_gemstone:
-          "Morganite,Diamond,Sapphire,Ruby,Emerald,Pearl,Coloured_Diamond,Aquamarine",
         filter_metal: "Platinum,Silver,Gold,White_Gold,Rose_Gold",
+        filter_gender: "Mens,Womens",
+        filter_itemStyle: "Anniversary,Eternity",
       },
     },
     jewellery: {
       rings: {
-        filter_stoneCut:
-          "Princess,Emerald,Round,Ashoka,Cushion,Oval,Radiant,Heart,Assher,Pear,Natural",
-        filter_stoneColour: "White,Clear,Yellow,Blue,Pink,Amber,Default",
-        filter_gemstone:
-          "Morganite,Diamond,Sapphire,Ruby,Emerald,Pearl,Coloured_Diamond,Aquamarine",
-        filter_metal: "Platinum,Silver,Gold,White_Gold,Rose_Gold",
+        filter_gemstone: "Diamond,Pearl",
+        filterNotDiamond_gemstone: null,
       },
       earrings: {
-        filter_stoneCut: "Oval",
-        filter_stoneColour: "Pink",
-        filter_gemstone: "Diamond,Sapphire",
-        filter_metal: "Gold",
+        filter_gemstone: "Diamond,Pearl",
+        filterNotDiamond_gemstone: null,
+        filter_itemStyle: "Stud",
       },
       necklaces: {
-        filter_stoneCut: "Natural",
-        filter_stoneColour: "White",
-        filter_gemstone: "Pearl",
-        filter_metal: "White_Gold",
+        filter_gemstone: "Diamond,Pearl",
+        filterNotDiamond_gemstone: null,
+        filter_itemStyle: "Pendant",
       },
       bracelets: {
-        filter_stoneCut: "Oval",
-        filter_stoneColour: "Blue",
-        filter_gemstone: "Aquamarine",
-        filter_metal: "Silver",
+        filter_gemstone: "Diamond,Pearl",
+        filterNotDiamond_gemstone: null,
       },
     },
   }
@@ -134,10 +123,15 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
           catalogue[currentCategory][currentProduct][currentProductKey]
         //console.log(`						${filterValues}`)
 
-        const filterArray = filterValues.split(",")
+        const filterArray = filterValues?.split(",")
         //console.log(`${filterArray}`)
 
-        for (let i = 0; i < filterArray.length; i++) {
+        // too lazy just now to update the names passed in context to the templates
+        let category = currentCategory
+        let product_type = currentProduct
+
+        // createPage for filter values:
+        for (let i = 0; i < filterArray?.length; i++) {
           const currentFilter = filterArray[i]
           //console.log(`						${currentCategory} ${currentProduct} ${currentFilter}`)
           const path = replaceAll(
@@ -148,9 +142,6 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
           console.log("path", path)
           // '/engagement/Silver-engagement-rings'
 
-          // too lazy just now to update the names passed in context to the templates
-          let category = currentCategory
-          let product_type = currentProduct
           let product_attributeValue = currentFilter
 
           createPage({
@@ -167,6 +158,32 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
             },
           }) // end createPage
         } // end for filterArray
+
+        // if no filter values e.g. 'filterNotDiamond_gemstone' then createPage differently:
+        if (!filterArray) {
+          let customerFilterName = currentProductKey.slice(
+            currentProductKey.indexOf("_") + 1
+          )
+          let path = replaceAll(
+            `/${currentCategory}/${customerFilterName}-${currentCategory}-${currentProduct}`.toLowerCase(),
+            "_",
+            "-"
+          )
+          console.log("path", path)
+          createPage({
+            path: path,
+            component: require.resolve(
+              `./src/templates/product_listing/by_attribute/${currentProductKey}.js`
+            ),
+            // use context to pass variables to the created page to use via 'pageContext':
+            context: {
+              category, // engagement
+              product_type, // rings
+            },
+          }) // end createPage
+        } // end if !filterArray
+        //
+        //
       } // end for productKeys
     } // end for products
   } // end for filterCategories

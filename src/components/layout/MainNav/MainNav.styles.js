@@ -298,9 +298,9 @@ export const Div__secondaryLinkWrapper = styled.div`
     left: 50%;
     transform: translateX(-50%);
     flex-direction: row;
-    padding: 0;
+    padding: 0 0 80px;
     height: auto;
-    min-height: 290px;
+    min-height: 150px;
     max-width: ${breakpoints.maxDesktop}px;
     visibility: hidden;
     overflow: hidden;
@@ -391,6 +391,7 @@ export const LI__primaryLink = styled.li`
 
       ${Button__primary} {
         color: #a77711 !important;
+        font-weight: bold;
       }
     }
   }
@@ -461,7 +462,7 @@ export const UL__secondaryLinkList = styled.ul`
       ${css_breakpoints.min_desktop} {
         flex: 1 0 100%;
         height: auto;
-        padding: 15px 0 40px;
+        padding: 15px 0 0;
         order: 1;
 
         a {
@@ -501,8 +502,7 @@ export const Li__secondaryLinkListHeading = styled.li`
   ${css_breakpoints.min_desktop} {
     left: auto;
     margin: 0;
-    /* padding: 10px 5px 25px 4px; */
-    padding: 10px 5px 15px 4px;
+    padding: 10px 5px 15px 0;
     color: #a77711;
     font-weight: bold;
     font-family: "Raleway", sans-serif;
@@ -532,7 +532,8 @@ export const Li__secondaryLink = styled.li`
 export const A__secondaryCategoryLink = styled.a`
   display: flex;
   align-items: center;
-  padding: 8px 0 8px 35px;
+  padding: ${props => (props.noIcon ? "8px 0" : "8px 0 8px 35px")};
+
   font-size: 16px;
   color: #76591b;
 
@@ -544,9 +545,9 @@ export const A__secondaryCategoryLink = styled.a`
     position: relative;
     height: 100%;
     margin: 0 5px 0 0;
-    padding: 4px 0 4px 35px;
+    padding: ${props => (props.noIcon ? "4px 0" : "4px 0 4px 35px")};
     font-size: 14px;
-    text-transform: none;
+    text-transform: capitalize;
     color: black;
     transition: all ease 0.3s;
 
@@ -563,13 +564,20 @@ export const A__secondaryCategoryLink = styled.a`
 
     &:hover {
       margin-right: 0;
-      padding-left: 40px;
+      padding-left: ${props => (props.noIcon ? "10px" : "40px")};
       color: #936400;
 
       &:before {
-        width: calc(100% - 32px);
+        ${props =>
+          props.noIcon
+            ? css`
+                width: calc(100% - 7px);
+              `
+            : css`
+                width: calc(100% - 17px);
+              `};
         background: #c1a260;
-        left: 37px;
+        left: ${props => (props.noIcon ? "10px" : "37px")};
       }
 
       svg {
