@@ -123,7 +123,13 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
           catalogue[currentCategory][currentProduct][currentProductKey]
         //console.log(`						${filterValues}`)
 
-        const filterArray = filterValues?.split(",")
+        // check filter values in case it's a null value like 'filterNotDiamond_gemstone'
+        let filterArray
+        if (filterValues) {
+          filterArray = filterValues?.split(",")
+        } else {
+          filterArray = 0
+        }
         //console.log(`${filterArray}`)
 
         // too lazy just now to update the names passed in context to the templates
@@ -131,7 +137,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
         let product_type = currentProduct
 
         // createPage for filter values:
-        for (let i = 0; i < filterArray?.length; i++) {
+        for (let i = 0; i < filterArray.length; i++) {
           const currentFilter = filterArray[i]
           //console.log(`						${currentCategory} ${currentProduct} ${currentFilter}`)
           const path = replaceAll(
