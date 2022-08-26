@@ -126,7 +126,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
         // check filter values in case it's a null value like 'filterNotDiamond_gemstone'
         let filterArray
         if (filterValues) {
-          filterArray = filterValues?.split(",")
+          filterArray = filterValues.split(",")
         } else {
           filterArray = 0
         }
