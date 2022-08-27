@@ -90,7 +90,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
       necklaces: {
         filter_gemstone: "Diamond,Pearl",
         filterNotDiamond_gemstone: null,
-        filter_itemStyle: "Pendant",
+        filter_itemStyle: "Pendant,Chain",
       },
       bracelets: {
         filter_gemstone: "Diamond,Pearl",

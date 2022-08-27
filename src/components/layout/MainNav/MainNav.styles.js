@@ -526,6 +526,13 @@ export const Li__secondaryLink = styled.li`
     margin: 0;
     border: none;
     opacity: 0;
+
+    ${props =>
+      props.viewAllLink &&
+      css`
+        /* margin-top: auto; */
+        padding-top: 20px;
+      `};
   }
 `
 
