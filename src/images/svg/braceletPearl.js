@@ -2,7 +2,7 @@ import React from "react"
 
 export const Svg_braceletPearl = ({ width, height, fill, outline, shadow }) => {
   width = width || "17"
-  height = height || "18"
+  height = height || "19"
   fill = fill || "#fff"
   outline = outline || "#9E9E9E"
   shadow = shadow || "#9E9E9E"
@@ -11,7 +11,7 @@ export const Svg_braceletPearl = ({ width, height, fill, outline, shadow }) => {
     <svg
       width={width}
       height={height}
-      viewBox="0 0 17 18"
+      viewBox="0 0 17 19"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >

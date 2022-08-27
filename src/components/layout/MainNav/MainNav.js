@@ -1193,7 +1193,11 @@ const MainNav = () => {
                         trigger: () => click_mobile_burger_btn(),
                       }}
                     >
-                      <Svg_necklacePendant width="23" height="17" />
+                      <Svg_necklacePendant
+                        width="23"
+                        height="17"
+                        strokeWidth="1"
+                      />
                       Pendant necklaces
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
@@ -1206,7 +1210,11 @@ const MainNav = () => {
                         trigger: () => click_mobile_burger_btn(),
                       }}
                     >
-                      <Svg_necklaceDiamond width="23" height="17" />
+                      <Svg_necklaceDiamond
+                        width="23"
+                        height="17"
+                        strokeWidth="1"
+                      />
                       Diamond necklaces
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
@@ -1219,7 +1227,11 @@ const MainNav = () => {
                         trigger: () => click_mobile_burger_btn(),
                       }}
                     >
-                      <Svg_necklaceGemstone width="23" height="17" />
+                      <Svg_necklaceGemstone
+                        width="23"
+                        height="17"
+                        strokeWidth="1"
+                      />
                       Gemstone necklaces
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
