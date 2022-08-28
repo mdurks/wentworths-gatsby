@@ -1256,9 +1256,9 @@ export const pageQuery = graphql`
         price_diamond_Yellow_Carat_1
         price_diamond_Yellow_Carat_1_25
         price_diamond_Yellow_Carat_1_5
-        price_aquamarine_Default_Carat_1
-        price_aquamarine_Default_Carat_1_25
-        price_aquamarine_Default_Carat_1_5
+        price_aquamarine_Blue_Carat_1
+        price_aquamarine_Blue_Carat_1_25
+        price_aquamarine_Blue_Carat_1_5
       }
       product(where: { id: $id }) {
         id

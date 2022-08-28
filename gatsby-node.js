@@ -80,6 +80,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     jewellery: {
       rings: {
         filter_gemstone: "Diamond,Pearl",
+        filter_gender: "Mens",
         filterNotDiamond_gemstone: null,
       },
       earrings: {
@@ -94,6 +95,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
       },
       bracelets: {
         filter_gemstone: "Diamond,Pearl",
+        filter_gender: "Mens",
         filterNotDiamond_gemstone: null,
       },
     },

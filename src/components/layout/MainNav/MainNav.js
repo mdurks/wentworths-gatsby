@@ -16,6 +16,7 @@ import { Svg_ringGemstone } from "../../../images/svg/ringGemstone"
 import { Svg_ringDiamond } from "../../../images/svg/ringDiamond"
 import { Svg_ringEternity } from "../../../images/svg/ringEternity"
 import { Svg_ringAnniversary } from "../../../images/svg/ringAnniversary"
+import { Svg_ringPlain } from "../../../images/svg/ringPlain"
 import { Svg_earringStud } from "../../../images/svg/earringStud"
 import { Svg_earringDiamond } from "../../../images/svg/earringDiamond"
 import { Svg_earringGemstone } from "../../../images/svg/earringGemstone"
@@ -28,6 +29,7 @@ import { Svg_necklaceChain } from "../../../images/svg/necklaceChain"
 import { Svg_braceletDiamond } from "../../../images/svg/braceletDiamond"
 import { Svg_braceletGemstone } from "../../../images/svg/braceletGemstone"
 import { Svg_braceletPearl } from "../../../images/svg/braceletPearl"
+import { Svg_braceletPlain } from "../../../images/svg/braceletPlain"
 
 import {
   Nav__mainNav,
@@ -642,7 +644,7 @@ const MainNav = () => {
                   <Li__secondaryLink>
                     <A__secondaryCategoryLink
                       as={Link}
-                      to="/engagement/default-engagement-rings/"
+                      to="/engagement/blue-engagement-rings/"
                       onClick={closeSecondaryLinkBackground}
                       exit={{
                         trigger: () => click_mobile_burger_btn(),
@@ -651,9 +653,10 @@ const MainNav = () => {
                       <Svg_gemstoneSide
                         width="23"
                         height="17"
+                        stroke="#0053ff"
                         strokeWidth="4"
                       />
-                      Default engagement rings
+                      Blue engagement rings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
                   <Li__secondaryLink>
@@ -851,12 +854,7 @@ const MainNav = () => {
                         trigger: () => click_mobile_burger_btn(),
                       }}
                     >
-                      <Svg_gemstoneSide
-                        width="23"
-                        height="17"
-                        strokeWidth="4"
-                        stroke="black"
-                      />
+                      <Svg_ringDiamond width="23" height="17" />
                       Womens Wedding rings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
@@ -877,12 +875,7 @@ const MainNav = () => {
                         trigger: () => click_mobile_burger_btn(),
                       }}
                     >
-                      <Svg_gemstoneSide
-                        width="23"
-                        height="17"
-                        strokeWidth="4"
-                        stroke="black"
-                      />
+                      <Svg_ringPlain width="23" height="17" />
                       Mens Wedding rings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
@@ -1080,6 +1073,19 @@ const MainNav = () => {
                     >
                       <Svg_ringPearl width="20" height="25" />
                       Pearl rings
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/jewellery/mens-jewellery-rings/"
+                      onClick={closeSecondaryLinkBackground}
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
+                      <Svg_ringPlain width="20" height="25" />
+                      Mens rings
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
                   <Li__secondaryLink viewAllLink>
@@ -1323,6 +1329,19 @@ const MainNav = () => {
                     >
                       <Svg_braceletPearl width="23" height="17" />
                       Pearl bracelets
+                    </A__secondaryCategoryLink>
+                  </Li__secondaryLink>
+                  <Li__secondaryLink>
+                    <A__secondaryCategoryLink
+                      as={Link}
+                      to="/jewellery/mens-jewellery-bracelets/"
+                      onClick={closeSecondaryLinkBackground}
+                      exit={{
+                        trigger: () => click_mobile_burger_btn(),
+                      }}
+                    >
+                      <Svg_braceletPlain width="23" height="17" />
+                      Mens bracelets
                     </A__secondaryCategoryLink>
                   </Li__secondaryLink>
                   <Li__secondaryLink viewAllLink>
