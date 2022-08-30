@@ -128,17 +128,17 @@ const IndexPage = () => {
         />
       ))}
 
-      <Block_single_image_text />
-
-      <Block_full_size_image />
-
-      {/* <Block_one_row_jewellery /> */}
-
       <Block_best_seller
         categoryTitle="Engagement Rings"
         category="engagement"
         products={products}
       />
+
+      <Block_single_image_text />
+
+      <Block_full_size_image />
+
+      {/* <Block_one_row_jewellery /> */}
 
       <Block_bespoke_design_advert />
 
