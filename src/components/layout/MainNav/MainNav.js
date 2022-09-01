@@ -238,7 +238,9 @@ const MainNav = () => {
 
   const closeMainNavAnimation = () => {
     document.querySelector(".mainNav").classList.add("animating")
-
+    document
+      .querySelector(".mainNav")
+      .classList.remove("mainNavOpenPrimary", "mainNavOpenSecondary")
     if (mobileMenuState === "viewPrimary" || mobileMenuState === "closed") {
       const tl_mainNavClose = gsap.timeline()
       tl_mainNavClose.to(
@@ -331,7 +333,9 @@ const MainNav = () => {
 
   const openMainNavOpenAnimation = () => {
     setMobileMenuState("viewPrimary")
-    document.querySelector(".mainNav").classList.add("animating")
+    document
+      .querySelector(".mainNav")
+      .classList.add("animating", "mainNavOpenPrimary")
     document.querySelector(".UL__primaryLinks").scrollTo(0, 0)
 
     gsap.set(document.querySelectorAll(".UL__primaryLinks > li"), {
@@ -422,6 +426,9 @@ const MainNav = () => {
 
   const openSecondaryMenuAnimation = e => {
     setMobileMenuState("viewSecondary")
+    document.querySelector(".mainNav").classList.remove("mainNavOpenPrimary")
+    document.querySelector(".mainNav").classList.add("mainNavOpenSecondary")
+
     const menu = e.target.nextElementSibling
     menu.classList.add("SecondaryMenuOpen")
 
@@ -454,6 +461,8 @@ const MainNav = () => {
     setMobileMenuState("viewPrimary")
     const menu = e.target.parentNode
     menu.classList.remove("SecondaryMenuOpen")
+    document.querySelector(".mainNav").classList.add("mainNavOpenPrimary")
+    document.querySelector(".mainNav").classList.remove("mainNavOpenSecondary")
 
     gsap.to(menu.getElementsByTagName("p"), {
       duration: 0.6,
@@ -487,12 +496,10 @@ const MainNav = () => {
     ) {
       // if nav is not open, show nav:
       document.documentElement.classList.add("no_y_scroll")
-      // document.documentElement.classList.add("showMobileNav") // not needed anymore
       openMainNavOpenAnimation()
     } else {
       // if nav is open, hide nav:
       document.documentElement.classList.remove("no_y_scroll")
-      // document.documentElement.classList.remove("showMobileNav")  // not needed anymore
       closeMainNavAnimation()
     }
   }

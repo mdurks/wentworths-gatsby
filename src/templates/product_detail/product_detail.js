@@ -760,7 +760,7 @@ const DetailsPage = ({
           }}
         >
           {typeof window !== "undefined" && window.innerWidth < 600
-            ? product.imageMobile.map(imageMobile => {
+            ? product?.imageMobile?.map(imageMobile => {
                 return (
                   <GraphImg
                     image={imageMobile}
@@ -770,7 +770,7 @@ const DetailsPage = ({
                   />
                 )
               })
-            : product.image.slice(1).map(image => {
+            : product?.image?.slice(1)?.map(image => {
                 return (
                   <GraphImg
                     image={image}
@@ -805,7 +805,7 @@ const DetailsPage = ({
             )}
 
             <HeroCarouselThumbnails>
-              {product.image.slice(1).map((image, index) => {
+              {product?.image?.slice(1)?.map((image, index) => {
                 return (
                   <button
                     type="button"
@@ -994,7 +994,7 @@ const DetailsPage = ({
           <div className="detailed_description_colWrapper">
             <div>
               {/* loop out all the product images, skipping the first one since it's the hero img */}
-              {product.image.slice(1).map((el, index) => (
+              {product?.image?.slice(1)?.map((el, index) => (
                 <>
                   <div
                     onClick={() => {
@@ -1186,7 +1186,7 @@ const DetailsPage = ({
         </div>
         <div className="modalPagination">
           <div className="modalPagination__container">
-            {product.image.map((el, index) => (
+            {product?.image?.map((el, index) => (
               <>
                 <button
                   className={`modalPagination__pageBtn ${
