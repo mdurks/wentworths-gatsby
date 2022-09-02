@@ -4,7 +4,7 @@ import css_breakpoints from "../../../common/css_breakpoints"
 export const Div__gradient_row_link = styled.div`
   position: relative;
   overflow: hidden;
-  margin: 6px 0 0;
+  margin: 0 0 10px;
 
   ${css_breakpoints.min_desktop} {
     margin: 10px 0;
@@ -85,13 +85,13 @@ export const Div__gradient_row_link = styled.div`
   .text {
     position: absolute;
     left: ${props =>
-      props.img_alignment === "right" ? "-10px" : "calc(40% + 10px)"};
+      props.img_alignment === "right" ? "-5px" : "calc(40% + 10px)"};
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100%;
-    width: 60%;
+    width: 62%;
     text-align: ${props =>
       props.img_alignment === "right" ? "right" : "left"};
     z-index: 2;
@@ -112,9 +112,9 @@ export const Div__gradient_row_link = styled.div`
 
     &-pre-title {
       display: block;
-      height: 15px;
+      height: 20px;
       overflow: hidden;
-      font-size: 13px;
+      font-size: 18px;
       text-transform: capitalize;
 
       ${css_breakpoints.min_desktop} {
@@ -138,7 +138,7 @@ export const Div__gradient_row_link = styled.div`
       display: block;
       overflow: hidden;
       height: 20px;
-      font-size: 20px;
+      font-size: 21px;
       font-family: "Playfair Display", serif;
       /* text-shadow: 0px 2px 3px rgb(0 0 0 / 30%); */
       text-transform: uppercase;

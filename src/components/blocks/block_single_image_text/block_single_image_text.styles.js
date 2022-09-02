@@ -12,12 +12,11 @@ export const Div__SIT = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  margin: 6px 0 0;
+  margin: 0;
 
   ${css_breakpoints.min_desktop} {
     /* min-height: calc(100vh + ${section_vertical_padding}); */
     min-height: 1000px;
-    margin: 0;
     padding: 75px 0;
   }
 
