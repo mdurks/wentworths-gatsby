@@ -159,6 +159,50 @@ const Form_viewing = () => {
           </div>
         </form>
       </div>
+      <div style={{ display: "none" }}>
+        <form
+          name="contact"
+          action="/"
+          netlify
+          netlify-honeypot="bot-field"
+          hidden
+        >
+          <input type="text" name="name" />
+          <input type="email" name="email" />
+          <textarea name="message"></textarea>
+        </form>
+
+        <form
+          name="enquire"
+          action="/"
+          netlify
+          netlify-honeypot="bot-field"
+          hidden
+        >
+          <input type="hidden" name="product" />
+          <input type="hidden" name="product page" />
+          <input type="text" name="name" />
+          <input type="email" name="email" />
+          <input type="phone" name="phone" />
+          <textarea name="message"></textarea>
+        </form>
+
+        <form
+          name="book-a-viewing"
+          action="/"
+          netlify
+          netlify-honeypot="bot-field"
+          hidden
+        >
+          <input type="hidden" name="product" />
+          <input type="hidden" name="product page" />
+          <input type="text" name="name" />
+          <input type="email" name="email" />
+          <input type="phone" name="phone" />
+          <input type="date" name="date" />
+          <textarea name="message"></textarea>
+        </form>
+      </div>
     </Section__contact_container>
   )
 }
