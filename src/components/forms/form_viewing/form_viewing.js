@@ -74,7 +74,8 @@ const Form_viewing = () => {
         <form
           className="viewingContainer__form"
           name={formName}
-          // method="POST"
+          method="POST"
+          action="/pages/thank-you-for-your-message"
           data-netlify="true"
         >
           {appContext.productUrl && (
@@ -160,50 +161,6 @@ const Form_viewing = () => {
               <button className="viewingContainer__submitBtn">Submit</button>
             </div>
           </div>
-        </form>
-      </div>
-      <div style={{ display: "none" }}>
-        <form
-          name="contact"
-          // method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-          hidden
-        >
-          <input type="text" name="name" />
-          <input type="email" name="email" />
-          <textarea name="message"></textarea>
-        </form>
-
-        <form
-          name="enquire"
-          // method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-          hidden
-        >
-          <input type="hidden" name="product" />
-          <input type="hidden" name="product page" />
-          <input type="text" name="name" />
-          <input type="email" name="email" />
-          <input type="phone" name="phone" />
-          <textarea name="message"></textarea>
-        </form>
-
-        <form
-          name="book-a-viewing"
-          // method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-          hidden
-        >
-          <input type="hidden" name="product" />
-          <input type="hidden" name="product page" />
-          <input type="text" name="name" />
-          <input type="email" name="email" />
-          <input type="phone" name="phone" />
-          <input type="date" name="date" />
-          <textarea name="message"></textarea>
         </form>
       </div>
     </Section__contact_container>
