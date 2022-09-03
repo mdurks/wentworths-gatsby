@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import { gsap, ScrollTrigger } from "gsap/all"
 import { useAppContext } from "../../../store/AppContext"
 import { Section__contact_container } from "./form_viewing.styles"
+import { replaceAll } from "../../../common/utility"
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
@@ -10,9 +11,11 @@ gsap.core.globals("ScrollTrigger", ScrollTrigger)
 const Form_viewing = () => {
   const appContext = useAppContext()
 
-  const formName = String(appContext.contactModalTitle)
-    .replaceAll(" ", "-")
-    .toLowerCase()
+  const formName = replaceAll(
+    String(appContext.contactModalTitle),
+    " ",
+    "-"
+  ).toLowerCase()
   console.log("formName", formName)
 
   const siteMetadata = useStaticQuery(graphql`
