@@ -91,6 +91,7 @@ const Form_viewing = () => {
           action="/thank-you-for-your-message"
           data-netlify="true"
         >
+          <input type="hidden" name="form-name" value={formName} />
           {appContext.productUrl && (
             <input
               type="hidden"
