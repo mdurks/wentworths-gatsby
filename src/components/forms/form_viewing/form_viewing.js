@@ -75,7 +75,7 @@ const Form_viewing = () => {
           className="viewingContainer__form"
           name={formName}
           method="POST"
-          action="/pages/thank-you-for-your-message"
+          action="/thank-you-for-your-message"
           data-netlify="true"
         >
           {appContext.productUrl && (
