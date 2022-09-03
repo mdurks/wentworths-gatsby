@@ -8,9 +8,13 @@ gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
 
 const Form_viewing = () => {
-  //
   const appContext = useAppContext()
-  //
+
+  const formName = String(appContext.contactModalTitle)
+    .replaceAll(" ", "-")
+    .toLowerCase()
+  console.log("formName", formName)
+
   const siteMetadata = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -20,7 +24,7 @@ const Form_viewing = () => {
       }
     }
   `)
-  //
+
   return (
     <Section__contact_container className="viewingContainer">
       {/* <button
@@ -64,7 +68,12 @@ const Form_viewing = () => {
           {appContext.contactModalTitle}
         </h3>
         <div className="viewingContainer__glitterBar"></div>
-        <form className="viewingContainer__form" action="">
+        <form
+          className="viewingContainer__form"
+          name={formName}
+          method="POST"
+          data-netlify="true"
+        >
           {appContext.productUrl && (
             <input
               type="hidden"
