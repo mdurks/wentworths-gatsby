@@ -74,7 +74,7 @@ const Form_viewing = () => {
         <form
           className="viewingContainer__form"
           name={formName}
-          method="POST"
+          // method="POST"
           data-netlify="true"
         >
           {appContext.productUrl && (
@@ -165,7 +165,7 @@ const Form_viewing = () => {
       <div style={{ display: "none" }}>
         <form
           name="contact"
-          method="POST"
+          // method="POST"
           data-netlify="true"
           netlify-honeypot="bot-field"
           hidden
@@ -177,7 +177,7 @@ const Form_viewing = () => {
 
         <form
           name="enquire"
-          method="POST"
+          // method="POST"
           data-netlify="true"
           netlify-honeypot="bot-field"
           hidden
@@ -192,7 +192,7 @@ const Form_viewing = () => {
 
         <form
           name="book-a-viewing"
-          method="POST"
+          // method="POST"
           data-netlify="true"
           netlify-honeypot="bot-field"
           hidden
