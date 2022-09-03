@@ -4,13 +4,14 @@ import React from "react"
 import SEO from "../components/layout/seo"
 import { Styled_SiteContainer } from "../styles/commonStyles"
 
-const ThankYouForYourMessage = () => (
-  <>
-    <Styled_SiteContainer>
-      <SEO title="Thank you for your message" />
-      <h1>Thank you for your message</h1>
-    </Styled_SiteContainer>
-  </>
-)
+const ThankYouForYourMessage = () => {
+  return (
+    <>
+      <Styled_SiteContainer>
+        <h1 style={{ marginTop: "150px" }}>Thank you for your message</h1>
+      </Styled_SiteContainer>
+    </>
+  )
+}
 
 export default ThankYouForYourMessage

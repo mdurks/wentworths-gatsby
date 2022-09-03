@@ -71,6 +71,18 @@ const Form_viewing = () => {
           {appContext.contactModalTitle}
         </h3>
         <div className="viewingContainer__glitterBar"></div>
+        <a href="/thank-you-for-your-message">thank you</a>
+        <form
+          name="contact"
+          method="POST"
+          // netlify
+          // action="thank-you-for-your-message"
+        >
+          <input type="text" name="name" />
+          <input type="email" name="email" />
+          <textarea name="message"></textarea>
+          <button>submit</button>
+        </form>
         <form
           className="viewingContainer__form"
           name={formName}
