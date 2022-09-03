@@ -114,8 +114,9 @@ const Form_viewing = () => {
                 Name:
               </label>
               <input
-                className="viewingContainer__input"
                 type="text"
+                name="name"
+                className="viewingContainer__input"
                 id="contactForm_name"
               />
             </div>
@@ -127,8 +128,9 @@ const Form_viewing = () => {
                 Email:
               </label>
               <input
-                className="viewingContainer__input"
                 type="text"
+                name="email"
+                className="viewingContainer__input"
                 id="contactForm_email"
               />
             </div>
@@ -140,6 +142,7 @@ const Form_viewing = () => {
             Message:
           </label>
           <textarea
+            name="message"
             className="viewingContainer__input"
             rows="9"
             id="contactForm_message"
@@ -162,8 +165,8 @@ const Form_viewing = () => {
       <div style={{ display: "none" }}>
         <form
           name="contact"
-          action="/"
-          netlify
+          method="POST"
+          data-netlify="true"
           netlify-honeypot="bot-field"
           hidden
         >
@@ -174,8 +177,8 @@ const Form_viewing = () => {
 
         <form
           name="enquire"
-          action="/"
-          netlify
+          method="POST"
+          data-netlify="true"
           netlify-honeypot="bot-field"
           hidden
         >
@@ -189,8 +192,8 @@ const Form_viewing = () => {
 
         <form
           name="book-a-viewing"
-          action="/"
-          netlify
+          method="POST"
+          data-netlify="true"
           netlify-honeypot="bot-field"
           hidden
         >
