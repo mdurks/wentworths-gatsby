@@ -74,10 +74,11 @@ const Form_viewing = () => {
         <a href="/thank-you-for-your-message">thank you</a>
         <form
           name="contact"
-          method="POST"
+          method="post"
           // netlify
           // action="thank-you-for-your-message"
         >
+          <input type="hidden" name="form-name" value="contact" />
           <input type="text" name="name" />
           <input type="email" name="email" />
           <textarea name="message"></textarea>
@@ -86,7 +87,7 @@ const Form_viewing = () => {
         <form
           className="viewingContainer__form"
           name={formName}
-          method="POST"
+          method="post"
           action="/thank-you-for-your-message"
           data-netlify="true"
         >
