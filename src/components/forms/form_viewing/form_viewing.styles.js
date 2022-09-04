@@ -12,6 +12,15 @@ export const Section__contact_container = styled.section`
   z-index: 20;
 
   .viewingContainer {
+    &__catchClickToCloseModal {
+      position: absolute;
+      top: 0;
+      right: calc(100vw - 100vw);
+      height: 100vh;
+      width: 0;
+      z-index: -1;
+    }
+
     &__openBtn {
       position: fixed;
       top: calc(50% - 230px);
@@ -44,19 +53,27 @@ export const Section__contact_container = styled.section`
 
       ${css_breakpoints.min_tablet} {
         right: -660px;
+        display: flex;
+        flex-direction: column;
         width: 650px;
+        height: 100vh;
         backdrop-filter: blur(5px);
-        overflow-y: visible;
+        overflow-y: hidden;
+        overflow: visible;
       }
 
       &.open {
         right: 0px;
+
+        .viewingContainer__catchClickToCloseModal {
+          width: 100vw;
+        }
       }
     }
 
     &__closeBtn {
       position: absolute;
-      top: 12px;
+      top: 7px;
       right: 10px;
       padding: 5px 15px;
       background: none;
@@ -65,22 +82,23 @@ export const Section__contact_container = styled.section`
       font-size: 30px;
 
       ${css_breakpoints.min_tablet} {
-        top: 38px;
+        top: 27px;
       }
     }
 
     &__title {
-      padding: 15px 60px 15px 20px;
-      font-size: 30px;
-      font-family: "Playfair Display", serif;
-      text-transform: none;
+      padding: 15px 60px 15px 15px;
+      font-size: 26px;
+      /* font-family: "Playfair Display", serif; */
+      font-family: "Raleway", sans-serif;
+      text-transform: uppercase;
       color: #ffffff;
       background-color: #b3924c;
 
       ${css_breakpoints.min_tablet} {
         padding: 35px 100px 25px 50px;
-        font-size: 45px;
-        background-color: hsl(41deg 76% 34% / 62%);
+        font-size: 30px;
+        background-color: hsl(41deg 76% 34% / 85%);
       }
     }
 
@@ -94,17 +112,26 @@ export const Section__contact_container = styled.section`
     }
 
     &__form {
-      padding: 20px 23px;
+      padding: 20px 15px;
       background: white;
 
       ${css_breakpoints.min_tablet} {
         height: 100%;
+        overflow-y: auto;
         padding: 40px 50px;
-        background: hsl(0deg 0% 100% / 80%);
+        background: hsl(0deg 0% 100% / 85%);
       }
 
       p {
         margin-bottom: 20px;
+
+        ${css_breakpoints.min_tablet} {
+          margin-bottom: 30px;
+        }
+      }
+
+      textarea {
+        padding-bottom: 25px;
       }
     }
 
@@ -115,7 +142,7 @@ export const Section__contact_container = styled.section`
 
       ${css_breakpoints.min_tablet} {
         flex-direction: row;
-        margin: 0 -10px 30px;
+        margin: 0 -10px 20px;
       }
     }
 
@@ -130,37 +157,41 @@ export const Section__contact_container = styled.section`
       }
     }
 
+    &__row {
+      margin-bottom: 20px;
+    }
+
     &__label {
       display: block;
-      padding: 0 0 10px;
-      color: hsl(43deg 100% 35%);
+      padding: 0 0 7px;
+      color: #a77711;
       font-size: 16px;
 
       ${css_breakpoints.min_tablet} {
-        padding: 0 0 20px;
-        font-size: 20px;
+        font-size: 18px;
       }
     }
 
     &__input {
       display: block;
       width: 100%;
-      padding: 15px 20px;
-      font-size: 16px;
-      color: grey;
+      padding: 10px 15px;
+      font-size: 14px;
       font-family: "Raleway", sans-serif;
       background: white;
       border-width: 1px;
       border-style: solid;
-      border-top-color: white;
-      border-left-color: white;
-      border-right-color: #adadad;
-      border-bottom-color: #adadad;
-      border-radius: 5px;
-      box-shadow: inset 3px 3px 10px 1px rgb(0 0 0 / 20%);
+      border-color: #c5c5c5;
+      /* border-top-color: #9e7620; */
+      /* border-left-color: #9e7620; */
+      /* border-right-color: #adadad; */
+      /* border-bottom-color: #adadad; */
+      border-radius: 4px;
+      box-shadow: inset 2px 2px 5px 0px rgb(0 0 0 / 20%);
 
       ${css_breakpoints.min_tablet} {
-        font-size: 18px;
+        padding: 10px 20px;
+        font-size: 15px;
       }
 
       &:focus {
@@ -181,7 +212,6 @@ export const Section__contact_container = styled.section`
 
     &__tel {
       flex: 1 0 auto;
-      color: grey;
     }
 
     &__submitBtn {
@@ -194,6 +224,10 @@ export const Section__contact_container = styled.section`
       color: white;
       border: none;
       border-radius: 6px;
+
+      ${css_breakpoints.min_tablet} {
+        font-size: 22px;
+      }
     }
   }
 `

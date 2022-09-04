@@ -1,4 +1,5 @@
 import React, { useState, useContext, createContext, useEffect } from "react"
+import { breakpoints } from "../common/globalVars"
 
 const AppContext = createContext()
 
@@ -17,6 +18,8 @@ export const AppProvider = ({ children }) => {
 
     if (contactModalOpen) {
       contactModalEl.classList.add("open")
+      if (window.innerWidth >= breakpoints.tablet)
+        document.getElementById("contactForm_name").focus()
     } else {
       contactModalEl.classList.remove("open")
     }

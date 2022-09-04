@@ -16,7 +16,6 @@ const Form_viewing = () => {
     " ",
     "-"
   ).toLowerCase()
-  console.log("formName", formName)
 
   const siteMetadata = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -27,6 +26,18 @@ const Form_viewing = () => {
       }
     }
   `)
+
+  const closeModal = () => {
+    document.body.classList.remove("no_y_scroll")
+    appContext.setContactModalOpen(false)
+
+    // setTimeout to allow modal close animation to finish
+    setTimeout(() => {
+      appContext.setContactModalTitle()
+      appContext.setProductName()
+      appContext.setProductUrl()
+    }, 500)
+  }
 
   return (
     <Section__contact_container className="viewingContainer">
@@ -39,18 +50,16 @@ const Form_viewing = () => {
         Book Viewing
       </button> */}
       <div className="viewingContainer__content">
+        <div
+          className="viewingContainer__catchClickToCloseModal"
+          onClick={() => {
+            closeModal()
+          }}
+        ></div>
         <button
           className="viewingContainer__closeBtn"
           onClick={() => {
-            document.body.classList.remove("no_y_scroll")
-            appContext.setContactModalOpen(false)
-
-            // setTimeout to allow modal close animation to finish
-            setTimeout(() => {
-              appContext.setContactModalTitle()
-              appContext.setProductName()
-              appContext.setProductUrl()
-            }, 500)
+            closeModal()
           }}
           aria-label={`Close ${appContext.contactModalTitle} form`}
         >
@@ -71,24 +80,13 @@ const Form_viewing = () => {
           {appContext.contactModalTitle}
         </h3>
         <div className="viewingContainer__glitterBar"></div>
-        {/* <form
-          name="contact"
-          method="post"
-          // netlify
-          // action="thank-you-for-your-message"
-        >
-          <input type="hidden" name="form-name" value="contact" />
-          <input type="text" name="name" />
-          <input type="email" name="email" />
-          <textarea name="message"></textarea>
-          <button>submit</button>
-        </form> */}
         <form
           className="viewingContainer__form"
           name={formName}
           method="post"
           action="/thank-you-for-your-message"
           data-netlify="true"
+          id="formViewing"
         >
           <input type="hidden" name="form-name" value={formName} />
           {appContext.productUrl && (
@@ -100,24 +98,34 @@ const Form_viewing = () => {
             ></input>
           )}
           {appContext.contactModalTitle === "Contact" && (
-            <p>Please fill in your contact details and message below.</p>
+            <p>
+              Please fill in your contact details and message below. Please
+              enter the following information for us to contact you.
+            </p>
           )}
           {appContext.contactModalTitle === "Book a viewing" &&
             appContext.productName && (
               <p>
-                I would like to book a viewing of the {appContext.productName}.
+                I would like to book a viewing of the{" "}
+                <strong>{appContext.productName}</strong>. Please enter the
+                following information for us to contact you.
               </p>
             )}
           {appContext.contactModalTitle === "Book a viewing" &&
             !appContext.productName && (
               <p>
                 We look forward to meeting you and discussing exactly what you
-                are looking for.
+                are looking for. Please enter the following information for us
+                to contact you.
               </p>
             )}
           {appContext.contactModalTitle === "Enquire" &&
             appContext.productName && (
-              <p>I would like to enquire about the {appContext.productName}.</p>
+              <p>
+                I would like to enquire about the{" "}
+                <strong>{appContext.productName}</strong>. Please enter the
+                following information for us to contact you.
+              </p>
             )}
           <div className="viewingContainer__2col">
             <div className="viewingContainer__col">
@@ -125,13 +133,14 @@ const Form_viewing = () => {
                 className="viewingContainer__label"
                 htmlFor="contactForm_name"
               >
-                Name:
+                Your name:
               </label>
               <input
                 type="text"
                 name="name"
                 className="viewingContainer__input"
                 id="contactForm_name"
+                required
               />
             </div>
             <div className="viewingContainer__col">
@@ -139,28 +148,46 @@ const Form_viewing = () => {
                 className="viewingContainer__label"
                 htmlFor="contactForm_email"
               >
-                Email:
+                Your email:
               </label>
               <input
                 type="text"
                 name="email"
                 className="viewingContainer__input"
                 id="contactForm_email"
+                required
               />
             </div>
           </div>
-          <label
-            className="viewingContainer__label"
-            htmlFor="contactForm_message"
-          >
-            Message:
-          </label>
-          <textarea
-            name="message"
-            className="viewingContainer__input"
-            rows="9"
-            id="contactForm_message"
-          ></textarea>
+          <div className="viewingContainer__row">
+            <label
+              className="viewingContainer__label"
+              htmlFor="contactForm_phone"
+            >
+              Your phone: (optional)
+            </label>
+            <input
+              type="tel"
+              name="phone"
+              className="viewingContainer__input"
+              id="contactForm_phone"
+            />
+          </div>
+          <div className="viewingContainer__row">
+            <label
+              className="viewingContainer__label"
+              htmlFor="contactForm_message"
+            >
+              Your message:
+            </label>
+            <textarea
+              name="message"
+              className="viewingContainer__input"
+              rows="7"
+              id="contactForm_message"
+              required
+            ></textarea>
+          </div>
           <div className="viewingContainer__submitGrp">
             <div className="viewingContainer__tel">
               <p>
@@ -171,7 +198,15 @@ const Form_viewing = () => {
               </p>
             </div>
             <div className="viewingContainer__submit">
-              <button className="viewingContainer__submitBtn">Submit</button>
+              <button
+                type="button"
+                className="viewingContainer__submitBtn"
+                onClick={() => {
+                  document.getElementById("formViewing").submit()
+                }}
+              >
+                Submit
+              </button>
             </div>
           </div>
         </form>
