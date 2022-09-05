@@ -420,7 +420,7 @@ export const Styled_CMScontent = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 6px;
+    border-radius: 8px;
     background: rgb(255 255 255 / 30%);
     z-index: -1;
     transition: all ease 0.5s;
@@ -431,7 +431,7 @@ export const Styled_CMScontent = styled.div`
   }
 
   &.closed_hero_details {
-    top: 66%;
+    top: 61%;
     width: 368px;
     padding: 20px;
     transform: translateY(-50%) scale(0.8);
@@ -460,12 +460,14 @@ export const Styled_CMScontent = styled.div`
   }
 
   &.hero_details_hovered {
-    top: 60%;
+    top: 50%;
     transform: translateY(-50%) scale(1);
+    padding: 25px 45px 30px;
+    width: 34%;
 
     .backgroundColour {
       height: 100%;
-      background: rgb(255 255 255 / 80%);
+      background: rgb(255 255 255 / 65%);
       backdrop-filter: blur(8px);
       border-radius: 6px;
     }
@@ -473,6 +475,12 @@ export const Styled_CMScontent = styled.div`
     .heroDetailsWrapper {
       opacity: 1;
       top: 0;
+    }
+
+    .heroDetailsWrapper {
+      > div {
+        background: hsl(0deg 0% 100% / 60%);
+      }
     }
   }
 
@@ -491,9 +499,11 @@ export const Styled_CMScontent = styled.div`
 
     > div {
       display: flex;
-      margin-bottom: 2px;
+      margin-bottom: 3px;
       background: hsl(43deg 12% 92%);
       padding: 5px 11px;
+      border-radius: 4px;
+      transition: all ease 0.25s;
 
       ${css_breakpoints.min_desktop} {
         background: hsl(0deg 0% 100% / 15%);
