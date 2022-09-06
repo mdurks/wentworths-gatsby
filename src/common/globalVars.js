@@ -8,3 +8,7 @@ export const breakpoints = {
   desktop: 1024,
   maxDesktop: 1400,
 }
+
+export const globalSiteSettings = {
+  graphcmsImageBaseURI: "https://media.graphassets.com",
+}

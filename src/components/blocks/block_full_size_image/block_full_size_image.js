@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import Link from "gatsby-plugin-transition-link"
 
+import { globalSiteSettings } from "../../../common/globalVars"
 import GraphImg from "graphcms-image"
 import { Div__block_full_size_image } from "./block_full_size_image.styles"
 
@@ -158,6 +159,7 @@ const Block_one_row_jewellery = () => {
               }
               transforms={["quality=value:80"]}
               maxWidth={2000}
+              baseURI={globalSiteSettings.graphcmsImageBaseURI}
             />
           ) : (
             <GraphImg
@@ -167,6 +169,7 @@ const Block_one_row_jewellery = () => {
               }
               transforms={["quality=value:80"]}
               maxWidth={2000}
+              baseURI={globalSiteSettings.graphcmsImageBaseURI}
             />
           )}
           <div className="block_full_size_image__descriptionWrapper">

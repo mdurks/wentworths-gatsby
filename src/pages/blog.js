@@ -3,6 +3,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import GraphImg from "graphcms-image"
 import Link from "gatsby-plugin-transition-link"
 
+import { globalSiteSettings } from "../common/globalVars"
 import { returnDateMonth } from "../common/utility"
 
 // import Layout from "../components/layout"
@@ -63,6 +64,7 @@ const Blog = () => {
                     image={blog.articleImage}
                     transforms={["quality=value:80"]}
                     maxWidth={300}
+                    baseURI={globalSiteSettings.graphcmsImageBaseURI}
                   />
                 </div>
                 <h3>{blog.articleTitle}</h3>

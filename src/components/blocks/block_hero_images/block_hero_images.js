@@ -9,6 +9,7 @@ import {
   HeroText_Wrapper,
 } from "./block_hero_images.styles"
 
+import { globalSiteSettings } from "../../../common/globalVars"
 import GraphImg from "graphcms-image"
 import { gsap, ScrollTrigger } from "gsap/all"
 
@@ -403,6 +404,7 @@ const Block_hero_images = () => {
                   image={blockHeroImages[0].imagesMobile[0]}
                   transforms={["quality=value:80"]}
                   maxWidth={2000}
+                  baseURI={globalSiteSettings.graphcmsImageBaseURI}
                 />
               )}
 
@@ -414,6 +416,7 @@ const Block_hero_images = () => {
                   image={blockHeroImages[0].images[0]}
                   transforms={["quality=value:80"]}
                   maxWidth={2000}
+                  baseURI={globalSiteSettings.graphcmsImageBaseURI}
                 />
               )}
           </Styled_HeroImg>

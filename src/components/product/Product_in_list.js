@@ -3,14 +3,13 @@ import React from "react"
 // import { Link } from "gatsby"
 // import AniLink from "gatsby-plugin-transition-link/AniLink"
 import Link from "gatsby-plugin-transition-link"
-
-import { number_with_commas } from "../../common/utility"
-
 import GraphImg from "graphcms-image"
 import styled from "styled-components"
-import css_breakpoints from "../../common/css_breakpoints"
-
 import { gsap, Power2 } from "gsap/all"
+
+import { globalSiteSettings } from "../../common/globalVars"
+import css_breakpoints from "../../common/css_breakpoints"
+import { number_with_commas } from "../../common/utility"
 
 const Styled_ProductItem = styled(Link)`
   display: block;
@@ -370,6 +369,7 @@ const Product = props => {
             image={props.product.image[0]}
             transforms={["quality=value:80"]}
             maxWidth={1920}
+            baseURI={globalSiteSettings.graphcmsImageBaseURI}
           />
         </Styled_Img>
         <div className="productStage"></div>

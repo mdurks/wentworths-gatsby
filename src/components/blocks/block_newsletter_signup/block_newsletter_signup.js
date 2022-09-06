@@ -3,11 +3,12 @@ import { useEffect } from "react"
 
 import { graphql, useStaticQuery } from "gatsby"
 import GraphImg from "graphcms-image"
+import { gsap, ScrollTrigger } from "gsap/all"
+
+import { globalSiteSettings } from "../../../common/globalVars.js"
 
 import { Block_newsletter_signupWrapper } from "./block_newsletter_signup.styles.js"
 import { Styled_SiteContainer } from "../../../styles/commonStyles"
-
-import { gsap, ScrollTrigger } from "gsap/all"
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
@@ -84,6 +85,7 @@ const Block_newsletter_signup = () => {
             image={welcomes[0].blockNewsletterSignupBackgroundImage}
             transforms={["quality=value:80"]}
             maxWidth={1920}
+            baseURI={globalSiteSettings.graphcmsImageBaseURI}
           />
         </div>
         <div className="Block_newsletter_signup__contentWrapper">

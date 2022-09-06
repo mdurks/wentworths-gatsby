@@ -38,8 +38,11 @@ import {
 } from "./product_detail.styles"
 import { Styled_SiteContainer, Styled_btn } from "../../styles/commonStyles"
 import { gsap, ScrollTrigger, Power3 } from "gsap/all"
-import { breakpoints } from "../../common/globalVars"
-import { navHeight } from "../../common/globalVars"
+import {
+  breakpoints,
+  navHeight,
+  globalSiteSettings,
+} from "../../common/globalVars"
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
@@ -767,6 +770,7 @@ const DetailsPage = ({
                     transforms={["quality=value:80"]}
                     maxWidth={500}
                     className="graphImg"
+                    baseURI={globalSiteSettings.graphcmsImageBaseURI}
                   />
                 )
               })
@@ -777,6 +781,7 @@ const DetailsPage = ({
                     transforms={["quality=value:80"]}
                     maxWidth={3000}
                     className="graphImg"
+                    baseURI={globalSiteSettings.graphcmsImageBaseURI}
                   />
                 )
               })}
@@ -820,6 +825,7 @@ const DetailsPage = ({
                       image={image}
                       transforms={["quality=value:80"]}
                       maxWidth={120}
+                      baseURI={globalSiteSettings.graphcmsImageBaseURI}
                     />
                   </button>
                 )
@@ -1008,6 +1014,7 @@ const DetailsPage = ({
                       className={`productScrollingImg productScrollingImg_${
                         index + 1
                       }`}
+                      baseURI={globalSiteSettings.graphcmsImageBaseURI}
                     />
                   </div>
                 </>
@@ -1182,6 +1189,7 @@ const DetailsPage = ({
             image={product.image[modal_img_from_product_array]}
             transforms={["quality=value:80"]}
             maxWidth={1920}
+            baseURI={globalSiteSettings.graphcmsImageBaseURI}
           />
         </div>
         <div className="modalPagination">
@@ -1204,6 +1212,7 @@ const DetailsPage = ({
                     image={el}
                     transforms={["quality=value:50"]}
                     maxWidth={50}
+                    baseURI={globalSiteSettings.graphcmsImageBaseURI}
                   />
                 </button>
               </>

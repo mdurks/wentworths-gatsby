@@ -3,6 +3,7 @@ import { Link, graphql, useStaticQuery } from "gatsby"
 import GraphImg from "graphcms-image"
 import { gsap, ScrollTrigger } from "gsap/all"
 
+import { globalSiteSettings } from "../../../common/globalVars"
 import { Styled_SiteContainer, Styled_btn } from "../../../styles/commonStyles"
 import { Div__block_bespoke_design_advert } from "./block_bespoke_design_advert.styles"
 
@@ -344,6 +345,7 @@ const Block_bespoke_design_advert = () => {
                   image={el}
                   transforms={["quality=value:80"]}
                   maxWidth={1200}
+                  baseURI={globalSiteSettings.graphcmsImageBaseURI}
                 />
                 {/* <div className="gsap_scolling_img_backface"></div> */}
               </div>
@@ -354,6 +356,7 @@ const Block_bespoke_design_advert = () => {
               image={blockBespokeDesignAdverts[0].finalImageOne}
               transforms={["quality=value:80"]}
               maxWidth={600}
+              baseURI={globalSiteSettings.graphcmsImageBaseURI}
             />
             <div class="finalImageOne_backface"></div>
           </div>
@@ -362,6 +365,7 @@ const Block_bespoke_design_advert = () => {
               image={blockBespokeDesignAdverts[0].finalImageTwo}
               transforms={["quality=value:80"]}
               maxWidth={1000}
+              baseURI={globalSiteSettings.graphcmsImageBaseURI}
             />
           </div>
           <p className="bespoke_design_heading1">Bespoke jewellery design</p>

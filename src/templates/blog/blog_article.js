@@ -4,9 +4,9 @@ import GraphImg from "graphcms-image"
 import { gsap, ScrollTrigger } from "gsap/all"
 
 import { returnDateMonth } from "../../common/utility"
+import { globalSiteSettings } from "../../common/globalVars"
 
 import SEO from "../../components/layout/seo"
-
 import Block_bespoke_design_advert from "../../components/blocks/block_bespoke_design_advert/block_bespoke_design_advert"
 import Block_newsletter_signup from "../../components/blocks/block_newsletter_signup/block_newsletter_signup"
 import Block_blog_latest_articles from "../../components/blocks/block_blog_latest_articles/block_blog_latest_articles"
@@ -62,6 +62,7 @@ const BlogArticlePage = ({
             image={blog.articleImage}
             transforms={["quality=value:80"]}
             maxWidth={1920}
+            baseURI={globalSiteSettings.graphcmsImageBaseURI}
           />
         </Styled_Img>
       </Div__detail_hero_block>

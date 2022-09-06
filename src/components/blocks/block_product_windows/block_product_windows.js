@@ -2,7 +2,7 @@ import React from "react"
 import { useEffect } from "react"
 
 import GraphImg from "graphcms-image"
-import { breakpoints } from "../../../common/globalVars"
+import { globalSiteSettings } from "../../../common/globalVars.js"
 
 import {
   Section_product_windows,
@@ -163,6 +163,7 @@ const Block_product_windows = props => {
                   transforms={["quality=value:80"]}
                   maxWidth={700}
                   className={`productWindowImg_${index}`}
+                  baseURI={globalSiteSettings.graphcmsImageBaseURI}
                 />
                 <Div_product_name>
                   <span>{item.name}</span>

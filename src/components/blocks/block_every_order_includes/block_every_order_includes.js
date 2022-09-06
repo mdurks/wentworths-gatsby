@@ -4,6 +4,7 @@ import { useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import GraphImg from "graphcms-image"
 
+import { globalSiteSettings } from "../../../common/globalVars.js"
 import { Block_every_order_includesWrapper } from "./block_every_order_includes.styles.js"
 import { Styled_SiteContainer } from "../../../styles/commonStyles"
 
@@ -131,6 +132,7 @@ const Block_every_order_includes = () => {
               image={welcomes[0].everyOrderIncludesImage}
               transforms={["quality=value:80"]}
               maxWidth={983}
+              baseURI={globalSiteSettings.graphcmsImageBaseURI}
             />
           </div>
           <div className="Block_every_order_includes__text">

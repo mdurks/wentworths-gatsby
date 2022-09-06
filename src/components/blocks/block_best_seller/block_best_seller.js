@@ -5,6 +5,7 @@ import Link from "gatsby-plugin-transition-link"
 import { useEffect } from "react"
 import { gsap, ScrollTrigger } from "gsap/all"
 
+import { globalSiteSettings } from "../../../common/globalVars"
 import { number_with_commas } from "../../../common/utility"
 
 import {
@@ -155,6 +156,7 @@ const Block_best_seller = props => {
                       image={el.image[0]}
                       transforms={["quality=value:80"]}
                       maxWidth={300}
+                      baseURI={globalSiteSettings.graphcmsImageBaseURI}
                     />
                     <div className="productStage"></div>
                     <p className="productDesc">

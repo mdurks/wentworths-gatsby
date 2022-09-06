@@ -4,6 +4,8 @@ import { useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import GraphImg from "graphcms-image"
 
+import { globalSiteSettings } from "../../../common/globalVars.js"
+
 import {
   Div__SIT,
   Div__SIT__backgroundStrip,
@@ -193,6 +195,7 @@ const Block_single_image_text = () => {
                 image={welcomes[0].heroImage}
                 transforms={["quality=value:80"]}
                 maxWidth={577}
+                baseURI={globalSiteSettings.graphcmsImageBaseURI}
               />
             </Img__SIT__img1>
           </Styled_SiteContainer>

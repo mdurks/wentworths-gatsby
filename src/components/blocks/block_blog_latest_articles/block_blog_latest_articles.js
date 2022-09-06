@@ -2,6 +2,7 @@ import React from "react"
 import GraphImg from "graphcms-image"
 import Link from "gatsby-plugin-transition-link"
 
+import { globalSiteSettings } from "../../../common/globalVars.js"
 import {
   Styled_BlogLatestArticles,
   Styled_BlogLatestArticlesWrapper,
@@ -28,6 +29,7 @@ const Block_blog_latest_articles = ({ blogs }) => {
                   image={blog.articleImage}
                   transforms={["quality=value:80"]}
                   maxWidth={300}
+                  baseURI={globalSiteSettings.graphcmsImageBaseURI}
                 />
               </div>
               <h3>{blog.articleTitle}</h3>

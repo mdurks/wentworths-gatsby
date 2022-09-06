@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import GraphImg from "graphcms-image"
 import Link from "gatsby-plugin-transition-link"
 
+import { globalSiteSettings } from "../../../common/globalVars"
 import { Styled_SiteContainer } from "../../../styles/commonStyles"
 import { Div__gradient_row_link } from "./block_gradient_row_link.styles"
 
@@ -99,6 +100,7 @@ const Block_gradient_row_link = props => {
                 image={props.image}
                 transforms={["quality=value:80"]}
                 maxWidth={600}
+                baseURI={globalSiteSettings.graphcmsImageBaseURI}
               />
             </div>
           </Link>

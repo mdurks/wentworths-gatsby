@@ -1,10 +1,11 @@
 import React from "react"
+
 import GraphImg from "graphcms-image"
 import { gsap, ScrollTrigger } from "gsap/all"
+import Flickity from "react-flickity-component"
 
 import { number_with_commas } from "../../../common/utility"
-
-import Flickity from "react-flickity-component"
+import { globalSiteSettings } from "../../../common/globalVars"
 
 import { Styled_SiteContainer } from "../../../styles/commonStyles"
 import { Div__block_may_also_like } from "./block_may_also_like.styles"
@@ -53,6 +54,7 @@ const Block_may_also_like = props => {
                   image={el.image[0]}
                   transforms={["quality=value:80"]}
                   maxWidth={400}
+                  baseURI={globalSiteSettings.graphcmsImageBaseURI}
                 />
                 <h3 className="youMayAlsoLike__productTitle">
                   <span>{el.name} </span>
