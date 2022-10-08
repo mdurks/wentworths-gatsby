@@ -201,6 +201,16 @@ export const Section__contact_container = styled.section`
       }
     }
 
+    &__inputError {
+      border: 2px solid #b90000;
+    }
+
+    &__inputErrorMessage {
+      margin: 10px 0 0;
+      color: #b90000;
+      font-weight: bold;
+    }
+
     &__submitGrp {
       display: flex;
       margin: 40px 0 0;

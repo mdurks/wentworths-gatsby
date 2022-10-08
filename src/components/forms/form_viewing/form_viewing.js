@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { gsap, ScrollTrigger } from "gsap/all"
 import { useAppContext } from "../../../store/AppContext"
@@ -9,6 +9,7 @@ gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
 
 const Form_viewing = () => {
+  console.log("Form_viewing")
   const appContext = useAppContext()
 
   const formName = replaceAll(
@@ -37,6 +38,32 @@ const Form_viewing = () => {
       appContext.setProductName()
       appContext.setProductUrl()
     }, 500)
+  }
+
+  const [attemptSubmitForm, setAttemptSubmitForm] = useState(false)
+  const [nameInput, setNameInput] = useState("")
+  const [emailInput, setEmailInput] = useState("")
+  const [messageInput, setMessageInput] = useState("")
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    setAttemptSubmitForm(true)
+    if (!nameInput) {
+      document.getElementById("contactForm_name").focus()
+      return
+    } else if (!emailInput) {
+      document.getElementById("contactForm_email").focus()
+      return
+    } else if (!messageInput) {
+      document.getElementById("contactForm_message").focus()
+      return
+    }
+    setAttemptSubmitForm(false)
+    setAttemptSubmitForm("")
+    setNameInput("")
+    setEmailInput("")
+    setMessageInput("")
+    document.getElementById("formViewing").submit()
   }
 
   return (
@@ -133,30 +160,52 @@ const Form_viewing = () => {
                 className="viewingContainer__label"
                 htmlFor="contactForm_name"
               >
-                Your name:
+                (Required) Your name:
               </label>
               <input
                 type="text"
                 name="name"
-                className="viewingContainer__input"
+                className={`viewingContainer__input ${
+                  attemptSubmitForm &&
+                  !nameInput &&
+                  "viewingContainer__inputError"
+                }`}
                 id="contactForm_name"
                 required
+                value={nameInput}
+                onChange={e => setNameInput(e.target.value)}
               />
+              {attemptSubmitForm && !nameInput && (
+                <div className="viewingContainer__inputErrorMessage">
+                  Please enter your name
+                </div>
+              )}
             </div>
             <div className="viewingContainer__col">
               <label
                 className="viewingContainer__label"
                 htmlFor="contactForm_email"
               >
-                Your email:
+                (Required) Your email:
               </label>
               <input
-                type="text"
+                type="email"
                 name="email"
-                className="viewingContainer__input"
+                className={`viewingContainer__input ${
+                  attemptSubmitForm &&
+                  !nameInput &&
+                  "viewingContainer__inputError"
+                }`}
                 id="contactForm_email"
-                required
+                required="true"
+                value={emailInput}
+                onChange={e => setEmailInput(e.target.value)}
               />
+              {attemptSubmitForm && !emailInput && (
+                <div className="viewingContainer__inputErrorMessage">
+                  Please enter your email
+                </div>
+              )}
             </div>
           </div>
           <div className="viewingContainer__row">
@@ -164,7 +213,7 @@ const Form_viewing = () => {
               className="viewingContainer__label"
               htmlFor="contactForm_phone"
             >
-              Your phone: (optional)
+              (Optional) Your phone:
             </label>
             <input
               type="tel"
@@ -178,16 +227,35 @@ const Form_viewing = () => {
               className="viewingContainer__label"
               htmlFor="contactForm_message"
             >
-              Your message:
+              (Required) Your message:
             </label>
             <textarea
               name="message"
-              className="viewingContainer__input"
+              className={`viewingContainer__input ${
+                attemptSubmitForm &&
+                !nameInput &&
+                "viewingContainer__inputError"
+              }`}
               rows="7"
               id="contactForm_message"
               required
+              value={messageInput}
+              onChange={e => setMessageInput(e.target.value)}
             ></textarea>
+            {attemptSubmitForm && !messageInput && (
+              <div className="viewingContainer__inputErrorMessage">
+                Please enter your message
+              </div>
+            )}
           </div>
+          {((attemptSubmitForm && !messageInput) ||
+            (attemptSubmitForm && !emailInput) ||
+            (attemptSubmitForm && !nameInput)) && (
+            <div>
+              There are errors or missing information in the form above. Please
+              check you have provided all the required information.
+            </div>
+          )}
           <div className="viewingContainer__submitGrp">
             <div className="viewingContainer__tel">
               <p>
@@ -201,8 +269,8 @@ const Form_viewing = () => {
               <button
                 type="button"
                 className="viewingContainer__submitBtn"
-                onClick={() => {
-                  document.getElementById("formViewing").submit()
+                onClick={e => {
+                  handleSubmit(e)
                 }}
               >
                 Submit
