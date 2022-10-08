@@ -5,6 +5,8 @@ import Link from "gatsby-plugin-transition-link"
 import { Styled_footer, FooterLink } from "./Footer.styles"
 import { Styled_SiteContainer } from "../../../styles/commonStyles"
 
+import mailChimpLogo from "../../../installations/branding_logo_text_dark_dtp.svg"
+
 gsap.registerPlugin(ScrollTrigger)
 gsap.core.globals("ScrollTrigger", ScrollTrigger)
 
@@ -317,7 +319,8 @@ const Footer = () => {
                         title="Mailchimp - email marketing made easy and fun"
                       >
                         <img
-                          src="https://eep.io/mc-cdn-images/template_images/branding_logo_text_dark_dtp.svg"
+                          // src="https://eep.io/mc-cdn-images/template_images/branding_logo_text_dark_dtp.svg"
+                          src={mailChimpLogo}
                           alt="mailchimp logo"
                           width="150"
                           height="28"

@@ -44,6 +44,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `installations`,
+        path: `${__dirname}/src/installations`,
+      },
+    },
+    {
       resolve: "gatsby-plugin-copy-files",
       options: {
         source: `${__dirname}/src/public`,
@@ -68,6 +75,13 @@ module.exports = {
       resolve: "gatsby-plugin-copy-files",
       options: {
         source: `${__dirname}/src/netlify_forms`,
+        destination: "/static",
+      },
+    },
+    {
+      resolve: "gatsby-plugin-copy-files",
+      options: {
+        source: `${__dirname}/src/installations`,
         destination: "/static",
       },
     },

@@ -106,7 +106,7 @@ const IndexPage = () => {
     // document.body.style.backgroundColor = "#fff"
     document.body.classList = "mainNav--normal"
 
-    ScrollTrigger.refresh()
+    // ScrollTrigger.refresh()
   }, [])
 
   return (

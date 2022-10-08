@@ -164,6 +164,7 @@ const Block_hero_images = () => {
       ".Section__hero__headingText span"
     )
     const lettersAnimationFor_Section__hero__headingText = direction => {
+      if (isMobile) return
       letters.forEach((letter, index) => {
         gsap.fromTo(
           letter,
@@ -236,7 +237,13 @@ const Block_hero_images = () => {
         toggleActions: "play none none none",
         // markers: true,
         scrub: isMobile ? 0.5 : 1.35,
-        onScrubComplete: () => ScrollTrigger.refresh(true),
+        // disabled following line after the big update, this kept refreshing the animation
+        // and the animations of the product windows and gradient row components
+        // the command basically resets all scroll triggers on the page which explains the
+        // restart of the animations
+        // I put this line of code in to try and help recognise the start/end positions on
+        // mobile as they weren't ending in the right place if scrolling up/down too fast
+        // onScrubComplete: () => ScrollTrigger.refresh(true),
       },
       y: `+=${section__hero__heading_destination}`,
       left: window.innerWidth > 768 && "-=10%",

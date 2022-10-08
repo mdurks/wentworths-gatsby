@@ -133,10 +133,10 @@ const Block_best_seller = props => {
         </div>
 
         <Div__flickity>
-          <link
+          {/* <link
             rel="stylesheet"
             href="https://unpkg.com/flickity@2/dist/flickity.min.css"
-          ></link>
+          ></link> */}
           <Flickity
             className={"carousel"} // default ''
             elementType={"div"} // default 'div'

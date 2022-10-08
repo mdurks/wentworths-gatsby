@@ -32,10 +32,10 @@ const Block_may_also_like = props => {
         <Styled_SiteContainer className="youMayAlsoLike__headingGroup">
           <h2 className="youMayAlsoLike__heading">You may also like...</h2>
         </Styled_SiteContainer>
-        <link
+        {/* <link
           rel="stylesheet"
           href="https://unpkg.com/flickity@2/dist/flickity.min.css"
-        ></link>
+        ></link> */}
         <Flickity
           className={"youMayAlsoLike__carousel"} // default ''
           elementType={"div"} // default 'div'

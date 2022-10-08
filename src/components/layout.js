@@ -23,6 +23,7 @@ import Footer from "./layout/footer/Footer"
 import Form_viewing from "./forms/form_viewing/form_viewing"
 
 import "../styles/style.css"
+import "../installations/flickity.min.css"
 
 const Layout = ({ children }) => {
   // const Layout = props => {

@@ -751,10 +751,10 @@ const DetailsPage = ({
       />
 
       <Div__detail_hero_block>
-        <link
+        {/* <link
           rel="stylesheet"
           href="https://unpkg.com/flickity@2/dist/flickity.min.css"
-        ></link>
+        ></link> */}
         <Flickity
           className={"heroCarousel mobileFullHeight"} // default ''
           options={heroFlickityOptions} // takes flickity options {}
