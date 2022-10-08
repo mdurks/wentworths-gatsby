@@ -43,13 +43,13 @@ module.exports = {
         path: `${__dirname}/src/netlify_forms`,
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `installations`,
-        path: `${__dirname}/src/installations`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `installations`,
+    //     path: `${__dirname}/src/installations`,
+    //   },
+    // },
     {
       resolve: "gatsby-plugin-copy-files",
       options: {
@@ -78,13 +78,13 @@ module.exports = {
         destination: "/static",
       },
     },
-    {
-      resolve: "gatsby-plugin-copy-files",
-      options: {
-        source: `${__dirname}/src/installations`,
-        destination: "/static",
-      },
-    },
+    // {
+    //   resolve: "gatsby-plugin-copy-files",
+    //   options: {
+    //     source: `${__dirname}/src/installations`,
+    //     destination: "/static",
+    //   },
+    // },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

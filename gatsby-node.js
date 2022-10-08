@@ -147,7 +147,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
             "_",
             "-"
           )
-          console.log("path", path)
+          // console.log("path", path)
           // '/engagement/Silver-engagement-rings'
 
           let product_attributeValue = currentFilter

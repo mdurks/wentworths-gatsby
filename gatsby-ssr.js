@@ -45,9 +45,9 @@ export const onRenderBody = (
   ])
 
   setPostBodyComponents([
-    <script src="/static/snipcartInstallation.js" defer></script>,
-    <script src="/static/SmoothScroll.min.js" defer></script>,
-    <script src="/static/mailchimpinstallation.js" defer></script>,
+    // <script src="/static/snipcartInstallation.js" defer></script>,
+    // <script src="/static/SmoothScroll.min.js" defer></script>,
+    // <script src="/static/mailchimpinstallation.js" defer></script>,
     // <script
     //   async
     //   src="https://cdn.snipcart.com/themes/v3.3.1/default/snipcart.js"
