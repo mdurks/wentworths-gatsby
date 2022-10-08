@@ -5,13 +5,13 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React, { useEffect } from "react"
+import React from "react"
 import PropTypes from "prop-types"
 // import { useStaticQuery, graphql } from "gatsby"
 
 import { AppProvider } from "../store/AppContext"
 
-import SEO from "./layout/seo"
+// import SEO from "./layout/seo"
 // import Header from "./layout/header"
 import MainNav from "./layout/MainNav/MainNav"
 import Footer from "./layout/footer/Footer"
