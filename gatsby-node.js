@@ -177,7 +177,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
             "_",
             "-"
           )
-          console.log("path", path)
+          // console.log("path", path)
           createPage({
             path: path,
             component: require.resolve(
